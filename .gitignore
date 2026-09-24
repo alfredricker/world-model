@@ -1,0 +1,9 @@
+runs/
+__pycache__/
+*.pyc
+.obsidian/
+*.lock
+.claude/
+.vscode/
+.pytest_cache/
+data/
