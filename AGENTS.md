@@ -12,7 +12,8 @@ Read, in order, and nothing else unless the task needs it:
 2. [GOAL.md](GOAL.md): the properties the finished system must satisfy.
 3. [CHARTER.md](CHARTER.md): the ladder and the rules.
 4. [ARCHITECTURE.md](ARCHITECTURE.md): the current model.
-5. The active card under `experiments/`.
+5. The "Current focus" section of [LITERATURE.md](LITERATURE.md).
+6. The active card under `experiments/`.
 
 Read [LESSONS.md](LESSONS.md) before proposing any change to the model or the
 data. Use [LITERATURE.md](LITERATURE.md) and `papi` when a component's source
@@ -29,7 +30,7 @@ There are no other documents. Do not create notes, reviews or summaries.
 | Where we are now | `STATUS.md`, **overwritten**, at most 40 lines |
 | The current model | `ARCHITECTURE.md`; bump `arch_version` and add a change-log line when it changes |
 | A durable lesson with evidence | `LESSONS.md`; prune or merge, never let it exceed two pages |
-| Which paper shaped which component | `LITERATURE.md` |
+| Which paper shaped which component; the current paper focus | `LITERATURE.md` |
 
 ## Rules
 

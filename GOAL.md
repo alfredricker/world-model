@@ -84,6 +84,16 @@ Each has a one-line meaning, an example, and the shape of a test.
   split a concept or narrow a rule, while other skills survive.
   *Test:* change one rule of the world; the agent adapts and keeps the rest.
 
+- **P19 Learn important consequences from few examples.** An event that is
+  surprising and whose effect persists is learned from a handful of
+  occurrences, not only after many repetitions. "Important" is judged
+  without labels: how surprising the outcome was, whether its effect lasts,
+  and whether it changes what the agent predicts afterwards.
+  *Example:* after opening a locked door a few times, the agent predicts
+  it for a new door. *Test:* accuracy against the number of distinct
+  occurrences in training (for example 10, 30, 100, 300).
+  Every experiment on a rung that serves P19 reports this curve.
+
 ### Act toward goals
 
 - **P12 Grounded goals and prerequisites.** Goals are expressed in the same
