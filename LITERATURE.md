@@ -13,18 +13,22 @@ The papers agents should work from until the user changes or requests a change t
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |
-| `dreamerv3` | Candidate A: pixel reconstruction, not reward, carries the representation; its recurrent state-space model is the reference for rung 2 |
-| `1911_12247` (C-SWM) | Candidate B: contrastive latent transition objective in grid worlds; not its object slots |
+| `2304_01203` (QRL) | Hub H's structure: encoder, latent transition, quasimetric d, actions scored by d(T(z, a), g); goals as sets of states; its transition loss in the learned quasimetric (round 2). Random-policy MountainCar: 85.5 ± 3.6 vs Q-learning 22.1, 5 seeds |
+| `2208_08133` (MRN) | H's quasimetric head, by its Proposition 1; distance to a goal set is the minimum over members. Its RL results are weak evidence |
+| `2211_15120` (IQE) | Better-evidenced quasimetric head, used by QRL; the alternative to MRN |
+| `2402_15567` (HILP) | H's objective: action-free lower-expectile regression toward 1 + d on hindsight goals, EMA target |
+| `ogbench` | Why expectile over QRL: GCIVL holds up on noisy and pixel data where QRL falls to near 0; E's Q-function expectile method is strong on noisy manipulation |
+| `1707_01495` (HER) | Hindsight goals from later in the same trajectory ("future"); its goal space was supplied, which we do not do |
+| `2110_09514` (LEXA) | Frames of other trajectories as far goals; learned temporal distance beats latent similarity when goals involve objects. Its on-policy distance does not transfer to random-action data |
+| `leworldmodel` | H's transition loss: latent prediction with SIGReg, AdaLN action input; weak on low-diversity data |
+| `dreamerv3` | Candidate A: pixel reconstruction carries the representation; recurrent state-space model for rung 2 |
 | `1807_03748` (CPC) | Candidate B: the InfoNCE loss |
-| `leworldmodel` | Hub H and D: end-to-end latent prediction with SIGReg, no EMA; AdaLN action input; weak on low-diversity data |
+| `1911_12247` (C-SWM) | Candidate B evidence: contrastive latent transitions on random-policy data; unfactored only 34% hits at 5 steps |
 | `latent-actions` | Candidate D: per-location discrete change codes with a decoder that sees the current state |
 | `schema-networks-zero-shot-transfer-with-a-generative-causal` | Candidate D: persistence by default, sparse causes of change; not its supplied entities |
 | `1711_00937` (VQ-VAE) | Candidate D: discrete codebook for event codes |
-| `2402_15567` (HILP) | All candidates: steps-to-goal learned action-free by expectile regression on hindsight goals, reward-free |
-| `2304_01203` (QRL) | All candidates: quasimetric distances for one-way reachability |
-| `2208_08133` (MRN) | All candidates: metric-residual quasimetric head for d |
-| `universal-value-function-approximators` (UVFA) | Candidate E: one value function over states and goals |
-| `hiql` | Candidate E: action-free goal-conditioned value from offline data; its representation of goals |
+| `disco-rl` | Candidate D: a goal as a distribution fitted to examples; per-factor precision as agreement weights (it used 30–50 supplied examples) |
+| `universal-value-function-approximators` (UVFA), `hiql` | Candidate E: one goal-conditioned value over states and goals |
 
 ## High Level Papers
 

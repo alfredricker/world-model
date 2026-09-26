@@ -65,13 +65,14 @@ so its effect is never seen. Total data size is nearly the same at every N.
 The evaluator's labels choose the occurrences; the learner never sees them.
 N = 300 is the largest value every type allows.
 
-Evaluation: the development goal-conditioned fork probes, the same set and
-counts as card 001.
+Evaluation: card 001's stratified development fork states and goal example
+pools (`runs/sampled_dev`), the same set and counts.
 
 ## 5. Feasibility gate
 
 - **Upper bound:** card 001's winner trained with label-balanced anchors
-  at N = 300. Its interaction-decisive top-1, called U, is written here
+  at N = 300. Its mean top-1 over card 001's six scored interaction strata,
+  called U, is written here
   before approval. It must be at least 0.2 above the goal-swapped control,
   or this card waits.
 - **Trivial baselines:** random ranking, fixed action preference, and the
@@ -86,7 +87,7 @@ action is among the truly best.
 
 | # | Metric | Threshold | Compared against | Why this shows the capability |
 |---|---|---|---|---|
-| 1 | Interaction-decisive top-1 at N = 300, mean of 3 seeds | ≥ 0.8 × U | Label-balanced upper bound U | Finds rare events without labels nearly as well as with them |
+| 1 | Mean top-1 over the scored interaction strata at N = 300, mean of 3 seeds | ≥ 0.8 × U | Label-balanced upper bound U | Finds rare events without labels nearly as well as with them |
 | 2 | Same forks | ≥ 0.3 above the goal-swapped control | Same model shown another goal | The ranking depends on the goal, not on a fixed action preference |
 | 3 | Movement-decisive top-1; no-effect interactions ranked best | ≥ 0.8; ≤ 0.1 of forks | Card 001's winner | Interactions are not bought with movement or false changes |
 

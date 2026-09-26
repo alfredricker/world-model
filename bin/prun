@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Run a command in the poetry env with the NixOS library paths the compiled
+# wheels (numpy, torch, triton) need. Usage:
+#   bin/prun python -m mgrid.c2.phase1 [args...]
+set -euo pipefail
+
+find_lib() {
+    # Newest store dir that actually contains the wanted shared object.
+    local pattern=$1 wanted=$2 dir
+    for dir in $(ls -dt /nix/store/$pattern 2>/dev/null); do
+        if [[ -e "$dir/$wanted" ]]; then
+            echo "$dir"
+            return
+        fi
+    done
+    echo "bin/prun: no /nix/store match for $pattern with $wanted" >&2
+    exit 1
+}
+
+gcc_lib=$(find_lib "*-gcc-*-lib/lib" libstdc++.so.6)
+zlib_lib=$(find_lib "*-zlib-*/lib" libz.so.1)
+export LD_LIBRARY_PATH="/run/opengl-driver/lib:${gcc_lib}:${zlib_lib}${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export TRITON_LIBCUDA_PATH=/run/opengl-driver/lib
+
+cd "$(dirname "$0")/.."
+exec poetry run env PYTHONPATH="$PWD/research/trajectories:$PWD/research/trajectories/legacy${PYTHONPATH:+:$PYTHONPATH}" "$@"

@@ -6,7 +6,7 @@ serves: [P6, P12, P19]
 status: draft   # draft | approved | gated | running | done | abandoned
 verdict:
 arch_version: 0
-date: 2026-09-25
+date: 2026-09-26
 ---
 
 # 001: architecture selection
@@ -21,63 +21,55 @@ C6; P19 is left to rung 1, because this screen balances the data (section 4).
 
 ## 2. What changes
 
-There is no model (arch_version 0). Every candidate has the same three
-parts, all on one learned state (C2):
-
-- an **encoder** from a 42×42×3 frame to a latent z; a goal is shown as a
-  set of example frames, encoded by the same encoder and pooled into g;
-- a **transition** T(z, a) giving the latent after action a;
-- a **reachability head** d(z, g) ≥ 0, the predicted fewest steps from z to
-  the goal; directed (a quasimetric), so one-way changes such as picking up
-  a key cost more than their reverse.
-
-An action is scored by d(T(z, a), g): the lower, the better. The hub,
-candidate H, is the simplest version; each other candidate changes exactly
-one part of it, so its score relative to H diagnoses that part.
+There is no model (arch_version 0). Every candidate has three parts on one
+learned state (C2): an **encoder** from a 42×42×3 frame to a latent z; a
+**transition** T(z, a); and a **reachability head** d(z, g) ≥ 0, the
+predicted fewest steps from z to goal g, built as a quasimetric so one-way
+changes cost more than their reverse. An action is scored by d(T(z, a), g),
+lower being better. This is QRL's structure (`2304_01203`). The hub H is
+the simplest version; each other candidate changes one part of it.
 
 | | Candidate | Changes from H | Question it answers | Source (papi) |
 |---|---|---|---|---|
-| H | Hub | — | Baseline: latent prediction + SIGReg for T; d learned action-free by expectile regression on hindsight goals, quasimetric head | `leworldmodel`, `2402_15567`, `2304_01203`, `2208_08133` |
-| A | + pixel reconstruction | Adds a decoder loss on z | Does explaining pixels help represent conditions? | `dreamerv3`, `1811_04551` |
-| B | Contrastive transition | InfoNCE replaces squared error + SIGReg for T | Does discrimination beat regression for consequences? | `1911_12247`, `1807_03748` |
-| D | Factored state, partial goals | z is a grid of cells plus one non-spatial vector; T moves cells for turns and forward and writes sparse discrete events; g keeps only the factors the goal examples agree on, and d ignores the rest | Do conditions need a factored state in which a goal constrains only part of it? | `latent-actions`, `schema-networks-zero-shot-transfer-with-a-generative-causal`, `1711_00937` |
-| E | No transition | A direct head Q(z, a, g) replaces d(T(z, a), g) | Is an explicit model of consequences needed at all, or is a goal-conditioned value enough? | `universal-value-function-approximators`, `hiql` |
+| H | Hub | — | Baseline | `2304_01203`, `2208_08133`, `2402_15567`, `ogbench`, `leworldmodel` |
+| A | + reconstruction | Adds a pixel decoder loss on z | Does explaining pixels help represent conditions? | `dreamerv3` |
+| B | Contrastive transition | CPC InfoNCE replaces squared error + SIGReg for T | Does telling futures apart beat predicting them? | `1807_03748`, `1911_12247` |
+| D | Factored state, partial goals | Grid of cells + one vector; T moves cells and writes sparse events; goals weight the factors their examples agree on | Do conditions need a factored state? | `latent-actions`, `schema-networks-zero-shot-transfer-with-a-generative-causal`, `1711_00937`, `disco-rl` |
+| E | No transition | Q(z, a, g) replaces d(T(z, a), g) | Is an explicit model of consequences needed? | `universal-value-function-approximators`, `hiql`, `ogbench` |
 
-The appendix gives each candidate's sizes, losses and main risk. Held equal
-across all five: the encoder trunk (3 convolution layers), at most 2M
-parameters (measured), the same data and number of updates (fixed by a
-throughput profile before approval), 2 seeds each.
+Held equal: the encoder trunk (3 convolution layers), at most 2M parameters
+(measured), the same data and number of updates (fixed by a throughput
+profile before approval), 2 seeds each. The appendix gives each one's losses
+and main risk.
 
-**Goals in training, without labels.** A training goal is a set of 4
-frames drawn from a later stretch of the same trajectory (hindsight). What
-the frames share is what lasted, such as a carried key or an opened door;
-where the agent stands and looks varies. This teaches goals as partial
-conditions without ever naming one.
+**Goals.** Training goals are single frames from later in the same
+trajectory (HER's "future" relabelling, `1707_01495`), plus frames from
+other trajectories as far goals (HILP, LEXA). At test a goal is 4 example
+frames from other worlds. The distance to a set of states is the minimum
+over its members (MRN, QRL), so the goal side is pooled by a coordinate-wise
+maximum on the head's asymmetric features: this is a lower bound on the
+distance to every example, and coordinates on which the examples disagree
+stop counting. Only D also trains on goal sets, which is part of what it
+tests.
 
-**Round 2** (CHARTER): at most three combinations of round-1 parts, each
-justified by the diagnostics below, for example D's factored state with B's
-transition loss. Written into this card before it runs.
-
-**Diagnostics** logged for every run: the score on forks decided by
-movement versus by interactions (a representation problem shows on
-interactions first); the rank correlation of d with true steps-to-goal;
-action sensitivity (true versus shuffled action); latent spread (collapse);
-for D, how often event codes fire on real interactions versus on movement.
+**Diagnostics** per run: score per stratum; rank correlation with true
+steps-to-goal; true versus shuffled action; latent spread (collapse); for
+D, event codes firing on interactions versus movement. **Round 2**
+(CHARTER): at most three combinations justified by them, for example QRL's
+transition loss measured in the learned quasimetric.
 
 ## 3. Dependencies
 
-- **Chained-rooms port, collection and fork probes:** must pass its tests
-  and the byte-identical collection check. Not yet run (`src/` is empty).
-- **Goal-conditioned fork evaluator (new):** breadth-first search over a
-  copy of the simulator for the fewest steps to each goal condition after
-  each action; builds goal example sets from other development episodes.
-  Unit tests first: search distances match hand-counted cases; a fork where
-  pickup is the only way to the goal ranks pickup first; a shuffled ranking
-  scores at chance. Timed doors make the state time-dependent; goals whose
-  shortest path passes a timed door are reported, not scored.
-- **Methods:** every mechanism is from a paper in papi (table above). D and
-  H combine established parts in a new way, and that combination is what
-  this screen tests; rule 7 is met by the parts.
+- **Chained-rooms port:** passed 2026-09-26 (9 tests; collection and probe
+  hashes match the old repo on 3 episodes).
+- **Goal-conditioned fork evaluator:** `src/worldmodel/envs/rooms_goals.py`,
+  16 tests pass: its rules match the real environment step by step,
+  including about 8,000 branches at objects and timed doors closing;
+  hand-counted distances; state setting round-trips; shuffled rankings
+  score at chance. Distances ignore the 512-step truncation.
+- **Methods:** every part is from a paper in papi. Untested anywhere:
+  expectile regression with a quasimetric head (nearest: QRL's MountainCar
+  table) and D's hindsight goal sets. The screen tests both.
 
 ## 4. Data check
 
@@ -86,47 +78,59 @@ uniform opaque actions repeated for geometric lengths. Interaction counts
 in the old collection with the same seeds: key pickup 4052, unlock 307,
 other door opens about 1300, box open 823, switch press 970.
 
-**Balanced sampling (declared, screen only).** Half of each batch is
-anchored within a few steps before an interaction, chosen with the
-evaluator's labels; the learner never sees them. Without this, every
-candidate would fail on interaction-decisive forks and the screen could not
-separate them. Learning from rare events without labels is card 002.
+**Balanced sampling (declared, screen only):** half of each batch is
+anchored just before an interaction, chosen with evaluator labels the
+learner never sees. Label-free sampling is card 002.
 
-Evaluation: development ordinary-start probes (120 episodes), goals from
-{holding key of colour c, door of colour c open, box open}. The number of
-interaction-decisive and movement-decisive forks per goal type is measured
-once the evaluator exists and written here before approval. Switch doors
-are rung 2: goals that need a switch are reported, not scored.
+**Evaluation states.** Random-walk trajectories almost never reach the
+rare situations: on 120 development episodes, facing a locked door while
+holding its key and needing it open occurred in 8 distinct states. The
+fork states are therefore drawn from every reachable state of 120
+development worlds (up to 826k states per world, all searched completely),
+stratified by goal, best action and object in front: up to 300 per
+stratum, spread over worlds (`runs/sampled_dev`, 102 s). Scored strata and
+counts:
+
+| Stratum (goal ← best action at object) | Chosen | Worlds |
+|---|---|---|
+| door open ← toggle locked door holding its key | 300 | 120 |
+| door open ← pick up the matching key | 300 | 120 |
+| door open ← open the box holding the key | 300 | 68 |
+| door open ← toggle a closed plain door | 300 | 120 |
+| key held ← pick up the key | 300 | 120 |
+| key held ← open its box | 300 | 88 |
+| movement-decisive, both goal kinds | 2000 | 120 |
+
+Reported, not scored: switches (rung 2), timed doors, picking up a box to
+clear a path. Goal example pools: 135–237 frames per goal.
 
 ## 5. Feasibility gate
 
-- **Upper bound:** the hub's heads trained on the evaluator's simulator
-  state (egocentric tile grid, carried object, door states) instead of
-  frames. It must reach 0.9 top-1 on interaction-decisive forks, or the
-  test is revised before any candidate runs.
-- **Trivial baselines:** random ranking (chance per fork, from its ties);
-  a fixed action preference (the most often best action overall); the
-  goal-swapped control (each candidate shown a different goal's examples).
+- **Upper bound:** the hub's heads on the evaluator's simulator state
+  (tile grid, carried object, door states) instead of frames. It must reach
+  0.9 top-1 on the scored interaction strata; the same model scored with
+  pooled 4-example goals from other worlds must stay within 0.1 of it with
+  exact single-state goals, or goal pooling is revised first.
+- **Trivial baselines:** random ranking (chance per fork from its ties);
+  a fixed action preference; the goal-swapped control.
 
 Result of the gate, before the main run:
 
 ## 6. Success criteria and prediction
 
-**Metric:** top-1 on interaction-decisive forks: the candidate's
-best-ranked action is among the truly best. Mean of 2 seeds.
+**Metric:** mean top-1 over the six scored interaction strata (the
+best-ranked action is among the truly best), mean of 2 seeds.
 
 | # | Criterion | Threshold | Compared against | Why |
 |---|---|---|---|---|
-| 1 | The screen is informative | Best candidate ≥ 0.3 above the goal-swapped control | Goal-swapped control | Otherwise no candidate has the capability; the list is revised, not a winner picked |
-| 2 | Winner | Highest interaction-decisive top-1, with movement-decisive top-1 ≥ 0.8 and no-effect interactions ranked best on ≤ 0.1 of forks | The other four | Rare interactions are the target; the rest guard against buying them with movement or false changes |
-| 3 | Tie-break | Within 0.05 of the best: higher rank correlation of d with true steps, then fewer built-in priors | Tied candidates | Prefer the one that also knows how soon, and assumes less |
+| 1 | The screen is informative | Best candidate ≥ 0.3 above the goal-swapped control | Goal-swapped control | Otherwise no candidate has the capability; the list is revised |
+| 2 | Winner | Highest interaction score, with movement-decisive top-1 ≥ 0.8 and no-effect interactions ranked best on ≤ 0.1 of forks | The other four | Interactions are the target; the rest guard against movement loss and false changes |
+| 3 | Tie-break | Within 0.05: higher rank correlation with true steps, then fewer priors | Tied candidates | Prefer the one that also knows how soon, and assumes less |
 
-**Prediction.** D wins on interaction-decisive forks if its movement
-transport learns; if not, ego-motion floods its event codes and it trails
-H. E scores well on movement and poorly on rare interactions, which get too
-little signal without a transition model. A adds little over H. B is close
-to H. All candidates are weak on "door open" goals with the key out of
-view, which need memory (rung 2).
+**Prediction.** H does better on key goals than door goals, where two
+conditions chain. D beats H on door goals if its transport learns. E is
+close to H (OGBench's Q-function expectile method: cube-single-noisy 99).
+A adds little. B trails H (unfactored C-SWM: 34% hits at 5 steps).
 
 **Budget.** Gate: 1 run. Screen: 5 candidates × 2 seeds = 10 runs, each
 under 10 minutes on the RTX 5070 Ti, about 2 hours; round 2 at most 6 more.
@@ -141,39 +145,39 @@ under 10 minutes on the RTX 5070 Ti, about 2 hours; round 2 at most 6 more.
 
 Sizes are starting points, fitted under the 2M cap.
 
-**H, hub.** z: 192-d vector (pooled trunk, projector with BatchNorm). T:
-action embedding through zero-initialised AdaLN in a small MLP; loss:
-squared error to the encoded next frame, plus SIGReg on every encoding
-(LeWM; no EMA or stop-gradient). g: mean of the encoded example frames. d:
-metric-residual quasimetric head (MRN); trained action-free by expectile
-regression toward 1 + d(z_next, g) on hindsight goals, with other
-trajectories' frames as far goals (HILP, QRL). Scoring: d(T(z, a), g).
-Risk: SIGReg under-spreads on low-diversity frames (LeWM lost to PLDM on
-TwoRoom for this reason).
+**H, hub.** z: 192-d (pooled trunk, projector with BatchNorm). T: action
+embedding through zero-initialised AdaLN in a small MLP; loss: squared
+error to the encoded next frame plus SIGReg on every encoding (LeWM). d:
+MRN construction on (z, g) in one space, a quasimetric by its Proposition 1
+(IQE, `2211_15120`, is the better-evidenced alternative). d is trained
+action-free by lower-expectile regression toward 1 + d_target(z_next, g),
+with an EMA target network (HILP; OGBench's GCIVL held up better than QRL on
+noisy and pixel data), on hindsight and far goals. Risk: SIGReg
+under-spreads on low-diversity frames (LeWM lost to PLDM on TwoRoom).
 
 **A, + reconstruction.** H plus a convolutional decoder from z with a pixel
-loss. Risk: a changed door or carried key is a few pixels and gets little
-gradient.
+loss. Risk: a changed door or carried key is a few pixels of loss.
 
-**B, contrastive transition.** H, but T is trained by InfoNCE: T(z, a) must
-pick the encoded next frame from the batch's next frames and from the
-current frame (C-SWM objective). Risk: keeps whatever tells frames apart,
-mostly viewpoint.
+**B, contrastive transition.** H, but T is trained with CPC's InfoNCE: T(z,
+a) must pick the encoded next frame from the batch's next frames, and also
+from the current frame (our addition, to force "something changed"). Risk:
+keeps whatever tells frames apart, mostly viewpoint.
 
-**D, factored state with partial goals.** z: an 8×8 grid of 24-d cells plus
-one 32-d non-spatial vector (where a carried object can live). T: next =
-move_a(z) + gate ⊙ write(e): move_a is a learned action-conditioned
-transport of cell contents; e is one discrete event code per cell and one
-for the non-spatial vector, from a 32-entry codebook whose code 0 means "no
-change" (VQ-VAE); a prior p(e | z, a) predicts codes, a posterior that also
-sees the next frame trains it; a penalty on the rate of non-null codes.
-Persistence is the default. g: per factor, the mean over examples and a
-weight that is high where the examples agree; d reads only weighted
-factors. Same SIGReg and d training as H. Risks: a poor transport floods
-the event codes; codes may collapse to "always null" (tracked with
-evaluator labels).
+**D, factored state with partial goals.** z: 8×8 grid of 24-d cells plus
+one 32-d vector (where a carried object can live). T: next = move_a(z) +
+gate ⊙ write(e); move_a is a learned action-conditioned transport of cells;
+e is one code per cell and one for the vector from a 32-entry codebook,
+code 0 meaning "no change" (VQ-VAE), predicted by a prior p(e | z, a) and
+trained against a posterior that sees the next frame, with a penalty on the
+rate of non-null codes. Goals: sets of 4 frames spread far apart in a later
+stretch of the same trajectory, so that what they share is what lasted
+rather than room or heading; per-factor weights from how much the examples
+agree (DisCo RL's precision), applied inside the head so it stays a
+quasimetric. Same SIGReg and d training as H. Risks: a poor transport
+floods the event codes; codes collapse to "always null"; agreement weights
+from 4 examples are noisy (DisCo used 30–50).
 
-**E, no transition.** Q(z, a, g) predicts steps-to-goal after action a
-directly, trained by expectile regression toward 1 + min over a' of Q at
-the next step. z is trained only through Q. Risk: rare interactions give
-Q little signal without a transition model to share across goals.
+**E, no transition.** Q(z, a, g), steps-to-goal after action a, trained by
+Q-learning toward 1 + min over a' of Q_target at the next state (QRL's
+MountainCar baseline); z is trained only through Q. Risk: rare interactions
+give Q little signal without a transition model to share across goals.
