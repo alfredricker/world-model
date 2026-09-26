@@ -56,9 +56,11 @@ subgoals, then deliberating over them.
 **Architecture selection** (decided 2026-09-25). Before rung 1, while there
 is no model (arch_version 0), the first architecture is chosen by one
 bounded screen: at most five whole candidate architectures, one design card,
-the same data and the same rung-1 feasibility screen for all, runs under 10
-minutes each. The winner becomes arch_version 1 and then takes rung 1
-properly; the losers and their scores stay in the card so the choice can be
+the same data and the same rung-1 feasibility screen for all. Runs are as
+long as an informative result needs (decided 2026-09-26), set by a
+throughput profile in the card; runs over 30 minutes are handed to the
+user. The winner becomes arch_version 1 and then takes rung 1 properly;
+the losers and their scores stay in the card so the choice can be
 revisited with evidence. The screen may have one follow-up round of at most
 three combinations of the first round's parts, each justified by first-round
 diagnostics. This is the only exception to "one component per experiment",

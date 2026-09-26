@@ -45,44 +45,29 @@ Held equal: the encoder trunk (3 convolution layers), at most 2M parameters
 profile before approval), 2 seeds each. The appendix gives each one's losses
 and main risk.
 
-**Goals.** Training goals are single frames from later in the same
-trajectory (HER's "future" relabelling, `1707_01495`), plus frames from
-other trajectories as far goals (HILP, LEXA). At test a goal is 4 example
-frames from other worlds. The distance to a set of states is the minimum
-over its members (MRN, QRL), so the goal side is pooled by a coordinate-wise
-maximum on the head's asymmetric features: this is a lower bound on the
-distance to every example, and coordinates on which the examples disagree
-stop counting. Only D also trains on goal sets, which is part of what it
-tests.
-
-**Diagnostics** per run: score per stratum; true versus shuffled action;
-latent spread (collapse); for D, event codes firing on interactions versus
-movement; for C, the rank correlation of d(subgoal, g) with true steps.
-Two condition diagnostics, reported for rung 2 and card 002, not scored:
-- **Condition gap:** pairs of states the evaluator sets up identically
-  except for one condition (holding the key, the box open). The predicted
-  gap in distance to the goal is compared with the true gap, and with pairs
-  that differ in something irrelevant (another room's door).
-- **One-way gap:** d(z', z) − d(z, z') across a transition z → z', for
-  pickups, unlocks and box opens (which cannot be undone; there is no drop
-  action) against plain door toggles and moves (which can). A reachability
-  measure can only single out conditions that cannot be undone: a change
-  undone in one step moves every distance by at most 1. **Round 2**
-(CHARTER): at most three combinations justified by them, for example QRL's
-transition loss measured in the learned quasimetric.
+**Goals** (revised after the gate, user decision 2026-09-26): a goal is a
+condition supplied as a task, as C1 allows until P20: 4 example frames
+where it holds, from other training episodes, with a success signal from
+the evaluator's labels. The model is never told which other conditions
+lead to it (key before door); that is what it must learn. At test the 4
+examples come from other development worlds. Hindsight goals (single later
+frames) are kept for the state-to-state distance. Discovering conditions
+without supplied goals is deferred to a later card (appendix).
+**Diagnostics** (appendix) include two condition diagnostics for rung 2 and
+card 002: the condition gap on matched state pairs, and the one-way gap.
+**Round 2** (CHARTER): at most three combinations justified by the
+diagnostics, for example QRL's transition loss in the learned quasimetric.
 
 ## 3. Dependencies
 
-- **Chained-rooms port:** passed 2026-09-26 (9 tests; collection and probe
-  hashes match the old repo on 3 episodes).
-- **Matched condition pairs:** the condition-gap diagnostic needs the
-  evaluator to set two states that differ in one condition. State setting
-  already round-trips; the pair builder gets its own tests before approval.
-- **Goal-conditioned fork evaluator:** `src/worldmodel/envs/rooms_goals.py`,
-  16 tests pass: its rules match the real environment step by step,
-  including about 8,000 branches at objects and timed doors closing;
-  hand-counted distances; state setting round-trips; shuffled rankings
-  score at chance. Distances ignore the 512-step truncation.
+- **Chained-rooms port:** passed 2026-09-26 (9 tests; hashes match the old
+  repo).
+- **Fork evaluator:** `src/worldmodel/envs/rooms_goals.py`, 16 tests pass
+  (rules match the real environment step by step, hand-counted distances,
+  state setting round-trips, shuffled rankings score at chance). Distances
+  ignore the 512-step truncation.
+- **Matched condition pairs** for the condition gap: a pair builder with
+  its own tests, before approval.
 - **Methods:** every part is from a paper in papi. Untested anywhere:
   expectile regression with a quasimetric head (nearest: QRL's MountainCar
   table), D's hindsight goal sets, and C's subgoals chosen from random-action
@@ -100,14 +85,16 @@ other door opens about 1300, box open 823, switch press 970.
 anchored just before an interaction, chosen with evaluator labels the
 learner never sees. Label-free sampling is card 002.
 
-**Evaluation states.** Random-walk trajectories almost never reach the
-rare situations: on 120 development episodes, facing a locked door while
-holding its key and needing it open occurred in 8 distinct states. The
-fork states are therefore drawn from every reachable state of 120
-development worlds (up to 826k states per world, all searched completely),
-stratified by goal, best action and object in front: up to 300 per
-stratum, spread over worlds (`runs/sampled_dev`, 102 s). Scored strata and
-counts:
+**Supplied goals (declared):** per training frame, the evaluator's labels
+say which of 7 conditions hold (a red, green or blue key held; a red,
+green, blue or grey door open) and whether they are in view. Example
+pools are the frames where a condition holds and is visible.
+
+**Evaluation states.** Random walks almost never reach the rare
+situations (8 distinct unlock-decisive states in 120 development episodes),
+so fork states are drawn from every reachable state of 120 development
+worlds (up to 826k each, searched completely), stratified by goal, best
+action and object in front (`runs/sampled_dev`). Scored strata:
 
 | Stratum (goal ← best action at object) | Chosen | Worlds |
 |---|---|---|
@@ -124,8 +111,10 @@ clear a path. Goal example pools: 135–237 frames per goal.
 
 ## 5. Feasibility gate
 
-- **Upper bound:** the hub's heads on the evaluator's simulator state
-  (tile grid, carried object, door states) instead of frames. It must reach
+- **Upper bound:** the hub on the egocentric simulator view (MiniGrid's
+  symbolic encoding of the same 7×7 view the frames show, plus the carried
+  object) instead of pixels. A whole-world grid was tried first and is not
+  an upper bound: a step changes one cell and T learned nothing. It must reach
   0.9 top-1 on the scored interaction strata; its rank correlation with
   true steps-to-goal over fork states, called ρ_U, is written here and sets
   criterion 2's floor. The same model scored with
@@ -134,7 +123,43 @@ clear a path. Goal example pools: 135–237 frames per goal.
 - **Trivial baselines:** random ranking (chance per fork from its ties);
   a fixed action preference; the goal-swapped control.
 
-Result of the gate, before the main run:
+Result of the gate, before the main run: **not passed** (2026-09-26,
+seed 0, 30k updates each; `runs/gate_try1`–`3`, `runs/profile_frames`).
+Chance is 0.2 on the scored strata; always-toggle scores 0.667.
+
+| Run | Top-1 pooled | Top-1 exact | Top-1 true successors | Movement exact | Rank corr. exact / pooled |
+|---|---|---|---|---|---|
+| Simulator state (allocentric grid) | 0.30 | 0.36 | 0.59 | 0.21 | 0.78 / 0.01 |
+| + QRL transition loss, local penalty | 0.18 | 0.16 | 0.57 | 0.29 | 0.69 / 0.04 |
+| Frames (hub H as specified) | 0.21 | 0.48 | 0.63 | 0.54 | 0.57 / 0.05 |
+
+Three findings. (1) Goals pooled from other worlds carry almost no
+signal in any run: trained only on single-state goals, the head measures
+distance to states, not to conditions. (2) On the allocentric grid, T
+learns nothing (predicting "no change" is as good, shuffle ratio 1.0), so
+it is not an upper bound; on frames T learns (shuffle ratio 50–200).
+(3) QRL's transition loss without QRL's push-up objective shrinks
+one-step distances to about 0.02 and ties all actions. The one-way gap on
+frames: box open 5.9, pickup 2.5, unlock 1.4, forward move 1.6 (a move
+takes more steps to undo when facing matters), plain toggles 0.1.
+
+Second round (egocentric simulator view; `runs/gate_ego*`, `gate_cond_*`):
+
+| Run | Top-1 pooled (swapped) | Top-1 exact | Movement pooled | Rank corr. pooled |
+|---|---|---|---|---|
+| Egocentric view, hub as specified | 0.31 (–) | 0.54 | 0.46 | 0.05 |
+| + label-free goal sets, 100k updates | 0.29 (0.18) | 0.59 | 0.49 | 0.03 |
+| + supplied condition goals, asym rule | 0.62 (0.42) | 0.60 | 0.43 | 0.19 |
+| + supplied condition goals, pooled rule | 0.65 (0.44) | 0.58 | 0.44 | 0.18 |
+
+Supplied goals make the goal matter (0.2 above the swapped control), but
+only for one-step conditions: key held ← pick up 0.88; door open ← toggle
+the locked door 0.66, the plain door 0.70; the two-step chains (door ←
+pick up its key; anything through a box) stay near 0.5, the swapped
+level. Holding the key is predicted closer to "door open" in 74–80% of
+matched pairs, but by about 0.1 step against a true 7. Movement stays
+below 0.55 even on true successors: the head's one-step precision is a
+separate limit. Curves were flat from 10k to 30k updates.
 
 ## 6. Success criteria and prediction
 
@@ -159,8 +184,10 @@ hierarchy helped most at long horizons), if subgoals can be chosen from
 random-action data. On the condition gap, D and C separate the key
 condition from irrelevant differences better than H.
 
-**Budget.** Gate: 1 run. Screen: 5 candidates × 2 seeds = 10 runs, each
-under 10 minutes on the RTX 5070 Ti, about 2 hours; round 2 at most 6 more.
+**Budget.** Gate: 1 run. Screen: 5 candidates × 2 seeds = 10 runs; round 2
+at most 6 more. Run length is set by the throughput profile to what gives
+an informative result (user, 2026-09-26), not capped at 10 minutes; runs
+over 30 minutes are handed to the user as commands.
 
 ## 7. Result
 
@@ -168,7 +195,7 @@ under 10 minutes on the RTX 5070 Ti, about 2 hours; round 2 at most 6 more.
 
 ---
 
-## Appendix: the candidates
+## Appendix: candidates, goals and diagnostics
 
 Sizes are starting points, fitted under the 2M cap.
 
@@ -215,3 +242,32 @@ from 4 examples are noisy (DisCo used 30–50).
 Q-learning toward 1 + min over a' of Q_target at the next state (QRL's
 MountainCar baseline); z is trained only through Q. Risk: rare interactions
 give Q little signal without a transition model to share across goals.
+
+**Goals.** A condition goal is 4 example frames where it holds; its
+target is 0 where it holds, else min(steps until it next holds in the
+episode, 1 + d_target(z', G)). State goals are the next frame (15%), a
+later frame of the same trajectory (45%; HER's "future" relabelling,
+`1707_01495`) or any frame (40%; HILP, LEXA). Label-free goal sets (4
+frames spread over a later stretch of the same episode) were tried at the
+gate and left pooled goals at chance even after 100k updates
+(`runs/gate_ego3`); discovering conditions is deferred. At test a goal is
+4 example frames from other worlds. The distance to a set of states is the minimum
+over its members (MRN, QRL), so the goal side is pooled by a coordinate-wise
+maximum on the head's asymmetric features: this is a lower bound on the
+distance to every example, and coordinates on which the examples disagree
+stop counting. Only D also trains on goal sets, which is part of what it
+tests.
+
+**Diagnostics** per run: score per stratum; true versus shuffled action;
+latent spread (collapse); for D, event codes firing on interactions versus
+movement; for C, the rank correlation of d(subgoal, g) with true steps.
+Two condition diagnostics, reported for rung 2 and card 002, not scored:
+- **Condition gap:** pairs of states the evaluator sets up identically
+  except for one condition (holding the key, the box open). The predicted
+  gap in distance to the goal is compared with the true gap, and with pairs
+  that differ in something irrelevant (another room's door).
+- **One-way gap:** d(z', z) − d(z, z') across a transition z → z', for
+  pickups, unlocks and box opens (which cannot be undone; there is no drop
+  action) against plain door toggles and moves (which can). A reachability
+  measure can only single out conditions that cannot be undone: a change
+  undone in one step moves every distance by at most 1.

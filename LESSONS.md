@@ -34,6 +34,16 @@ it; *suggestive* means one seed, small n, or a diagnostic.
 - **Transfer to new combinations and to new members are different claims.**
   PHWM: combination split .943±.004 (ceiling .976); member split .808±.053,
   only 3/6 seeds above .75. *Evidence:* phwm record above. *Confirmed.*
+- **Chains of prerequisites are the hard part, and a working step is not a
+  used step.** In PHWM, one-step held combinations scored 0.54–0.71 but
+  furnace → iron pickaxe 0.11; a sleep request that executed at 0.86–0.92
+  was proposed once in 15 lives; request chains were flat from one
+  demonstration to all. Card 001's gate repeats the pattern: one-step
+  conditions 0.66–0.88, two-step chains at the swapped-goal level.
+  Backward regression over preconditions has not been tested anywhere.
+  *Evidence:* old:phwm/docs/05-experimental-record.md §5.12,
+  06-achievements-and-limitations.md; card 001 gate. *Confirmed* for the
+  pattern.
 - **Offline or component gains need checking in live behaviour.** Gains on
   count worlds and crafting instruments did not survive live play.
   *Evidence:* old:grl/INHERITED.md (RLM-057, -061, -062). *Confirmed.*
@@ -86,6 +96,24 @@ it; *suggestive* means one seed, small n, or a diagnostic.
 - **Generic spread regularizers (VICReg-style) did not produce binding;
   pairwise constraints did.** *Evidence:* phwm record above, §5.7.
   *Suggestive,* no number extracted.
+- **A reachability head trained on single-state goals measures distance to
+  states, not to conditions.** Shown the goal as 4 example frames from
+  other worlds, its rank correlation with true steps-to-goal was 0.01–0.05,
+  against 0.57–0.78 with the exact goal state, in all four gate runs.
+  Label-free goal sets (4 frames from a later stretch of the same episode)
+  did not change this, even at 100k updates. Supplying the goal condition
+  (examples plus a success signal) lifted pooled top-1 from 0.29 to 0.62,
+  0.2 above the goal-swapped control, but only for one-step conditions;
+  two-step chains stayed at the swapped level. *Evidence:* card 001 gate.
+  *Confirmed* (7 runs, 1 seed each).
+- **Latent-regression transitions need observations that change with the
+  action.** On an allocentric state grid, where a step changes one cell, T
+  learned nothing (shuffled-action error ratio 1.0); on egocentric frames
+  it learned (ratio 50–200). *Evidence:* card 001 gate. *Suggestive* (1 seed).
+- **QRL's transition loss needs QRL's push-up objective.** Added to an
+  expectile-trained head, it shrank one-step distances to about 0.02 and
+  tied all actions. *Evidence:* card 001 gate, `runs/gate_try2`.
+  *Suggestive* (1 seed).
 - **Log every loss term separately.** A combined regularizer value hid a scale
   failure. *Evidence:* old:legacy/mgrid/README.md (t1). *Confirmed.*
 
