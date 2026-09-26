@@ -20,7 +20,9 @@ current approach cannot get there.
 - **C1 Learned, not supplied.** Objects, relations, events, skills and goals
   are learned. The environment gives pixels and actions only; labels and
   simulator state are for the evaluator. A hand-built mechanism can be a
-  baseline or a probe, never a result.
+  baseline or a probe, never a result. Until P20, goals may be supplied as
+  tasks: a target condition shown as example observations or a success
+  signal. What a goal requires and how to reach it are always learned.
 - **C2 One learner, one representation.** Perception, memory, prediction,
   goals and imagination use the same learned state, not separate models
   joined by adapters.
@@ -32,6 +34,17 @@ current approach cannot get there.
 - **C5 Transfer with retention.** Tests use new instances or combinations,
   say what changed and what stayed familiar, and check that earlier
   capabilities survive.
+- **C6 Predict abstract consequences, on the horizon they unfold.** What the
+  model predicts is how actions change the abstract variables that matter
+  (holding an iron pickaxe, a door being open, a skeleton in range), and how
+  those variables change which goals can be reached, how likely and how
+  soon. There is no fixed prediction window: how long a change takes is
+  itself predicted, a few steps for an arrow, hundreds for a crafting chain.
+  Frames are the evidence these variables are grounded in, not the thing
+  being predicted. Which variables matter is learned (C1): a variable
+  matters if changing it changes what happens later or what can be reached.
+  A consequence test scores that effect, not the next frame; a fixed horizon
+  in a test is a measuring device, not the target.
 
 ## Properties
 
@@ -62,9 +75,14 @@ Each has a one-line meaning, an example, and the shape of a test.
 
 ### Predict and discover
 
-- **P6 Action consequences.** Predict what each available action will cause,
-  including rare interactions, delays, failure and harm. *Test:* for the same
-  state, different actions get different, correct predictions.
+- **P6 Action consequences.** Predict what each available action, or
+  sequence of actions, will cause in the abstract state (C6), including rare
+  interactions, delays, failure and harm.
+  *Example:* crafting an iron pickaxe is progress toward diamonds, although
+  nothing in the next frame says so; a skeleton drawing its bow means harm a
+  few steps away, not in the next frame. *Test:* for the same state,
+  different actions get different, correct predictions of the effect at the
+  horizon where it shows. A next-frame score alone does not count.
 - **P7 Learned units.** Discover the parts, objects and events worth tracking
   from continuity and interaction, not from a supplied vocabulary.
   *Test:* the learned units track things across frames and matter for P6.
@@ -96,11 +114,24 @@ Each has a one-line meaning, an example, and the shape of a test.
 
 ### Act toward goals
 
-- **P12 Grounded goals and prerequisites.** Goals are expressed in the same
-  learned terms as experience; the agent infers what must happen first.
-  *Example:* "have 3 wood" differs from "collected wood once"; get the key
-  before the door. *Test:* reaches an unrewarded subgoal because it enables
-  the goal.
+- **P12 Goals as conditions, subgoals from conditions.** A goal is a
+  condition in the learned state (holding diamonds), expressed in the same
+  terms as experience. The agent learns which conditions make a goal more
+  likely to be reached, and sooner, if it acts competently: the right tools,
+  enough health, being deep in a cave. The unmet conditions that most raise
+  that likelihood become more immediate subgoals, and so on down to actions.
+  Goals are re-weighed as the situation changes: a threat that could end
+  every goal makes survival the immediate goal, while the agent tries to
+  keep the conditions it has built up. Survival need not be supplied: it
+  follows from death making every goal unreachable.
+  *Example:* wanting diamonds makes an iron pickaxe a subgoal, which makes
+  iron ore a subgoal; a skeleton in range interrupts all of them. In chained
+  rooms, "be in the last room" makes the key, then the door, subgoals; "have
+  3 wood" differs from "collected wood once". *Test:* for a goal it was not
+  trained on, the agent predicts how likely and how soon the goal is from
+  different states (checked against outcomes), pursues an unrewarded
+  condition because it raises that likelihood, and avoids a threat and then
+  resumes.
 - **P13 Deliberation.** Imagine and compare candidate plans in the learned
   state, with backtracking; more thinking helps harder decisions.
   *Test:* planning in imagination beats acting greedily on new tasks.
@@ -111,6 +142,13 @@ Each has a one-line meaning, an example, and the shape of a test.
   interaction faster than random exploration does.
 - **P16 Learning from demonstration.** Infer goal and prerequisites from a
   few demonstrations, then do it independently in changed conditions.
+- **P20 Self-set goals.** The agent proposes its own goals and subgoals from
+  its learned state, beyond those it is given. Early on the experimenter
+  supplies goals (C1); later the agent chooses conditions worth achieving,
+  for example ones it cannot yet reach reliably, or ones that open up many
+  other conditions. *Test:* practice on self-chosen goals makes the agent
+  better at supplied goals it has never seen, compared with practice on
+  random or supplied goals only.
 
 ### Across all of them
 
@@ -121,16 +159,19 @@ Each has a one-line meaning, an example, and the shape of a test.
 
 ## Suggested order
 
-Proposal, to be settled in the CHARTER ladder: P6 (consequences, including
-rare interactions) → P2 (belief and memory of unseen events) → P3 (relation
-transfer) → P8 (composition) → P9 (skills) → P12 (goals). Each rung tests
-one property in the smallest world that can show it.
+Proposal, to be settled in the CHARTER ladder: P6 with the predictive side
+of P12 (how each action, including rare interactions, changes how soon a
+goal can be reached) → P2 (belief and memory of unseen events) → P3
+(relation transfer) → P8 (composition) → P9 (skills) → P12 acting (reach
+subgoals that enable a goal) → P20 (self-set goals). Each rung tests one
+property in the smallest world that can show it.
 
 ## Not assumed
 
 Language input, pretrained semantic models, a symbolic program language, fixed
 object slots, a supplied event or skill vocabulary, pixel reconstruction as the
-definition of imagination.
+definition of imagination, next-frame (t+1) prediction as the definition of a
+consequence, a fixed prediction horizon.
 
 ## Avoid
 

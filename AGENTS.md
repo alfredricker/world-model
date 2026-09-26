@@ -40,6 +40,8 @@ There are no other documents. Do not create notes, reviews or summaries.
   main run. A test that cannot be passed is not an experiment.
 - Change one component per experiment. Replacing the model or switching
   direction follows the CHARTER rules, and needs the user's explicit sign-off.
+  The one exception is the architecture-selection screen in CHARTER.md, run
+  once at arch_version 0.
 - A card ends with exactly one decision: keep, revise or stop.
 - Do not edit `src/` while a run is using it.
 

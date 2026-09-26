@@ -1,7 +1,6 @@
 # Charter
 
-Status: **draft**, to be settled with the user. Changes to this file need the
-user's explicit agreement.
+Changes to this file need the user's explicit agreement.
 
 ## Objective
 
@@ -38,15 +37,26 @@ every rung below it has passed.
 
 | Rung | Property (GOAL.md) | Capability | Test that shows it | Status |
 |---|---|---|---|---|
-| 1 | P6, P19 | Predict what each action causes, including rare interactions | Fork top-1 (the learner's imagined result of each action must pick the real next frame from the other actions' frames and the unchanged frame) on the development probes: pickup and toggle ≥ 0.7, above an action-blind control. Also report the score against the number of distinct pickup/toggle events in training (10, 30, 100, 300); the pass threshold applies at 300, the curve below it is reported and tightened by later cards. Feasibility: a label-driven fine-tune in the old repo reached 0.87 / 0.79 | open |
+| 1 | P6, P12, P19 | Predict how each action changes how soon a goal can be reached, including through rare interactions | Goal-conditioned fork: at a development probe step, the learner is shown a goal condition (holding a key of a given colour, a given door open, a given box open) as a set of example frames from other episodes in which it holds. For each of the 5 actions, the evaluator computes the true fewest steps to the goal after that action by searching a copy of the simulator (unreachable counts as infinite; the learner never sees these numbers). The learner must rank the actions by it. Scored on interaction-decisive forks (the best action is a pickup or toggle) and movement-decisive forks; a pickup or toggle that changes nothing must not be ranked best. The pass applies to interaction-decisive top-1, at a threshold fixed by the card's feasibility gate, above a goal-swapped control (the same model shown another goal). Also report the rank correlation between predicted and true steps-to-goal, and the score against the number of distinct interaction events in training (10, 30, 100, 300) | open |
 | 2 | P2 | Remember an unseen event | Toggle at a switch door whose switch was pressed out of view: history model above a trained current-frame model by ≥ 0.1, n ≥ 30 | sketch |
 | 3 | P3 | Apply a relation to new participants | Locked door with matching key, on `transfer_colour` (colours never seen) | sketch |
 | 4 | P8 | Compose known consequences into longer chains | Held-out key → door → switch sequences | sketch |
 | 5 | P9 | Learn a reusable skill | Defined when rung 4 passes | sketch |
-| 6 | P12 | Reach an unrewarded subgoal that enables a goal | Defined when rung 5 passes | sketch |
+| 6 | P12 | Act to reach an unrewarded subgoal that enables a goal | Defined when rung 5 passes | sketch |
 
 "Sketch" rungs get their exact test and thresholds in a card when they are
 reached, not before.
+
+**Architecture selection** (decided 2026-09-25). Before rung 1, while there
+is no model (arch_version 0), the first architecture is chosen by one
+bounded screen: at most five whole candidate architectures, one design card,
+the same data and the same rung-1 feasibility screen for all, runs under 10
+minutes each. The winner becomes arch_version 1 and then takes rung 1
+properly; the losers and their scores stay in the card so the choice can be
+revisited with evidence. The screen may have one follow-up round of at most
+three combinations of the first round's parts, each justified by first-round
+diagnostics. This is the only exception to "one component per experiment",
+and it applies once.
 
 ## Rules
 
