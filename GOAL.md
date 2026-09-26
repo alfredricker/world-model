@@ -11,6 +11,15 @@ reach goals it was not trained on. Benchmarks proceed in increasing complexity.
 Simple models should begin with simple benchmarks, i.e. MiniGrid. Progress
 could look like `Mgrid -> Crafter -> Minecraft`.
 
+The main insight of the model is P12. The agent should work towards satisfying
+latent goals through a hierarchy. First, it should be able to infer proximity to 
+completing a given goal based on its state. When a goal is achieved, either by
+demonstration or exploration, the agent should be able to infer the *conditions* that
+allowed for successful completion. These conditions themselves are sub goals
+of a higher order goal, as they must be met in order to achieve the higher order
+goal. This hierarchy extends down to primitive actions, and should allow for 
+System 1 thinking (P21).
+
 Every experiment serves one or more properties below. A proposed change or a
 change of direction must say which property it moves toward and why the
 current approach cannot get there.
@@ -41,9 +50,7 @@ current approach cannot get there.
   soon. There is no fixed prediction window: how long a change takes is
   itself predicted, a few steps for an arrow, hundreds for a crafting chain.
   Frames are the evidence these variables are grounded in, not the thing
-  being predicted. Which variables matter is learned (C1): a variable
-  matters if changing it changes what happens later or what can be reached.
-  A consequence test scores that effect, not the next frame; a fixed horizon
+  being predicted. Which variables matter is learned (C1, P4). A consequence test scores that effect, not the next frame; a fixed horizon
   in a test is a measuring device, not the target.
 
 ## Properties
@@ -67,7 +74,8 @@ Each has a one-line meaning, an example, and the shape of a test.
   *Example:* "key opens door of the same colour" works for a colour never
   seen. *Test:* held-out colour or combination.
 - **P4 Task-relevant abstraction.** Keep the distinctions that change
-  outcomes, drop the rest. *Test:* performance holds when irrelevant
+  outcomes, drop the rest: a variable matters if changing it changes what
+  happens later or what can be reached. *Test:* performance holds when irrelevant
   appearance changes, fails when a relevant one is removed.
 - **P5 Uncertainty and applicability.** Predictions carry calibrated
   confidence and a sense of when they apply. *Test:* calibration on held
@@ -106,7 +114,9 @@ Each has a one-line meaning, an example, and the shape of a test.
   surprising and whose effect persists is learned from a handful of
   occurrences, not only after many repetitions. "Important" is judged
   without labels: how surprising the outcome was, whether its effect lasts,
-  and whether it changes what the agent predicts afterwards.
+  whether it changes what the agent predicts afterwards, and whether it
+  changes how likely or how soon a goal can be reached (it met or broke a
+  condition, P12).
   *Example:* after opening a locked door a few times, the agent predicts
   it for a new door. *Test:* accuracy against the number of distinct
   occurrences in training (for example 10, 30, 100, 300).
@@ -116,9 +126,13 @@ Each has a one-line meaning, an example, and the shape of a test.
 
 - **P12 Goals as conditions, subgoals from conditions.** A goal is a
   condition in the learned state (holding diamonds), expressed in the same
-  terms as experience. The agent learns which conditions make a goal more
-  likely to be reached, and sooner, if it acts competently: the right tools,
-  enough health, being deep in a cave. The unmet conditions that most raise
+  terms as experience. From any state the agent predicts how likely it is to
+  reach the goal, and how soon, if it acts competently. A reached goal is
+  certain; for "make an iron pickaxe", standing by a table and a furnace
+  with wood, coal and iron in hand is nearly certain and a few steps away.
+  When a goal is reached, by exploration or in a demonstration (P16), the
+  agent infers which conditions made that possible: the right tools, enough
+  health, being deep in a cave. The unmet conditions that most raise
   that likelihood become more immediate subgoals, and so on down to actions.
   Goals are re-weighed as the situation changes: a threat that could end
   every goal makes survival the immediate goal, while the agent tries to
@@ -132,16 +146,13 @@ Each has a one-line meaning, an example, and the shape of a test.
   different states (checked against outcomes), pursues an unrewarded
   condition because it raises that likelihood, and avoids a threat and then
   resumes.
-- **P13 Deliberation.** Imagine and compare candidate plans in the learned
-  state, with backtracking; more thinking helps harder decisions.
-  *Test:* planning in imagination beats acting greedily on new tasks.
 - **P14 Execute and recover.** Carry out a plan with feedback; notice when
   effects did not happen and revise. *Test:* recovers after a perturbation.
 - **P15 Informative exploration.** Seek experience that resolves the
   agent's own uncertainty, weighing time and risk. *Test:* learns a rare
   interaction faster than random exploration does.
 - **P16 Learning from demonstration.** Infer goal and prerequisites from a
-  few demonstrations, then do it independently in changed conditions.
+  few demonstrations, then do it independently in changed conditions. Form an understanding of what conditions were required for the demonstration to succeed.
 - **P20 Self-set goals.** The agent proposes its own goals and subgoals from
   its learned state, beyond those it is given. Early on the experimenter
   supplies goals (C1); later the agent chooses conditions worth achieving,
@@ -149,6 +160,19 @@ Each has a one-line meaning, an example, and the shape of a test.
   other conditions. *Test:* practice on self-chosen goals makes the agent
   better at supplied goals it has never seen, compared with practice on
   random or supplied goals only.
+- **P21 System 1 and System 2.** Simple decisions, and ones that need an
+  immediate response, go through a fast System 1: the network maps state
+  and goal straight to an action. Decisions that need long chains go
+  through a slower System 2 that weighs conditions, memory and other
+  relevant factors. System 2 deliberates over chains of conditions
+  ("condition A enables condition B, which enables the goal"), comparing
+  candidate chains and backtracking when one fails, not by simulating many
+  latent steps; this keeps its compute reasonable. The hierarchy of
+  conditions (P12) is what lets the lower levels run as System 1.
+  *Example:* dodging an arrow is System 1; planning the route to diamonds
+  is System 2. *Test:* on new tasks, deliberating over conditions beats
+  acting greedily, more deliberation helps harder decisions, and its
+  compute is reported (P17).
 
 ### Across all of them
 
@@ -160,19 +184,22 @@ Each has a one-line meaning, an example, and the shape of a test.
 ## Suggested order
 
 Proposal, to be settled in the CHARTER ladder: P6 with the predictive side
-of P12 (how each action, including rare interactions, changes how soon a
-goal can be reached) → P2 (belief and memory of unseen events) → P3
-(relation transfer) → P8 (composition) → P9 (skills) → P12 acting (reach
-subgoals that enable a goal) → P20 (self-set goals). Each rung tests one
-property in the smallest world that can show it.
+of P12 (how likely and how soon a goal is from each state, and how each
+action, including rare interactions, changes that) → P12 conditions (infer,
+from reached goals and demonstrations, which conditions made them possible;
+P16) → P12 acting (pursue unmet conditions as subgoals, down to actions) →
+P21 (deliberate over chains of conditions) → P2 (belief and memory of
+unseen events) → P3 (relation transfer) → P8 (composition) → P9 (skills) →
+P20 (self-set goals). Each rung tests one property in the smallest world
+that can show it.
 
 ## Not assumed
 
-Language input, pretrained semantic models, a symbolic program language, fixed
-object slots, a supplied event or skill vocabulary, pixel reconstruction as the
+Language input, pretrained semantic models, a symbolic program language, a
+supplied event or skill vocabulary, pixel reconstruction as the
 definition of imagination, next-frame (t+1) prediction as the definition of a
 consequence, a fixed prediction horizon.
 
 ## Avoid
 
-Slot attention
+Fixed object slots, including slot attention.
