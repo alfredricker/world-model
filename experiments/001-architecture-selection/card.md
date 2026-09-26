@@ -2,7 +2,7 @@
 id: "001"
 title: architecture selection
 rung: 0
-serves: [P6, P12, P19]
+serves: [P12, P6, P19]
 status: draft   # draft | approved | gated | running | done | abandoned
 verdict:
 arch_version: 0
@@ -13,11 +13,14 @@ date: 2026-09-26
 
 ## 1. Question
 
-Which architecture best predicts how each action changes how soon a shown
-goal condition can be reached, on the rung-1 goal-conditioned fork? This is
-the one-time selection screen in CHARTER.md, run before rung 1. The winner
-becomes arch_version 1. It serves P6 and the predictive side of P12 under
-C6; P19 is left to rung 1, because this screen balances the data (section 4).
+Which architecture best predicts how close a shown goal condition is, from
+each state and after each action, on the rung-1 goal-conditioned fork? This
+is the first part of GOAL.md's main insight: every later part (inferring a
+goal's conditions, pursuing them as subgoals) is built on this estimate.
+This is the one-time selection screen in CHARTER.md, run before rung 1. The
+winner becomes arch_version 1. It serves the predictive side of P12 and P6
+under C6; P19 is left to rung 1, because this screen balances the data
+(section 4).
 
 ## 2. What changes
 
@@ -33,7 +36,7 @@ the simplest version; each other candidate changes one part of it.
 |---|---|---|---|---|
 | H | Hub | — | Baseline | `2304_01203`, `2208_08133`, `2402_15567`, `ogbench`, `leworldmodel` |
 | A | + reconstruction | Adds a pixel decoder loss on z | Does explaining pixels help represent conditions? | `dreamerv3` |
-| B | Contrastive transition | CPC InfoNCE replaces squared error + SIGReg for T | Does telling futures apart beat predicting them? | `1807_03748`, `1911_12247` |
+| C | Subgoal head | Adds a head that proposes a latent subgoal on the way to g; actions are scored by d(T(z, a), subgoal) | Does an explicit subgoal level help, as the main insight's hierarchy claims? | `hiql` |
 | D | Factored state, partial goals | Grid of cells + one vector; T moves cells and writes sparse events; goals weight the factors their examples agree on | Do conditions need a factored state? | `latent-actions`, `schema-networks-zero-shot-transfer-with-a-generative-causal`, `1711_00937`, `disco-rl` |
 | E | No transition | Q(z, a, g) replaces d(T(z, a), g) | Is an explicit model of consequences needed? | `universal-value-function-approximators`, `hiql`, `ogbench` |
 
@@ -52,9 +55,19 @@ distance to every example, and coordinates on which the examples disagree
 stop counting. Only D also trains on goal sets, which is part of what it
 tests.
 
-**Diagnostics** per run: score per stratum; rank correlation with true
-steps-to-goal; true versus shuffled action; latent spread (collapse); for
-D, event codes firing on interactions versus movement. **Round 2**
+**Diagnostics** per run: score per stratum; true versus shuffled action;
+latent spread (collapse); for D, event codes firing on interactions versus
+movement; for C, the rank correlation of d(subgoal, g) with true steps.
+Two condition diagnostics, reported for rung 2 and card 002, not scored:
+- **Condition gap:** pairs of states the evaluator sets up identically
+  except for one condition (holding the key, the box open). The predicted
+  gap in distance to the goal is compared with the true gap, and with pairs
+  that differ in something irrelevant (another room's door).
+- **One-way gap:** d(z', z) − d(z, z') across a transition z → z', for
+  pickups, unlocks and box opens (which cannot be undone; there is no drop
+  action) against plain door toggles and moves (which can). A reachability
+  measure can only single out conditions that cannot be undone: a change
+  undone in one step moves every distance by at most 1. **Round 2**
 (CHARTER): at most three combinations justified by them, for example QRL's
 transition loss measured in the learned quasimetric.
 
@@ -62,6 +75,9 @@ transition loss measured in the learned quasimetric.
 
 - **Chained-rooms port:** passed 2026-09-26 (9 tests; collection and probe
   hashes match the old repo on 3 episodes).
+- **Matched condition pairs:** the condition-gap diagnostic needs the
+  evaluator to set two states that differ in one condition. State setting
+  already round-trips; the pair builder gets its own tests before approval.
 - **Goal-conditioned fork evaluator:** `src/worldmodel/envs/rooms_goals.py`,
   16 tests pass: its rules match the real environment step by step,
   including about 8,000 branches at objects and timed doors closing;
@@ -69,7 +85,9 @@ transition loss measured in the learned quasimetric.
   score at chance. Distances ignore the 512-step truncation.
 - **Methods:** every part is from a paper in papi. Untested anywhere:
   expectile regression with a quasimetric head (nearest: QRL's MountainCar
-  table) and D's hindsight goal sets. The screen tests both.
+  table), D's hindsight goal sets, and C's subgoals chosen from random-action
+  data (HIQL used offline datasets of directed behaviour). The screen tests
+  all three.
 
 ## 4. Data check
 
@@ -108,7 +126,9 @@ clear a path. Goal example pools: 135–237 frames per goal.
 
 - **Upper bound:** the hub's heads on the evaluator's simulator state
   (tile grid, carried object, door states) instead of frames. It must reach
-  0.9 top-1 on the scored interaction strata; the same model scored with
+  0.9 top-1 on the scored interaction strata; its rank correlation with
+  true steps-to-goal over fork states, called ρ_U, is written here and sets
+  criterion 2's floor. The same model scored with
   pooled 4-example goals from other worlds must stay within 0.1 of it with
   exact single-state goals, or goal pooling is revised first.
 - **Trivial baselines:** random ranking (chance per fork from its ties);
@@ -118,19 +138,26 @@ Result of the gate, before the main run:
 
 ## 6. Success criteria and prediction
 
-**Metric:** mean top-1 over the six scored interaction strata (the
-best-ranked action is among the truly best), mean of 2 seeds.
+**Metrics:** (a) mean top-1 over the six scored interaction strata (the
+best-ranked action is among the truly best); (b) Spearman rank correlation
+between predicted d(z, g) and true steps-to-goal over all fork states and
+their goals, unreachable pairs ranked last. Both are means of 2 seeds.
 
 | # | Criterion | Threshold | Compared against | Why |
 |---|---|---|---|---|
 | 1 | The screen is informative | Best candidate ≥ 0.3 above the goal-swapped control | Goal-swapped control | Otherwise no candidate has the capability; the list is revised |
-| 2 | Winner | Highest interaction score, with movement-decisive top-1 ≥ 0.8 and no-effect interactions ranked best on ≤ 0.1 of forks | The other four | Interactions are the target; the rest guard against movement loss and false changes |
-| 3 | Tie-break | Within 0.05: higher rank correlation with true steps, then fewer priors | Tied candidates | Prefer the one that also knows how soon, and assumes less |
+| 2 | Winner | Highest interaction top-1 among candidates with rank correlation ≥ 0.8 × ρ_U, movement-decisive top-1 ≥ 0.8 and no-effect interactions ranked best on ≤ 0.1 of forks | The other four; the upper bound | Choosing well at interactions is the target; knowing how close the goal is from every state is what later rungs build on; the rest guard against movement loss and false changes |
+| 3 | Tie-break | Within 0.05: higher rank correlation, then fewer priors | Tied candidates | Prefer the one that knows better how soon, and assumes less |
 
 **Prediction.** H does better on key goals than door goals, where two
 conditions chain. D beats H on door goals if its transport learns. E is
-close to H (OGBench's Q-function expectile method: cube-single-noisy 99).
-A adds little. B trails H (unfactored C-SWM: 34% hits at 5 steps).
+close to H on top-1 (OGBench's Q-function expectile method:
+cube-single-noisy 99) but has lower rank correlation, since it has no
+separate distance between states. A adds little. C matches H on key goals
+and beats it on door goals behind a box, the longest chain (HIQL's
+hierarchy helped most at long horizons), if subgoals can be chosen from
+random-action data. On the condition gap, D and C separate the key
+condition from irrelevant differences better than H.
 
 **Budget.** Gate: 1 run. Screen: 5 candidates × 2 seeds = 10 runs, each
 under 10 minutes on the RTX 5070 Ti, about 2 hours; round 2 at most 6 more.
@@ -158,10 +185,17 @@ under-spreads on low-diversity frames (LeWM lost to PLDM on TwoRoom).
 **A, + reconstruction.** H plus a convolutional decoder from z with a pixel
 loss. Risk: a changed door or carried key is a few pixels of loss.
 
-**B, contrastive transition.** H, but T is trained with CPC's InfoNCE: T(z,
-a) must pick the encoded next frame from the batch's next frames, and also
-from the current frame (our addition, to force "something changed"). Risk:
-keeps whatever tells frames apart, mostly viewpoint.
+**C, subgoal head.** H plus a head s(z, g) that outputs a latent of the
+same size as z: a subgoal on the way to g. Actions are scored by
+d(T(z, a), s(z, g)) instead of d(T(z, a), g). s is trained as HIQL's
+high-level policy: regress toward the encoding of the state k = 8 steps
+later (stop-gradient), weighted by exp(β · (d(z, g) − d(z_{t+k}, g))),
+capped, so futures that brought the goal closer count most. HIQL used
+k = 3 on pixel Procgen Maze and 25–50 elsewhere; its goal representation
+φ([g, s]) is not taken, since z is already shared (C2). Risks: in
+random-action data few k-step futures move toward g, so the subgoal
+regresses to an average future; the subgoal can be too close for d to
+separate actions.
 
 **D, factored state with partial goals.** z: 8×8 grid of 24-d cells plus
 one 32-d vector (where a carried object can live). T: next = move_a(z) +
