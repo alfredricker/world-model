@@ -102,20 +102,36 @@ class Frames:
 
 # ---------------------------------------------------------------- training
 
-def train(d: dict, updates: int, device, batch: int = 512, lr: float = 3e-4, seed: int = 0, log=print):
+def train(d: dict, updates: int, device, batch: int = 512, lr: float = 3e-4, seed: int = 0, log=print,
+          a_goals=None, w_targets=None, fast: bool = True):
+    """a_goals / w_targets: indices of the goals and walk targets whose
+    success signals are used (default all, card 005). fast: bf16 autocast,
+    TF32, fused Adam, one-call weight average, compiled network (card 008)."""
     torch.manual_seed(seed)
     gen = torch.Generator(device=device).manual_seed(seed)
     frames = Frames(d["codes"], device)
     net = Net().to(device)
     target = copy.deepcopy(net).requires_grad_(False)
-    opt = torch.optim.Adam(net.parameters(), lr=lr)
+    a_sel = torch.zeros(len(GOALS), device=device)
+    a_sel[list(range(len(GOALS)) if a_goals is None else a_goals)] = 1
+    w_sel = torch.zeros(len(TARGETS), dtype=torch.bool, device=device)
+    w_sel[list(range(len(TARGETS)) if w_targets is None else w_targets)] = True
+    if fast:
+        torch.backends.cuda.matmul.allow_tf32 = True
+        torch.backends.cudnn.allow_tf32 = True
+        torch.backends.cudnn.benchmark = True
+    opt = torch.optim.Adam(net.parameters(), lr=lr, fused=fast)
+    fnet, ftarget = (torch.compile(net), torch.compile(target)) if fast else (net, target)
+    params, tparams = list(net.parameters()), list(target.parameters())
     t_idx = torch.from_numpy(d["t_idx"]).to(device)
     t_act = torch.from_numpy(d["t_act"]).to(device)
     achieved = torch.from_numpy(d["achieved"]).to(device).float()
     hold = torch.from_numpy(d["hold"]).to(device)
     at = torch.from_numpy(d["at"]).to(device)
     term = torch.from_numpy(d["term"]).to(device)
-    events = torch.from_numpy(np.flatnonzero(d["event"])).to(device)
+    used = np.zeros(len(GOALS), bool)
+    used[a_sel.cpu().numpy() > 0] = True
+    events = torch.from_numpy(np.flatnonzero(d["achieved"][:, used].any(1))).to(device)
     moves = torch.from_numpy(np.flatnonzero(d["t_act"] <= FORWARD)).to(device)
     m = len(t_idx)
     n_u, n_e = batch * 3 // 4, batch // 4
@@ -126,29 +142,32 @@ def train(d: dict, updates: int, device, batch: int = 512, lr: float = 3e-4, see
                         events[torch.randint(len(events), (n_e,), device=device, generator=gen)]])
         rw = moves[torch.randint(len(moves), (batch,), device=device, generator=gen)]
         ia, iw = t_idx[ra], t_idx[rw]
-        logits, _ = net(frames(ia))
-        _, q = net(frames(iw))
+        with torch.autocast("cuda", dtype=torch.bfloat16, enabled=fast):
+            logits, _ = fnet(frames(ia))
+            _, q = fnet(frames(iw))
+            with torch.no_grad():
+                _, qn = ftarget(frames(iw + 1))
+        logits, q, qn = logits.float(), q.float(), qn.float()
         # A: logistic loss at the taken action, for goals that did not already hold.
         la = logits.gather(2, t_act[ra][:, None, None].expand(-1, len(GOALS), 1)).squeeze(2)
         mask = ~hold[ia]
-        weight = torch.where(achieved[ra].bool().any(1), torch.tensor(w_event, device=device),
+        mask = mask * a_sel
+        weight = torch.where((achieved[ra] * a_sel).bool().any(1), torch.tensor(w_event, device=device),
                              torch.tensor(1.0 / 0.75, device=device))
         bce = F.binary_cross_entropy_with_logits(la, achieved[ra], reduction="none")
         loss_a = (bce * mask * weight[:, None]).sum() / (mask * weight[:, None]).sum()
         # W: Q-learning on movement steps.
         qa = q.gather(2, t_act[rw][:, None, None].expand(-1, len(TARGETS), 1)).squeeze(2)
         with torch.no_grad():
-            _, qn = target(frames(iw + 1))
             y = torch.where(at[iw + 1], 1.0, torch.where(term[iw + 1][:, None], 0.0, GAMMA * qn.max(2).values))
-        mw = ~at[iw]
+        mw = ~at[iw] & w_sel
         loss_w = ((qa - y) ** 2 * mw).sum() / mw.sum()
         loss = loss_a + loss_w
         opt.zero_grad(set_to_none=True)
         loss.backward()
         opt.step()
         with torch.no_grad():
-            for p, pt in zip(net.parameters(), target.parameters()):
-                pt.lerp_(p, 0.005)
+            torch._foreach_lerp_(tparams, params, 0.005)
         if u % 2000 == 0 or u == updates - 1:
             log(f"update {u} loss_a {loss_a.item():.4f} loss_w {loss_w.item():.4f} "
                 f"{(u + 1) / (time.monotonic() - start):.0f} upd/s")
@@ -311,6 +330,9 @@ def main():
     parser.add_argument("--unlock-episodes", type=int, default=None)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--rescore", action="store_true", help="evaluate the saved net in --out again")
+    parser.add_argument("--a-goals", nargs="+", default=None, help="goal names whose success signal is used")
+    parser.add_argument("--w-targets", nargs="+", default=None, help="walk targets whose success signal is used")
+    parser.add_argument("--no-fast", action="store_true")
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda")
@@ -338,10 +360,14 @@ def main():
     log(f"train: {len(data)} episodes, {len(d['t_idx'])} steps, {int(d['achieved'][:, 0].sum())} unlocks")
     test_data = collect(8, args.test_episodes, 640, 99)
     dt = build(test_data)
-    net = train(d, args.updates, device, seed=args.seed, log=log)
+    net = train(d, args.updates, device, seed=args.seed, log=log,
+                a_goals=None if args.a_goals is None else [GOALS.index(g) for g in args.a_goals],
+                w_targets=None if args.w_targets is None else [TARGETS.index(t) for t in args.w_targets],
+                fast=not args.no_fast)
     torch.save(net.state_dict(), args.out / "net.pt")
     res = evaluate(net, test_data, dt, device)
     res["train"] = {"episodes": len(data), "unlocks": int(d["achieved"][:, 0].sum()), "updates": args.updates,
+                    "a_goals": args.a_goals, "w_targets": args.w_targets, "fast": not args.no_fast,
                     "seconds": round(time.monotonic() - started, 1)}
     (args.out / "result.json").write_text(json.dumps(res, indent=1) + "\n")
     log(json.dumps(res["achievement"], indent=1))

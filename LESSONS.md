@@ -73,6 +73,15 @@ it; *suggestive* means one seed, small n, or a diagnostic.
   behaving as a condition (100% / 0%), and acting on them solved 99.2% of
   new layouts. *Evidence:* card 007 (1 seed; encoder shaped by other
   supplied goals).
+- **A state trained on one goal does not notice that goal's deeper
+  conditions; learning from its own discovered subgoals makes it.** Trained
+  on the goal square only, the key was read out at 0.73 and discovery
+  stalled at door open; fine-tuned on each self-found goal in turn, the
+  key rose to 0.98 and the chain was found. *Evidence:* card 008 (1 seed).
+- **Do not read "reachable" off a discounted value with a fixed threshold.**
+  0.95^steps near 0.1 at the far end of a room made "within walking reach"
+  flicker as the agent walked, creating a spurious condition. *Evidence:*
+  card 008.
   *Evidence:* old:phwm/docs/05-experimental-record.md §5.12,
   06-achievements-and-limitations.md; card 001 gate. *Confirmed* for the
   pattern.

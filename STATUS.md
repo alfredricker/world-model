@@ -8,15 +8,12 @@ Overwritten each session. At most 40 lines.
   [card 003](experiments/003-conditions-theory-check/card.md) section 2:
   a condition is what a goal's achieving action needs, found by
   contrasting successes with failures; each condition becomes a subgoal.
-- **Card 003 (keep):** exact check in an 8×8 key-door room; conditions
-  found at the achieving step from 10 successes.
-- **Card 004 (keep):** walking to X is an action with conditions; the
-  chain key → door → goal appears without naming places; 500/500 layouts.
-- **Card 005 (keep):** achievement and walk values learned from full-view
-  frames pass on new layouts; needs ~300 unlocks (exact counting: 10).
-- **Card 006 (fail, revise):** conditions cannot be read off the network's
-  internal state afterwards (held redundantly); separable internal state
-  is not needed for discovery.
+- **Cards 003–004 (keep):** exact checks in an 8×8 key-door room;
+  walking to X as an action with conditions gives key → door → goal.
+- **Card 005 (keep):** achievement and walk values learned from frames
+  pass on new layouts; needs ~300 unlocks (exact counting: 10).
+- **Card 006 (fail, revise):** conditions can't be read off the internal
+  state afterwards; a separable state isn't needed for discovery.
 - **Card 007 (pass, keep):** from pixels and one supplied goal (goal
   square), each condition defined as "the states where this goal's
   achieving action works are within walking reach". Discovered door open
@@ -24,14 +21,20 @@ Overwritten each session. At most 40 lines.
   achieves it, so it is kept). Each behaves as a condition (100% / 0%);
   acting on them solves 99.2% of new layouts vs 0% for the goal alone.
   Caveat: card 005's encoder was also trained with other supplied goals.
-- **Next:** card 008, the same discovery on an encoder trained with only
-  the goal-square signal (or none), to remove that caveat. Then a world
-  where two conditions are needed at once (chained rooms).
-- **Earlier:** card 001 (chained rooms screen) abandoned, code kept; card
-  002 (rare-event sampling) on hold, a candidate fix for the ~300-unlock
-  need.
+- **Card 008 (fail, revise):** encoder trained on the goal-square signal
+  only. Frozen: the key is barely in its state (read-out 0.73), discovery
+  stops at door open; acting 0%. Continual (the encoder keeps learning
+  from its own discovered goals): key read-out rises to 0.98, chain door
+  open → matching key → empty hands found and behaves as conditions; but
+  far-from-target walk values flicker around the 0.1 threshold, making a
+  spurious level 4 and acting 75.8% (< 90%).
+- **Card 009:** shelved (undoability is the wrong definition of a
+  condition). **Next:** card 010 (draft, for the user): threshold-free
+  condition definition (or of ands, admitted by Bayesian evidence) tested
+  on five worlds (key, switch, either, both, no drop; irrelevant vase),
+  exact then learned from pixels. Card 011: detectors without vocabulary.
 - **Housekeeping:** LESSONS.md is over two pages (~180 lines), needs a
   merge pass. Uncommitted: cards 003–007 code (`envs/keydoor*.py`,
   `conditions.py`, `reach.py`, `learn_keydoor.py`, `latent_conditions.py`,
   `discover.py`, `tests/test_keydoor.py`) and today's document edits.
-  **Tooling:** `bin/prun` skips 32-bit libraries.
+  Card 001 abandoned, 002 on hold. `bin/prun` skips 32-bit libraries.

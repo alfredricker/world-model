@@ -1,0 +1,828 @@
+{
+ "encoder_G": {
+  "achievement": {
+   "toggle, facing locked door, matching key": {
+    "n": 151,
+    "truth": 1,
+    "truth_checked": true,
+    "mean_p": 0.547,
+    "right_side_of_0.5": 0.8675
+   },
+   "toggle, facing locked door, other key": {
+    "n": 643,
+    "truth": 0,
+    "truth_checked": true,
+    "mean_p": 0.5414,
+    "right_side_of_0.5": 0.1742
+   },
+   "toggle, facing locked door, nothing": {
+    "n": 242,
+    "truth": 0,
+    "truth_checked": true,
+    "mean_p": 0.5194,
+    "right_side_of_0.5": 0.3595
+   },
+   "pickup, facing matching key, empty hands": {
+    "n": 247,
+    "truth": 1,
+    "truth_checked": true,
+    "mean_p": 0.7147,
+    "right_side_of_0.5": 1.0
+   },
+   "pickup, facing other key, empty hands": {
+    "n": 253,
+    "truth": 0,
+    "truth_checked": true,
+    "mean_p": 0.7172,
+    "right_side_of_0.5": 0.0
+   },
+   "forward, facing goal square": {
+    "n": 50,
+    "truth": 1,
+    "truth_checked": true,
+    "mean_p": 1.0,
+    "right_side_of_0.5": 1.0
+   },
+   "auc_door_unlocked": 0.4644,
+   "auc_door_open": 0.7201,
+   "auc_holding_matching_key": 0.8939,
+   "auc_on_goal": 1.0
+  },
+  "walk": {
+   "goal": {
+    "n": 306677,
+    "reachable_share": 0.0929,
+    "auc": 1.0,
+    "rank_corr_with_steps": 0.9906,
+    "mean_abs_error_value": 0.0351
+   },
+   "door": {
+    "n": 300249,
+    "reachable_share": 1.0,
+    "auc": NaN,
+    "rank_corr_with_steps": 0.0528,
+    "mean_abs_error_value": 0.1803
+   },
+   "key": {
+    "n": 175404,
+    "reachable_share": 1.0,
+    "auc": NaN,
+    "rank_corr_with_steps": -0.0137,
+    "mean_abs_error_value": 0.1328
+   },
+   "distractor": {
+    "n": 158710,
+    "reachable_share": 0.9912,
+    "auc": 0.5302,
+    "rank_corr_with_steps": 0.0586,
+    "mean_abs_error_value": 0.2689
+   },
+   "goal_from_left_room": {
+    "n": 298153,
+    "correct_vs_reachable": 1.0,
+    "correct_vs_door_open": 1.0,
+    "mean_W_door_open": 0.632,
+    "mean_W_door_closed": 0.0
+   }
+  },
+  "conditions": {
+   "door_unlocked": {
+    "from_truth": [
+     {
+      "action": "toggle",
+      "conditions": {
+       "front=door": 1.0,
+       "carrying_matches_door=True": 1.0
+      },
+      "achievement_probability": 1.0,
+      "attempts": 151,
+      "share_of_successes": 1.0,
+      "without_any_condition": 0.0028,
+      "members": [
+       13,
+       7
+      ]
+     }
+    ],
+    "from_learned": [
+     {
+      "action": "pickup",
+      "conditions": {},
+      "achievement_probability": 1.0,
+      "attempts": 53945,
+      "share_of_successes": 0.282,
+      "without_any_condition": 1.0,
+      "members": []
+     }
+    ]
+   },
+   "holding_matching_key": {
+    "from_truth": [
+     {
+      "action": "pickup",
+      "conditions": {
+       "front_matches_door=True": 1.0,
+       "carrying=none": 1.0
+      },
+      "achievement_probability": 1.0,
+      "attempts": 247,
+      "share_of_successes": 1.0,
+      "without_any_condition": 0.0066,
+      "members": [
+       21,
+       1
+      ]
+     }
+    ],
+    "from_learned": [
+     {
+      "action": "pickup",
+      "conditions": {},
+      "achievement_probability": 1.0,
+      "attempts": 37289,
+      "share_of_successes": 0.359,
+      "without_any_condition": 1.0,
+      "members": []
+     }
+    ]
+   },
+   "walk_to_goal": {
+    "from_truth": [
+     {
+      "action": "walk to goal",
+      "conditions": {
+       "door=open": 0.995
+      },
+      "achievement_probability": 1.0,
+      "attempts": 13547,
+      "share_of_successes": 0.951,
+      "without_any_condition": 0.0929,
+      "members": [
+       14
+      ]
+     }
+    ],
+    "from_learned": [
+     {
+      "action": "walk to goal",
+      "conditions": {
+       "door=open": 0.995
+      },
+      "achievement_probability": 1.0,
+      "attempts": 13547,
+      "share_of_successes": 0.951,
+      "without_any_condition": 0.0929,
+      "members": [
+       14
+      ]
+     }
+    ]
+   }
+  },
+  "baseline": {
+   "achievement_base_rate": {
+    "door_unlocked": 0.00247,
+    "door_open": 0.00443,
+    "holding_matching_key": 0.00402,
+    "on_goal": 0.00081
+   },
+   "walk_reachable_share": {
+    "goal": 0.0929,
+    "door": 1.0,
+    "key": 1.0,
+    "distractor": 0.9912
+   }
+  },
+  "train": {
+   "episodes": 10000,
+   "unlocks": 3219,
+   "updates": 100000,
+   "a_goals": [
+    "on_goal"
+   ],
+   "w_targets": [
+    "goal"
+   ],
+   "fast": true,
+   "seconds": 504.1
+  }
+ },
+ "encoder_G_gate": {
+  "forward_facing_goal": 1.0,
+  "walk_goal_auc": 1.0,
+  "walk_goal_rank": 0.9906,
+  "passed": true
+ },
+ "arm_F": {
+  "net": "runs/008_encG/net.pt",
+  "continual": false,
+  "gate": {
+   "levels": [
+    {
+     "level": 1,
+     "successes_per_action": {
+      "left": 0,
+      "right": 0,
+      "forward": 208,
+      "pickup": 0,
+      "toggle": 0
+     },
+     "achieving_action": "forward",
+     "detector_meaning": [
+      [
+       0.9976,
+       "door=open"
+      ],
+      [
+       0.9645,
+       "side=right"
+      ],
+      [
+       0.9556,
+       "side=doorway"
+      ]
+     ],
+     "detector_on_share": 0.0929
+    },
+    {
+     "level": 2,
+     "successes_per_action": {
+      "left": 0,
+      "right": 0,
+      "forward": 0,
+      "pickup": 0,
+      "toggle": 1080
+     },
+     "achieving_action": "toggle",
+     "detector_meaning": [
+      [
+       1.0,
+       "carrying_matches_door=True"
+      ],
+      [
+       0.873,
+       "door=closed"
+      ],
+      [
+       0.6949,
+       "carrying=key"
+      ]
+     ],
+     "detector_on_share": 0.3344
+    },
+    {
+     "level": 3,
+     "successes_per_action": {
+      "left": 0,
+      "right": 0,
+      "forward": 0,
+      "pickup": 1006,
+      "toggle": 0
+     },
+     "achieving_action": "pickup",
+     "detector_meaning": [
+      [
+       1.0,
+       "carrying_colour=none"
+      ],
+      [
+       1.0,
+       "carrying=none"
+      ],
+      [
+       0.5622,
+       "front_matches_door=False"
+      ]
+     ],
+     "detector_on_share": 0.2432
+    },
+    {
+     "level": 4,
+     "successes_per_action": {
+      "left": 0,
+      "right": 0,
+      "forward": 0,
+      "pickup": 0,
+      "toggle": 0
+     },
+     "achieving_action": null
+    }
+   ]
+  },
+  "readout": {
+   "initial": {
+    "door=open": 0.9999,
+    "carrying_matches_door=True": 0.7346,
+    "carrying=none": 0.9515
+   }
+  },
+  "levels": [
+   {
+    "level": 1,
+    "successes_per_action": {
+     "left": 0,
+     "right": 0,
+     "forward": 1014,
+     "pickup": 0,
+     "toggle": 0
+    },
+    "frames_with_A_above_half": {
+     "left": 0,
+     "right": 0,
+     "forward": 4922,
+     "pickup": 0,
+     "toggle": 0
+    },
+    "achieving_action": "forward",
+    "detector_on_share": 0.0929,
+    "detector_meaning_at_discovery": [
+     [
+      0.9983,
+      "front=goal"
+     ],
+     [
+      0.9957,
+      "door=open"
+     ],
+     [
+      0.9956,
+      "side=right"
+     ]
+    ]
+   },
+   {
+    "level": 2,
+    "successes_per_action": {
+     "left": 0,
+     "right": 0,
+     "forward": 0,
+     "pickup": 0,
+     "toggle": 5176
+    },
+    "frames_with_A_above_half": {
+     "left": 0,
+     "right": 0,
+     "forward": 0,
+     "pickup": 0,
+     "toggle": 14771
+    },
+    "achieving_action": "toggle",
+    "detector_on_share": 0.7693,
+    "detector_meaning_at_discovery": [
+     [
+      0.9296,
+      "door=closed"
+     ],
+     [
+      0.7107,
+      "carrying=key"
+     ],
+     [
+      0.6167,
+      "front_colour=green"
+     ]
+    ]
+   },
+   {
+    "level": 3,
+    "successes_per_action": {
+     "left": 34065,
+     "right": 34068,
+     "forward": 22537,
+     "pickup": 1929,
+     "toggle": 563
+    },
+    "frames_with_A_above_half": {
+     "left": 146290,
+     "right": 158414,
+     "forward": 100421,
+     "pickup": 8224,
+     "toggle": 1992
+    },
+    "achieving_action": "right",
+    "detector_on_share": 1.0,
+    "detector_meaning_at_discovery": [
+     [
+      0.6224,
+      "carrying=key"
+     ],
+     [
+      0.6142,
+      "carrying_matches_door=True"
+     ],
+     [
+      0.6085,
+      "carrying_colour=red"
+     ]
+    ]
+   },
+   {
+    "level": 4,
+    "successes_per_action": {
+     "left": 3,
+     "right": 3,
+     "forward": 0,
+     "pickup": 0,
+     "toggle": 0
+    },
+    "achieving_action": null
+   }
+  ],
+  "final": [
+   {
+    "level": 1,
+    "achieving_action": "forward",
+    "detector_on_share": 0.0929,
+    "detector_meaning": [
+     [
+      0.9983,
+      "front=goal"
+     ],
+     [
+      0.9957,
+      "door=open"
+     ],
+     [
+      0.9956,
+      "side=right"
+     ]
+    ],
+    "behaviour": {
+     "detector_on": {
+      "frames": 300,
+      "achieved": 1.0
+     },
+     "detector_off": {
+      "frames": 300,
+      "achieved": 0.0
+     }
+    }
+   },
+   {
+    "level": 2,
+    "achieving_action": "toggle",
+    "detector_on_share": 0.7693,
+    "detector_meaning": [
+     [
+      0.9296,
+      "door=closed"
+     ],
+     [
+      0.7107,
+      "carrying=key"
+     ],
+     [
+      0.6167,
+      "front_colour=green"
+     ]
+    ],
+    "behaviour": {
+     "detector_on": {
+      "frames": 300,
+      "achieved": 0.3567
+     },
+     "detector_off": {
+      "frames": 300,
+      "achieved": 0.2967
+     }
+    }
+   },
+   {
+    "level": 3,
+    "achieving_action": "right",
+    "detector_on_share": 1.0,
+    "detector_meaning": [
+     [
+      0.6224,
+      "carrying=key"
+     ],
+     [
+      0.6142,
+      "carrying_matches_door=True"
+     ],
+     [
+      0.6085,
+      "carrying_colour=red"
+     ]
+    ],
+    "behaviour": {
+     "detector_on": {
+      "frames": 300,
+      "achieved": 0.73
+     },
+     "detector_off": {
+      "frames": 0,
+      "achieved": 0.0
+     }
+    }
+   }
+  ],
+  "acting": {
+   "discovered_conditions": {
+    "success": 0.0,
+    "mean_steps_when_successful": null
+   },
+   "top_goal_only": {
+    "success": 0.0,
+    "mean_steps_when_successful": null
+   },
+   "random_play_chance_200_steps": 0.0137
+  },
+  "seconds": 172.4
+ },
+ "arm_C": {
+  "net": "runs/008_encG/net.pt",
+  "continual": true,
+  "readout": {
+   "initial": {
+    "door=open": 0.9999,
+    "carrying_matches_door=True": 0.7346,
+    "carrying=none": 0.9514
+   },
+   "after_finetune_1": {
+    "door=open": 1.0,
+    "carrying_matches_door=True": 0.7107,
+    "carrying=none": 0.8833
+   },
+   "after_finetune_2": {
+    "door=open": 1.0,
+    "carrying_matches_door=True": 0.8811,
+    "carrying=none": 1.0
+   },
+   "after_finetune_3": {
+    "door=open": 0.9999,
+    "carrying_matches_door=True": 0.9754,
+    "carrying=none": 0.9998
+   },
+   "after_finetune_4": {
+    "door=open": 1.0,
+    "carrying_matches_door=True": 0.9795,
+    "carrying=none": 1.0
+   }
+  },
+  "levels": [
+   {
+    "level": 1,
+    "successes_per_action": {
+     "left": 0,
+     "right": 0,
+     "forward": 1014,
+     "pickup": 0,
+     "toggle": 0
+    },
+    "frames_with_A_above_half": {
+     "left": 0,
+     "right": 0,
+     "forward": 4922,
+     "pickup": 0,
+     "toggle": 0
+    },
+    "achieving_action": "forward",
+    "detector_on_share": 0.0929,
+    "detector_meaning_at_discovery": [
+     [
+      0.9995,
+      "front=goal"
+     ],
+     [
+      0.9957,
+      "door=open"
+     ],
+     [
+      0.9955,
+      "side=right"
+     ]
+    ]
+   },
+   {
+    "level": 2,
+    "successes_per_action": {
+     "left": 0,
+     "right": 0,
+     "forward": 0,
+     "pickup": 0,
+     "toggle": 5176
+    },
+    "frames_with_A_above_half": {
+     "left": 0,
+     "right": 0,
+     "forward": 0,
+     "pickup": 0,
+     "toggle": 25806
+    },
+    "achieving_action": "toggle",
+    "detector_on_share": 0.3385,
+    "detector_meaning_at_discovery": [
+     [
+      0.9999,
+      "carrying_matches_door=True"
+     ],
+     [
+      0.9381,
+      "carrying=key"
+     ],
+     [
+      0.8547,
+      "door=closed"
+     ]
+    ]
+   },
+   {
+    "level": 3,
+    "successes_per_action": {
+     "left": 695,
+     "right": 703,
+     "forward": 439,
+     "pickup": 4945,
+     "toggle": 0
+    },
+    "frames_with_A_above_half": {
+     "left": 3387,
+     "right": 2844,
+     "forward": 2164,
+     "pickup": 24587,
+     "toggle": 0
+    },
+    "achieving_action": "pickup",
+    "detector_on_share": 0.2447,
+    "detector_meaning_at_discovery": [
+     [
+      1.0,
+      "carrying_colour=none"
+     ],
+     [
+      1.0,
+      "carrying=none"
+     ],
+     [
+      0.6216,
+      "front_colour=green"
+     ]
+    ]
+   },
+   {
+    "level": 4,
+    "successes_per_action": {
+     "left": 695,
+     "right": 703,
+     "forward": 439,
+     "pickup": 0,
+     "toggle": 0
+    },
+    "frames_with_A_above_half": {
+     "left": 3473,
+     "right": 3324,
+     "forward": 2029,
+     "pickup": 0,
+     "toggle": 0
+    },
+    "achieving_action": "left",
+    "detector_on_share": 0.0045,
+    "detector_meaning_at_discovery": [
+     [
+      0.7945,
+      "carrying_colour=red"
+     ],
+     [
+      0.6234,
+      "carrying_colour=blue"
+     ],
+     [
+      0.5697,
+      "front_colour=green"
+     ]
+    ]
+   }
+  ],
+  "final": [
+   {
+    "level": 1,
+    "achieving_action": "forward",
+    "detector_on_share": 0.0929,
+    "detector_meaning": [
+     [
+      0.9969,
+      "front=goal"
+     ],
+     [
+      0.9959,
+      "door=open"
+     ],
+     [
+      0.9948,
+      "side=right"
+     ]
+    ],
+    "behaviour": {
+     "detector_on": {
+      "frames": 300,
+      "achieved": 1.0
+     },
+     "detector_off": {
+      "frames": 300,
+      "achieved": 0.0
+     }
+    }
+   },
+   {
+    "level": 2,
+    "achieving_action": "toggle",
+    "detector_on_share": 0.3342,
+    "detector_meaning": [
+     [
+      1.0,
+      "carrying_matches_door=True"
+     ],
+     [
+      0.8396,
+      "door=closed"
+     ],
+     [
+      0.7218,
+      "carrying=key"
+     ]
+    ],
+    "behaviour": {
+     "detector_on": {
+      "frames": 300,
+      "achieved": 1.0
+     },
+     "detector_off": {
+      "frames": 300,
+      "achieved": 0.0
+     }
+    }
+   },
+   {
+    "level": 3,
+    "achieving_action": "pickup",
+    "detector_on_share": 0.2431,
+    "detector_meaning": [
+     [
+      1.0,
+      "carrying_colour=none"
+     ],
+     [
+      1.0,
+      "carrying=none"
+     ],
+     [
+      0.593,
+      "front_colour=green"
+     ]
+    ],
+    "behaviour": {
+     "detector_on": {
+      "frames": 300,
+      "achieved": 1.0
+     },
+     "detector_off": {
+      "frames": 300,
+      "achieved": 0.0033
+     }
+    }
+   },
+   {
+    "level": 4,
+    "achieving_action": "left",
+    "detector_on_share": 0.0125,
+    "detector_meaning": [
+     [
+      0.7996,
+      "carrying_colour=red"
+     ],
+     [
+      0.646,
+      "door=locked"
+     ],
+     [
+      0.646,
+      "carrying_matches_door=False"
+     ]
+    ],
+    "behaviour": {
+     "detector_on": {
+      "frames": 300,
+      "achieved": 0.0
+     },
+     "detector_off": {
+      "frames": 300,
+      "achieved": 0.0
+     }
+    }
+   }
+  ],
+  "acting": {
+   "discovered_conditions": {
+    "success": 0.758,
+    "mean_steps_when_successful": 37.7
+   },
+   "top_goal_only": {
+    "success": 0.0,
+    "mean_steps_when_successful": null
+   },
+   "random_play_chance_200_steps": 0.0137
+  },
+  "seconds": 804.2
+ }
+}

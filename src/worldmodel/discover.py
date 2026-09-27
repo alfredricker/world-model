@@ -297,6 +297,115 @@ def act(levels, enc, layouts, top_only: bool, budget=200, eps=0.05, seed=0):
             "mean_steps_when_successful": round(float(steps[done].mean()), 1) if done.any() else None}
 
 
+# ---------------------------------------------------------------- continual (card 008)
+
+def finetune(net, d, labels, heads, device, updates, log, batch=512):
+    """Train the encoder (and its goal-square walk head) further while
+    per-level achievement heads learn each level's goal from its labels
+    (level 1: the supplied goal square; below: the agent's own detectors).
+    Event rows are over-sampled with importance weights, as in card 005."""
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
+    frames = Frames(d["codes"], device)
+    t_idx = torch.from_numpy(d["t_idx"]).to(device)
+    t_act = torch.from_numpy(d["t_act"]).to(device)
+    M = len(t_idx)
+    G = [torch.from_numpy(g).to(device) for g in labels]
+    ev, evmask = [], []
+    for g in labels:
+        e = np.flatnonzero(~g[d["t_idx"]] & g[d["t_idx"] + 1])
+        ev.append(torch.from_numpy(e).to(device))
+        m = torch.zeros(M, dtype=torch.bool, device=device)
+        m[ev[-1]] = True
+        evmask.append(m)
+    K = len(labels)
+    n_u, n_e = batch // 2, (batch - batch // 2) // K
+    B = n_u + n_e * K
+    at_goal = torch.from_numpy(d["at"][:, 0]).to(device)
+    term = torch.from_numpy(d["term"]).to(device)
+    moves = torch.from_numpy(np.flatnonzero(d["t_act"] <= FORWARD)).to(device)
+    target = copy.deepcopy(net).requires_grad_(False)
+    params = list(net.enc.parameters()) + list(net.walk.parameters()) + [p for h in heads for p in h.parameters()]
+    opt = torch.optim.Adam(params, lr=3e-4, fused=True)
+    net.train()
+    started = time.monotonic()
+    for u in range(updates):
+        r = torch.cat([torch.randint(M, (n_u,), device=device)]
+                      + [e[torch.randint(len(e), (n_e,), device=device)] for e in ev])
+        mix = n_u / B / M + sum((n_e / B) * evmask[j][r].float() / len(ev[j]) for j in range(K))
+        w = (1.0 / M) / mix
+        i = t_idx[r]
+        rw = moves[torch.randint(len(moves), (batch,), device=device)]
+        iw = t_idx[rw]
+        with torch.autocast("cuda", dtype=torch.bfloat16):
+            z = net.enc(frames(i))
+            q = net.walk(net.enc(frames(iw))).view(-1, 4, 3)[:, 0]
+            with torch.no_grad():
+                qn = target.walk(target.enc(frames(iw + 1))).view(-1, 4, 3)[:, 0]
+        loss_a = 0.0
+        for j in range(K):
+            logit = heads[j](z).float().gather(1, t_act[r][:, None]).squeeze(1)
+            y = G[j][i + 1].float()
+            mask = (~G[j][i]).float() * w
+            loss_a = loss_a + (F.binary_cross_entropy_with_logits(logit, y, reduction="none") * mask).sum() / mask.sum()
+        q, qn = torch.sigmoid(q.float()), torch.sigmoid(qn.float())
+        qa = q.gather(1, t_act[rw][:, None]).squeeze(1)
+        with torch.no_grad():
+            y = torch.where(at_goal[iw + 1], 1.0, torch.where(term[iw + 1], 0.0, GAMMA * qn.max(1).values))
+        mw = (~at_goal[iw]).float()
+        loss_w = ((qa - y) ** 2 * mw).sum() / mw.sum()
+        loss = loss_a + loss_w
+        opt.zero_grad(set_to_none=True)
+        loss.backward()
+        opt.step()
+        with torch.no_grad():
+            torch._foreach_lerp_(list(target.parameters()), list(net.parameters()), 0.005)
+        if u % 5000 == 0 or u == updates - 1:
+            log(f"  finetune {u}: loss_a {float(loss_a):.4f} loss_w {float(loss_w):.4f} "
+                f"{(u + 1) / (time.monotonic() - started):.0f} upd/s")
+    net.eval()
+
+
+READOUT = (("door", "open"), ("carrying_matches_door", True), ("carrying", "none"))
+
+
+def readout(Z, Zt, train_vars, sample, test_vars, device):
+    """Linear read-out of z for the facts the chain needs (area on test)."""
+    out = {}
+    zs = Z[torch.from_numpy(sample).to(device)].float()
+    zt = Zt.float()
+    mu, sd = zs.mean(0), zs.std(0) + 1e-6
+    for k, v in READOUT:
+        y = torch.tensor([x[k] == v for x in train_vars], dtype=torch.float32, device=device)
+        lin = nn.Linear(zs.shape[1], 1).to(device)
+        opt = torch.optim.Adam(lin.parameters(), lr=1e-2)
+        for _ in range(1500):
+            loss = F.binary_cross_entropy_with_logits(lin((zs - mu) / sd).squeeze(1), y)
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+        with torch.no_grad():
+            score = lin((zt - mu) / sd).squeeze(1).cpu().numpy()
+        out[f"{k}={v}"] = round(auc(score, np.array([x[k] == v for x in test_vars])), 4)
+    return out
+
+
+def chain(levels, Z, on_goal_t, chunk=262144):
+    """Per level: goal holds, walk value, detector, on stored z (chunked)."""
+    goals, walks, dets = [[] for _ in levels], [[] for _ in levels], [[] for _ in levels]
+    for s0 in range(0, len(Z), chunk):
+        z = Z[s0:s0 + chunk].float()
+        g = on_goal_t[s0:s0 + chunk]
+        for k, lvl in enumerate(levels):
+            _, w, c = lvl.parts(z, g)
+            goals[k].append(g.cpu())
+            walks[k].append(w.cpu())
+            dets[k].append(c.cpu())
+            g = c
+    cat = lambda xs: [torch.cat(x).numpy() for x in xs]
+    return cat(goals), cat(walks), cat(dets)
+
+
 # ---------------------------------------------------------------- main
 
 def main():
@@ -305,12 +414,15 @@ def main():
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--episodes", type=int, default=10000)
     parser.add_argument("--test-layouts", type=int, default=500)
+    parser.add_argument("--continual", action="store_true", help="card 008 arm C")
+    parser.add_argument("--finetune-updates", type=int, default=20000)
+    parser.add_argument("--skip-gate", action="store_true")
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda")
     started = time.monotonic()
     logf = open(args.out / "log.txt", "w")
-    result = {}
+    result = {"net": str(args.net), "continual": args.continual}
 
     def log(msg):
         print(msg, flush=True)
@@ -323,14 +435,14 @@ def main():
     train_data = collect(8, args.episodes, 640, 3)
     test_data = collect(8, 500, 640, 99)
     test_pairs = [(ep["layout"], s) for ep in test_data for s in ep["states"]]
-    meaning = Meaning([variables(l, s) for l, s in test_pairs])
+    test_vars = [variables(l, s) for l, s in test_pairs]
+    meaning = Meaning(test_vars)
 
-    # Gate: the procedure with exact values.
-    result["gate"] = exact_gate(train_data[:2000], test_data, meaning, test_pairs)
-    save()
-    log("gate " + json.dumps(result["gate"]))
+    if not args.skip_gate:
+        result["gate"] = exact_gate(train_data[:2000], test_data, meaning, test_pairs)
+        save()
+        log("gate " + json.dumps(result["gate"]))
 
-    # Learned: internal state z of every training and test frame.
     net = Net().to(device)
     net.load_state_dict(torch.load(args.net))
     net.eval()
@@ -338,22 +450,26 @@ def main():
 
     def all_z(dd):
         fr = Frames(dd["codes"], device)
-        with torch.no_grad():
+        with torch.no_grad(), torch.autocast("cuda", dtype=torch.bfloat16):
             return torch.cat([net.enc(fr(torch.arange(s, min(len(dd["codes"]), s + 16384), device=device))).half()
                               for s in range(0, len(dd["codes"]), 16384)])
 
     Z, Zt = all_z(d), all_z(dt)
     t_idx = torch.from_numpy(d["t_idx"]).to(device)
     t_act = torch.from_numpy(d["t_act"]).to(device)
-    log(f"z ready: {len(Z)} train, {len(Zt)} test frames, {time.monotonic() - started:.0f} s")
+    train_pairs = [(ep["layout"], s) for ep in train_data for s in ep["states"]]
+    sample = np.random.default_rng(0).choice(len(train_pairs), 100_000, replace=False)
+    train_vars = [variables(*train_pairs[i]) for i in sample]
+    result["readout"] = {"initial": readout(Z, Zt, train_vars, sample, test_vars, device)}
+    log(f"z ready: {len(Z)} train, {len(Zt)} test frames, {time.monotonic() - started:.0f} s; "
+        f"readout {result['readout']['initial']}")
 
-    goal_on = d["hold"][:, 3].copy()           # level 1 goal: on the goal square (supplied)
-    goal_on_t = dt["hold"][:, 3].copy()
-    levels, result["levels"] = [], []
+    labels, labels_t = [d["hold"][:, 3].copy()], [dt["hold"][:, 3].copy()]   # level 1: goal square
+    levels, actions, ft_heads, result["levels"] = [], [], [], []
     for k in range(1, MAX_LEVELS + 1):
+        goal_on, goal_on_t = labels[-1], labels_t[-1]
         i, a = d["t_idx"], d["t_act"]
-        achieved = ~goal_on[i] & goal_on[i + 1]
-        counts = np.bincount(a[achieved], minlength=5)
+        counts = np.bincount(a[~goal_on[i] & goal_on[i + 1]], minlength=5)
         info = {"level": k, "successes_per_action": dict(zip(ACTIONS, counts.tolist()))}
         if counts.max() < MIN_SUCCESSES:
             info["achieving_action"] = None
@@ -361,6 +477,12 @@ def main():
             save()
             log(f"level {k}: no achieving action " + json.dumps(info))
             break
+        if args.continual:
+            ft_heads.append(Head(5).to(device))
+            finetune(net, d, labels, ft_heads, device, args.finetune_updates, log)
+            Z, Zt = all_z(d), all_z(dt)
+            result["readout"][f"after_finetune_{k}"] = readout(Z, Zt, train_vars, sample, test_vars, device)
+            log(f"level {k} readout {result['readout'][f'after_finetune_{k}']}")
         a_head = train_achieve(Z, t_idx, t_act, goal_on, device)
         A = apply(a_head, Z).cpu().numpy()
         frames_high = ((A > 0.5) & ~goal_on[:, None]).sum(0)
@@ -371,33 +493,42 @@ def main():
         w_head = train_walk(Z, t_idx, t_act, ready, d["term"], device)
         lvl = LearnedLevel(a_head, action, w_head)
         levels.append(lvl)
-        def run(ZZ, g):
-            gg = torch.from_numpy(g).to(device)
-            ws, cs = [], []
-            for s0 in range(0, len(ZZ), 262144):
-                _, w, c = lvl.parts(ZZ[s0:s0 + 262144].float(), gg[s0:s0 + 262144])
-                ws.append(w)
-                cs.append(c)
-            return torch.cat(ws).cpu().numpy(), torch.cat(cs).cpu().numpy()
-
-        _, C = run(Z, goal_on)
-        Wt, Ct = run(Zt, goal_on_t)
-        unmet_t = ~goal_on_t
-        info["detector_on_share"] = round(float(Ct[unmet_t].mean()), 4)
-        info["detector_meaning"] = meaning(np.where(Ct, np.maximum(Wt, 0.1001), Wt), unmet_t)
-        # Behaviour check with the simulator (criterion 2).
-        enc = Encoder(net, device)
-        info["behaviour"] = behaviour(levels, k - 1, enc, test_pairs, Ct, unmet_t)
+        actions.append(action)
+        (_, _, C), (_, Wt, Ct) = [[x[0] for x in chain([lvl], ZZ, torch.from_numpy(g).to(device))]
+                                   for ZZ, g in ((Z, goal_on), (Zt, goal_on_t))]
+        info["detector_on_share"] = round(float(Ct[~goal_on_t].mean()), 4)
+        info["detector_meaning_at_discovery"] = meaning(np.where(Ct, np.maximum(Wt, 0.1001), Wt), ~goal_on_t)
         result["levels"].append(info)
         save()
         log(f"level {k}: " + json.dumps(info))
-        goal_on, goal_on_t = C, Ct
+        labels.append(C)
+        labels_t.append(Ct)
+
+    if args.continual:
+        # One network for everything: refit every level's heads on the final encoder.
+        levels = []
+        for k, action in enumerate(actions):
+            a_head = train_achieve(Z, t_idx, t_act, labels[k], device)
+            ready = (apply(a_head, Z)[:, action] > 0.5).cpu().numpy() & ~labels[k]
+            levels.append(LearnedLevel(a_head, action, train_walk(Z, t_idx, t_act, ready, d["term"], device)))
+    on_goal_t = torch.from_numpy(dt["hold"][:, 3].copy()).to(device)
+    goals_t, walks_t, dets_t = chain(levels, Zt, on_goal_t)
+    enc = Encoder(net, device)
+    result["final"] = []
+    for k in range(len(levels)):
+        unmet = ~goals_t[k]
+        entry = {"level": k + 1, "achieving_action": ACTIONS[levels[k].action],
+                 "detector_on_share": round(float(dets_t[k][unmet].mean()), 4),
+                 "detector_meaning": meaning(np.where(dets_t[k], np.maximum(walks_t[k], 0.1001), walks_t[k]), unmet),
+                 "behaviour": behaviour(levels, k, enc, test_pairs, dets_t[k], unmet)}
+        result["final"].append(entry)
+        save()
+        log("final " + json.dumps(entry))
 
     # Acting (criterion 3) on new layouts.
     rng = np.random.default_rng(777)
     from .envs.keydoor import make_layout
     layouts = [make_layout(8, rng) for _ in range(args.test_layouts)]
-    enc = Encoder(net, device)
     result["acting"] = {
         "discovered_conditions": act(levels, enc, layouts, top_only=False),
         "top_goal_only": act(levels, enc, layouts, top_only=True),
