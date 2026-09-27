@@ -55,6 +55,24 @@ it; *suggestive* means one seed, small n, or a diagnostic.
   successes, with supplied variables; treating "walk to X" as an action
   with conditions gave the whole key → door → goal chain without naming
   places. *Evidence:* cards 003, 004 (exact, supplied variables).
+- **From pixels, rare conditions need about 30× the examples exact counting
+  needs, and the error is "it will not work", not "the wrong key works".**
+  Toggle-with-matching-key was right in 4%, 45%, 90%, 100% of test cases
+  with 10, 30, 100, 300 unlocks in training; wrong-key cases stayed ≥ 99.7%
+  right throughout. *Evidence:* card 005 (1 seed per count).
+- **A network trained only to predict holds conditions redundantly; they
+  cannot be found as switchable parts afterwards.** Card 005's network
+  encoded every needed fact (linear read-out 0.9995–1.0), yet a sparse
+  dictionary and raw units both gave fragmented rules, and switching off a
+  rule's part left the predicted success unchanged in 0% of cases for most
+  parts. Separable conditions must be asked for in training.
+  *Evidence:* card 006 (1 network, 1 dictionary).
+- **A condition can be defined by the agent's own values: "the states where
+  this goal's achieving action works are within walking reach".** From one
+  supplied goal it discovered door open → matching key → empty hands, each
+  behaving as a condition (100% / 0%), and acting on them solved 99.2% of
+  new layouts. *Evidence:* card 007 (1 seed; encoder shaped by other
+  supplied goals).
   *Evidence:* old:phwm/docs/05-experimental-record.md §5.12,
   06-achievements-and-limitations.md; card 001 gate. *Confirmed* for the
   pattern.

@@ -560,5 +560,780 @@
    "seconds": 1207.9
   },
   "note": "walk block re-scored excluding ended-episode frames (card 005, second round)"
+ },
+ "p19": {
+  "10": {
+   "achievement": {
+    "toggle, facing locked door, matching key": {
+     "n": 151,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.0421,
+     "right_side_of_0.5": 0.0397
+    },
+    "toggle, facing locked door, other key": {
+     "n": 643,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.003,
+     "right_side_of_0.5": 0.9969
+    },
+    "toggle, facing locked door, nothing": {
+     "n": 242,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0,
+     "right_side_of_0.5": 1.0
+    },
+    "pickup, facing matching key, empty hands": {
+     "n": 247,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.9823,
+     "right_side_of_0.5": 0.9879
+    },
+    "pickup, facing other key, empty hands": {
+     "n": 253,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0065,
+     "right_side_of_0.5": 0.9921
+    },
+    "forward, facing goal square": {
+     "n": 50,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.0443,
+     "right_side_of_0.5": 0.04
+    },
+    "auc_door_unlocked": 0.8661,
+    "auc_door_open": 0.8712,
+    "auc_holding_matching_key": 1.0,
+    "auc_on_goal": 0.9438
+   },
+   "walk": {
+    "goal": {
+     "n": 306677,
+     "reachable_share": 0.0929,
+     "auc": 0.6969,
+     "rank_corr_with_steps": 0.0801,
+     "mean_abs_error_value": 0.6221
+    },
+    "door": {
+     "n": 300249,
+     "reachable_share": 1.0,
+     "auc": NaN,
+     "rank_corr_with_steps": 0.9228,
+     "mean_abs_error_value": 0.0367
+    },
+    "key": {
+     "n": 175404,
+     "reachable_share": 1.0,
+     "auc": NaN,
+     "rank_corr_with_steps": 0.9349,
+     "mean_abs_error_value": 0.0356
+    },
+    "distractor": {
+     "n": 158710,
+     "reachable_share": 0.9912,
+     "auc": 0.4962,
+     "rank_corr_with_steps": 0.7994,
+     "mean_abs_error_value": 0.0731
+    },
+    "goal_from_left_room": {
+     "n": 298153,
+     "correct_vs_reachable": 0.9349,
+     "correct_vs_door_open": 0.9349,
+     "mean_W_door_open": 0.0186,
+     "mean_W_door_closed": 0.0046
+    }
+   },
+   "conditions": {
+    "door_unlocked": {
+     "from_truth": [
+      {
+       "action": "toggle",
+       "conditions": {
+        "front=door": 1.0,
+        "carrying_matches_door=True": 1.0
+       },
+       "achievement_probability": 1.0,
+       "attempts": 151,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0028
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "toggle",
+       "conditions": {
+        "front=door": 0.286,
+        "carrying_matches_door=True": 0.286,
+        "y=6": 0.26,
+        "carrying_colour=blue": 0.236
+       },
+       "achievement_probability": 0.286,
+       "attempts": 7,
+       "share_of_successes": 0.25,
+       "without_any_condition": 0.0001
+      }
+     ]
+    },
+    "holding_matching_key": {
+     "from_truth": [
+      {
+       "action": "pickup",
+       "conditions": {
+        "front_matches_door=True": 1.0,
+        "carrying=none": 1.0
+       },
+       "achievement_probability": 1.0,
+       "attempts": 247,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0066
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "pickup",
+       "conditions": {
+        "front_matches_door=True": 0.988,
+        "carrying=none": 0.988
+       },
+       "achievement_probability": 0.988,
+       "attempts": 247,
+       "share_of_successes": 0.992,
+       "without_any_condition": 0.0066
+      }
+     ]
+    },
+    "walk_to_goal": {
+     "from_truth": [
+      {
+       "action": "walk to goal",
+       "conditions": {
+        "door=open": 0.995
+       },
+       "achievement_probability": 1.0,
+       "attempts": 13547,
+       "share_of_successes": 0.951,
+       "without_any_condition": 0.0929
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "walk to goal",
+       "conditions": {
+        "door=open": 0.943,
+        "carrying_colour=blue": 0.943,
+        "x=6": 0.523,
+        "y=4": 0.48,
+        "front=wall": 0.167
+       },
+       "achievement_probability": 0.943,
+       "attempts": 35,
+       "share_of_successes": 0.026,
+       "without_any_condition": 0.0083
+      }
+     ]
+    }
+   },
+   "baseline": {
+    "achievement_base_rate": {
+     "door_unlocked": 0.00247,
+     "door_open": 0.00443,
+     "holding_matching_key": 0.00402,
+     "on_goal": 0.00081
+    },
+    "walk_reachable_share": {
+     "goal": 0.0929,
+     "door": 1.0,
+     "key": 1.0,
+     "distractor": 0.9912
+    }
+   },
+   "train": {
+    "episodes": 6791,
+    "unlocks": 10,
+    "updates": 100000,
+    "seconds": 1184.7
+   }
+  },
+  "30": {
+   "achievement": {
+    "toggle, facing locked door, matching key": {
+     "n": 151,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.4502,
+     "right_side_of_0.5": 0.4503
+    },
+    "toggle, facing locked door, other key": {
+     "n": 643,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0,
+     "right_side_of_0.5": 1.0
+    },
+    "toggle, facing locked door, nothing": {
+     "n": 242,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0,
+     "right_side_of_0.5": 1.0
+    },
+    "pickup, facing matching key, empty hands": {
+     "n": 247,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.9916,
+     "right_side_of_0.5": 0.9919
+    },
+    "pickup, facing other key, empty hands": {
+     "n": 253,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0012,
+     "right_side_of_0.5": 1.0
+    },
+    "forward, facing goal square": {
+     "n": 50,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.057,
+     "right_side_of_0.5": 0.06
+    },
+    "auc_door_unlocked": 0.9996,
+    "auc_door_open": 0.9839,
+    "auc_holding_matching_key": 1.0,
+    "auc_on_goal": 0.8827
+   },
+   "walk": {
+    "goal": {
+     "n": 306677,
+     "reachable_share": 0.0929,
+     "auc": 0.9048,
+     "rank_corr_with_steps": 0.4615,
+     "mean_abs_error_value": 0.5754
+    },
+    "door": {
+     "n": 300249,
+     "reachable_share": 1.0,
+     "auc": NaN,
+     "rank_corr_with_steps": 0.9642,
+     "mean_abs_error_value": 0.0387
+    },
+    "key": {
+     "n": 175404,
+     "reachable_share": 1.0,
+     "auc": NaN,
+     "rank_corr_with_steps": 0.9514,
+     "mean_abs_error_value": 0.037
+    },
+    "distractor": {
+     "n": 158710,
+     "reachable_share": 0.9912,
+     "auc": 0.7441,
+     "rank_corr_with_steps": 0.9133,
+     "mean_abs_error_value": 0.0448
+    },
+    "goal_from_left_room": {
+     "n": 298153,
+     "correct_vs_reachable": 0.935,
+     "correct_vs_door_open": 0.935,
+     "mean_W_door_open": 0.0363,
+     "mean_W_door_closed": 0.0112
+    }
+   },
+   "conditions": {
+    "door_unlocked": {
+     "from_truth": [
+      {
+       "action": "toggle",
+       "conditions": {
+        "front=door": 1.0,
+        "carrying_matches_door=True": 1.0
+       },
+       "achievement_probability": 1.0,
+       "attempts": 151,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0028
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "toggle",
+       "conditions": {
+        "front=door": 1.0,
+        "carrying_matches_door=True": 1.0,
+        "carrying_colour=blue": 0.45,
+        "y=6": 0.462
+       },
+       "achievement_probability": 1.0,
+       "attempts": 7,
+       "share_of_successes": 0.103,
+       "without_any_condition": 0.0013
+      }
+     ]
+    },
+    "holding_matching_key": {
+     "from_truth": [
+      {
+       "action": "pickup",
+       "conditions": {
+        "front_matches_door=True": 1.0,
+        "carrying=none": 1.0
+       },
+       "achievement_probability": 1.0,
+       "attempts": 247,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0066
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "pickup",
+       "conditions": {
+        "front_matches_door=True": 0.992,
+        "carrying=none": 0.992
+       },
+       "achievement_probability": 0.992,
+       "attempts": 247,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0066
+      }
+     ]
+    },
+    "walk_to_goal": {
+     "from_truth": [
+      {
+       "action": "walk to goal",
+       "conditions": {
+        "door=open": 0.995
+       },
+       "achievement_probability": 1.0,
+       "attempts": 13547,
+       "share_of_successes": 0.951,
+       "without_any_condition": 0.0929
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "walk to goal",
+       "conditions": {
+        "x=6": 0.962,
+        "y=5": 0.579
+       },
+       "achievement_probability": 0.982,
+       "attempts": 275,
+       "share_of_successes": 0.117,
+       "without_any_condition": 0.0151
+      }
+     ]
+    }
+   },
+   "baseline": {
+    "achievement_base_rate": {
+     "door_unlocked": 0.00247,
+     "door_open": 0.00443,
+     "holding_matching_key": 0.00402,
+     "on_goal": 0.00081
+    },
+    "walk_reachable_share": {
+     "goal": 0.0929,
+     "door": 1.0,
+     "key": 1.0,
+     "distractor": 0.9912
+    }
+   },
+   "train": {
+    "episodes": 6811,
+    "unlocks": 30,
+    "updates": 100000,
+    "seconds": 1189.9
+   }
+  },
+  "100": {
+   "achievement": {
+    "toggle, facing locked door, matching key": {
+     "n": 151,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.8733,
+     "right_side_of_0.5": 0.9007
+    },
+    "toggle, facing locked door, other key": {
+     "n": 643,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0,
+     "right_side_of_0.5": 1.0
+    },
+    "toggle, facing locked door, nothing": {
+     "n": 242,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0,
+     "right_side_of_0.5": 1.0
+    },
+    "pickup, facing matching key, empty hands": {
+     "n": 247,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.9918,
+     "right_side_of_0.5": 0.9919
+    },
+    "pickup, facing other key, empty hands": {
+     "n": 253,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0031,
+     "right_side_of_0.5": 0.996
+    },
+    "forward, facing goal square": {
+     "n": 50,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.6594,
+     "right_side_of_0.5": 0.66
+    },
+    "auc_door_unlocked": 1.0,
+    "auc_door_open": 0.9999,
+    "auc_holding_matching_key": 1.0,
+    "auc_on_goal": 0.9999
+   },
+   "walk": {
+    "goal": {
+     "n": 306677,
+     "reachable_share": 0.0929,
+     "auc": 0.9944,
+     "rank_corr_with_steps": 0.5372,
+     "mean_abs_error_value": 0.2832
+    },
+    "door": {
+     "n": 300249,
+     "reachable_share": 1.0,
+     "auc": NaN,
+     "rank_corr_with_steps": 0.9552,
+     "mean_abs_error_value": 0.036
+    },
+    "key": {
+     "n": 175404,
+     "reachable_share": 1.0,
+     "auc": NaN,
+     "rank_corr_with_steps": 0.9402,
+     "mean_abs_error_value": 0.0377
+    },
+    "distractor": {
+     "n": 158710,
+     "reachable_share": 0.9912,
+     "auc": 0.8987,
+     "rank_corr_with_steps": 0.9435,
+     "mean_abs_error_value": 0.0373
+    },
+    "goal_from_left_room": {
+     "n": 298153,
+     "correct_vs_reachable": 0.9773,
+     "correct_vs_door_open": 0.9773,
+     "mean_W_door_open": 0.2923,
+     "mean_W_door_closed": 0.0219
+    }
+   },
+   "conditions": {
+    "door_unlocked": {
+     "from_truth": [
+      {
+       "action": "toggle",
+       "conditions": {
+        "front=door": 1.0,
+        "carrying_matches_door=True": 1.0
+       },
+       "achievement_probability": 1.0,
+       "attempts": 151,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0028
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "toggle",
+       "conditions": {
+        "front=door": 0.901,
+        "carrying_matches_door=True": 0.901
+       },
+       "achievement_probability": 0.901,
+       "attempts": 151,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0025
+      }
+     ]
+    },
+    "holding_matching_key": {
+     "from_truth": [
+      {
+       "action": "pickup",
+       "conditions": {
+        "front_matches_door=True": 1.0,
+        "carrying=none": 1.0
+       },
+       "achievement_probability": 1.0,
+       "attempts": 247,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0066
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "pickup",
+       "conditions": {
+        "front_matches_door=True": 0.992,
+        "carrying=none": 0.992
+       },
+       "achievement_probability": 0.992,
+       "attempts": 247,
+       "share_of_successes": 0.996,
+       "without_any_condition": 0.0066
+      }
+     ]
+    },
+    "walk_to_goal": {
+     "from_truth": [
+      {
+       "action": "walk to goal",
+       "conditions": {
+        "door=open": 0.995
+       },
+       "achievement_probability": 1.0,
+       "attempts": 13547,
+       "share_of_successes": 0.951,
+       "without_any_condition": 0.0929
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "walk to goal",
+       "conditions": {
+        "door=open": 0.931
+       },
+       "achievement_probability": 0.956,
+       "attempts": 13547,
+       "share_of_successes": 0.788,
+       "without_any_condition": 0.1072
+      }
+     ]
+    }
+   },
+   "baseline": {
+    "achievement_base_rate": {
+     "door_unlocked": 0.00247,
+     "door_open": 0.00443,
+     "holding_matching_key": 0.00402,
+     "on_goal": 0.00081
+    },
+    "walk_reachable_share": {
+     "goal": 0.0929,
+     "door": 1.0,
+     "key": 1.0,
+     "distractor": 0.9912
+    }
+   },
+   "train": {
+    "episodes": 6881,
+    "unlocks": 100,
+    "updates": 100000,
+    "seconds": 1170.5
+   }
+  },
+  "300": {
+   "achievement": {
+    "toggle, facing locked door, matching key": {
+     "n": 151,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.9992,
+     "right_side_of_0.5": 1.0
+    },
+    "toggle, facing locked door, other key": {
+     "n": 643,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0,
+     "right_side_of_0.5": 1.0
+    },
+    "toggle, facing locked door, nothing": {
+     "n": 242,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0,
+     "right_side_of_0.5": 1.0
+    },
+    "pickup, facing matching key, empty hands": {
+     "n": 247,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.9948,
+     "right_side_of_0.5": 0.996
+    },
+    "pickup, facing other key, empty hands": {
+     "n": 253,
+     "truth": 0,
+     "truth_checked": true,
+     "mean_p": 0.0001,
+     "right_side_of_0.5": 1.0
+    },
+    "forward, facing goal square": {
+     "n": 50,
+     "truth": 1,
+     "truth_checked": true,
+     "mean_p": 0.8011,
+     "right_side_of_0.5": 0.8
+    },
+    "auc_door_unlocked": 1.0,
+    "auc_door_open": 1.0,
+    "auc_holding_matching_key": 1.0,
+    "auc_on_goal": 0.9999
+   },
+   "walk": {
+    "goal": {
+     "n": 306677,
+     "reachable_share": 0.0929,
+     "auc": 0.9999,
+     "rank_corr_with_steps": 0.6447,
+     "mean_abs_error_value": 0.1024
+    },
+    "door": {
+     "n": 300249,
+     "reachable_share": 1.0,
+     "auc": NaN,
+     "rank_corr_with_steps": 0.965,
+     "mean_abs_error_value": 0.0388
+    },
+    "key": {
+     "n": 175404,
+     "reachable_share": 1.0,
+     "auc": NaN,
+     "rank_corr_with_steps": 0.9479,
+     "mean_abs_error_value": 0.0362
+    },
+    "distractor": {
+     "n": 158710,
+     "reachable_share": 0.9912,
+     "auc": 0.9755,
+     "rank_corr_with_steps": 0.9486,
+     "mean_abs_error_value": 0.0392
+    },
+    "goal_from_left_room": {
+     "n": 298153,
+     "correct_vs_reachable": 0.987,
+     "correct_vs_door_open": 0.987,
+     "mean_W_door_open": 0.5219,
+     "mean_W_door_closed": 0.013
+    }
+   },
+   "conditions": {
+    "door_unlocked": {
+     "from_truth": [
+      {
+       "action": "toggle",
+       "conditions": {
+        "front=door": 1.0,
+        "carrying_matches_door=True": 1.0
+       },
+       "achievement_probability": 1.0,
+       "attempts": 151,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0028
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "toggle",
+       "conditions": {
+        "front=door": 1.0,
+        "carrying_matches_door=True": 1.0
+       },
+       "achievement_probability": 1.0,
+       "attempts": 151,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0028
+      }
+     ]
+    },
+    "holding_matching_key": {
+     "from_truth": [
+      {
+       "action": "pickup",
+       "conditions": {
+        "front_matches_door=True": 1.0,
+        "carrying=none": 1.0
+       },
+       "achievement_probability": 1.0,
+       "attempts": 247,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0066
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "pickup",
+       "conditions": {
+        "front_matches_door=True": 0.996,
+        "carrying=none": 0.996
+       },
+       "achievement_probability": 0.996,
+       "attempts": 247,
+       "share_of_successes": 1.0,
+       "without_any_condition": 0.0066
+      }
+     ]
+    },
+    "walk_to_goal": {
+     "from_truth": [
+      {
+       "action": "walk to goal",
+       "conditions": {
+        "door=open": 0.995
+       },
+       "achievement_probability": 1.0,
+       "attempts": 13547,
+       "share_of_successes": 0.951,
+       "without_any_condition": 0.0929
+      }
+     ],
+     "from_learned": [
+      {
+       "action": "walk to goal",
+       "conditions": {
+        "door=open": 0.981
+       },
+       "achievement_probability": 1.0,
+       "attempts": 13547,
+       "share_of_successes": 0.839,
+       "without_any_condition": 0.1054
+      }
+     ]
+    }
+   },
+   "baseline": {
+    "achievement_base_rate": {
+     "door_unlocked": 0.00247,
+     "door_open": 0.00443,
+     "holding_matching_key": 0.00402,
+     "on_goal": 0.00081
+    },
+    "walk_reachable_share": {
+     "goal": 0.0929,
+     "door": 1.0,
+     "key": 1.0,
+     "distractor": 0.9912
+    }
+   },
+   "train": {
+    "episodes": 7081,
+    "unlocks": 300,
+    "updates": 100000,
+    "seconds": 1189.8
+   }
+  }
  }
 }

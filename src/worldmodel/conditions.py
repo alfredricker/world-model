@@ -125,9 +125,6 @@ def find_rules(rows, precision_target=0.9, min_share=0.05, keep=0.95, min_remova
     condition. score="gain" (card 005, FOIL's gain, Quinlan 1990): add the
     atom maximising kept successes x (log new probability - log old), which
     trades coverage against probability and tolerates a few wrong labels."""
-    total = sum(r[2] for r in rows)
-    if total == 0:
-        return []
     by_action = defaultdict(list)
     for v, a, y in rows:
         by_action[a].append((v, y))
@@ -137,34 +134,47 @@ def find_rules(rows, precision_target=0.9, min_share=0.05, keep=0.95, min_remova
         X = np.array([[v[k] == val for k, val in atoms] for v, _ in rs], bool)
         y = np.array([r[1] for r in rs], bool)
         matrices[a] = (atoms, X, y)
+    return rules_from_matrices(matrices, precision_target, min_share, keep, min_removal, action_names, score)
+
+
+def rules_from_matrices(matrices: dict, precision_target=0.9, min_share=0.05, keep=0.95, min_removal=0.1,
+                        action_names=ACTION_NAMES, score="gain", max_rules=None) -> list[dict]:
+    """find_rules on prepared data: action -> (atoms, X rows x atoms bool, y bool).
+    Atoms are (name, value) pairs, printed as "name=value"."""
+    total = sum(int(m[2].sum()) for m in matrices.values())
+    if total == 0:
+        return []
     remaining = {a: m[2].copy() for a, m in matrices.items()}
     rules = []
     while sum(r.sum() for r in remaining.values()) >= max(min_share * total, 1):
+        if max_rules is not None and len(rules) >= max_rules:
+            break
         a = max(remaining, key=lambda k: remaining[k].sum())   # action with most uncovered successes
         atoms, X, y = matrices[a]
         rem = remaining[a]
         chosen, mask = [], np.ones(len(y), bool)
         while y[mask].mean() < precision_target:
             base = (rem & mask).sum()
-            best, best_prec = None, y[mask].mean()
-            best_gain = 0.0
-            for j in range(len(atoms)):
-                if j in chosen:
-                    continue
-                m = mask & X[:, j]
-                kept = (rem & m).sum()
-                if m.sum() == 0 or kept == 0:
-                    continue
-                p = y[m].mean()
-                if score == "recall":
-                    if kept >= keep * base and p > best_prec + 1e-9:
-                        best, best_prec = j, p
-                elif p > y[mask].mean() + 1e-9:
-                    g = kept * (np.log(p) - np.log(y[mask].mean()))
-                    if g > best_gain:
-                        best, best_gain = j, g
-            if best is None:
+            now = y[mask].mean()
+            n1 = X[mask].sum(0).astype(float)
+            p1 = X[mask & y].sum(0).astype(float)
+            kept = X[mask & rem].sum(0).astype(float)
+            with np.errstate(divide="ignore", invalid="ignore"):
+                p = np.where(n1 > 0, p1 / n1, 0.0)
+            ok = (n1 > 0) & (kept > 0)
+            ok[chosen] = False
+            if score == "recall":
+                ok &= (kept >= keep * base) & (p > now + 1e-9)
+                value = np.where(ok, p, -np.inf)
+            else:
+                ok &= p > now + 1e-9
+                with np.errstate(divide="ignore", invalid="ignore"):
+                    value = np.where(ok, kept * (np.log(np.where(ok, p, 1.0)) - np.log(now)), -np.inf)
+                ok &= value > 0
+                value = np.where(ok, value, -np.inf)
+            if not ok.any():
                 break
+            best = int(np.argmax(value))
             chosen.append(best)
             mask &= X[:, best]
 
@@ -203,6 +213,7 @@ def find_rules(rows, precision_target=0.9, min_share=0.05, keep=0.95, min_remova
             "attempts": int(m.sum()),
             "share_of_successes": round(covered.sum() / total, 3),
             "without_any_condition": round(float(y.mean()), 4),
+            "members": [int(j) for j in chosen],
         })
         remaining[a] = rem & ~m
     return rules

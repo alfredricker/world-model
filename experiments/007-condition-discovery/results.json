@@ -1,0 +1,249 @@
+{
+ "gate": {
+  "levels": [
+   {
+    "level": 1,
+    "successes_per_action": {
+     "left": 0,
+     "right": 0,
+     "forward": 208,
+     "pickup": 0,
+     "toggle": 0
+    },
+    "achieving_action": "forward",
+    "detector_meaning": [
+     [
+      0.9976,
+      "door=open"
+     ],
+     [
+      0.9645,
+      "side=right"
+     ],
+     [
+      0.9556,
+      "side=doorway"
+     ]
+    ],
+    "detector_on_share": 0.0929
+   },
+   {
+    "level": 2,
+    "successes_per_action": {
+     "left": 0,
+     "right": 0,
+     "forward": 0,
+     "pickup": 0,
+     "toggle": 1080
+    },
+    "achieving_action": "toggle",
+    "detector_meaning": [
+     [
+      1.0,
+      "carrying_matches_door=True"
+     ],
+     [
+      0.873,
+      "door=closed"
+     ],
+     [
+      0.6949,
+      "carrying=key"
+     ]
+    ],
+    "detector_on_share": 0.3344
+   },
+   {
+    "level": 3,
+    "successes_per_action": {
+     "left": 0,
+     "right": 0,
+     "forward": 0,
+     "pickup": 1006,
+     "toggle": 0
+    },
+    "achieving_action": "pickup",
+    "detector_meaning": [
+     [
+      1.0,
+      "carrying_colour=none"
+     ],
+     [
+      1.0,
+      "carrying=none"
+     ],
+     [
+      0.5622,
+      "front_matches_door=False"
+     ]
+    ],
+    "detector_on_share": 0.2432
+   },
+   {
+    "level": 4,
+    "successes_per_action": {
+     "left": 0,
+     "right": 0,
+     "forward": 0,
+     "pickup": 0,
+     "toggle": 0
+    },
+    "achieving_action": null
+   }
+  ]
+ },
+ "levels": [
+  {
+   "level": 1,
+   "successes_per_action": {
+    "left": 0,
+    "right": 0,
+    "forward": 1014,
+    "pickup": 0,
+    "toggle": 0
+   },
+   "frames_with_A_above_half": {
+    "left": 0,
+    "right": 0,
+    "forward": 4922,
+    "pickup": 0,
+    "toggle": 0
+   },
+   "achieving_action": "forward",
+   "detector_on_share": 0.0929,
+   "detector_meaning": [
+    [
+     0.9982,
+     "front=goal"
+    ],
+    [
+     0.9958,
+     "door=open"
+    ],
+    [
+     0.9956,
+     "side=right"
+    ]
+   ],
+   "behaviour": {
+    "detector_on": {
+     "frames": 300,
+     "achieved": 1.0
+    },
+    "detector_off": {
+     "frames": 300,
+     "achieved": 0.0
+    }
+   }
+  },
+  {
+   "level": 2,
+   "successes_per_action": {
+    "left": 0,
+    "right": 0,
+    "forward": 0,
+    "pickup": 0,
+    "toggle": 5176
+   },
+   "frames_with_A_above_half": {
+    "left": 0,
+    "right": 0,
+    "forward": 0,
+    "pickup": 0,
+    "toggle": 25806
+   },
+   "achieving_action": "toggle",
+   "detector_on_share": 0.3344,
+   "detector_meaning": [
+    [
+     1.0,
+     "carrying_matches_door=True"
+    ],
+    [
+     0.8825,
+     "door=closed"
+    ],
+    [
+     0.7127,
+     "carrying=key"
+    ]
+   ],
+   "behaviour": {
+    "detector_on": {
+     "frames": 300,
+     "achieved": 1.0
+    },
+    "detector_off": {
+     "frames": 300,
+     "achieved": 0.0
+    }
+   }
+  },
+  {
+   "level": 3,
+   "successes_per_action": {
+    "left": 0,
+    "right": 0,
+    "forward": 0,
+    "pickup": 4907,
+    "toggle": 0
+   },
+   "frames_with_A_above_half": {
+    "left": 0,
+    "right": 0,
+    "forward": 0,
+    "pickup": 24364,
+    "toggle": 0
+   },
+   "achieving_action": "pickup",
+   "detector_on_share": 0.2432,
+   "detector_meaning": [
+    [
+     1.0,
+     "carrying_colour=none"
+    ],
+    [
+     1.0,
+     "carrying=none"
+    ],
+    [
+     0.5668,
+     "front_matches_door=False"
+    ]
+   ],
+   "behaviour": {
+    "detector_on": {
+     "frames": 300,
+     "achieved": 1.0
+    },
+    "detector_off": {
+     "frames": 300,
+     "achieved": 0.0
+    }
+   }
+  },
+  {
+   "level": 4,
+   "successes_per_action": {
+    "left": 0,
+    "right": 0,
+    "forward": 0,
+    "pickup": 0,
+    "toggle": 0
+   },
+   "achieving_action": null
+  }
+ ],
+ "acting": {
+  "discovered_conditions": {
+   "success": 0.992,
+   "mean_steps_when_successful": 17.6
+  },
+  "top_goal_only": {
+   "success": 0.0,
+   "mean_steps_when_successful": null
+  },
+  "random_play_chance_200_steps": 0.0137
+ },
+ "seconds": 164.5
+}

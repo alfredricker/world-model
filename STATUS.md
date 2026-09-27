@@ -3,38 +3,35 @@
 Overwritten each session. At most 40 lines.
 
 - **Date:** 2026-09-26
-- **Rung:** before rung 1. **Direction (agreed with the user today):**
-  theory first. The theory of conditions is written up in
-  [card 003](experiments/003-conditions-theory-check/card.md), section 2: a
-  condition is what the action that achieves a goal needs (the door opens
-  on a toggle only when facing it *and* holding the matching key), found by
-  contrasting successes with failed attempts; each condition becomes a
-  subgoal, down to movement. CHARTER has a "Theory first" paragraph.
-- **Card 003 (done, keep):** conditions theory check in an 8×8 key-door
-  room, random play, exact computation with simulator variables. Finding
-  conditions at the achieving step recovered every goal's exact conditions
-  (unlock: facing the door + matching key; key: facing it + empty hands;
-  doorway: facing the door + door open) from 10 successes; the distractor
-  key never works. Long-range jumps are dominated by the final approach.
-  Amendment: the chain goal square → door runs through positional
-  conditions (in the right room, in the doorway) that we named by hand.
-- **Card 001** (chained rooms screen): abandoned, "revise"; code kept.
-- **Card 002:** on hold. **Tooling:** `bin/prun` skips 32-bit libraries.
-- **Card 004 (done, keep):** walking to X as an action with conditions.
-  Found: walk to goal square needs "door open" (0.996); walking to door or
-  keys needs nothing. Chaining the found rules gave key → pickup → door →
-  toggle → goal in 500/500 new layouts, 1.006 × the shortest solution, no
-  place named by hand and the distractor never picked.
-- **Card 005 (running, approved):** learn achievement and walk values from
-  full-view frames. Final network (10k episodes, 100k updates, 20 min)
-  passes all three criteria on 500 new layouts: contrasts ≥ 99.6% right;
-  walk ranking 0.94–0.98; conditions read back from its predictions match
-  the truth. Changes that got there: FOIL-gain condition finder (same rules
-  as before on exact data), more rooms, longer training. P19 runs (10, 30,
-  100, 300 unlocks) in progress: `runs/005_p19.sh`, about 80 minutes.
-- **Next:** P19 results, card 005 decision; then card 003's appendix step 2
-  (conditions from a learned state, without supplied variables).
-- **Housekeeping:** LESSONS.md is over two pages (157 lines) and needs a
-  merge pass. Uncommitted: cards 003–004 (`envs/keydoor.py`, `conditions.py`,
-  `reach.py`, `tests/test_keydoor.py`; 41 tests pass) and today's document
-  edits.
+- **Rung:** before rung 1. **Direction (agreed with the user):** theory
+  first, focused on condition discovery until it is solid. Theory in
+  [card 003](experiments/003-conditions-theory-check/card.md) section 2:
+  a condition is what a goal's achieving action needs, found by
+  contrasting successes with failures; each condition becomes a subgoal.
+- **Card 003 (keep):** exact check in an 8×8 key-door room; conditions
+  found at the achieving step from 10 successes.
+- **Card 004 (keep):** walking to X is an action with conditions; the
+  chain key → door → goal appears without naming places; 500/500 layouts.
+- **Card 005 (keep):** achievement and walk values learned from full-view
+  frames pass on new layouts; needs ~300 unlocks (exact counting: 10).
+- **Card 006 (fail, revise):** conditions cannot be read off the network's
+  internal state afterwards (held redundantly); separable internal state
+  is not needed for discovery.
+- **Card 007 (pass, keep):** from pixels and one supplied goal (goal
+  square), each condition defined as "the states where this goal's
+  achieving action works are within walking reach". Discovered door open
+  (0.996) → holding the matching key (1.0) → empty hands (1.0; nothing
+  achieves it, so it is kept). Each behaves as a condition (100% / 0%);
+  acting on them solves 99.2% of new layouts vs 0% for the goal alone.
+  Caveat: card 005's encoder was also trained with other supplied goals.
+- **Next:** card 008, the same discovery on an encoder trained with only
+  the goal-square signal (or none), to remove that caveat. Then a world
+  where two conditions are needed at once (chained rooms).
+- **Earlier:** card 001 (chained rooms screen) abandoned, code kept; card
+  002 (rare-event sampling) on hold, a candidate fix for the ~300-unlock
+  need.
+- **Housekeeping:** LESSONS.md is over two pages (~180 lines), needs a
+  merge pass. Uncommitted: cards 003–007 code (`envs/keydoor*.py`,
+  `conditions.py`, `reach.py`, `learn_keydoor.py`, `latent_conditions.py`,
+  `discover.py`, `tests/test_keydoor.py`) and today's document edits.
+  **Tooling:** `bin/prun` skips 32-bit libraries.

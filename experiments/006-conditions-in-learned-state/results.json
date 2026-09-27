@@ -1,0 +1,2057 @@
+{
+ "gate_linear_readout_auc": {
+  "front=door": 1.0,
+  "carrying_matches_door=True": 1.0,
+  "door=open": 1.0,
+  "front_matches_door=True": 0.9995,
+  "carrying=none": 0.9998
+ },
+ "cells_on_z": {
+  "toggle, facing locked door, matching key": 1.0,
+  "toggle, facing locked door, other key": 1.0,
+  "toggle, facing locked door, nothing": 1.0,
+  "pickup, facing matching key, empty hands": 0.996,
+  "pickup, facing other key, empty hands": 0.996,
+  "forward, facing goal square": 1.0
+ },
+ "sae_sweep": [
+  {
+   "l1": 0.001,
+   "active_per_frame": 36.5,
+   "unexplained_variance": 0.009,
+   "dead_parts": 5,
+   "cells": {
+    "toggle, facing locked door, matching key": 1.0,
+    "toggle, facing locked door, other key": 1.0,
+    "toggle, facing locked door, nothing": 1.0,
+    "pickup, facing matching key, empty hands": 0.996,
+    "pickup, facing other key, empty hands": 0.9921,
+    "forward, facing goal square": 1.0
+   },
+   "fidelity_ok": true
+  }
+ ],
+ "sae_chosen": {
+  "l1": 0.001,
+  "active_per_frame": 36.5,
+  "unexplained_variance": 0.009,
+  "dead_parts": 5,
+  "cells": {
+   "toggle, facing locked door, matching key": 1.0,
+   "toggle, facing locked door, other key": 1.0,
+   "toggle, facing locked door, nothing": 1.0,
+   "pickup, facing matching key, empty hands": 0.996,
+   "pickup, facing other key, empty hands": 0.9921,
+   "forward, facing goal square": 1.0
+  },
+  "fidelity_ok": true
+ },
+ "dictionary": {
+  "unlock": {
+   "rules": [
+    {
+     "attempts": 55,
+     "achieves": 1.0,
+     "share_of_successes": 0.3642,
+     "removal": {
+      "994": 0.8983,
+      "390": 0.8693,
+      "881": 0.6327
+     },
+     "parts": [
+      "part994=on",
+      "part390=on",
+      "part881=on"
+     ],
+     "train": {
+      "achievement_probability": 0.997,
+      "share_of_successes": 0.392
+     },
+     "meaning": {
+      "part994=on": [
+       [
+        0.8136,
+        "front=door"
+       ],
+       [
+        0.8098,
+        "side=doorway"
+       ]
+      ],
+      "part390=on": [
+       [
+        0.6455,
+        "front=goal"
+       ],
+       [
+        0.6398,
+        "carrying_matches_door=True"
+       ]
+      ],
+      "part881=on": [
+       [
+        0.7716,
+        "front=door"
+       ],
+       [
+        0.583,
+        "front_colour=green"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 31,
+     "achieves": 1.0,
+     "share_of_successes": 0.2053,
+     "removal": {
+      "994": 1.0,
+      "253": 0.5975,
+      "881": 0.5455,
+      "1569": null
+     },
+     "parts": [
+      "part994=on",
+      "part253=on",
+      "part881=on",
+      "part545=off"
+     ],
+     "train": {
+      "achievement_probability": 0.975,
+      "share_of_successes": 0.113
+     },
+     "meaning": {
+      "part994=on": [
+       [
+        0.8136,
+        "front=door"
+       ],
+       [
+        0.8098,
+        "side=doorway"
+       ]
+      ],
+      "part253=on": [
+       [
+        0.6496,
+        "door=closed"
+       ],
+       [
+        0.6342,
+        "carrying_matches_door=True"
+       ]
+      ],
+      "part881=on": [
+       [
+        0.7716,
+        "front=door"
+       ],
+       [
+        0.583,
+        "front_colour=green"
+       ]
+      ],
+      "part545=off": [
+       [
+        0.6534,
+        "door=closed"
+       ],
+       [
+        0.6531,
+        "carrying_matches_door=True"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 22,
+     "achieves": 1.0,
+     "share_of_successes": 0.1457,
+     "removal": {
+      "994": 0.7083,
+      "291": 0.7963,
+      "58": 0.2593
+     },
+     "parts": [
+      "part994=on",
+      "part291=on",
+      "part58=on"
+     ],
+     "train": {
+      "achievement_probability": 0.967,
+      "share_of_successes": 0.059
+     },
+     "meaning": {
+      "part994=on": [
+       [
+        0.8136,
+        "front=door"
+       ],
+       [
+        0.8098,
+        "side=doorway"
+       ]
+      ],
+      "part291=on": [
+       [
+        0.9159,
+        "front=goal"
+       ],
+       [
+        0.8677,
+        "side=right"
+       ]
+      ],
+      "part58=on": [
+       [
+        0.7168,
+        "front=door"
+       ],
+       [
+        0.5686,
+        "door=closed"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 30,
+     "achieves": 1.0,
+     "share_of_successes": 0.1987,
+     "removal": {
+      "994": 0.7826,
+      "726": 0.8036,
+      "881": 0.8125
+     },
+     "parts": [
+      "part994=on",
+      "part726=on",
+      "part881=on"
+     ],
+     "train": {
+      "achievement_probability": 0.991,
+      "share_of_successes": 0.061
+     },
+     "meaning": {
+      "part994=on": [
+       [
+        0.8136,
+        "front=door"
+       ],
+       [
+        0.8098,
+        "side=doorway"
+       ]
+      ],
+      "part726=on": [
+       [
+        0.6095,
+        "door=closed"
+       ],
+       [
+        0.6053,
+        "carrying_colour=blue"
+       ]
+      ],
+      "part881=on": [
+       [
+        0.7716,
+        "front=door"
+       ],
+       [
+        0.583,
+        "front_colour=green"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 21,
+     "achieves": 1.0,
+     "share_of_successes": 0.1391,
+     "removal": {
+      "994": 0.9136,
+      "967": 0.7868,
+      "700": 0.3966
+     },
+     "parts": [
+      "part994=on",
+      "part967=on",
+      "part700=on"
+     ],
+     "train": {
+      "achievement_probability": 0.957,
+      "share_of_successes": 0.043
+     },
+     "meaning": {
+      "part994=on": [
+       [
+        0.8136,
+        "front=door"
+       ],
+       [
+        0.8098,
+        "side=doorway"
+       ]
+      ],
+      "part967=on": [
+       [
+        0.6947,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.6525,
+        "carrying_colour=red"
+       ]
+      ],
+      "part700=on": [
+       [
+        0.6748,
+        "front=door"
+       ],
+       [
+        0.5788,
+        "door=closed"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 55,
+     "achieves": 0.7455,
+     "share_of_successes": 0.2715,
+     "removal": {
+      "994": 0.174,
+      "1569": 0.7455,
+      "42": 0.1899,
+      "1342": 0.3883,
+      "1802": 0.7455,
+      "961": 0.2627
+     },
+     "parts": [
+      "part994=on",
+      "part545=off",
+      "part42=on",
+      "part318=off",
+      "part778=off",
+      "part961=on"
+     ],
+     "train": {
+      "achievement_probability": 0.922,
+      "share_of_successes": 0.098
+     },
+     "meaning": {
+      "part994=on": [
+       [
+        0.8136,
+        "front=door"
+       ],
+       [
+        0.8098,
+        "side=doorway"
+       ]
+      ],
+      "part545=off": [
+       [
+        0.6534,
+        "door=closed"
+       ],
+       [
+        0.6531,
+        "carrying_matches_door=True"
+       ]
+      ],
+      "part42=on": [
+       [
+        0.7106,
+        "front=door"
+       ],
+       [
+        0.5673,
+        "door=closed"
+       ]
+      ],
+      "part318=off": [
+       [
+        0.6113,
+        "door=closed"
+       ],
+       [
+        0.5976,
+        "door=open"
+       ]
+      ],
+      "part778=off": [
+       [
+        0.5749,
+        "door=closed"
+       ],
+       [
+        0.5713,
+        "carrying=key"
+       ]
+      ],
+      "part961=on": [
+       [
+        0.6941,
+        "front=door"
+       ],
+       [
+        0.5662,
+        "door=closed"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  "interventions": {
+   "successes": 151,
+   "predicted_before": 1.0,
+   "part994=on": {
+    "frames": 41,
+    "below_0.1": 0.0,
+    "mean_after": 0.9996
+   },
+   "part390=on": {
+    "frames": 55,
+    "below_0.1": 0.0,
+    "mean_after": 1.0
+   },
+   "part881=on": {
+    "frames": 30,
+    "below_0.1": 0.0333,
+    "mean_after": 0.9316
+   },
+   "rule 0: other active part off, still >= 0.9": 0.9818,
+   "part253=on": {
+    "frames": 31,
+    "below_0.1": 0.0,
+    "mean_after": 0.9999
+   },
+   "part545=off": "off-part: not switched",
+   "rule 1: other active part off, still >= 0.9": 0.9677,
+   "part291=on": {
+    "frames": 22,
+    "below_0.1": 0.0,
+    "mean_after": 1.0
+   },
+   "part58=on": {
+    "frames": 22,
+    "below_0.1": 0.1818,
+    "mean_after": 0.7153
+   },
+   "rule 2: other active part off, still >= 0.9": 1.0,
+   "part726=on": {
+    "frames": 30,
+    "below_0.1": 0.0,
+    "mean_after": 1.0
+   },
+   "rule 3: other active part off, still >= 0.9": 1.0,
+   "part967=on": {
+    "frames": 21,
+    "below_0.1": 0.0,
+    "mean_after": 1.0
+   },
+   "part700=on": {
+    "frames": 21,
+    "below_0.1": 0.3333,
+    "mean_after": 0.5939
+   },
+   "rule 4: other active part off, still >= 0.9": 1.0,
+   "part42=on": {
+    "frames": 41,
+    "below_0.1": 0.5854,
+    "mean_after": 0.4165
+   },
+   "part318=off": "off-part: not switched",
+   "part778=off": "off-part: not switched",
+   "part961=on": {
+    "frames": 41,
+    "below_0.1": 0.2439,
+    "mean_after": 0.7421
+   },
+   "rule 5: other active part off, still >= 0.9": 1.0
+  },
+  "holding_key": {
+   "rules": [
+    {
+     "attempts": 92,
+     "achieves": 0.8913,
+     "share_of_successes": 0.332,
+     "removal": {
+      "513": 0.5428,
+      "996": 0.809,
+      "1707": 0.786,
+      "1214": 0.4439,
+      "1024": 0.4113
+     },
+     "parts": [
+      "part513=on",
+      "part996=on",
+      "part683=off",
+      "part190=off",
+      "part0=off"
+     ],
+     "train": {
+      "achievement_probability": 0.92,
+      "share_of_successes": 0.348
+     },
+     "meaning": {
+      "part513=on": [
+       [
+        0.5681,
+        "front_matches_door=True"
+       ],
+       [
+        0.561,
+        "front=key"
+       ]
+      ],
+      "part996=on": [
+       [
+        0.5653,
+        "front_colour=red"
+       ],
+       [
+        0.5586,
+        "door=closed"
+       ]
+      ],
+      "part683=off": [
+       [
+        0.5813,
+        "carrying=key"
+       ],
+       [
+        0.5769,
+        "door=closed"
+       ]
+      ],
+      "part190=off": [
+       [
+        0.6529,
+        "carrying=key"
+       ],
+       [
+        0.587,
+        "door=closed"
+       ]
+      ],
+      "part0=off": [
+       [
+        0.6445,
+        "carrying=key"
+       ],
+       [
+        0.5855,
+        "door=closed"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 40,
+     "achieves": 0.85,
+     "share_of_successes": 0.1377,
+     "removal": {
+      "513": 0.8115,
+      "198": 0.85,
+      "545": 0.4761
+     },
+     "parts": [
+      "part513=on",
+      "part198=on",
+      "part545=on"
+     ],
+     "train": {
+      "achievement_probability": 0.908,
+      "share_of_successes": 0.135
+     },
+     "meaning": {
+      "part513=on": [
+       [
+        0.5681,
+        "front_matches_door=True"
+       ],
+       [
+        0.561,
+        "front=key"
+       ]
+      ],
+      "part198=on": [
+       [
+        0.5831,
+        "carrying_colour=none"
+       ],
+       [
+        0.5831,
+        "carrying=none"
+       ]
+      ],
+      "part545=on": [
+       [
+        0.6845,
+        "carrying_colour=red"
+       ],
+       [
+        0.6843,
+        "carrying_matches_door=False"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 19,
+     "achieves": 0.9474,
+     "share_of_successes": 0.0729,
+     "removal": {
+      "513": null,
+      "198": 0.9151,
+      "990": 0.1474,
+      "12": 0.3147
+     },
+     "parts": [
+      "part513=on",
+      "part198=on",
+      "part990=on",
+      "part12=on"
+     ],
+     "train": {
+      "achievement_probability": 0.971,
+      "share_of_successes": 0.043
+     },
+     "meaning": {
+      "part513=on": [
+       [
+        0.5681,
+        "front_matches_door=True"
+       ],
+       [
+        0.561,
+        "front=key"
+       ]
+      ],
+      "part198=on": [
+       [
+        0.5831,
+        "carrying_colour=none"
+       ],
+       [
+        0.5831,
+        "carrying=none"
+       ]
+      ],
+      "part990=on": [
+       [
+        0.6422,
+        "carrying_colour=none"
+       ],
+       [
+        0.6422,
+        "carrying=none"
+       ]
+      ],
+      "part12=on": [
+       [
+        0.6139,
+        "front_colour=green"
+       ],
+       [
+        0.5616,
+        "door=closed"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 64,
+     "achieves": 0.9688,
+     "share_of_successes": 0.251,
+     "removal": {
+      "513": 0.4911,
+      "996": 0.933,
+      "471": 0.5256,
+      "1929": 0.9021
+     },
+     "parts": [
+      "part513=on",
+      "part996=on",
+      "part471=on",
+      "part905=off"
+     ],
+     "train": {
+      "achievement_probability": 0.906,
+      "share_of_successes": 0.103
+     },
+     "meaning": {
+      "part513=on": [
+       [
+        0.5681,
+        "front_matches_door=True"
+       ],
+       [
+        0.561,
+        "front=key"
+       ]
+      ],
+      "part996=on": [
+       [
+        0.5653,
+        "front_colour=red"
+       ],
+       [
+        0.5586,
+        "door=closed"
+       ]
+      ],
+      "part471=on": [
+       [
+        0.5951,
+        "carrying_colour=none"
+       ],
+       [
+        0.5951,
+        "carrying=none"
+       ]
+      ],
+      "part905=off": [
+       [
+        0.6834,
+        "front_matches_door=False"
+       ],
+       [
+        0.5869,
+        "front_colour=none"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 20,
+     "achieves": 0.9,
+     "share_of_successes": 0.0729,
+     "removal": {
+      "513": 0.9,
+      "198": 0.7235,
+      "990": 0.6,
+      "741": 0.2608
+     },
+     "parts": [
+      "part513=on",
+      "part198=on",
+      "part990=on",
+      "part741=on"
+     ],
+     "train": {
+      "achievement_probability": 0.95,
+      "share_of_successes": 0.035
+     },
+     "meaning": {
+      "part513=on": [
+       [
+        0.5681,
+        "front_matches_door=True"
+       ],
+       [
+        0.561,
+        "front=key"
+       ]
+      ],
+      "part198=on": [
+       [
+        0.5831,
+        "carrying_colour=none"
+       ],
+       [
+        0.5831,
+        "carrying=none"
+       ]
+      ],
+      "part990=on": [
+       [
+        0.6422,
+        "carrying_colour=none"
+       ],
+       [
+        0.6422,
+        "carrying=none"
+       ]
+      ],
+      "part741=on": [
+       [
+        0.6089,
+        "front_colour=green"
+       ],
+       [
+        0.5747,
+        "front_matches_door=True"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 49,
+     "achieves": 0.9796,
+     "share_of_successes": 0.1943,
+     "removal": {
+      "996": 0.924,
+      "471": 0.9796,
+      "1810": 0.4082,
+      "835": 0.3923
+     },
+     "parts": [
+      "part996=on",
+      "part471=on",
+      "part786=off",
+      "part835=on"
+     ],
+     "train": {
+      "achievement_probability": 0.986,
+      "share_of_successes": 0.065
+     },
+     "meaning": {
+      "part996=on": [
+       [
+        0.5653,
+        "front_colour=red"
+       ],
+       [
+        0.5586,
+        "door=closed"
+       ]
+      ],
+      "part471=on": [
+       [
+        0.5951,
+        "carrying_colour=none"
+       ],
+       [
+        0.5951,
+        "carrying=none"
+       ]
+      ],
+      "part786=off": [
+       [
+        0.7305,
+        "carrying=key"
+       ],
+       [
+        0.5972,
+        "door=closed"
+       ]
+      ],
+      "part835=on": [
+       [
+        0.7218,
+        "front_colour=red"
+       ],
+       [
+        0.6823,
+        "front_matches_door=True"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "raw_units": {
+  "unlock": {
+   "rules": [
+    {
+     "attempts": 72,
+     "achieves": 1.0,
+     "share_of_successes": 0.4768,
+     "removal": {
+      "370": 0.6818,
+      "332": 1.0,
+      "325": 0.9777
+     },
+     "parts": [
+      "unit114=off",
+      "unit76=off",
+      "unit69=off"
+     ],
+     "train": {
+      "achievement_probability": 1.0,
+      "share_of_successes": 0.481
+     },
+     "meaning": {
+      "unit114=off": [
+       [
+        0.8753,
+        "front_matches_door=True"
+       ],
+       [
+        0.8669,
+        "front=key"
+       ]
+      ],
+      "unit76=off": [
+       [
+        0.7734,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.7251,
+        "carrying_colour=red"
+       ]
+      ],
+      "unit69=off": [
+       [
+        0.7385,
+        "carrying_matches_door=False"
+       ],
+       [
+        0.6725,
+        "front_colour=red"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 71,
+     "achieves": 1.0,
+     "share_of_successes": 0.4702,
+     "removal": {
+      "358": 0.9677,
+      "370": 0.9348,
+      "332": 1.0,
+      "481": 1.0,
+      "197": 0.1509
+     },
+     "parts": [
+      "unit102=off",
+      "unit114=off",
+      "unit76=off",
+      "unit225=off",
+      "unit197=on"
+     ],
+     "train": {
+      "achievement_probability": 0.984,
+      "share_of_successes": 0.215
+     },
+     "meaning": {
+      "unit102=off": [
+       [
+        0.9137,
+        "front=door"
+       ],
+       [
+        0.6388,
+        "side=doorway"
+       ]
+      ],
+      "unit114=off": [
+       [
+        0.8753,
+        "front_matches_door=True"
+       ],
+       [
+        0.8669,
+        "front=key"
+       ]
+      ],
+      "unit76=off": [
+       [
+        0.7734,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.7251,
+        "carrying_colour=red"
+       ]
+      ],
+      "unit225=off": [
+       [
+        0.7533,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.719,
+        "carrying_colour=green"
+       ]
+      ],
+      "unit197=on": [
+       [
+        0.5975,
+        "front=door"
+       ],
+       [
+        0.5771,
+        "front_colour=red"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 65,
+     "achieves": 0.9538,
+     "share_of_successes": 0.4106,
+     "removal": {
+      "358": 0.9381,
+      "373": 0.9538,
+      "332": 0.9538,
+      "481": 0.9538,
+      "89": 0.4599,
+      "449": 0.6038
+     },
+     "parts": [
+      "unit102=off",
+      "unit117=off",
+      "unit76=off",
+      "unit225=off",
+      "unit89=on",
+      "unit193=off"
+     ],
+     "train": {
+      "achievement_probability": 0.969,
+      "share_of_successes": 0.173
+     },
+     "meaning": {
+      "unit102=off": [
+       [
+        0.9137,
+        "front=door"
+       ],
+       [
+        0.6388,
+        "side=doorway"
+       ]
+      ],
+      "unit117=off": [
+       [
+        0.6964,
+        "side=doorway"
+       ],
+       [
+        0.6773,
+        "front=door"
+       ]
+      ],
+      "unit76=off": [
+       [
+        0.7734,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.7251,
+        "carrying_colour=red"
+       ]
+      ],
+      "unit225=off": [
+       [
+        0.7533,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.719,
+        "carrying_colour=green"
+       ]
+      ],
+      "unit89=on": [
+       [
+        0.6649,
+        "front=door"
+       ],
+       [
+        0.6492,
+        "front=goal"
+       ]
+      ],
+      "unit193=off": [
+       [
+        0.7735,
+        "front=key"
+       ],
+       [
+        0.7709,
+        "front_matches_door=True"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 59,
+     "achieves": 0.9831,
+     "share_of_successes": 0.3841,
+     "removal": {
+      "358": 0.9532,
+      "373": -0.0169,
+      "332": 0.9831,
+      "481": 0.9831,
+      "426": 0.6213
+     },
+     "parts": [
+      "unit102=off",
+      "unit117=off",
+      "unit76=off",
+      "unit225=off",
+      "unit170=off"
+     ],
+     "train": {
+      "achievement_probability": 1.0,
+      "share_of_successes": 0.036
+     },
+     "meaning": {
+      "unit102=off": [
+       [
+        0.9137,
+        "front=door"
+       ],
+       [
+        0.6388,
+        "side=doorway"
+       ]
+      ],
+      "unit117=off": [
+       [
+        0.6964,
+        "side=doorway"
+       ],
+       [
+        0.6773,
+        "front=door"
+       ]
+      ],
+      "unit76=off": [
+       [
+        0.7734,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.7251,
+        "carrying_colour=red"
+       ]
+      ],
+      "unit225=off": [
+       [
+        0.7533,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.719,
+        "carrying_colour=green"
+       ]
+      ],
+      "unit170=off": [
+       [
+        0.7332,
+        "front=goal"
+       ],
+       [
+        0.6878,
+        "front=door"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 10,
+     "achieves": 1.0,
+     "share_of_successes": 0.0662,
+     "removal": {
+      "370": 0.8,
+      "332": 1.0,
+      "481": 1.0,
+      "351": 0.4865,
+      "89": 0.625,
+      "28": 1.0
+     },
+     "parts": [
+      "unit114=off",
+      "unit76=off",
+      "unit225=off",
+      "unit95=off",
+      "unit89=on",
+      "unit28=on"
+     ],
+     "train": {
+      "achievement_probability": 1.0,
+      "share_of_successes": 0.018
+     },
+     "meaning": {
+      "unit114=off": [
+       [
+        0.8753,
+        "front_matches_door=True"
+       ],
+       [
+        0.8669,
+        "front=key"
+       ]
+      ],
+      "unit76=off": [
+       [
+        0.7734,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.7251,
+        "carrying_colour=red"
+       ]
+      ],
+      "unit225=off": [
+       [
+        0.7533,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.719,
+        "carrying_colour=green"
+       ]
+      ],
+      "unit95=off": [
+       [
+        0.6933,
+        "side=right"
+       ],
+       [
+        0.5953,
+        "front=door"
+       ]
+      ],
+      "unit89=on": [
+       [
+        0.6649,
+        "front=door"
+       ],
+       [
+        0.6492,
+        "front=goal"
+       ]
+      ],
+      "unit28=on": [
+       [
+        0.9622,
+        "front_matches_door=False"
+       ],
+       [
+        0.8384,
+        "front_colour=none"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 62,
+     "achieves": 0.9194,
+     "share_of_successes": 0.3775,
+     "removal": {
+      "370": 0.9052,
+      "489": 0.8444,
+      "332": 0.9194,
+      "481": 0.9194,
+      "426": 0.694,
+      "37": 0.2527
+     },
+     "parts": [
+      "unit114=off",
+      "unit233=off",
+      "unit76=off",
+      "unit225=off",
+      "unit170=off",
+      "unit37=on"
+     ],
+     "train": {
+      "achievement_probability": 0.959,
+      "share_of_successes": 0.015
+     },
+     "meaning": {
+      "unit114=off": [
+       [
+        0.8753,
+        "front_matches_door=True"
+       ],
+       [
+        0.8669,
+        "front=key"
+       ]
+      ],
+      "unit233=off": [
+       [
+        0.7942,
+        "front_matches_door=False"
+       ],
+       [
+        0.7122,
+        "front_colour=none"
+       ]
+      ],
+      "unit76=off": [
+       [
+        0.7734,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.7251,
+        "carrying_colour=red"
+       ]
+      ],
+      "unit225=off": [
+       [
+        0.7533,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.719,
+        "carrying_colour=green"
+       ]
+      ],
+      "unit170=off": [
+       [
+        0.7332,
+        "front=goal"
+       ],
+       [
+        0.6878,
+        "front=door"
+       ]
+      ],
+      "unit37=on": [
+       [
+        0.7265,
+        "front=key"
+       ],
+       [
+        0.7227,
+        "front_matches_door=True"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  "interventions": {
+   "successes": 151,
+   "predicted_before": 1.0,
+   "unit114=off": "off-part: not switched",
+   "unit76=off": "off-part: not switched",
+   "unit69=off": "off-part: not switched",
+   "rule 0: other active part off, still >= 0.9": 0.9861,
+   "unit102=off": "off-part: not switched",
+   "unit225=off": "off-part: not switched",
+   "unit197=on": {
+    "frames": 71,
+    "below_0.1": 0.0,
+    "mean_after": 1.0
+   },
+   "rule 1: other active part off, still >= 0.9": 0.9859,
+   "unit117=off": "off-part: not switched",
+   "unit89=on": {
+    "frames": 10,
+    "below_0.1": 0.0,
+    "mean_after": 1.0
+   },
+   "unit193=off": "off-part: not switched",
+   "rule 2: other active part off, still >= 0.9": 1.0,
+   "unit170=off": "off-part: not switched",
+   "rule 3: other active part off, still >= 0.9": 0.9828,
+   "unit95=off": "off-part: not switched",
+   "unit28=on": {
+    "frames": 10,
+    "below_0.1": 0.0,
+    "mean_after": 1.0
+   },
+   "rule 4: other active part off, still >= 0.9": 1.0,
+   "unit233=off": "off-part: not switched",
+   "unit37=on": {
+    "frames": 57,
+    "below_0.1": 0.0,
+    "mean_after": 0.9999
+   },
+   "rule 5: other active part off, still >= 0.9": 1.0
+  },
+  "holding_key": {
+   "rules": [
+    {
+     "attempts": 109,
+     "achieves": 0.9266,
+     "share_of_successes": 0.4089,
+     "removal": {
+      "284": 0.9266,
+      "135": 0.9254,
+      "487": 0.8155,
+      "383": 0.4539,
+      "186": 0.4504
+     },
+     "parts": [
+      "unit28=off",
+      "unit135=on",
+      "unit231=off",
+      "unit127=off",
+      "unit186=on"
+     ],
+     "train": {
+      "achievement_probability": 0.908,
+      "share_of_successes": 0.439
+     },
+     "meaning": {
+      "unit28=off": [
+       [
+        0.9725,
+        "front=key"
+       ],
+       [
+        0.9605,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit135=on": [
+       [
+        0.8485,
+        "carrying_colour=none"
+       ],
+       [
+        0.8485,
+        "carrying=none"
+       ]
+      ],
+      "unit231=off": [
+       [
+        0.9633,
+        "front=key"
+       ],
+       [
+        0.9533,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit127=off": [
+       [
+        0.7033,
+        "carrying=key"
+       ],
+       [
+        0.6123,
+        "door=closed"
+       ]
+      ],
+      "unit186=on": [
+       [
+        0.5715,
+        "door=closed"
+       ],
+       [
+        0.5608,
+        "side=left"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 80,
+     "achieves": 0.9625,
+     "share_of_successes": 0.3117,
+     "removal": {
+      "284": 0.9625,
+      "155": 0.8625,
+      "127": 0.805,
+      "309": 0.4958,
+      "445": 0.4482
+     },
+     "parts": [
+      "unit28=off",
+      "unit155=on",
+      "unit127=on",
+      "unit53=off",
+      "unit189=off"
+     ],
+     "train": {
+      "achievement_probability": 0.92,
+      "share_of_successes": 0.3
+     },
+     "meaning": {
+      "unit28=off": [
+       [
+        0.9725,
+        "front=key"
+       ],
+       [
+        0.9605,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit155=on": [
+       [
+        0.7396,
+        "carrying_colour=none"
+       ],
+       [
+        0.7396,
+        "carrying=none"
+       ]
+      ],
+      "unit127=on": [
+       [
+        0.7399,
+        "carrying_colour=none"
+       ],
+       [
+        0.7399,
+        "carrying=none"
+       ]
+      ],
+      "unit53=off": [
+       [
+        0.8364,
+        "front_colour=red"
+       ],
+       [
+        0.8088,
+        "front=goal"
+       ]
+      ],
+      "unit189=off": [
+       [
+        0.7443,
+        "front=key"
+       ],
+       [
+        0.7403,
+        "front_matches_door=True"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 89,
+     "achieves": 0.9551,
+     "share_of_successes": 0.3441,
+     "removal": {
+      "284": 0.9551,
+      "155": 0.9551,
+      "487": null,
+      "448": 0.5265,
+      "306": 0.2801,
+      "127": 0.8507
+     },
+     "parts": [
+      "unit28=off",
+      "unit155=on",
+      "unit231=off",
+      "unit192=off",
+      "unit50=off",
+      "unit127=on"
+     ],
+     "train": {
+      "achievement_probability": 0.947,
+      "share_of_successes": 0.089
+     },
+     "meaning": {
+      "unit28=off": [
+       [
+        0.9725,
+        "front=key"
+       ],
+       [
+        0.9605,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit155=on": [
+       [
+        0.7396,
+        "carrying_colour=none"
+       ],
+       [
+        0.7396,
+        "carrying=none"
+       ]
+      ],
+      "unit231=off": [
+       [
+        0.9633,
+        "front=key"
+       ],
+       [
+        0.9533,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit192=off": [
+       [
+        0.712,
+        "carrying=key"
+       ],
+       [
+        0.5938,
+        "door=closed"
+       ]
+      ],
+      "unit50=off": [
+       [
+        0.7804,
+        "front_colour=red"
+       ],
+       [
+        0.7114,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit127=on": [
+       [
+        0.7399,
+        "carrying_colour=none"
+       ],
+       [
+        0.7399,
+        "carrying=none"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 48,
+     "achieves": 0.8958,
+     "share_of_successes": 0.1741,
+     "removal": {
+      "284": 0.8958,
+      "135": 0.8934,
+      "472": 0.2958,
+      "282": 0.1458,
+      "62": 0.2728
+     },
+     "parts": [
+      "unit28=off",
+      "unit135=on",
+      "unit216=off",
+      "unit26=off",
+      "unit62=on"
+     ],
+     "train": {
+      "achievement_probability": 0.92,
+      "share_of_successes": 0.04
+     },
+     "meaning": {
+      "unit28=off": [
+       [
+        0.9725,
+        "front=key"
+       ],
+       [
+        0.9605,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit135=on": [
+       [
+        0.8485,
+        "carrying_colour=none"
+       ],
+       [
+        0.8485,
+        "carrying=none"
+       ]
+      ],
+      "unit216=off": [
+       [
+        0.9215,
+        "front=key"
+       ],
+       [
+        0.9153,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit26=off": [
+       [
+        0.8244,
+        "front_colour=red"
+       ],
+       [
+        0.8106,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit62=on": [
+       [
+        0.7193,
+        "carrying_matches_door=False"
+       ],
+       [
+        0.6795,
+        "front_colour=green"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 133,
+     "achieves": 0.8797,
+     "share_of_successes": 0.4737,
+     "removal": {
+      "284": 0.8797,
+      "155": 0.5161,
+      "135": 0.8433,
+      "487": 0.5047,
+      "282": 0.5226,
+      "69": 0.1097,
+      "186": 0.3797
+     },
+     "parts": [
+      "unit28=off",
+      "unit155=on",
+      "unit135=on",
+      "unit231=off",
+      "unit26=off",
+      "unit69=on",
+      "unit186=on"
+     ],
+     "train": {
+      "achievement_probability": 0.875,
+      "share_of_successes": 0.055
+     },
+     "meaning": {
+      "unit28=off": [
+       [
+        0.9725,
+        "front=key"
+       ],
+       [
+        0.9605,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit155=on": [
+       [
+        0.7396,
+        "carrying_colour=none"
+       ],
+       [
+        0.7396,
+        "carrying=none"
+       ]
+      ],
+      "unit135=on": [
+       [
+        0.8485,
+        "carrying_colour=none"
+       ],
+       [
+        0.8485,
+        "carrying=none"
+       ]
+      ],
+      "unit231=off": [
+       [
+        0.9633,
+        "front=key"
+       ],
+       [
+        0.9533,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit26=off": [
+       [
+        0.8244,
+        "front_colour=red"
+       ],
+       [
+        0.8106,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit69=on": [
+       [
+        0.7521,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.7064,
+        "carrying_colour=red"
+       ]
+      ],
+      "unit186=on": [
+       [
+        0.5715,
+        "door=closed"
+       ],
+       [
+        0.5608,
+        "side=left"
+       ]
+      ]
+     }
+    },
+    {
+     "attempts": 54,
+     "achieves": 0.8889,
+     "share_of_successes": 0.1943,
+     "removal": {
+      "284": 0.8889,
+      "135": 0.8877,
+      "472": 0.2889,
+      "282": 0.0556,
+      "270": 0.2708
+     },
+     "parts": [
+      "unit28=off",
+      "unit135=on",
+      "unit216=off",
+      "unit26=off",
+      "unit14=off"
+     ],
+     "train": {
+      "achievement_probability": 0.898,
+      "share_of_successes": 0.015
+     },
+     "meaning": {
+      "unit28=off": [
+       [
+        0.9725,
+        "front=key"
+       ],
+       [
+        0.9605,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit135=on": [
+       [
+        0.8485,
+        "carrying_colour=none"
+       ],
+       [
+        0.8485,
+        "carrying=none"
+       ]
+      ],
+      "unit216=off": [
+       [
+        0.9215,
+        "front=key"
+       ],
+       [
+        0.9153,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit26=off": [
+       [
+        0.8244,
+        "front_colour=red"
+       ],
+       [
+        0.8106,
+        "front_matches_door=True"
+       ]
+      ],
+      "unit14=off": [
+       [
+        0.8235,
+        "carrying=key"
+       ],
+       [
+        0.6918,
+        "carrying_colour=green"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "subgoal": {
+  "part967": {
+   "means": "carrying_matches_door=True",
+   "events": 247,
+   "switch_ons": 2622,
+   "recall": 0.5263,
+   "precision": 0.0496,
+   "subgoal_rules": [
+    {
+     "action": "left",
+     "achieves": 0.943,
+     "share": 0.009,
+     "parts": {
+      "part551=on": [
+       [
+        0.6476,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.6038,
+        "carrying_colour=green"
+       ]
+      ],
+      "part644=off": [
+       [
+        0.5828,
+        "carrying_matches_door=False"
+       ],
+       [
+        0.5495,
+        "side=right"
+       ]
+      ],
+      "part1004=on": [
+       [
+        0.6472,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.583,
+        "door=closed"
+       ]
+      ],
+      "part895=on": [
+       [
+        0.5605,
+        "door=closed"
+       ],
+       [
+        0.5437,
+        "side=right"
+       ]
+      ],
+      "part672=off": [
+       [
+        0.5737,
+        "carrying_matches_door=False"
+       ],
+       [
+        0.5736,
+        "side=right"
+       ]
+      ],
+      "part567=off": [
+       [
+        0.568,
+        "side=doorway"
+       ],
+       [
+        0.5596,
+        "door=closed"
+       ]
+      ]
+     }
+    },
+    {
+     "action": "left",
+     "achieves": 0.919,
+     "share": 0.008,
+     "parts": {
+      "part253=on": [
+       [
+        0.6496,
+        "door=closed"
+       ],
+       [
+        0.6342,
+        "carrying_matches_door=True"
+       ]
+      ],
+      "part1004=on": [
+       [
+        0.6472,
+        "carrying_matches_door=True"
+       ],
+       [
+        0.583,
+        "door=closed"
+       ]
+      ],
+      "part644=off": [
+       [
+        0.5828,
+        "carrying_matches_door=False"
+       ],
+       [
+        0.5495,
+        "side=right"
+       ]
+      ],
+      "part205=on": [
+       [
+        0.5735,
+        "door=closed"
+       ],
+       [
+        0.5453,
+        "door=open"
+       ]
+      ],
+      "part404=on": [
+       [
+        0.5538,
+        "door=closed"
+       ],
+       [
+        0.5389,
+        "side=doorway"
+       ]
+      ],
+      "part725=off": [
+       [
+        0.5588,
+        "side=right"
+       ],
+       [
+        0.5555,
+        "door=closed"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "walk_to_goal": [
+  {
+   "parts": {
+    "part616=on": [
+     [
+      0.8912,
+      "door=open"
+     ],
+     [
+      0.8033,
+      "door=closed"
+     ]
+    ],
+    "part275=on": [
+     [
+      0.8492,
+      "side=doorway"
+     ],
+     [
+      0.846,
+      "front=goal"
+     ]
+    ]
+   },
+   "achieves": 0.961,
+   "share": 0.484
+  },
+  {
+   "parts": {
+    "part616=on": [
+     [
+      0.8912,
+      "door=open"
+     ],
+     [
+      0.8033,
+      "door=closed"
+     ]
+    ],
+    "part291=on": [
+     [
+      0.9159,
+      "front=goal"
+     ],
+     [
+      0.8677,
+      "side=right"
+     ]
+    ]
+   },
+   "achieves": 0.916,
+   "share": 0.191
+  }
+ ],
+ "seconds": 84.0
+}

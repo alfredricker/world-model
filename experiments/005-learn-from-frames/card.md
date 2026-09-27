@@ -3,8 +3,8 @@ id: "005"
 title: learn from frames
 rung: 0
 serves: [P12, P6, P9, P19]
-status: running   # draft | approved | gated | running | done | abandoned
-verdict:
+status: done   # draft | approved | gated | running | done | abandoned
+verdict: pass
 arch_version: 0
 date: 2026-09-26
 ---
@@ -198,7 +198,31 @@ matching key (1.0 each); pickup needs facing the matching key + empty hands
 
 Which change did what: the finder alone fixed criterion 3; more rooms
 fixed the key colour (criterion 1); longer training fixed walk distances
-(criterion 2). P19 runs (10, 30, 100, 300 unlock episodes, same settings)
-are running: `runs/005_p19.sh`.
+(criterion 2).
+
+**P19: few unlocks.** Same settings as the final network, keeping every
+training episode without an unlock and only N with one
+(`runs/005_p19.sh`). Criterion-1 cells that depend on unlocking:
+
+| Unlock episodes | Toggle with matching key (1): mean / right side | Wrong key, empty hands (0): right side | Forward onto goal square (1): right side | Unlock rule read back |
+|---|---|---|---|---|
+| 10 | 0.04 / 4% | 99.7%, 100% | 4% | facing door + matching key, with incidental parts (blue key, row 6); probability 0.29 |
+| 30 | 0.45 / 45% | 100%, 100% | 6% | right parts plus incidental ones |
+| 100 | 0.87 / 90% | 100%, 100% | 66% | right (0.90) |
+| 300 | 1.00 / 100% | 100%, 100% | 80% | right (1.0) |
+| 3219 (final) | 1.00 / 100% | 100%, 100% | 100% | right (1.0) |
+
+With few examples the network errs toward "will not open", never toward
+the wrong key. Reaching the goal square suffers too, because it needs an
+unlock first. Exact counting (card 003) needed 10; from pixels it takes
+about 300 for unlocking itself and more for what follows it.
 
 ## 8. Decision
+
+**Keep.** From pixels alone, with supplied success signals, one network
+learns both quantities the theory rests on (achievement probability and
+walk value), and card 003's conditions can be read back from its
+predictions on new layouts. Two limits carry forward: the conditions were
+read in the simulator's vocabulary (card 006 looks for them in the
+network's own state), and it needs about 300 unlocks where exact counting
+needed 10 (P19; card 002's sampling, adapted, is the candidate fix).
