@@ -33,12 +33,13 @@ from .logic_conditions import Data, log_evidence
 
 ACTIONS = ld.ACTION_NAMES
 MOVES = (ld.LEFT, ld.RIGHT, ld.FORWARD)
-GAMMA_WALK = 0.95          # walk value: for moving (closer is higher)
+GAMMA_WALK = 0.8           # walk value: for moving (closer is higher; a clear gap per step, card 012 bench)
 GAMMA_REACH = 0.99         # reach value: "can get there at all" (see card 012)
 MAX_DEPTH = 6
 MAX_GOALS = 16             # declared compute budget: goals in the tree
 START_SHARE = 0.5
 K_MAX = MAX_GOALS
+VAL_SLOTS = K_MAX          # value outputs: one (walk, reach) pair per way, indexed by the way's node id
 CHUNK = 250                # episodes per collection job
 
 
@@ -491,6 +492,7 @@ def make_model(width=256):
                 nn.Conv2d(64, 64, 4, 2, 1), nn.ReLU(), nn.Flatten(), nn.Linear(64 * 9 * 8, width), nn.ReLU())
             self.ach = nn.Sequential(nn.Linear(width, width), nn.ReLU(), nn.Linear(width, K_MAX * len(ACTIONS)))
             self.walk = nn.Sequential(nn.Linear(width, width), nn.ReLU(), nn.Linear(width, 3))
+            self.val = MinHead(VAL_SLOTS, width)
 
     return Model()
 
@@ -498,7 +500,8 @@ def make_model(width=256):
 class Trainer:
     """Encoder + achievement outputs for every goal so far + the goal
     square's walk value (card 008's encoder G, then continual fine-tuning).
-    Event rows are over-sampled per goal with importance weights."""
+    Event rows are over-sampled per goal with importance weights; way values
+    train on their own uniform batch of walking steps."""
 
     def __init__(self, model, tr, device, seed=0):
         torch, nn, F = _torch()
@@ -512,12 +515,17 @@ class Trainer:
         self.c1 = torch.from_numpy(tr["c1"]).to(device)
         self.act = torch.from_numpy(tr["act"].astype(np.int64)).to(device)
         self.term1 = torch.from_numpy(tr["term1"]).to(device)
+        # each way's ready frames (fixed when the way is found): value targets
+        self.rd0 = torch.zeros(len(self.act), VAL_SLOTS, dtype=torch.bool, device=device)
+        self.rd1 = torch.zeros(len(self.act), VAL_SLOTS, dtype=torch.bool, device=device)
         self.opt = torch.optim.Adam(self.model.parameters(), lr=3e-4, fused=True)
         self.params, self.tparams = list(self.model.parameters()), list(self.target.parameters())
         model, target, tiles, c0, c1, act, term1 = self.model, self.target, self.tiles, self.c0, self.c1, self.act, self.term1
+        rd0, rd1 = self.rd0, self.rd1
         nA = len(ACTIONS)
+        gam = torch.tensor([GAMMA_WALK, GAMMA_REACH], device=device).view(1, 1, 2)
 
-        def step(r, y, m, wm):
+        def step(r, y, m, wm, rv, vmask, with_values: bool):
             img0 = render(c0[r].long(), tiles).permute(0, 3, 1, 2).float() / 255.0
             img1 = render(c1[r].long(), tiles).permute(0, 3, 1, 2).float() / 255.0
             a = act[r]
@@ -534,12 +542,39 @@ class Trainer:
             qa = q.gather(1, a.clamp(max=2).view(-1, 1)).squeeze(1)
             yq = torch.where(term1[r], 1.0, GAMMA_WALK * q1.max(1).values)
             loss_w = ((qa - yq) ** 2 * wm).sum() / wm.sum().clamp_min(1.0)
-            (loss_a + loss_w).backward()
-            return loss_a.detach(), loss_w.detach()
+            loss_v = torch.zeros((), device=device)
+            if with_values:
+                # Way values (walk, reach) trained through the encoder on their own
+                # uniform batch of walking steps: learning "can I get there" makes the
+                # encoder show what decides it; frozen features did not (card 012 bench).
+                n = VAL_SLOTS
+                av = act[rv]
+                iv0 = render(c0[rv].long(), tiles).permute(0, 3, 1, 2).float() / 255.0
+                iv1 = render(c1[rv].long(), tiles).permute(0, 3, 1, 2).float() / 255.0
+                with torch.autocast("cuda", dtype=torch.bfloat16):
+                    vs = model.val.both(model.enc(iv0))
+                    with torch.no_grad():
+                        v1 = target.val(target.enc(iv1))
+                v1 = torch.sigmoid(v1.float()).view(-1, n, 2, 3).max(3).values
+                yv = torch.where(rd1[rv][:, :, None], 1.0, torch.where(term1[rv][:, None, None], 0.0, gam * v1))
+                mv = ((~rd0[rv]).float() * vmask)[:, :, None]
+                # cross-entropy on the logits (soft targets): a squared error on
+                # probabilities near 0 gives the shared encoder almost no gradient
+                for v in vs:
+                    v = v.float().view(-1, n, 2, 3)
+                    va = v.gather(3, av.view(-1, 1, 1, 1).expand(-1, n, 2, 1)).squeeze(3)
+                    ce = F.binary_cross_entropy_with_logits(va, yv, reduction="none")
+                    loss_v = loss_v + ((ce * mv).sum((0, 2)) / mv.sum((0, 2)).clamp_min(1.0)).sum() / 2
+            (loss_a + loss_w + loss_v).backward()
+            return loss_a.detach(), loss_w.detach(), loss_v.detach()
 
         self.step = torch.compile(step)
 
-    def train(self, L0, L1, active, updates, log, batch=512):
+    def train(self, L0, L1, active, updates, log, ways=(), focus=(), batch=512, value_batch=1024):
+        """focus: per way, walking rows where its condition is on; half the
+        value batch comes from these (the rest uniform), so rare regions such
+        as "door open" are learned to walk in (prioritised, not reweighted:
+        Q-learning does not need the data's own distribution)."""
         torch = self.torch
         dev = self.device
         M = len(self.act)
@@ -553,6 +588,13 @@ class Trainer:
         mask = torch.zeros(K_MAX, device=dev)
         mask[list(active)] = 1.0
         wm_all = (self.act <= 2).float()
+        walk_rows = torch.nonzero(self.act <= 2).squeeze(1)
+        vmask = torch.zeros(VAL_SLOTS, device=dev)
+        vmask[list(ways)] = 1.0
+        with_values = bool(len(ways))
+        focus = [f for f in focus if len(f)]
+        k_f = (value_batch // 2) // max(len(focus), 1)
+        rv = walk_rows[:value_batch]
         started = time.monotonic()
         self.model.train()
         for u in range(updates):
@@ -562,13 +604,17 @@ class Trainer:
             w = (1.0 / M) / mix
             y = L1[r].float()
             m = (~L0[r]).float() * mask * w[:, None]
+            if with_values:
+                parts = [f[torch.randint(len(f), (k_f,), device=dev, generator=self.gen)] for f in focus]
+                rv = torch.cat([walk_rows[torch.randint(len(walk_rows), (value_batch - k_f * len(focus),), device=dev,
+                                                        generator=self.gen)]] + parts)
             self.opt.zero_grad(set_to_none=True)
-            la, lw = self.step(r, y, m, wm_all[r])
+            la, lw, lv = self.step(r, y, m, wm_all[r], rv, vmask, with_values)
             self.opt.step()
             with torch.no_grad():
                 torch._foreach_lerp_(self.tparams, self.params, 0.005)
             if u % 5000 == 0 or u == updates - 1:
-                log(f"  train {u}: loss_a {float(la):.4f} loss_w {float(lw):.4f} "
+                log(f"  train {u}: loss_a {float(la):.4f} loss_w {float(lw):.4f} loss_v {float(lv):.5f} "
                     f"{(u + 1) / (time.monotonic() - started):.0f} upd/s")
         self.model.eval()
 
@@ -593,7 +639,8 @@ class Trainer:
 
 
 def MinHead(n, width=256):
-    """Two value networks; the smaller estimate is used, both as the
+    """Way values (walk, reach per move), part of the main network.
+    Two value networks; the smaller estimate is used, both as the
     bootstrap target and when read (clipped double Q-learning, Fujimoto et
     al. 2018): with a discount near 1, taking the max of one noisy estimate
     lets values of unreachable states creep up (card 012, run 1)."""
@@ -616,47 +663,6 @@ def MinHead(n, width=256):
             return self.nets[0](z), self.nets[1](z)
 
     return _MinHead()
-
-
-def train_values(Z0, Z1, act, term1, ready0, ready1, device, updates, log, batch=4096, seed=0):
-    """Walk (0.95) and reach (0.99) values to each way's ready states:
-    Q-learning on the walking steps, one output pair per way."""
-    torch, nn, F = _torch()
-    torch.manual_seed(seed)
-    gen = torch.Generator(device=device).manual_seed(seed)
-    n = ready0.shape[1]
-    head = MinHead(n).to(device)
-    target = copy.deepcopy(head).requires_grad_(False)
-    opt = torch.optim.Adam(head.parameters(), lr=3e-4, fused=True)
-    rows = torch.nonzero(act <= 2).squeeze(1)
-    gam = torch.tensor([GAMMA_WALK, GAMMA_REACH], device=device).view(1, 1, 2)
-    params, tparams = list(head.parameters()), list(target.parameters())
-    started = time.monotonic()
-    for u in range(updates):
-        r = rows[torch.randint(len(rows), (batch,), device=device, generator=gen)]
-        a = act[r]
-        with torch.autocast("cuda", dtype=torch.bfloat16):
-            qs = head.both(Z0[r])
-            with torch.no_grad():
-                q1 = target(Z1[r])
-        with torch.no_grad():
-            q1 = torch.sigmoid(q1.float()).view(-1, n, 2, 3).max(3).values
-            y = torch.where(ready1[r][:, :, None], 1.0, torch.where(term1[r][:, None, None], 0.0, gam * q1))
-        mk = (~ready0[r]).float()[:, :, None]
-        loss = 0.0
-        for q in qs:
-            q = torch.sigmoid(q.float()).view(-1, n, 2, 3)
-            qa = q.gather(3, a.view(-1, 1, 1, 1).expand(-1, n, 2, 1)).squeeze(3)
-            loss = loss + ((qa - y) ** 2 * mk).sum() / mk.sum().clamp_min(1.0) / 2
-        opt.zero_grad(set_to_none=True)
-        loss.backward()
-        opt.step()
-        with torch.no_grad():
-            torch._foreach_lerp_(tparams, params, 0.01)
-        if u % 10000 == 0 or u == updates - 1:
-            log(f"  values {u}: loss {float(loss.detach()):.5f} {(u + 1) / (time.monotonic() - started):.0f} upd/s")
-    head.eval()
-    return head
 
 
 def values_of(head, Z, n, chunk=131072, with_q=True):
@@ -683,7 +689,7 @@ class LearnedTree:
         t = self.tree
         n_nodes = len(t.parent)
         P = self.trainer.achieve(Z)
-        W, R, Q = values_of(self.head, Z, len(self.way_index))
+        W, R, Q = values_of(self.head, Z, VAL_SLOTS)
         L = torch.zeros(len(Z), n_nodes, dtype=torch.bool, device=Z.device)
         score = torch.zeros(len(Z), n_nodes, device=Z.device)
         L[:, 0] = root_on
@@ -700,7 +706,8 @@ class LearnedTree:
 
 # ---------------------------------------------------------------- learned procedure
 
-def run_learned(tree, trainer, tr, seq, st0, layouts, args, log):
+def run_learned(tree, trainer, tr, seq, st0, layouts, args, log, trace=None):
+    """trace (diagnostics only): called as trace(stage, tree, nodes, head, L0, L1)."""
     torch, _, _ = _torch()
     dev = trainer.device
     M = len(tr["act"])
@@ -718,6 +725,12 @@ def run_learned(tree, trainer, tr, seq, st0, layouts, args, log):
     w0 = tr["w0"]
     act_np = tr["act"]
     timings = {}
+
+    def focus_rows(tree):
+        """Walking rows where a way's condition is on and its goal is off (ways with conditions set)."""
+        return [torch.nonzero(walking & L0[:, c] & ~L0[:, tree.parent[c]]).squeeze(1)
+                for c in range(1, len(tree.parent)) if tree.accepted(c) and tree.status[c] != "new"]
+
     t0 = time.monotonic()
     trainer.train(L0, L1, [0], args.pretrain, log)
     timings["pretrain"] = round(time.monotonic() - t0, 1)
@@ -727,7 +740,7 @@ def run_learned(tree, trainer, tr, seq, st0, layouts, args, log):
         t0 = time.monotonic()
         if not first:
             active = [n for n in range(len(tree.parent)) if tree.accepted(n)]
-            trainer.train(L0, L1, active, args.finetune, log)
+            trainer.train(L0, L1, active, args.finetune, log, ways=[c for c in active if c > 0], focus=focus_rows(tree))
         first = False
         Z0, Z1 = trainer.encode(tr["c0"]), trainer.encode(tr["c1"])
         Zs, Zst = trainer.encode(seq["codes"]), trainer.encode(st0["codes"])
@@ -743,24 +756,37 @@ def run_learned(tree, trainer, tr, seq, st0, layouts, args, log):
         new = expand(tree, frontier, gains_of, log)
         if not new:
             break
-        P1, Ps, Pst = trainer.achieve(Z1), trainer.achieve(Zs), trainer.achieve(Zst)
+        assert max(new) < VAL_SLOTS
+        P1 = trainer.achieve(Z1)
         gs = [tree.parent[c] for c in new]
         As = [tree.action[c] for c in new]
-        r0 = torch.stack([(P0[:, g, a] > 0.5) & ~L0[:, g] for g, a in zip(gs, As)], 1)
-        r1 = torch.stack([(P1[:, g, a] > 0.5) & ~L1[:, g] for g, a in zip(gs, As)], 1)
-        del P0, P1
-        head = train_values(Z0, Z1, act, term1, r0, r1, dev, args.value_updates, log)
-        for Z, L, P, rdy in ((Z0, L0, None, r0), (Z1, L1, None, r1), (Zs, Ls, Ps, None), (Zst, Lst, Pst, None)):
-            _, R, _ = values_of(head, Z, len(new), with_q=False)
-            for j, (c, g, a) in enumerate(zip(new, gs, As)):
-                ready = rdy[:, j] if rdy is not None else (P[:, g, a] > 0.5) & ~L[:, g]
-                L[:, c] = L[:, g] | ready | (R[:, j] > 0.5)
+        for c, g, a in zip(new, gs, As):
+            trainer.rd0[:, c] = (P0[:, g, a] > 0.5) & ~L0[:, g]
+            trainer.rd1[:, c] = (P1[:, g, a] > 0.5) & ~L1[:, g]
+        del P0, P1, Z0, Z1, Zs, Zst
+        # values of every way so far, trained through the encoder (with the goals' outputs)
+        old = [n for n in range(len(tree.parent)) if tree.accepted(n) and n not in new]
+        trainer.train(L0, L1, old, args.value_updates, log, ways=[c for c in range(1, len(tree.parent)) if tree.accepted(c)],
+                      focus=focus_rows(tree))
+        head = trainer.model.val
+        Z0, Z1 = trainer.encode(tr["c0"]), trainer.encode(tr["c1"])
+        Zs, Zst = trainer.encode(seq["codes"]), trainer.encode(st0["codes"])
+        Ps, Pst = trainer.achieve(Zs), trainer.achieve(Zst)
+        for Z, L, P, rdy in ((Z0, L0, None, trainer.rd0), (Z1, L1, None, trainer.rd1), (Zs, Ls, Ps, None), (Zst, Lst, Pst, None)):
+            _, R, _ = values_of(head, Z, VAL_SLOTS, with_q=False)
+            for c, g, a in zip(new, gs, As):
+                ready = rdy[:, c] if rdy is not None else (P[:, g, a] > 0.5) & ~L[:, g]
+                L[:, c] = L[:, g] | ready | (R[:, c] > 0.5)
+        if trace:
+            trace("before_walking_rule", tree, new, head, L0, L1)
         # Walking cannot change what can be reached by walking: on a walking
         # step the condition is the same on both frames (on if either reads on).
         for c in new:
             either = L0[walking, c] | L1[walking, c]
             L0[walking, c] = either
             L1[walking, c] = either
+        if trace:
+            trace("after_walking_rule", tree, new, head, L0, L1)
         Ls_np = Ls.cpu().numpy()
 
         def check(c):
@@ -773,21 +799,20 @@ def run_learned(tree, trainer, tr, seq, st0, layouts, args, log):
         frontier = settle(tree, new, lambda c: float(Lst[:, c].float().mean()), check, log)
         timings[f"depth_{tree.depth[new[0]] - 1}"] = round(time.monotonic() - t0, 1)
         del Z0, Z1, Zs, Zst
-    # Final: every way's values refit on the final encoder (card 008).
-    t0 = time.monotonic()
     ways = [c for c in range(1, len(tree.parent)) if tree.accepted(c)]
     if not ways:
         return LearnedTree(tree, trainer, None, {}), [], timings
-    Z0, Z1 = trainer.encode(tr["c0"]), trainer.encode(tr["c1"])
-    P0, P1 = trainer.achieve(Z0), trainer.achieve(Z1)
-    r0 = torch.stack([(P0[:, tree.parent[c], tree.action[c]] > 0.5) & ~L0[:, tree.parent[c]] for c in ways], 1)
-    r1 = torch.stack([(P1[:, tree.parent[c], tree.action[c]] > 0.5) & ~L1[:, tree.parent[c]] for c in ways], 1)
-    del P0, P1
-    head = train_values(Z0, Z1, act, term1, r0, r1, dev, args.value_updates, log)
-    timings["final_values"] = round(time.monotonic() - t0, 1)
+    # Final phase: every goal and way together, with every way's condition now
+    # known, so the last level's ways also get focused walking data.
+    t0 = time.monotonic()
+    trainer.train(L0, L1, [0] + ways, args.value_updates, log, ways=ways, focus=focus_rows(tree))
+    timings["final"] = round(time.monotonic() - t0, 1)
+    head = trainer.model.val
+    if trace:
+        trace("final", tree, ways, head, L0, L1)
     Ls_np = Ls.cpu().numpy()
     persist = [persistence(Ls_np[:, n], seq_ep) for n in range(len(tree.parent))]
-    return LearnedTree(tree, trainer, head, {c: j for j, c in enumerate(ways)}), persist, timings
+    return LearnedTree(tree, trainer, head, {c: c for c in ways}), persist, timings
 
 
 # ---------------------------------------------------------------- evaluation

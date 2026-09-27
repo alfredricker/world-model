@@ -3,8 +3,8 @@ id: "012"
 title: discovery end to end
 rung: 0
 serves: [P12, P16, P4, P6, P20]
-status: running   # draft | approved | gated | running | done | abandoned
-verdict:
+status: done   # draft | approved | gated | running | done | abandoned
+verdict: partial   # user, 2026-09-27: discovery passes, acting fails at walking
 arch_version: 0
 date: 2026-09-27
 ---
@@ -172,7 +172,135 @@ each horizon bootstrapping from the one below, no discount, no drift;
 distance = number of horizons on. Test on the bench
 (scratch script, reach vs exact on switch data) before any rerun.
 
+**Bench, 2026-09-27 (day): the diagnosis above is wrong.** Setup: 30k
+random episodes, encoder pretrained on the goal-square signal and then
+fine-tuned on the level-1 goal (as the procedure does, but with exact
+labels), ready frames from the agent's own achievement head, reach scored
+on 300 held-out episodes (~125k frames) against the simulator. Way 1 =
+forward onto the goal square (condition ≈ door open); way 2 = toggle that
+brings way 1's condition on (≈ switch on / matching key held). 15k updates.
+
+| Reach learner | switch way 1 | switch way 2 | key way 1 | key way 2 |
+|---|---|---|---|---|
+| plain (one net, discount 0.99) | 99.6% (recall 100%) | 94.4% (100%) | 99.6% (100%) | 91.2% (100%) |
+| double (run 2's) | 98.8% (84%) | 97.1% (100%) | 99.8% (100%) | 91.3% (100%) |
+| fixed horizon, 32 steps | 99.0% (88%) | 97.1% (100%) | 99.6% (99%) | 91.4% (100%) |
+
+Percentages are accuracy on frames where the parent goal is off; the
+share of those frames that can actually reach a ready state is 5.7%, 25.5%,
+1.4% and 7.8%. The learned ready frames nearly match the exact ones (key
+way 1: 1065 learned vs 954 exact, all 954 included). Without the level-1
+fine-tune, way 2 is at chance for every learner (area under the curve
+0.50): the goal-square-only encoder does not show the switch. So the reach
+learner is not the bottleneck; fixed horizon is not clearly better (its
+distance estimates are off by 3–8 steps) and is not adopted. Run 2's learned
+conditions nonetheless had low recall on test frames (key, "forward": on in
+0.17% of frames; AUC 0.80). The loss must come from a later stage of the
+real pipeline: fine-tuning on learned (not exact) conditions, the
+walking-invariance rule, junk goals filling the 16-goal budget, or the final
+all-ways value refit.
+
+**Trace (run 2's settings, key, learned vs exact after each depth).** The
+loss is at level 1 already: ready frames are exact (recall 100%) but "door
+open reachable" is on in only 5–10% of the frames where it truly is; every
+deeper level inherits it (recall 1–13%). The walking rule, junk goals and
+the refit add nothing measurable. Cause: the encoder has only seen the
+goal-square signal, and a value head on its frozen features cannot learn
+"door open" (bench without the level-1 fine-tune: AUC 0.50–0.61 for every
+reach learner).
+
+**Fix (run 3): way values trained through the encoder.** The (walk, reach)
+values of every way become outputs of the main network and train together
+with the goal outputs. Bench (key, goal-square-only encoder at the start):
+way 1 recall 27% → 98%, AUC 0.57 → 0.998. Two details were needed in the
+pipeline: the value loss gets its own uniform batch of 1024 walking steps
+(with ~130 walking rows per update, recall stayed at 4%; bench with 128:
+4%), and it is a cross-entropy on the logits (a squared error on
+probabilities near 0 gave the shared encoder almost no gradient: level-1
+recall 38–61% → 98%, false-on 0.4%).
+
+**Run 3 (`runs/012run3_key`), key: structure found, acting 21.8%.** All
+expected conditions found; "door open" matches door=open with AUC 0.999,
+"holding the key" 0.994; the junk `drop` way at level 2 is gone and the
+tree matches the exact gate's (including "pick up a blocking object").
+Acting 21.8% of 500 new layouts (run 2: 1%; random 0.4%). Diagnostics:
+learned conditions + exact walking 97%; exact conditions + learned walking
+25%. Acting probe (`diag_act`, 100 layouts): learned walking moves are
+near random (3529 closer vs 2819 farther); exact walking with the learned
+"take the action now" trigger: 63%.
+
+**Fix (run 4): walking.** Bench (share of learned moves that bring the
+agent closer, exact distance; random moves 45%): walking to the goal
+square through the door 53% at walk discount 0.95, 66% at 0.8 or 0.6;
+with half of the value batch drawn from walking steps where the way's
+condition is on (door-open frames are 1.5% of the data): 83%. Walking to
+the door with the key: 92% → 95%. Run 4 uses discount 0.8, the focused
+batch, and a final phase that trains every goal and way together once all
+conditions are known.
+
+**Run 4 (`runs/012run4_key`): acting 22%, no gain.** On random held-out
+frames its walking is decent (goal square 67% of moves closer, door 94%),
+but failing episodes show two loops: (a) holding the distractor key, the
+agent's "holding the key" condition is on, it walks to the door and waits
+there forever (the toggle correctly never fires); (b) after opening the
+door it spins in the doorway. "Door open" recall fell from 98% after
+level 1 to 70% at the end.
+
+**Run 5 (`runs/012run5_key`): + play starts in every world (a third of
+episodes begin holding the matching key, with the switch on, or both;
+declared, as the card already allowed in "both").** "Holding the key" now
+matches "holding the key of the door's colour" (AUC 0.9975, was
+"carrying=key"). Acting 30.2%; exact conditions + learned rest 39%,
+learned conditions + exact rest 95%. Goal arrivals only 580 → 645. "Door
+open reachable" at the end: recall 71% (first room with the door open:
+61%; second room: 97%); walking to the goal square 61% of moves closer.
+Later training erases a condition learned earlier.
+
+**Run 6: condition detectors.** One output per condition, trained on the
+agent's own labels from the level where the condition was found (the
+labels are fixed then), in every later phase. Conditions are read from
+these outputs. This is rehearsal of the agent's own earlier conclusions
+(card 008: keep training on every goal found).
+
+**Run 6 (`runs/012run6_key`): worse, reverted.** Acting 16.6%; exact
+conditions + learned walking fell to 18% (run 5: 39%). The extra outputs
+seem to crowd the walking values in the shared network. The code is back
+to run 5's method.
+
+**Summary (key world; `results.json`).** Exact gate passes in all four
+worlds. Switch, either and both were not run with the fixes (the user
+stopped the card for the change in section 8).
+
+| Run | Change | Structure | Acting (500 new layouts) | Exact conditions + learned walking | Learned conditions + exact walking |
+|---|---|---|---|---|---|
+| 2 | frozen-feature values | partly | 1% | 0% | 5% |
+| 3 | values through encoder | all | 21.8% | 25% | 97% |
+| 4 | walk discount, focused batch | all | 22.0% | 28% | 98% |
+| 5 | play starts | all | **30.2%** | 39% | 95% |
+| 6 | condition detectors | all | 16.6% | 18% | 94% |
+
+Random play 0.4%; exact procedure 100%.
+
+| Criterion (key, run 5) | Result | Verdict |
+|---|---|---|
+| 1. Structure, AUC ≥ 0.95 | against the exact condition: door open 0.9975, matching key 0.994; best simulator meaning: door=open 1.0, key matching the door 0.9975, empty hands (leaf) 1.0; breaking the vase changes a learned condition in ≤ 0.4% of frames | pass |
+| 2. Condition on → achieves ≥ 90%, off ≤ 10% | door open 76% / 1%; matching key 57.5% / 2%; key reachable 100% / 15% | fail |
+| 3. Acting ≥ 90% | 30.2% (random 0.4%) | fail |
+
 ## 8. Decision
+
+**Revise** (the user calls it a partial success). Discovery from one
+signal works: the learned tree has the expected conditions with the right
+meanings, and acting on them with exact walking reaches the goal in 95% of
+new layouts. What fails is getting to where an action works. By design,
+the recursion stops at "a ready state can be reached by walking", and a
+single flat walk value per way has to cover the whole walk. It is reliable
+near common targets (94% of moves closer when walking to the door with the
+key) and poor over long walks through rare regions (61% to the goal square
+through an opened door; stuck spinning in the doorway). Tuning inside this
+card did not fix it (runs 4 and 6). Next, [card 013](../013-walking-in-the-recursion/card.md):
+let the recursion continue into walking, so long walks become chains of
+short ones.
 
 ---
 

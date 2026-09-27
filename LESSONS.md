@@ -74,10 +74,21 @@ it; *suggestive* means one seed, small n, or a diagnostic.
   new layouts. *Evidence:* card 007 (1 seed; encoder shaped by other
   supplied goals).
 - **A state trained on one goal does not notice that goal's deeper
-  conditions; learning from its own discovered subgoals makes it.** Trained
-  on the goal square only, the key was read out at 0.73 and discovery
-  stalled at door open; fine-tuned on each self-found goal in turn, the
-  key rose to 0.98 and the chain was found. *Evidence:* card 008 (1 seed).
+  conditions; train every value that defines a condition through the
+  encoder.** Trained on the goal square only, the key was read out at 0.73
+  (card 008); a reach value on those frozen features found "door open" in
+  27% of true frames (AUC 0.57), and the same value trained through the
+  encoder in 98% (AUC 0.998). In the shared network the value loss needs
+  its own large batch of walking steps (≈130 walking rows per update: 4%;
+  1024: 98%) and a cross-entropy loss (a squared error on probabilities
+  near 0 barely moved the encoder: 38–61% → 98%). *Evidence:* cards 008,
+  012 (1 seed each).
+- **Right conditions are not enough: one flat walk value per way fails on
+  long walks through rare regions.** Card 012's learned conditions with
+  exact walking reached the goal in 95% of new layouts, with learned walking
+  in 30%: walking was 94% right toward a near, common target and 61%
+  toward the goal square through an opened door (1.5% of the data), where
+  the agent spun in the doorway. *Evidence:* card 012 run 5 (1 seed).
 - **Do not read "reachable" off a discounted value with a fixed threshold.**
   0.95^steps near 0.1 at the far end of a room made "within walking reach"
   flicker as the agent walked, creating a spurious condition. *Evidence:*

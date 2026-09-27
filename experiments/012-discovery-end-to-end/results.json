@@ -1,0 +1,106 @@
+{
+ "note": "Key world, 500 new layouts for acting; diagnostics on 100. Full outputs in runs/<name>/result.json.",
+ "runs": {
+  "012_key": {
+   "what": "run 2: separate value head on frozen encoder (clipped double), walking rule",
+   "structure_all_expected": false,
+   "acting_all_learned": 0.01,
+   "acting_goal_square_value_only": 0.0,
+   "random_play": 0.004,
+   "exact_conditions_exact_walking": 1.0,
+   "exact_conditions_learned_walking": 0.0,
+   "learned_conditions_exact_walking": 0.05,
+   "criterion_2": {
+    "forward": 0.8812,
+    "forward/toggle": null,
+    "forward/toggle/pickup": 0.005
+   }
+  },
+  "012run3_key": {
+   "what": "run 3: way values trained through the encoder (own walking batch, cross-entropy)",
+   "structure_all_expected": true,
+   "acting_all_learned": 0.218,
+   "acting_goal_square_value_only": 0.0,
+   "random_play": 0.004,
+   "exact_conditions_exact_walking": 1.0,
+   "exact_conditions_learned_walking": 0.25,
+   "learned_conditions_exact_walking": 0.97,
+   "criterion_2": {
+    "forward": 0.88,
+    "forward/toggle": 0.47,
+    "forward/toggle/pickup": 0.99
+   }
+  },
+  "012run4_key": {
+   "what": "run 4: + walk discount 0.8, value batch half from condition-on frames, final phase",
+   "structure_all_expected": true,
+   "acting_all_learned": 0.22,
+   "acting_goal_square_value_only": 0.0,
+   "random_play": 0.004,
+   "exact_conditions_exact_walking": 1.0,
+   "exact_conditions_learned_walking": 0.28,
+   "learned_conditions_exact_walking": 0.98,
+   "criterion_2": {
+    "forward": 0.775,
+    "forward/toggle": 0.575,
+    "forward/toggle/pickup": 0.995
+   }
+  },
+  "012run5_key": {
+   "what": "run 5: + play starts (1/3 of episodes) -- best",
+   "structure_all_expected": true,
+   "acting_all_learned": 0.302,
+   "acting_goal_square_value_only": 0.0,
+   "random_play": 0.004,
+   "exact_conditions_exact_walking": 1.0,
+   "exact_conditions_learned_walking": 0.39,
+   "learned_conditions_exact_walking": 0.95,
+   "criterion_2": {
+    "forward": 0.76,
+    "forward/toggle": 0.575,
+    "forward/toggle/pickup": 1.0
+   }
+  },
+  "012run6_key": {
+   "what": "run 6: + condition detectors rehearsed on own labels (reverted)",
+   "structure_all_expected": true,
+   "acting_all_learned": 0.166,
+   "acting_goal_square_value_only": 0.0,
+   "random_play": 0.004,
+   "exact_conditions_exact_walking": 1.0,
+   "exact_conditions_learned_walking": 0.18,
+   "learned_conditions_exact_walking": 0.94,
+   "criterion_2": {
+    "forward": 0.81,
+    "forward/toggle": 0.415,
+    "forward/toggle/pickup": 1.0
+   }
+  }
+ },
+ "gates": {
+  "key": true,
+  "switch": true,
+  "either": true,
+  "both": true
+ },
+ "bench": {
+  "reach_frozen_encoder_goal_square_only_key_way1": {
+   "recall": 0.27,
+   "auc": 0.57
+  },
+  "reach_through_encoder_key_way1": {
+   "recall": 0.98,
+   "auc": 0.998
+  },
+  "run5_final_network_door_open_recall": {
+   "all": 0.71,
+   "first_room": 0.61,
+   "second_room": 0.97
+  },
+  "run5_walk_moves_closer": {
+   "to_goal_square": 0.61,
+   "to_door_with_key": 0.94,
+   "random": 0.45
+  }
+ }
+}
