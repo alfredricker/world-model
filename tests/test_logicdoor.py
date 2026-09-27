@@ -48,3 +48,18 @@ def test_drop_pickup_switch_vase():
     assert b[8] == 1 and cell(lay, b, lay.vase) == "empty"
     b2, _ = step(lay, b, TOGGLE)
     assert b2[8] == 1                          # breaking cannot be undone
+
+
+def test_logic_frames_are_distinct_per_state():
+    from worldmodel.envs.keydoor_render import encode_logic_states, render, tile_images
+    from worldmodel.envs.logicdoor import collect
+    tiles = tile_images()
+    assert len({t.tobytes() for t in tiles}) == len(tiles)
+    for rule in ("key", "both"):
+        for ep in collect(rule, 5, 3):
+            codes = encode_logic_states(ep["layout"], ep["states"])
+            seen = {}
+            for s, c in zip(ep["states"], codes):
+                seen.setdefault(c.tobytes(), set()).add(s)
+            assert all(len(v) == 1 for v in seen.values())
+            assert render(codes[:2], tiles).shape == (2, 72, 64, 3)

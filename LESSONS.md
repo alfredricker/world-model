@@ -82,6 +82,15 @@ it; *suggestive* means one seed, small n, or a diagnostic.
   0.95^steps near 0.1 at the far end of a room made "within walking reach"
   flicker as the agent walked, creating a spurious condition. *Evidence:*
   card 008.
+- **Admit conditions by evidence, and require every rule to be a route to
+  success.** A Bayesian rule list (or of ands, Beta-Bernoulli rules, cost
+  per condition) recovered exact rules for 19/19 goals across key, switch,
+  either, both and no-drop worlds, excluded an irrelevant vase, with no
+  thresholds; without the route-to-success constraint the greedy search
+  stuck on an equivalent "failure rule" list. From pixels, each world's
+  network learned these requirements well enough that the same rules were
+  read from its predictions (19/19). *Evidence:* card 010 (exact variables;
+  pixels read in the simulator's vocabulary).
   *Evidence:* old:phwm/docs/05-experimental-record.md §5.12,
   06-achievements-and-limitations.md; card 001 gate. *Confirmed* for the
   pattern.

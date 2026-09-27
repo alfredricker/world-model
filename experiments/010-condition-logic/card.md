@@ -3,8 +3,8 @@ id: "010"
 title: condition logic
 rung: 0
 serves: [P12, P19, P4, P6]
-status: draft   # draft | approved | gated | running | done | abandoned
-verdict:
+status: done   # draft | approved | gated | running | done | abandoned
+verdict: pass
 arch_version: 0
 date: 2026-09-27
 ---
@@ -126,4 +126,82 @@ all, over 30 minutes, so it needs the user's approval to run here.
 
 ## 7. Result
 
+**Part A (exact)**, run by the user's go-ahead 2026-09-27: `runs/010_A`,
+3000 random-play episodes per world, 160 s. Numbers:
+[results_part_a.json](results_part_a.json). Data check (10k episodes, no
+play starts needed): door openings through the rarest expected rule
+ranged from 415 ("both") to 3653 (switch route).
+
+Two corrections to the finder after a 300-episode smoke run, both from
+section 2's wording, before the full run: (1) every rule must be a route to
+success (succeed more often than the default); without this the search
+began with a "failure rule" (not facing the matching key → fail) and got
+stuck in an equivalent but worse list (evidence −43.5 against −33.9 for
+the intended rule); (2) the search may also remove a condition or a rule.
+
+| World | Rules found for "door open" (every success covered, all rules 100%) | Evidence gained per condition, bits |
+|---|---|---|
+| key | toggle ∧ facing door ∧ matching key (328 / 328) | 1818, 1456, 1257 |
+| switch | toggle ∧ facing door ∧ switch on (1172 / 1172) | 6730, 3208, 4074 |
+| either | toggle ∧ facing door ∧ switch on (1152); toggle ∧ facing door ∧ matching key (212) | 7908, 3789, 1229; 1216, 894, 915 |
+| both | toggle ∧ facing door ∧ matching key ∧ switch on (115 / 115) | 618, 430, 303, 388 |
+| no drop | card 003's rule (1644 / 1644) | 9342, 4066, 5354 |
+
+Every other goal in every world gave exactly its expected rule: holding
+the matching key = pickup ∧ facing the matching key ∧ empty hands; switch
+on = toggle ∧ facing the switch; on the goal square = forward ∧ facing it.
+19 of 19 goal-world pairs exact. The vase is in no rule. No pair
+look-ahead was needed. The old threshold finder, for comparison, also got
+the door rules but dropped "empty hands" from the key rule in the four
+worlds with a drop action.
+
+Few examples ("door open", exact recovery in 20 subsamples, by number of
+successes through the rarest rule):
+
+| World | 5 | 10 | 30 | 100 |
+|---|---|---|---|---|
+| key | 0.95 | 1.0 | 1.0 | 1.0 |
+| switch | 0.80 | 1.0 | 1.0 | 1.0 |
+| either (key route) | 0.60 | 0.85 | 0.90 | 1.0 |
+| both | 0.85 | 1.0 | 1.0 | 1.0 |
+| no drop | 0.90 | 1.0 | 1.0 | 1.0 |
+
+| Criterion | Verdict |
+|---|---|
+| 1. Exact rules in all worlds, vase in none, no thresholds | pass (19 / 19) |
+| 2. ≥ 90% exact recovery at 30 successes | pass (lowest: either, 0.90) |
+| 3. Learnable from pixels | pass (Part B below) |
+
+Prediction check: as predicted, except "either" needs more examples than
+"both": its second route must earn a rule of its own against the first.
+
+**Part B (learned from pixels)**, run by the user's go-ahead 2026-09-27:
+`runs/010_B`, per world 10k training episodes (seed 11), 60k updates,
+about 140 s each; test: 500 new layouts (seed 99). Numbers:
+[results_part_b.json](results_part_b.json). Frames: a test checks that
+every state of a layout gives its own frame; the symbolic step was not
+checked against a MiniGrid twin (frames are rendered from the symbolic
+state, so none is needed for this part).
+
+The rules read from the network's predictions equal those read from the
+true outcomes in **19 of 19** goal-world pairs, and those equal the
+expected rules: the "or" (two rules) in "either", the four-part "and" in
+"both", "empty hands" in the key rule, and no vase anywhere. The network
+was right on 100% of test failures everywhere and on 100% of test
+successes except holding the key in "either" (99.95%) and reaching the
+goal square in "both" (3 of 4; only 55 arrivals in training).
+
+Caveats: the rules are still read in the simulator's vocabulary (card
+011 removes that); one seed per world; few test successes in "both"
+(22 door openings, 4 goal arrivals).
+
 ## 8. Decision
+
+**Keep.** The definition (an or of rules, each an and of conditions,
+admitted by Bayesian evidence, every rule a route to success) picks out
+the right conditions in worlds that separate undoable, alternative,
+joint and irrelevant cases, without thresholds, from about 10–30
+successes; and every one of those logical requirements is learned from
+pixels well enough to be read back exactly. Next, card 011: learn the
+detectors themselves, without the simulator's vocabulary, on these
+worlds.

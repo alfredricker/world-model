@@ -1,0 +1,827 @@
+{
+ "key": {
+  "door_open": {
+   "rules_from_truth": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 62,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=toggle",
+      "carrying_matches_door=True",
+      "front=door"
+     ],
+     "attempts": 62,
+     "successes": 62,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "carrying_matches_door=True": 1.0,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 308979,
+     "successes": 0
+    }
+   ]
+  },
+  "holding_matching_key": {
+   "rules_from_truth": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 2268,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=pickup",
+      "carrying=none",
+      "front_matches_door=True"
+     ],
+     "attempts": 2268,
+     "successes": 2268,
+     "success_rate": 1.0,
+     "removal": {
+      "front_matches_door=True": 1.0,
+      "action=pickup": 1.0,
+      "carrying=none": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 289524,
+     "successes": 0
+    }
+   ]
+  },
+  "switch_on": {
+   "rules_from_truth": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 1528,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=switch"
+     ],
+     "attempts": 1528,
+     "successes": 1528,
+     "success_rate": 1.0,
+     "removal": {
+      "front=switch": 1.0,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 205954,
+     "successes": 0
+    }
+   ]
+  },
+  "on_goal": {
+   "rules_from_truth": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 8,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=forward",
+      "front=goal"
+     ],
+     "attempts": 8,
+     "successes": 8,
+     "success_rate": 1.0,
+     "removal": {
+      "front=goal": 1.0,
+      "action=forward": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 317664,
+     "successes": 0
+    }
+   ]
+  },
+  "seconds": 142.0
+ },
+ "switch": {
+  "door_open": {
+   "rules_from_truth": [
+    [
+     "action=toggle",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=toggle",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 184,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=door",
+      "switch=on"
+     ],
+     "attempts": 184,
+     "successes": 184,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "action=toggle": 1.0,
+      "switch=on": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 289734,
+     "successes": 0
+    }
+   ]
+  },
+  "holding_matching_key": {
+   "rules_from_truth": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 2205,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=pickup",
+      "carrying=none",
+      "front_matches_door=True"
+     ],
+     "attempts": 2205,
+     "successes": 2205,
+     "success_rate": 1.0,
+     "removal": {
+      "front_matches_door=True": 1.0,
+      "action=pickup": 1.0,
+      "carrying=none": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 283590,
+     "successes": 1
+    }
+   ]
+  },
+  "switch_on": {
+   "rules_from_truth": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 1461,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=switch"
+     ],
+     "attempts": 1461,
+     "successes": 1461,
+     "success_rate": 1.0,
+     "removal": {
+      "front=switch": 1.0,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 203692,
+     "successes": 0
+    }
+   ]
+  },
+  "on_goal": {
+   "rules_from_truth": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 40,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=forward",
+      "front=goal"
+     ],
+     "attempts": 40,
+     "successes": 40,
+     "success_rate": 1.0,
+     "removal": {
+      "front=goal": 1.0,
+      "action=forward": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 310900,
+     "successes": 0
+    }
+   ]
+  },
+  "seconds": 140.0
+ },
+ "either": {
+  "door_open": {
+   "rules_from_truth": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ],
+    [
+     "action=toggle",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ],
+    [
+     "action=toggle",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 221,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=door",
+      "switch=on"
+     ],
+     "attempts": 179,
+     "successes": 179,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "action=toggle": 1.0,
+      "switch=on": 0.9268
+     }
+    },
+    {
+     "conditions": [
+      "action=toggle",
+      "carrying_matches_door=True",
+      "front=door"
+     ],
+     "attempts": 42,
+     "successes": 42,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "carrying_matches_door=True": 0.7666,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 282814,
+     "successes": 0
+    }
+   ]
+  },
+  "holding_matching_key": {
+   "rules_from_truth": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 2189,
+   "network_right_on_successes": 0.9995,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=pickup",
+      "carrying=none",
+      "front_matches_door=True"
+     ],
+     "attempts": 2189,
+     "successes": 2188,
+     "success_rate": 0.9995,
+     "removal": {
+      "front_matches_door=True": 0.9995,
+      "action=pickup": 0.9995,
+      "carrying=none": 0.9995
+     }
+    },
+    {
+     "default": true,
+     "attempts": 282692,
+     "successes": 0
+    }
+   ]
+  },
+  "switch_on": {
+   "rules_from_truth": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 1455,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=switch"
+     ],
+     "attempts": 1455,
+     "successes": 1455,
+     "success_rate": 1.0,
+     "removal": {
+      "front=switch": 1.0,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 202474,
+     "successes": 0
+    }
+   ]
+  },
+  "on_goal": {
+   "rules_from_truth": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 43,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=forward",
+      "front=goal"
+     ],
+     "attempts": 43,
+     "successes": 43,
+     "success_rate": 1.0,
+     "removal": {
+      "front=goal": 1.0,
+      "action=forward": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 309841,
+     "successes": 0
+    }
+   ]
+  },
+  "seconds": 139.5
+ },
+ "both": {
+  "door_open": {
+   "rules_from_truth": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 22,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=toggle",
+      "carrying_matches_door=True",
+      "front=door",
+      "switch=on"
+     ],
+     "attempts": 22,
+     "successes": 22,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "carrying_matches_door=True": 1.0,
+      "action=toggle": 1.0,
+      "switch=on": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 316414,
+     "successes": 0
+    }
+   ]
+  },
+  "holding_matching_key": {
+   "rules_from_truth": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 2283,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=pickup",
+      "carrying=none",
+      "front_matches_door=True"
+     ],
+     "attempts": 2283,
+     "successes": 2283,
+     "success_rate": 1.0,
+     "removal": {
+      "front_matches_door=True": 1.0,
+      "action=pickup": 1.0,
+      "carrying=none": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 290798,
+     "successes": 0
+    }
+   ]
+  },
+  "switch_on": {
+   "rules_from_truth": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 1535,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=switch"
+     ],
+     "attempts": 1535,
+     "successes": 1535,
+     "success_rate": 1.0,
+     "removal": {
+      "front=switch": 1.0,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 207334,
+     "successes": 0
+    }
+   ]
+  },
+  "on_goal": {
+   "rules_from_truth": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 4,
+   "network_right_on_successes": 0.75,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=forward",
+      "front=goal"
+     ],
+     "attempts": 4,
+     "successes": 3,
+     "success_rate": 0.75,
+     "removal": {
+      "front=goal": 0.75,
+      "action=forward": 0.75
+     }
+    },
+    {
+     "default": true,
+     "attempts": 319089,
+     "successes": 0
+    }
+   ]
+  },
+  "seconds": 139.2
+ },
+ "nodrop": {
+  "door_open": {
+   "rules_from_truth": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 271,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=toggle",
+      "carrying_matches_door=True",
+      "front=door"
+     ],
+     "attempts": 271,
+     "successes": 271,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "action=toggle": 1.0,
+      "carrying_matches_door=True": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 278933,
+     "successes": 0
+    }
+   ]
+  },
+  "holding_matching_key": {
+   "rules_from_truth": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 247,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=pickup",
+      "carrying=none",
+      "front_matches_door=True"
+     ],
+     "attempts": 247,
+     "successes": 247,
+     "success_rate": 1.0,
+     "removal": {
+      "front_matches_door=True": 1.0,
+      "carrying=none": 1.0,
+      "action=pickup": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 184653,
+     "successes": 0
+    }
+   ]
+  },
+  "on_goal": {
+   "rules_from_truth": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "rules_from_network": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "match": true,
+   "truth_matches_expected": true,
+   "successes_in_test": 50,
+   "network_right_on_successes": 1.0,
+   "network_right_on_failures": 1.0,
+   "network_rules_detail": [
+    {
+     "conditions": [
+      "action=forward",
+      "front=goal"
+     ],
+     "attempts": 50,
+     "successes": 50,
+     "success_rate": 1.0,
+     "removal": {
+      "front=goal": 1.0,
+      "action=forward": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 306177,
+     "successes": 0
+    }
+   ]
+  },
+  "seconds": 132.1
+ }
+}

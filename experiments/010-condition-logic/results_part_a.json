@@ -1,0 +1,1299 @@
+{
+ "episodes": 3000,
+ "key": {
+  "door_open": {
+   "rules": [
+    {
+     "conditions": [
+      "action=toggle",
+      "carrying_matches_door=True",
+      "front=door"
+     ],
+     "attempts": 328,
+     "successes": 328,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "carrying_matches_door=True": 1.0,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1870542,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=door"
+      ]
+     ],
+     "evidence_gain_bits": 1818.1
+    },
+    {
+     "move": [
+      0,
+      [
+       "carrying_matches_door=True"
+      ]
+     ],
+     "evidence_gain_bits": 1456.0
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=toggle"
+      ]
+     ],
+     "evidence_gain_bits": 1257.0
+    }
+   ],
+   "expected": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ]
+   ],
+   "exact_recovery_by_rarest_rule_successes": {
+    "5": 0.95,
+    "10": 1.0,
+    "30": 1.0,
+    "100": 1.0
+   }
+  },
+  "holding_matching_key": {
+   "rules": [
+    {
+     "conditions": [
+      "action=pickup",
+      "carrying=none",
+      "front_matches_door=True"
+     ],
+     "attempts": 13603,
+     "successes": 13603,
+     "success_rate": 1.0,
+     "removal": {
+      "front_matches_door=True": 1.0,
+      "action=pickup": 1.0,
+      "carrying=none": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1737191,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front_matches_door=True"
+      ]
+     ],
+     "evidence_gain_bits": 59729.8
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=pickup"
+      ]
+     ],
+     "evidence_gain_bits": 48688.7
+    },
+    {
+     "move": [
+      0,
+      [
+       "carrying=none"
+      ]
+     ],
+     "evidence_gain_bits": 6416.1
+    }
+   ],
+   "expected": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=pickup",
+     "front_matches_door=True"
+    ]
+   ]
+  },
+  "switch_on": {
+   "rules": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=switch"
+     ],
+     "attempts": 9201,
+     "successes": 9201,
+     "success_rate": 1.0,
+     "removal": {
+      "front=switch": 1.0,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1236667,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=switch"
+      ]
+     ],
+     "evidence_gain_bits": 42397.4
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=toggle"
+      ]
+     ],
+     "evidence_gain_bits": 35945.9
+    }
+   ],
+   "expected": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ]
+  },
+  "on_goal": {
+   "rules": [
+    {
+     "conditions": [
+      "action=forward",
+      "front=goal"
+     ],
+     "attempts": 55,
+     "successes": 55,
+     "success_rate": 1.0,
+     "removal": {
+      "front=goal": 1.0,
+      "action=forward": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1906640,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=goal"
+      ]
+     ],
+     "evidence_gain_bits": 680.5
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=forward"
+      ]
+     ],
+     "evidence_gain_bits": 203.8
+    }
+   ],
+   "expected": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ]
+  }
+ },
+ "switch": {
+  "door_open": {
+   "rules": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=door",
+      "switch=on"
+     ],
+     "attempts": 1172,
+     "successes": 1172,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "action=toggle": 1.0,
+      "switch=on": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1751392,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=door"
+      ]
+     ],
+     "evidence_gain_bits": 6730.3
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=toggle"
+      ]
+     ],
+     "evidence_gain_bits": 3208.4
+    },
+    {
+     "move": [
+      0,
+      [
+       "switch=on"
+      ]
+     ],
+     "evidence_gain_bits": 4074.3
+    }
+   ],
+   "expected": [
+    [
+     "action=toggle",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=toggle",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "exact_recovery_by_rarest_rule_successes": {
+    "5": 0.8,
+    "10": 1.0,
+    "30": 1.0,
+    "100": 1.0
+   }
+  },
+  "holding_matching_key": {
+   "rules": [
+    {
+     "conditions": [
+      "action=pickup",
+      "carrying=none",
+      "front_matches_door=True"
+     ],
+     "attempts": 13261,
+     "successes": 13261,
+     "success_rate": 1.0,
+     "removal": {
+      "front_matches_door=True": 1.0,
+      "action=pickup": 1.0,
+      "carrying=none": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1705858,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front_matches_door=True"
+      ]
+     ],
+     "evidence_gain_bits": 58390.9
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=pickup"
+      ]
+     ],
+     "evidence_gain_bits": 47537.4
+    },
+    {
+     "move": [
+      0,
+      [
+       "carrying=none"
+      ]
+     ],
+     "evidence_gain_bits": 6156.6
+    }
+   ],
+   "expected": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=pickup",
+     "front_matches_door=True"
+    ]
+   ]
+  },
+  "switch_on": {
+   "rules": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=switch"
+     ],
+     "attempts": 8929,
+     "successes": 8929,
+     "success_rate": 1.0,
+     "removal": {
+      "front=switch": 1.0,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1221722,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=switch"
+      ]
+     ],
+     "evidence_gain_bits": 41359.4
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=toggle"
+      ]
+     ],
+     "evidence_gain_bits": 34896.0
+    }
+   ],
+   "expected": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ]
+  },
+  "on_goal": {
+   "rules": [
+    {
+     "conditions": [
+      "action=forward",
+      "front=goal"
+     ],
+     "attempts": 202,
+     "successes": 202,
+     "success_rate": 1.0,
+     "removal": {
+      "front=goal": 1.0,
+      "action=forward": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1871573,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=goal"
+      ]
+     ],
+     "evidence_gain_bits": 2134.0
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=forward"
+      ]
+     ],
+     "evidence_gain_bits": 792.1
+    }
+   ],
+   "expected": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ]
+  }
+ },
+ "either": {
+  "door_open": {
+   "rules": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=door",
+      "switch=on"
+     ],
+     "attempts": 1152,
+     "successes": 1152,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "action=toggle": 1.0,
+      "switch=on": 0.9469
+     }
+    },
+    {
+     "conditions": [
+      "action=toggle",
+      "carrying_matches_door=True",
+      "front=door"
+     ],
+     "attempts": 212,
+     "successes": 212,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "carrying_matches_door=True": 0.7822,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1719183,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=door"
+      ]
+     ],
+     "evidence_gain_bits": 7908.2
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=toggle"
+      ]
+     ],
+     "evidence_gain_bits": 3789.1
+    },
+    {
+     "move": [
+      0,
+      [
+       "switch=on"
+      ]
+     ],
+     "evidence_gain_bits": 1228.9
+    },
+    {
+     "move": [
+      1,
+      [
+       "front=door"
+      ]
+     ],
+     "evidence_gain_bits": 1215.8
+    },
+    {
+     "move": [
+      1,
+      [
+       "carrying_matches_door=True"
+      ]
+     ],
+     "evidence_gain_bits": 894.4
+    },
+    {
+     "move": [
+      1,
+      [
+       "action=toggle"
+      ]
+     ],
+     "evidence_gain_bits": 914.7
+    }
+   ],
+   "expected": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ],
+    [
+     "action=toggle",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=toggle",
+     "front=door",
+     "switch=on"
+    ],
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ]
+   ],
+   "exact_recovery_by_rarest_rule_successes": {
+    "5": 0.6,
+    "10": 0.85,
+    "30": 0.9,
+    "100": 1.0
+   }
+  },
+  "holding_matching_key": {
+   "rules": [
+    {
+     "conditions": [
+      "action=pickup",
+      "carrying=none",
+      "front_matches_door=True"
+     ],
+     "attempts": 13166,
+     "successes": 13166,
+     "success_rate": 1.0,
+     "removal": {
+      "front_matches_door=True": 1.0,
+      "action=pickup": 1.0,
+      "carrying=none": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1699116,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front_matches_door=True"
+      ]
+     ],
+     "evidence_gain_bits": 58078.8
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=pickup"
+      ]
+     ],
+     "evidence_gain_bits": 47172.7
+    },
+    {
+     "move": [
+      0,
+      [
+       "carrying=none"
+      ]
+     ],
+     "evidence_gain_bits": 6091.2
+    }
+   ],
+   "expected": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=pickup",
+     "front_matches_door=True"
+    ]
+   ]
+  },
+  "switch_on": {
+   "rules": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=switch"
+     ],
+     "attempts": 8848,
+     "successes": 8848,
+     "success_rate": 1.0,
+     "removal": {
+      "front=switch": 1.0,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1216587,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=switch"
+      ]
+     ],
+     "evidence_gain_bits": 41030.9
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=toggle"
+      ]
+     ],
+     "evidence_gain_bits": 34594.8
+    }
+   ],
+   "expected": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ]
+  },
+  "on_goal": {
+   "rules": [
+    {
+     "conditions": [
+      "action=forward",
+      "front=goal"
+     ],
+     "attempts": 235,
+     "successes": 235,
+     "success_rate": 1.0,
+     "removal": {
+      "front=goal": 1.0,
+      "action=forward": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1862997,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=goal"
+      ]
+     ],
+     "evidence_gain_bits": 2437.2
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=forward"
+      ]
+     ],
+     "evidence_gain_bits": 918.2
+    }
+   ],
+   "expected": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ]
+  }
+ },
+ "both": {
+  "door_open": {
+   "rules": [
+    {
+     "conditions": [
+      "action=toggle",
+      "carrying_matches_door=True",
+      "front=door",
+      "switch=on"
+     ],
+     "attempts": 115,
+     "successes": 115,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "carrying_matches_door=True": 1.0,
+      "action=toggle": 1.0,
+      "switch=on": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1904774,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=door"
+      ]
+     ],
+     "evidence_gain_bits": 617.7
+    },
+    {
+     "move": [
+      0,
+      [
+       "carrying_matches_door=True"
+      ]
+     ],
+     "evidence_gain_bits": 429.5
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=toggle"
+      ]
+     ],
+     "evidence_gain_bits": 302.9
+    },
+    {
+     "move": [
+      0,
+      [
+       "switch=on"
+      ]
+     ],
+     "evidence_gain_bits": 388.4
+    }
+   ],
+   "expected": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door",
+     "switch=on"
+    ]
+   ],
+   "exact_recovery_by_rarest_rule_successes": {
+    "5": 0.85,
+    "10": 1.0,
+    "30": 1.0,
+    "100": 1.0
+   }
+  },
+  "holding_matching_key": {
+   "rules": [
+    {
+     "conditions": [
+      "action=pickup",
+      "carrying=none",
+      "front_matches_door=True"
+     ],
+     "attempts": 13713,
+     "successes": 13713,
+     "success_rate": 1.0,
+     "removal": {
+      "front_matches_door=True": 1.0,
+      "action=pickup": 1.0,
+      "carrying=none": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1744615,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front_matches_door=True"
+      ]
+     ],
+     "evidence_gain_bits": 60098.9
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=pickup"
+      ]
+     ],
+     "evidence_gain_bits": 49106.7
+    },
+    {
+     "move": [
+      0,
+      [
+       "carrying=none"
+      ]
+     ],
+     "evidence_gain_bits": 6483.3
+    }
+   ],
+   "expected": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=pickup",
+     "front_matches_door=True"
+    ]
+   ]
+  },
+  "switch_on": {
+   "rules": [
+    {
+     "conditions": [
+      "action=toggle",
+      "front=switch"
+     ],
+     "attempts": 9298,
+     "successes": 9298,
+     "success_rate": 1.0,
+     "removal": {
+      "front=switch": 1.0,
+      "action=toggle": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1241786,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=switch"
+      ]
+     ],
+     "evidence_gain_bits": 42778.5
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=toggle"
+      ]
+     ],
+     "evidence_gain_bits": 36306.1
+    }
+   ],
+   "expected": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=toggle",
+     "front=switch"
+    ]
+   ]
+  },
+  "on_goal": {
+   "rules": [
+    {
+     "conditions": [
+      "action=forward",
+      "front=goal"
+     ],
+     "attempts": 18,
+     "successes": 18,
+     "success_rate": 1.0,
+     "removal": {
+      "front=goal": 1.0,
+      "action=forward": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1916109,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=goal"
+      ]
+     ],
+     "evidence_gain_bits": 238.4
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=forward"
+      ]
+     ],
+     "evidence_gain_bits": 66.1
+    }
+   ],
+   "expected": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ]
+  }
+ },
+ "nodrop": {
+  "door_open": {
+   "rules": [
+    {
+     "conditions": [
+      "action=toggle",
+      "carrying_matches_door=True",
+      "front=door"
+     ],
+     "attempts": 1644,
+     "successes": 1644,
+     "success_rate": 1.0,
+     "removal": {
+      "front=door": 1.0,
+      "action=toggle": 1.0,
+      "carrying_matches_door=True": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1674252,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=door"
+      ]
+     ],
+     "evidence_gain_bits": 9341.7
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=toggle"
+      ]
+     ],
+     "evidence_gain_bits": 4066.2
+    },
+    {
+     "move": [
+      0,
+      [
+       "carrying_matches_door=True"
+      ]
+     ],
+     "evidence_gain_bits": 5354.1
+    }
+   ],
+   "expected": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=toggle",
+     "carrying_matches_door=True",
+     "front=door"
+    ]
+   ],
+   "exact_recovery_by_rarest_rule_successes": {
+    "5": 0.9,
+    "10": 1.0,
+    "30": 1.0,
+    "100": 1.0
+   }
+  },
+  "holding_matching_key": {
+   "rules": [
+    {
+     "conditions": [
+      "action=pickup",
+      "carrying=none",
+      "front_matches_door=True"
+     ],
+     "attempts": 1451,
+     "successes": 1451,
+     "success_rate": 1.0,
+     "removal": {
+      "front_matches_door=True": 1.0,
+      "carrying=none": 1.0,
+      "action=pickup": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1118606,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front_matches_door=True"
+      ]
+     ],
+     "evidence_gain_bits": 6250.2
+    },
+    {
+     "move": [
+      0,
+      [
+       "carrying=none"
+      ]
+     ],
+     "evidence_gain_bits": 4498.6
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=pickup"
+      ]
+     ],
+     "evidence_gain_bits": 5224.6
+    }
+   ],
+   "expected": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=pickup",
+     "carrying=none",
+     "front_matches_door=True"
+    ]
+   ]
+  },
+  "on_goal": {
+   "rules": [
+    {
+     "conditions": [
+      "action=forward",
+      "front=goal"
+     ],
+     "attempts": 301,
+     "successes": 301,
+     "success_rate": 1.0,
+     "removal": {
+      "front=goal": 1.0,
+      "action=forward": 1.0
+     }
+    },
+    {
+     "default": true,
+     "attempts": 1847194,
+     "successes": 0
+    }
+   ],
+   "trace": [
+    {
+     "move": [
+      0,
+      [
+       "front=goal"
+      ]
+     ],
+     "evidence_gain_bits": 3126.8
+    },
+    {
+     "move": [
+      0,
+      [
+       "action=forward"
+      ]
+     ],
+     "evidence_gain_bits": 1067.2
+    }
+   ],
+   "expected": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ],
+   "exact": true,
+   "vase_in_any_rule": false,
+   "threshold_finder_1000_episodes": [
+    [
+     "action=forward",
+     "front=goal"
+    ]
+   ]
+  }
+ },
+ "seconds": 159.8
+}
