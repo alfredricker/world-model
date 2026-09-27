@@ -8,6 +8,14 @@ Built beside an existing ``sampled_probe`` directory, from the same worlds:
 - **Successors:** the observation after each of the 5 actions (the
   current one again when an action ends the episode), to score the
   reachability head on true next states apart from the transition model.
+- **Decidability from the view** (card 001, user decision 2026-09-26): all
+  live reachable states of all development worlds that give the same
+  egocentric view (and carried object) are grouped. A fork is decidable
+  when some action is best, for the fork's goal, in every state of its
+  group, so a model without memory, which does not know which world it is
+  in, can always be right. Where a goal is unreachable or absent, every
+  action counts as best. ``decidable_within_world`` groups only the fork's
+  own world (optimistic; reported for reference).
 - **Exact goals:** for each fork, the first goal state on a shortest path
   (lowest action ID on ties), as a frame and as simulator state. The gate
   compares pooled 4-example goals from other worlds against these.
@@ -33,8 +41,8 @@ import numpy as np
 from ..data import file_hash, write_json
 from .rooms import RoomsConfig, RoomsPort
 from .rooms_data import world_seed
-from .rooms_goals import (INF, _frame, distances, goals_of, holds, layout_of, reachable, set_state,
-                          state_of, visible_goals)
+from .rooms_goals import (INF, _frame, all_action_distances, distances, goals_of, holds, layout_of, reachable,
+                          set_state, state_of, visible_goals)
 from .rooms_symbolic import egocentric, static_grid, symbolic
 
 PAIR_KINDS = ("key", "box", "irrelevant")
@@ -134,6 +142,36 @@ def _world(args):
     graph = reachable(layout, start, cap)
     goals = goals_of(layout, start)
     dist = {g: distances(layout, graph, g) for g in goals}
+    # Egocentric view of every live state, grouped by identical view.
+    live_ids = np.flatnonzero(~graph.terminal)
+    groups = {}
+    view_key = np.full(len(graph.states), -1, np.int64)
+    for sid in live_ids:
+        set_state(env, layout, graph.states[sid])
+        view, view_carried = egocentric(env)
+        key = view.tobytes() + view_carried.tobytes()
+        view_key[sid] = groups.setdefault(key, len(groups))
+    members = [[] for _ in range(len(groups))]
+    for sid in live_ids:
+        members[view_key[sid]].append(sid)
+    members = [np.array(m) for m in members]
+    best_rows = {}
+    for g, dg in dist.items():
+        ad = all_action_distances(graph, dg)
+        low = ad.min(1, keepdims=True)
+        best_rows[g] = (ad == low)          # all True where the goal is unreachable
+    # Per view group, the actions best in every member, as 5-bit masks per goal
+    # name (31 = no constraint: goal absent from this world).
+    weights = 1 << np.arange(5)
+    group_masks = np.full((len(groups), len(goal_names)), 31, np.uint8)
+    for g, best_g in best_rows.items():
+        gi = goal_names.index(f"{g[0]}:{g[1]}")
+        for k, m in enumerate(members):
+            group_masks[k, gi] = int((best_g[m].all(0) * weights).sum())
+    import hashlib
+    group_hash = np.zeros(len(groups), np.int64)
+    for key, k in groups.items():
+        group_hash[k] = int.from_bytes(hashlib.blake2b(key, digest_size=8).digest(), "little", signed=True)
 
     def render(sid):
         st = graph.states[sid]
@@ -145,7 +183,8 @@ def _world(args):
     fork = {"index": [], "grid": [], "carried": [], "steps": [], "goal_frame": [], "goal_grid": [],
             "goal_carried": [], "goal_visible": [], "frame_ok": [], "next_frame": [], "next_grid": [],
             "next_carried": [], "ego_grid": [], "ego_carried": [], "goal_ego_grid": [], "goal_ego_carried": [],
-            "next_ego_grid": [], "next_ego_carried": []}
+            "next_ego_grid": [], "next_ego_carried": [], "decidable_within_world": [], "view_group": [],
+            "view_hash": []}
     for (index, sid, goal), stored in zip(rows, frames, strict=True):
         g = tuple(goal_names[goal].split(":"))
         frame, grid, carried, _, view, view_carried = render(sid)
@@ -156,6 +195,10 @@ def _world(args):
         fork["ego_grid"].append(view)
         fork["ego_carried"].append(view_carried)
         fork["steps"].append(int(dist[g][sid]))
+        group = members[view_key[sid]]
+        fork["decidable_within_world"].append(bool(best_rows[g][group].all(0).any()))
+        fork["view_group"].append(len(group))
+        fork["view_hash"].append(group_hash[view_key[sid]])
         succ = [render(int(j) if j >= 0 else sid) for j in graph.succ[sid]]
         fork["next_frame"].append(np.stack([s_[0] for s_ in succ]))
         fork["next_grid"].append(np.stack([s_[1] for s_ in succ]))
@@ -196,7 +239,7 @@ def _world(args):
         pairs.append((PAIR_KINDS.index(kind), goal_names.index(f"{g[0]}:{g[1]}"),
                       int(dist[g][a]), int(dist[g][b]), fa, ga, ca, va, vca, fb, gb, cb, vb, vcb))
     port.close()
-    return w, fork, pools, pairs
+    return w, fork, pools, pairs, (group_hash, group_masks)
 
 
 def build(probe: Path, out: Path, *, per_goal: int = 4, per_kind: int = 3, scan: int = 40000,
@@ -226,11 +269,16 @@ def build(probe: Path, out: Path, *, per_goal: int = 4, per_kind: int = 3, scan:
                 "ego_grid": np.zeros((n, 7, 7, 3), np.uint8), "ego_carried": np.zeros((n, 2), np.uint8),
                 "goal_ego_grid": np.zeros((n, 7, 7, 3), np.uint8), "goal_ego_carried": np.zeros((n, 2), np.uint8),
                 "next_ego_grid": np.zeros((n, 5, 7, 7, 3), np.uint8),
-                "next_ego_carried": np.zeros((n, 5, 2), np.uint8)}
+                "next_ego_carried": np.zeros((n, 5, 2), np.uint8),
+                "decidable_within_world": np.zeros(n, np.bool_), "view_group": np.zeros(n, np.int64),
+                "view_hash": np.zeros(n, np.int64)}
     pools = {name: [] for name in goal_names}
     pairs, frame_ok = [], np.zeros(n, np.bool_)
     with Pool(workers) as pool:
-        for w, fork, world_pools, world_pairs in pool.imap_unordered(_world, jobs):
+        view_masks = {}
+        for w, fork, world_pools, world_pairs, (hashes, masks) in pool.imap_unordered(_world, jobs):
+            for h, m in zip(hashes.tolist(), masks):
+                view_masks[h] = view_masks[h] & m if h in view_masks else m.copy()
             idx = np.array(fork["index"], np.int64)
             if len(idx):
                 frame_ok[idx] = fork["frame_ok"]
@@ -241,6 +289,13 @@ def build(probe: Path, out: Path, *, per_goal: int = 4, per_kind: int = 3, scan:
             pairs += [(w, *p) for p in world_pairs]
     if not frame_ok.all():
         raise RuntimeError(f"{(~frame_ok).sum()} fork frames did not re-render identically")
+    # Across all worlds: the actions best in every state that shows the fork's view.
+    bits = np.array([view_masks[h][g] for h, g in zip(fork_out["view_hash"].tolist(), forks[:, 2])], np.uint8)
+    fork_out["view_best"] = ((bits[:, None] >> np.arange(5)) & 1).astype(np.bool_)
+    fork_out["decidable"] = fork_out["view_best"].any(1)
+    fork_best = forks[:, 10:15].astype(bool)
+    if (fork_out["view_best"] & ~fork_best).any():
+        raise RuntimeError("An action best in every state with the view is not best at the fork")
     arrays = {f"fork_{k}": v for k, v in fork_out.items()}
     for name, items in pools.items():
         items.sort(key=lambda i: i[0])
@@ -266,6 +321,7 @@ def build(probe: Path, out: Path, *, per_goal: int = 4, per_kind: int = 3, scan:
             "pair_counts": {k: int((rows[:, 1] == i).sum()) for i, k in enumerate(PAIR_KINDS)},
             "pool_sizes": {k: len(v) for k, v in pools.items()},
             "exact_goal_visible": float(fork_out["goal_visible"].mean()),
+            "decidable": float(fork_out["decidable"].mean()),
             "sha256": file_hash(out / "fork_extras.npz"), "seconds": time.monotonic() - started}
     write_json(out / "fork_extras.json", info)
     return info

@@ -1,0 +1,201 @@
+{
+ "walk": {
+  "goal": {
+   "attempts": 460487,
+   "reached": 43776,
+   "rules": [
+    {
+     "action": "walk to goal",
+     "conditions": {
+      "door=open": 0.996
+     },
+     "achievement_probability": 1.0,
+     "attempts": 41952,
+     "share_of_successes": 0.958,
+     "without_any_condition": 0.0951
+    }
+   ]
+  },
+  "door": {
+   "attempts": 450841,
+   "reached": 450841,
+   "rules": [
+    {
+     "action": "walk to door",
+     "conditions": {},
+     "achievement_probability": 1.0,
+     "attempts": 450841,
+     "share_of_successes": 1.0,
+     "without_any_condition": 1.0
+    }
+   ]
+  },
+  "key": {
+   "attempts": 258447,
+   "reached": 258447,
+   "rules": [
+    {
+     "action": "walk to key",
+     "conditions": {},
+     "achievement_probability": 1.0,
+     "attempts": 258447,
+     "share_of_successes": 1.0,
+     "without_any_condition": 1.0
+    }
+   ]
+  },
+  "distractor": {
+   "attempts": 248988,
+   "reached": 247164,
+   "rules": [
+    {
+     "action": "walk to distractor",
+     "conditions": {},
+     "achievement_probability": 0.993,
+     "attempts": 248988,
+     "share_of_successes": 1.0,
+     "without_any_condition": 0.9927
+    }
+   ]
+  }
+ },
+ "walk_with_side": {
+  "goal": {
+   "attempts": 460487,
+   "reached": 43776,
+   "rules": [
+    {
+     "action": "walk to goal",
+     "conditions": {
+      "door=open": 0.996
+     },
+     "achievement_probability": 1.0,
+     "attempts": 41952,
+     "share_of_successes": 0.958,
+     "without_any_condition": 0.0951
+    }
+   ]
+  },
+  "door": {
+   "attempts": 450841,
+   "reached": 450841,
+   "rules": [
+    {
+     "action": "walk to door",
+     "conditions": {},
+     "achievement_probability": 1.0,
+     "attempts": 450841,
+     "share_of_successes": 1.0,
+     "without_any_condition": 1.0
+    }
+   ]
+  },
+  "key": {
+   "attempts": 258447,
+   "reached": 258447,
+   "rules": [
+    {
+     "action": "walk to key",
+     "conditions": {},
+     "achievement_probability": 1.0,
+     "attempts": 258447,
+     "share_of_successes": 1.0,
+     "without_any_condition": 1.0
+    }
+   ]
+  },
+  "distractor": {
+   "attempts": 248988,
+   "reached": 247164,
+   "rules": [
+    {
+     "action": "walk to distractor",
+     "conditions": {},
+     "achievement_probability": 0.993,
+     "attempts": 248988,
+     "share_of_successes": 1.0,
+     "without_any_condition": 0.9927
+    }
+   ]
+  }
+ },
+ "action_rules": {
+  "door_open": {
+   "action": "toggle",
+   "conditions": {
+    "front=door": 1.0,
+    "carrying_matches_door=True": 1.0
+   },
+   "achievement_probability": 1.0,
+   "attempts": 1722,
+   "share_of_successes": 1.0,
+   "without_any_condition": 0.0051
+  },
+  "holding_matching_key": {
+   "action": "pickup",
+   "conditions": {
+    "front_matches_door=True": 1.0,
+    "carrying=none": 1.0
+   },
+   "achievement_probability": 1.0,
+   "attempts": 1522,
+   "share_of_successes": 1.0,
+   "without_any_condition": 0.007
+  }
+ },
+ "persistence": {
+  "door=open": 0.994,
+  "front_matches_door=True": 0.563,
+  "carrying_matches_door=True": 1.0,
+  "carrying=none": 0.99,
+  "front=door": 0.57
+ },
+ "abilities": {
+  "on_goal=True": [
+   "walk",
+   "goal",
+   [
+    "door=open"
+   ]
+  ],
+  "front=door": [
+   "walk",
+   "door",
+   []
+  ],
+  "front_matches_door=True": [
+   "walk",
+   "key",
+   []
+  ],
+  "door=open": [
+   "toggle",
+   "4",
+   [
+    "front=door",
+    "carrying_matches_door=True"
+   ]
+  ],
+  "carrying_matches_door=True": [
+   "pickup",
+   "3",
+   [
+    "front_matches_door=True",
+    "carrying=none"
+   ]
+  ]
+ },
+ "acting": {
+  "layouts": 500,
+  "success": 1.0,
+  "distractor_picked": 0,
+  "plans": {
+   "walk to key \u2192 pickup \u2192 walk to door \u2192 toggle \u2192 walk to goal": 465,
+   "pickup \u2192 walk to door \u2192 toggle \u2192 walk to goal": 35
+  },
+  "mean_steps": 15.5,
+  "mean_shortest": 15.4,
+  "steps_over_shortest": 1.006,
+  "random_play_chance_in_same_steps": 0.0
+ }
+}

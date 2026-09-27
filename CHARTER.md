@@ -37,7 +37,7 @@ every rung below it has passed.
 
 | Rung | Property (GOAL.md) | Capability | Test that shows it | Status |
 |---|---|---|---|---|
-| 1 | P12, P6, P19 | Tell how close a goal is from any state, and how each action changes that, including through rare interactions | Goal-conditioned fork: at a development probe step, the learner is shown a goal condition (holding a key of a given colour, a given door open, a given box open) as a set of example frames from other episodes in which it holds. For each of the 5 actions, the evaluator computes the true fewest steps to the goal after that action by searching a copy of the simulator (unreachable counts as infinite; the learner never sees these numbers). The learner must rank the actions by it. Scored on interaction-decisive forks (the best action is a pickup or toggle) and movement-decisive forks; a pickup or toggle that changes nothing must not be ranked best. Two pass criteria, each at a threshold fixed by the card's feasibility gate: interaction-decisive top-1 above a goal-swapped control (the same model shown another goal), and the rank correlation between predicted and true steps-to-goal over fork states. Also report the score against the number of distinct interaction events in training (10, 30, 100, 300) | open |
+| 1 | P12, P6, P19 | Tell how close a goal is from any state, and how each action changes that, including through rare interactions | Goal-conditioned fork: at a development probe step, the learner is shown a goal condition (holding a key of a given colour, a given door open, a given box open) as a set of example frames from other episodes in which it holds. For each of the 5 actions, the evaluator computes the true fewest steps to the goal after that action by searching a copy of the simulator (unreachable counts as infinite; the learner never sees these numbers). The learner must rank the actions by it. Scored on interaction-decisive forks (the best action is a pickup or toggle) and movement-decisive forks that are decidable from the current view: some action is best in every reachable development state that shows the same egocentric view (decided 2026-09-26; the rest need memory and are reported, and become the memory rung's test). A pickup or toggle that changes nothing must not be ranked best. Two pass criteria, each at a threshold fixed by the card's feasibility gate: interaction-decisive top-1 above a goal-swapped control (the same model shown another goal), and the rank correlation between predicted and true steps-to-goal over fork states. Also report the score against the number of distinct interaction events in training (10, 30, 100, 300) | open |
 | 2 | P12, P16 | Infer the conditions a goal needs | Subgoal choice: in a state where a condition of the goal is unmet, the learner ranks candidate conditions, each shown as example frames like a goal, by how much achieving them brings the goal closer; the evaluator's search gives the truth. Chains up to box → key → door. Scored above a goal-swapped control. The candidates are a test device; the learner never trains on them | sketch |
 | 3 | P12 | Act to reach an unrewarded subgoal that enables a goal | Defined when rung 2 passes | sketch |
 | 4 | P21 | Deliberate over chains of conditions | Defined when rung 3 passes | sketch |
@@ -52,6 +52,14 @@ reached, not before.
 The order follows GOAL.md's main insight (decided 2026-09-26): how close a
 goal is, then which conditions it needs, then acting on those conditions as
 subgoals, then deliberating over them.
+
+**Theory first** (agreed with the user 2026-09-26). The theory of
+conditions ([card 003](experiments/003-conditions-theory-check/card.md),
+section 2) is checked with exact computation in a small key-and-door world
+before architectures are compared: a condition is what an achieving action
+needs, found by contrasting successes with failed attempts, and each
+condition becomes a subgoal. Rung 1's test and the current world will be
+redefined from that card's result; the architecture screen waits for it.
 
 **Architecture selection** (decided 2026-09-25). Before rung 1, while there
 is no model (arch_version 0), the first architecture is chosen by one

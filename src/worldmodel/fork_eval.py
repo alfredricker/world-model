@@ -39,6 +39,7 @@ class ForkSet:
     steps: np.ndarray            # (N,) true steps from the fork state
     exact: object                # exact goal observation per fork
     successors: object           # observation after each action, (N, 5, ...)
+    decidable: np.ndarray        # (N,) some action is best in every state with this view
     pools: dict                  # goal index -> (world array, observations)
     pairs: dict                  # condition pairs
     goal_names: list
@@ -86,7 +87,8 @@ def load_forks(probe: Path, extras: Path, mode: str = "frames") -> ForkSet:
              "steps_b": rows[:, 4], "a": _obs(ex, "pair_a_", mode), "b": _obs(ex, "pair_b_", mode),
              "kinds": info["pair_kinds"]}
     return ForkSet(obs, forks[:, 2], forks[:, 0], strata, forks[:, 5:10], forks[:, 10:15].astype(bool),
-                   forks[:, 15:20].astype(bool), ex["fork_steps"], exact, successors, pools, pairs, names)
+                   forks[:, 15:20].astype(bool), ex["fork_steps"], exact, successors, ex["fork_decidable"],
+                   pools, pairs, names)
 
 
 def draw_examples(fs: ForkSet, goals: np.ndarray, worlds: np.ndarray, n: int, rng: np.random.Generator,
@@ -157,8 +159,16 @@ def spearman(a: np.ndarray, b: np.ndarray) -> float:
     return float((ra * rb).sum() / denom) if denom > 0 else 0.0
 
 
-def summarise(fs: ForkSet, after: np.ndarray, rows: np.ndarray | None = None) -> dict:
+def summarise(fs: ForkSet, after: np.ndarray, rows: np.ndarray | None = None, decidable: bool = True) -> dict:
+    """Top-1 per stratum and the card's aggregates. By default only forks
+    decidable from the current view are scored (card 001, 2026-09-26); the
+    same numbers over all forks are under "all"."""
     rows = np.arange(len(fs.goal)) if rows is None else rows
+    if decidable and getattr(fs, "decidable", None) is not None:
+        out = summarise(fs, after, rows[fs.decidable[rows]], decidable=False)
+        out["all"] = summarise(fs, after, rows, decidable=False)
+        out["all"].pop("per_stratum")
+        return out
     t = top1_rows(after[rows], fs.best[rows])
     strata = fs.strata[rows]
     per = {str(s): float(t[strata == s].mean()) for s in np.unique(strata)}

@@ -131,3 +131,8 @@ handed to the user.
 ## 7. Result
 
 ## 8. Decision
+
+On hold (2026-09-26): it depends on card 001's winner, and card 001 was
+revised in favour of [card 003](../003-conditions-theory-check/card.md).
+Card 003's theory suggests a different label-free signal to test here:
+failed attempts at an action, contrasted with its rare successes.

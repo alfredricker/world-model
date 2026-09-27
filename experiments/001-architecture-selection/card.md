@@ -3,7 +3,7 @@ id: "001"
 title: architecture selection
 rung: 0
 serves: [P12, P6, P19]
-status: draft   # draft | approved | gated | running | done | abandoned
+status: abandoned   # draft | approved | gated | running | done | abandoned
 verdict:
 arch_version: 0
 date: 2026-09-26
@@ -161,10 +161,27 @@ matched pairs, but by about 0.1 step against a true 7. Movement stays
 below 0.55 even on true successors: the head's one-step precision is a
 separate limit. Curves were flat from 10k to 30k updates.
 
+Third round: what can be known from one view. A fit of the hub to the
+evaluator's true distances (oracle, CHARTER rule 7; `runs/ceiling_ego_*`)
+could not fit its targets (RMS error about 37 steps). The egocentric view
+explains only 48–66% of the variance of true steps-to-condition in the
+training data (residual 7–10 steps): where a key or door is out of view,
+no memoryless model can know it. On movement forks, the best average
+action per view matched the truth 0.30–0.33 of the time (chance 0.27).
+**Decision (user, 2026-09-26): score only forks decidable from the view**,
+those where some action is best in every live state of all 120
+development worlds that shows the same view. 57% of forks qualify
+(scored strata 0.60–0.99, 179–297 forks each; movement 0.53–0.56). On
+them a perfect memoryless model scores 1.0. Re-scored best run
+(supplied goals, pooled rule): interaction top-1 0.65 (swapped 0.42),
+movement 0.44, rank correlation 0.18. The gap to 1.0 is now the model's,
+not the view's.
+
 ## 6. Success criteria and prediction
 
-**Metrics:** (a) mean top-1 over the six scored interaction strata (the
-best-ranked action is among the truly best); (b) Spearman rank correlation
+**Metrics** (on forks decidable from the view, section 5): (a) mean top-1
+over the six scored interaction strata (the best-ranked action is among
+the truly best); (b) Spearman rank correlation
 between predicted d(z, g) and true steps-to-goal over all fork states and
 their goals, unreachable pairs ranked last. Both are means of 2 seeds.
 
@@ -192,6 +209,15 @@ over 30 minutes are handed to the user as commands.
 ## 7. Result
 
 ## 8. Decision
+
+**Revise** (2026-09-26, with the user). The feasibility gate did not pass in
+three rounds, and the reason points at the approach rather than the
+candidates: one smooth learned distance had to carry "and" structure (key
+*and* facing the door), and two-step chains scored at the goal-swapped
+level. The theory is now checked first, in a small key-and-door world
+([card 003](../003-conditions-theory-check/card.md)). This card's fork test,
+evaluator data and decidability check stay available; the architecture
+screen returns once the theory says what the architecture must estimate.
 
 ---
 

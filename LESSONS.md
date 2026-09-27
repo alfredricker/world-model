@@ -22,6 +22,13 @@ it; *suggestive* means one seed, small n, or a diagnostic.
   relation, memory and transfer screens were unreadable because both arms
   predicted "nothing happens" for every interaction. *Evidence:* stage A note,
   final verdicts. *Confirmed.*
+- **Check that a test's answer can be known from what the model sees.** In
+  chained rooms one egocentric view explains 48–66% of the variance of true
+  steps-to-condition, and on movement forks the best action per view matched
+  the truth 0.30–0.33 of the time (chance 0.27): a memoryless model could
+  not pass a 0.8 movement bar. Only 57% of forks were decidable from the
+  view. *Evidence:* card 001 gate, third round. *Confirmed* (exact
+  computation over all reachable states).
 - **Verify that held-out pairs are really held out.** PHWM's first held-query
   run left about 98% of query pairs in the support set; the corrected run
   scored .917 on held cells (6/6 seeds above .90). *Evidence:*
@@ -39,8 +46,15 @@ it; *suggestive* means one seed, small n, or a diagnostic.
   furnace → iron pickaxe 0.11; a sleep request that executed at 0.86–0.92
   was proposed once in 15 lives; request chains were flat from one
   demonstration to all. Card 001's gate repeats the pattern: one-step
-  conditions 0.66–0.88, two-step chains at the swapped-goal level.
-  Backward regression over preconditions has not been tested anywhere.
+  conditions 0.66–0.88, two-step chains at the swapped-goal level. One
+  smooth distance cannot mark conditions: in a deterministic world every
+  shortest-path step lowers the true distance by exactly 1, so a key pickup
+  looks like a move. Under random play, long-range jumps are dominated by
+  the final approach (card 003). Contrasting an action's successes with its
+  failures at the achieving step recovered exact conditions from 10
+  successes, with supplied variables; treating "walk to X" as an action
+  with conditions gave the whole key → door → goal chain without naming
+  places. *Evidence:* cards 003, 004 (exact, supplied variables).
   *Evidence:* old:phwm/docs/05-experimental-record.md §5.12,
   06-achievements-and-limitations.md; card 001 gate. *Confirmed* for the
   pattern.
@@ -84,11 +98,10 @@ it; *suggestive* means one seed, small n, or a diagnostic.
   uniform policy an exact frame-pair lookup cannot beat the action prior
   beyond lag 2, and matched toggles were 339 of 1,030,054 transitions.
   Masked inverse models with history, current-frame and image-blind inputs
-  all stayed near the action prior. *Evidence:* old:gamma/DECISIONS.md.
-  *Confirmed.*
-- **Quantization did not cause those failures.** A continuous-only control
-  failed the same way. *Evidence:* old:gamma/notes/2026-09-21-continuous-control.md.
-  *Suggestive* (one seed).
+  all stayed near the action prior; a continuous-only control failed the
+  same way, so quantization was not the cause. *Evidence:*
+  old:gamma/DECISIONS.md, old:gamma/notes/2026-09-21-continuous-control.md.
+  *Confirmed* (quantization part: one seed).
 - **A contrastive reachable-future exploration bonus rewards the action with
   the least distinguishable futures.** In GRL-108 it drove collapse to
   sleeping (2 of 3 seeds); leave-one-out attributed the collapse to that

@@ -1,0 +1,699 @@
+{
+ "data_check": {
+  "8": {
+   "episodes": 3000,
+   "steps": 1841496,
+   "events_per_1000_episodes": {
+    "bump": 54053.0,
+    "door_close": 345.3,
+    "door_reopen": 245.7,
+    "enter_goal": 103.0,
+    "move": 314005.0,
+    "pickup_distractor": 487.7,
+    "pickup_failed_hands_full": 5780.7,
+    "pickup_matching": 507.3,
+    "pickup_nothing": 116099.3,
+    "toggle_failed_locked": 1640.0,
+    "toggle_nothing": 120236.7,
+    "unlock": 328.3
+   },
+   "episodes_with_event_per_1000": {
+    "bump": 999.7,
+    "door_close": 201.7,
+    "door_reopen": 145.0,
+    "enter_goal": 103.0,
+    "move": 1000.0,
+    "pickup_distractor": 487.7,
+    "pickup_failed_hands_full": 864.7,
+    "pickup_matching": 507.3,
+    "pickup_nothing": 1000.0,
+    "toggle_failed_locked": 434.3,
+    "toggle_nothing": 1000.0,
+    "unlock": 328.3
+   }
+  }
+ },
+ "analysis_size": 8,
+ "door_unlocked": {
+  "successes": 985,
+  "rules": [
+   {
+    "action": "toggle",
+    "conditions": {
+     "front=door": 1.0,
+     "carrying_matches_door=True": 1.0
+    },
+    "achievement_probability": 1.0,
+    "attempts": 985,
+    "share_of_successes": 1.0,
+    "without_any_condition": 0.0031
+   }
+  ],
+  "baseline_lift": [
+   [
+    "front=door",
+    12.27
+   ],
+   [
+    "carrying_matches_door=True",
+    3.11
+   ],
+   [
+    "x=4",
+    1.94
+   ],
+   [
+    "dir=0",
+    1.63
+   ],
+   [
+    "x=3",
+    1.53
+   ],
+   [
+    "carrying_colour=blue",
+    1.23
+   ]
+  ],
+  "jumps": {
+   "horizon": 100,
+   "successful_episodes": 985,
+   "median_chance_at_start": 0.026,
+   "mean_rise_by_kind": {
+    "bump": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 139902
+    },
+    "move": {
+     "mean": 0.0006,
+     "max": 0.2681,
+     "n": 812757
+    },
+    "pickup_distractor": {
+     "mean": -0.0175,
+     "max": -0.0001,
+     "n": 1463
+    },
+    "pickup_failed_hands_full": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 14951
+    },
+    "pickup_matching": {
+     "mean": 0.0744,
+     "max": 0.2191,
+     "n": 1522
+    },
+    "pickup_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 300275
+    },
+    "toggle_failed_locked": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 4920
+    },
+    "toggle_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 311544
+    }
+   },
+   "share_of_largest_rise_in_successful_episodes": {
+    "move": 0.988,
+    "pickup_matching": 0.012
+   }
+  },
+  "toggle_facing_door_with_distractor": [
+   0.0,
+   3607
+  ],
+  "toggle_facing_door_empty_handed": [
+   0.0,
+   1313
+  ],
+  "expected": {
+   "action": "toggle",
+   "conditions": [
+    "front=door",
+    "carrying_matches_door=True"
+   ]
+  },
+  "successes_curve": {
+   "10": {
+    "exact_recovery": 1.0,
+    "repeats": 20
+   },
+   "30": {
+    "exact_recovery": 1.0,
+    "repeats": 20
+   },
+   "100": {
+    "exact_recovery": 1.0,
+    "repeats": 20
+   },
+   "300": {
+    "exact_recovery": 1.0,
+    "repeats": 20
+   }
+  }
+ },
+ "door_open": {
+  "successes": 1722,
+  "rules": [
+   {
+    "action": "toggle",
+    "conditions": {
+     "front=door": 1.0,
+     "carrying_matches_door=True": 1.0
+    },
+    "achievement_probability": 1.0,
+    "attempts": 1722,
+    "share_of_successes": 1.0,
+    "without_any_condition": 0.0051
+   }
+  ],
+  "baseline_lift": [
+   [
+    "front=door",
+    12.27
+   ],
+   [
+    "carrying_matches_door=True",
+    3.11
+   ],
+   [
+    "x=4",
+    1.94
+   ],
+   [
+    "dir=0",
+    1.63
+   ],
+   [
+    "x=3",
+    1.53
+   ],
+   [
+    "carrying_colour=blue",
+    1.23
+   ]
+  ],
+  "jumps": {
+   "horizon": 100,
+   "successful_episodes": 985,
+   "median_chance_at_start": 0.026,
+   "mean_rise_by_kind": {
+    "bump": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 139902
+    },
+    "move": {
+     "mean": 0.0006,
+     "max": 0.2681,
+     "n": 812757
+    },
+    "pickup_distractor": {
+     "mean": -0.0175,
+     "max": -0.0001,
+     "n": 1463
+    },
+    "pickup_failed_hands_full": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 14951
+    },
+    "pickup_matching": {
+     "mean": 0.0744,
+     "max": 0.2191,
+     "n": 1522
+    },
+    "pickup_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 300275
+    },
+    "toggle_failed_locked": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 4920
+    },
+    "toggle_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 311544
+    }
+   },
+   "share_of_largest_rise_in_successful_episodes": {
+    "move": 0.988,
+    "pickup_matching": 0.012
+   }
+  },
+  "toggle_facing_door_with_distractor": [
+   0.0,
+   3607
+  ],
+  "toggle_facing_door_empty_handed": [
+   0.0,
+   1313
+  ]
+ },
+ "holding_matching_key": {
+  "successes": 1522,
+  "rules": [
+   {
+    "action": "pickup",
+    "conditions": {
+     "front_matches_door=True": 1.0,
+     "carrying=none": 1.0
+    },
+    "achievement_probability": 1.0,
+    "attempts": 1522,
+    "share_of_successes": 1.0,
+    "without_any_condition": 0.007
+   }
+  ],
+  "baseline_lift": [
+   [
+    "front_matches_door=True",
+    4.95
+   ],
+   [
+    "front=key",
+    4.57
+   ],
+   [
+    "carrying=none",
+    3.81
+   ],
+   [
+    "carrying_colour=none",
+    3.81
+   ],
+   [
+    "x=2",
+    1.14
+   ],
+   [
+    "dir=3",
+    1.07
+   ]
+  ],
+  "jumps": {
+   "horizon": 100,
+   "successful_episodes": 1498,
+   "median_chance_at_start": 0.318,
+   "mean_rise_by_kind": {
+    "bump": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 96480
+    },
+    "move": {
+     "mean": 0.0005,
+     "max": 0.2812,
+     "n": 554223
+    },
+    "pickup_distractor": {
+     "mean": -0.1405,
+     "max": -0.0253,
+     "n": 1463
+    },
+    "pickup_failed_hands_full": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 9292
+    },
+    "pickup_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 205584
+    },
+    "toggle_failed_locked": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 4920
+    },
+    "toggle_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 212222
+    }
+   },
+   "share_of_largest_rise_in_successful_episodes": {
+    "move": 0.986,
+    "bump": 0.007,
+    "toggle_nothing": 0.007
+   }
+  },
+  "expected": {
+   "action": "pickup",
+   "conditions": [
+    "front_matches_door=True",
+    "carrying=none"
+   ]
+  },
+  "successes_curve": {
+   "10": {
+    "exact_recovery": 1.0,
+    "repeats": 20
+   },
+   "30": {
+    "exact_recovery": 1.0,
+    "repeats": 20
+   },
+   "100": {
+    "exact_recovery": 1.0,
+    "repeats": 20
+   },
+   "300": {
+    "exact_recovery": 1.0,
+    "repeats": 20
+   }
+  }
+ },
+ "in_doorway": {
+  "successes": 1007,
+  "rules": [
+   {
+    "action": "forward",
+    "conditions": {
+     "front=door": 1.0,
+     "door=open": 1.0
+    },
+    "achievement_probability": 1.0,
+    "attempts": 1007,
+    "share_of_successes": 1.0,
+    "without_any_condition": 0.0028
+   }
+  ],
+  "baseline_lift": [
+   [
+    "front=door",
+    17.18
+   ],
+   [
+    "door=open",
+    10.18
+   ],
+   [
+    "carrying_matches_door=True",
+    2.67
+   ],
+   [
+    "x=4",
+    2.0
+   ],
+   [
+    "dir=0",
+    1.91
+   ],
+   [
+    "x=3",
+    1.55
+   ]
+  ],
+  "jumps": {
+   "horizon": 100,
+   "successful_episodes": 637,
+   "median_chance_at_start": 0.01,
+   "mean_rise_by_kind": {
+    "bump": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 151990
+    },
+    "door_close": {
+     "mean": -0.1933,
+     "max": -0.1466,
+     "n": 645
+    },
+    "door_reopen": {
+     "mean": 0.1929,
+     "max": 0.2019,
+     "n": 477
+    },
+    "move": {
+     "mean": 0.0002,
+     "max": 0.2169,
+     "n": 883475
+    },
+    "pickup_distractor": {
+     "mean": -0.0073,
+     "max": -0.0,
+     "n": 1463
+    },
+    "pickup_failed_hands_full": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 16477
+    },
+    "pickup_matching": {
+     "mean": 0.0341,
+     "max": 0.1299,
+     "n": 1522
+    },
+    "pickup_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 326457
+    },
+    "toggle_failed_locked": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 4920
+    },
+    "toggle_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 338405
+    },
+    "unlock": {
+     "mean": 0.1942,
+     "max": 0.2019,
+     "n": 985
+    }
+   },
+   "share_of_largest_rise_in_successful_episodes": {
+    "unlock": 0.969,
+    "move": 0.031
+   }
+  }
+ },
+ "in_right_room": {
+  "successes": 564,
+  "rules": [
+   {
+    "action": "forward",
+    "conditions": {
+     "side=doorway": 1.0,
+     "dir=0": 1.0
+    },
+    "achievement_probability": 1.0,
+    "attempts": 564,
+    "share_of_successes": 1.0,
+    "without_any_condition": 0.0016
+   }
+  ],
+  "baseline_lift": [
+   [
+    "side=doorway",
+    109.78
+   ],
+   [
+    "door=open",
+    11.33
+   ],
+   [
+    "front=door",
+    10.8
+   ],
+   [
+    "x=4",
+    2.7
+   ],
+   [
+    "carrying_matches_door=True",
+    2.55
+   ],
+   [
+    "dir=0",
+    2.04
+   ]
+  ],
+  "jumps": {
+   "horizon": 100,
+   "successful_episodes": 475,
+   "median_chance_at_start": 0.006,
+   "mean_rise_by_kind": {
+    "bump": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 157036
+    },
+    "door_close": {
+     "mean": -0.1442,
+     "max": -0.1236,
+     "n": 764
+    },
+    "door_reopen": {
+     "mean": 0.1442,
+     "max": 0.1496,
+     "n": 560
+    },
+    "move": {
+     "mean": 0.0003,
+     "max": 0.4009,
+     "n": 911401
+    },
+    "pickup_distractor": {
+     "mean": -0.0045,
+     "max": -0.0,
+     "n": 1463
+    },
+    "pickup_failed_hands_full": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 17087
+    },
+    "pickup_matching": {
+     "mean": 0.0228,
+     "max": 0.0943,
+     "n": 1522
+    },
+    "pickup_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 336756
+    },
+    "toggle_failed_locked": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 4920
+    },
+    "toggle_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 349194
+    },
+    "unlock": {
+     "mean": 0.1443,
+     "max": 0.1496,
+     "n": 985
+    }
+   },
+   "share_of_largest_rise_in_successful_episodes": {
+    "move": 1.0
+   }
+  }
+ },
+ "on_goal": {
+  "successes": 309,
+  "rules": [
+   {
+    "action": "forward",
+    "conditions": {
+     "front=goal": 1.0
+    },
+    "achievement_probability": 1.0,
+    "attempts": 309,
+    "share_of_successes": 1.0,
+    "without_any_condition": 0.0008
+   }
+  ],
+  "baseline_lift": [
+   [
+    "front=goal",
+    275.91
+   ],
+   [
+    "x=5",
+    39.25
+   ],
+   [
+    "side=right",
+    38.92
+   ],
+   [
+    "x=6",
+    36.48
+   ],
+   [
+    "door=open",
+    8.53
+   ],
+   [
+    "carrying_matches_door=True",
+    2.44
+   ]
+  ],
+  "jumps": {
+   "horizon": 100,
+   "successful_episodes": 309,
+   "median_chance_at_start": 0.001,
+   "mean_rise_by_kind": {
+    "bump": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 162159
+    },
+    "door_close": {
+     "mean": -0.04,
+     "max": 0.1193,
+     "n": 1036
+    },
+    "door_reopen": {
+     "mean": 0.042,
+     "max": 0.1487,
+     "n": 737
+    },
+    "move": {
+     "mean": 0.0002,
+     "max": 0.4009,
+     "n": 942015
+    },
+    "pickup_distractor": {
+     "mean": -0.0013,
+     "max": -0.0,
+     "n": 1463
+    },
+    "pickup_failed_hands_full": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 17342
+    },
+    "pickup_matching": {
+     "mean": 0.0078,
+     "max": 0.068,
+     "n": 1522
+    },
+    "pickup_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 348298
+    },
+    "toggle_failed_locked": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 4920
+    },
+    "toggle_nothing": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n": 360710
+    },
+    "unlock": {
+     "mean": 0.0683,
+     "max": 0.1487,
+     "n": 985
+    }
+   },
+   "share_of_largest_rise_in_successful_episodes": {
+    "move": 1.0
+   }
+  }
+ }
+}

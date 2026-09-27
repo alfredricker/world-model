@@ -3,33 +3,35 @@
 Overwritten each session. At most 40 lines.
 
 - **Date:** 2026-09-26
-- **Reframing this session (user-approved):** GOAL.md's main insight (how
-  close a goal is → which conditions it needs → subgoals → deliberation
-  over conditions). CHARTER ladder reordered to follow it; cards 001 and 002
-  reframed; LITERATURE updated. Runs may exceed 10 minutes when that is
-  what an informative result needs (user); over 30 minutes go to the user.
-- **Rung:** before rung 1. **World:** chained rooms.
-- **Active card:** 001, architecture selection (draft). Built this session:
-  training collection `runs/train` (hash matches the old repo), simulator
-  states for it, fork extras `runs/sampled_dev_extras` (symbolic forks,
-  exact goals, true successors, goal pools, 651 matched condition pairs),
-  hub H (`src/worldmodel/models/hub.py`, 1.70M parameters), trainer
-  (`train.py`), harness (`fork_eval.py`); 39 tests pass.
-- **Feasibility gate: not passed**, second round (card 001 section 5).
-  User decisions: the upper bound is the egocentric simulator view; goals
-  are supplied conditions (4 examples + success signal from labels, C1
-  until P20), label-free discovery of conditions deferred. Best so far:
-  pooled top-1 0.62–0.65 (swapped 0.42–0.44): one-step conditions learned
-  (key pickup 0.88), two-step chains at the swapped level, movement ≤ 0.55
-  even on true successors. Bar is 0.9.
-- **Throughput:** frames 146 updates/s, egocentric ~113 with condition
-  goals; 30k updates ≈ 4.5 min.
-- **Next decision (user):** how to separate the head's precision from
-  learning from random data: fit the head to true distances (evaluator
-  search over training worlds) as a ceiling; then chains (key → door rests
-  on 307 unlocks).
-- **Planned:** 002, label-free sampler (arm C one-way priority; frames show
-  a one-way gap of 5.9 at box opens, 2.5 pickups, 1.6 moves, 0.1 toggles).
-- **Literature:** added RUDDER, Align-RUDDER, SoRB, predicate invention,
-  prioritised replay. McGovern & Barto, Saulus, Gentner need PDFs.
-- **Tooling:** `bin/prun` now skips 32-bit libraries.
+- **Rung:** before rung 1. **Direction (agreed with the user today):**
+  theory first. The theory of conditions is written up in
+  [card 003](experiments/003-conditions-theory-check/card.md), section 2: a
+  condition is what the action that achieves a goal needs (the door opens
+  on a toggle only when facing it *and* holding the matching key), found by
+  contrasting successes with failed attempts; each condition becomes a
+  subgoal, down to movement. CHARTER has a "Theory first" paragraph.
+- **Card 003 (done, keep):** conditions theory check in an 8×8 key-door
+  room, random play, exact computation with simulator variables. Finding
+  conditions at the achieving step recovered every goal's exact conditions
+  (unlock: facing the door + matching key; key: facing it + empty hands;
+  doorway: facing the door + door open) from 10 successes; the distractor
+  key never works. Long-range jumps are dominated by the final approach.
+  Amendment: the chain goal square → door runs through positional
+  conditions (in the right room, in the doorway) that we named by hand.
+- **Card 001** (architecture selection, chained rooms): abandoned,
+  "revise"; its code and evaluator data stay for the harder test later.
+- **Card 002:** on hold; depends on card 001's winner.
+- **Card 004 (done, keep):** walking to X as an action with conditions.
+  Found: walk to goal square needs "door open" (0.996); walking to door or
+  keys needs nothing. Chaining the found rules gave key → pickup → door →
+  toggle → goal in 500/500 new layouts, 1.006 × the shortest solution, no
+  place named by hand and the distractor never picked.
+- **Next (user to choose):** learn achievement and walk-reach probabilities
+  from frames (compare with the exact values), or first a harder exact world
+  (key behind another door). CHARTER's rung 1 and current world are then
+  redefined from cards 003–004.
+- **Housekeeping:** LESSONS.md is over two pages (157 lines) and needs a
+  merge pass. Uncommitted: cards 003–004 (`envs/keydoor.py`, `conditions.py`,
+  `reach.py`, `tests/test_keydoor.py`; 41 tests pass) and today's document
+  edits.
+- **Tooling:** `bin/prun` skips 32-bit libraries.
