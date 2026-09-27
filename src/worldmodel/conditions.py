@@ -116,8 +116,15 @@ def achievement_rows(data: list[dict], goal: str):
 
 
 def find_rules(rows, precision_target=0.9, min_share=0.05, keep=0.95, min_removal=0.1,
-               action_names=ACTION_NAMES) -> list[dict]:
-    """Sequential covering over conjunctions of variable=value atoms."""
+               action_names=ACTION_NAMES, score="gain") -> list[dict]:
+    """Sequential covering over conjunctions of variable=value atoms.
+
+    score="recall" (card 003): add the atom that raises the achievement
+    probability most among those keeping >= `keep` of the uncovered
+    successes; a few percent of wrong labels can rule out the true
+    condition. score="gain" (card 005, FOIL's gain, Quinlan 1990): add the
+    atom maximising kept successes x (log new probability - log old), which
+    trades coverage against probability and tolerates a few wrong labels."""
     total = sum(r[2] for r in rows)
     if total == 0:
         return []
@@ -140,15 +147,22 @@ def find_rules(rows, precision_target=0.9, min_share=0.05, keep=0.95, min_remova
         while y[mask].mean() < precision_target:
             base = (rem & mask).sum()
             best, best_prec = None, y[mask].mean()
+            best_gain = 0.0
             for j in range(len(atoms)):
                 if j in chosen:
                     continue
                 m = mask & X[:, j]
-                if (rem & m).sum() < keep * base or m.sum() == 0:
+                kept = (rem & m).sum()
+                if m.sum() == 0 or kept == 0:
                     continue
                 p = y[m].mean()
-                if p > best_prec + 1e-9:
-                    best, best_prec = j, p
+                if score == "recall":
+                    if kept >= keep * base and p > best_prec + 1e-9:
+                        best, best_prec = j, p
+                elif p > y[mask].mean() + 1e-9:
+                    g = kept * (np.log(p) - np.log(y[mask].mean()))
+                    if g > best_gain:
+                        best, best_gain = j, g
             if best is None:
                 break
             chosen.append(best)
