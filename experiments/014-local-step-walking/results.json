@@ -1,0 +1,359 @@
+{
+ "note": "Card 014, key world, tools/card014/bench_vin.py. moves_closer: share of chosen moves reducing the exact walking distance on held-out frames.",
+ "gate_readout_check": {
+  "readout_finds_agent_wall_column_seen": 0.993,
+  "readout_right_cell_wall_column_seen": 0.996,
+  "readout_finds_agent_wall_column_unseen": 0.9955,
+  "readout_right_cell_wall_column_unseen": 0.997,
+  "walking_learned_readout": {
+   "forward": {
+    "frames": 3000,
+    "moves_closer": 1.0,
+    "random": 0.442,
+    "by_distance": {
+     "1-4": 1.0,
+     "5-8": 1.0,
+     "9-12": 1.0,
+     "13-40": 1.0
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9987,
+    "random": 0.458,
+    "by_distance": {
+     "1-4": 1.0,
+     "5-8": 1.0,
+     "9-12": 0.994,
+     "13-40": 0.905
+    }
+   }
+  },
+  "walking_given_position": {
+   "forward": {
+    "frames": 3000,
+    "moves_closer": 1.0,
+    "random": 0.442,
+    "by_distance": {
+     "1-4": 1.0,
+     "5-8": 1.0,
+     "9-12": 1.0,
+     "13-40": 1.0
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9987,
+    "random": 0.458,
+    "by_distance": {
+     "1-4": 1.0,
+     "5-8": 1.0,
+     "9-12": 0.994,
+     "13-40": 0.905
+    }
+   }
+  }
+ },
+ "gate_upper_bound_30k": {
+  "held_out": {
+   "forward": {
+    "frames": 3000,
+    "moves_closer": 0.9907,
+    "random": 0.442,
+    "by_distance": {
+     "1-4": 1.0,
+     "5-8": 1.0,
+     "9-12": 0.976,
+     "13-40": 1.0
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9983,
+    "random": 0.458,
+    "by_distance": {
+     "1-4": 0.998,
+     "5-8": 1.0,
+     "9-12": 0.991,
+     "13-40": 1.0
+    }
+   }
+  },
+  "training_frames": {
+   "forward": {
+    "frames": 1140,
+    "moves_closer": 0.9965
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9997
+   }
+  }
+ },
+ "main": {
+  "readout_finds_agent": 0.175,
+  "criterion_1_walking": {
+   "forward": {
+    "frames": 3000,
+    "moves_closer": 0.7317,
+    "random": 0.443,
+    "by_distance": {
+     "1-4": 0.759,
+     "5-8": 0.839,
+     "9-12": 0.676,
+     "13-40": 0.651
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.8733,
+    "random": 0.453,
+    "by_distance": {
+     "1-4": 0.942,
+     "5-8": 0.872,
+     "9-12": 0.679,
+     "13-40": 0.474
+    }
+   },
+   "forward/pickup": {
+    "frames": 659,
+    "moves_closer": 0.6009,
+    "random": 0.448,
+    "by_distance": {
+     "1-4": 0.669,
+     "5-8": 0.494,
+     "9-12": 1.0
+    }
+   },
+   "forward/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.7947,
+    "random": 0.418,
+    "by_distance": {
+     "1-4": 0.837,
+     "5-8": 0.726,
+     "9-12": 0.727,
+     "13-40": 1.0
+    }
+   },
+   "forward/pickup/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.878,
+    "random": 0.452,
+    "by_distance": {
+     "1-4": 0.937,
+     "5-8": 0.882,
+     "9-12": 0.705,
+     "13-40": 0.409
+    }
+   },
+   "forward/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.783,
+    "random": 0.418,
+    "by_distance": {
+     "1-4": 0.808,
+     "5-8": 0.732,
+     "9-12": 0.794,
+     "13-40": 1.0
+    }
+   },
+   "forward/pickup/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.7913,
+    "random": 0.417,
+    "by_distance": {
+     "1-4": 0.826,
+     "5-8": 0.74,
+     "9-12": 0.715,
+     "13-40": 1.0
+    }
+   },
+   "forward/toggle/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.7873,
+    "random": 0.422,
+    "by_distance": {
+     "1-4": 0.813,
+     "5-8": 0.738,
+     "9-12": 0.808,
+     "13-40": 0.714
+    }
+   }
+  },
+  "criterion_2_unseen_column": {
+   "forward": {
+    "frames": 576,
+    "moves_closer": 0.7865,
+    "random": 0.435,
+    "by_distance": {
+     "1-4": 0.7,
+     "5-8": 0.941,
+     "9-12": 1.0
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.7253,
+    "random": 0.469,
+    "by_distance": {
+     "1-4": 0.736,
+     "5-8": 0.675,
+     "9-12": 0.892,
+     "13-40": 0.5
+    }
+   },
+   "forward/pickup": {
+    "frames": 264,
+    "moves_closer": 0.7424,
+    "random": 0.46,
+    "by_distance": {
+     "1-4": 0.71,
+     "5-8": 0.759,
+     "9-12": 1.0
+    }
+   },
+   "forward/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.6573,
+    "random": 0.412,
+    "by_distance": {
+     "1-4": 0.656,
+     "5-8": 0.648,
+     "9-12": 0.781,
+     "13-40": 0.5
+    }
+   },
+   "forward/pickup/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.7163,
+    "random": 0.462,
+    "by_distance": {
+     "1-4": 0.741,
+     "5-8": 0.662,
+     "9-12": 0.856,
+     "13-40": 0.25
+    }
+   },
+   "forward/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.6593,
+    "random": 0.409,
+    "by_distance": {
+     "1-4": 0.665,
+     "5-8": 0.637,
+     "9-12": 0.817,
+     "13-40": 0.333
+    }
+   },
+   "forward/pickup/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.6383,
+    "random": 0.41,
+    "by_distance": {
+     "1-4": 0.63,
+     "5-8": 0.639,
+     "9-12": 0.756,
+     "13-40": 0.5
+    }
+   },
+   "forward/toggle/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.657,
+    "random": 0.411,
+    "by_distance": {
+     "1-4": 0.661,
+     "5-8": 0.634,
+     "9-12": 0.867,
+     "13-40": 1.0
+    }
+   }
+  },
+  "criterion_2_flat_run5": {
+   "forward": {
+    "frames": 576,
+    "moves_closer": 0.6128
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9253
+   },
+   "forward/pickup": {
+    "frames": 264,
+    "moves_closer": 0.5341
+   },
+   "forward/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.871
+   },
+   "forward/pickup/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9217
+   },
+   "forward/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.866
+   },
+   "forward/pickup/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.892
+   },
+   "forward/toggle/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8707
+   }
+  },
+  "criterion_3_acting": {
+   "success": 0.25,
+   "mean_steps_when_successful": 49.2
+  }
+ },
+ "diagnostic_exact_at_agent_only_30k": {
+  "forward": {
+   "ready_here_acc": 1.0,
+   "V1_acc": 0.992,
+   "V4_acc": 0.9453,
+   "V8_acc": 0.8863,
+   "V12_acc": 0.9133,
+   "V16_acc": 0.977,
+   "V24_acc": 0.9803,
+   "distance_exact_share": 0.3503,
+   "distance_mean_abs_err": 2.757
+  },
+  "forward/toggle": {
+   "ready_here_acc": 1.0,
+   "V1_acc": 0.9997,
+   "V4_acc": 0.9727,
+   "V8_acc": 0.9417,
+   "V12_acc": 0.9933,
+   "V16_acc": 0.999,
+   "V24_acc": 0.9997,
+   "distance_exact_share": 0.7273,
+   "distance_mean_abs_err": 0.362
+  },
+  "walking": {
+   "forward": {
+    "frames": 3000,
+    "moves_closer": 0.9583,
+    "random": 0.442,
+    "by_distance": {
+     "1-4": 0.912,
+     "5-8": 0.967,
+     "9-12": 0.981,
+     "13-40": 0.93
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9763,
+    "random": 0.458,
+    "by_distance": {
+     "1-4": 1.0,
+     "5-8": 0.973,
+     "9-12": 0.939,
+     "13-40": 0.571
+    }
+   }
+  }
+ }
+}

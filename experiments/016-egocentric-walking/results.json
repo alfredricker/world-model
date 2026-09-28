@@ -1,0 +1,522 @@
+{
+ "note": "Card 016, key world, tools/card016/bench_ego.py. moves_closer: share of chosen moves reducing the exact walking distance on held-out frames.",
+ "gate_upper_bound": {
+  "upper_bound": {
+   "forward": {
+    "frames": 3000,
+    "moves_closer": 0.998,
+    "random": 0.442,
+    "by_distance": {
+     "1-4": 1.0,
+     "5-8": 1.0,
+     "9-12": 0.999,
+     "13-40": 0.987
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9767,
+    "random": 0.458,
+    "by_distance": {
+     "1-4": 0.966,
+     "5-8": 0.988,
+     "9-12": 0.962,
+     "13-40": 0.952
+    }
+   }
+  }
+ },
+ "main": {
+  "criterion_2_flat_run5": {
+   "forward": {
+    "frames": 576,
+    "moves_closer": 0.6128
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9253
+   },
+   "forward/pickup": {
+    "frames": 264,
+    "moves_closer": 0.5341
+   },
+   "forward/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.871
+   },
+   "forward/pickup/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9217
+   },
+   "forward/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.866
+   },
+   "forward/pickup/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.892
+   },
+   "forward/toggle/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8707
+   }
+  },
+  "criterion_1_walking": {
+   "forward": {
+    "frames": 3000,
+    "moves_closer": 0.8657,
+    "random": 0.443,
+    "by_distance": {
+     "1-4": 0.863,
+     "5-8": 0.851,
+     "9-12": 0.899,
+     "13-40": 0.802
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.974,
+    "random": 0.453,
+    "by_distance": {
+     "1-4": 1.0,
+     "5-8": 0.969,
+     "9-12": 0.917,
+     "13-40": 0.895
+    }
+   },
+   "forward/pickup": {
+    "frames": 659,
+    "moves_closer": 0.7299,
+    "random": 0.448,
+    "by_distance": {
+     "1-4": 0.758,
+     "5-8": 0.686,
+     "9-12": 1.0
+    }
+   },
+   "forward/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.835,
+    "random": 0.418,
+    "by_distance": {
+     "1-4": 0.882,
+     "5-8": 0.771,
+     "9-12": 0.671,
+     "13-40": 0.8
+    }
+   },
+   "forward/pickup/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.974,
+    "random": 0.452,
+    "by_distance": {
+     "1-4": 1.0,
+     "5-8": 0.971,
+     "9-12": 0.924,
+     "13-40": 0.636
+    }
+   },
+   "forward/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8323,
+    "random": 0.418,
+    "by_distance": {
+     "1-4": 0.875,
+     "5-8": 0.756,
+     "9-12": 0.772,
+     "13-40": 1.0
+    }
+   },
+   "forward/pickup/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.861,
+    "random": 0.417,
+    "by_distance": {
+     "1-4": 0.908,
+     "5-8": 0.793,
+     "9-12": 0.735,
+     "13-40": 1.0
+    }
+   },
+   "forward/toggle/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8393,
+    "random": 0.422,
+    "by_distance": {
+     "1-4": 0.881,
+     "5-8": 0.77,
+     "9-12": 0.802,
+     "13-40": 0.571
+    }
+   }
+  },
+  "criterion_2_unseen_column": {
+   "forward": {
+    "frames": 576,
+    "moves_closer": 0.8333,
+    "random": 0.435,
+    "by_distance": {
+     "1-4": 0.758,
+     "5-8": 0.974,
+     "9-12": 1.0
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9407,
+    "random": 0.469,
+    "by_distance": {
+     "1-4": 0.989,
+     "5-8": 0.931,
+     "9-12": 0.868,
+     "13-40": 0.5
+    }
+   },
+   "forward/pickup": {
+    "frames": 264,
+    "moves_closer": 0.8485,
+    "random": 0.46,
+    "by_distance": {
+     "1-4": 0.892,
+     "5-8": 0.824,
+     "9-12": 1.0
+    }
+   },
+   "forward/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8543,
+    "random": 0.412,
+    "by_distance": {
+     "1-4": 0.904,
+     "5-8": 0.785,
+     "9-12": 0.8,
+     "13-40": 1.0
+    }
+   },
+   "forward/pickup/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9547,
+    "random": 0.462,
+    "by_distance": {
+     "1-4": 0.991,
+     "5-8": 0.946,
+     "9-12": 0.904,
+     "13-40": 0.25
+    }
+   },
+   "forward/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8447,
+    "random": 0.409,
+    "by_distance": {
+     "1-4": 0.897,
+     "5-8": 0.768,
+     "9-12": 0.817,
+     "13-40": 1.0
+    }
+   },
+   "forward/pickup/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8653,
+    "random": 0.41,
+    "by_distance": {
+     "1-4": 0.917,
+     "5-8": 0.795,
+     "9-12": 0.813,
+     "13-40": 0.5
+    }
+   },
+   "forward/toggle/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8453,
+    "random": 0.411,
+    "by_distance": {
+     "1-4": 0.903,
+     "5-8": 0.765,
+     "9-12": 0.837,
+     "13-40": 1.0
+    }
+   }
+  },
+  "criterion_3_acting": {
+   "success": 0.484,
+   "mean_steps_when_successful": 30.5
+  }
+ },
+ "main_90k_k24": {
+  "criterion_2_flat_run5": {
+   "forward": {
+    "frames": 576,
+    "moves_closer": 0.6128
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9253
+   },
+   "forward/pickup": {
+    "frames": 264,
+    "moves_closer": 0.5341
+   },
+   "forward/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.871
+   },
+   "forward/pickup/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9217
+   },
+   "forward/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.866
+   },
+   "forward/pickup/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.892
+   },
+   "forward/toggle/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8707
+   }
+  },
+  "criterion_1_walking": {
+   "forward": {
+    "frames": 3000,
+    "moves_closer": 0.801,
+    "random": 0.443,
+    "by_distance": {
+     "1-4": 0.845,
+     "5-8": 0.828,
+     "9-12": 0.804,
+     "13-40": 0.708
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9753,
+    "random": 0.453,
+    "by_distance": {
+     "1-4": 0.996,
+     "5-8": 0.975,
+     "9-12": 0.911,
+     "13-40": 0.895
+    }
+   },
+   "forward/pickup": {
+    "frames": 659,
+    "moves_closer": 0.6055,
+    "random": 0.448,
+    "by_distance": {
+     "1-4": 0.576,
+     "5-8": 0.648,
+     "9-12": 1.0
+    }
+   },
+   "forward/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.864,
+    "random": 0.418,
+    "by_distance": {
+     "1-4": 0.906,
+     "5-8": 0.799,
+     "9-12": 0.769,
+     "13-40": 0.8
+    }
+   },
+   "forward/pickup/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9767,
+    "random": 0.452,
+    "by_distance": {
+     "1-4": 0.998,
+     "5-8": 0.982,
+     "9-12": 0.908,
+     "13-40": 0.636
+    }
+   },
+   "forward/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8553,
+    "random": 0.418,
+    "by_distance": {
+     "1-4": 0.898,
+     "5-8": 0.782,
+     "9-12": 0.772,
+     "13-40": 1.0
+    }
+   },
+   "forward/pickup/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8923,
+    "random": 0.417,
+    "by_distance": {
+     "1-4": 0.934,
+     "5-8": 0.832,
+     "9-12": 0.775,
+     "13-40": 1.0
+    }
+   },
+   "forward/toggle/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8633,
+    "random": 0.422,
+    "by_distance": {
+     "1-4": 0.894,
+     "5-8": 0.814,
+     "9-12": 0.808,
+     "13-40": 1.0
+    }
+   }
+  },
+  "criterion_2_unseen_column": {
+   "forward": {
+    "frames": 576,
+    "moves_closer": 0.6858,
+    "random": 0.435,
+    "by_distance": {
+     "1-4": 0.563,
+     "5-8": 0.901,
+     "9-12": 1.0
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9517,
+    "random": 0.469,
+    "by_distance": {
+     "1-4": 0.988,
+     "5-8": 0.945,
+     "9-12": 0.897,
+     "13-40": 0.5
+    }
+   },
+   "forward/pickup": {
+    "frames": 264,
+    "moves_closer": 0.8068,
+    "random": 0.46,
+    "by_distance": {
+     "1-4": 0.785,
+     "5-8": 0.818,
+     "9-12": 1.0
+    }
+   },
+   "forward/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8787,
+    "random": 0.412,
+    "by_distance": {
+     "1-4": 0.922,
+     "5-8": 0.816,
+     "9-12": 0.857,
+     "13-40": 1.0
+    }
+   },
+   "forward/pickup/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9617,
+    "random": 0.462,
+    "by_distance": {
+     "1-4": 0.991,
+     "5-8": 0.955,
+     "9-12": 0.916,
+     "13-40": 0.25
+    }
+   },
+   "forward/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.876,
+    "random": 0.409,
+    "by_distance": {
+     "1-4": 0.924,
+     "5-8": 0.798,
+     "9-12": 0.945,
+     "13-40": 1.0
+    }
+   },
+   "forward/pickup/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8883,
+    "random": 0.41,
+    "by_distance": {
+     "1-4": 0.933,
+     "5-8": 0.829,
+     "9-12": 0.805,
+     "13-40": 1.0
+    }
+   },
+   "forward/toggle/toggle/toggle/pickup": {
+    "frames": 3000,
+    "moves_closer": 0.8703,
+    "random": 0.411,
+    "by_distance": {
+     "1-4": 0.922,
+     "5-8": 0.795,
+     "9-12": 0.918,
+     "13-40": 1.0
+    }
+   }
+  },
+  "criterion_3_acting": {
+   "success": 0.484,
+   "mean_steps_when_successful": 32.6
+  }
+ },
+ "maps_check_90k_k24": {
+  "goal square": {
+   "agent's own entry": {
+    "ready_cells": 113,
+    "ready_found": 1.0,
+    "false_ready": 0.379,
+    "steps_exact": 0.069,
+    "steps_within_1": 0.534,
+    "says_unreachable": 0.052
+   },
+   "every other cell": {
+    "ready_cells": 4461,
+    "ready_found": 0.052,
+    "false_ready": 0.056,
+    "steps_exact": 0.011,
+    "steps_within_1": 0.033,
+    "says_unreachable": 0.699
+   },
+   "run5_label_vs_exact_at_agent": 0.985
+  },
+  "door (with key)": {
+   "agent's own entry": {
+    "ready_cells": 428,
+    "ready_found": 1.0,
+    "false_ready": 0.0,
+    "steps_exact": 0.628,
+    "steps_within_1": 0.892,
+    "says_unreachable": 0.0
+   },
+   "every other cell": {
+    "ready_cells": 156,
+    "ready_found": 0.5,
+    "false_ready": 0.543,
+    "steps_exact": 0.022,
+    "steps_within_1": 0.125,
+    "says_unreachable": 0.008
+   },
+   "run5_label_vs_exact_at_agent": 0.963
+  },
+  "key": {
+   "agent's own entry": {
+    "ready_cells": 45,
+    "ready_found": 0.956,
+    "false_ready": 0.759,
+    "steps_exact": 0.0,
+    "steps_within_1": 0.103,
+    "says_unreachable": 0.0
+   },
+   "every other cell": {
+    "ready_cells": 230,
+    "ready_found": 0.557,
+    "false_ready": 0.498,
+    "steps_exact": 0.061,
+    "steps_within_1": 0.218,
+    "says_unreachable": 0.085
+   },
+   "run5_label_vs_exact_at_agent": 0.865
+  }
+ }
+}

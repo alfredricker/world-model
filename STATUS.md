@@ -15,18 +15,23 @@ Overwritten each session. At most 40 lines.
 - **Card 013 (done, fail at gate, stop):** walking as a chain of place
   conditions no better than a flat value (80–86%); the flat value network
   loses the spatial map.
-- **Card 014 (gate passed):** walking by one learned 3 × 3
-  step on the encoder's map, "within k steps" = "one step from within
-  k − 1". Upper bound (every cell supervised, position given) passes:
-  99.97% of moves closer on held-out frames at 30k updates (8k gave
-  90–94%; training length was the limit). Readout check passes: the
-  learned attention finds the agent in 99.3% / 99.55% (unseen wall column)
-  of held-out frames. Gate passed. Next: criteria 1–3 without exact
-  distance maps (`main_stage` not written).
+- **Card 014 (done, fail, revise):** local-step walking on the map works
+  (99.97% supervised at every cell; 96–98% at the agent only), but
+  learning from experience in a top-down frame fails (60–88%, acting 25%):
+  the learned attention finds the agent in 17.5%.
+- **Card 016 (approved, running):** walking on an egocentric view (whole
+  room, agent at the centre, fixed readout). Gate (every cell supervised,
+  30k): 99.8% / 97.7%, door way under 99%, loss still falling. Main run
+  (learned from experience, 30k): walking 73–97%, unseen column 83–95%,
+  acting 48.4% (top-down 25%, run 5 30.2%). 90k updates, 24 look-ahead
+  steps: walking 61–98%, unseen column 69–96%, acting 48.4% again; more
+  training does not help. All criteria fail. Maps check: "ready here" is
+  right only at the agent (chance elsewhere), so the recurrence does not do
+  the walking; suspect the whole-frame summary. Decision pending the user.
 - **Card 015 (done, fail):** reconstruction or change prediction make the
   map show objects (most classes 97–100%) but did not raise walking at 8k
   updates. Run 5's encoder at 30k reaches 99.07% / 99.83% without them,
-  so the new map is not needed for walking. Decision section open.
+  so the new map is not needed for walking. Decision: stop.
 - **Pinned (user):** merging duplicate detectors (needs literature);
   demonstrations once random play is too thin.
 - **Housekeeping:** LESSONS.md over two pages (~210 lines), needs a merge

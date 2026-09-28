@@ -22,7 +22,7 @@ from worldmodel.envs import logicdoor as ld
 from worldmodel.envs.keydoor_render import render, encode_logic_states
 
 RUN = Path("runs/012run5_key")
-K = 32            # recurrence steps (longest walk in the data: 23)
+K = next((int(a[2:]) for a in sys.argv if a.startswith("k=")), 32)   # recurrence steps (longest walk in the data: 23); argv k=24 (card 016)
 NF = 32           # map feature channels fed to the step
 NG = 16           # whole-frame summary channels fed to the step
 PLAY = 1 / 3
@@ -102,7 +102,8 @@ def _succ(job):
 
 # ---------------------------------------------------------------- the module
 
-def make_vin(trunk, n_ways):
+def make_vin(trunk, n_ways, H=9, W=8, fixed=None):
+    """H, W: map size in tiles. fixed: (4, H, W) one-hot readout used when no position is given (card 016)."""
     torch, nn, F = dl._torch()
 
     class VIN(nn.Module):
@@ -114,11 +115,12 @@ def make_vin(trunk, n_ways):
             self.feat = nn.Conv2d(64, NF, 1)
             # what each cell knows can be global (e.g. the held item, drawn in one corner tile);
             # how "within k steps" spreads stays local
-            self.glob = nn.Sequential(nn.Flatten(), nn.Linear(64 * 9 * 8, 64), nn.ReLU())
+            self.glob = nn.Sequential(nn.Flatten(), nn.Linear(64 * H * W, 64), nn.ReLU())
             self.glob_step = nn.Linear(64, NG)
             self.target = nn.Conv2d(64 + 64, 4 * n_ways, 3, padding=1)
             self.step = nn.Sequential(nn.Conv2d(4 + NF + NG, 64, 3, padding=1), nn.ReLU(), nn.Conv2d(64, 12, 1))
             self.attn = nn.Conv2d(64, 4, 3, padding=1)
+            self.register_buffer("fixed", None if fixed is None else fixed[None].float())
             with torch.no_grad():
                 self.target.bias.fill_(-4.0)
                 self.step[-1].bias.fill_(-4.0)
@@ -129,16 +131,17 @@ def make_vin(trunk, n_ways):
             B = img.shape[0]
             m = self.trunk(img)
             g = self.glob(m)
-            gm = g[:, :, None, None].expand(-1, -1, 9, 8)
-            f = torch.cat([F.relu(self.feat(m)), self.glob_step(g)[:, :, None, None].expand(-1, -1, 9, 8)], 1)
-            Tl = self.target(torch.cat([m, gm], 1)).float().reshape(B, -1, 4, 9, 8)[torch.arange(B, device=img.device), way]
+            gm = g[:, :, None, None].expand(-1, -1, H, W)
+            f = torch.cat([F.relu(self.feat(m)), self.glob_step(g)[:, :, None, None].expand(-1, -1, H, W)], 1)
+            Tl = self.target(torch.cat([m, gm], 1)).float().reshape(B, -1, 4, H, W)[torch.arange(B, device=img.device), way]
             if LOGIT:
                 # value-iteration style: the recurrence stays in logits (max is piecewise linear, so
                 # gradients survive 32 steps); probabilities only at the readout
-                A = given if given is not None else torch.softmax(self.attn(m).float().reshape(B, -1), 1).reshape(B, 4, 9, 8)
+                A = given if given is not None else self.fixed.expand(B, -1, -1, -1) if self.fixed is not None \
+                    else torch.softmax(self.attn(m).float().reshape(B, -1), 1).reshape(B, 4, H, W)
                 V, Qr, Vr, maps, qmaps = Tl, [], [torch.sigmoid((A * Tl).sum((1, 2, 3)))], [Tl], []
                 for _ in range(K):
-                    ql = self.step(torch.cat([torch.sigmoid(V).to(f.dtype), f], 1)).float().reshape(B, 3, 4, 9, 8)
+                    ql = self.step(torch.cat([torch.sigmoid(V).to(f.dtype), f], 1)).float().reshape(B, 3, 4, H, W)
                     Qr.append(torch.sigmoid((A[:, None] * ql).sum((2, 3, 4))))
                     V = torch.maximum(Tl, ql.max(1).values)
                     Vr.append(torch.sigmoid((A * V).sum((1, 2, 3))))
@@ -147,10 +150,11 @@ def make_vin(trunk, n_ways):
                     return torch.stack(maps, 1), torch.stack(qmaps, 1), A   # (B,K+1,4,9,8), (B,K,3,4,9,8) logits; (B,4,9,8)
                 return Vr[0], A, torch.stack(Qr, 1), torch.stack(Vr, 1)
             T = torch.sigmoid(Tl)
-            A = given if given is not None else torch.softmax(self.attn(m).float().reshape(B, -1), 1).reshape(B, 4, 9, 8)
+            A = given if given is not None else self.fixed.expand(B, -1, -1, -1) if self.fixed is not None \
+                    else torch.softmax(self.attn(m).float().reshape(B, -1), 1).reshape(B, 4, H, W)
             V, Qr, Vr = T, [], [(A * T).sum((1, 2, 3))]
             for _ in range(K):
-                q = torch.sigmoid(self.step(torch.cat([V.to(f.dtype), f], 1)).float()).reshape(B, 3, 4, 9, 8)
+                q = torch.sigmoid(self.step(torch.cat([V.to(f.dtype), f], 1)).float()).reshape(B, 3, 4, H, W)
                 Qr.append((A[:, None] * q).sum((2, 3, 4)))
                 V = torch.maximum(T, q.max(1).values)
                 Vr.append((A * V).sum((1, 2, 3)))
@@ -332,13 +336,15 @@ def walk_score(S, vin, frames, given=False, tag=""):
     return out
 
 
-def pick_frames(S, n=3000, wall=None, seed=1):
+def pick_frames(S, n=3000, wall=None, seed=1, not_wall=None):
     rs = np.random.default_rng(seed)
     fr = {}
     for j in range(len(S.ways)):
         m = S.Dt[:, j] >= 1
         if wall is not None:
             m &= S.test_wall == wall
+        if not_wall is not None:
+            m &= S.test_wall != not_wall
         idx = np.flatnonzero(m)
         fr[j] = np.sort(rs.choice(idx, min(n, len(idx)), replace=False)) if len(idx) else idx
     return fr
@@ -385,7 +391,7 @@ def main():
     log(f"done -> {out}")
 
 
-def train_fullmap(S, vin, updates, main_, n_frames=60000, bs=256, learn_attn=False):
+def train_fullmap(S, vin, updates, main_, n_frames=60000, bs=256, learn_attn=False, relabel=None):
     """Upper bound with exact "within k steps" labels at every (facing, cell) of the map.
     learn_attn: the agent's position is not given; the attention is trained only by the per-move
     values read out through it (exact labels at the agent's own entry), never told where the agent is."""
@@ -401,6 +407,8 @@ def train_fullmap(S, vin, updates, main_, n_frames=60000, bs=256, learn_attn=Fal
     dm = torch.as_tensor(np.concatenate([p[0] for p in parts]), device=S.dev)          # (N, 2, 4, 9, 8)
     sm = torch.as_tensor(np.concatenate([p[1] for p in parts]), device=S.dev)          # (N, 2, 3, 4, 9, 8)
     S.log(f"  distance maps {tuple(dm.shape)} in {time.monotonic() - t0:.0f}s")
+    if relabel is not None:      # card 016: the maps in the walking module's own frame
+        dm, sm = relabel(dm, sm, S.tr["s0"][rows])
     rows_t = torch.as_tensor(rows, device=S.dev)
     ks = torch.arange(K + 1, device=S.dev).view(1, -1, 1, 1, 1)
     opt = torch.optim.Adam(vin.parameters(), lr=3e-4)
@@ -529,8 +537,95 @@ def readout_check(S, updates):
     return res
 
 
+def flat_score(S, frames, tag=""):
+    """Run 5's own walking values (a flat value per way on the flattened encoder), same frames."""
+    torch = S.torch
+    out = {}
+    for j, idx in frames.items():
+        if not len(idx):
+            continue
+        succ = S.score_set(j, idx)
+        codes = torch.as_tensor(S.tseq["codes"][idx], device=S.dev)
+        with torch.no_grad():
+            o = S.lt.evaluate(S.trainer.encode(codes), torch.zeros(len(idx), dtype=torch.bool, device=S.dev))
+        mv = o["Q"][:, S.way_index[S.ways[j]]].float().argmax(1).cpu().numpy()
+        d = S.Dt[idx, j]
+        ok = (succ[np.arange(len(idx)), mv] >= 0) & (succ[np.arange(len(idx)), mv] < d)
+        out["/".join(S.tree.path(S.ways[j]))] = {"frames": int(len(idx)), "moves_closer": round(float(ok.mean()), 4)}
+    S.log(f"RESULT walking {tag}: {json.dumps(out)}")
+    return out
+
+
+def act_vin(S, vin, layouts, budget=200, eps=0.05, seed=0, view=None):
+    """Criterion 3: run 5's learned conditions choose the way and fire its action (as dl.act,
+    chooser and executor learned); walking moves come from the new module instead of run 5's values."""
+    torch = S.torch
+    rng = np.random.default_rng(seed)
+    tl, lt, wi = S.tree, S.lt, S.way_index
+    jof = {c: j for j, c in enumerate(S.ways)}
+    states = [ld.start_state(l) for l in layouts]
+    done = np.zeros(len(layouts), bool)
+    steps = np.full(len(layouts), budget)
+    for step_i in range(budget):
+        live = np.flatnonzero(~done)
+        if not len(live):
+            break
+        pairs = [(layouts[i], states[i]) for i in live]
+        o = dl.learned_on_states(lt, pairs, S.trainer)
+        L, P, W, R = [o[k].float().cpu().numpy() for k in ("L", "P", "W", "R")]
+        acts, need = [None] * len(live), []
+        for j, i in enumerate(live):
+            c = dl.choose(tl, lambda n: bool(L[j, n]), lambda n: R[j, wi[n]], lambda n: W[j, wi[n]], S.persist)
+            if c is None:
+                continue
+            g, aw = tl.parent[c], tl.action[c]
+            if P[j, g, aw] > 0.5 and not L[j, g]:
+                acts[j] = aw
+            elif rng.random() < eps:
+                acts[j] = int(rng.choice(dl.MOVES))
+            else:
+                need.append((j, jof[c]))
+        if need:
+            codes = torch.as_tensor(dl.encode_pairs([pairs[j] for j, _ in need]), device=S.dev)
+            if view is not None:     # card 016: the walking module's own frame of the same states
+                codes = view(codes, np.array([pairs[j][1][:3] for j, _ in need]))
+            with torch.no_grad():
+                _, _, Q, _ = vin(images(codes, S.trainer.tiles), torch.as_tensor([w for _, w in need], device=S.dev))
+            for (j, _), a in zip(need, Q.sum(1).argmax(1).cpu().numpy()):
+                acts[j] = int(a)
+        for j, i in enumerate(live):
+            a = acts[j] if acts[j] is not None else int(rng.integers(len(dl.ACTIONS)))
+            states[i], end = ld.step(layouts[i], states[i], a)
+            if end:
+                done[i] = True
+                steps[i] = step_i + 1
+    return {"success": round(float(done.mean()), 4),
+            "mean_steps_when_successful": round(float(steps[done].mean()), 1) if done.any() else None}
+
+
 def main_stage(S, updates):
-    raise NotImplementedError("written after the gate passes")
+    """Criteria 1-3, all learned: fixed-horizon TD at the learned readout (no exact distances, no
+    given position), trained without layouts whose wall is in column 5."""
+    torch = S.torch
+    res = {}
+    lv = make_vin(S.trainer.model.enc[:6], len(S.ways)).to(S.dev)
+    train(S, lv, updates, "learned", allowed=S.row_wall != HELD_WALL, tag="learned")
+    torch.save(lv.state_dict(), "runs/014_vin_main.pt")
+    idx = np.sort(np.random.default_rng(2).choice(len(S.Dt), 5000, replace=False))
+    st = S.tseq["st"][idx]
+    true = st[:, 2].astype(int) * 72 + st[:, 1].astype(int) * 8 + st[:, 0].astype(int)
+    _, _, am = read(S, lv, idx, S.ways.index(next(c for c in S.ways if S.tree.path(c) == ("forward",))))
+    res["readout_finds_agent"] = round(float((am == true).mean()), 4)
+    S.log(f"RESULT readout finds the agent: {res['readout_finds_agent']}")
+    seen, unseen = pick_frames(S, not_wall=HELD_WALL), pick_frames(S, wall=HELD_WALL)
+    res["criterion_1_walking"] = walk_score(S, lv, seen, tag="criterion 1, every way, wall column seen")
+    res["criterion_2_unseen_column"] = walk_score(S, lv, unseen, tag="criterion 2, wall column 5 (never trained on)")
+    res["criterion_2_flat_run5"] = flat_score(S, unseen, tag="run 5's flat values, wall column 5 (trained with it)")
+    lay_rng = np.random.default_rng(777)
+    layouts = [ld.make_layout(8, "key", lay_rng) for _ in range(500)]
+    res["criterion_3_acting"] = act_vin(S, lv, layouts)
+    S.log(f"RESULT criterion 3 acting: {json.dumps(res['criterion_3_acting'])}")
+    return res
 
 
 if __name__ == "__main__":

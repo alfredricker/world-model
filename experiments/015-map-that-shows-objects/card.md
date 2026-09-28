@@ -138,3 +138,8 @@ on held-out frames, 99.65% / 99.97% on training frames. Arm C's map is
 slightly better on the goal square (99.97%) but not needed to pass 99%.
 
 ## 8. Decision
+**Stop.** Both signals make the map show objects, but walking did not
+need it: its limit was training length, and run 5's encoder passes 99%
+without the added loss. Neither signal is added to the model. If a later
+card needs the map to show objects (e.g. a switch that matters), change
+prediction (arm C) is the starting point: it keeps what actions change.

@@ -3,8 +3,8 @@ id: "014"
 title: local-step walking
 rung: 0
 serves: [P12, P9, P21]
-status: gated   # draft | approved | gated | running | done | abandoned
-verdict:        # pass | fail | uninterpretable, when done
+status: done   # draft | approved | gated | running | done | abandoned
+verdict: fail   # pass | fail | uninterpretable, when done
 arch_version: 0
 date: 2026-09-27
 ---
@@ -160,4 +160,35 @@ runs about 20 minutes, over 10 so they need this card's approval.
 
 ## 7. Result
 
+Main run (`runs/014main.out`, `stage main`, 30k updates, fixed-horizon TD
+at the learned readout, no exact distances, no given position, trained
+without wall column 5). The loss stopped falling after about 10k updates
+(0.08–0.09), so longer training would not change it.
+
+| Criterion | Result | Needed | Reference |
+|---|---|---|---|
+| 1. Walking, every way (wall column seen) | 60–88% (goal square 73%, door 87%) | ≥ 98% | run 5 flat values 53–93% |
+| 2. Walking, wall column 5 (unseen) | 64–79% | ≥ 95% | run 5 flat values (trained with it) 53–93% |
+| 3. Acting, 500 new layouts | 25.0% | ≥ 90% | run 5 30.2%; exact walking 95% |
+
+The learned attention finds the agent in only **17.5%** of held-out frames
+(99.3% in the readout check, where the maps were supervised everywhere).
+
+Diagnostic (`runs/014debug_agentonly30k.out`): exact labels at the agent's
+entry only, position given, 30k updates: **95.8% / 97.6%** of moves closer
+(80–84% at 8–20k). So supervision at the agent alone costs 2–4 points
+against every cell supervised (99.97%). The large loss, to 73% / 87%, comes
+from learning from its own experience with its own readout: the TD targets
+are read at the next frame through the same attention, so an attention that
+has not found the agent gives wrong targets, and the values give the
+attention nothing to lock onto.
+
 ## 8. Decision
+
+**Revise.** The local step itself works: supervised at every cell it walks
+99.97% right, and supervised at the agent's own entry only 96–98%. What
+failed is finding the agent in a top-down frame while learning from its own
+experience (17.5%). The user decided (2026-09-27) to remove that problem
+at its source: an egocentric view, which the charter's world already uses,
+puts the agent at a fixed place. Card 016 repeats this card's criteria with
+the whole room seen egocentrically and a fixed readout.

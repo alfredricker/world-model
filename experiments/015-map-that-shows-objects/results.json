@@ -1,0 +1,261 @@
+{
+ "note": "Card 015, key world, tools/card015/bench_objects.py. Read-out: class-balanced one-tile linear probe on the frozen map, held-out layouts. walking_upper: card 014's full-map upper bound, moves closer on held-out frames.",
+ "arm_R": {
+  "arm": "R",
+  "readout_before": {
+   "wall_column_seen": {
+    "empty": 0.7797,
+    "wall": 0.7221,
+    "goal": 0.9997,
+    "door closed": 1.0,
+    "door open": 0.9451,
+    "key": 0.9954,
+    "switch off": 0.2881,
+    "switch on": 0.535,
+    "vase": 0.3135
+   },
+   "wall_column_unseen": {
+    "empty": 0.7456,
+    "wall": 0.7029,
+    "goal": 0.887,
+    "door closed": 0.9992,
+    "door open": 0.6095,
+    "key": 0.9942,
+    "switch off": 0.3589,
+    "switch on": 0.3847,
+    "vase": 0.5217
+   }
+  },
+  "readout": {
+   "wall_column_seen": {
+    "empty": 0.9777,
+    "wall": 1.0,
+    "goal": 1.0,
+    "door closed": 1.0,
+    "door open": 0.9627,
+    "key": 1.0,
+    "switch off": 1.0,
+    "switch on": 1.0,
+    "vase": 1.0
+   },
+   "wall_column_unseen": {
+    "empty": 0.9778,
+    "wall": 1.0,
+    "goal": 1.0,
+    "door closed": 1.0,
+    "door open": 0.9867,
+    "key": 1.0,
+    "switch off": 1.0,
+    "switch on": 1.0,
+    "vase": 1.0
+   }
+  },
+  "walking_upper": {
+   "forward": {
+    "frames": 3000,
+    "moves_closer": 0.8413,
+    "random": 0.442,
+    "by_distance": {
+     "1-4": 0.899,
+     "5-8": 0.763,
+     "9-12": 0.869,
+     "13-40": 0.866
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9197,
+    "random": 0.458,
+    "by_distance": {
+     "1-4": 0.868,
+     "5-8": 0.954,
+     "9-12": 0.945,
+     "13-40": 0.81
+    }
+   }
+  }
+ },
+ "arm_C": {
+  "arm": "C",
+  "readout_before": null,
+  "readout": {
+   "wall_column_seen": {
+    "empty": 0.9903,
+    "wall": 0.9984,
+    "goal": 0.9996,
+    "door closed": 0.9998,
+    "door open": 0.972,
+    "key": 0.9998,
+    "switch off": 0.4419,
+    "switch on": 0.803,
+    "vase": 0.8591
+   },
+   "wall_column_unseen": {
+    "empty": 0.9879,
+    "wall": 0.9978,
+    "goal": 0.9999,
+    "door closed": 0.9993,
+    "door open": 1.0,
+    "key": 1.0,
+    "switch off": 0.3736,
+    "switch on": 0.6865,
+    "vase": 0.9086
+   }
+  },
+  "walking_upper": {
+   "forward": {
+    "frames": 3000,
+    "moves_closer": 0.8983,
+    "random": 0.442,
+    "by_distance": {
+     "1-4": 0.93,
+     "5-8": 0.887,
+     "9-12": 0.894,
+     "13-40": 0.894
+    }
+   },
+   "forward/toggle": {
+    "frames": 3000,
+    "moves_closer": 0.9167,
+    "random": 0.458,
+    "by_distance": {
+     "1-4": 0.871,
+     "5-8": 0.943,
+     "9-12": 0.953,
+     "13-40": 0.905
+    }
+   }
+  }
+ },
+ "input_upper_bound": {
+  "arm": "input",
+  "readout": {
+   "wall_column_seen": {
+    "empty": 1.0,
+    "wall": 1.0,
+    "goal": 1.0,
+    "door closed": 1.0,
+    "door open": 1.0,
+    "key": 1.0,
+    "switch off": 1.0,
+    "switch on": 1.0,
+    "vase": 1.0
+   },
+   "wall_column_unseen": {
+    "empty": 1.0,
+    "wall": 1.0,
+    "goal": 1.0,
+    "door closed": 1.0,
+    "door open": 1.0,
+    "key": 1.0,
+    "switch off": 1.0,
+    "switch on": 1.0,
+    "vase": 1.0
+   }
+  }
+ },
+ "follow_up_arm_C_30k": {
+  "arm": "C",
+  "readout_before": null,
+  "readout": {
+   "wall_column_seen": {
+    "empty": 0.9935,
+    "wall": 0.997,
+    "goal": 0.9995,
+    "door closed": 0.9989,
+    "door open": 0.9824,
+    "key": 0.9998,
+    "switch off": 0.444,
+    "switch on": 0.8298,
+    "vase": 0.8907
+   },
+   "wall_column_unseen": {
+    "empty": 0.9899,
+    "wall": 0.9979,
+    "goal": 0.9999,
+    "door closed": 0.999,
+    "door open": 0.9941,
+    "key": 1.0,
+    "switch off": 0.3962,
+    "switch on": 0.6892,
+    "vase": 0.8779
+   }
+  },
+  "walking_upper": {
+   "held_out": {
+    "forward": {
+     "frames": 3000,
+     "moves_closer": 0.9997,
+     "random": 0.442,
+     "by_distance": {
+      "1-4": 1.0,
+      "5-8": 1.0,
+      "9-12": 1.0,
+      "13-40": 0.997
+     }
+    },
+    "forward/toggle": {
+     "frames": 3000,
+     "moves_closer": 0.9997,
+     "random": 0.458,
+     "by_distance": {
+      "1-4": 1.0,
+      "5-8": 1.0,
+      "9-12": 1.0,
+      "13-40": 0.952
+     }
+    }
+   },
+   "training_frames": {
+    "forward": {
+     "frames": 1140,
+     "moves_closer": 0.9982
+    },
+    "forward/toggle": {
+     "frames": 3000,
+     "moves_closer": 0.9983
+    }
+   }
+  }
+ },
+ "control_run5_encoder_30k": {
+  "arm": "run5",
+  "walking_upper": {
+   "held_out": {
+    "forward": {
+     "frames": 3000,
+     "moves_closer": 0.9907,
+     "random": 0.442,
+     "by_distance": {
+      "1-4": 1.0,
+      "5-8": 1.0,
+      "9-12": 0.976,
+      "13-40": 1.0
+     }
+    },
+    "forward/toggle": {
+     "frames": 3000,
+     "moves_closer": 0.9983,
+     "random": 0.458,
+     "by_distance": {
+      "1-4": 0.998,
+      "5-8": 1.0,
+      "9-12": 0.991,
+      "13-40": 1.0
+     }
+    }
+   },
+   "training_frames": {
+    "forward": {
+     "frames": 1140,
+     "moves_closer": 0.9965
+    },
+    "forward/toggle": {
+     "frames": 3000,
+     "moves_closer": 0.9997
+    }
+   }
+  }
+ },
+ "decision": "stop"
+}
