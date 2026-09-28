@@ -1,0 +1,4033 @@
+{
+  "kind": "oracle_readiness_context_gate",
+  "arch_version": 2,
+  "counterfactual_goals": true,
+  "training_layouts": [
+    {
+      "wall_x": 3,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          5,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          6
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          5,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          5,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 2,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          4,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 2,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          6
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 6,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 2,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          5,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          6
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 2,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          5,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          5,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          5,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          5,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 2,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 2,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          6
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          5,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 3,
+      "door_y": 1,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 4,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    }
+  ],
+  "test_layouts": [
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "green",
+      "goals": [
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          4,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          6
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          6
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          6
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          4,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          4,
+          6
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "green",
+      "goals": [
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          6
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          4,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "blue",
+      "goals": [
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "red",
+      "goals": [
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "green",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          6
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          6
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          4,
+          6
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 6,
+      "colour": "green",
+      "goals": [
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "green",
+      "goals": [
+        [
+          4,
+          6
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "red",
+      "goals": [
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          6
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 1,
+      "colour": "blue",
+      "goals": [
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "green",
+      "goals": [
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "red",
+      "goals": [
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 3,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 4,
+      "colour": "blue",
+      "goals": [
+        [
+          2,
+          3
+        ],
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 2,
+      "colour": "green",
+      "goals": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "wall_x": 5,
+      "door_y": 5,
+      "colour": "red",
+      "goals": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    }
+  ],
+  "exact_local_pair_equivalence": true,
+  "baselines": {
+    "always_false_accuracy": 0.5,
+    "always_true_accuracy": 0.5,
+    "any_local_only_readiness_accuracy_ceiling": 0.5
+  },
+  "arms": {
+    "1": {
+      "updates": 1000,
+      "train": {
+        "frames": 512,
+        "positive": 256,
+        "negative": 256,
+        "ready_accuracy": 0.5,
+        "ready_recall": 0.8125,
+        "ready_false_positive": 0.8125,
+        "condition_accuracy": 1.0,
+        "max_within_pair_logit_difference": 2.384185791015625e-07
+      },
+      "test": {
+        "frames": 512,
+        "positive": 256,
+        "negative": 256,
+        "ready_accuracy": 0.5,
+        "ready_recall": 0.37890625,
+        "ready_false_positive": 0.37890625,
+        "condition_accuracy": 0.9921875,
+        "max_within_pair_logit_difference": 4.76837158203125e-07
+      }
+    },
+    "6": {
+      "updates": 1000,
+      "train": {
+        "frames": 512,
+        "positive": 256,
+        "negative": 256,
+        "ready_accuracy": 1.0,
+        "ready_recall": 1.0,
+        "ready_false_positive": 0.0,
+        "condition_accuracy": 1.0,
+        "max_within_pair_logit_difference": 27.427350997924805
+      },
+      "test": {
+        "frames": 512,
+        "positive": 256,
+        "negative": 256,
+        "ready_accuracy": 0.966796875,
+        "ready_recall": 0.93359375,
+        "ready_false_positive": 0.0,
+        "condition_accuracy": 0.984375,
+        "max_within_pair_logit_difference": 27.383163452148438
+      }
+    }
+  },
+  "passed": false,
+  "seconds": 14.150788758001,
+  "error_analysis": {
+    "wrong": 17,
+    "total": 512,
+    "error_goal_offsets": {
+      "((-5, 2),)": 3,
+      "((-5, -2),)": 2,
+      "((-5, 0),)": 3,
+      "((-5, 1),)": 4,
+      "((-5, 3),)": 3,
+      "((-5, -3),)": 1,
+      "((-5, -1),)": 1
+    },
+    "training_positive_goal_offsets": {
+      "((-4, -2),)": 11,
+      "((-3, 3),)": 17,
+      "((-2, -4),)": 4,
+      "((-3, -2),)": 31,
+      "((-3, -3),)": 18,
+      "((-2, 3),)": 14,
+      "((-2, 2),)": 22,
+      "((-2, -2),)": 22,
+      "((-3, -4),)": 7,
+      "((-4, 1),)": 13,
+      "((-4, -3),)": 5,
+      "((-3, 5),)": 2,
+      "((-2, 5),)": 5,
+      "((-3, -5),)": 7,
+      "((-4, 0),)": 11,
+      "((-3, 4),)": 10,
+      "((-4, 2),)": 10,
+      "((-3, 2),)": 18,
+      "((-2, 4),)": 9,
+      "((-4, -1),)": 7,
+      "((-4, 5),)": 1,
+      "((-2, -3),)": 5,
+      "((-4, -4),)": 1,
+      "((-2, -5),)": 2,
+      "((-4, 3),)": 3,
+      "((-4, 4),)": 1
+    },
+    "errors": [
+      {
+        "frame": 14,
+        "truth": true,
+        "probability": 0.45586544275283813
+      },
+      {
+        "frame": 18,
+        "truth": true,
+        "probability": 0.39672142267227173
+      },
+      {
+        "frame": 22,
+        "truth": true,
+        "probability": 0.3725002110004425
+      },
+      {
+        "frame": 26,
+        "truth": true,
+        "probability": 0.4455595314502716
+      },
+      {
+        "frame": 194,
+        "truth": true,
+        "probability": 0.4421612024307251
+      },
+      {
+        "frame": 206,
+        "truth": true,
+        "probability": 0.41302552819252014
+      },
+      {
+        "frame": 230,
+        "truth": true,
+        "probability": 0.368424654006958
+      },
+      {
+        "frame": 274,
+        "truth": true,
+        "probability": 0.4011809229850769
+      },
+      {
+        "frame": 318,
+        "truth": true,
+        "probability": 0.4298553466796875
+      },
+      {
+        "frame": 322,
+        "truth": true,
+        "probability": 0.43289536237716675
+      },
+      {
+        "frame": 338,
+        "truth": true,
+        "probability": 0.3710799515247345
+      },
+      {
+        "frame": 342,
+        "truth": true,
+        "probability": 0.4949586093425751
+      },
+      {
+        "frame": 362,
+        "truth": true,
+        "probability": 0.35992431640625
+      },
+      {
+        "frame": 474,
+        "truth": true,
+        "probability": 0.3331432044506073
+      },
+      {
+        "frame": 478,
+        "truth": true,
+        "probability": 0.371958464384079
+      },
+      {
+        "frame": 482,
+        "truth": true,
+        "probability": 0.4356372058391571
+      },
+      {
+        "frame": 506,
+        "truth": true,
+        "probability": 0.4638359546661377
+      }
+    ]
+  }
+}

@@ -3,8 +3,8 @@ id: "016"
 title: egocentric walking
 rung: 0
 serves: [P12, P9, P21]
-status: approved   # draft | approved | gated | running | done | abandoned
-verdict:        # pass | fail | uninterpretable, when done
+status: done   # draft | approved | gated | running | done | abandoned
+verdict: fail   # pass | fail | uninterpretable, when done
 arch_version: 0
 date: 2026-09-27
 ---
@@ -177,3 +177,14 @@ ready states at the agent in 86–98.5% of these frames, so the labels are
 not the main problem.
 
 ## 8. Decision
+
+**Revise** (2026-09-27, with the user). The egocentric view did what it
+was for: nothing has to find the agent, and acting rose from 25% to 48.4%.
+But no criterion passes, three times the training changes nothing, and the
+maps check shows why: the "ready here" map is right only at the agent and
+at chance everywhere else, so the recurrence spreads noise and the moves
+come from a shortcut. The whole-frame summary, a linear layer over the
+flattened map, can say what lies just ahead of the centre and so fit the
+agent's cell directly. [Card 017](../017-summary-without-position/card.md)
+originally proposed averaging the summary. The user superseded that design
+with one shared spatial learner and nonspatial context (2026-09-27).

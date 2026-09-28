@@ -24,6 +24,7 @@ R = 6                    # view radius: offsets -6 .. +6 cover the 8 x 8 room fr
 H, W = 2 * R + 2, 2 * R + 1
 UP = 3                   # MiniGrid's facing "up"
 WALL = code("wall")
+CARD = "016"            # output names; card 017 reuses these stages
 
 
 class Ego:
@@ -168,7 +169,7 @@ def main_stage(S, ego, updates, flat):
     res = {"criterion_2_flat_run5": flat}
     lv = new_vin(S)
     bv.train(S, lv, updates, "learned", allowed=S.row_wall != bv.HELD_WALL, tag="learned")
-    torch.save(lv.state_dict(), f"runs/016_vin_main_k{bv.K}_{updates}.pt")
+    torch.save(lv.state_dict(), f"runs/{CARD}_vin_main_k{bv.K}_{updates}.pt")
     seen, unseen = bv.pick_frames(S, not_wall=bv.HELD_WALL), bv.pick_frames(S, wall=bv.HELD_WALL)
     res["criterion_1_walking"] = bv.walk_score(S, lv, seen, tag="criterion 1, every way, wall column seen")
     res["criterion_2_unseen_column"] = bv.walk_score(S, lv, unseen, tag="criterion 2, wall column 5 (never trained on)")
@@ -244,8 +245,8 @@ def main():
     log(f"egocentric frames: training {tuple(S.trainer.c0.shape)}, held-out {S.tseq['codes'].shape}")
     res = {"check": lambda: check(S, ego), "gate": lambda: gate(S, ego, updates),
            "main": lambda: main_stage(S, ego, updates, flat),
-           "maps": lambda: maps_check(S, ego, f"runs/016_vin_main_k{bv.K}_{updates}.pt")}[stage]()
-    out = Path(f"runs/016_{stage}{'' if bv.K == 32 else f'_k{bv.K}'}_{updates}.json")
+           "maps": lambda: maps_check(S, ego, f"runs/{CARD}_vin_main_k{bv.K}_{updates}.pt")}[stage]()
+    out = Path(f"runs/{CARD}_{stage}{'' if bv.K == 32 else f'_k{bv.K}'}_{updates}.json")
     out.write_text(json.dumps(res, indent=1) + "\n")
     log(f"done -> {out}")
 

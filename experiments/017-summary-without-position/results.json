@@ -1,0 +1,5519 @@
+{
+  "arch_version": 2,
+  "superseded_pooling_probe": {
+    "note": "Card 017, tools/card017/bench_pool.py. Gate: linear probe of the held item from run 5's encoder map.",
+    "gate_probe": {
+      "averaged": {
+        "held_item_right": 0.9394,
+        "per_item": {
+          "0": {
+            "frames": 8337,
+            "right": 0.9617
+          },
+          "60": {
+            "frames": 551,
+            "right": 0.8657
+          },
+          "65": {
+            "frames": 563,
+            "right": 0.7176
+          },
+          "70": {
+            "frames": 549,
+            "right": 0.9016
+          }
+        }
+      },
+      "held_tile": {
+        "held_item_right": 1.0,
+        "per_item": {
+          "0": {
+            "frames": 8337,
+            "right": 1.0
+          },
+          "60": {
+            "frames": 551,
+            "right": 1.0
+          },
+          "65": {
+            "frames": 563,
+            "right": 1.0
+          },
+          "70": {
+            "frames": 549,
+            "right": 1.0
+          }
+        }
+      },
+      "average_plus_held_tile": {
+        "held_item_right": 1.0,
+        "per_item": {
+          "0": {
+            "frames": 8337,
+            "right": 1.0
+          },
+          "60": {
+            "frames": 551,
+            "right": 1.0
+          },
+          "65": {
+            "frames": 563,
+            "right": 1.0
+          },
+          "70": {
+            "frames": 549,
+            "right": 1.0
+          }
+        }
+      },
+      "flattened": {
+        "held_item_right": 0.9869,
+        "per_item": {
+          "0": {
+            "frames": 8337,
+            "right": 0.9893
+          },
+          "60": {
+            "frames": 551,
+            "right": 0.9746
+          },
+          "65": {
+            "frames": 563,
+            "right": 0.9698
+          },
+          "70": {
+            "frames": 549,
+            "right": 0.98
+          }
+        }
+      }
+    }
+  },
+  "shared_state": {
+    "status": "coverage_incomplete",
+    "structural_tests": {
+      "passed": 4,
+      "total": 4
+    },
+    "gate": {
+      "arch_version": 1,
+      "kind": "component_gate",
+      "args": {
+        "episodes": 1000,
+        "test_episodes": 250,
+        "frames": 512,
+        "updates": 2000,
+        "batch": 64,
+        "workers": 8,
+        "device": "cuda",
+        "seed": 17,
+        "seconds": 45,
+        "out": "runs/017_shared_gate",
+        "coverage_only": true
+      },
+      "baselines": {
+        "always_false": {
+          "recall": 0.0,
+          "false_positive": 0.0
+        },
+        "always_true": {
+          "recall": 1.0,
+          "false_positive": 1.0
+        },
+        "note": "Rates are defined only when the corresponding class is present; see coverage counts."
+      },
+      "data": {
+        "train": {
+          "frames": 1053,
+          "ready_positive": [
+            29,
+            126,
+            65,
+            328,
+            62,
+            107,
+            334,
+            11,
+            259,
+            0,
+            341
+          ],
+          "unseen_wall_frames": 0
+        },
+        "test": {
+          "frames": 882,
+          "ready_positive": [
+            9,
+            84,
+            9,
+            310,
+            10,
+            73,
+            314,
+            5,
+            251,
+            0,
+            314
+          ],
+          "unseen_wall_frames": 339
+        }
+      },
+      "coverage": {
+        "counts": {
+          "train": {
+            "forward": {
+              "agent": {
+                "positive": 23,
+                "negative": 1030
+              },
+              "other_poses": {
+                "positive": 2942,
+                "negative": 105441
+              },
+              "condition": {
+                "positive": 115,
+                "negative": 938
+              }
+            },
+            "forward/toggle": {
+              "agent": {
+                "positive": 102,
+                "negative": 951
+              },
+              "other_poses": {
+                "positive": 82,
+                "negative": 108301
+              },
+              "condition": {
+                "positive": 283,
+                "negative": 770
+              }
+            },
+            "forward/pickup": {
+              "agent": {
+                "positive": 15,
+                "negative": 1038
+              },
+              "other_poses": {
+                "positive": 75,
+                "negative": 108308
+              },
+              "condition": {
+                "positive": 131,
+                "negative": 922
+              }
+            },
+            "forward/toggle/pickup": {
+              "agent": {
+                "positive": 210,
+                "negative": 843
+              },
+              "other_poses": {
+                "positive": 1324,
+                "negative": 107059
+              },
+              "condition": {
+                "positive": 877,
+                "negative": 176
+              }
+            },
+            "forward/toggle/toggle": {
+              "agent": {
+                "positive": 0,
+                "negative": 1053
+              },
+              "other_poses": {
+                "positive": 10,
+                "negative": 108373
+              },
+              "condition": {
+                "positive": 283,
+                "negative": 770
+              }
+            },
+            "forward/pickup/toggle": {
+              "agent": {
+                "positive": 102,
+                "negative": 951
+              },
+              "other_poses": {
+                "positive": 70,
+                "negative": 108313
+              },
+              "condition": {
+                "positive": 299,
+                "negative": 754
+              }
+            },
+            "forward/toggle/toggle/pickup": {
+              "agent": {
+                "positive": 212,
+                "negative": 841
+              },
+              "other_poses": {
+                "positive": 1326,
+                "negative": 107057
+              },
+              "condition": {
+                "positive": 879,
+                "negative": 174
+              }
+            },
+            "forward/toggle/toggle/toggle": {
+              "agent": {
+                "positive": 0,
+                "negative": 1053
+              },
+              "other_poses": {
+                "positive": 0,
+                "negative": 108383
+              },
+              "condition": {
+                "positive": 283,
+                "negative": 770
+              }
+            },
+            "forward/pickup/toggle/pickup": {
+              "agent": {
+                "positive": 195,
+                "negative": 858
+              },
+              "other_poses": {
+                "positive": 1261,
+                "negative": 107122
+              },
+              "condition": {
+                "positive": 877,
+                "negative": 176
+              }
+            },
+            "forward/pickup/toggle/toggle": {
+              "agent": {
+                "positive": 0,
+                "negative": 1053
+              },
+              "other_poses": {
+                "positive": 10,
+                "negative": 108373
+              },
+              "condition": {
+                "positive": 299,
+                "negative": 754
+              }
+            },
+            "forward/toggle/toggle/toggle/pickup": {
+              "agent": {
+                "positive": 212,
+                "negative": 841
+              },
+              "other_poses": {
+                "positive": 1326,
+                "negative": 107057
+              },
+              "condition": {
+                "positive": 879,
+                "negative": 174
+              }
+            }
+          },
+          "test": {
+            "forward": {
+              "agent": {
+                "positive": 9,
+                "negative": 873
+              },
+              "other_poses": {
+                "positive": 2017,
+                "negative": 88165
+              },
+              "unseen_wall": {
+                "positive": 560,
+                "negative": 34396
+              },
+              "condition": {
+                "positive": 37,
+                "negative": 845
+              }
+            },
+            "forward/toggle": {
+              "agent": {
+                "positive": 71,
+                "negative": 811
+              },
+              "other_poses": {
+                "positive": 47,
+                "negative": 90135
+              },
+              "unseen_wall": {
+                "positive": 36,
+                "negative": 34920
+              },
+              "condition": {
+                "positive": 152,
+                "negative": 730
+              }
+            },
+            "forward/pickup": {
+              "agent": {
+                "positive": 6,
+                "negative": 876
+              },
+              "other_poses": {
+                "positive": 34,
+                "negative": 90148
+              },
+              "unseen_wall": {
+                "positive": 12,
+                "negative": 34944
+              },
+              "condition": {
+                "positive": 45,
+                "negative": 837
+              }
+            },
+            "forward/toggle/pickup": {
+              "agent": {
+                "positive": 209,
+                "negative": 673
+              },
+              "other_poses": {
+                "positive": 1597,
+                "negative": 88585
+              },
+              "unseen_wall": {
+                "positive": 815,
+                "negative": 34141
+              },
+              "condition": {
+                "positive": 797,
+                "negative": 85
+              }
+            },
+            "forward/toggle/toggle": {
+              "agent": {
+                "positive": 0,
+                "negative": 882
+              },
+              "other_poses": {
+                "positive": 4,
+                "negative": 90178
+              },
+              "unseen_wall": {
+                "positive": 0,
+                "negative": 34956
+              },
+              "condition": {
+                "positive": 152,
+                "negative": 730
+              }
+            },
+            "forward/pickup/toggle": {
+              "agent": {
+                "positive": 71,
+                "negative": 811
+              },
+              "other_poses": {
+                "positive": 47,
+                "negative": 90135
+              },
+              "unseen_wall": {
+                "positive": 36,
+                "negative": 34920
+              },
+              "condition": {
+                "positive": 160,
+                "negative": 722
+              }
+            },
+            "forward/toggle/toggle/pickup": {
+              "agent": {
+                "positive": 209,
+                "negative": 673
+              },
+              "other_poses": {
+                "positive": 1597,
+                "negative": 88585
+              },
+              "unseen_wall": {
+                "positive": 815,
+                "negative": 34141
+              },
+              "condition": {
+                "positive": 797,
+                "negative": 85
+              }
+            },
+            "forward/toggle/toggle/toggle": {
+              "agent": {
+                "positive": 0,
+                "negative": 882
+              },
+              "other_poses": {
+                "positive": 0,
+                "negative": 90182
+              },
+              "unseen_wall": {
+                "positive": 0,
+                "negative": 34956
+              },
+              "condition": {
+                "positive": 152,
+                "negative": 730
+              }
+            },
+            "forward/pickup/toggle/pickup": {
+              "agent": {
+                "positive": 203,
+                "negative": 679
+              },
+              "other_poses": {
+                "positive": 1563,
+                "negative": 88619
+              },
+              "unseen_wall": {
+                "positive": 803,
+                "negative": 34153
+              },
+              "condition": {
+                "positive": 797,
+                "negative": 85
+              }
+            },
+            "forward/pickup/toggle/toggle": {
+              "agent": {
+                "positive": 0,
+                "negative": 882
+              },
+              "other_poses": {
+                "positive": 4,
+                "negative": 90178
+              },
+              "unseen_wall": {
+                "positive": 0,
+                "negative": 34956
+              },
+              "condition": {
+                "positive": 160,
+                "negative": 722
+              }
+            },
+            "forward/toggle/toggle/toggle/pickup": {
+              "agent": {
+                "positive": 209,
+                "negative": 673
+              },
+              "other_poses": {
+                "positive": 1597,
+                "negative": 88585
+              },
+              "unseen_wall": {
+                "positive": 815,
+                "negative": 34141
+              },
+              "condition": {
+                "positive": 797,
+                "negative": 85
+              }
+            }
+          }
+        },
+        "sufficient": false,
+        "insufficient": [
+          {
+            "split": "train",
+            "way": "forward/pickup",
+            "metric": "agent",
+            "positive": 15,
+            "negative": 1038
+          },
+          {
+            "split": "train",
+            "way": "forward/toggle/toggle",
+            "metric": "agent",
+            "positive": 0,
+            "negative": 1053
+          },
+          {
+            "split": "train",
+            "way": "forward/toggle/toggle",
+            "metric": "other_poses",
+            "positive": 10,
+            "negative": 108373
+          },
+          {
+            "split": "train",
+            "way": "forward/toggle/toggle/toggle",
+            "metric": "agent",
+            "positive": 0,
+            "negative": 1053
+          },
+          {
+            "split": "train",
+            "way": "forward/toggle/toggle/toggle",
+            "metric": "other_poses",
+            "positive": 0,
+            "negative": 108383
+          },
+          {
+            "split": "train",
+            "way": "forward/pickup/toggle/toggle",
+            "metric": "agent",
+            "positive": 0,
+            "negative": 1053
+          },
+          {
+            "split": "train",
+            "way": "forward/pickup/toggle/toggle",
+            "metric": "other_poses",
+            "positive": 10,
+            "negative": 108373
+          },
+          {
+            "split": "test",
+            "way": "forward",
+            "metric": "agent",
+            "positive": 9,
+            "negative": 873
+          },
+          {
+            "split": "test",
+            "way": "forward/pickup",
+            "metric": "agent",
+            "positive": 6,
+            "negative": 876
+          },
+          {
+            "split": "test",
+            "way": "forward/pickup",
+            "metric": "unseen_wall",
+            "positive": 12,
+            "negative": 34944
+          },
+          {
+            "split": "test",
+            "way": "forward/toggle/toggle",
+            "metric": "agent",
+            "positive": 0,
+            "negative": 882
+          },
+          {
+            "split": "test",
+            "way": "forward/toggle/toggle",
+            "metric": "other_poses",
+            "positive": 4,
+            "negative": 90178
+          },
+          {
+            "split": "test",
+            "way": "forward/toggle/toggle",
+            "metric": "unseen_wall",
+            "positive": 0,
+            "negative": 34956
+          },
+          {
+            "split": "test",
+            "way": "forward/toggle/toggle/toggle",
+            "metric": "agent",
+            "positive": 0,
+            "negative": 882
+          },
+          {
+            "split": "test",
+            "way": "forward/toggle/toggle/toggle",
+            "metric": "other_poses",
+            "positive": 0,
+            "negative": 90182
+          },
+          {
+            "split": "test",
+            "way": "forward/toggle/toggle/toggle",
+            "metric": "unseen_wall",
+            "positive": 0,
+            "negative": 34956
+          },
+          {
+            "split": "test",
+            "way": "forward/pickup/toggle/toggle",
+            "metric": "agent",
+            "positive": 0,
+            "negative": 882
+          },
+          {
+            "split": "test",
+            "way": "forward/pickup/toggle/toggle",
+            "metric": "other_poses",
+            "positive": 4,
+            "negative": 90178
+          },
+          {
+            "split": "test",
+            "way": "forward/pickup/toggle/toggle",
+            "metric": "unseen_wall",
+            "positive": 0,
+            "negative": 34956
+          }
+        ]
+      },
+      "seconds": 5.125115422997624,
+      "stopped": "insufficient class coverage; no model fitting or later stage started",
+      "upper_passed": null
+    },
+    "repository_tests": {
+      "passed": 52,
+      "warnings": 5,
+      "new_tests": 7
+    }
+  },
+  "input_audit": {
+    "poses": 200500,
+    "distinct_input_signatures": 51080,
+    "ways": {
+      "forward": {
+        "positive": 4991,
+        "negative": 195509,
+        "conflicting_input_groups": 0,
+        "positive_in_conflicts": 0,
+        "negative_in_conflicts": 0,
+        "minimum_classification_errors": 0,
+        "optimistic_recall_ceiling_at_1pct_false_positives": 1.0
+      },
+      "forward/toggle": {
+        "positive": 302,
+        "negative": 200198,
+        "conflicting_input_groups": 31,
+        "positive_in_conflicts": 82,
+        "negative_in_conflicts": 113,
+        "minimum_classification_errors": 67,
+        "optimistic_recall_ceiling_at_1pct_false_positives": 1.0,
+        "witness": {
+          "positive_pose": [
+            280,
+            0,
+            3,
+            8
+          ],
+          "negative_pose": [
+            386,
+            0,
+            6,
+            4
+          ],
+          "positive_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              45,
+              0,
+              0,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              60,
+              5,
+              0,
+              0,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              4,
+              0,
+              0,
+              5,
+              0,
+              0,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              75,
+              0,
+              5,
+              0,
+              10,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              70,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "negative_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              60,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              75,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              0,
+              45,
+              4,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              10,
+              5,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              70,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "same_input_signature": true,
+          "positive_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 4,
+              "door_y": 2,
+              "door_colour": "blue",
+              "distractor_colour": "red",
+              "key": [
+                1,
+                4
+              ],
+              "distractor": [
+                3,
+                3
+              ],
+              "switch": [
+                2,
+                6
+              ],
+              "vase": [
+                1,
+                1
+              ],
+              "goal": [
+                6,
+                6
+              ],
+              "start": [
+                2,
+                1,
+                0
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              1,
+              5,
+              3,
+              1,
+              -1,
+              -1,
+              3,
+              4,
+              0,
+              0,
+              1
+            ],
+            "query_state": [
+              3,
+              2,
+              0,
+              1,
+              -1,
+              -1,
+              3,
+              4,
+              0,
+              0,
+              1
+            ],
+            "parent_before": false,
+            "parent_after": true,
+            "direct_ready": true
+          },
+          "negative_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 3,
+              "door_y": 4,
+              "door_colour": "blue",
+              "distractor_colour": "red",
+              "key": [
+                1,
+                4
+              ],
+              "distractor": [
+                2,
+                6
+              ],
+              "switch": [
+                2,
+                5
+              ],
+              "vase": [
+                2,
+                1
+              ],
+              "goal": [
+                4,
+                2
+              ],
+              "start": [
+                1,
+                2,
+                2
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              2,
+              4,
+              1,
+              1,
+              -1,
+              -1,
+              2,
+              6,
+              0,
+              0,
+              1
+            ],
+            "query_state": [
+              4,
+              4,
+              2,
+              1,
+              -1,
+              -1,
+              2,
+              6,
+              0,
+              0,
+              1
+            ],
+            "parent_before": true,
+            "parent_after": true,
+            "direct_ready": false
+          }
+        }
+      },
+      "forward/pickup": {
+        "positive": 130,
+        "negative": 200370,
+        "conflicting_input_groups": 0,
+        "positive_in_conflicts": 0,
+        "negative_in_conflicts": 0,
+        "minimum_classification_errors": 0,
+        "optimistic_recall_ceiling_at_1pct_false_positives": 1.0
+      },
+      "forward/toggle/pickup": {
+        "positive": 3340,
+        "negative": 197160,
+        "conflicting_input_groups": 67,
+        "positive_in_conflicts": 378,
+        "negative_in_conflicts": 107,
+        "minimum_classification_errors": 100,
+        "optimistic_recall_ceiling_at_1pct_false_positives": 1.0,
+        "witness": {
+          "positive_pose": [
+            160,
+            1,
+            4,
+            6
+          ],
+          "negative_pose": [
+            471,
+            0,
+            6,
+            1
+          ],
+          "positive_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              85,
+              75,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              60,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              4,
+              0,
+              0,
+              70,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              15,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              10,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "negative_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              70,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              75,
+              85,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              15,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              10,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              60,
+              0,
+              0,
+              0,
+              4,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "same_input_signature": true,
+          "positive_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 4,
+              "door_y": 1,
+              "door_colour": "red",
+              "distractor_colour": "blue",
+              "key": [
+                2,
+                5
+              ],
+              "distractor": [
+                3,
+                2
+              ],
+              "switch": [
+                1,
+                2
+              ],
+              "vase": [
+                1,
+                3
+              ],
+              "goal": [
+                5,
+                5
+              ],
+              "start": [
+                3,
+                3,
+                2
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              3,
+              5,
+              2,
+              0,
+              2,
+              5,
+              3,
+              2,
+              0,
+              0,
+              0
+            ],
+            "query_state": [
+              1,
+              5,
+              0,
+              0,
+              2,
+              5,
+              3,
+              2,
+              0,
+              0,
+              0
+            ],
+            "parent_before": false,
+            "parent_after": true,
+            "direct_ready": true
+          },
+          "negative_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 3,
+              "door_y": 6,
+              "door_colour": "red",
+              "distractor_colour": "blue",
+              "key": [
+                1,
+                4
+              ],
+              "distractor": [
+                1,
+                1
+              ],
+              "switch": [
+                2,
+                4
+              ],
+              "vase": [
+                2,
+                3
+              ],
+              "goal": [
+                4,
+                1
+              ],
+              "start": [
+                1,
+                6,
+                2
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              5,
+              1,
+              2,
+              0,
+              5,
+              5,
+              1,
+              1,
+              0,
+              0,
+              0
+            ],
+            "query_state": [
+              5,
+              6,
+              3,
+              0,
+              5,
+              5,
+              1,
+              1,
+              0,
+              0,
+              0
+            ],
+            "parent_before": true,
+            "parent_after": true,
+            "direct_ready": false
+          }
+        }
+      },
+      "forward/toggle/toggle": {
+        "positive": 14,
+        "negative": 200486,
+        "conflicting_input_groups": 0,
+        "positive_in_conflicts": 0,
+        "negative_in_conflicts": 0,
+        "minimum_classification_errors": 0,
+        "optimistic_recall_ceiling_at_1pct_false_positives": 1.0
+      },
+      "forward/pickup/toggle": {
+        "positive": 290,
+        "negative": 200210,
+        "conflicting_input_groups": 31,
+        "positive_in_conflicts": 82,
+        "negative_in_conflicts": 113,
+        "minimum_classification_errors": 67,
+        "optimistic_recall_ceiling_at_1pct_false_positives": 1.0,
+        "witness": {
+          "positive_pose": [
+            280,
+            0,
+            3,
+            8
+          ],
+          "negative_pose": [
+            386,
+            0,
+            6,
+            4
+          ],
+          "positive_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              45,
+              0,
+              0,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              60,
+              5,
+              0,
+              0,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              4,
+              0,
+              0,
+              5,
+              0,
+              0,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              75,
+              0,
+              5,
+              0,
+              10,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              70,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "negative_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              60,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              75,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              0,
+              45,
+              4,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              10,
+              5,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              70,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "same_input_signature": true,
+          "positive_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 4,
+              "door_y": 2,
+              "door_colour": "blue",
+              "distractor_colour": "red",
+              "key": [
+                1,
+                4
+              ],
+              "distractor": [
+                3,
+                3
+              ],
+              "switch": [
+                2,
+                6
+              ],
+              "vase": [
+                1,
+                1
+              ],
+              "goal": [
+                6,
+                6
+              ],
+              "start": [
+                2,
+                1,
+                0
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              1,
+              5,
+              3,
+              1,
+              -1,
+              -1,
+              3,
+              4,
+              0,
+              0,
+              1
+            ],
+            "query_state": [
+              3,
+              2,
+              0,
+              1,
+              -1,
+              -1,
+              3,
+              4,
+              0,
+              0,
+              1
+            ],
+            "parent_before": false,
+            "parent_after": true,
+            "direct_ready": true
+          },
+          "negative_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 3,
+              "door_y": 4,
+              "door_colour": "blue",
+              "distractor_colour": "red",
+              "key": [
+                1,
+                4
+              ],
+              "distractor": [
+                2,
+                6
+              ],
+              "switch": [
+                2,
+                5
+              ],
+              "vase": [
+                2,
+                1
+              ],
+              "goal": [
+                4,
+                2
+              ],
+              "start": [
+                1,
+                2,
+                2
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              2,
+              4,
+              1,
+              1,
+              -1,
+              -1,
+              2,
+              6,
+              0,
+              0,
+              1
+            ],
+            "query_state": [
+              4,
+              4,
+              2,
+              1,
+              -1,
+              -1,
+              2,
+              6,
+              0,
+              0,
+              1
+            ],
+            "parent_before": true,
+            "parent_after": true,
+            "direct_ready": false
+          }
+        }
+      },
+      "forward/toggle/toggle/pickup": {
+        "positive": 3344,
+        "negative": 197156,
+        "conflicting_input_groups": 64,
+        "positive_in_conflicts": 374,
+        "negative_in_conflicts": 104,
+        "minimum_classification_errors": 97,
+        "optimistic_recall_ceiling_at_1pct_false_positives": 1.0,
+        "witness": {
+          "positive_pose": [
+            160,
+            1,
+            4,
+            6
+          ],
+          "negative_pose": [
+            471,
+            0,
+            6,
+            1
+          ],
+          "positive_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              85,
+              75,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              60,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              4,
+              0,
+              0,
+              70,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              15,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              10,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "negative_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              70,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              75,
+              85,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              15,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              10,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              60,
+              0,
+              0,
+              0,
+              4,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "same_input_signature": true,
+          "positive_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 4,
+              "door_y": 1,
+              "door_colour": "red",
+              "distractor_colour": "blue",
+              "key": [
+                2,
+                5
+              ],
+              "distractor": [
+                3,
+                2
+              ],
+              "switch": [
+                1,
+                2
+              ],
+              "vase": [
+                1,
+                3
+              ],
+              "goal": [
+                5,
+                5
+              ],
+              "start": [
+                3,
+                3,
+                2
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              3,
+              5,
+              2,
+              0,
+              2,
+              5,
+              3,
+              2,
+              0,
+              0,
+              0
+            ],
+            "query_state": [
+              1,
+              5,
+              0,
+              0,
+              2,
+              5,
+              3,
+              2,
+              0,
+              0,
+              0
+            ],
+            "parent_before": false,
+            "parent_after": true,
+            "direct_ready": true
+          },
+          "negative_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 3,
+              "door_y": 6,
+              "door_colour": "red",
+              "distractor_colour": "blue",
+              "key": [
+                1,
+                4
+              ],
+              "distractor": [
+                1,
+                1
+              ],
+              "switch": [
+                2,
+                4
+              ],
+              "vase": [
+                2,
+                3
+              ],
+              "goal": [
+                4,
+                1
+              ],
+              "start": [
+                1,
+                6,
+                2
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              5,
+              1,
+              2,
+              0,
+              5,
+              5,
+              1,
+              1,
+              0,
+              0,
+              0
+            ],
+            "query_state": [
+              5,
+              6,
+              3,
+              0,
+              5,
+              5,
+              1,
+              1,
+              0,
+              0,
+              0
+            ],
+            "parent_before": true,
+            "parent_after": true,
+            "direct_ready": false
+          }
+        }
+      },
+      "forward/toggle/toggle/toggle": {
+        "positive": 0,
+        "negative": 200500,
+        "conflicting_input_groups": 0,
+        "positive_in_conflicts": 0,
+        "negative_in_conflicts": 0,
+        "minimum_classification_errors": 0,
+        "optimistic_recall_ceiling_at_1pct_false_positives": null
+      },
+      "forward/pickup/toggle/pickup": {
+        "positive": 3222,
+        "negative": 197278,
+        "conflicting_input_groups": 67,
+        "positive_in_conflicts": 378,
+        "negative_in_conflicts": 107,
+        "minimum_classification_errors": 100,
+        "optimistic_recall_ceiling_at_1pct_false_positives": 1.0,
+        "witness": {
+          "positive_pose": [
+            160,
+            1,
+            4,
+            6
+          ],
+          "negative_pose": [
+            471,
+            0,
+            6,
+            1
+          ],
+          "positive_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              85,
+              75,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              60,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              4,
+              0,
+              0,
+              70,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              15,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              10,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "negative_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              70,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              75,
+              85,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              15,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              10,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              60,
+              0,
+              0,
+              0,
+              4,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "same_input_signature": true,
+          "positive_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 4,
+              "door_y": 1,
+              "door_colour": "red",
+              "distractor_colour": "blue",
+              "key": [
+                2,
+                5
+              ],
+              "distractor": [
+                3,
+                2
+              ],
+              "switch": [
+                1,
+                2
+              ],
+              "vase": [
+                1,
+                3
+              ],
+              "goal": [
+                5,
+                5
+              ],
+              "start": [
+                3,
+                3,
+                2
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              3,
+              5,
+              2,
+              0,
+              2,
+              5,
+              3,
+              2,
+              0,
+              0,
+              0
+            ],
+            "query_state": [
+              1,
+              5,
+              0,
+              0,
+              2,
+              5,
+              3,
+              2,
+              0,
+              0,
+              0
+            ],
+            "parent_before": false,
+            "parent_after": true,
+            "direct_ready": true
+          },
+          "negative_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 3,
+              "door_y": 6,
+              "door_colour": "red",
+              "distractor_colour": "blue",
+              "key": [
+                1,
+                4
+              ],
+              "distractor": [
+                1,
+                1
+              ],
+              "switch": [
+                2,
+                4
+              ],
+              "vase": [
+                2,
+                3
+              ],
+              "goal": [
+                4,
+                1
+              ],
+              "start": [
+                1,
+                6,
+                2
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              5,
+              1,
+              2,
+              0,
+              5,
+              5,
+              1,
+              1,
+              0,
+              0,
+              0
+            ],
+            "query_state": [
+              5,
+              6,
+              3,
+              0,
+              5,
+              5,
+              1,
+              1,
+              0,
+              0,
+              0
+            ],
+            "parent_before": true,
+            "parent_after": true,
+            "direct_ready": false
+          }
+        }
+      },
+      "forward/pickup/toggle/toggle": {
+        "positive": 14,
+        "negative": 200486,
+        "conflicting_input_groups": 0,
+        "positive_in_conflicts": 0,
+        "negative_in_conflicts": 0,
+        "minimum_classification_errors": 0,
+        "optimistic_recall_ceiling_at_1pct_false_positives": 1.0
+      },
+      "forward/toggle/toggle/toggle/pickup": {
+        "positive": 3344,
+        "negative": 197156,
+        "conflicting_input_groups": 64,
+        "positive_in_conflicts": 374,
+        "negative_in_conflicts": 104,
+        "minimum_classification_errors": 97,
+        "optimistic_recall_ceiling_at_1pct_false_positives": 1.0,
+        "witness": {
+          "positive_pose": [
+            160,
+            1,
+            4,
+            6
+          ],
+          "negative_pose": [
+            471,
+            0,
+            6,
+            1
+          ],
+          "positive_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              85,
+              75,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              60,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              4,
+              0,
+              0,
+              70,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              15,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              10,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "negative_codes": [
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              70,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              75,
+              85,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              15,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              10,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              60,
+              0,
+              0,
+              0,
+              4,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "same_input_signature": true,
+          "positive_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 4,
+              "door_y": 1,
+              "door_colour": "red",
+              "distractor_colour": "blue",
+              "key": [
+                2,
+                5
+              ],
+              "distractor": [
+                3,
+                2
+              ],
+              "switch": [
+                1,
+                2
+              ],
+              "vase": [
+                1,
+                3
+              ],
+              "goal": [
+                5,
+                5
+              ],
+              "start": [
+                3,
+                3,
+                2
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              3,
+              5,
+              2,
+              0,
+              2,
+              5,
+              3,
+              2,
+              0,
+              0,
+              0
+            ],
+            "query_state": [
+              1,
+              5,
+              0,
+              0,
+              2,
+              5,
+              3,
+              2,
+              0,
+              0,
+              0
+            ],
+            "parent_before": false,
+            "parent_after": true,
+            "direct_ready": true
+          },
+          "negative_truth": {
+            "layout": {
+              "size": 8,
+              "wall_x": 3,
+              "door_y": 6,
+              "door_colour": "red",
+              "distractor_colour": "blue",
+              "key": [
+                1,
+                4
+              ],
+              "distractor": [
+                1,
+                1
+              ],
+              "switch": [
+                2,
+                4
+              ],
+              "vase": [
+                2,
+                3
+              ],
+              "goal": [
+                4,
+                1
+              ],
+              "start": [
+                1,
+                6,
+                2
+              ],
+              "rule": "key"
+            },
+            "actual_state": [
+              5,
+              1,
+              2,
+              0,
+              5,
+              5,
+              1,
+              1,
+              0,
+              0,
+              0
+            ],
+            "query_state": [
+              5,
+              6,
+              3,
+              0,
+              5,
+              5,
+              1,
+              1,
+              0,
+              0,
+              0
+            ],
+            "parent_before": true,
+            "parent_after": true,
+            "direct_ready": false
+          }
+        }
+      }
+    },
+    "seconds": 6.134047522005858
+  },
+  "context_extent_gate": {
+    "kind": "oracle_readiness_context_gate",
+    "arch_version": 2,
+    "training_layouts": [
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 3,
+        "door_y": 5,
+        "colour": "red"
+      }
+    ],
+    "test_layouts": [
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 5,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 2,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "green"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 3,
+        "colour": "blue"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      },
+      {
+        "wall_x": 4,
+        "door_y": 4,
+        "colour": "red"
+      }
+    ],
+    "exact_local_pair_equivalence": true,
+    "baselines": {
+      "always_false_accuracy": 0.5,
+      "always_true_accuracy": 0.5,
+      "any_local_only_readiness_accuracy_ceiling": 0.5
+    },
+    "arms": {
+      "1": {
+        "updates": 1000,
+        "train": {
+          "frames": 256,
+          "positive": 128,
+          "negative": 128,
+          "ready_accuracy": 0.5,
+          "ready_recall": 0.46875,
+          "ready_false_positive": 0.46875,
+          "condition_accuracy": 1.0,
+          "max_within_pair_logit_difference": 0.0
+        },
+        "test": {
+          "frames": 256,
+          "positive": 128,
+          "negative": 128,
+          "ready_accuracy": 0.5,
+          "ready_recall": 0.515625,
+          "ready_false_positive": 0.515625,
+          "condition_accuracy": 0.0,
+          "max_within_pair_logit_difference": 0.0
+        }
+      },
+      "6": {
+        "updates": 1000,
+        "train": {
+          "frames": 256,
+          "positive": 128,
+          "negative": 128,
+          "ready_accuracy": 1.0,
+          "ready_recall": 1.0,
+          "ready_false_positive": 0.0,
+          "condition_accuracy": 1.0,
+          "max_within_pair_logit_difference": 37.128173828125
+        },
+        "test": {
+          "frames": 256,
+          "positive": 128,
+          "negative": 128,
+          "ready_accuracy": 0.1796875,
+          "ready_recall": 0.1640625,
+          "ready_false_positive": 0.8046875,
+          "condition_accuracy": 0.0625,
+          "max_within_pair_logit_difference": 11.322494506835938
+        }
+      }
+    },
+    "passed": false,
+    "seconds": 16.754463012002816
+  }
+}

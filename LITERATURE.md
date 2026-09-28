@@ -6,19 +6,32 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Card / rung:** 014 (local-step walking, before rung 1); 013 stopped at
-  its gate. Changed with the user, 2026-09-27.
-- **Why these:** card 013 turns each way's walk into a chain of short
-  place conditions ("within h steps of ..."), learned as fixed-horizon
-  reachability, and acts by walking at most h steps to the next link.
-- **Until:** card 014 has a decision.
+- **Card / rung:** shared spatial learner, before rung 1; cards 017–020.
+  Card 020 passed its narrow component test on 2026-09-28.
+- **Why these:** retain condition recursion while giving conditions,
+  readiness and walking one learned spatial state. Validate goal-relative readiness
+  and condition retention before combining them with recurrent walking.
+- **Until:** the shared learner has passed the full-tree component gates.
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |
-| `1602_02867` (VIN, Tamar et al. 2016) | Card 014's walking: a learned 3 × 3 recurrence on a map computes shortest-path values; 8 × 8 supervised 99.6% vs 97.9% (plain CNN), 16 × 16 99.3% vs 87.6%, RL 82.5% vs 33.1%. It was given the agent's position (attention by index); we learn that readout |
-| `1909_03906` (fixed-horizon TD, De Asis et al. 2020) | The value for horizon h bootstraps from horizon h − 1, grounded by horizon 0, so no value bootstraps from itself: stable under off-policy data and function approximation (their convergence proofs, linear and general). Card 013's "within k steps" reachability; card 012's bench: 99–100% right at 0–4 steps |
-| `hiql` | A high-level subgoal a fixed k steps ahead, reached by a low-level policy that only needs short-range values (k = 3 on pixel Procgen Maze): the reason short links should be reliable |
-| `1906_05253` (SoRB) | Long walks as chains of waypoints over a learned distance; our waypoints are place conditions, not stored states |
+| `1602_02867` (VIN, Tamar et al. 2016) | Retaining a spatial map and using local recurrent computation. Cards 014–017 use a different nonlinear step; VIN does not validate our readiness semantics or training targets. Its indexed position readout becomes a fixed egocentric centre here |
+| `1909_03906` (fixed-horizon TD, De Asis et al. 2020) | Horizon h bootstraps from h − 1. The derivation separates weights across horizons; shared hidden layers are an empirical extension. Its convergence result is not a guarantee for card 017's tied recurrent network |
+| `hiql` | Background for short-range control under a higher-level goal; card 017 keeps the existing condition tree, not HIQL's latent-action policy |
+| `1906_05253` (SoRB) | Background for separating reliable local control from long-range subgoal selection; no replay graph is introduced in card 017 |
+
+Card 017's patch-independent encoder, inventory context, and rotation-shared
+readiness queries are project hypotheses, not mechanisms established by these
+papers. Structural tests establish their invariances; the component upper
+bound and learned-label arm must establish their adequacy. Sources were
+checked through `papi`, including VIN and fixed-horizon TD primary text.
+Its exact input audit rejects a radius-one readiness query: remote goal
+placement can change whether the same local action achieves a condition.
+Cards 018–020 then separate goal-position shortcuts from offset-specific
+weights. Sharing local feature updates across distance and reading both
+heads from those features passes the controlled paired test (99.61% for
+both). This is our component result, not a VIN result or established evidence
+for learned-from-experience walking or scaling to larger worlds.
 
 Previous focus (cards 001–002, until card 002 has a decision):
 

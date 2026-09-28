@@ -102,8 +102,10 @@ def _succ(job):
 
 # ---------------------------------------------------------------- the module
 
-def make_vin(trunk, n_ways, H=9, W=8, fixed=None):
-    """H, W: map size in tiles. fixed: (4, H, W) one-hot readout used when no position is given (card 016)."""
+def make_vin(trunk, n_ways, H=9, W=8, fixed=None, summary="flat"):
+    """H, W: map size in tiles. fixed: (4, H, W) one-hot readout used when no position is given (card 016).
+    summary: 'flat' (linear over the flattened map) or 'mean' (over the average of the cells: what is in
+    the frame, not where; card 017)."""
     torch, nn, F = dl._torch()
 
     class VIN(nn.Module):
@@ -115,7 +117,8 @@ def make_vin(trunk, n_ways, H=9, W=8, fixed=None):
             self.feat = nn.Conv2d(64, NF, 1)
             # what each cell knows can be global (e.g. the held item, drawn in one corner tile);
             # how "within k steps" spreads stays local
-            self.glob = nn.Sequential(nn.Flatten(), nn.Linear(64 * H * W, 64), nn.ReLU())
+            self.glob = nn.Sequential(nn.Flatten(), nn.Linear(64 * H * W, 64), nn.ReLU()) if summary == "flat" \
+                else nn.Sequential(nn.AdaptiveAvgPool2d(1), nn.Flatten(), nn.Linear(64, 64), nn.ReLU())
             self.glob_step = nn.Linear(64, NG)
             self.target = nn.Conv2d(64 + 64, 4 * n_ways, 3, padding=1)
             self.step = nn.Sequential(nn.Conv2d(4 + NF + NG, 64, 3, padding=1), nn.ReLU(), nn.Conv2d(64, 12, 1))
