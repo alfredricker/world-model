@@ -17,18 +17,21 @@ Overwritten each session. At most 40 lines.
   `runs/012run5.sh`). Run 6 (condition detectors) was worse and reverted.
   Exact gates pass in all four worlds; switch/either/both not run with
   the fixes. Diagnostics: `tools/card012/`.
-- **Card 013 (draft, needs the user's approval):** walking in the
-  recursion. Each way's walk becomes a chain of place conditions ("within
-  4 steps of a ready state", "within 8", ...), found by the same
-  recursion; the agent only walks ≤ 4 steps toward the next link. The
-  user asked for walking to become part of the recursion; the card's
-  design, gate and criteria are for their review.
-  - **Next:** user reviews 013; then the bench gate (~10 min); main runs
-    (~30 min per world) handed to the user.
+- **Card 013 (done, fail at gate, stop):** walking as a chain of short
+  place conditions: 80% of moves closer with exact place conditions (gate
+  90%), 84% learned, flat value alone 86%. Place conditions learnable (AUC
+  0.95–0.998). Cause (discussed with the user): the value network flattens
+  the spatial map, so distances are learned layout by layout.
+- **Card 014 (draft, for the user's approval):** local-step walking: the
+  same recursion computed by one learned 3 × 3 step on the encoder's map
+  (value iteration network), agent found by a learned readout, attached to
+  012 run 5's network. Gate: supervised upper bound ≥ 99%, readout finds
+  the agent ≥ 99%. Criteria: walking ≥ 98%, unseen wall column ≥ 95%,
+  acting ≥ 90%.
 - **Pinned (user):** merging duplicate detectors (needs literature);
   demonstrations once random play is too thin; learning the walking skill
-  (013 is a first step).
+  (013, 014).
 - **Housekeeping:** LESSONS.md over two pages (~210 lines), needs a merge
-  pass. LITERATURE.md "Current focus" still names cards 001–002; card 013
-  would use HIQL, SoRB and De Asis et al. 2020 (fixed-horizon TD, not yet
-  in papi). Card 012 work since fdc46ff is uncommitted.
+  pass. LITERATURE.md focus set to 014 (VIN, fixed-horizon TD, HIQL, SoRB;
+  VIN and fixed-horizon TD added to papi). Card 013 closure and card 014
+  draft uncommitted (012 committed in eb84d4d).

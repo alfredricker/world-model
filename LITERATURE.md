@@ -6,6 +6,22 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
+- **Card / rung:** 014 (local-step walking, before rung 1); 013 stopped at
+  its gate. Changed with the user, 2026-09-27.
+- **Why these:** card 013 turns each way's walk into a chain of short
+  place conditions ("within h steps of ..."), learned as fixed-horizon
+  reachability, and acts by walking at most h steps to the next link.
+- **Until:** card 014 has a decision.
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| `1602_02867` (VIN, Tamar et al. 2016) | Card 014's walking: a learned 3 × 3 recurrence on a map computes shortest-path values; 8 × 8 supervised 99.6% vs 97.9% (plain CNN), 16 × 16 99.3% vs 87.6%, RL 82.5% vs 33.1%. It was given the agent's position (attention by index); we learn that readout |
+| `1909_03906` (fixed-horizon TD, De Asis et al. 2020) | The value for horizon h bootstraps from horizon h − 1, grounded by horizon 0, so no value bootstraps from itself: stable under off-policy data and function approximation (their convergence proofs, linear and general). Card 013's "within k steps" reachability; card 012's bench: 99–100% right at 0–4 steps |
+| `hiql` | A high-level subgoal a fixed k steps ahead, reached by a low-level policy that only needs short-range values (k = 3 on pixel Procgen Maze): the reason short links should be reliable |
+| `1906_05253` (SoRB) | Long walks as chains of waypoints over a learned distance; our waypoints are place conditions, not stored states |
+
+Previous focus (cards 001–002, until card 002 has a decision):
+
 - **Cards / rung:** 001 (architecture selection, before rung 1) and 002
   (rare-event sampling, rung 1).
 - **Why these:** each is the source of a mechanism one of card 001's five

@@ -3,8 +3,8 @@ id: "013"
 title: walking in the recursion
 rung: 0
 serves: [P12, P21, P9]
-status: draft   # draft | approved | gated | running | done | abandoned
-verdict:        # pass | fail | uninterpretable, when done
+status: done   # draft | approved | gated | running | done | abandoned
+verdict: fail   # at the feasibility gate
 arch_version: 0
 date: 2026-09-27
 ---
@@ -109,6 +109,25 @@ On card 012's bench (`tools/card012/bench_joint.py`, extended), key world:
 
 Result of the gate, before the main run:
 
+Key world, `tools/card013/bench_chain.py`, `results.json`. Share of chosen
+moves that bring the agent closer (held-out frames; random moves 45%):
+
+| Walk | Goal square: all | 1–4 | 5–8 | 9–12 | 13–16 | Door with key: all |
+|---|---|---|---|---|---|---|
+| (c) flat walk value, discount 0.8 (baseline) | **86%** | 97% | 93% | 76% | 63% | 97% |
+| (a) upper bound: exact place conditions, learned short walks | 80% | 60% | 91% | 84% | 81% | 96% |
+| (b) learned place conditions, learned short walks | 84% | 82% | 93% | 81% | 65% | 97% |
+
+Learned place conditions match exact "within k·4 steps" with AUC
+0.95–0.998. **The gate fails** (upper bound 80% < 90%). The chain helps
+long walks when its place conditions are exact (13–16 steps: 81% vs 63%)
+but not when they are learned, and the upper bound is worse at 1–4 steps
+than at 5–8, which suggests the 16 links sharing one head are
+under-trained rather than a limit of the idea. The flat walk alone reaches
+86% here, against 61% inside card 012's pipeline (run 5): walking loses
+most of its accuracy from sharing the network with every other way and
+phase, not from the length of the walk.
+
 ## 6. Success criteria and prediction
 
 In the key and switch worlds, all learned, 500 new layouts each:
@@ -133,4 +152,18 @@ the gate is about 10 minutes.
 
 ## 7. Result
 
+Not run: the gate failed (section 5).
+
 ## 8. Decision
+
+**Stop.** The card's own rule: the upper bound (exact place conditions,
+learned short walks) reached 80% of moves closer, not 90%. The place
+conditions themselves were learnable (AUC 0.95–0.998) and helped long walks
+when exact, but walking as a whole was no better than one flat value (86%).
+Discussing why with the user: the value network flattens the encoder's
+spatial map into one vector, so "one step closer" cannot be computed
+locally and must be learned per layout, close to a lookup table; alone it
+reaches 86%, and shared with every other way in card 012's pipeline 61%.
+Next, [card 014](../014-local-step-walking/card.md): the same recursion
+("within k steps" = one more step from "within k − 1") computed by one
+learned local step applied on the spatial map.

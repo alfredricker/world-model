@@ -1,0 +1,93 @@
+{
+ "note": "Card 013 feasibility gate, key world, bench tools/card013/bench_chain.py (15k updates; 5k per chain level). Share of chosen moves that reduce the exact walking distance on held-out frames.",
+ "c_flat_walk": {
+  "way1": {
+   "moves_closer": 0.856,
+   "no_link_on": 0.0,
+   "by_distance": {
+    "1-4": 0.972,
+    "5-8": 0.929,
+    "9-12": 0.755,
+    "13-16": 0.632
+   },
+   "random": 0.445
+  },
+  "way2": {
+   "moves_closer": 0.966,
+   "no_link_on": 0.0,
+   "by_distance": {
+    "1-4": 1.0,
+    "5-8": 0.954,
+    "9-12": 0.919,
+    "13-16": 0.868
+   },
+   "random": 0.458
+  }
+ },
+ "a_upper_bound": {
+  "way1": {
+   "moves_closer": 0.797,
+   "no_link_on": 0.0,
+   "by_distance": {
+    "1-4": 0.604,
+    "5-8": 0.907,
+    "9-12": 0.836,
+    "13-16": 0.811
+   },
+   "random": 0.445
+  },
+  "way2": {
+   "moves_closer": 0.959,
+   "no_link_on": 0.0,
+   "by_distance": {
+    "1-4": 0.995,
+    "5-8": 0.946,
+    "9-12": 0.914,
+    "13-16": 0.789
+   },
+   "random": 0.458
+  }
+ },
+ "b_learned_chain": {
+  "way1": {
+   "moves_closer": 0.839,
+   "no_link_on": 0.016,
+   "by_distance": {
+    "1-4": 0.816,
+    "5-8": 0.934,
+    "9-12": 0.808,
+    "13-16": 0.651
+   },
+   "random": 0.445
+  },
+  "way2": {
+   "moves_closer": 0.967,
+   "no_link_on": 0.0,
+   "by_distance": {
+    "1-4": 0.973,
+    "5-8": 0.965,
+    "9-12": 0.961,
+    "13-16": 0.868
+   },
+   "random": 0.458
+  }
+ },
+ "b_auc": {
+  "way1_A1": 0.9987,
+  "way2_A1": 0.981,
+  "way1_A2": 0.9612,
+  "way2_A2": 0.9584,
+  "way1_A3": 0.9698,
+  "way2_A3": 0.9533,
+  "way1_A4": 0.9922,
+  "way2_A4": 0.9517,
+  "way1_A5": 0.9963,
+  "way2_A5": 0.952,
+  "way1_A6": 0.9972,
+  "way2_A6": 0.9526,
+  "way1_A7": 0.9977,
+  "way2_A7": 0.9526,
+  "way1_A8": 0.9981,
+  "way2_A8": 0.9527
+ }
+}
