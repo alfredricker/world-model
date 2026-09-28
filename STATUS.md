@@ -2,38 +2,39 @@
 
 Overwritten each session. At most 40 lines.
 
-- **Date:** 2026-09-28. **Rung:** before rung 1. **Architecture:** version 3,
-  experimental shared map/context and shared spatial feature computation.
-- **Direction:** retain condition recursion. Conditions, readiness and walking
-  use one learned state; no separate frozen condition model at inference.
-- **Latest card 020 (done, pass, keep):** conditions read the same recurrent
-  spatial features as readiness. Both score 99.61% on 512 evaluator-labelled
-  test frames from 128 new layouts, against the 99% bar. Flat condition
-  readout: 98.05%; its readiness: 99.80%. One seed; controlled component only.
-- **Card 017 (revise):** exact audit found 31 door-readiness input groups
-  with opposite true labels, involving 82 of 302 positives in 200,500 queried
-  poses. Local-only readiness is insufficient; a wider head fits training
-  but scores 17.97% on changed geometry. Full-tree coverage remains incomplete.
-- **Card 018 (revise):** changing only the remote goal in training pairs
-  lifts wide-head test readiness to 96.68% versus 50% local-only. All 17
-  errors occur at a goal offset absent from positive training examples.
-- **Card 019 (revise):** shared local updates lift readiness to 99.80%;
-  the flat condition head stays at 97.85%, motivating card 020.
-- **Next decision:** a full-tree component gate using architecture 3, with
-  adequate coverage and learned-label comparison. The original small sample
-  has only 9 goal-ready and 6 key-ready test poses at the agent versus 20
-  required, and some deeper ways have none. Do not confuse this with the
-  balanced evaluator pairs of cards 018–020; no walking run is justified yet.
-- **Implementation:** `src/worldmodel/spatial_state.py`. Full-tree screen:
-  `tools/card017/bench_shared.py`; controlled comparisons: `bench_context.py`.
-  Readiness/condition heads share both patch encoding and spatial processing.
-- **Checks:** all 56 repository tests pass, including the exact counterexample,
-  orientation handling and both heads' gradients through the shared processor.
+- **Date:** 2026-09-28. **Rung:** before rung 1. **Architecture:** version 3
+  in code (`src/worldmodel/spatial_state.py`); the direction below replaces
+  its readiness and walking parts.
+- **Direction (changed with the user, 2026-09-28,
+  [card 022](experiments/022-effects-post-mortem/card.md)):** the primitive
+  is the effect of an action on conditions, learned from the agent's own
+  outcomes. Moves are actions with effects on where things are relative to
+  the agent; walking is choosing moves whose effect brings the target
+  closer in view (subgoals where that gets stuck), not a separate part.
+  Readiness is removed. The charter says the session after a switch is
+  thinking only (no code, no runs).
+- **Card 023 (done, fail, revise):** conditions as "approachable by moving
+  closer in view": acting 39.6% (card 012's conditions with path search
+  100%). Its measure stopped agents facing a wall; discovery then filled
+  the tree with moves.
+- **Card 024 (done, fail; decision pending):** measure fixed (turn towards
+  a free step that brings the agent closer). Acting 96.4% but 50% random
+  moves (needs ≥ 98%, ≤ 1%); 32 goals changes nothing. Cause: the key's
+  way holds at 82% of starts, so card 012's stopping rule makes it a leaf
+  with no subgoals for the other 18%. Next: how discovery grows the tree.
+- **Card 021 (stopped):** full-tree readiness and conditions on
+  architecture 3's shared processor failed even with exact labels (held-out
+  false positives up to 38%, familiar wall columns too). Evidence that
+  conditions from that processor do not yet generalise.
+- **Cards 017–020:** readiness needs remote information (017: exact input
+  collisions); the shared processor fits one condition and its readiness
+  at 99.61% with evaluator labels (020).
+- **Card 016 (fail, revise):** egocentric learned walking: acting 48.4% at
+  30k and 90k updates; readiness right only at the agent (maps check).
 - **Retained evidence:** card 012's learned key-world conditions give 95%
-  acting with exact walking, 30.2% all learned, 0.4% random. Card 016's
-  learned egocentric walking gives 48.4% at both 30k and 90k updates.
-- **Scope:** cards 018–020 use evaluator labels and constructed goal pairs;
-  they do not establish full-tree retention, discovery or autonomous walking.
-  No capability-ladder rung has passed. All new runs were under one minute.
+  acting with exact walking, 30.2% all learned, 0.4% random.
+- **Next after 023:** learn what moves do to the view (moves as learned
+  transformations of the map), then the effects of pickup and toggle.
 - **Pinned:** duplicate detector merging needs literature; demonstrations
-  once random play is too thin. LESSONS.md still needs a separate merge pass.
+  once random play is too thin. LESSONS.md needs a merge pass (over two
+  pages). Nothing from cards 021–023 is committed; 59 tests passed (card 021).

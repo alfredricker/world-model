@@ -1,0 +1,295 @@
+{
+ "note": "Card 023, tools/card023/closer.py, exact computation, key world.",
+ "tree_path": {
+  "ways": [
+   [
+    "(goal square)",
+    "expanded"
+   ],
+   [
+    "forward",
+    "expanded"
+   ],
+   [
+    "forward/toggle",
+    "expanded"
+   ],
+   [
+    "forward/pickup",
+    "expanded"
+   ],
+   [
+    "forward/toggle/pickup",
+    "leaf: on at start"
+   ],
+   [
+    "forward/toggle/toggle",
+    "rejected by self-check"
+   ],
+   [
+    "forward/pickup/toggle",
+    "expanded"
+   ],
+   [
+    "forward/pickup/drop",
+    "expanded"
+   ],
+   [
+    "forward/pickup/toggle/pickup",
+    "leaf: on at start"
+   ],
+   [
+    "forward/pickup/toggle/drop",
+    "expanded"
+   ],
+   [
+    "forward/pickup/toggle/toggle",
+    "rejected by self-check"
+   ],
+   [
+    "forward/pickup/drop/toggle",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/pickup/drop/pickup",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/pickup/toggle/drop/pickup",
+    "leaf: on at start"
+   ],
+   [
+    "forward/pickup/toggle/drop/toggle",
+    "rejected by self-check"
+   ],
+   [
+    "forward/pickup/drop/toggle/pickup",
+    "leaf: on at start"
+   ]
+  ],
+  "structure": {
+   "expected_found": {
+    "forward": true,
+    "forward/toggle": true,
+    "forward/toggle/pickup": true
+   },
+   "all_expected": true,
+   "extra_goals": [
+    "forward/pickup",
+    "forward/pickup/drop",
+    "forward/pickup/drop/pickup",
+    "forward/pickup/drop/toggle",
+    "forward/pickup/drop/toggle/pickup",
+    "forward/pickup/toggle",
+    "forward/pickup/toggle/drop",
+    "forward/pickup/toggle/drop/pickup",
+    "forward/pickup/toggle/pickup"
+   ]
+  },
+  "seconds": 158.5
+ },
+ "tree_closer": {
+  "ways": [
+   [
+    "(goal square)",
+    "expanded"
+   ],
+   [
+    "forward",
+    "expanded"
+   ],
+   [
+    "forward/right",
+    "expanded"
+   ],
+   [
+    "forward/left",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/toggle",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/pickup",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/forward",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/right/toggle",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/right/right",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/right/left",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/right/forward",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/right/pickup",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/left/toggle",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/left/right",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/left/left",
+    "expanded (goal budget reached)"
+   ],
+   [
+    "forward/left/forward",
+    "expanded (goal budget reached)"
+   ]
+  ],
+  "structure": {
+   "expected_found": {
+    "forward": true,
+    "forward/toggle": true,
+    "forward/toggle/pickup": false
+   },
+   "all_expected": false,
+   "extra_goals": [
+    "forward/forward",
+    "forward/left",
+    "forward/left/forward",
+    "forward/left/left",
+    "forward/left/right",
+    "forward/left/toggle",
+    "forward/pickup",
+    "forward/right",
+    "forward/right/forward",
+    "forward/right/left",
+    "forward/right/pickup",
+    "forward/right/right",
+    "forward/right/toggle"
+   ]
+  },
+  "seconds": 20.5
+ },
+ "data_check_gap": {
+  "forward": {
+   "in front: key": 230,
+   "in front: wall": 48,
+   "path holds": 2433,
+   "wall between": 1051
+  },
+  "forward/toggle": {
+   "in front: distractor": 1124,
+   "in front: switch": 1249,
+   "in front: vase": 357,
+   "in front: wall": 5569,
+   "path holds": 13730
+  },
+  "forward/pickup": {
+   "in front: key": 41,
+   "path holds": 1172,
+   "wall between": 386
+  },
+  "forward/toggle/pickup": {
+   "in front: distractor": 11735,
+   "in front: key": 34382,
+   "in front: switch": 15566,
+   "in front: vase": 3086,
+   "no ready pose": 32853,
+   "path holds": 150954,
+   "wall between": 386
+  },
+  "forward/toggle/toggle": {
+   "no ready pose": 29,
+   "path holds": 29
+  },
+  "forward/pickup/toggle": {
+   "in front: distractor": 1124,
+   "in front: switch": 1249,
+   "in front: vase": 357,
+   "in front: wall": 5569,
+   "path holds": 13730
+  },
+  "forward/pickup/drop": {
+   "in front: empty": 22,
+   "in front: wall": 24,
+   "path holds": 62
+  },
+  "forward/pickup/toggle/pickup": {
+   "in front: distractor": 11735,
+   "in front: key": 34341,
+   "in front: switch": 15566,
+   "in front: vase": 3086,
+   "no ready pose": 32853,
+   "path holds": 149782
+  },
+  "forward/pickup/toggle/drop": {
+   "in front: empty": 22,
+   "in front: wall": 24,
+   "path holds": 62
+  },
+  "forward/pickup/toggle/toggle": {
+   "no ready pose": 29,
+   "path holds": 29
+  },
+  "forward/pickup/drop/toggle": {
+   "in front: distractor": 1124,
+   "in front: switch": 1249,
+   "in front: vase": 357,
+   "in front: wall": 5569,
+   "path holds": 13730
+  },
+  "forward/pickup/drop/pickup": {
+   "no ready pose": 6,
+   "path holds": 6
+  },
+  "forward/pickup/toggle/drop/pickup": {
+   "in front: distractor": 11735,
+   "in front: key": 34341,
+   "in front: switch": 15566,
+   "in front: vase": 3086,
+   "no ready pose": 32859,
+   "path holds": 149788
+  },
+  "forward/pickup/toggle/drop/toggle": {
+   "no ready pose": 29,
+   "path holds": 29
+  },
+  "forward/pickup/drop/toggle/pickup": {
+   "in front: distractor": 11735,
+   "in front: key": 34341,
+   "in front: switch": 15566,
+   "in front: vase": 3086,
+   "no ready pose": 32859,
+   "path holds": 149788
+  }
+ },
+ "shortest_mean_steps": 15.9,
+ "acting": {
+  "control: path conditions, path-search walking": {
+   "success": 1.0,
+   "mean_steps_when_successful": 16.3,
+   "random_steps": 0
+  },
+  "baseline: path conditions, moving closer": {
+   "success": 0.862,
+   "mean_steps_when_successful": 23.1,
+   "random_steps": 14245
+  },
+  "new: approachable conditions (rediscovered), moving closer": {
+   "success": 0.396,
+   "mean_steps_when_successful": 87.8,
+   "random_steps": 75792
+  }
+ },
+ "seconds": 205.2
+}

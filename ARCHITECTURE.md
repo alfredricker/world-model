@@ -14,6 +14,14 @@ prototype is `src/worldmodel/discover_logic.py`; its frozen network and
 separately trained walker remain historical baselines. The new module is
 `src/worldmodel/spatial_state.py`.
 
+[Card 021](experiments/021-full-tree-spatial-gate/card.md), still open for
+review, resolves full-tree evaluator coverage but fails the exact-label gate.
+At 10,000 updates, training condition recall is at least 99.47%, while
+held-out condition false positives reach 38.28% against a 1% limit. Errors
+also occur on familiar geometry and collected experience. The controlled
+99.61% result therefore does not generalize to the full tree. The model is
+unchanged; learned-label training and walking integration remain gated.
+
 ## Overview
 
 The state is a spatial feature map plus context without a location axis.

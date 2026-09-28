@@ -1,0 +1,728 @@
+{
+ "note": "Card 024, tools/card023/closer.py --measure step, exact computation, key world.",
+ "goals_16": {
+  "measure": "step",
+  "goal_budget": 16,
+  "tree_path": {
+   "ways": [
+    [
+     "(goal square)",
+     "expanded"
+    ],
+    [
+     "forward",
+     "expanded"
+    ],
+    [
+     "forward/toggle",
+     "expanded"
+    ],
+    [
+     "forward/pickup",
+     "expanded"
+    ],
+    [
+     "forward/toggle/pickup",
+     "leaf: on at start"
+    ],
+    [
+     "forward/toggle/toggle",
+     "rejected by self-check"
+    ],
+    [
+     "forward/pickup/toggle",
+     "expanded"
+    ],
+    [
+     "forward/pickup/drop",
+     "expanded"
+    ],
+    [
+     "forward/pickup/toggle/pickup",
+     "leaf: on at start"
+    ],
+    [
+     "forward/pickup/toggle/drop",
+     "expanded"
+    ],
+    [
+     "forward/pickup/toggle/toggle",
+     "rejected by self-check"
+    ],
+    [
+     "forward/pickup/drop/toggle",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/pickup/drop/pickup",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/pickup/toggle/drop/pickup",
+     "leaf: on at start"
+    ],
+    [
+     "forward/pickup/toggle/drop/toggle",
+     "rejected by self-check"
+    ],
+    [
+     "forward/pickup/drop/toggle/pickup",
+     "leaf: on at start"
+    ]
+   ],
+   "structure": {
+    "expected_found": {
+     "forward": true,
+     "forward/toggle": true,
+     "forward/toggle/pickup": true
+    },
+    "all_expected": true,
+    "extra_goals": [
+     "forward/pickup",
+     "forward/pickup/drop",
+     "forward/pickup/drop/pickup",
+     "forward/pickup/drop/toggle",
+     "forward/pickup/drop/toggle/pickup",
+     "forward/pickup/toggle",
+     "forward/pickup/toggle/drop",
+     "forward/pickup/toggle/drop/pickup",
+     "forward/pickup/toggle/pickup"
+    ]
+   },
+   "seconds": 158.8
+  },
+  "tree_closer": {
+   "ways": [
+    [
+     "(goal square)",
+     "expanded"
+    ],
+    [
+     "forward",
+     "expanded"
+    ],
+    [
+     "forward/toggle",
+     "expanded"
+    ],
+    [
+     "forward/right",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/left",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/forward",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/pickup",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/drop",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/toggle/pickup",
+     "leaf: on at start"
+    ],
+    [
+     "forward/toggle/right",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/toggle/left",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/toggle/forward",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/toggle/drop",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/toggle/toggle",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/right/toggle",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/right/pickup",
+     "expanded (goal budget reached)"
+    ]
+   ],
+   "structure": {
+    "expected_found": {
+     "forward": true,
+     "forward/toggle": true,
+     "forward/toggle/pickup": true
+    },
+    "all_expected": true,
+    "extra_goals": [
+     "forward/drop",
+     "forward/forward",
+     "forward/left",
+     "forward/pickup",
+     "forward/right",
+     "forward/right/pickup",
+     "forward/right/toggle",
+     "forward/toggle/drop",
+     "forward/toggle/forward",
+     "forward/toggle/left",
+     "forward/toggle/right",
+     "forward/toggle/toggle"
+    ]
+   },
+   "seconds": 65.3
+  },
+  "data_check_gap": {
+   "forward": {
+    "in front: empty": 11,
+    "in front: key": 30,
+    "in front: wall": 99,
+    "path holds": 2433,
+    "wall between": 967
+   },
+   "forward/toggle": {
+    "in front: distractor": 345,
+    "in front: empty": 160,
+    "in front: switch": 293,
+    "in front: vase": 215,
+    "in front: wall": 472,
+    "path holds": 13730
+   },
+   "forward/pickup": {
+    "in front: distractor": 1,
+    "in front: empty": 12,
+    "in front: key": 11,
+    "in front: vase": 5,
+    "in front: wall": 110,
+    "path holds": 1172
+   },
+   "forward/toggle/pickup": {
+    "in front: distractor": 1477,
+    "in front: empty": 2355,
+    "in front: key": 606,
+    "in front: switch": 2133,
+    "in front: vase": 565,
+    "in front: wall": 2499,
+    "no ready pose": 12706,
+    "path holds": 150954
+   },
+   "forward/toggle/toggle": {
+    "no ready pose": 29,
+    "path holds": 29
+   },
+   "forward/pickup/toggle": {
+    "in front: distractor": 345,
+    "in front: empty": 160,
+    "in front: switch": 293,
+    "in front: vase": 215,
+    "in front: wall": 472,
+    "path holds": 13730
+   },
+   "forward/pickup/drop": {
+    "path holds": 62
+   },
+   "forward/pickup/toggle/pickup": {
+    "in front: distractor": 1476,
+    "in front: empty": 2343,
+    "in front: key": 595,
+    "in front: switch": 2133,
+    "in front: vase": 560,
+    "in front: wall": 2389,
+    "no ready pose": 12706,
+    "path holds": 149782
+   },
+   "forward/pickup/toggle/drop": {
+    "path holds": 62
+   },
+   "forward/pickup/toggle/toggle": {
+    "no ready pose": 29,
+    "path holds": 29
+   },
+   "forward/pickup/drop/toggle": {
+    "in front: distractor": 345,
+    "in front: empty": 160,
+    "in front: switch": 293,
+    "in front: vase": 215,
+    "in front: wall": 472,
+    "path holds": 13730
+   },
+   "forward/pickup/drop/pickup": {
+    "path holds": 6
+   },
+   "forward/pickup/toggle/drop/pickup": {
+    "in front: distractor": 1476,
+    "in front: empty": 2343,
+    "in front: key": 595,
+    "in front: switch": 2133,
+    "in front: vase": 560,
+    "in front: wall": 2389,
+    "no ready pose": 12706,
+    "path holds": 149788
+   },
+   "forward/pickup/toggle/drop/toggle": {
+    "no ready pose": 29,
+    "path holds": 29
+   },
+   "forward/pickup/drop/toggle/pickup": {
+    "in front: distractor": 1476,
+    "in front: empty": 2343,
+    "in front: key": 595,
+    "in front: switch": 2133,
+    "in front: vase": 560,
+    "in front: wall": 2389,
+    "no ready pose": 12706,
+    "path holds": 149788
+   }
+  },
+  "shortest_mean_steps": 15.9,
+  "acting": {
+   "control: path conditions, path-search walking": {
+    "success": 1.0,
+    "mean_steps_when_successful": 16.3,
+    "random_steps": 0,
+    "moves": 8139,
+    "random_share": 0.0
+   },
+   "baseline: path conditions, moving closer": {
+    "success": 0.99,
+    "mean_steps_when_successful": 24.2,
+    "random_steps": 4622,
+    "moves": 12995,
+    "random_share": 0.3557
+   },
+   "new: approachable conditions (rediscovered), moving closer": {
+    "success": 0.964,
+    "mean_steps_when_successful": 23.9,
+    "random_steps": 7567,
+    "moves": 15113,
+    "random_share": 0.5007
+   }
+  },
+  "seconds": 256.7
+ },
+ "goals_32_diagnostic": {
+  "measure": "step",
+  "goal_budget": 32,
+  "tree_path": {
+   "ways": [
+    [
+     "(goal square)",
+     "expanded"
+    ],
+    [
+     "forward",
+     "expanded"
+    ],
+    [
+     "forward/toggle",
+     "expanded"
+    ],
+    [
+     "forward/pickup",
+     "expanded"
+    ],
+    [
+     "forward/toggle/pickup",
+     "leaf: on at start"
+    ],
+    [
+     "forward/toggle/toggle",
+     "rejected by self-check"
+    ],
+    [
+     "forward/pickup/toggle",
+     "expanded"
+    ],
+    [
+     "forward/pickup/drop",
+     "expanded"
+    ],
+    [
+     "forward/pickup/toggle/pickup",
+     "leaf: on at start"
+    ],
+    [
+     "forward/pickup/toggle/drop",
+     "expanded"
+    ],
+    [
+     "forward/pickup/toggle/toggle",
+     "rejected by self-check"
+    ],
+    [
+     "forward/pickup/drop/toggle",
+     "expanded"
+    ],
+    [
+     "forward/pickup/drop/pickup",
+     "expanded"
+    ],
+    [
+     "forward/pickup/toggle/drop/pickup",
+     "leaf: on at start"
+    ],
+    [
+     "forward/pickup/toggle/drop/toggle",
+     "rejected by self-check"
+    ],
+    [
+     "forward/pickup/drop/toggle/pickup",
+     "leaf: on at start"
+    ],
+    [
+     "forward/pickup/drop/toggle/toggle",
+     "rejected by self-check"
+    ],
+    [
+     "forward/pickup/drop/pickup/toggle",
+     "leaf: depth limit"
+    ]
+   ],
+   "structure": {
+    "expected_found": {
+     "forward": true,
+     "forward/toggle": true,
+     "forward/toggle/pickup": true
+    },
+    "all_expected": true,
+    "extra_goals": [
+     "forward/pickup",
+     "forward/pickup/drop",
+     "forward/pickup/drop/pickup",
+     "forward/pickup/drop/pickup/toggle",
+     "forward/pickup/drop/toggle",
+     "forward/pickup/drop/toggle/pickup",
+     "forward/pickup/toggle",
+     "forward/pickup/toggle/drop",
+     "forward/pickup/toggle/drop/pickup",
+     "forward/pickup/toggle/pickup"
+    ]
+   },
+   "seconds": 173.9
+  },
+  "tree_closer": {
+   "ways": [
+    [
+     "(goal square)",
+     "expanded"
+    ],
+    [
+     "forward",
+     "expanded"
+    ],
+    [
+     "forward/toggle",
+     "expanded"
+    ],
+    [
+     "forward/right",
+     "expanded"
+    ],
+    [
+     "forward/left",
+     "expanded"
+    ],
+    [
+     "forward/forward",
+     "expanded"
+    ],
+    [
+     "forward/pickup",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/drop",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/toggle/pickup",
+     "leaf: on at start"
+    ],
+    [
+     "forward/toggle/right",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/toggle/left",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/toggle/forward",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/toggle/drop",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/toggle/toggle",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/right/toggle",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/right/pickup",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/right/left",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/right/forward",
+     "rejected by self-check"
+    ],
+    [
+     "forward/right/right",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/right/drop",
+     "rejected by self-check"
+    ],
+    [
+     "forward/left/toggle",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/left/pickup",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/left/left",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/left/forward",
+     "rejected by self-check"
+    ],
+    [
+     "forward/left/right",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/left/drop",
+     "rejected by self-check"
+    ],
+    [
+     "forward/forward/toggle",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/forward/pickup",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/forward/left",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/forward/right",
+     "expanded (goal budget reached)"
+    ],
+    [
+     "forward/forward/forward",
+     "rejected by self-check"
+    ],
+    [
+     "forward/forward/drop",
+     "rejected by self-check"
+    ]
+   ],
+   "structure": {
+    "expected_found": {
+     "forward": true,
+     "forward/toggle": true,
+     "forward/toggle/pickup": true
+    },
+    "all_expected": true,
+    "extra_goals": [
+     "forward/drop",
+     "forward/forward",
+     "forward/forward/left",
+     "forward/forward/pickup",
+     "forward/forward/right",
+     "forward/forward/toggle",
+     "forward/left",
+     "forward/left/left",
+     "forward/left/pickup",
+     "forward/left/right",
+     "forward/left/toggle",
+     "forward/pickup",
+     "forward/right",
+     "forward/right/left",
+     "forward/right/pickup",
+     "forward/right/right",
+     "forward/right/toggle",
+     "forward/toggle/drop",
+     "forward/toggle/forward",
+     "forward/toggle/left",
+     "forward/toggle/right",
+     "forward/toggle/toggle"
+    ]
+   },
+   "seconds": 74.7
+  },
+  "data_check_gap": {
+   "forward": {
+    "in front: empty": 11,
+    "in front: key": 30,
+    "in front: wall": 99,
+    "path holds": 2433,
+    "wall between": 967
+   },
+   "forward/toggle": {
+    "in front: distractor": 345,
+    "in front: empty": 160,
+    "in front: switch": 293,
+    "in front: vase": 215,
+    "in front: wall": 472,
+    "path holds": 13730
+   },
+   "forward/pickup": {
+    "in front: distractor": 1,
+    "in front: empty": 12,
+    "in front: key": 11,
+    "in front: vase": 5,
+    "in front: wall": 110,
+    "path holds": 1172
+   },
+   "forward/toggle/pickup": {
+    "in front: distractor": 1477,
+    "in front: empty": 2355,
+    "in front: key": 606,
+    "in front: switch": 2133,
+    "in front: vase": 565,
+    "in front: wall": 2499,
+    "no ready pose": 12706,
+    "path holds": 150954
+   },
+   "forward/toggle/toggle": {
+    "no ready pose": 29,
+    "path holds": 29
+   },
+   "forward/pickup/toggle": {
+    "in front: distractor": 345,
+    "in front: empty": 160,
+    "in front: switch": 293,
+    "in front: vase": 215,
+    "in front: wall": 472,
+    "path holds": 13730
+   },
+   "forward/pickup/drop": {
+    "path holds": 62
+   },
+   "forward/pickup/toggle/pickup": {
+    "in front: distractor": 1476,
+    "in front: empty": 2343,
+    "in front: key": 595,
+    "in front: switch": 2133,
+    "in front: vase": 560,
+    "in front: wall": 2389,
+    "no ready pose": 12706,
+    "path holds": 149782
+   },
+   "forward/pickup/toggle/drop": {
+    "path holds": 62
+   },
+   "forward/pickup/toggle/toggle": {
+    "no ready pose": 29,
+    "path holds": 29
+   },
+   "forward/pickup/drop/toggle": {
+    "in front: distractor": 345,
+    "in front: empty": 160,
+    "in front: switch": 293,
+    "in front: vase": 215,
+    "in front: wall": 472,
+    "path holds": 13730
+   },
+   "forward/pickup/drop/pickup": {
+    "path holds": 6
+   },
+   "forward/pickup/toggle/drop/pickup": {
+    "in front: distractor": 1476,
+    "in front: empty": 2343,
+    "in front: key": 595,
+    "in front: switch": 2133,
+    "in front: vase": 560,
+    "in front: wall": 2389,
+    "no ready pose": 12706,
+    "path holds": 149788
+   },
+   "forward/pickup/toggle/drop/toggle": {
+    "no ready pose": 29,
+    "path holds": 29
+   },
+   "forward/pickup/drop/toggle/pickup": {
+    "in front: distractor": 1476,
+    "in front: empty": 2343,
+    "in front: key": 595,
+    "in front: switch": 2133,
+    "in front: vase": 560,
+    "in front: wall": 2389,
+    "no ready pose": 12706,
+    "path holds": 149788
+   },
+   "forward/pickup/drop/toggle/toggle": {
+    "no ready pose": 29,
+    "path holds": 29
+   },
+   "forward/pickup/drop/pickup/toggle": {
+    "in front: distractor": 345,
+    "in front: empty": 160,
+    "in front: switch": 293,
+    "in front: vase": 215,
+    "in front: wall": 472,
+    "path holds": 13730
+   }
+  },
+  "shortest_mean_steps": 15.9,
+  "acting": {
+   "control: path conditions, path-search walking": {
+    "success": 1.0,
+    "mean_steps_when_successful": 16.3,
+    "random_steps": 0,
+    "moves": 8139,
+    "random_share": 0.0
+   },
+   "baseline: path conditions, moving closer": {
+    "success": 0.99,
+    "mean_steps_when_successful": 24.2,
+    "random_steps": 4622,
+    "moves": 12995,
+    "random_share": 0.3557
+   },
+   "new: approachable conditions (rediscovered), moving closer": {
+    "success": 0.964,
+    "mean_steps_when_successful": 23.9,
+    "random_steps": 7567,
+    "moves": 15113,
+    "random_share": 0.5007
+   }
+  },
+  "seconds": 282.4
+ },
+ "random_steps_diagnosis_200_layouts": {
+  "no key, door closed, left of wall, no way applies": 3170,
+  "other key, door closed, left of wall, no way applies": 92,
+  "ways used (steps)": {
+   "forward/toggle": 1145,
+   "forward": 937,
+   "forward/toggle/pickup": 841,
+   "forward/toggle/right": 14
+  }
+ }
+}
