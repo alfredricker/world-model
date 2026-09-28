@@ -18,7 +18,7 @@ is the distance to that tile, then how many turns until the agent faces a
 direction in which one step forward really brings it closer (a free tile).
 Where no such direction exists the agent is stuck: a real obstacle.
 
-Run: bin/prun python tools/card023/closer.py [--measure view|step] [--goals 16] [--out runs/...json]
+Run: bin/prun python tools/card023/closer.py [--measure view|step] [--goals 16] [--start-share 0.5] [--out runs/...json]
 """
 import json
 import multiprocessing as mp
@@ -293,11 +293,12 @@ def main():
     args = dict(zip(sys.argv[1::2], sys.argv[2::2]))
     MEASURE = args.get("--measure", "view")
     dl.MAX_GOALS = int(args.get("--goals", dl.MAX_GOALS))
+    dl.START_SHARE = float(args.get("--start-share", dl.START_SHARE))
     t00 = time.monotonic()
     log = lambda m: print(f"[{time.monotonic() - t00:6.0f}s] {m}", flush=True)
     out = Path(args.get("--out", "runs/023_closer.json"))
-    res = {"measure": MEASURE, "goal_budget": dl.MAX_GOALS}
-    log(f"closeness measure: {MEASURE}; goal budget: {dl.MAX_GOALS}")
+    res = {"measure": MEASURE, "goal_budget": dl.MAX_GOALS, "leaf_if_on_at_start_above": dl.START_SHARE}
+    log(f"closeness measure: {MEASURE}; goal budget: {dl.MAX_GOALS}; leaf if on at start above {dl.START_SHARE}")
     pool = mp.get_context("fork").Pool(20)
     layouts, tr, seq, st0 = dl.collect(pool, "key", 5000, 11, 0.0, seq_episodes=300)
     log(f"data: {len(layouts)} episodes, {len(tr['act'])} rows, {len(np.unique(seq['ep']))} sequence episodes")

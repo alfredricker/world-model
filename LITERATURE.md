@@ -6,14 +6,14 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Card / rung:** 023 (closer in view, exact check, before rung 1), the first
-  card of the effects direction ([card 022](experiments/022-effects-post-mortem/card.md)).
+- **Card / rung:** 026 (depth-first subgoals, before rung 1), after cards
+  023–025 of the effects direction ([card 022](experiments/022-effects-post-mortem/card.md)).
   Changed with the user, 2026-09-28.
 - **Why these:** actions are learned by their effects on conditions; walking
-  chains the learned effects of moves over the map instead of learning its
-  own step. Schema networks and predicate invention are the closest prior
-  work on actions with conditions and effects.
-- **Until:** card 023 has a decision.
+  is moving closer, and where that gets stuck a subgoal is grown, depth
+  first with backtracking. Schema networks and predicate invention are the
+  closest prior work on actions with conditions and effects.
+- **Until:** card 026 has a decision.
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |

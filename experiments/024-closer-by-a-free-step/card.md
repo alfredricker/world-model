@@ -131,7 +131,8 @@ are used for 14 steps in all.
 
 ## 8. Decision
 
-Proposed: **revise** (awaiting the user). The measure now does its job;
-what fails is how discovery grows the tree. It stops below a condition that
-is on at most starts, and it spends its budget breadth-first on rarely
-useful turn and step ways. The next card changes that one component.
+**Revise** (2026-09-28, with the user). The measure now does its job; what
+fails is how discovery grows the tree: it stops below a condition that is
+on at most starts, and its goal budget runs out on turn and step ways
+before it reaches the key's detours.
+[Card 025](../025-tree-growth/card.md) changes that one component.
