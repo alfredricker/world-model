@@ -144,7 +144,7 @@ def make_vin(trunk, n_ways):
                     Vr.append(torch.sigmoid((A * V).sum((1, 2, 3))))
                     maps.append(V); qmaps.append(ql)
                 if full:
-                    return torch.stack(maps, 1), torch.stack(qmaps, 1)   # (B,K+1,4,9,8), (B,K,3,4,9,8) logits
+                    return torch.stack(maps, 1), torch.stack(qmaps, 1), A   # (B,K+1,4,9,8), (B,K,3,4,9,8) logits; (B,4,9,8)
                 return Vr[0], A, torch.stack(Qr, 1), torch.stack(Vr, 1)
             T = torch.sigmoid(Tl)
             A = given if given is not None else torch.softmax(self.attn(m).float().reshape(B, -1), 1).reshape(B, 4, 9, 8)
@@ -379,14 +379,16 @@ def main():
     t00 = time.monotonic()
     log = lambda m: print(f"[{time.monotonic() - t00:6.0f}s] {m}", flush=True)
     S = Setup(log)
-    res = {"gate": gate, "debug": debug, "main": main_stage}[stage](S, updates)
+    res = {"gate": gate, "debug": debug, "readout": readout_check, "main": main_stage}[stage](S, updates)
     out = Path(f"runs/014_{stage}{'_logit' if LOGIT else ''}{'_fullmap' if 'fullmap' in sys.argv else ''}.json")
     out.write_text(json.dumps(res, indent=1) + "\n")
     log(f"done -> {out}")
 
 
-def train_fullmap(S, vin, updates, main_, n_frames=60000, bs=256):
-    """Upper bound with exact "within k steps" labels at every (facing, cell) of the map."""
+def train_fullmap(S, vin, updates, main_, n_frames=60000, bs=256, learn_attn=False):
+    """Upper bound with exact "within k steps" labels at every (facing, cell) of the map.
+    learn_attn: the agent's position is not given; the attention is trained only by the per-move
+    values read out through it (exact labels at the agent's own entry), never told where the agent is."""
     torch, F = S.torch, S.F
     rs = np.random.default_rng(5)
     rows = np.sort(rs.choice(np.flatnonzero(S.walking.cpu().numpy()), n_frames, replace=False))
@@ -409,16 +411,24 @@ def train_fullmap(S, vin, updates, main_, n_frames=60000, bs=256):
         wj = torch.randint(len(main_), (bs,), device=S.dev, generator=gen)
         way = torch.as_tensor(main_, device=S.dev)[wj]
         img = images(S.trainer.c0[rows_t[i]], S.trainer.tiles)
-        maps, qmaps = vin(img, way, given=agent_onehot(S.tr["s0"][rows[i.cpu().numpy()]], S.dev, torch), full=True)
+        g = agent_onehot(S.tr["s0"][rows[i.cpu().numpy()]], S.dev, torch)
+        maps, qmaps, A = vin(img, way, given=None if learn_attn else g, full=True)
         d = dm[i, wj].long()[:, None]                                          # (B, 1, 4, 9, 8)
         y = ((d >= 0) & (d <= ks)).float()
         sd = sm[i, wj].long()[:, None]                                         # (B, 1, 3, 4, 9, 8)
         yq = ((sd >= 0) & (sd <= (ks[:, 1:] - 1)[..., None])).float()               # after the move: within k-1
         loss = F.binary_cross_entropy_with_logits(maps, y) + F.binary_cross_entropy_with_logits(qmaps, yq)
+        if learn_attn:
+            # the readout: per-move logits weighted by the attention; labels at the agent's entry
+            # (g is used only to pick the label, as TD targets at the agent would supply it)
+            ra = (A[:, None, None] * qmaps).sum((3, 4, 5))                     # (B, K, 3)
+            ya = (yq * g[:, None, None]).sum((3, 4, 5))
+            loss = loss + F.binary_cross_entropy_with_logits(ra, ya)
         opt.zero_grad(set_to_none=True); loss.backward(); opt.step()
         if u % 2000 == 0 or u == updates - 1:
             S.log(f"  fullmap {u}: loss {float(loss.detach()):.4f} {(u + 1) / (time.monotonic() - t0):.1f} upd/s")
     vin.eval()
+    return rows, dm, sm
 
 
 def probe_objects(S, trunk, tag, updates=3000):
@@ -493,6 +503,29 @@ def debug(S, updates):
     S.log(f"RESULT debug values: {json.dumps(res)}")
     res["walking"] = walk_score(S, up, {j: f for j, f in pick_frames(S).items() if j in main_}, given=True, tag="upper (debug)")
     res.update(res0)
+    return res
+
+
+def readout_check(S, updates):
+    """Gate, readout check: recurrence supervised at every cell (as the upper bound), the attention
+    learned from the readout alone. Share of held-out frames where it peaks at the agent's true
+    (facing, cell), and walking through it."""
+    main_ = [j for j, c in enumerate(S.ways) if S.tree.path(c) in (("forward",), ("forward", "toggle"))]
+    lv = make_vin(S.trainer.model.enc[:6], len(S.ways)).to(S.dev)
+    train_fullmap(S, lv, updates, main_, learn_attn=True)
+    res = {}
+    idx = np.sort(np.random.default_rng(2).choice(len(S.Dt), 5000, replace=False))
+    st = S.tseq["st"][idx]
+    true = st[:, 2].astype(int) * 72 + st[:, 1].astype(int) * 8 + st[:, 0].astype(int)
+    for name, sel in (("wall_column_seen", S.test_wall[idx] != HELD_WALL), ("wall_column_unseen", S.test_wall[idx] == HELD_WALL)):
+        _, _, am = read(S, lv, idx[sel], main_[0])
+        res[f"readout_finds_agent_{name}"] = round(float((am == true[sel]).mean()), 4)
+        cell_ok = (am % 72) == (true[sel] % 72)
+        res[f"readout_right_cell_{name}"] = round(float(cell_ok.mean()), 4)
+    S.log(f"RESULT readout finds the agent: {json.dumps(res)}")
+    frames = {j: f for j, f in pick_frames(S).items() if j in main_}
+    res["walking_learned_readout"] = walk_score(S, lv, frames, tag="full map, learned readout")
+    res["walking_given_position"] = walk_score(S, lv, frames, given=True, tag="full map, position given (same module)")
     return res
 
 

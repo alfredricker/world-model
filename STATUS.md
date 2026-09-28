@@ -2,36 +2,32 @@
 
 Overwritten each session. At most 40 lines.
 
-- **Date:** 2026-09-27 (evening). **Rung:** before rung 1. **Direction
+- **Date:** 2026-09-27 (late). **Rung:** before rung 1. **Direction
   (agreed):** theory first, condition discovery until solid.
 - **Cards 003–004 (keep)** exact checks; **005 (keep)** learning from
   frames; **006 (revise)**; **007 (pass)**; **008 (revise)**; **009**
   shelved; **010 (pass, keep)** threshold-free condition definition;
   **011** skipped.
-- **Card 012 (done, partial, revise):** discovery from one signal works in
-  the key world (all expected conditions with the right meanings; acting
-  on them with exact walking 95%); acting all learned 30.2% (random 0.4%).
-  Fixes kept in `discover_logic.py`: way values trained through the
-  encoder (own walking batch, cross-entropy), walk discount 0.8, value
-  batch half from condition-on frames, final phase, play starts (run 5,
-  `runs/012run5.sh`). Run 6 (condition detectors) was worse and reverted.
-  Exact gates pass in all four worlds; switch/either/both not run with
-  the fixes. Diagnostics: `tools/card012/`.
-- **Card 013 (done, fail at gate, stop):** walking as a chain of short
-  place conditions: 80% of moves closer with exact place conditions (gate
-  90%), 84% learned, flat value alone 86%. Place conditions learnable (AUC
-  0.95–0.998). Cause (discussed with the user): the value network flattens
-  the spatial map, so distances are learned layout by layout.
-- **Card 014 (draft, for the user's approval):** local-step walking: the
-  same recursion computed by one learned 3 × 3 step on the encoder's map
-  (value iteration network), agent found by a learned readout, attached to
-  012 run 5's network. Gate: supervised upper bound ≥ 99%, readout finds
-  the agent ≥ 99%. Criteria: walking ≥ 98%, unseen wall column ≥ 95%,
-  acting ≥ 90%.
+- **Card 012 (done, partial, revise):** discovery works in the key world
+  (right conditions; acting on them with exact walking 95%); acting all
+  learned 30.2% (random 0.4%). Method in `discover_logic.py` (run 5,
+  `runs/012run5.sh`). Switch/either/both worlds not rerun with the fixes.
+- **Card 013 (done, fail at gate, stop):** walking as a chain of place
+  conditions no better than a flat value (80–86%); the flat value network
+  loses the spatial map.
+- **Card 014 (gate passed):** walking by one learned 3 × 3
+  step on the encoder's map, "within k steps" = "one step from within
+  k − 1". Upper bound (every cell supervised, position given) passes:
+  99.97% of moves closer on held-out frames at 30k updates (8k gave
+  90–94%; training length was the limit). Readout check passes: the
+  learned attention finds the agent in 99.3% / 99.55% (unseen wall column)
+  of held-out frames. Gate passed. Next: criteria 1–3 without exact
+  distance maps (`main_stage` not written).
+- **Card 015 (done, fail):** reconstruction or change prediction make the
+  map show objects (most classes 97–100%) but did not raise walking at 8k
+  updates. Run 5's encoder at 30k reaches 99.07% / 99.83% without them,
+  so the new map is not needed for walking. Decision section open.
 - **Pinned (user):** merging duplicate detectors (needs literature);
-  demonstrations once random play is too thin; learning the walking skill
-  (013, 014).
+  demonstrations once random play is too thin.
 - **Housekeeping:** LESSONS.md over two pages (~210 lines), needs a merge
-  pass. LITERATURE.md focus set to 014 (VIN, fixed-horizon TD, HIQL, SoRB;
-  VIN and fixed-horizon TD added to papi). Card 013 closure and card 014
-  draft uncommitted (012 committed in eb84d4d).
+  pass. Cards 014 (gate notes) and 015 uncommitted (last commit 6767e26).

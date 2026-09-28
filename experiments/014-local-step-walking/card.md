@@ -3,7 +3,7 @@ id: "014"
 title: local-step walking
 rung: 0
 serves: [P12, P9, P21]
-status: approved   # draft | approved | gated | running | done | abandoned
+status: gated   # draft | approved | gated | running | done | abandoned
 verdict:        # pass | fail | uninterpretable, when done
 arch_version: 0
 date: 2026-09-27
@@ -117,6 +117,24 @@ and 14% (after training the walking module); the switch and vase 0–74%.
 Walking through a doorway needs exactly that. The map does not show the
 objects walking depends on: a dependency that is neither built nor
 established here (CHARTER rule 7).
+
+Card 015 then showed that the map was not the limit: with 30k updates
+instead of 8k, the upper bound (every cell supervised, card 015 arm C's
+map) reaches **99.97%** of moves closer on held-out frames for both ways
+(99.8% on training frames). **The upper-bound part of the gate passes.**
+Run 5's own encoder, trained the same way, reaches 99.07% / 99.83%
+(training frames 99.65% / 99.97%), so card 015's map is not needed.
+
+Readout check (`runs/014readout.out`, 30k updates, run 5's encoder): every
+cell supervised as in the upper bound, but the position is never given;
+the attention learns only from the per-move values read through it
+(labels at the agent's own entry). On 5000 held-out frames it peaks at
+the agent's true cell and facing in **99.3%** (wall column seen) and
+**99.55%** (wall column 5, never trained on); right cell 99.6% / 99.7%.
+Walking through the learned readout: 100% / 99.87% of moves closer, the
+same as the same module given the position. **The readout check passes;
+the gate passes.** Still to show: the same without exact distance maps
+(criteria 1–3).
 
 ## 6. Success criteria and prediction
 
