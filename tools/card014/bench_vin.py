@@ -24,6 +24,7 @@ from worldmodel.envs.keydoor_render import render, encode_logic_states
 RUN = Path("runs/012run5_key")
 K = 32            # recurrence steps (longest walk in the data: 23)
 NF = 32           # map feature channels fed to the step
+NG = 16           # whole-frame summary channels fed to the step
 PLAY = 1 / 3
 HELD_WALL = 5
 LOGIT = "logit" in sys.argv
@@ -61,6 +62,7 @@ def _dmaps(job):
     """Exact walking distance to node n's ready states from every (facing, cell): (len, nn, 4, 9, 8), -1 = none."""
     layouts, parent, action, nodes, items = job
     out = np.full((len(items), len(nodes), 4, 9, 8), -1, np.int8)
+    succ = np.full((len(items), len(nodes), 3, 4, 9, 8), -1, np.int8)
     cache = {}
     for i, (e, st) in enumerate(items):
         lay = layouts[e]
@@ -68,12 +70,17 @@ def _dmaps(job):
         s = dl.to_tup(st)
         rest = s[3:]
         comp, members, _ = ex.component(rest)
+        _, _, edges = ex.component(rest)
         for j, n in enumerate(nodes):
             for mem in members:
-                u = mem[0]
-                for (x, y, d), v in ex.distances(n, (*u, *rest)).items():
+                D = ex.distances(n, (*mem[0], *rest))
+                for (x, y, d), v in D.items():
                     out[i, j, d, y, x] = min(v, 127)
-    return out
+                for (x, y, d) in mem:
+                    for a, t in edges[(x, y, d)]:          # moves into the goal square are absent: -1
+                        if t in D:
+                            succ[i, j, a, d, y, x] = min(D[t], 127)
+    return out, succ
 
 
 def _succ(job):
@@ -105,8 +112,12 @@ def make_vin(trunk, n_ways):
             super().__init__()
             self.trunk = copy.deepcopy(trunk)                       # conv layers of the encoder: (B, 64, 9, 8)
             self.feat = nn.Conv2d(64, NF, 1)
-            self.target = nn.Conv2d(64, 4 * n_ways, 3, padding=1)
-            self.step = nn.Sequential(nn.Conv2d(4 + NF, 64, 3, padding=1), nn.ReLU(), nn.Conv2d(64, 12, 1))
+            # what each cell knows can be global (e.g. the held item, drawn in one corner tile);
+            # how "within k steps" spreads stays local
+            self.glob = nn.Sequential(nn.Flatten(), nn.Linear(64 * 9 * 8, 64), nn.ReLU())
+            self.glob_step = nn.Linear(64, NG)
+            self.target = nn.Conv2d(64 + 64, 4 * n_ways, 3, padding=1)
+            self.step = nn.Sequential(nn.Conv2d(4 + NF + NG, 64, 3, padding=1), nn.ReLU(), nn.Conv2d(64, 12, 1))
             self.attn = nn.Conv2d(64, 4, 3, padding=1)
             with torch.no_grad():
                 self.target.bias.fill_(-4.0)
@@ -117,21 +128,23 @@ def make_vin(trunk, n_ways):
             Returns readouts: T (B,), A map (B,4,9,8), Q (B,K,3) sigmoid, V (B,K+1) sigmoid."""
             B = img.shape[0]
             m = self.trunk(img)
-            f = F.relu(self.feat(m))
-            Tl = self.target(m).float().reshape(B, -1, 4, 9, 8)[torch.arange(B, device=img.device), way]
+            g = self.glob(m)
+            gm = g[:, :, None, None].expand(-1, -1, 9, 8)
+            f = torch.cat([F.relu(self.feat(m)), self.glob_step(g)[:, :, None, None].expand(-1, -1, 9, 8)], 1)
+            Tl = self.target(torch.cat([m, gm], 1)).float().reshape(B, -1, 4, 9, 8)[torch.arange(B, device=img.device), way]
             if LOGIT:
                 # value-iteration style: the recurrence stays in logits (max is piecewise linear, so
                 # gradients survive 32 steps); probabilities only at the readout
                 A = given if given is not None else torch.softmax(self.attn(m).float().reshape(B, -1), 1).reshape(B, 4, 9, 8)
-                V, Qr, Vr, maps = Tl, [], [torch.sigmoid((A * Tl).sum((1, 2, 3)))], [Tl]
+                V, Qr, Vr, maps, qmaps = Tl, [], [torch.sigmoid((A * Tl).sum((1, 2, 3)))], [Tl], []
                 for _ in range(K):
                     ql = self.step(torch.cat([torch.sigmoid(V).to(f.dtype), f], 1)).float().reshape(B, 3, 4, 9, 8)
                     Qr.append(torch.sigmoid((A[:, None] * ql).sum((2, 3, 4))))
                     V = torch.maximum(Tl, ql.max(1).values)
                     Vr.append(torch.sigmoid((A * V).sum((1, 2, 3))))
-                    maps.append(V)
+                    maps.append(V); qmaps.append(ql)
                 if full:
-                    return torch.stack(maps, 1)          # (B, K+1, 4, 9, 8) logits
+                    return torch.stack(maps, 1), torch.stack(qmaps, 1)   # (B,K+1,4,9,8), (B,K,3,4,9,8) logits
                 return Vr[0], A, torch.stack(Qr, 1), torch.stack(Vr, 1)
             T = torch.sigmoid(Tl)
             A = given if given is not None else torch.softmax(self.attn(m).float().reshape(B, -1), 1).reshape(B, 4, 9, 8)
@@ -382,7 +395,9 @@ def train_fullmap(S, vin, updates, main_, n_frames=60000, bs=256):
     tasks = [({int(e): S.layouts[e] for e in np.unique(S.tr["ep"][ch])}, list(S.tree.parent), list(S.tree.action), nodes,
               [(int(S.tr["ep"][i]), S.tr["s0"][i]) for i in ch]) for ch in chunks]
     t0 = time.monotonic()
-    dm = torch.as_tensor(np.concatenate(S.pool.map(_dmaps, tasks)), device=S.dev)      # (N, 2, 4, 9, 8)
+    parts = S.pool.map(_dmaps, tasks)
+    dm = torch.as_tensor(np.concatenate([p[0] for p in parts]), device=S.dev)          # (N, 2, 4, 9, 8)
+    sm = torch.as_tensor(np.concatenate([p[1] for p in parts]), device=S.dev)          # (N, 2, 3, 4, 9, 8)
     S.log(f"  distance maps {tuple(dm.shape)} in {time.monotonic() - t0:.0f}s")
     rows_t = torch.as_tensor(rows, device=S.dev)
     ks = torch.arange(K + 1, device=S.dev).view(1, -1, 1, 1, 1)
@@ -394,14 +409,53 @@ def train_fullmap(S, vin, updates, main_, n_frames=60000, bs=256):
         wj = torch.randint(len(main_), (bs,), device=S.dev, generator=gen)
         way = torch.as_tensor(main_, device=S.dev)[wj]
         img = images(S.trainer.c0[rows_t[i]], S.trainer.tiles)
-        maps = vin(img, way, given=agent_onehot(S.tr["s0"][rows[i.cpu().numpy()]], S.dev, torch), full=True)
+        maps, qmaps = vin(img, way, given=agent_onehot(S.tr["s0"][rows[i.cpu().numpy()]], S.dev, torch), full=True)
         d = dm[i, wj].long()[:, None]                                          # (B, 1, 4, 9, 8)
         y = ((d >= 0) & (d <= ks)).float()
-        loss = F.binary_cross_entropy_with_logits(maps, y)
+        sd = sm[i, wj].long()[:, None]                                         # (B, 1, 3, 4, 9, 8)
+        yq = ((sd >= 0) & (sd <= (ks[:, 1:] - 1)[..., None])).float()               # after the move: within k-1
+        loss = F.binary_cross_entropy_with_logits(maps, y) + F.binary_cross_entropy_with_logits(qmaps, yq)
         opt.zero_grad(set_to_none=True); loss.backward(); opt.step()
         if u % 2000 == 0 or u == updates - 1:
             S.log(f"  fullmap {u}: loss {float(loss.detach()):.4f} {(u + 1) / (time.monotonic() - t0):.1f} upd/s")
     vin.eval()
+
+
+def probe_objects(S, trunk, tag, updates=3000):
+    """Linear read-out (1x1 conv) of each tile's object class from a frozen map; per-class accuracy, held-out."""
+    torch, nn, F = dl._torch()
+    from worldmodel.envs.keydoor_render import OBJECTS
+    names = ["empty", "wall", "goal", "door closed", "door open", "key", "switch off", "switch on", "vase"]
+    def cls(o):
+        if o is None: return 0
+        if o == "wall": return 1
+        if o == "goal": return 2
+        if o[0] == "door": return 4 if o[2] == 2 else 3
+        if o[0] == "key": return 5
+        if o == ("ball", "grey"): return 6
+        if o == ("ball", "yellow"): return 7
+        return 8
+    lut = torch.as_tensor([cls(o) for o in OBJECTS], device=S.dev)
+    trunk = copy.deepcopy(trunk).eval().requires_grad_(False)
+    head = nn.Conv2d(64, len(names), 1).to(S.dev)
+    opt = torch.optim.Adam(head.parameters(), lr=3e-3)
+    gen = torch.Generator(device=S.dev).manual_seed(0)
+    M = len(S.trainer.c0)
+    for u in range(updates):
+        r = torch.randint(M, (256,), device=S.dev, generator=gen)
+        codes = S.trainer.c0[r].long()
+        with torch.no_grad():
+            m = trunk(images(codes, S.trainer.tiles))
+        y = lut[codes // 5]
+        loss = F.cross_entropy(head(m.float()), y)
+        opt.zero_grad(); loss.backward(); opt.step()
+    codes = torch.as_tensor(S.tseq["codes"][:20000], device=S.dev).long()
+    with torch.no_grad():
+        pred = torch.cat([head(trunk(images(codes[s:s + 2048], S.trainer.tiles)).float()).argmax(1) for s in range(0, len(codes), 2048)])
+    y = lut[codes // 5]
+    acc = {names[c]: round(float((pred[y == c] == c).float().mean()), 4) for c in range(len(names)) if (y == c).any()}
+    S.log(f"RESULT object read-out from the map ({tag}): {json.dumps(acc)}")
+    return acc
 
 
 def debug(S, updates):
@@ -410,8 +464,11 @@ def debug(S, updates):
     torch = S.torch
     main_ = [j for j, c in enumerate(S.ways) if S.tree.path(c) in (("forward",), ("forward", "toggle"))]
     up = make_vin(S.trainer.model.enc[:6], len(S.ways)).to(S.dev)
+    res0 = {}
     if "fullmap" in sys.argv:
+        res0["objects_run5_encoder"] = probe_objects(S, S.trainer.model.enc[:6], "run 5 encoder, frozen")
         train_fullmap(S, up, updates, main_)
+        res0["objects_after_walk_training"] = probe_objects(S, up.trunk, "walking module's map after training")
     else:
         d0, d1 = distances(S.pool, S.layouts, S.tree, S.ways, S.tr["ep"], [S.tr["s0"], S.tr["s1"]])
         S._s0 = torch.as_tensor(S.tr["s0"], device=S.dev)
@@ -435,6 +492,7 @@ def debug(S, updates):
         res["/".join(S.tree.path(S.ways[j]))] = r
     S.log(f"RESULT debug values: {json.dumps(res)}")
     res["walking"] = walk_score(S, up, {j: f for j, f in pick_frames(S).items() if j in main_}, given=True, tag="upper (debug)")
+    res.update(res0)
     return res
 
 

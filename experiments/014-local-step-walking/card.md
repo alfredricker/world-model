@@ -98,6 +98,26 @@ training through the new values):
 
 Result of the gate, before the main run:
 
+In progress (`tools/card014/bench_vin.py`, `runs/014debug_*.out`), upper
+bound, key world, walking to the goal square / to the door with the key:
+
+| Version | Moves closer | "Within 8 steps" right at the agent |
+|---|---|---|
+| Supervised at the agent's entry only (probabilities) | 84% / 79% | – |
+| Same, recurrence in log-odds | 80% / 80% | 89% / 73% |
+| Every cell supervised, per-move values not trained | 44% / 45% (move choice untrained) | 90% / 46% |
+| Every cell + per-move values + whole-frame summary at every cell | **90% / 94%** | 97% / 96% |
+
+Two design flaws found and fixed: the "ready here" map could not see the
+held item (drawn in one corner tile), so each cell now also gets a
+whole-frame summary; and the per-move values need their own labels.
+Still under 99%. A per-tile linear read-out of the encoder's map finds a
+closed door 99.7% of the time but an **open door 12%** (run 5's encoder)
+and 14% (after training the walking module); the switch and vase 0–74%.
+Walking through a doorway needs exactly that. The map does not show the
+objects walking depends on: a dependency that is neither built nor
+established here (CHARTER rule 7).
+
 ## 6. Success criteria and prediction
 
 All learned (no exact distances, no given position), key world:
