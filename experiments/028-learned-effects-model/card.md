@@ -3,8 +3,8 @@ id: "028"
 title: one learned model of what every action does
 rung: 0
 serves: [P6, P12, P19, C1]
-status: approved
-verdict:
+status: done
+verdict: pass
 arch_version: 3
 date: 2026-09-28
 ---
@@ -99,7 +99,11 @@ for the red door).
   measured first; a failure there says which part to fix before acting is
   read.
 
-Result of the gate, before the main run:
+Result of the gate, before the main run: facts from pixels agree with the
+simulator on every stored transition in both worlds (card 027's four
+checks, 1.0 each). Upper bound: 100% in both worlds, 16.6 and 17.3 steps,
+as card 027. Trivial baseline: 16.0% and 12.8%. Criteria 1 and 2 were read
+before acting (section 7); both pass.
 
 ## 6. Success criteria and prediction
 
@@ -140,7 +144,85 @@ commands.
 
 ## 7. Result
 
+Run: `bin/prun python tools/card028/effects.py` (17.6 minutes; numbers in
+[results.json](results.json)). A small test first (50 layouts, 11
+minutes) passed everything and gave the time estimate.
+
+| | Key world | Switch world |
+|---|---|---|
+| 1. Held-out transitions predicted exactly (every tile, the held tile, whether the episode ends) | 100,991 of 100,991; every action 100% | 99,800 of 99,800 |
+| 1. Door rules found | "held = key of the door's colour", each colour: 172–213 openings, none in 3,008–3,504 other tries (weighted) | "switch on in view", each colour: 617–676 openings, none in 2,176–2,520 |
+| 2. Learned conditions agree with exact ones, held-out situations | 1.0 on all 53 nodes acting can check | 1.0 on all 19 |
+| Tree grown with learned conditions | 58 nodes, 11 goals, 12 rounds: card 026's ways | 20 nodes, 4 goals, 5 rounds: card 027's ways |
+| 3. Arm 2, all learned: success, steps, random moves | 100%, 16.6, 0.4% | 100%, 17.3, 0.6% |
+| Arm 1, upper bound (card 027's setup) | 100%, 16.6, 0.4% | 100%, 17.3, 0.6% |
+| Arm 3, learned conditions on card 027's tree | as arm 2 | as arm 2 |
+| Arm 4, effects without rules | 16.0%, 70.1 steps, 80.4% random | 12.8%, 97.3 steps, 80.4% |
+
+**Verdicts.** Criterion 1: pass in both worlds. Criterion 2: pass.
+Criterion 3: pass; arm 2 takes 1.0 times the upper bound's steps (limit
+1.5) and 0.4% and 0.6% of its moves are random (limit 1%).
+
+**Reported with them.**
+
+- Arms 2 and 3 repeat the upper bound move for move: the same total moves
+  (8,303; 8,639), random moves (33; 51), failed acts (45; 60) and refused
+  moves (6; 10). The random moves are card 027's, not the model's. Every
+  real step was predicted correctly (0 wrong of 8,303 and 8,639). Every
+  view was placed in the facts with at most 2 tiles differing (the tile
+  changed and the hand), with no ties, over 13.3 and 4.7 million
+  placements.
+- Cost: 379 and 147 conditions computed per move, 4.2 and 4.0 tree checks
+  per move, 0.04 and 0.02 seconds per layout (at most 0.41). Growing the
+  tree took 7.4 and 1.8 minutes, mostly labelling the 500,000 stored
+  transitions with learned conditions: 19–86 seconds a round, against
+  0.4–64 with the simulator (card 026).
+- The model, counted in about a second: forward shifts the view one row
+  and turns rotate it. Every place not on the edge is predicted exactly
+  from one place before. The edge always shows wall and counts as tiles
+  entering (60 places for turns, 71 for forward). Pick up, drop and toggle
+  change only the tile in front and the held tile. There are 484 poses,
+  and no two routes to a pose disagree. The other rules found say a key
+  is picked up only when "held = floor" (the empty hand looks like floor):
+  14,347–15,323 weighted times, never otherwise.
+- Arm 4 fails as predicted. Without rules a door "opens" whenever it is
+  toggled, so the agent toggles the closed door, marks it failed, and has
+  nothing left to do.
+
+**What building it showed** (small tests before the run; the code is the
+card's):
+
+- A pose is where the agent stands and which way it faces (declared).
+  Combining the learned moves loses edge tiles, which are always wall.
+  Poses named by their full tile mapping made every route a different
+  pose.
+- An outcome records what changed, place by place. Recording the whole
+  pair (front, held) made closing a door depend on what was held.
+- A new view is placed by matching it against every pose, not only the
+  tiles the model calls passable.
+- A model counted from 500 episodes instead of 5,000 had never seen the
+  agent step onto an open green door. It then treats that door as a wall,
+  and learned conditions agreed with exact ones on as few as 68% of
+  held-out situations for some nodes of card 026's tree. The counted
+  model knows nothing about an appearance it has not seen; that is the
+  transfer card's problem.
+
+**Prediction.** As predicted: 1–3 pass, arm 2 within a step of the upper
+bound, arm 3 matching it, arm 4 failing. The two risks named did not
+happen. The run took 17.6 minutes (budget 10–30), and the key-world rule
+came out per colour, not "holding any key".
+
 ## 8. Decision
+
+**Keep** (with the user, 2026-09-28; architecture version 4). The agent now computes every
+condition, walk, target check and tree label on a model counted from its
+own views, with nothing read from the simulator, and acts exactly as it
+did with the simulator's answers. Moves are learned by the same counting
+as pick up, drop and toggle, and walking is those move effects chained
+inside the tree. The model is exact only for appearances it has seen, and
+it chains steps one by one (card 022's open point for P21). Both are the
+next cards' questions: transfer to new appearances and colours, and
+recognition by a network trained on the counted kinds.
 
 ## Appendix A: the learned model
 
@@ -191,6 +273,25 @@ rule (the dependence test sets the tile to floor in the facts; refused
 moves and "did not work" marks use learned conditions). The environment
 itself still runs the agent's real actions; only the agent's thinking
 stops reading it.
+
+**As built** (`tools/card028/effects.py`; where it differs from the
+above):
+
+- Move maps are counted the other way round: for each place after, the
+  place before whose appearance predicts it best, with the table that
+  predicts it. The tile under the agent is drawn with the agent on it, so
+  it never keeps its appearance. Places whose appearance never varies (the
+  edge, always wall) are tiles entering, with that appearance.
+- Facts are kept in the frame of the episode's first view, with the
+  agent's own tile undrawn. A new view is placed by matching it against
+  the view predicted from every pose; the facts are then updated from it.
+  Poses are all combinations of the learned moves, named by where the
+  agent stands and which way it faces (declared); routes to the same pose
+  are merged, and any disagreement between them is counted (none).
+- An outcome is what changed at each place (front, held), or "same".
+- The rule atoms are positive only ("held = X", "X in view"). Counts are
+  weighted by storage (unchanged steps are kept one in eight).
+- Arm 4 acts on arm 2's tree.
 
 ## Appendix B: notes from the discussion (2026-09-28)
 

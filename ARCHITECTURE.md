@@ -1,166 +1,156 @@
 ---
-arch_version: 3
+arch_version: 5
 ---
 
 # Architecture
 
-Version 3 is the shared spatial learner introduced in
-[card 017](experiments/017-summary-without-position/card.md) and refined by
-[cards 018–020](experiments/020-shared-condition-readout/card.md). It passes
-one controlled, evaluator-labelled readiness/condition test at 99.61%,
-against 50% for a local-only readiness head. It is not a passed rung,
-full-tree retention result, or learned walking result. The earlier condition
-prototype is `src/worldmodel/discover_logic.py`; its frozen network and
-separately trained walker remain historical baselines. The new module is
-`src/worldmodel/spatial_state.py`.
+Version 5 is the counted model of
+[card 028](experiments/028-learned-effects-model/card.md) with subgoals
+worked out from it, kept with
+[card 029](experiments/029-subgoals-from-the-model/card.md). It follows
+the direction signed off with the user in
+[card 022](experiments/022-effects-post-mortem/card.md): the primitive is
+the effect of an action, learned from the agent's own outcomes, and moves
+are actions like any other. Everything the agent thinks with is learned by
+counting from its own egocentric views; nothing it thinks with reads the
+simulator. Given only "reach the goal square", it works backward through
+its learned rules at every step. In four logic-door worlds (the door opens
+with the key, the switch, either, or both) it reaches the goal in 100% of
+500 new layouts, at 1.03–1.11 times the shortest route's steps. It is not
+a passed rung: the world is fully visible, repeats pixels exactly, and
+every appearance has been seen. Version 3, the neural spatial learner of cards 017–021
+(`src/worldmodel/spatial_state.py`), failed its full-tree gate (card 021)
+and is historical; its description is in git (commit `dab1240`).
 
-[Card 021](experiments/021-full-tree-spatial-gate/card.md), still open for
-review, resolves full-tree evaluator coverage but fails the exact-label gate.
-At 10,000 updates, training condition recall is at least 99.47%, while
-held-out condition false positives reach 38.28% against a 1% limit. Errors
-also occur on familiar geometry and collected experience. The controlled
-99.61% result therefore does not generalize to the full tree. The model is
-unchanged; learned-label training and walking integration remain gated.
+The code is `tools/card029/subgoals.py` (subgoals and acting) on
+`tools/card028/effects.py` (the model, facts, poses, walking). Card 026's
+tree and card 027's target rule remain in that code for comparison; acting
+no longer uses them.
 
 ## Overview
 
-The state is a spatial feature map plus context without a location axis.
-One encoder supplies every head; no teacher features or simulator variables
-enter the learner. B is batch size, N the number of condition nodes, J the
-number of accepted ways, and K the walking horizon (currently 24).
-
 ```mermaid
 flowchart TD
-    I["RGB: B × 3 × 112 × 104"] --> E["Shared encoder per 8 × 8 patch"]
-    E --> M["Room map M: B × 64 × 13 × 13"]
-    E --> U["Inventory feature: B × 64"]
-    M --> P["Mean over room patches: B × 64"]
-    P --> C["Context c: B × 64"]
-    U --> C
-    M --> S["Shared spatial processor: 128 features per pose"]
+    O["Egocentric view: 13 × 13 tiles + held tile (pixels)"] --> A["Appearances: exact 8 × 8 pixel tiles"]
+    X["Experience: random play, stored transitions"] --> K["Kinds: counted from what actions do in front"]
+    X --> E["Effects model: counted"]
+    A --> F["Facts: tiles in the first view's frame + the agent's pose"]
+    E --> F
+    F --> C["Conditions about things: ended, held = X, X in view, tile shows X, facing"]
+    E --> S["Subgoals: worked backward from the goal through the learned rules, every step"]
     C --> S
-    S --> L["Conditions at centre: B × N"]
-    S --> T["Readiness: B × J × 4 × 13 × 13"]
-    M --> V["Learned local recurrence, K iterations"]
-    C --> V
-    T --> V
-    V --> Q["Centre action values: B × K × 3"]
-    L --> CL["Condition cross-entropy"]
-    T --> TL["Readiness cross-entropy"]
-    Q --> QL["Fixed-horizon TD: staged, not yet trained"]
-    L --> A["Existing recursive condition chooser: integration pending"]
-    T --> A
-    Q --> A
+    S --> W["Walking: moving closer, move ways, a tile in the way"]
+    E --> W
+    S --> M["Action"]
+    W --> M
 ```
 
-## Latent state
+## The learned parts
 
-`SpatialState(M, c)` is the one learned state. M has one 64-dimensional
-feature per image patch; these are locations, not supplied object slots.
-Three convolutions (4 × 4 kernels, stride 2, padding 1; channels 32, 64, 64)
-encode each 8 × 8 RGB patch independently, with shared weights and ReLU
-activations. The same weights encode the inventory patch.
-
-Context is `ReLU(Linear(concat(mean(M), inventory)))`, 128 → 64.
-Pooling precedes spatial mixing, so rearranging whole room patches preserves
-c up to floating-point rounding. It can retain appearance counts and
-carried-item evidence; spatial relations remain available in M.
-
-Nothing persists across observations. Memory and partial visibility are
-unimplemented; the entire small room is visible in this experiment.
-
-## One update step
-
-1. Render an egocentric RGB observation and encode its patches once.
-2. For each queried facing, rotate M to a canonical orientation. A masked
-   3 × 3 convolution projects its features to 128 channels, adds a linear
-   projection of c, then applies ReLU to form H0. Compute five updates
-   `H_next = ReLU(H0 + Conv3x3(H))`, using the same learned convolution each
-   time. Together these operations have radius six. Undo the output rotation.
-   These are spatial feature updates, not simulated actions or time steps.
-3. Read readiness with a 1 × 1 projection of these features at every pose.
-   Read conditions with a linear projection of the same features at the
-   actual agent's centre, facing up. Both losses train the same patch encoder
-   and spatial processor. The old flat condition readout is a control only.
-   Local-only and wide-filter readiness remain diagnostic controls: the
-   first loses remote goal information; the second gives each offset separate
-   parameters and failed at a goal distance absent from training. A door can
-   make a goal reachable or the goal may already be reachable on this side;
-   the local appearance of the door and inventory alone cannot say which.
-4. For a selected way, initialize a four-facing value field from readiness.
-   The walking step receives its sigmoid, 32 projected map features and 16
-   projected context features. A 3 × 3 convolution to 64 channels, ReLU and
-   1 × 1 convolution produce 3 × 4 action/facing logits. Replace each value
-   with the maximum of readiness and the three action logits. Repeat K times.
-5. Read the centre, facing up. In later acting, sum K action probabilities
-   to rank moves; the existing tree chooses a way and its achieving action.
-   This integration waits for the component gates.
+1. **Appearances** (card 027). Each tile of the view is an exact pixel
+   tile; the held tile shows what the agent carries (an empty hand looks
+   like floor).
+2. **Kinds** (card 027). Appearances in front are grouped by counting what
+   each action did to them (bisimulation refinement with
+   Dirichlet-multinomial evidence). This gives the 8 expected kinds in both
+   worlds, without labels. A network trained on the counted kinds exists
+   for recognising new appearances (the transfer card); it is not needed
+   when every appearance has been seen.
+3. **Effects** (card 028), all counts:
+   - Moves: one fixed map per move (for each place after, the place before
+     that predicts it and how), the tiles entering at the edge, and
+     whether the move changes the view, by the appearance in front
+     (changed, unchanged, episode ended).
+   - Pick up, drop, toggle: the places that change (in front and held), and
+     the change per appearance in front (and held, for drop).
+   - Rules, where one key has several outcomes: card 010's evidence finder
+     over "held = X" and "X in view". Found: a closed door opens when
+     "held = key of its colour" (key world) or "switch on in view" (switch
+     world); a key is picked up when "held = floor".
+4. **Facts and poses** (card 028). The agent keeps the tiles in the frame
+   of its first view of the episode, with its own tile undrawn. Its poses
+   are all combinations of the learned moves (484). Each new view is placed
+   by matching it against the view predicted from every pose.
+5. **Conditions** (card 029): facts about the agent's facts. The episode
+   has ended; the hand shows X; X is in view; tile i shows X; facing one
+   of the tiles T, standing on a free tile.
+6. **Subgoals** (card 029): means-ends analysis through the learned rules,
+   recomputed from the top at every step. Each learned outcome is read as
+   an action with needs and results: toggle a closed red door needs
+   "held = key red" (its rule's atoms) and facing the door, and makes the
+   tile an open red door. A condition's achievers are the actions whose
+   result makes it true. Their needs are checked in order (what the outcome
+   is keyed on, the rule's atoms, facing last), and the first unmet one
+   becomes the subgoal, down to depth 6. Among achievers: the fewest unmet
+   needs, then the nearest walking target. An action is refused when, in
+   the head, it undoes a condition met higher in the chain or leaves a
+   facing higher in the chain unreachable; an (action, tile, pose) is
+   marked failed when acting there does not give the predicted result.
+7. **Walking** (cards 024, 026, 029). Facing is reached by moving closer
+   (card 024's step measure in the frame's grid: tiles away, then turns),
+   then move ways computed in the head (poses from which one or two moves
+   let moving closer succeed). Last comes a tile in the way: a tile that
+   some action makes passable, whose change lets the walk succeed, becomes
+   a subgoal ("tile j shows an open door").
 
 ## Components
 
-| Component | What it does | Input → output (shapes) | Source (see LITERATURE.md) | Borrowed vs changed |
+| Component | What it does | Input → output | Source (see LITERATURE.md) | Borrowed vs changed |
 |---|---|---|---|---|
-| Shared encoder | Retains spatial and nonspatial evidence | RGB → M, c | Cards 005, 012, 017 | Existing convolution sizes, now independent patches; context split is our design |
-| Spatial processor | Shares feature computation across locations and distance | M, c → 128 features per queried pose | Cards 019–020; local weight sharing inspired by VIN | Our feature recurrence; no supplied transitions or Bellman guarantee |
-| Conditions | Reads learned condition truth | Shared centre features → B × N | Cards 012, 020 | Existing learned tree; uses the same processor as readiness |
-| Readiness | Predicts whether a way's action works at a queried pose | Shared features → B × J × 4 × 13 × 13 | Cards 017–020 | Oriented recurrent readout replaces the information-limited local head and offset-specific wide head |
-| Walking | Repeated local computation | M, c, readiness → B × K × 3 | VIN; cards 014, 016 | Nonlinear recurrence differs from VIN's Bellman-like update |
-| Recursion | Chooses a condition and achieving action | Head outputs → way/action | Cards 007–008, 010, 012 | Existing tree retained; transfer first, no fresh discovery in this card |
+| Kinds | Groups appearances by what actions do to them | Front appearances, outcomes → kind per appearance | `equivalence-notions-and-model-minimization-in-markov-decisio`, `1412_2309` | Bisimulation over appearances in front, scored by evidence; classes from experiments as Chalupka's first step |
+| Effects | What each action does to the facts | Facts, action → next facts | `1110_2211`, `an-object-oriented-representation-for-efficient-reinforcemen` | Rules over appearances counted from pixels, not supplied objects; move maps counted, not declared |
+| Rules | When an effect happens | Atoms "held = X", "X in view" → rate | `1511_01644` (card 010) | Reused unchanged, positive atoms, storage weights |
+| Facts and poses | Where the agent is in what it has seen | View → (facts, pose) | Card 016; `1905_12006` | Poses from composing learned moves; placing by matching |
+| Subgoals | Which condition to pursue next, down to an action | Facts, learned outcomes and rules → action | `strips`, `cs_9401101`; card 029 | Operators counted from pixels, not written by hand; re-evaluated from the top every step; card 027's revision rules generalised |
+| Walking | Reach a pose facing a target | Facts, poses, learned moves → move | Cards 024, 026 | Moving closer, then move ways computed in the head; a tile in the way becomes a subgoal |
 
 ## Built-in priors and supplied information
 
-- A full-room egocentric grid, 13 × 13 tiles, plus an inventory display row;
-  8 pixels per tile, fixed centre and facing up, as card 016. This differs
-  from the charter's later partial 7 × 7 chained-room task.
-- Room and inventory patches are separated by fixed image coordinates.
-  The learner receives RGB, not tile codes, inventory labels or agent pose.
-  The environment renderer uses pose to produce the egocentric observation.
-- Locality, aligned patches, rotation sharing over tile arrangements, and
-  the initial masked kernel are explicit priors. The first kernel omits its
-  centre, but later recurrent updates can receive that cell indirectly.
-  Radius six covers the small room from a valid interior pose; this fixed
-  extent is not claimed to scale to larger worlds. No fixed object slots
-  are used. Inventory context remains invariant to room-patch permutations.
-- The logic world has six actions, including drop. Walking actions (left,
-  right, forward) are identified as in card 012. Their effects, object
-  meanings, condition truth and readiness are learned in the non-oracle arm.
-- The existing learned tree, its node budget, persistence estimates, 0.5
-  truth cutoff and 5% random walking are retained. This is representation
-  transfer, not fresh discovery or a new-goal result.
-- Run 5 supplies cached learned labels during migration, then is discarded.
-  All heads train the same new encoder. Oracle labels are confined to the
-  upper bound and evaluator; their fit cannot count as learned success.
-- The random-play/play-start policy and held-out column follow the card.
-  Teacher weights previously saw that column, limiting the transfer claim.
-  CNN weights initialize from run 5 and remain trainable.
-- No reconstruction, object-classification, memory or imagined-frame loss.
-  Context invariance is structural; semantic adequacy must be measured.
-- Cards 018–020 deliberately move the goal between rooms in paired scenes
-  to test binding while holding geometry and inventory fixed. This is an
-  evaluator-labelled upper bound, not a change to agent experience or a
-  source of labels for the learned full-tree run. Its two fitted heads concern
-  one condition and its readiness; they are not the full discovered tree.
+- The observation is card 016's egocentric view: the whole room (radius 6,
+  8 × 8 rooms), 8-pixel tiles on a grid, the agent at the centre facing
+  up, a held tile in a fixed place. The renderer uses the simulator's pose
+  to produce it; the agent receives pixels only.
+- Appearances are exact pixel tiles: identity by exact repeat, no noise.
+  "In front" and "held" are fixed places; a thing looks the same wherever
+  it is (card 027).
+- Declared forms: a move leaves the view as it was or sends every tile to
+  one fixed place; a pose is where the agent stands and which way it
+  faces; outcomes are keyed by the appearance in front (and held, for
+  drop); an outcome is reachable when its rate is at least one half; an
+  unseen appearance is blocked and unchanged by every action.
+- The procedures are designed, not learned: the evidence tests, the
+  kinds of condition, the order of needs, choosing the nearest target
+  among alternatives, depth 6, move ways two moves deep, moving closer by
+  the step measure.
+- The episode's end is observed, and reaching the goal square is the only
+  goal. Experience is 5,000 episodes of random play per world: every
+  change stored, other steps one in eight (weighted), 300 full sequences.
+- The evaluator reads the simulator for the checks only: facts against the
+  simulator's contents, and learned conditions against exact ones.
 
 ## Training signals
 
-The implemented component stage uses `L = L_condition + L_ready`.
-`BCE_balanced` gives equal weight to positive and negative cross-entropies
-per output, omitting a class absent from a minibatch. Both losses are logged.
+None by gradient. Every learned part is counts over the stored experience,
+with Bayesian evidence deciding groupings and rules. The model is learned
+in about a second per world; acting needs 6–9 conditions per move and
+0.015–0.024 seconds per layout. No tree is grown.
 
-- `L_condition = BCE_balanced(condition_logits(M,c), condition_target)`:
-  keep discovered conditions readable from the shared state.
-- `L_ready = BCE_balanced(ready_logits(M,c), ready_target)`:
-  learn where an achieving action works. Learned labels supervise only
-  observed centre poses; the upper bound labels every valid pose.
-- Planned joint stage: `L_walk = BCE(Q_k(s,a), stopgrad(V_target,k-1(s')))`
-  on observed walking actions, with ready successors set to one and terminal
-  non-ready successors to zero. Q and V denote probabilities; the future
-  implementation should use logits for cross-entropy. Readiness and condition
-  losses remain active. No joint training result exists yet.
+## Known limits
 
-The planned delayed target is a copy of the same learner. Sharing weights
-across horizons means the fixed-horizon paper's convergence theorem does
-not guarantee convergence of this implementation.
+- Knows nothing about appearances it has not seen: from 500 episodes, an
+  unseen "agent on an open green door" made that door a wall, and
+  agreement with exact conditions fell to 68% for one node (card 028).
+- Rules are per appearance ("held = key red" for the red door), not
+  relations ("held key's colour = door's colour"); they will not carry to
+  new colours.
+- Needs the whole room in view and exact pixel repeats; no memory, no
+  partial views, no noise.
+- Walking in the head chains steps one by one (card 022's open point for
+  P21), and gets stuck on long detours: a tile in the way counts only if
+  walking then succeeds, so the door is not found as the obstacle when the
+  way to it is a detour (2 layouts of 2,000, card 029).
+- The choice between alternatives (the key or the switch) is a declared
+  rule, the nearest target, not learned from the agent's own costs.
 
 ## Change log
 
@@ -169,3 +159,5 @@ not guarantee convergence of this implementation.
 | 1 | 2026-09-27 | 017 | User-authorized shared map and nonspatial context; condition/readiness heads and walking forward path implemented; four structural tests pass, component fitting waits for adequate class coverage |
 | 2 | 2026-09-27 | 017 | Replace only readiness's radius-one readout with radius six after exact input collisions; retain the shared map, context, conditions and walking recurrence |
 | 3 | 2026-09-28 | 019–020 | Share local spatial feature updates across distance; conditions and readiness use the same processor. Controlled test: both 99.61%; full-tree and learned walking gates remain pending |
+| 4 | 2026-09-28 | 022–028 | Direction change signed off with card 022; kept with card 028. Replace the neural spatial learner with counted kinds (027) and a counted model of every action's effects (028); conditions, walking, tree growth and targets computed on it, nothing read from the simulator. 100% in both worlds, the simulator's moves exactly |
+| 5 | 2026-09-28 | 029 | Subgoals worked backward through the learned rules (means-ends analysis, recomputed every step) replace the evidence-grown tree and the target rule for acting. 100% in four worlds (key, switch, either, both), 1.03–1.11 times the shortest route, 6–9 conditions per move |

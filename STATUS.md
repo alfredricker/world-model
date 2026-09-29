@@ -2,38 +2,36 @@
 
 Overwritten each session. At most 40 lines.
 
-- **Date:** 2026-09-28. **Rung:** before rung 1. **Architecture:** version 3
-  in code (`src/worldmodel/spatial_state.py`); the direction below replaces
-  its readiness and walking parts.
-- **Direction (with the user, 2026-09-28,
-  [card 022](experiments/022-effects-post-mortem/card.md)):** the primitive
-  is the effect of an action on conditions, learned from the agent's own
-  outcomes; moves are actions like any other, and walking must not read
-  the simulator once conditions are learned. Readiness is removed.
-- **Cards 023–026:** conditions as "approachable by moving closer"; card
-  026 (keep) grows subgoals only when stuck, depth first with backtracking:
-  100% in the key world, 16.4 steps, no random moves, 58 stored conditions
-  (limit 32; one hard layout added 28; some look like duplicates).
-- **Cards 016, 021 (learned):** learned walking 48.4%; architecture 3's
-  conditions failed even with exact labels. Card 012's learned conditions:
-  95% with exact walking, 30.2% all learned.
-- **Theory session (with the user):** objects are what conditions are
-  about; kinds are learned where the agent acts and recognised everywhere;
-  relations fall out of conditions. Notes in card 027's appendix. GOAL.md
-  hypotheses drafted, awaiting the user.
-- **Card 027 (four runs; pass; keep):** kinds are decided by counting
-  what actions do in front (pixels, no labels): the 8 expected kinds in
-  both worlds; acting 100%, 1.01× the simulator's steps. Target rule:
-  refuse moves that end the way's condition; mark actions that do not turn
-  the parent true. Networks that discover kinds merge rare look-alikes;
-  withheld appearances are placed by colour, not shape (4 of 33).
-- **Card 028 (draft, awaiting the user's approval):** one model learned
-  by counting from the agent's own pixels says what every action does,
-  moves included (facts: tiles in view and the held tile; effects; rules
-  for when an effect happens). Every condition, walking, target check and
-  tree label is computed on its predictions; nothing reads the simulator.
-  Literature focus refreshed for it. After it: transfer (new colours,
-  relations, recognising unseen things).
+- **Date:** 2026-09-28. **Rung:** before rung 1. **Architecture:** version 5
+  (card 029): a counted model of every action's effects (028), with
+  subgoals worked backward through its learned rules at every step
+  (`tools/card029/subgoals.py`). Version 3's neural learner is historical.
+- **Direction (with the user, card 022):** the primitive is the effect of
+  an action on conditions, learned from the agent's own outcomes; moves
+  are actions like any other; walking must not read the simulator.
+- **Cards 023–028 (keep):** conditions as "approachable by moving
+  closer" (023–024); subgoals grown when stuck, depth first (026); kinds
+  by counting what actions do in front (027); everything computed on a
+  counted model of every action's effects, nothing read from the
+  simulator, acting 100% (028). The model knows only appearances it has
+  seen.
+- **User's priorities (2026-09-28):** first, subgoals worked out from the
+  agent's world model; second, conditions and an encoding that carry to
+  new objects (colour matching as the condition, shape as the goal).
+- **Card 029 (pass; keep, with the user):** given only "reach the goal
+  square", the agent works backward through card 028's learned rules
+  (door open <- key of its colour or switch on <- facing it <- moves).
+  Four worlds, 500 layouts each: 100% success, 1.03-1.11 times the
+  shortest route, random moves under 0.5%, exactly the rule's subgoals in
+  99.8-100% of layouts, 6-9 conditions per move, no tree. Weakest part:
+  walking on long detours. Arm 3 in the both world unfinished (command in
+  the card).
+- **Now:** the literature review for card 029's appendix B is written
+  (LITERATURE.md's current focus; 22 papers added to papi). No paper finds
+  attributes from raw pixels without labels; that step is ours. Our tiles:
+  colour is one recurring pixel substitution, but a key and its closed
+  door share no pixel value. Next, with the user: the transfer card.
 - **Pinned:** duplicate detector merging needs literature; demonstrations
   once random play is too thin. LESSONS.md needs a merge pass (over two
-  pages). Nothing from cards 021–027 is committed.
+  pages). GOAL.md hypotheses draft awaits the user. Nothing from cards
+  021–029 is committed.

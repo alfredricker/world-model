@@ -1,0 +1,7005 @@
+{
+ "note": "Card 028. run: the full run (tools/card028/effects.py, runs/028_effects.json). small_test: 50 layouts, 200 held-out episodes (runs/028_smoke.json), before the run, for the time estimate. The code's forward-map check was corrected between the two (edge places that always show wall no longer listed).",
+ "run": {
+  "note": "Card 028, tools/card028/effects.py; conditions, walking and tree growth on a model learned by counting from the agent's own views.",
+  "episodes": 5000,
+  "layouts": 500,
+  "heldout_episodes": 1000,
+  "worlds": {
+   "key": {
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "counted_kinds": [
+     [
+      "closed door blue",
+      "closed door green",
+      "closed door red"
+     ],
+     [
+      "goal"
+     ],
+     [
+      "open door blue",
+      "open door green",
+      "open door red"
+     ],
+     [
+      "floor"
+     ],
+     [
+      "switch off",
+      "switch on"
+     ],
+     [
+      "vase"
+     ],
+     [
+      "key blue",
+      "key green",
+      "key red"
+     ],
+     [
+      "wall"
+     ]
+    ],
+    "tree_027": {
+     "nodes": 58,
+     "goals_expanded": 11,
+     "rounds": "rebuilt from card 026",
+     "tree": [
+      [
+       "(goal square)",
+       "expanded"
+      ],
+      [
+       "forward",
+       "expanded"
+      ],
+      [
+       "forward/toggle",
+       "expanded"
+      ],
+      [
+       "forward/right",
+       "not expanded"
+      ],
+      [
+       "forward/left",
+       "not expanded"
+      ],
+      [
+       "forward/forward",
+       "not expanded"
+      ],
+      [
+       "forward/pickup",
+       "not expanded"
+      ],
+      [
+       "forward/drop",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/pickup",
+       "expanded"
+      ],
+      [
+       "forward/toggle/right",
+       "expanded"
+      ],
+      [
+       "forward/toggle/left",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/forward",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/drop",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/pickup/drop",
+       "expanded"
+      ],
+      [
+       "forward/toggle/pickup/right",
+       "expanded"
+      ],
+      [
+       "forward/toggle/pickup/left",
+       "expanded"
+      ],
+      [
+       "forward/toggle/pickup/forward",
+       "expanded"
+      ],
+      [
+       "forward/toggle/pickup/toggle",
+       "expanded"
+      ],
+      [
+       "forward/toggle/pickup/drop/pickup",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/drop/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/drop/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/drop/forward",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/drop/toggle",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/drop",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/pickup",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/toggle",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/forward",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/drop",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/pickup",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/toggle",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/forward",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/drop",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/pickup",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/toggle",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/forward",
+       "rejected by self-check"
+      ],
+      [
+       "forward/toggle/pickup/toggle/drop",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/toggle/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/toggle/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/toggle/forward",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/toggle/pickup",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/right/pickup",
+       "expanded"
+      ],
+      [
+       "forward/toggle/right/left",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/right/forward",
+       "rejected by self-check"
+      ],
+      [
+       "forward/toggle/right/right",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/right/drop",
+       "rejected by self-check"
+      ],
+      [
+       "forward/toggle/right/toggle",
+       "rejected by self-check"
+      ],
+      [
+       "forward/toggle/right/pickup/drop",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/right/pickup/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/right/pickup/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/right/pickup/forward",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/right/pickup/toggle",
+       "leaf: depth limit"
+      ]
+     ]
+    },
+    "arm1_upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.6,
+     "random_steps": 33,
+     "moves": 8303,
+     "random_share": 0.004,
+     "move_way_steps": 158,
+     "dependence_checks_per_move": 0.596,
+     "failed_acts": 45,
+     "layouts_with_failed_acts": 28,
+     "moves_refused": 6,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/pickup": 486,
+      "forward/toggle/pickup/drop": 47,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 59,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 484,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "model": {
+     "left": {
+      "rows_view_changed": 67072,
+      "rows_used": 40000,
+      "entering_places": 60,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {},
+      "outcome_by_front": {
+       "closed door blue": "changed",
+       "closed door green": "changed",
+       "goal": "changed",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "changed",
+       "switch on": "changed",
+       "vase": "changed",
+       "open door red": "changed",
+       "key blue": "changed",
+       "key green": "changed",
+       "key red": "changed",
+       "wall": "changed",
+       "closed door red": "changed"
+      },
+      "seconds": 0.3
+     },
+     "right": {
+      "rows_view_changed": 66163,
+      "rows_used": 40000,
+      "entering_places": 60,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {},
+      "outcome_by_front": {
+       "closed door blue": "changed",
+       "closed door green": "changed",
+       "goal": "changed",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "changed",
+       "switch on": "changed",
+       "vase": "changed",
+       "open door red": "changed",
+       "key blue": "changed",
+       "key green": "changed",
+       "key red": "changed",
+       "wall": "changed",
+       "closed door red": "changed"
+      },
+      "seconds": 0.1
+     },
+     "forward": {
+      "rows_view_changed": 32526,
+      "rows_used": 32526,
+      "entering_places": 71,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {
+       "place 84 from 71": [
+        [
+         "goal",
+         "app 22"
+        ],
+        [
+         "open door blue",
+         "app 27"
+        ],
+        [
+         "open door green",
+         "app 32"
+        ],
+        [
+         "floor",
+         "app 37"
+        ],
+        [
+         "open door red",
+         "app 57"
+        ]
+       ],
+       "place 97 from 84": [
+        [
+         "app 27",
+         "open door blue"
+        ],
+        [
+         "app 32",
+         "open door green"
+        ],
+        [
+         "app 37",
+         "floor"
+        ],
+        [
+         "app 57",
+         "open door red"
+        ]
+       ]
+      },
+      "outcome_by_front": {
+       "closed door blue": "unchanged",
+       "closed door green": "unchanged",
+       "goal": "episode ended",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "unchanged",
+       "switch on": "unchanged",
+       "vase": "unchanged",
+       "open door red": "changed",
+       "key blue": "unchanged",
+       "key green": "unchanged",
+       "key red": "unchanged",
+       "wall": "unchanged",
+       "closed door red": "unchanged"
+      },
+      "seconds": 0.1
+     },
+     "forward_map_places_not_a_one_row_shift": [],
+     "places_changed_by_pickup_drop_toggle": [
+      71,
+      169
+     ],
+     "outcomes": {
+      "pickup closed door blue": {
+       "nothing": 3504.0
+      },
+      "pickup closed door green": {
+       "nothing": 3760.0
+      },
+      "pickup goal": {
+       "nothing": 152.0
+      },
+      "pickup open door blue": {
+       "nothing": 136.0
+      },
+      "pickup open door green": {
+       "nothing": 120.0
+      },
+      "pickup floor": {
+       "nothing": 262192.0
+      },
+      "pickup switch off": {
+       "nothing": 15000.0
+      },
+      "pickup switch on": {
+       "nothing": 12680.0
+      },
+      "pickup vase": {
+       "nothing": 3928.0
+      },
+      "pickup open door red": {
+       "nothing": 136.0
+      },
+      "pickup key blue": {
+       "floor / key blue": 15323.0,
+       "nothing": 1464.0
+      },
+      "pickup key green": {
+       "floor / key green": 14902.0,
+       "nothing": 1680.0
+      },
+      "pickup key red": {
+       "floor / key red": 15132.0,
+       "nothing": 1608.0
+      },
+      "pickup wall": {
+       "nothing": 177768.0
+      },
+      "pickup closed door red": {
+       "nothing": 2928.0
+      },
+      "drop closed door blue, holding floor": {
+       "nothing": 3072.0
+      },
+      "drop closed door blue, holding key blue": {
+       "nothing": 216.0
+      },
+      "drop closed door blue, holding key green": {
+       "nothing": 200.0
+      },
+      "drop closed door blue, holding key red": {
+       "nothing": 120.0
+      },
+      "drop closed door green, holding floor": {
+       "nothing": 3008.0
+      },
+      "drop closed door green, holding key blue": {
+       "nothing": 184.0
+      },
+      "drop closed door green, holding key green": {
+       "nothing": 208.0
+      },
+      "drop closed door green, holding key red": {
+       "nothing": 152.0
+      },
+      "drop goal, holding floor": {
+       "nothing": 72.0
+      },
+      "drop goal, holding key blue": {
+       "nothing": 8.0
+      },
+      "drop goal, holding key green": {
+       "nothing": 8.0
+      },
+      "drop goal, holding key red": {
+       "nothing": 8.0
+      },
+      "drop open door blue, holding floor": {
+       "nothing": 72.0
+      },
+      "drop open door blue, holding key blue": {
+       "nothing": 96.0
+      },
+      "drop open door green, holding floor": {
+       "nothing": 48.0
+      },
+      "drop open door green, holding key green": {
+       "nothing": 128.0
+      },
+      "drop floor, holding floor": {
+       "nothing": 214176.0
+      },
+      "drop floor, holding key blue": {
+       "key blue / floor": 15025.0
+      },
+      "drop floor, holding key green": {
+       "key green / floor": 14575.0
+      },
+      "drop floor, holding key red": {
+       "key red / floor": 14843.0
+      },
+      "drop switch off, holding floor": {
+       "nothing": 11688.0
+      },
+      "drop switch off, holding key blue": {
+       "nothing": 712.0
+      },
+      "drop switch off, holding key green": {
+       "nothing": 928.0
+      },
+      "drop switch off, holding key red": {
+       "nothing": 800.0
+      },
+      "drop switch on, holding floor": {
+       "nothing": 10152.0
+      },
+      "drop switch on, holding key blue": {
+       "nothing": 712.0
+      },
+      "drop switch on, holding key green": {
+       "nothing": 544.0
+      },
+      "drop switch on, holding key red": {
+       "nothing": 696.0
+      },
+      "drop vase, holding floor": {
+       "nothing": 3400.0
+      },
+      "drop vase, holding key blue": {
+       "nothing": 272.0
+      },
+      "drop vase, holding key green": {
+       "nothing": 192.0
+      },
+      "drop vase, holding key red": {
+       "nothing": 232.0
+      },
+      "drop open door red, holding floor": {
+       "nothing": 56.0
+      },
+      "drop open door red, holding key red": {
+       "nothing": 72.0
+      },
+      "drop key blue, holding floor": {
+       "nothing": 16272.0
+      },
+      "drop key blue, holding key green": {
+       "nothing": 864.0
+      },
+      "drop key blue, holding key red": {
+       "nothing": 896.0
+      },
+      "drop key green, holding floor": {
+       "nothing": 15304.0
+      },
+      "drop key green, holding key blue": {
+       "nothing": 784.0
+      },
+      "drop key green, holding key red": {
+       "nothing": 816.0
+      },
+      "drop key red, holding floor": {
+       "nothing": 15160.0
+      },
+      "drop key red, holding key blue": {
+       "nothing": 968.0
+      },
+      "drop key red, holding key green": {
+       "nothing": 768.0
+      },
+      "drop wall, holding floor": {
+       "nothing": 144776.0
+      },
+      "drop wall, holding key blue": {
+       "nothing": 9968.0
+      },
+      "drop wall, holding key green": {
+       "nothing": 10096.0
+      },
+      "drop wall, holding key red": {
+       "nothing": 10432.0
+      },
+      "drop closed door red, holding floor": {
+       "nothing": 2792.0
+      },
+      "drop closed door red, holding key blue": {
+       "nothing": 112.0
+      },
+      "drop closed door red, holding key green": {
+       "nothing": 96.0
+      },
+      "drop closed door red, holding key red": {
+       "nothing": 208.0
+      },
+      "toggle closed door blue": {
+       "nothing": 3504.0,
+       "open door blue / same": 213.0
+      },
+      "toggle closed door green": {
+       "nothing": 3176.0,
+       "open door green / same": 178.0
+      },
+      "toggle goal": {
+       "nothing": 168.0
+      },
+      "toggle open door blue": {
+       "closed door blue / same": 114.0
+      },
+      "toggle open door green": {
+       "closed door green / same": 105.0
+      },
+      "toggle floor": {
+       "nothing": 261112.0
+      },
+      "toggle switch off": {
+       "switch on / same": 14964.0
+      },
+      "toggle switch on": {
+       "switch off / same": 12696.0
+      },
+      "toggle vase": {
+       "floor / same": 4205.0
+      },
+      "toggle open door red": {
+       "closed door red / same": 93.0
+      },
+      "toggle key blue": {
+       "nothing": 16784.0
+      },
+      "toggle key green": {
+       "nothing": 16448.0
+      },
+      "toggle key red": {
+       "nothing": 16560.0
+      },
+      "toggle wall": {
+       "nothing": 178088.0
+      },
+      "toggle closed door red": {
+       "nothing": 3008.0,
+       "open door red / same": 172.0
+      }
+     },
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15323.0,
+         "happened_weighted": 15323.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1464.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15506,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7146.3
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14902.0,
+         "happened_weighted": 14902.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1680.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15112,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7822.3
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15132.0,
+         "happened_weighted": 15132.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1608.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15333,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7616.3
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "held = key blue"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 213.0,
+         "happened_weighted": 213.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3504.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 651,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=60"
+          ]
+         ],
+         "evidence_gain_bits": 1158.3
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "held = key green"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 178.0,
+         "happened_weighted": 178.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3176.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 575,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=65"
+          ]
+         ],
+         "evidence_gain_bits": 985.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "held = key red"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 172.0,
+         "happened_weighted": 172.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3008.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 548,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=70"
+          ]
+         ],
+         "evidence_gain_bits": 946.9
+        }
+       ]
+      }
+     ],
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "pose_sweeps": 1,
+     "seconds": 1.0
+    },
+    "criterion_1_effects": {
+     "per_action": {
+      "left": {
+       "rows": 13281,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 13303,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 13212,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 21150,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 20971,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 19074,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "held = key blue"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "held = key green"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "held = key red"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     },
+     "pass": true,
+     "seconds": 0.7
+    },
+    "tree_learned": {
+     "nodes": 58,
+     "goals_expanded": 11,
+     "rounds": [
+      {
+       "round": 0,
+       "layouts_paused": 500,
+       "goals_needed": {
+        "(goal square)": 500
+       },
+       "seconds": 18.6
+      },
+      {
+       "round": 1,
+       "layouts_paused": 500,
+       "goals_needed": {
+        "forward": 500
+       },
+       "seconds": 21.8
+      },
+      {
+       "round": 2,
+       "layouts_paused": 500,
+       "goals_needed": {
+        "forward/toggle": 500
+       },
+       "seconds": 32.1
+      },
+      {
+       "round": 3,
+       "layouts_paused": 95,
+       "goals_needed": {
+        "forward/toggle/pickup": 95
+       },
+       "seconds": 39.6
+      },
+      {
+       "round": 4,
+       "layouts_paused": 32,
+       "goals_needed": {
+        "forward/toggle/pickup/drop": 32
+       },
+       "seconds": 86.4
+      },
+      {
+       "round": 5,
+       "layouts_paused": 4,
+       "goals_needed": {
+        "forward/toggle/pickup/right": 4
+       },
+       "seconds": 40.5
+      },
+      {
+       "round": 6,
+       "layouts_paused": 1,
+       "goals_needed": {
+        "forward/toggle/pickup/left": 1
+       },
+       "seconds": 41.7
+      },
+      {
+       "round": 7,
+       "layouts_paused": 1,
+       "goals_needed": {
+        "forward/toggle/pickup/forward": 1
+       },
+       "seconds": 41.9
+      },
+      {
+       "round": 8,
+       "layouts_paused": 1,
+       "goals_needed": {
+        "forward/toggle/pickup/toggle": 1
+       },
+       "seconds": 44.5
+      },
+      {
+       "round": 9,
+       "layouts_paused": 1,
+       "goals_needed": {
+        "forward/toggle/right": 1
+       },
+       "seconds": 34.7
+      },
+      {
+       "round": 10,
+       "layouts_paused": 1,
+       "goals_needed": {
+        "forward/toggle/right/pickup": 1
+       },
+       "seconds": 42.5
+      },
+      {
+       "round": 11,
+       "layouts_paused": 0,
+       "goals_needed": {},
+       "seconds": 0.9
+      }
+     ],
+     "seconds": 445.1,
+     "placing_views": {
+      "views": 13279684,
+      "max_mismatch": 2,
+      "ties": 0,
+      "mismatch_over_2": 0
+     },
+     "tree": [
+      [
+       "(goal square)",
+       "expanded",
+       null
+      ],
+      [
+       "forward",
+       "expanded",
+       {
+        "evidence_nats": 35.5,
+        "rate_on": 0.0068,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle",
+       "expanded",
+       {
+        "evidence_nats": 180.6,
+        "rate_on": 0.0057,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/right",
+       "not expanded",
+       {
+        "evidence_nats": 48.7,
+        "rate_on": 0.0109,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/left",
+       "not expanded",
+       {
+        "evidence_nats": 132.9,
+        "rate_on": 0.0269,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/forward",
+       "not expanded",
+       {
+        "evidence_nats": 164.5,
+        "rate_on": 0.0328,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/pickup",
+       "not expanded",
+       {
+        "evidence_nats": 62.1,
+        "rate_on": 0.0119,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/drop",
+       "not expanded",
+       {
+        "evidence_nats": 18.2,
+        "rate_on": 0.0138,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/pickup",
+       "expanded",
+       {
+        "evidence_nats": 737.7,
+        "rate_on": 0.018,
+        "rate_off": 0.0,
+        "on_at_start": 0.8184
+       }
+      ],
+      [
+       "forward/toggle/right",
+       "expanded",
+       {
+        "evidence_nats": 285.5,
+        "rate_on": 0.0277,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/left",
+       "not expanded",
+       {
+        "evidence_nats": 380.1,
+        "rate_on": 0.0365,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/forward",
+       "not expanded",
+       {
+        "evidence_nats": 307.0,
+        "rate_on": 0.0297,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/drop",
+       "not expanded",
+       {
+        "evidence_nats": 18.0,
+        "rate_on": 0.0138,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/toggle",
+       "not expanded",
+       {
+        "evidence_nats": 9.7,
+        "rate_on": 0.0066,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop",
+       "expanded",
+       {
+        "evidence_nats": 2298.0,
+        "rate_on": 0.1236,
+        "rate_off": 0.0,
+        "on_at_start": 0.8184
+       }
+      ],
+      [
+       "forward/toggle/pickup/right",
+       "expanded",
+       {
+        "evidence_nats": 655.6,
+        "rate_on": 0.0395,
+        "rate_off": 0.0,
+        "on_at_start": 0.8812
+       }
+      ],
+      [
+       "forward/toggle/pickup/left",
+       "expanded",
+       {
+        "evidence_nats": 641.0,
+        "rate_on": 0.0387,
+        "rate_off": 0.0,
+        "on_at_start": 0.8812
+       }
+      ],
+      [
+       "forward/toggle/pickup/forward",
+       "expanded",
+       {
+        "evidence_nats": 540.6,
+        "rate_on": 0.0327,
+        "rate_off": 0.0,
+        "on_at_start": 0.8816
+       }
+      ],
+      [
+       "forward/toggle/pickup/toggle",
+       "expanded",
+       {
+        "evidence_nats": 116.9,
+        "rate_on": 0.0106,
+        "rate_off": 0.0,
+        "on_at_start": 0.8936
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop/pickup",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 201.4,
+        "rate_on": 0.0332,
+        "rate_off": 0.0,
+        "on_at_start": 0.953
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop/right",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 457.9,
+        "rate_on": 0.0403,
+        "rate_off": 0.0,
+        "on_at_start": 0.8812
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop/left",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 434.3,
+        "rate_on": 0.0383,
+        "rate_off": 0.0,
+        "on_at_start": 0.8812
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop/forward",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 367.4,
+        "rate_on": 0.0326,
+        "rate_off": 0.0,
+        "on_at_start": 0.8816
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop/toggle",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 89.7,
+        "rate_on": 0.0106,
+        "rate_off": 0.0,
+        "on_at_start": 0.8936
+       }
+      ],
+      [
+       "forward/toggle/pickup/right/drop",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 2105.7,
+        "rate_on": 0.1482,
+        "rate_off": 0.0,
+        "on_at_start": 0.8812
+       }
+      ],
+      [
+       "forward/toggle/pickup/right/pickup",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 268.2,
+        "rate_on": 0.0206,
+        "rate_off": 0.0,
+        "on_at_start": 0.978
+       }
+      ],
+      [
+       "forward/toggle/pickup/right/toggle",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 79.4,
+        "rate_on": 0.0111,
+        "rate_off": 0.0,
+        "on_at_start": 0.9252
+       }
+      ],
+      [
+       "forward/toggle/pickup/right/left",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 15.5,
+        "rate_on": 0.0294,
+        "rate_off": 0.0,
+        "on_at_start": 0.8818
+       }
+      ],
+      [
+       "forward/toggle/pickup/right/right",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 72.3,
+        "rate_on": 0.1029,
+        "rate_off": 0.0,
+        "on_at_start": 0.8818
+       }
+      ],
+      [
+       "forward/toggle/pickup/right/forward",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 12.5,
+        "rate_on": 0.0429,
+        "rate_off": 0.0,
+        "on_at_start": 0.8818
+       }
+      ],
+      [
+       "forward/toggle/pickup/left/drop",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 2105.7,
+        "rate_on": 0.1482,
+        "rate_off": 0.0,
+        "on_at_start": 0.8812
+       }
+      ],
+      [
+       "forward/toggle/pickup/left/pickup",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 268.2,
+        "rate_on": 0.0206,
+        "rate_off": 0.0,
+        "on_at_start": 0.978
+       }
+      ],
+      [
+       "forward/toggle/pickup/left/toggle",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 79.4,
+        "rate_on": 0.0111,
+        "rate_off": 0.0,
+        "on_at_start": 0.9252
+       }
+      ],
+      [
+       "forward/toggle/pickup/left/left",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 15.5,
+        "rate_on": 0.0294,
+        "rate_off": 0.0,
+        "on_at_start": 0.8818
+       }
+      ],
+      [
+       "forward/toggle/pickup/left/right",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 72.3,
+        "rate_on": 0.1029,
+        "rate_off": 0.0,
+        "on_at_start": 0.8818
+       }
+      ],
+      [
+       "forward/toggle/pickup/left/forward",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 12.5,
+        "rate_on": 0.0429,
+        "rate_off": 0.0,
+        "on_at_start": 0.8818
+       }
+      ],
+      [
+       "forward/toggle/pickup/forward/drop",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 2106.7,
+        "rate_on": 0.1484,
+        "rate_off": 0.0,
+        "on_at_start": 0.8816
+       }
+      ],
+      [
+       "forward/toggle/pickup/forward/pickup",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 266.3,
+        "rate_on": 0.0205,
+        "rate_off": 0.0,
+        "on_at_start": 0.979
+       }
+      ],
+      [
+       "forward/toggle/pickup/forward/toggle",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 79.7,
+        "rate_on": 0.0112,
+        "rate_off": 0.0,
+        "on_at_start": 0.9258
+       }
+      ],
+      [
+       "forward/toggle/pickup/forward/left",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 16.7,
+        "rate_on": 0.0377,
+        "rate_off": 0.0,
+        "on_at_start": 0.8818
+       }
+      ],
+      [
+       "forward/toggle/pickup/forward/right",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 52.3,
+        "rate_on": 0.0943,
+        "rate_off": 0.0,
+        "on_at_start": 0.8818
+       }
+      ],
+      [
+       "forward/toggle/pickup/forward/forward",
+       "rejected by self-check",
+       {
+        "evidence_nats": -Infinity,
+        "rate_on": 0.0,
+        "rate_off": 0.0,
+        "on_at_start": 0.8818
+       }
+      ],
+      [
+       "forward/toggle/pickup/toggle/drop",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 2138.1,
+        "rate_on": 0.1292,
+        "rate_off": 0.0,
+        "on_at_start": 0.8936
+       }
+      ],
+      [
+       "forward/toggle/pickup/toggle/right",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 538.0,
+        "rate_on": 0.0374,
+        "rate_off": 0.0,
+        "on_at_start": 0.9306
+       }
+      ],
+      [
+       "forward/toggle/pickup/toggle/left",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 568.5,
+        "rate_on": 0.0394,
+        "rate_off": 0.0,
+        "on_at_start": 0.9306
+       }
+      ],
+      [
+       "forward/toggle/pickup/toggle/forward",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 519.6,
+        "rate_on": 0.0361,
+        "rate_off": 0.0,
+        "on_at_start": 0.9306
+       }
+      ],
+      [
+       "forward/toggle/pickup/toggle/pickup",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 73.2,
+        "rate_on": 0.0133,
+        "rate_off": 0.0,
+        "on_at_start": 0.9144
+       }
+      ],
+      [
+       "forward/toggle/right/pickup",
+       "expanded",
+       {
+        "evidence_nats": 572.2,
+        "rate_on": 0.0189,
+        "rate_off": 0.0,
+        "on_at_start": 0.9218
+       }
+      ],
+      [
+       "forward/toggle/right/left",
+       "not expanded",
+       {
+        "evidence_nats": 8.2,
+        "rate_on": 0.0196,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/right/forward",
+       "rejected by self-check",
+       {
+        "evidence_nats": -Infinity,
+        "rate_on": 0.0,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/right/right",
+       "not expanded",
+       {
+        "evidence_nats": 68.2,
+        "rate_on": 0.098,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/right/drop",
+       "rejected by self-check",
+       {
+        "evidence_nats": -Infinity,
+        "rate_on": NaN,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/right/toggle",
+       "rejected by self-check",
+       {
+        "evidence_nats": -Infinity,
+        "rate_on": 0.0,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/right/pickup/drop",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 1822.9,
+        "rate_on": 0.1432,
+        "rate_off": 0.0,
+        "on_at_start": 0.9218
+       }
+      ],
+      [
+       "forward/toggle/right/pickup/right",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 546.7,
+        "rate_on": 0.0446,
+        "rate_off": 0.0,
+        "on_at_start": 0.9984
+       }
+      ],
+      [
+       "forward/toggle/right/pickup/left",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 474.6,
+        "rate_on": 0.0389,
+        "rate_off": 0.0,
+        "on_at_start": 0.9984
+       }
+      ],
+      [
+       "forward/toggle/right/pickup/forward",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 423.5,
+        "rate_on": 0.0348,
+        "rate_off": 0.0,
+        "on_at_start": 0.9986
+       }
+      ],
+      [
+       "forward/toggle/right/pickup/toggle",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 80.7,
+        "rate_on": 0.0129,
+        "rate_off": 0.0,
+        "on_at_start": 0.964
+       }
+      ]
+     ],
+     "last_round_play": {
+      "success": 1.0,
+      "mean_steps_when_successful": 16.4,
+      "random_share": 0.0
+     },
+     "same_ways_as_027": true
+    },
+    "criterion_2_conditions": {
+     "nodes_of_learned_tree": {
+      "forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0104
+      },
+      "forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.0957
+      },
+      "forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.0194
+      },
+      "forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.0194
+      },
+      "forward/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0196
+      },
+      "forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.0155
+      },
+      "forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.0131
+      },
+      "forward/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.7143
+      },
+      "forward/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.115
+      },
+      "forward/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.115
+      },
+      "forward/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.1152
+      },
+      "forward/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.0984
+      },
+      "forward/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.0987
+      },
+      "forward/toggle/pickup/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.8297
+      },
+      "forward/toggle/pickup/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.7769
+      },
+      "forward/toggle/pickup/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.7769
+      },
+      "forward/toggle/pickup/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.7772
+      },
+      "forward/toggle/pickup/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7395
+      },
+      "forward/toggle/pickup/drop/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.9568
+      },
+      "forward/toggle/pickup/drop/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.882
+      },
+      "forward/toggle/pickup/drop/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.882
+      },
+      "forward/toggle/pickup/drop/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8823
+      },
+      "forward/toggle/pickup/drop/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8549
+      },
+      "forward/toggle/pickup/right/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.8817
+      },
+      "forward/toggle/pickup/right/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.8327
+      },
+      "forward/toggle/pickup/right/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7931
+      },
+      "forward/toggle/pickup/right/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/right/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/right/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.7778
+      },
+      "forward/toggle/pickup/left/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.8817
+      },
+      "forward/toggle/pickup/left/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.8327
+      },
+      "forward/toggle/pickup/left/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7931
+      },
+      "forward/toggle/pickup/left/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/left/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/left/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.7778
+      },
+      "forward/toggle/pickup/forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.882
+      },
+      "forward/toggle/pickup/forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.8338
+      },
+      "forward/toggle/pickup/forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7933
+      },
+      "forward/toggle/pickup/forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.855
+      },
+      "forward/toggle/pickup/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.794
+      },
+      "forward/toggle/pickup/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.794
+      },
+      "forward/toggle/pickup/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.7941
+      },
+      "forward/toggle/pickup/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.7463
+      },
+      "forward/toggle/right/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.7926
+      },
+      "forward/toggle/right/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.116
+      },
+      "forward/toggle/right/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.116
+      },
+      "forward/toggle/right/pickup/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.9026
+      },
+      "forward/toggle/right/pickup/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8421
+      },
+      "forward/toggle/right/pickup/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8421
+      },
+      "forward/toggle/right/pickup/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8422
+      },
+      "forward/toggle/right/pickup/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8035
+      }
+     },
+     "lowest": 1.0,
+     "pass": true,
+     "nodes_of_027_tree": {
+      "forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0104
+      },
+      "forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.0957
+      },
+      "forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.0194
+      },
+      "forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.0194
+      },
+      "forward/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0196
+      },
+      "forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.0155
+      },
+      "forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.0131
+      },
+      "forward/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.7143
+      },
+      "forward/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.115
+      },
+      "forward/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.115
+      },
+      "forward/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.1152
+      },
+      "forward/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.0984
+      },
+      "forward/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.0987
+      },
+      "forward/toggle/pickup/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.8297
+      },
+      "forward/toggle/pickup/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.7769
+      },
+      "forward/toggle/pickup/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.7769
+      },
+      "forward/toggle/pickup/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.7772
+      },
+      "forward/toggle/pickup/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7395
+      },
+      "forward/toggle/pickup/drop/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.9568
+      },
+      "forward/toggle/pickup/drop/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.882
+      },
+      "forward/toggle/pickup/drop/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.882
+      },
+      "forward/toggle/pickup/drop/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8823
+      },
+      "forward/toggle/pickup/drop/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8549
+      },
+      "forward/toggle/pickup/right/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.8817
+      },
+      "forward/toggle/pickup/right/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.8327
+      },
+      "forward/toggle/pickup/right/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7931
+      },
+      "forward/toggle/pickup/right/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/right/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/right/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.7778
+      },
+      "forward/toggle/pickup/left/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.8817
+      },
+      "forward/toggle/pickup/left/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.8327
+      },
+      "forward/toggle/pickup/left/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7931
+      },
+      "forward/toggle/pickup/left/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/left/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/left/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.7778
+      },
+      "forward/toggle/pickup/forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.882
+      },
+      "forward/toggle/pickup/forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.8338
+      },
+      "forward/toggle/pickup/forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7933
+      },
+      "forward/toggle/pickup/forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.7779
+      },
+      "forward/toggle/pickup/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.855
+      },
+      "forward/toggle/pickup/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.794
+      },
+      "forward/toggle/pickup/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.794
+      },
+      "forward/toggle/pickup/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.7941
+      },
+      "forward/toggle/pickup/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.7463
+      },
+      "forward/toggle/right/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.7926
+      },
+      "forward/toggle/right/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.116
+      },
+      "forward/toggle/right/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.116
+      },
+      "forward/toggle/right/pickup/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.9026
+      },
+      "forward/toggle/right/pickup/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8421
+      },
+      "forward/toggle/right/pickup/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8421
+      },
+      "forward/toggle/right/pickup/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8422
+      },
+      "forward/toggle/right/pickup/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8035
+      }
+     },
+     "seconds": 98.2
+    },
+    "way_kinds_learned_tree": {
+     "forward": {
+      "successes": 102,
+      "codes": [
+       1
+      ],
+      "kinds": {
+       "goal": 1.0
+      }
+     },
+     "forward/toggle": {
+      "successes": 554,
+      "codes": [
+       0
+      ],
+      "kinds": {
+       "closed door": 1.0
+      }
+     },
+     "forward/pickup": {
+      "successes": 169,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/drop": {
+      "successes": 101,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/pickup": {
+      "successes": 19141,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/drop": {
+      "successes": 101,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/toggle": {
+      "successes": 50,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      }
+     },
+     "forward/toggle/pickup/drop": {
+      "successes": 16893,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/pickup/toggle": {
+      "successes": 458,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      }
+     },
+     "forward/toggle/pickup/drop/pickup": {
+      "successes": 6120,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/pickup/drop/toggle": {
+      "successes": 444,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      }
+     },
+     "forward/toggle/pickup/right/drop": {
+      "successes": 17794,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/pickup/right/pickup": {
+      "successes": 1622,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/pickup/right/toggle": {
+      "successes": 214,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      }
+     },
+     "forward/toggle/pickup/left/drop": {
+      "successes": 17794,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/pickup/left/pickup": {
+      "successes": 1622,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/pickup/left/toggle": {
+      "successes": 214,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      }
+     },
+     "forward/toggle/pickup/forward/drop": {
+      "successes": 17805,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/pickup/forward/pickup": {
+      "successes": 1634,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/pickup/forward/toggle": {
+      "successes": 215,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      }
+     },
+     "forward/toggle/pickup/toggle/drop": {
+      "successes": 17464,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/pickup/toggle/pickup": {
+      "successes": 267,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/right/pickup": {
+      "successes": 21445,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/right/pickup/drop": {
+      "successes": 17910,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/right/pickup/toggle": {
+      "successes": 308,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      }
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.6,
+     "random_steps": 33,
+     "moves": 8303,
+     "random_share": 0.004,
+     "random_no_way": 0,
+     "move_way_steps": 158,
+     "dependence_checks_per_move": 0.596,
+     "failed_acts": 45,
+     "moves_refused": 6,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 4.24,
+     "conditions_computed_per_move": 379.3,
+     "seconds_per_layout_mean": 0.042,
+     "seconds_per_layout_max": 0.41,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/pickup": 486,
+      "forward/toggle/pickup/drop": 47,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 59,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm3_learned_on_027_tree": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.6,
+     "random_steps": 33,
+     "moves": 8303,
+     "random_share": 0.004,
+     "random_no_way": 0,
+     "move_way_steps": 158,
+     "dependence_checks_per_move": 0.596,
+     "failed_acts": 45,
+     "moves_refused": 6,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 4.24,
+     "conditions_computed_per_move": 379.3,
+     "seconds_per_layout_mean": 0.045,
+     "seconds_per_layout_max": 0.45,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/pickup": 486,
+      "forward/toggle/pickup/drop": 47,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 59,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm4_no_rules": {
+     "success": 0.16,
+     "mean_steps_when_successful": 70.1,
+     "random_steps": 72043,
+     "moves": 89610,
+     "random_share": 0.804,
+     "random_no_way": 0,
+     "move_way_steps": 106,
+     "dependence_checks_per_move": 0.008,
+     "failed_acts": 483,
+     "moves_refused": 0,
+     "predictions_wrong": 3922,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 2.04,
+     "conditions_computed_per_move": 9.5,
+     "seconds_per_layout_mean": 0.074,
+     "seconds_per_layout_max": 0.21,
+     "ways_used": {
+      "forward": 80,
+      "forward/toggle": 500,
+      "forward/toggle/pickup": 121
+     },
+     "failing_layouts": 420,
+     "failing_that_picked_other_key": 101
+    },
+    "acting_seconds": 154.1,
+    "gate": {
+     "facts_agree": true,
+     "upper_bound_98": true,
+     "baseline_below_98": true
+    },
+    "criterion_3_acting": {
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_within_1_5x": true,
+     "pass": true
+    },
+    "seconds": 769.1
+   },
+   "switch": {
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "counted_kinds": [
+     [
+      "closed door blue",
+      "closed door green",
+      "closed door red"
+     ],
+     [
+      "goal"
+     ],
+     [
+      "open door blue",
+      "open door green",
+      "open door red"
+     ],
+     [
+      "floor"
+     ],
+     [
+      "switch off",
+      "switch on"
+     ],
+     [
+      "vase"
+     ],
+     [
+      "key blue",
+      "key green",
+      "key red"
+     ],
+     [
+      "wall"
+     ]
+    ],
+    "tree_027": {
+     "nodes": 20,
+     "goals_expanded": 4,
+     "rounds": 5,
+     "tree": [
+      [
+       "(goal square)",
+       "expanded"
+      ],
+      [
+       "forward",
+       "expanded"
+      ],
+      [
+       "forward/toggle",
+       "expanded"
+      ],
+      [
+       "forward/left",
+       "not expanded"
+      ],
+      [
+       "forward/forward",
+       "not expanded"
+      ],
+      [
+       "forward/right",
+       "not expanded"
+      ],
+      [
+       "forward/pickup",
+       "not expanded"
+      ],
+      [
+       "forward/drop",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle",
+       "expanded"
+      ],
+      [
+       "forward/toggle/left",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/right",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/forward",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/pickup",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/drop",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/left",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/right",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/pickup",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/forward",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/toggle",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/drop",
+       "not expanded"
+      ]
+     ]
+    },
+    "arm1_upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.3,
+     "random_steps": 51,
+     "moves": 8639,
+     "random_share": 0.0059,
+     "move_way_steps": 238,
+     "dependence_checks_per_move": 0.615,
+     "failed_acts": 60,
+     "layouts_with_failed_acts": 56,
+     "moves_refused": 10,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/toggle": 515,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 9,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "model": {
+     "left": {
+      "rows_view_changed": 65287,
+      "rows_used": 40000,
+      "entering_places": 60,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {},
+      "outcome_by_front": {
+       "closed door blue": "changed",
+       "closed door green": "changed",
+       "goal": "changed",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "changed",
+       "switch on": "changed",
+       "vase": "changed",
+       "open door red": "changed",
+       "key blue": "changed",
+       "key green": "changed",
+       "key red": "changed",
+       "wall": "changed",
+       "closed door red": "changed"
+      },
+      "seconds": 0.1
+     },
+     "right": {
+      "rows_view_changed": 65082,
+      "rows_used": 40000,
+      "entering_places": 60,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {},
+      "outcome_by_front": {
+       "closed door blue": "changed",
+       "closed door green": "changed",
+       "goal": "changed",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "changed",
+       "switch on": "changed",
+       "vase": "changed",
+       "open door red": "changed",
+       "key blue": "changed",
+       "key green": "changed",
+       "key red": "changed",
+       "wall": "changed",
+       "closed door red": "changed"
+      },
+      "seconds": 0.1
+     },
+     "forward": {
+      "rows_view_changed": 32675,
+      "rows_used": 32675,
+      "entering_places": 71,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {
+       "place 84 from 71": [
+        [
+         "goal",
+         "app 22"
+        ],
+        [
+         "open door blue",
+         "app 27"
+        ],
+        [
+         "open door green",
+         "app 32"
+        ],
+        [
+         "floor",
+         "app 37"
+        ],
+        [
+         "open door red",
+         "app 57"
+        ]
+       ],
+       "place 97 from 84": [
+        [
+         "app 27",
+         "open door blue"
+        ],
+        [
+         "app 32",
+         "open door green"
+        ],
+        [
+         "app 37",
+         "floor"
+        ],
+        [
+         "app 57",
+         "open door red"
+        ]
+       ]
+      },
+      "outcome_by_front": {
+       "closed door blue": "unchanged",
+       "closed door green": "unchanged",
+       "goal": "episode ended",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "unchanged",
+       "switch on": "unchanged",
+       "vase": "unchanged",
+       "open door red": "changed",
+       "key blue": "unchanged",
+       "key green": "unchanged",
+       "key red": "unchanged",
+       "wall": "unchanged",
+       "closed door red": "unchanged"
+      },
+      "seconds": 0.1
+     },
+     "forward_map_places_not_a_one_row_shift": [],
+     "places_changed_by_pickup_drop_toggle": [
+      71,
+      169
+     ],
+     "outcomes": {
+      "pickup closed door blue": {
+       "nothing": 2784.0
+      },
+      "pickup closed door green": {
+       "nothing": 3016.0
+      },
+      "pickup goal": {
+       "nothing": 344.0
+      },
+      "pickup open door blue": {
+       "nothing": 376.0
+      },
+      "pickup open door green": {
+       "nothing": 272.0
+      },
+      "pickup floor": {
+       "nothing": 254368.0
+      },
+      "pickup switch off": {
+       "nothing": 14576.0
+      },
+      "pickup switch on": {
+       "nothing": 11728.0
+      },
+      "pickup vase": {
+       "nothing": 3824.0
+      },
+      "pickup open door red": {
+       "nothing": 296.0
+      },
+      "pickup key blue": {
+       "floor / key blue": 14781.0,
+       "nothing": 1464.0
+      },
+      "pickup key green": {
+       "floor / key green": 14347.0,
+       "nothing": 1544.0
+      },
+      "pickup key red": {
+       "floor / key red": 14764.0,
+       "nothing": 1688.0
+      },
+      "pickup wall": {
+       "nothing": 175640.0
+      },
+      "pickup closed door red": {
+       "nothing": 2768.0
+      },
+      "drop closed door blue, holding floor": {
+       "nothing": 2664.0
+      },
+      "drop closed door blue, holding key blue": {
+       "nothing": 200.0
+      },
+      "drop closed door blue, holding key green": {
+       "nothing": 112.0
+      },
+      "drop closed door blue, holding key red": {
+       "nothing": 112.0
+      },
+      "drop closed door green, holding floor": {
+       "nothing": 2456.0
+      },
+      "drop closed door green, holding key blue": {
+       "nothing": 128.0
+      },
+      "drop closed door green, holding key green": {
+       "nothing": 288.0
+      },
+      "drop closed door green, holding key red": {
+       "nothing": 168.0
+      },
+      "drop goal, holding floor": {
+       "nothing": 376.0
+      },
+      "drop goal, holding key green": {
+       "nothing": 8.0
+      },
+      "drop goal, holding key red": {
+       "nothing": 8.0
+      },
+      "drop open door blue, holding floor": {
+       "nothing": 368.0
+      },
+      "drop open door blue, holding key blue": {
+       "nothing": 24.0
+      },
+      "drop open door green, holding floor": {
+       "nothing": 272.0
+      },
+      "drop open door green, holding key green": {
+       "nothing": 32.0
+      },
+      "drop open door green, holding key red": {
+       "nothing": 8.0
+      },
+      "drop floor, holding floor": {
+       "nothing": 214624.0
+      },
+      "drop floor, holding key blue": {
+       "key blue / floor": 14502.0
+      },
+      "drop floor, holding key green": {
+       "key green / floor": 14047.0
+      },
+      "drop floor, holding key red": {
+       "key red / floor": 14496.0
+      },
+      "drop switch off, holding floor": {
+       "nothing": 12144.0
+      },
+      "drop switch off, holding key blue": {
+       "nothing": 752.0
+      },
+      "drop switch off, holding key green": {
+       "nothing": 952.0
+      },
+      "drop switch off, holding key red": {
+       "nothing": 744.0
+      },
+      "drop switch on, holding floor": {
+       "nothing": 10184.0
+      },
+      "drop switch on, holding key blue": {
+       "nothing": 576.0
+      },
+      "drop switch on, holding key green": {
+       "nothing": 648.0
+      },
+      "drop switch on, holding key red": {
+       "nothing": 728.0
+      },
+      "drop vase, holding floor": {
+       "nothing": 3520.0
+      },
+      "drop vase, holding key blue": {
+       "nothing": 248.0
+      },
+      "drop vase, holding key green": {
+       "nothing": 192.0
+      },
+      "drop vase, holding key red": {
+       "nothing": 216.0
+      },
+      "drop open door red, holding floor": {
+       "nothing": 224.0
+      },
+      "drop open door red, holding key blue": {
+       "nothing": 8.0
+      },
+      "drop open door red, holding key red": {
+       "nothing": 40.0
+      },
+      "drop key blue, holding floor": {
+       "nothing": 15168.0
+      },
+      "drop key blue, holding key green": {
+       "nothing": 680.0
+      },
+      "drop key blue, holding key red": {
+       "nothing": 800.0
+      },
+      "drop key green, holding floor": {
+       "nothing": 14520.0
+      },
+      "drop key green, holding key blue": {
+       "nothing": 696.0
+      },
+      "drop key green, holding key red": {
+       "nothing": 880.0
+      },
+      "drop key red, holding floor": {
+       "nothing": 15240.0
+      },
+      "drop key red, holding key blue": {
+       "nothing": 736.0
+      },
+      "drop key red, holding key green": {
+       "nothing": 856.0
+      },
+      "drop wall, holding floor": {
+       "nothing": 146136.0
+      },
+      "drop wall, holding key blue": {
+       "nothing": 9848.0
+      },
+      "drop wall, holding key green": {
+       "nothing": 9688.0
+      },
+      "drop wall, holding key red": {
+       "nothing": 10528.0
+      },
+      "drop closed door red, holding floor": {
+       "nothing": 2088.0
+      },
+      "drop closed door red, holding key blue": {
+       "nothing": 144.0
+      },
+      "drop closed door red, holding key green": {
+       "nothing": 72.0
+      },
+      "drop closed door red, holding key red": {
+       "nothing": 280.0
+      },
+      "toggle closed door blue": {
+       "nothing": 2520.0,
+       "open door blue / same": 669.0
+      },
+      "toggle closed door green": {
+       "nothing": 2328.0,
+       "open door green / same": 676.0
+      },
+      "toggle goal": {
+       "nothing": 352.0
+      },
+      "toggle open door blue": {
+       "closed door blue / same": 376.0
+      },
+      "toggle open door green": {
+       "closed door green / same": 371.0
+      },
+      "toggle floor": {
+       "nothing": 256624.0
+      },
+      "toggle switch off": {
+       "switch on / same": 14543.0
+      },
+      "toggle switch on": {
+       "switch off / same": 12120.0
+      },
+      "toggle vase": {
+       "floor / same": 4120.0
+      },
+      "toggle open door red": {
+       "closed door red / same": 334.0
+      },
+      "toggle key blue": {
+       "nothing": 16616.0
+      },
+      "toggle key green": {
+       "nothing": 15776.0
+      },
+      "toggle key red": {
+       "nothing": 16864.0
+      },
+      "toggle wall": {
+       "nothing": 174024.0
+      },
+      "toggle closed door red": {
+       "nothing": 2176.0,
+       "open door red / same": 617.0
+      }
+     },
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14781.0,
+         "happened_weighted": 14781.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1464.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14964,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7073.6
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14347.0,
+         "happened_weighted": 14347.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1544.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14540,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7285.4
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14764.0,
+         "happened_weighted": 14764.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1688.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14975,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7827.1
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 669.0,
+         "happened_weighted": 669.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2520.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 984,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2342.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 676.0,
+         "happened_weighted": 676.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2328.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 967,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2290.0
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 617.0,
+         "happened_weighted": 617.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2176.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 889,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2107.2
+        }
+       ]
+      }
+     ],
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "pose_sweeps": 1,
+     "seconds": 0.9
+    },
+    "criterion_1_effects": {
+     "per_action": {
+      "left": {
+       "rows": 13041,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 13234,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 13163,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 20773,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 20458,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 19131,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "switch on in view"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     },
+     "pass": true,
+     "seconds": 0.6
+    },
+    "tree_learned": {
+     "nodes": 20,
+     "goals_expanded": 4,
+     "rounds": [
+      {
+       "round": 0,
+       "layouts_paused": 500,
+       "goals_needed": {
+        "(goal square)": 500
+       },
+       "seconds": 19.0
+      },
+      {
+       "round": 1,
+       "layouts_paused": 500,
+       "goals_needed": {
+        "forward": 500
+       },
+       "seconds": 21.9
+      },
+      {
+       "round": 2,
+       "layouts_paused": 500,
+       "goals_needed": {
+        "forward/toggle": 500
+       },
+       "seconds": 32.6
+      },
+      {
+       "round": 3,
+       "layouts_paused": 83,
+       "goals_needed": {
+        "forward/toggle/toggle": 83
+       },
+       "seconds": 35.6
+      },
+      {
+       "round": 4,
+       "layouts_paused": 0,
+       "goals_needed": {},
+       "seconds": 0.4
+      }
+     ],
+     "seconds": 109.5,
+     "placing_views": {
+      "views": 4746704,
+      "max_mismatch": 2,
+      "ties": 0,
+      "mismatch_over_2": 0
+     },
+     "tree": [
+      [
+       "(goal square)",
+       "expanded",
+       null
+      ],
+      [
+       "forward",
+       "expanded",
+       {
+        "evidence_nats": 132.1,
+        "rate_on": 0.0064,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle",
+       "expanded",
+       {
+        "evidence_nats": 327.9,
+        "rate_on": 0.0057,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/left",
+       "not expanded",
+       {
+        "evidence_nats": 386.4,
+        "rate_on": 0.0228,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/forward",
+       "not expanded",
+       {
+        "evidence_nats": 314.1,
+        "rate_on": 0.0182,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/right",
+       "not expanded",
+       {
+        "evidence_nats": 269.6,
+        "rate_on": 0.0161,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/pickup",
+       "not expanded",
+       {
+        "evidence_nats": 138.0,
+        "rate_on": 0.0253,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/drop",
+       "not expanded",
+       {
+        "evidence_nats": 48.7,
+        "rate_on": 0.0114,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/toggle",
+       "expanded",
+       {
+        "evidence_nats": 443.3,
+        "rate_on": 0.012,
+        "rate_off": 0.0,
+        "on_at_start": 0.8474
+       }
+      ],
+      [
+       "forward/toggle/left",
+       "not expanded",
+       {
+        "evidence_nats": 1094.6,
+        "rate_on": 0.035,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/right",
+       "not expanded",
+       {
+        "evidence_nats": 954.9,
+        "rate_on": 0.0306,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/forward",
+       "not expanded",
+       {
+        "evidence_nats": 746.0,
+        "rate_on": 0.0238,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/pickup",
+       "not expanded",
+       {
+        "evidence_nats": 906.2,
+        "rate_on": 0.0336,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/drop",
+       "not expanded",
+       {
+        "evidence_nats": 247.0,
+        "rate_on": 0.03,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/toggle/left",
+       "not expanded",
+       {
+        "evidence_nats": 583.0,
+        "rate_on": 0.0381,
+        "rate_off": 0.0,
+        "on_at_start": 0.952
+       }
+      ],
+      [
+       "forward/toggle/toggle/right",
+       "not expanded",
+       {
+        "evidence_nats": 543.1,
+        "rate_on": 0.0356,
+        "rate_off": 0.0,
+        "on_at_start": 0.952
+       }
+      ],
+      [
+       "forward/toggle/toggle/pickup",
+       "not expanded",
+       {
+        "evidence_nats": 348.4,
+        "rate_on": 0.0327,
+        "rate_off": 0.0,
+        "on_at_start": 0.9678
+       }
+      ],
+      [
+       "forward/toggle/toggle/forward",
+       "not expanded",
+       {
+        "evidence_nats": 386.4,
+        "rate_on": 0.0258,
+        "rate_off": 0.0,
+        "on_at_start": 0.9532
+       }
+      ],
+      [
+       "forward/toggle/toggle/toggle",
+       "not expanded",
+       {
+        "evidence_nats": 430.8,
+        "rate_on": 0.0291,
+        "rate_off": 0.0,
+        "on_at_start": 0.9368
+       }
+      ],
+      [
+       "forward/toggle/toggle/drop",
+       "not expanded",
+       {
+        "evidence_nats": 284.7,
+        "rate_on": 0.0342,
+        "rate_off": 0.0,
+        "on_at_start": 0.8474
+       }
+      ]
+     ],
+     "last_round_play": {
+      "success": 1.0,
+      "mean_steps_when_successful": 17.1,
+      "random_share": 0.0
+     },
+     "same_ways_as_027": true
+    },
+    "criterion_2_conditions": {
+     "nodes_of_learned_tree": {
+      "forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0317
+      },
+      "forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.2516
+      },
+      "forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.0543
+      },
+      "forward/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0546
+      },
+      "forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.0543
+      },
+      "forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.0364
+      },
+      "forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.0379
+      },
+      "forward/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7657
+      },
+      "forward/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.3209
+      },
+      "forward/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.3209
+      },
+      "forward/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.3218
+      },
+      "forward/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.3178
+      },
+      "forward/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.265
+      },
+      "forward/toggle/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8815
+      },
+      "forward/toggle/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8815
+      },
+      "forward/toggle/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.9313
+      },
+      "forward/toggle/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8823
+      },
+      "forward/toggle/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8146
+      },
+      "forward/toggle/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.7872
+      }
+     },
+     "lowest": 1.0,
+     "pass": true,
+     "nodes_of_027_tree": {
+      "forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0317
+      },
+      "forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.2516
+      },
+      "forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.0543
+      },
+      "forward/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0546
+      },
+      "forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.0543
+      },
+      "forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.0364
+      },
+      "forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.0379
+      },
+      "forward/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7657
+      },
+      "forward/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.3209
+      },
+      "forward/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.3209
+      },
+      "forward/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.3218
+      },
+      "forward/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.3178
+      },
+      "forward/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.265
+      },
+      "forward/toggle/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8815
+      },
+      "forward/toggle/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8815
+      },
+      "forward/toggle/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.9313
+      },
+      "forward/toggle/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8823
+      },
+      "forward/toggle/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8146
+      },
+      "forward/toggle/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.7872
+      }
+     },
+     "seconds": 47.1
+    },
+    "way_kinds_learned_tree": {
+     "forward": {
+      "successes": 341,
+      "codes": [
+       1
+      ],
+      "kinds": {
+       "goal": 1.0
+      }
+     },
+     "forward/toggle": {
+      "successes": 1838,
+      "codes": [
+       0
+      ],
+      "kinds": {
+       "closed door": 0.9984
+      }
+     },
+     "forward/pickup": {
+      "successes": 199,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/drop": {
+      "successes": 147,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/toggle": {
+      "successes": 10309,
+      "codes": [
+       4,
+       5
+      ],
+      "kinds": {
+       "switch": 0.9884,
+       "vase": 0.0116
+      }
+     },
+     "forward/toggle/pickup": {
+      "successes": 2816,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/drop": {
+      "successes": 582,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/toggle/pickup": {
+      "successes": 8633,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/toggle/toggle": {
+      "successes": 1848,
+      "codes": [
+       4,
+       5
+      ],
+      "kinds": {
+       "switch": 0.7614,
+       "vase": 0.2386
+      }
+     },
+     "forward/toggle/toggle/drop": {
+      "successes": 1008,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.3,
+     "random_steps": 51,
+     "moves": 8639,
+     "random_share": 0.0059,
+     "random_no_way": 0,
+     "move_way_steps": 238,
+     "dependence_checks_per_move": 0.615,
+     "failed_acts": 60,
+     "moves_refused": 10,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 3.97,
+     "conditions_computed_per_move": 146.7,
+     "seconds_per_layout_mean": 0.023,
+     "seconds_per_layout_max": 0.17,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/toggle": 515,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm3_learned_on_027_tree": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.3,
+     "random_steps": 51,
+     "moves": 8639,
+     "random_share": 0.0059,
+     "random_no_way": 0,
+     "move_way_steps": 238,
+     "dependence_checks_per_move": 0.615,
+     "failed_acts": 60,
+     "moves_refused": 10,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 3.97,
+     "conditions_computed_per_move": 146.7,
+     "seconds_per_layout_mean": 0.024,
+     "seconds_per_layout_max": 0.13,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/toggle": 515,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm4_no_rules": {
+     "success": 0.128,
+     "mean_steps_when_successful": 97.3,
+     "random_steps": 75070,
+     "moves": 93430,
+     "random_share": 0.8035,
+     "random_no_way": 0,
+     "move_way_steps": 320,
+     "dependence_checks_per_move": 0.004,
+     "failed_acts": 506,
+     "moves_refused": 0,
+     "predictions_wrong": 4109,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 2.03,
+     "conditions_computed_per_move": 7.5,
+     "seconds_per_layout_mean": 0.072,
+     "seconds_per_layout_max": 0.18,
+     "ways_used": {
+      "forward": 64,
+      "forward/toggle": 500,
+      "forward/toggle/toggle": 44,
+      "forward/toggle/pickup": 15
+     },
+     "failing_layouts": 436,
+     "failing_that_picked_other_key": 87
+    },
+    "acting_seconds": 60.5,
+    "gate": {
+     "facts_agree": true,
+     "upper_bound_98": true,
+     "baseline_below_98": true
+    },
+    "criterion_3_acting": {
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_within_1_5x": true,
+     "pass": true
+    },
+    "seconds": 284.5
+   }
+  },
+  "seconds": 1053.6
+ },
+ "small_test": {
+  "note": "Card 028, tools/card028/effects.py; conditions, walking and tree growth on a model learned by counting from the agent's own views.",
+  "episodes": 5000,
+  "layouts": 50,
+  "heldout_episodes": 200,
+  "worlds": {
+   "key": {
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "counted_kinds": [
+     [
+      "closed door blue",
+      "closed door green",
+      "closed door red"
+     ],
+     [
+      "goal"
+     ],
+     [
+      "open door blue",
+      "open door green",
+      "open door red"
+     ],
+     [
+      "floor"
+     ],
+     [
+      "switch off",
+      "switch on"
+     ],
+     [
+      "vase"
+     ],
+     [
+      "key blue",
+      "key green",
+      "key red"
+     ],
+     [
+      "wall"
+     ]
+    ],
+    "tree_027": {
+     "nodes": 58,
+     "goals_expanded": 11,
+     "rounds": "rebuilt from card 026",
+     "tree": [
+      [
+       "(goal square)",
+       "expanded"
+      ],
+      [
+       "forward",
+       "expanded"
+      ],
+      [
+       "forward/toggle",
+       "expanded"
+      ],
+      [
+       "forward/right",
+       "not expanded"
+      ],
+      [
+       "forward/left",
+       "not expanded"
+      ],
+      [
+       "forward/forward",
+       "not expanded"
+      ],
+      [
+       "forward/pickup",
+       "not expanded"
+      ],
+      [
+       "forward/drop",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/pickup",
+       "expanded"
+      ],
+      [
+       "forward/toggle/right",
+       "expanded"
+      ],
+      [
+       "forward/toggle/left",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/forward",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/drop",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/pickup/drop",
+       "expanded"
+      ],
+      [
+       "forward/toggle/pickup/right",
+       "expanded"
+      ],
+      [
+       "forward/toggle/pickup/left",
+       "expanded"
+      ],
+      [
+       "forward/toggle/pickup/forward",
+       "expanded"
+      ],
+      [
+       "forward/toggle/pickup/toggle",
+       "expanded"
+      ],
+      [
+       "forward/toggle/pickup/drop/pickup",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/drop/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/drop/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/drop/forward",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/drop/toggle",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/drop",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/pickup",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/toggle",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/right/forward",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/drop",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/pickup",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/toggle",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/left/forward",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/drop",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/pickup",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/toggle",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/forward/forward",
+       "rejected by self-check"
+      ],
+      [
+       "forward/toggle/pickup/toggle/drop",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/toggle/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/toggle/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/toggle/forward",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/pickup/toggle/pickup",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/right/pickup",
+       "expanded"
+      ],
+      [
+       "forward/toggle/right/left",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/right/forward",
+       "rejected by self-check"
+      ],
+      [
+       "forward/toggle/right/right",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/right/drop",
+       "rejected by self-check"
+      ],
+      [
+       "forward/toggle/right/toggle",
+       "rejected by self-check"
+      ],
+      [
+       "forward/toggle/right/pickup/drop",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/right/pickup/right",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/right/pickup/left",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/right/pickup/forward",
+       "leaf: depth limit"
+      ],
+      [
+       "forward/toggle/right/pickup/toggle",
+       "leaf: depth limit"
+      ]
+     ]
+    },
+    "arm1_upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.4,
+     "random_steps": 0,
+     "moves": 820,
+     "random_share": 0.0,
+     "move_way_steps": 18,
+     "dependence_checks_per_move": 0.573,
+     "failed_acts": 3,
+     "layouts_with_failed_acts": 2,
+     "moves_refused": 0,
+     "ways_used": {
+      "forward": 50,
+      "forward/toggle": 50,
+      "forward/toggle/pickup": 50,
+      "forward/toggle/pickup/drop": 5,
+      "forward/toggle/pickup/toggle": 1,
+      "forward/toggle/pickup/drop/pickup": 5
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 48,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "model": {
+     "left": {
+      "rows_view_changed": 67072,
+      "rows_used": 40000,
+      "entering_places": 60,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {},
+      "outcome_by_front": {
+       "closed door blue": "changed",
+       "closed door green": "changed",
+       "goal": "changed",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "changed",
+       "switch on": "changed",
+       "vase": "changed",
+       "open door red": "changed",
+       "key blue": "changed",
+       "key green": "changed",
+       "key red": "changed",
+       "wall": "changed",
+       "closed door red": "changed"
+      },
+      "seconds": 0.3
+     },
+     "right": {
+      "rows_view_changed": 66163,
+      "rows_used": 40000,
+      "entering_places": 60,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {},
+      "outcome_by_front": {
+       "closed door blue": "changed",
+       "closed door green": "changed",
+       "goal": "changed",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "changed",
+       "switch on": "changed",
+       "vase": "changed",
+       "open door red": "changed",
+       "key blue": "changed",
+       "key green": "changed",
+       "key red": "changed",
+       "wall": "changed",
+       "closed door red": "changed"
+      },
+      "seconds": 0.1
+     },
+     "forward": {
+      "rows_view_changed": 32526,
+      "rows_used": 32526,
+      "entering_places": 71,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {
+       "place 84 from 71": [
+        [
+         "goal",
+         "app 22"
+        ],
+        [
+         "open door blue",
+         "app 27"
+        ],
+        [
+         "open door green",
+         "app 32"
+        ],
+        [
+         "floor",
+         "app 37"
+        ],
+        [
+         "open door red",
+         "app 57"
+        ]
+       ],
+       "place 97 from 84": [
+        [
+         "app 27",
+         "open door blue"
+        ],
+        [
+         "app 32",
+         "open door green"
+        ],
+        [
+         "app 37",
+         "floor"
+        ],
+        [
+         "app 57",
+         "open door red"
+        ]
+       ]
+      },
+      "outcome_by_front": {
+       "closed door blue": "unchanged",
+       "closed door green": "unchanged",
+       "goal": "episode ended",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "unchanged",
+       "switch on": "unchanged",
+       "vase": "unchanged",
+       "open door red": "changed",
+       "key blue": "unchanged",
+       "key green": "unchanged",
+       "key red": "unchanged",
+       "wall": "unchanged",
+       "closed door red": "unchanged"
+      },
+      "seconds": 0.1
+     },
+     "forward_map_places_not_a_one_row_shift": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      38,
+      39,
+      51,
+      52,
+      64,
+      65,
+      77,
+      78,
+      90,
+      91,
+      103,
+      104,
+      116,
+      117,
+      129,
+      130,
+      142,
+      143,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168
+     ],
+     "places_changed_by_pickup_drop_toggle": [
+      71,
+      169
+     ],
+     "outcomes": {
+      "pickup closed door blue": {
+       "nothing": 3504.0
+      },
+      "pickup closed door green": {
+       "nothing": 3760.0
+      },
+      "pickup goal": {
+       "nothing": 152.0
+      },
+      "pickup open door blue": {
+       "nothing": 136.0
+      },
+      "pickup open door green": {
+       "nothing": 120.0
+      },
+      "pickup floor": {
+       "nothing": 262192.0
+      },
+      "pickup switch off": {
+       "nothing": 15000.0
+      },
+      "pickup switch on": {
+       "nothing": 12680.0
+      },
+      "pickup vase": {
+       "nothing": 3928.0
+      },
+      "pickup open door red": {
+       "nothing": 136.0
+      },
+      "pickup key blue": {
+       "floor / key blue": 15323.0,
+       "nothing": 1464.0
+      },
+      "pickup key green": {
+       "floor / key green": 14902.0,
+       "nothing": 1680.0
+      },
+      "pickup key red": {
+       "floor / key red": 15132.0,
+       "nothing": 1608.0
+      },
+      "pickup wall": {
+       "nothing": 177768.0
+      },
+      "pickup closed door red": {
+       "nothing": 2928.0
+      },
+      "drop closed door blue, holding floor": {
+       "nothing": 3072.0
+      },
+      "drop closed door blue, holding key blue": {
+       "nothing": 216.0
+      },
+      "drop closed door blue, holding key green": {
+       "nothing": 200.0
+      },
+      "drop closed door blue, holding key red": {
+       "nothing": 120.0
+      },
+      "drop closed door green, holding floor": {
+       "nothing": 3008.0
+      },
+      "drop closed door green, holding key blue": {
+       "nothing": 184.0
+      },
+      "drop closed door green, holding key green": {
+       "nothing": 208.0
+      },
+      "drop closed door green, holding key red": {
+       "nothing": 152.0
+      },
+      "drop goal, holding floor": {
+       "nothing": 72.0
+      },
+      "drop goal, holding key blue": {
+       "nothing": 8.0
+      },
+      "drop goal, holding key green": {
+       "nothing": 8.0
+      },
+      "drop goal, holding key red": {
+       "nothing": 8.0
+      },
+      "drop open door blue, holding floor": {
+       "nothing": 72.0
+      },
+      "drop open door blue, holding key blue": {
+       "nothing": 96.0
+      },
+      "drop open door green, holding floor": {
+       "nothing": 48.0
+      },
+      "drop open door green, holding key green": {
+       "nothing": 128.0
+      },
+      "drop floor, holding floor": {
+       "nothing": 214176.0
+      },
+      "drop floor, holding key blue": {
+       "key blue / floor": 15025.0
+      },
+      "drop floor, holding key green": {
+       "key green / floor": 14575.0
+      },
+      "drop floor, holding key red": {
+       "key red / floor": 14843.0
+      },
+      "drop switch off, holding floor": {
+       "nothing": 11688.0
+      },
+      "drop switch off, holding key blue": {
+       "nothing": 712.0
+      },
+      "drop switch off, holding key green": {
+       "nothing": 928.0
+      },
+      "drop switch off, holding key red": {
+       "nothing": 800.0
+      },
+      "drop switch on, holding floor": {
+       "nothing": 10152.0
+      },
+      "drop switch on, holding key blue": {
+       "nothing": 712.0
+      },
+      "drop switch on, holding key green": {
+       "nothing": 544.0
+      },
+      "drop switch on, holding key red": {
+       "nothing": 696.0
+      },
+      "drop vase, holding floor": {
+       "nothing": 3400.0
+      },
+      "drop vase, holding key blue": {
+       "nothing": 272.0
+      },
+      "drop vase, holding key green": {
+       "nothing": 192.0
+      },
+      "drop vase, holding key red": {
+       "nothing": 232.0
+      },
+      "drop open door red, holding floor": {
+       "nothing": 56.0
+      },
+      "drop open door red, holding key red": {
+       "nothing": 72.0
+      },
+      "drop key blue, holding floor": {
+       "nothing": 16272.0
+      },
+      "drop key blue, holding key green": {
+       "nothing": 864.0
+      },
+      "drop key blue, holding key red": {
+       "nothing": 896.0
+      },
+      "drop key green, holding floor": {
+       "nothing": 15304.0
+      },
+      "drop key green, holding key blue": {
+       "nothing": 784.0
+      },
+      "drop key green, holding key red": {
+       "nothing": 816.0
+      },
+      "drop key red, holding floor": {
+       "nothing": 15160.0
+      },
+      "drop key red, holding key blue": {
+       "nothing": 968.0
+      },
+      "drop key red, holding key green": {
+       "nothing": 768.0
+      },
+      "drop wall, holding floor": {
+       "nothing": 144776.0
+      },
+      "drop wall, holding key blue": {
+       "nothing": 9968.0
+      },
+      "drop wall, holding key green": {
+       "nothing": 10096.0
+      },
+      "drop wall, holding key red": {
+       "nothing": 10432.0
+      },
+      "drop closed door red, holding floor": {
+       "nothing": 2792.0
+      },
+      "drop closed door red, holding key blue": {
+       "nothing": 112.0
+      },
+      "drop closed door red, holding key green": {
+       "nothing": 96.0
+      },
+      "drop closed door red, holding key red": {
+       "nothing": 208.0
+      },
+      "toggle closed door blue": {
+       "nothing": 3504.0,
+       "open door blue / same": 213.0
+      },
+      "toggle closed door green": {
+       "nothing": 3176.0,
+       "open door green / same": 178.0
+      },
+      "toggle goal": {
+       "nothing": 168.0
+      },
+      "toggle open door blue": {
+       "closed door blue / same": 114.0
+      },
+      "toggle open door green": {
+       "closed door green / same": 105.0
+      },
+      "toggle floor": {
+       "nothing": 261112.0
+      },
+      "toggle switch off": {
+       "switch on / same": 14964.0
+      },
+      "toggle switch on": {
+       "switch off / same": 12696.0
+      },
+      "toggle vase": {
+       "floor / same": 4205.0
+      },
+      "toggle open door red": {
+       "closed door red / same": 93.0
+      },
+      "toggle key blue": {
+       "nothing": 16784.0
+      },
+      "toggle key green": {
+       "nothing": 16448.0
+      },
+      "toggle key red": {
+       "nothing": 16560.0
+      },
+      "toggle wall": {
+       "nothing": 178088.0
+      },
+      "toggle closed door red": {
+       "nothing": 3008.0,
+       "open door red / same": 172.0
+      }
+     },
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15323.0,
+         "happened_weighted": 15323.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1464.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15506,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7146.3
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14902.0,
+         "happened_weighted": 14902.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1680.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15112,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7822.3
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15132.0,
+         "happened_weighted": 15132.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1608.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15333,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7616.3
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "held = key blue"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 213.0,
+         "happened_weighted": 213.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3504.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 651,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=60"
+          ]
+         ],
+         "evidence_gain_bits": 1158.3
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "held = key green"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 178.0,
+         "happened_weighted": 178.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3176.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 575,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=65"
+          ]
+         ],
+         "evidence_gain_bits": 985.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "held = key red"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 172.0,
+         "happened_weighted": 172.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3008.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 548,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=70"
+          ]
+         ],
+         "evidence_gain_bits": 946.9
+        }
+       ]
+      }
+     ],
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "pose_sweeps": 1,
+     "seconds": 1.0
+    },
+    "criterion_1_effects": {
+     "per_action": {
+      "left": {
+       "rows": 2707,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 2648,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 2660,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 4121,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 4201,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 3830,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "held = key blue"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "held = key green"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "held = key red"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     },
+     "pass": true,
+     "seconds": 0.1
+    },
+    "tree_learned": {
+     "nodes": 24,
+     "goals_expanded": 5,
+     "rounds": [
+      {
+       "round": 0,
+       "layouts_paused": 50,
+       "goals_needed": {
+        "(goal square)": 50
+       },
+       "seconds": 18.4
+      },
+      {
+       "round": 1,
+       "layouts_paused": 50,
+       "goals_needed": {
+        "forward": 50
+       },
+       "seconds": 21.5
+      },
+      {
+       "round": 2,
+       "layouts_paused": 50,
+       "goals_needed": {
+        "forward/toggle": 50
+       },
+       "seconds": 31.9
+      },
+      {
+       "round": 3,
+       "layouts_paused": 9,
+       "goals_needed": {
+        "forward/toggle/pickup": 9
+       },
+       "seconds": 38.5
+      },
+      {
+       "round": 4,
+       "layouts_paused": 2,
+       "goals_needed": {
+        "forward/toggle/pickup/drop": 2
+       },
+       "seconds": 84.0
+      },
+      {
+       "round": 5,
+       "layouts_paused": 0,
+       "goals_needed": {},
+       "seconds": 0.2
+      }
+     ],
+     "seconds": 194.5,
+     "placing_views": {
+      "views": 6036220,
+      "max_mismatch": 2,
+      "ties": 0,
+      "mismatch_over_2": 0
+     },
+     "tree": [
+      [
+       "(goal square)",
+       "expanded",
+       null
+      ],
+      [
+       "forward",
+       "expanded",
+       {
+        "evidence_nats": 35.5,
+        "rate_on": 0.0068,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle",
+       "expanded",
+       {
+        "evidence_nats": 180.6,
+        "rate_on": 0.0057,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/right",
+       "not expanded",
+       {
+        "evidence_nats": 48.7,
+        "rate_on": 0.0109,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/left",
+       "not expanded",
+       {
+        "evidence_nats": 132.9,
+        "rate_on": 0.0269,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/forward",
+       "not expanded",
+       {
+        "evidence_nats": 164.5,
+        "rate_on": 0.0328,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/pickup",
+       "not expanded",
+       {
+        "evidence_nats": 62.1,
+        "rate_on": 0.0119,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/drop",
+       "not expanded",
+       {
+        "evidence_nats": 18.2,
+        "rate_on": 0.0138,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/pickup",
+       "expanded",
+       {
+        "evidence_nats": 737.7,
+        "rate_on": 0.018,
+        "rate_off": 0.0,
+        "on_at_start": 0.8184
+       }
+      ],
+      [
+       "forward/toggle/right",
+       "not expanded",
+       {
+        "evidence_nats": 285.5,
+        "rate_on": 0.0277,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/left",
+       "not expanded",
+       {
+        "evidence_nats": 380.1,
+        "rate_on": 0.0365,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/forward",
+       "not expanded",
+       {
+        "evidence_nats": 307.0,
+        "rate_on": 0.0297,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/drop",
+       "not expanded",
+       {
+        "evidence_nats": 18.0,
+        "rate_on": 0.0138,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/toggle",
+       "not expanded",
+       {
+        "evidence_nats": 9.7,
+        "rate_on": 0.0066,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop",
+       "expanded",
+       {
+        "evidence_nats": 2298.0,
+        "rate_on": 0.1236,
+        "rate_off": 0.0,
+        "on_at_start": 0.8184
+       }
+      ],
+      [
+       "forward/toggle/pickup/right",
+       "not expanded",
+       {
+        "evidence_nats": 655.6,
+        "rate_on": 0.0395,
+        "rate_off": 0.0,
+        "on_at_start": 0.8812
+       }
+      ],
+      [
+       "forward/toggle/pickup/left",
+       "not expanded",
+       {
+        "evidence_nats": 641.0,
+        "rate_on": 0.0387,
+        "rate_off": 0.0,
+        "on_at_start": 0.8812
+       }
+      ],
+      [
+       "forward/toggle/pickup/forward",
+       "not expanded",
+       {
+        "evidence_nats": 540.6,
+        "rate_on": 0.0327,
+        "rate_off": 0.0,
+        "on_at_start": 0.8816
+       }
+      ],
+      [
+       "forward/toggle/pickup/toggle",
+       "not expanded",
+       {
+        "evidence_nats": 116.9,
+        "rate_on": 0.0106,
+        "rate_off": 0.0,
+        "on_at_start": 0.8936
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop/pickup",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 201.4,
+        "rate_on": 0.0332,
+        "rate_off": 0.0,
+        "on_at_start": 0.953
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop/right",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 457.9,
+        "rate_on": 0.0403,
+        "rate_off": 0.0,
+        "on_at_start": 0.8812
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop/left",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 434.3,
+        "rate_on": 0.0383,
+        "rate_off": 0.0,
+        "on_at_start": 0.8812
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop/forward",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 367.4,
+        "rate_on": 0.0326,
+        "rate_off": 0.0,
+        "on_at_start": 0.8816
+       }
+      ],
+      [
+       "forward/toggle/pickup/drop/toggle",
+       "leaf: depth limit",
+       {
+        "evidence_nats": 89.7,
+        "rate_on": 0.0106,
+        "rate_off": 0.0,
+        "on_at_start": 0.8936
+       }
+      ]
+     ],
+     "last_round_play": {
+      "success": 1.0,
+      "mean_steps_when_successful": 16.2,
+      "random_share": 0.0
+     },
+     "same_ways_as_027": false
+    },
+    "criterion_2_conditions": {
+     "nodes_of_learned_tree": {
+      "forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0115
+      },
+      "forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.0987
+      },
+      "forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.0227
+      },
+      "forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.0227
+      },
+      "forward/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0227
+      },
+      "forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.0174
+      },
+      "forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.014
+      },
+      "forward/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.7318
+      },
+      "forward/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.119
+      },
+      "forward/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.119
+      },
+      "forward/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.119
+      },
+      "forward/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.1012
+      },
+      "forward/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.1013
+      },
+      "forward/toggle/pickup/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.8375
+      },
+      "forward/toggle/pickup/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7523
+      },
+      "forward/toggle/pickup/drop/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.9618
+      },
+      "forward/toggle/pickup/drop/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.9003
+      },
+      "forward/toggle/pickup/drop/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.9003
+      },
+      "forward/toggle/pickup/drop/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.9003
+      },
+      "forward/toggle/pickup/drop/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8574
+      }
+     },
+     "lowest": 1.0,
+     "pass": true,
+     "nodes_of_027_tree": {
+      "forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0115
+      },
+      "forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.0987
+      },
+      "forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.0227
+      },
+      "forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.0227
+      },
+      "forward/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0227
+      },
+      "forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.0174
+      },
+      "forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.014
+      },
+      "forward/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.7318
+      },
+      "forward/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.119
+      },
+      "forward/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.119
+      },
+      "forward/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.119
+      },
+      "forward/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.1012
+      },
+      "forward/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.1013
+      },
+      "forward/toggle/pickup/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.8375
+      },
+      "forward/toggle/pickup/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7523
+      },
+      "forward/toggle/pickup/drop/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.9618
+      },
+      "forward/toggle/pickup/drop/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.9003
+      },
+      "forward/toggle/pickup/drop/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.9003
+      },
+      "forward/toggle/pickup/drop/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.9003
+      },
+      "forward/toggle/pickup/drop/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8574
+      },
+      "forward/toggle/pickup/right/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.9003
+      },
+      "forward/toggle/pickup/right/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.8669
+      },
+      "forward/toggle/pickup/right/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8181
+      },
+      "forward/toggle/pickup/right/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/right/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/right/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/left/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.9003
+      },
+      "forward/toggle/pickup/left/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.8669
+      },
+      "forward/toggle/pickup/left/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8181
+      },
+      "forward/toggle/pickup/left/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/left/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/left/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.9003
+      },
+      "forward/toggle/pickup/forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.867
+      },
+      "forward/toggle/pickup/forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8181
+      },
+      "forward/toggle/pickup/forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8052
+      },
+      "forward/toggle/pickup/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.8574
+      },
+      "forward/toggle/pickup/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8184
+      },
+      "forward/toggle/pickup/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8184
+      },
+      "forward/toggle/pickup/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8184
+      },
+      "forward/toggle/pickup/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.7624
+      },
+      "forward/toggle/right/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.8175
+      },
+      "forward/toggle/right/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.119
+      },
+      "forward/toggle/right/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.119
+      },
+      "forward/toggle/right/pickup/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.9183
+      },
+      "forward/toggle/right/pickup/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8762
+      },
+      "forward/toggle/right/pickup/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8762
+      },
+      "forward/toggle/right/pickup/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8762
+      },
+      "forward/toggle/right/pickup/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8272
+      }
+     },
+     "seconds": 17.1
+    },
+    "way_kinds_learned_tree": {
+     "forward": {
+      "successes": 102,
+      "codes": [
+       1
+      ],
+      "kinds": {
+       "goal": 1.0
+      }
+     },
+     "forward/toggle": {
+      "successes": 554,
+      "codes": [
+       0
+      ],
+      "kinds": {
+       "closed door": 1.0
+      }
+     },
+     "forward/pickup": {
+      "successes": 169,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/drop": {
+      "successes": 101,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/pickup": {
+      "successes": 19141,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/drop": {
+      "successes": 101,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/toggle": {
+      "successes": 50,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      }
+     },
+     "forward/toggle/pickup/drop": {
+      "successes": 16893,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/pickup/toggle": {
+      "successes": 458,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      }
+     },
+     "forward/toggle/pickup/drop/pickup": {
+      "successes": 6120,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/pickup/drop/toggle": {
+      "successes": 444,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      }
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.4,
+     "random_steps": 0,
+     "moves": 820,
+     "random_share": 0.0,
+     "random_no_way": 0,
+     "move_way_steps": 18,
+     "dependence_checks_per_move": 0.573,
+     "failed_acts": 3,
+     "moves_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 4.1,
+     "conditions_computed_per_move": 327.4,
+     "seconds_per_layout_mean": 0.035,
+     "seconds_per_layout_max": 0.28,
+     "ways_used": {
+      "forward": 50,
+      "forward/toggle": 50,
+      "forward/toggle/pickup": 50,
+      "forward/toggle/pickup/drop": 5,
+      "forward/toggle/pickup/toggle": 1,
+      "forward/toggle/pickup/drop/pickup": 5
+     },
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm3_learned_on_027_tree": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.4,
+     "random_steps": 0,
+     "moves": 820,
+     "random_share": 0.0,
+     "random_no_way": 0,
+     "move_way_steps": 18,
+     "dependence_checks_per_move": 0.573,
+     "failed_acts": 3,
+     "moves_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 4.1,
+     "conditions_computed_per_move": 327.4,
+     "seconds_per_layout_mean": 0.04,
+     "seconds_per_layout_max": 0.25,
+     "ways_used": {
+      "forward": 50,
+      "forward/toggle": 50,
+      "forward/toggle/pickup": 50,
+      "forward/toggle/pickup/drop": 5,
+      "forward/toggle/pickup/toggle": 1,
+      "forward/toggle/pickup/drop/pickup": 5
+     },
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm4_no_rules": {
+     "success": 0.16,
+     "mean_steps_when_successful": 79.5,
+     "random_steps": 7343,
+     "moves": 9036,
+     "random_share": 0.8126,
+     "random_no_way": 0,
+     "move_way_steps": 24,
+     "dependence_checks_per_move": 0.007,
+     "failed_acts": 47,
+     "moves_refused": 0,
+     "predictions_wrong": 357,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 2.04,
+     "conditions_computed_per_move": 10.4,
+     "seconds_per_layout_mean": 0.08,
+     "seconds_per_layout_max": 0.18,
+     "ways_used": {
+      "forward": 8,
+      "forward/toggle": 50,
+      "forward/toggle/pickup": 16
+     },
+     "failing_layouts": 42,
+     "failing_that_picked_other_key": 14
+    },
+    "acting_seconds": 143.7,
+    "gate": {
+     "facts_agree": true,
+     "upper_bound_98": true,
+     "baseline_below_98": true
+    },
+    "criterion_3_acting": {
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_within_1_5x": true,
+     "pass": true
+    },
+    "seconds": 421.8
+   },
+   "switch": {
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "counted_kinds": [
+     [
+      "closed door blue",
+      "closed door green",
+      "closed door red"
+     ],
+     [
+      "goal"
+     ],
+     [
+      "open door blue",
+      "open door green",
+      "open door red"
+     ],
+     [
+      "floor"
+     ],
+     [
+      "switch off",
+      "switch on"
+     ],
+     [
+      "vase"
+     ],
+     [
+      "key blue",
+      "key green",
+      "key red"
+     ],
+     [
+      "wall"
+     ]
+    ],
+    "tree_027": {
+     "nodes": 20,
+     "goals_expanded": 4,
+     "rounds": 5,
+     "tree": [
+      [
+       "(goal square)",
+       "expanded"
+      ],
+      [
+       "forward",
+       "expanded"
+      ],
+      [
+       "forward/toggle",
+       "expanded"
+      ],
+      [
+       "forward/left",
+       "not expanded"
+      ],
+      [
+       "forward/forward",
+       "not expanded"
+      ],
+      [
+       "forward/right",
+       "not expanded"
+      ],
+      [
+       "forward/pickup",
+       "not expanded"
+      ],
+      [
+       "forward/drop",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle",
+       "expanded"
+      ],
+      [
+       "forward/toggle/left",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/right",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/forward",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/pickup",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/drop",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/left",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/right",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/pickup",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/forward",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/toggle",
+       "not expanded"
+      ],
+      [
+       "forward/toggle/toggle/drop",
+       "not expanded"
+      ]
+     ]
+    },
+    "arm1_upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.5,
+     "random_steps": 0,
+     "moves": 824,
+     "random_share": 0.0,
+     "move_way_steps": 20,
+     "dependence_checks_per_move": 0.558,
+     "failed_acts": 3,
+     "layouts_with_failed_acts": 3,
+     "moves_refused": 0,
+     "ways_used": {
+      "forward": 50,
+      "forward/toggle": 50,
+      "forward/toggle/toggle": 50,
+      "forward/toggle/toggle/pickup": 1
+     },
+     "first_key_matching_success": null,
+     "layouts_first_key_matching": 0,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "model": {
+     "left": {
+      "rows_view_changed": 65287,
+      "rows_used": 40000,
+      "entering_places": 60,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {},
+      "outcome_by_front": {
+       "closed door blue": "changed",
+       "closed door green": "changed",
+       "goal": "changed",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "changed",
+       "switch on": "changed",
+       "vase": "changed",
+       "open door red": "changed",
+       "key blue": "changed",
+       "key green": "changed",
+       "key red": "changed",
+       "wall": "changed",
+       "closed door red": "changed"
+      },
+      "seconds": 0.1
+     },
+     "right": {
+      "rows_view_changed": 65082,
+      "rows_used": 40000,
+      "entering_places": 60,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {},
+      "outcome_by_front": {
+       "closed door blue": "changed",
+       "closed door green": "changed",
+       "goal": "changed",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "changed",
+       "switch on": "changed",
+       "vase": "changed",
+       "open door red": "changed",
+       "key blue": "changed",
+       "key green": "changed",
+       "key red": "changed",
+       "wall": "changed",
+       "closed door red": "changed"
+      },
+      "seconds": 0.1
+     },
+     "forward": {
+      "rows_view_changed": 32675,
+      "rows_used": 32675,
+      "entering_places": 71,
+      "lowest_predicted_share": 1.0,
+      "places_predicted_below_1": 0,
+      "tables_that_change_appearance": {
+       "place 84 from 71": [
+        [
+         "goal",
+         "app 22"
+        ],
+        [
+         "open door blue",
+         "app 27"
+        ],
+        [
+         "open door green",
+         "app 32"
+        ],
+        [
+         "floor",
+         "app 37"
+        ],
+        [
+         "open door red",
+         "app 57"
+        ]
+       ],
+       "place 97 from 84": [
+        [
+         "app 27",
+         "open door blue"
+        ],
+        [
+         "app 32",
+         "open door green"
+        ],
+        [
+         "app 37",
+         "floor"
+        ],
+        [
+         "app 57",
+         "open door red"
+        ]
+       ]
+      },
+      "outcome_by_front": {
+       "closed door blue": "unchanged",
+       "closed door green": "unchanged",
+       "goal": "episode ended",
+       "open door blue": "changed",
+       "open door green": "changed",
+       "floor": "changed",
+       "switch off": "unchanged",
+       "switch on": "unchanged",
+       "vase": "unchanged",
+       "open door red": "changed",
+       "key blue": "unchanged",
+       "key green": "unchanged",
+       "key red": "unchanged",
+       "wall": "unchanged",
+       "closed door red": "unchanged"
+      },
+      "seconds": 0.1
+     },
+     "forward_map_places_not_a_one_row_shift": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      38,
+      39,
+      51,
+      52,
+      64,
+      65,
+      77,
+      78,
+      90,
+      91,
+      103,
+      104,
+      116,
+      117,
+      129,
+      130,
+      142,
+      143,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168
+     ],
+     "places_changed_by_pickup_drop_toggle": [
+      71,
+      169
+     ],
+     "outcomes": {
+      "pickup closed door blue": {
+       "nothing": 2784.0
+      },
+      "pickup closed door green": {
+       "nothing": 3016.0
+      },
+      "pickup goal": {
+       "nothing": 344.0
+      },
+      "pickup open door blue": {
+       "nothing": 376.0
+      },
+      "pickup open door green": {
+       "nothing": 272.0
+      },
+      "pickup floor": {
+       "nothing": 254368.0
+      },
+      "pickup switch off": {
+       "nothing": 14576.0
+      },
+      "pickup switch on": {
+       "nothing": 11728.0
+      },
+      "pickup vase": {
+       "nothing": 3824.0
+      },
+      "pickup open door red": {
+       "nothing": 296.0
+      },
+      "pickup key blue": {
+       "floor / key blue": 14781.0,
+       "nothing": 1464.0
+      },
+      "pickup key green": {
+       "floor / key green": 14347.0,
+       "nothing": 1544.0
+      },
+      "pickup key red": {
+       "floor / key red": 14764.0,
+       "nothing": 1688.0
+      },
+      "pickup wall": {
+       "nothing": 175640.0
+      },
+      "pickup closed door red": {
+       "nothing": 2768.0
+      },
+      "drop closed door blue, holding floor": {
+       "nothing": 2664.0
+      },
+      "drop closed door blue, holding key blue": {
+       "nothing": 200.0
+      },
+      "drop closed door blue, holding key green": {
+       "nothing": 112.0
+      },
+      "drop closed door blue, holding key red": {
+       "nothing": 112.0
+      },
+      "drop closed door green, holding floor": {
+       "nothing": 2456.0
+      },
+      "drop closed door green, holding key blue": {
+       "nothing": 128.0
+      },
+      "drop closed door green, holding key green": {
+       "nothing": 288.0
+      },
+      "drop closed door green, holding key red": {
+       "nothing": 168.0
+      },
+      "drop goal, holding floor": {
+       "nothing": 376.0
+      },
+      "drop goal, holding key green": {
+       "nothing": 8.0
+      },
+      "drop goal, holding key red": {
+       "nothing": 8.0
+      },
+      "drop open door blue, holding floor": {
+       "nothing": 368.0
+      },
+      "drop open door blue, holding key blue": {
+       "nothing": 24.0
+      },
+      "drop open door green, holding floor": {
+       "nothing": 272.0
+      },
+      "drop open door green, holding key green": {
+       "nothing": 32.0
+      },
+      "drop open door green, holding key red": {
+       "nothing": 8.0
+      },
+      "drop floor, holding floor": {
+       "nothing": 214624.0
+      },
+      "drop floor, holding key blue": {
+       "key blue / floor": 14502.0
+      },
+      "drop floor, holding key green": {
+       "key green / floor": 14047.0
+      },
+      "drop floor, holding key red": {
+       "key red / floor": 14496.0
+      },
+      "drop switch off, holding floor": {
+       "nothing": 12144.0
+      },
+      "drop switch off, holding key blue": {
+       "nothing": 752.0
+      },
+      "drop switch off, holding key green": {
+       "nothing": 952.0
+      },
+      "drop switch off, holding key red": {
+       "nothing": 744.0
+      },
+      "drop switch on, holding floor": {
+       "nothing": 10184.0
+      },
+      "drop switch on, holding key blue": {
+       "nothing": 576.0
+      },
+      "drop switch on, holding key green": {
+       "nothing": 648.0
+      },
+      "drop switch on, holding key red": {
+       "nothing": 728.0
+      },
+      "drop vase, holding floor": {
+       "nothing": 3520.0
+      },
+      "drop vase, holding key blue": {
+       "nothing": 248.0
+      },
+      "drop vase, holding key green": {
+       "nothing": 192.0
+      },
+      "drop vase, holding key red": {
+       "nothing": 216.0
+      },
+      "drop open door red, holding floor": {
+       "nothing": 224.0
+      },
+      "drop open door red, holding key blue": {
+       "nothing": 8.0
+      },
+      "drop open door red, holding key red": {
+       "nothing": 40.0
+      },
+      "drop key blue, holding floor": {
+       "nothing": 15168.0
+      },
+      "drop key blue, holding key green": {
+       "nothing": 680.0
+      },
+      "drop key blue, holding key red": {
+       "nothing": 800.0
+      },
+      "drop key green, holding floor": {
+       "nothing": 14520.0
+      },
+      "drop key green, holding key blue": {
+       "nothing": 696.0
+      },
+      "drop key green, holding key red": {
+       "nothing": 880.0
+      },
+      "drop key red, holding floor": {
+       "nothing": 15240.0
+      },
+      "drop key red, holding key blue": {
+       "nothing": 736.0
+      },
+      "drop key red, holding key green": {
+       "nothing": 856.0
+      },
+      "drop wall, holding floor": {
+       "nothing": 146136.0
+      },
+      "drop wall, holding key blue": {
+       "nothing": 9848.0
+      },
+      "drop wall, holding key green": {
+       "nothing": 9688.0
+      },
+      "drop wall, holding key red": {
+       "nothing": 10528.0
+      },
+      "drop closed door red, holding floor": {
+       "nothing": 2088.0
+      },
+      "drop closed door red, holding key blue": {
+       "nothing": 144.0
+      },
+      "drop closed door red, holding key green": {
+       "nothing": 72.0
+      },
+      "drop closed door red, holding key red": {
+       "nothing": 280.0
+      },
+      "toggle closed door blue": {
+       "nothing": 2520.0,
+       "open door blue / same": 669.0
+      },
+      "toggle closed door green": {
+       "nothing": 2328.0,
+       "open door green / same": 676.0
+      },
+      "toggle goal": {
+       "nothing": 352.0
+      },
+      "toggle open door blue": {
+       "closed door blue / same": 376.0
+      },
+      "toggle open door green": {
+       "closed door green / same": 371.0
+      },
+      "toggle floor": {
+       "nothing": 256624.0
+      },
+      "toggle switch off": {
+       "switch on / same": 14543.0
+      },
+      "toggle switch on": {
+       "switch off / same": 12120.0
+      },
+      "toggle vase": {
+       "floor / same": 4120.0
+      },
+      "toggle open door red": {
+       "closed door red / same": 334.0
+      },
+      "toggle key blue": {
+       "nothing": 16616.0
+      },
+      "toggle key green": {
+       "nothing": 15776.0
+      },
+      "toggle key red": {
+       "nothing": 16864.0
+      },
+      "toggle wall": {
+       "nothing": 174024.0
+      },
+      "toggle closed door red": {
+       "nothing": 2176.0,
+       "open door red / same": 617.0
+      }
+     },
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14781.0,
+         "happened_weighted": 14781.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1464.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14964,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7073.6
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14347.0,
+         "happened_weighted": 14347.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1544.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14540,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7285.4
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14764.0,
+         "happened_weighted": 14764.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1688.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14975,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7827.1
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 669.0,
+         "happened_weighted": 669.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2520.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 984,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2342.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 676.0,
+         "happened_weighted": 676.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2328.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 967,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2290.0
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 617.0,
+         "happened_weighted": 617.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2176.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 889,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2107.2
+        }
+       ]
+      }
+     ],
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "pose_sweeps": 1,
+     "seconds": 0.8
+    },
+    "criterion_1_effects": {
+     "per_action": {
+      "left": {
+       "rows": 2652,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 2572,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 2649,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 4108,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 4167,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 3880,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "switch on in view"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     },
+     "pass": true,
+     "seconds": 0.1
+    },
+    "tree_learned": {
+     "nodes": 20,
+     "goals_expanded": 4,
+     "rounds": [
+      {
+       "round": 0,
+       "layouts_paused": 50,
+       "goals_needed": {
+        "(goal square)": 50
+       },
+       "seconds": 18.6
+      },
+      {
+       "round": 1,
+       "layouts_paused": 50,
+       "goals_needed": {
+        "forward": 50
+       },
+       "seconds": 21.8
+      },
+      {
+       "round": 2,
+       "layouts_paused": 50,
+       "goals_needed": {
+        "forward/toggle": 50
+       },
+       "seconds": 32.8
+      },
+      {
+       "round": 3,
+       "layouts_paused": 6,
+       "goals_needed": {
+        "forward/toggle/toggle": 6
+       },
+       "seconds": 36.6
+      },
+      {
+       "round": 4,
+       "layouts_paused": 0,
+       "goals_needed": {},
+       "seconds": 0.1
+      }
+     ],
+     "seconds": 110.0,
+     "placing_views": {
+      "views": 4746704,
+      "max_mismatch": 2,
+      "ties": 0,
+      "mismatch_over_2": 0
+     },
+     "tree": [
+      [
+       "(goal square)",
+       "expanded",
+       null
+      ],
+      [
+       "forward",
+       "expanded",
+       {
+        "evidence_nats": 132.1,
+        "rate_on": 0.0064,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle",
+       "expanded",
+       {
+        "evidence_nats": 327.9,
+        "rate_on": 0.0057,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/left",
+       "not expanded",
+       {
+        "evidence_nats": 386.4,
+        "rate_on": 0.0228,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/forward",
+       "not expanded",
+       {
+        "evidence_nats": 314.1,
+        "rate_on": 0.0182,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/right",
+       "not expanded",
+       {
+        "evidence_nats": 269.6,
+        "rate_on": 0.0161,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/pickup",
+       "not expanded",
+       {
+        "evidence_nats": 138.0,
+        "rate_on": 0.0253,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/drop",
+       "not expanded",
+       {
+        "evidence_nats": 48.7,
+        "rate_on": 0.0114,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/toggle",
+       "expanded",
+       {
+        "evidence_nats": 443.3,
+        "rate_on": 0.012,
+        "rate_off": 0.0,
+        "on_at_start": 0.8474
+       }
+      ],
+      [
+       "forward/toggle/left",
+       "not expanded",
+       {
+        "evidence_nats": 1094.6,
+        "rate_on": 0.035,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/right",
+       "not expanded",
+       {
+        "evidence_nats": 954.9,
+        "rate_on": 0.0306,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/forward",
+       "not expanded",
+       {
+        "evidence_nats": 746.0,
+        "rate_on": 0.0238,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/pickup",
+       "not expanded",
+       {
+        "evidence_nats": 906.2,
+        "rate_on": 0.0336,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/drop",
+       "not expanded",
+       {
+        "evidence_nats": 247.0,
+        "rate_on": 0.03,
+        "rate_off": 0.0,
+        "on_at_start": 0.0
+       }
+      ],
+      [
+       "forward/toggle/toggle/left",
+       "not expanded",
+       {
+        "evidence_nats": 583.0,
+        "rate_on": 0.0381,
+        "rate_off": 0.0,
+        "on_at_start": 0.952
+       }
+      ],
+      [
+       "forward/toggle/toggle/right",
+       "not expanded",
+       {
+        "evidence_nats": 543.1,
+        "rate_on": 0.0356,
+        "rate_off": 0.0,
+        "on_at_start": 0.952
+       }
+      ],
+      [
+       "forward/toggle/toggle/pickup",
+       "not expanded",
+       {
+        "evidence_nats": 348.4,
+        "rate_on": 0.0327,
+        "rate_off": 0.0,
+        "on_at_start": 0.9678
+       }
+      ],
+      [
+       "forward/toggle/toggle/forward",
+       "not expanded",
+       {
+        "evidence_nats": 386.4,
+        "rate_on": 0.0258,
+        "rate_off": 0.0,
+        "on_at_start": 0.9532
+       }
+      ],
+      [
+       "forward/toggle/toggle/toggle",
+       "not expanded",
+       {
+        "evidence_nats": 430.8,
+        "rate_on": 0.0291,
+        "rate_off": 0.0,
+        "on_at_start": 0.9368
+       }
+      ],
+      [
+       "forward/toggle/toggle/drop",
+       "not expanded",
+       {
+        "evidence_nats": 284.7,
+        "rate_on": 0.0342,
+        "rate_off": 0.0,
+        "on_at_start": 0.8474
+       }
+      ]
+     ],
+     "last_round_play": {
+      "success": 1.0,
+      "mean_steps_when_successful": 16.5,
+      "random_share": 0.0
+     },
+     "same_ways_as_027": true
+    },
+    "criterion_2_conditions": {
+     "nodes_of_learned_tree": {
+      "forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0319
+      },
+      "forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.2398
+      },
+      "forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.0503
+      },
+      "forward/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0505
+      },
+      "forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.0503
+      },
+      "forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.0345
+      },
+      "forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.0342
+      },
+      "forward/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7802
+      },
+      "forward/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.3051
+      },
+      "forward/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.3051
+      },
+      "forward/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.3061
+      },
+      "forward/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.2982
+      },
+      "forward/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.2486
+      },
+      "forward/toggle/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8963
+      },
+      "forward/toggle/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8963
+      },
+      "forward/toggle/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.9398
+      },
+      "forward/toggle/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8971
+      },
+      "forward/toggle/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8297
+      },
+      "forward/toggle/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.801
+      }
+     },
+     "lowest": 1.0,
+     "pass": true,
+     "nodes_of_027_tree": {
+      "forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0319
+      },
+      "forward/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.2398
+      },
+      "forward/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.0503
+      },
+      "forward/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.0505
+      },
+      "forward/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.0503
+      },
+      "forward/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.0345
+      },
+      "forward/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.0342
+      },
+      "forward/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.7802
+      },
+      "forward/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.3051
+      },
+      "forward/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.3051
+      },
+      "forward/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.3061
+      },
+      "forward/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.2982
+      },
+      "forward/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.2486
+      },
+      "forward/toggle/toggle/left": {
+       "agree": 1.0,
+       "exact_on_share": 0.8963
+      },
+      "forward/toggle/toggle/right": {
+       "agree": 1.0,
+       "exact_on_share": 0.8963
+      },
+      "forward/toggle/toggle/pickup": {
+       "agree": 1.0,
+       "exact_on_share": 0.9398
+      },
+      "forward/toggle/toggle/forward": {
+       "agree": 1.0,
+       "exact_on_share": 0.8971
+      },
+      "forward/toggle/toggle/toggle": {
+       "agree": 1.0,
+       "exact_on_share": 0.8297
+      },
+      "forward/toggle/toggle/drop": {
+       "agree": 1.0,
+       "exact_on_share": 0.801
+      }
+     },
+     "seconds": 10.6
+    },
+    "way_kinds_learned_tree": {
+     "forward": {
+      "successes": 341,
+      "codes": [
+       1
+      ],
+      "kinds": {
+       "goal": 1.0
+      }
+     },
+     "forward/toggle": {
+      "successes": 1838,
+      "codes": [
+       0
+      ],
+      "kinds": {
+       "closed door": 0.9984
+      }
+     },
+     "forward/pickup": {
+      "successes": 199,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/drop": {
+      "successes": 147,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/toggle": {
+      "successes": 10309,
+      "codes": [
+       4,
+       5
+      ],
+      "kinds": {
+       "switch": 0.9884,
+       "vase": 0.0116
+      }
+     },
+     "forward/toggle/pickup": {
+      "successes": 2816,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/drop": {
+      "successes": 582,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     },
+     "forward/toggle/toggle/pickup": {
+      "successes": 8633,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      }
+     },
+     "forward/toggle/toggle/toggle": {
+      "successes": 1848,
+      "codes": [
+       4,
+       5
+      ],
+      "kinds": {
+       "switch": 0.7614,
+       "vase": 0.2386
+      }
+     },
+     "forward/toggle/toggle/drop": {
+      "successes": 1008,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      }
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.5,
+     "random_steps": 0,
+     "moves": 824,
+     "random_share": 0.0,
+     "random_no_way": 0,
+     "move_way_steps": 20,
+     "dependence_checks_per_move": 0.558,
+     "failed_acts": 3,
+     "moves_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 3.65,
+     "conditions_computed_per_move": 138.7,
+     "seconds_per_layout_mean": 0.022,
+     "seconds_per_layout_max": 0.05,
+     "ways_used": {
+      "forward": 50,
+      "forward/toggle": 50,
+      "forward/toggle/toggle": 50,
+      "forward/toggle/toggle/pickup": 1
+     },
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm3_learned_on_027_tree": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.5,
+     "random_steps": 0,
+     "moves": 824,
+     "random_share": 0.0,
+     "random_no_way": 0,
+     "move_way_steps": 20,
+     "dependence_checks_per_move": 0.558,
+     "failed_acts": 3,
+     "moves_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 3.65,
+     "conditions_computed_per_move": 138.7,
+     "seconds_per_layout_mean": 0.026,
+     "seconds_per_layout_max": 0.08,
+     "ways_used": {
+      "forward": 50,
+      "forward/toggle": 50,
+      "forward/toggle/toggle": 50,
+      "forward/toggle/toggle/pickup": 1
+     },
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm4_no_rules": {
+     "success": 0.12,
+     "mean_steps_when_successful": 80.3,
+     "random_steps": 7528,
+     "moves": 9282,
+     "random_share": 0.811,
+     "random_no_way": 0,
+     "move_way_steps": 23,
+     "dependence_checks_per_move": 0.005,
+     "failed_acts": 51,
+     "moves_refused": 0,
+     "predictions_wrong": 384,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 2.03,
+     "conditions_computed_per_move": 8.5,
+     "seconds_per_layout_mean": 0.076,
+     "seconds_per_layout_max": 0.11,
+     "ways_used": {
+      "forward": 6,
+      "forward/toggle": 50,
+      "forward/toggle/toggle": 6,
+      "forward/toggle/pickup": 1
+     },
+     "failing_layouts": 44,
+     "failing_that_picked_other_key": 11
+    },
+    "acting_seconds": 59.5,
+    "gate": {
+     "facts_agree": true,
+     "upper_bound_98": true,
+     "baseline_below_98": true
+    },
+    "criterion_3_acting": {
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_within_1_5x": true,
+     "pass": true
+    },
+    "seconds": 244.1
+   }
+  },
+  "seconds": 666.0
+ }
+}

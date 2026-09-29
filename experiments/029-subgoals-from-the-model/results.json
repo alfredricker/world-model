@@ -1,0 +1,3721 @@
+{
+ "note": "Card 029. run: bin/prun python tools/card029/subgoals.py (runs/029_subgoals.json), stopped at 30 minutes during arm 3's tree growth in the both world; every other arm finished. small_test: --layouts 20 --heldout 200 --arm3 either (runs/029_smoke.json).",
+ "run": {
+  "note": "Card 029, tools/card029/subgoals.py; subgoals worked backward through card 028's learned model.",
+  "episodes": 5000,
+  "layouts": 500,
+  "heldout_episodes": 1000,
+  "worlds": {
+   "key": {
+    "arm1_shortest": {
+     "solved_within_budget": 1.0,
+     "mean_steps": 15.91,
+     "seconds": 0.6
+    },
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "model": {
+     "seconds": 1.0,
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15323.0,
+         "happened_weighted": 15323.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1464.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15506,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7146.3
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14902.0,
+         "happened_weighted": 14902.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1680.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15112,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7822.3
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15132.0,
+         "happened_weighted": 15132.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1608.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15333,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7616.3
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "held = key blue"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 213.0,
+         "happened_weighted": 213.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3504.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 651,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=60"
+          ]
+         ],
+         "evidence_gain_bits": 1158.3
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "held = key green"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 178.0,
+         "happened_weighted": 178.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3176.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 575,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=65"
+          ]
+         ],
+         "evidence_gain_bits": 985.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "held = key red"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 172.0,
+         "happened_weighted": 172.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3008.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 548,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=70"
+          ]
+         ],
+         "evidence_gain_bits": 946.9
+        }
+       ]
+      }
+     ]
+    },
+    "model_check": {
+     "per_action": {
+      "left": {
+       "rows": 13281,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 13303,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 13212,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 21150,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 20971,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 19074,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "held = key blue"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "held = key green"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "held = key red"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.38,
+     "random_steps": 7,
+     "moves": 8189,
+     "random_share": 0.0009,
+     "subgoals_ok_share": 0.998,
+     "layouts_subgoals_not_ok": 1,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {
+      "held = key green": 170,
+      "held = key red": 149,
+      "held = key blue": 180
+     },
+     "door_opened_by": {
+      "key": 500
+     },
+     "tiles_in_the_way": {
+      "subgoals": 500,
+      "door": 500,
+      "other": {},
+      "confirmed_blocking": 500
+     },
+     "steps_by_kind": {
+      "closer": 6454,
+      "act": 1499,
+      "move way": 226,
+      "move way, two deep": 3
+     },
+     "failed_acts": 0,
+     "actions_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 6.9,
+     "seconds_per_layout_mean": 0.015,
+     "seconds_per_layout_max": 0.07,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "held = key green",
+       "facing key green (for pickup)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "held = key red",
+       "facing key red (for pickup)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "held = key blue",
+       "facing key blue (for pickup)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.4
+    },
+    "arm4_no_rules": {
+     "success": 0.044,
+     "mean_steps_when_successful": 80.73,
+     "random_steps": 93780,
+     "moves": 97376,
+     "random_share": 0.9631,
+     "subgoals_ok_share": 0.0,
+     "layouts_subgoals_not_ok": 500,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {},
+     "door_opened_by": {
+      "null": 478,
+      "key": 20,
+      "key+switch": 2
+     },
+     "tiles_in_the_way": {
+      "subgoals": 500,
+      "door": 500,
+      "other": {},
+      "confirmed_blocking": 500
+     },
+     "steps_by_kind": {
+      "closer": 2835,
+      "act": 522,
+      "move way": 236,
+      "move way, two deep": 3
+     },
+     "failed_acts": 1561,
+     "actions_refused": 0,
+     "predictions_wrong": 1561,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 3.9,
+     "seconds_per_layout_mean": 0.098,
+     "seconds_per_layout_max": 0.24,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "facing tile 133 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "facing tile 87 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "facing tile 69 (for toggle)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 2.7
+    },
+    "gate": {
+     "facts_agree": true,
+     "effects_exact": true,
+     "rules_as_expected": true,
+     "shortest_solves_all": true,
+     "baseline_below_98": true
+    },
+    "criterion_1_subgoals": {
+     "share": 0.998,
+     "pass": true
+    },
+    "criterion_acting": {
+     "which": 2,
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_ratio": 1.03,
+     "steps_within_1.1x": true,
+     "pass": true
+    },
+    "seconds": 13.5
+   },
+   "switch": {
+    "arm1_shortest": {
+     "solved_within_budget": 1.0,
+     "mean_steps": 16.08,
+     "seconds": 0.6
+    },
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "model": {
+     "seconds": 0.8,
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14781.0,
+         "happened_weighted": 14781.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1464.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14964,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7073.6
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14347.0,
+         "happened_weighted": 14347.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1544.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14540,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7285.4
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14764.0,
+         "happened_weighted": 14764.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1688.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14975,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7827.1
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 669.0,
+         "happened_weighted": 669.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2520.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 984,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2342.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 676.0,
+         "happened_weighted": 676.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2328.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 967,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2290.0
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 617.0,
+         "happened_weighted": 617.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2176.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 889,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2107.2
+        }
+       ]
+      }
+     ]
+    },
+    "model_check": {
+     "per_action": {
+      "left": {
+       "rows": 13041,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 13234,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 13163,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 20773,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 20458,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 19131,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "switch on in view"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.27,
+     "random_steps": 37,
+     "moves": 8634,
+     "random_share": 0.0043,
+     "subgoals_ok_share": 1.0,
+     "layouts_subgoals_not_ok": 0,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {
+      "switch on in view": 500
+     },
+     "door_opened_by": {
+      "switch": 499,
+      "key+switch": 1
+     },
+     "tiles_in_the_way": {
+      "subgoals": 500,
+      "door": 500,
+      "other": {},
+      "confirmed_blocking": 500
+     },
+     "steps_by_kind": {
+      "closer": 6749,
+      "act": 1499,
+      "move way": 348,
+      "move way, two deep": 1
+     },
+     "failed_acts": 0,
+     "actions_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 6.0,
+     "seconds_per_layout_mean": 0.017,
+     "seconds_per_layout_max": 0.09,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "switch on in view",
+       "facing switch off (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "switch on in view",
+       "facing switch off (for toggle)",
+       "walk: move way"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "switch on in view",
+       "facing switch off (for toggle)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.5
+    },
+    "arm4_no_rules": {
+     "success": 0.086,
+     "mean_steps_when_successful": 113.93,
+     "random_steps": 92600,
+     "moves": 96299,
+     "random_share": 0.9616,
+     "subgoals_ok_share": 0.0,
+     "layouts_subgoals_not_ok": 500,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {},
+     "door_opened_by": {
+      "null": 457,
+      "switch": 41,
+      "key+switch": 2
+     },
+     "tiles_in_the_way": {
+      "subgoals": 500,
+      "door": 500,
+      "other": {},
+      "confirmed_blocking": 500
+     },
+     "steps_by_kind": {
+      "closer": 2917,
+      "act": 543,
+      "move way": 236,
+      "move way, two deep": 3
+     },
+     "failed_acts": 1514,
+     "actions_refused": 0,
+     "predictions_wrong": 1514,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 3.9,
+     "seconds_per_layout_mean": 0.097,
+     "seconds_per_layout_max": 0.23,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "facing tile 133 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "facing tile 87 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "facing tile 69 (for toggle)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 2.7
+    },
+    "gate": {
+     "facts_agree": true,
+     "effects_exact": true,
+     "rules_as_expected": true,
+     "shortest_solves_all": true,
+     "baseline_below_98": true
+    },
+    "criterion_1_subgoals": {
+     "share": 1.0,
+     "pass": true
+    },
+    "criterion_acting": {
+     "which": 2,
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_ratio": 1.074,
+     "steps_within_1.1x": true,
+     "pass": true
+    },
+    "seconds": 13.6
+   },
+   "either": {
+    "arm1_shortest": {
+     "solved_within_budget": 1.0,
+     "mean_steps": 14.45,
+     "shorter_option": {
+      "key": 235,
+      "switch": 191,
+      "equal": 74
+     },
+     "seconds": 1.4
+    },
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "model": {
+     "seconds": 0.9,
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14683.0,
+         "happened_weighted": 14683.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1504.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14871,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7198.0
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14268.0,
+         "happened_weighted": 14268.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1624.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14471,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7539.4
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14569.0,
+         "happened_weighted": 14569.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1632.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14773,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7612.3
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 657.0,
+         "happened_weighted": 657.0
+        },
+        {
+         "if": [
+          "held = key blue"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 135.0,
+         "happened_weighted": 135.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2200.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 1067,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 1734.4
+        },
+        {
+         "move": [
+          1,
+          [
+           "0=60"
+          ]
+         ],
+         "evidence_gain_bits": 726.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 663.0,
+         "happened_weighted": 663.0
+        },
+        {
+         "if": [
+          "held = key green"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 93.0,
+         "happened_weighted": 93.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2112.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 1020,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 1814.3
+        },
+        {
+         "move": [
+          1,
+          [
+           "0=65"
+          ]
+         ],
+         "evidence_gain_bits": 539.1
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 601.0,
+         "happened_weighted": 601.0
+        },
+        {
+         "if": [
+          "held = key red"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 123.0,
+         "happened_weighted": 123.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1904.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 962,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 1546.7
+        },
+        {
+         "move": [
+          1,
+          [
+           "0=70"
+          ]
+         ],
+         "evidence_gain_bits": 651.7
+        }
+       ]
+      }
+     ]
+    },
+    "model_check": {
+     "per_action": {
+      "left": {
+       "rows": 13018,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 13122,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 13019,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 20717,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 20359,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 19035,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "held = key blue"
+        ],
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "held = key green"
+        ],
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "held = key red"
+        ],
+        [
+         "switch on in view"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 15.47,
+     "random_steps": 7,
+     "moves": 7737,
+     "random_share": 0.0009,
+     "subgoals_ok_share": 0.998,
+     "layouts_subgoals_not_ok": 1,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {
+      "held = key green": 84,
+      "switch on in view": 254,
+      "held = key red": 73,
+      "held = key blue": 104
+     },
+     "door_opened_by": {
+      "key": 260,
+      "switch": 240
+     },
+     "tiles_in_the_way": {
+      "subgoals": 500,
+      "door": 500,
+      "other": {},
+      "confirmed_blocking": 500
+     },
+     "steps_by_kind": {
+      "closer": 6018,
+      "act": 1499,
+      "move way": 212,
+      "move way, two deep": 1
+     },
+     "failed_acts": 0,
+     "actions_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 8.8,
+     "seconds_per_layout_mean": 0.016,
+     "seconds_per_layout_max": 0.06,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "switch on in view",
+       "facing switch off (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "held = key red",
+       "facing key red (for pickup)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "held = key blue",
+       "facing key blue (for pickup)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.5
+    },
+    "arm4_no_rules": {
+     "success": 0.126,
+     "mean_steps_when_successful": 102.89,
+     "random_steps": 90072,
+     "moves": 93882,
+     "random_share": 0.9594,
+     "subgoals_ok_share": 0.0,
+     "layouts_subgoals_not_ok": 500,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {},
+     "door_opened_by": {
+      "null": 437,
+      "key": 20,
+      "switch": 41,
+      "key+switch": 2
+     },
+     "tiles_in_the_way": {
+      "subgoals": 500,
+      "door": 500,
+      "other": {},
+      "confirmed_blocking": 500
+     },
+     "steps_by_kind": {
+      "closer": 3008,
+      "act": 563,
+      "move way": 236,
+      "move way, two deep": 3
+     },
+     "failed_acts": 1446,
+     "actions_refused": 0,
+     "predictions_wrong": 1446,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 3.9,
+     "seconds_per_layout_mean": 0.098,
+     "seconds_per_layout_max": 0.24,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "facing tile 133 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "facing tile 87 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "facing tile 69 (for toggle)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 2.7
+    },
+    "either_choice_against_shorter": {
+     "key (shorter: equal)": 39,
+     "key (shorter: key)": 180,
+     "switch (shorter: switch)": 150,
+     "switch (shorter: equal)": 35,
+     "key (shorter: switch)": 41,
+     "switch (shorter: key)": 55
+    },
+    "arm3_card028": {
+     "success": 1.0,
+     "mean_steps_when_successful": 15.8,
+     "random_steps": 25,
+     "moves": 7923,
+     "random_share": 0.0032,
+     "random_no_way": 0,
+     "move_way_steps": 31,
+     "dependence_checks_per_move": 0.614,
+     "failed_acts": 32,
+     "moves_refused": 13,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 3.66,
+     "conditions_computed_per_move": 255.0,
+     "seconds_per_layout_mean": 0.03,
+     "seconds_per_layout_max": 0.32,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/pickup": 438,
+      "forward/toggle/toggle": 82,
+      "forward/toggle/pickup/toggle": 9
+     },
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0,
+     "tree": {
+      "nodes": 24,
+      "goals_expanded": 5,
+      "rounds": 6,
+      "seconds_growing": 189.3,
+      "ways": [
+       [
+        "(goal square)",
+        "expanded"
+       ],
+       [
+        "forward",
+        "expanded"
+       ],
+       [
+        "forward/toggle",
+        "expanded"
+       ],
+       [
+        "forward/left",
+        "not expanded"
+       ],
+       [
+        "forward/right",
+        "not expanded"
+       ],
+       [
+        "forward/forward",
+        "not expanded"
+       ],
+       [
+        "forward/pickup",
+        "not expanded"
+       ],
+       [
+        "forward/drop",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/pickup",
+        "expanded"
+       ],
+       [
+        "forward/toggle/toggle",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/right",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/left",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/forward",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/drop",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/pickup/drop",
+        "expanded"
+       ],
+       [
+        "forward/toggle/pickup/right",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/pickup/left",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/pickup/toggle",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/pickup/forward",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/pickup/drop/pickup",
+        "leaf: depth limit"
+       ],
+       [
+        "forward/toggle/pickup/drop/right",
+        "leaf: depth limit"
+       ],
+       [
+        "forward/toggle/pickup/drop/left",
+        "leaf: depth limit"
+       ],
+       [
+        "forward/toggle/pickup/drop/toggle",
+        "leaf: depth limit"
+       ],
+       [
+        "forward/toggle/pickup/drop/forward",
+        "leaf: depth limit"
+       ]
+      ]
+     },
+     "seconds": 251.5
+    },
+    "gate": {
+     "facts_agree": true,
+     "effects_exact": true,
+     "rules_as_expected": true,
+     "shortest_solves_all": true,
+     "baseline_below_98": true
+    },
+    "criterion_1_subgoals": {
+     "share": 0.998,
+     "pass": true
+    },
+    "criterion_acting": {
+     "which": 3,
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_ratio": 1.071,
+     "steps_within_1.25x": true,
+     "pass": true
+    },
+    "seconds": 266.4
+   },
+   "both": {
+    "arm1_shortest": {
+     "solved_within_budget": 1.0,
+     "mean_steps": 19.66,
+     "seconds": 1.6
+    },
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "model": {
+     "seconds": 0.9,
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15444.0,
+         "happened_weighted": 15444.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1464.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15627,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7162.2
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14988.0,
+         "happened_weighted": 14988.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1784.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15211,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 8175.6
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15329.0,
+         "happened_weighted": 15329.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1576.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15526,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7535.7
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "held = key blue",
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 83.0,
+         "happened_weighted": 83.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3808.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 559,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=60"
+          ]
+         ],
+         "evidence_gain_bits": 345.0
+        },
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 212.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "held = key green",
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 86.0,
+         "happened_weighted": 86.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3776.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 558,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=65"
+          ]
+         ],
+         "evidence_gain_bits": 341.4
+        },
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 231.6
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "held = key red",
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 54.0,
+         "happened_weighted": 54.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3272.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 463,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=70"
+          ]
+         ],
+         "evidence_gain_bits": 186.8
+        },
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 190.7
+        }
+       ]
+      }
+     ]
+    },
+    "model_check": {
+     "per_action": {
+      "left": {
+       "rows": 13355,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 13178,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 13300,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 21434,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 21208,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 19018,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "held = key blue",
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "held = key green",
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "held = key red",
+         "switch on in view"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 21.77,
+     "random_steps": 7,
+     "moves": 10883,
+     "random_share": 0.0006,
+     "subgoals_ok_share": 0.998,
+     "layouts_subgoals_not_ok": 1,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {
+      "held = key green": 170,
+      "switch on in view": 500,
+      "held = key red": 149,
+      "held = key blue": 180
+     },
+     "door_opened_by": {
+      "key+switch": 500
+     },
+     "tiles_in_the_way": {
+      "subgoals": 500,
+      "door": 500,
+      "other": {},
+      "confirmed_blocking": 500
+     },
+     "steps_by_kind": {
+      "closer": 8552,
+      "act": 1999,
+      "move way": 321,
+      "move way, two deep": 4
+     },
+     "failed_acts": 0,
+     "actions_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 9.3,
+     "seconds_per_layout_mean": 0.024,
+     "seconds_per_layout_max": 0.1,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "held = key green",
+       "facing key green (for pickup)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "held = key red",
+       "facing key red (for pickup)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "held = key blue",
+       "facing key blue (for pickup)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.7
+    },
+    "arm4_no_rules": {
+     "success": 0.004,
+     "mean_steps_when_successful": 96.5,
+     "random_steps": 96308,
+     "moves": 99793,
+     "random_share": 0.9651,
+     "subgoals_ok_share": 0.0,
+     "layouts_subgoals_not_ok": 500,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {},
+     "door_opened_by": {
+      "null": 498,
+      "key+switch": 2
+     },
+     "tiles_in_the_way": {
+      "subgoals": 500,
+      "door": 500,
+      "other": {},
+      "confirmed_blocking": 500
+     },
+     "steps_by_kind": {
+      "closer": 2744,
+      "act": 502,
+      "move way": 236,
+      "move way, two deep": 3
+     },
+     "failed_acts": 1629,
+     "actions_refused": 0,
+     "predictions_wrong": 1629,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 3.9,
+     "seconds_per_layout_mean": 0.107,
+     "seconds_per_layout_max": 0.29,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "facing tile 133 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "facing tile 87 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "facing tile 69 (for toggle)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 3.0
+    }
+   }
+  }
+ },
+ "small_test": {
+  "note": "Card 029, tools/card029/subgoals.py; subgoals worked backward through card 028's learned model.",
+  "episodes": 5000,
+  "layouts": 20,
+  "heldout_episodes": 200,
+  "worlds": {
+   "key": {
+    "arm1_shortest": {
+     "solved_within_budget": 1.0,
+     "mean_steps": 15.5,
+     "seconds": 0.1
+    },
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "model": {
+     "seconds": 1.0,
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15323.0,
+         "happened_weighted": 15323.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1464.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15506,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7146.3
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14902.0,
+         "happened_weighted": 14902.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1680.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15112,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7822.3
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15132.0,
+         "happened_weighted": 15132.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1608.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15333,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7616.3
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "held = key blue"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 213.0,
+         "happened_weighted": 213.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3504.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 651,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=60"
+          ]
+         ],
+         "evidence_gain_bits": 1158.3
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "held = key green"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 178.0,
+         "happened_weighted": 178.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3176.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 575,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=65"
+          ]
+         ],
+         "evidence_gain_bits": 985.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "held = key red"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 172.0,
+         "happened_weighted": 172.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3008.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 548,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=70"
+          ]
+         ],
+         "evidence_gain_bits": 946.9
+        }
+       ]
+      }
+     ]
+    },
+    "model_check": {
+     "per_action": {
+      "left": {
+       "rows": 2707,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 2648,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 2660,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 4121,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 4201,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 3830,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "held = key blue"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "held = key green"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "held = key red"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 15.8,
+     "random_steps": 0,
+     "moves": 316,
+     "random_share": 0.0,
+     "subgoals_ok_share": 1.0,
+     "layouts_subgoals_not_ok": 0,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {
+      "held = key green": 10,
+      "held = key red": 3,
+      "held = key blue": 7
+     },
+     "door_opened_by": {
+      "key": 20
+     },
+     "tiles_in_the_way": {
+      "subgoals": 20,
+      "door": 20,
+      "other": {},
+      "confirmed_blocking": 18
+     },
+     "steps_by_kind": {
+      "closer": 252,
+      "act": 60,
+      "move way": 4
+     },
+     "failed_acts": 0,
+     "actions_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 6.6,
+     "seconds_per_layout_mean": 0.016,
+     "seconds_per_layout_max": 0.03,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "held = key green",
+       "facing key green (for pickup)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "held = key red",
+       "facing key red (for pickup)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "held = key blue",
+       "facing key blue (for pickup)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.0
+    },
+    "arm4_no_rules": {
+     "success": 0.1,
+     "mean_steps_when_successful": 106.5,
+     "random_steps": 3659,
+     "moves": 3813,
+     "random_share": 0.9596,
+     "subgoals_ok_share": 0.0,
+     "layouts_subgoals_not_ok": 20,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {},
+     "door_opened_by": {
+      "null": 18,
+      "key": 2
+     },
+     "tiles_in_the_way": {
+      "subgoals": 20,
+      "door": 20,
+      "other": {},
+      "confirmed_blocking": 18
+     },
+     "steps_by_kind": {
+      "closer": 121,
+      "act": 22,
+      "move way": 11
+     },
+     "failed_acts": 63,
+     "actions_refused": 0,
+     "predictions_wrong": 63,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 4.0,
+     "seconds_per_layout_mean": 0.117,
+     "seconds_per_layout_max": 0.23,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "facing tile 133 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "facing tile 87 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "facing tile 69 (for toggle)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.2
+    },
+    "gate": {
+     "facts_agree": true,
+     "effects_exact": true,
+     "rules_as_expected": true,
+     "shortest_solves_all": true,
+     "baseline_below_98": true
+    },
+    "criterion_1_subgoals": {
+     "share": 1.0,
+     "pass": true
+    },
+    "criterion_acting": {
+     "which": 2,
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_ratio": 1.019,
+     "steps_within_1.1x": true,
+     "pass": true
+    },
+    "seconds": 9.3
+   },
+   "switch": {
+    "arm1_shortest": {
+     "solved_within_budget": 1.0,
+     "mean_steps": 16.05,
+     "seconds": 0.0
+    },
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "model": {
+     "seconds": 0.8,
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14781.0,
+         "happened_weighted": 14781.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1464.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14964,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7073.6
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14347.0,
+         "happened_weighted": 14347.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1544.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14540,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7285.4
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14764.0,
+         "happened_weighted": 14764.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1688.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14975,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7827.1
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 669.0,
+         "happened_weighted": 669.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2520.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 984,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2342.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 676.0,
+         "happened_weighted": 676.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2328.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 967,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2290.0
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 617.0,
+         "happened_weighted": 617.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2176.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 889,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 2107.2
+        }
+       ]
+      }
+     ]
+    },
+    "model_check": {
+     "per_action": {
+      "left": {
+       "rows": 2652,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 2572,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 2649,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 4108,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 4167,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 3880,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "switch on in view"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.1,
+     "random_steps": 0,
+     "moves": 342,
+     "random_share": 0.0,
+     "subgoals_ok_share": 1.0,
+     "layouts_subgoals_not_ok": 0,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {
+      "switch on in view": 20
+     },
+     "door_opened_by": {
+      "switch": 20
+     },
+     "tiles_in_the_way": {
+      "subgoals": 20,
+      "door": 20,
+      "other": {},
+      "confirmed_blocking": 18
+     },
+     "steps_by_kind": {
+      "closer": 273,
+      "act": 60,
+      "move way": 9
+     },
+     "failed_acts": 0,
+     "actions_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 1,
+     "conditions_computed_per_move": 5.9,
+     "seconds_per_layout_mean": 0.018,
+     "seconds_per_layout_max": 0.04,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "switch on in view",
+       "facing switch off (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "switch on in view",
+       "facing switch off (for toggle)",
+       "walk: move way"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "switch on in view",
+       "facing switch off (for toggle)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.0
+    },
+    "arm4_no_rules": {
+     "success": 0.05,
+     "mean_steps_when_successful": 106.0,
+     "random_steps": 3754,
+     "moves": 3906,
+     "random_share": 0.9611,
+     "subgoals_ok_share": 0.0,
+     "layouts_subgoals_not_ok": 20,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {},
+     "door_opened_by": {
+      "null": 19,
+      "switch": 1
+     },
+     "tiles_in_the_way": {
+      "subgoals": 20,
+      "door": 20,
+      "other": {},
+      "confirmed_blocking": 18
+     },
+     "steps_by_kind": {
+      "closer": 120,
+      "act": 21,
+      "move way": 11
+     },
+     "failed_acts": 68,
+     "actions_refused": 0,
+     "predictions_wrong": 68,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 4.0,
+     "seconds_per_layout_mean": 0.103,
+     "seconds_per_layout_max": 0.14,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "facing tile 133 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "facing tile 87 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "facing tile 69 (for toggle)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.2
+    },
+    "gate": {
+     "facts_agree": true,
+     "effects_exact": true,
+     "rules_as_expected": true,
+     "shortest_solves_all": true,
+     "baseline_below_98": true
+    },
+    "criterion_1_subgoals": {
+     "share": 1.0,
+     "pass": true
+    },
+    "criterion_acting": {
+     "which": 2,
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_ratio": 1.065,
+     "steps_within_1.1x": true,
+     "pass": true
+    },
+    "seconds": 9.4
+   },
+   "either": {
+    "arm1_shortest": {
+     "solved_within_budget": 1.0,
+     "mean_steps": 14.1,
+     "shorter_option": {
+      "key": 10,
+      "switch": 8,
+      "equal": 2
+     },
+     "seconds": 0.2
+    },
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "model": {
+     "seconds": 0.8,
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14683.0,
+         "happened_weighted": 14683.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1504.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14871,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7198.0
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14268.0,
+         "happened_weighted": 14268.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1624.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14471,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7539.4
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14569.0,
+         "happened_weighted": 14569.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1632.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 14773,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7612.3
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 657.0,
+         "happened_weighted": 657.0
+        },
+        {
+         "if": [
+          "held = key blue"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 135.0,
+         "happened_weighted": 135.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2200.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 1067,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 1734.4
+        },
+        {
+         "move": [
+          1,
+          [
+           "0=60"
+          ]
+         ],
+         "evidence_gain_bits": 726.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 663.0,
+         "happened_weighted": 663.0
+        },
+        {
+         "if": [
+          "held = key green"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 93.0,
+         "happened_weighted": 93.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 2112.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 1020,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 1814.3
+        },
+        {
+         "move": [
+          1,
+          [
+           "0=65"
+          ]
+         ],
+         "evidence_gain_bits": 539.1
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 601.0,
+         "happened_weighted": 601.0
+        },
+        {
+         "if": [
+          "held = key red"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 123.0,
+         "happened_weighted": 123.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1904.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 962,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 1546.7
+        },
+        {
+         "move": [
+          1,
+          [
+           "0=70"
+          ]
+         ],
+         "evidence_gain_bits": 651.7
+        }
+       ]
+      }
+     ]
+    },
+    "model_check": {
+     "per_action": {
+      "left": {
+       "rows": 2651,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 2542,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 2625,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 4061,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 4049,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 3887,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "held = key blue"
+        ],
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "held = key green"
+        ],
+        [
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "held = key red"
+        ],
+        [
+         "switch on in view"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 14.8,
+     "random_steps": 0,
+     "moves": 296,
+     "random_share": 0.0,
+     "subgoals_ok_share": 1.0,
+     "layouts_subgoals_not_ok": 0,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {
+      "held = key green": 5,
+      "switch on in view": 9,
+      "held = key red": 2,
+      "held = key blue": 5
+     },
+     "door_opened_by": {
+      "key": 12,
+      "switch": 8
+     },
+     "tiles_in_the_way": {
+      "subgoals": 20,
+      "door": 20,
+      "other": {},
+      "confirmed_blocking": 18
+     },
+     "steps_by_kind": {
+      "closer": 230,
+      "act": 60,
+      "move way": 6
+     },
+     "failed_acts": 0,
+     "actions_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 8.4,
+     "seconds_per_layout_mean": 0.015,
+     "seconds_per_layout_max": 0.03,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "switch on in view",
+       "facing switch off (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "held = key red",
+       "facing key red (for pickup)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "held = key blue",
+       "facing key blue (for pickup)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.0
+    },
+    "arm4_no_rules": {
+     "success": 0.15,
+     "mean_steps_when_successful": 106.33,
+     "random_steps": 3559,
+     "moves": 3719,
+     "random_share": 0.957,
+     "subgoals_ok_share": 0.0,
+     "layouts_subgoals_not_ok": 20,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {},
+     "door_opened_by": {
+      "null": 17,
+      "key": 2,
+      "switch": 1
+     },
+     "tiles_in_the_way": {
+      "subgoals": 20,
+      "door": 20,
+      "other": {},
+      "confirmed_blocking": 18
+     },
+     "steps_by_kind": {
+      "closer": 126,
+      "act": 23,
+      "move way": 11
+     },
+     "failed_acts": 59,
+     "actions_refused": 0,
+     "predictions_wrong": 59,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 4.0,
+     "seconds_per_layout_mean": 0.096,
+     "seconds_per_layout_max": 0.17,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "facing tile 133 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "facing tile 87 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "facing tile 69 (for toggle)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.2
+    },
+    "either_choice_against_shorter": {
+     "key (shorter: equal)": 1,
+     "key (shorter: key)": 10,
+     "switch (shorter: switch)": 7,
+     "switch (shorter: equal)": 1,
+     "key (shorter: switch)": 1
+    },
+    "arm3_card028": {
+     "success": 1.0,
+     "mean_steps_when_successful": 15.6,
+     "random_steps": 0,
+     "moves": 312,
+     "random_share": 0.0,
+     "random_no_way": 0,
+     "move_way_steps": 0,
+     "dependence_checks_per_move": 0.519,
+     "failed_acts": 0,
+     "moves_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "tree_checks_per_move": 3.25,
+     "conditions_computed_per_move": 227.2,
+     "seconds_per_layout_mean": 0.028,
+     "seconds_per_layout_max": 0.03,
+     "ways_used": {
+      "forward": 20,
+      "forward/toggle": 20,
+      "forward/toggle/pickup": 18,
+      "forward/toggle/toggle": 2
+     },
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0,
+     "tree": {
+      "nodes": 14,
+      "goals_expanded": 3,
+      "rounds": 4,
+      "seconds_growing": 70.9,
+      "ways": [
+       [
+        "(goal square)",
+        "expanded"
+       ],
+       [
+        "forward",
+        "expanded"
+       ],
+       [
+        "forward/toggle",
+        "expanded"
+       ],
+       [
+        "forward/left",
+        "not expanded"
+       ],
+       [
+        "forward/right",
+        "not expanded"
+       ],
+       [
+        "forward/forward",
+        "not expanded"
+       ],
+       [
+        "forward/pickup",
+        "not expanded"
+       ],
+       [
+        "forward/drop",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/pickup",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/toggle",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/right",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/left",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/forward",
+        "not expanded"
+       ],
+       [
+        "forward/toggle/drop",
+        "not expanded"
+       ]
+      ]
+     },
+     "seconds": 95.1
+    },
+    "gate": {
+     "facts_agree": true,
+     "effects_exact": true,
+     "rules_as_expected": true,
+     "shortest_solves_all": true,
+     "baseline_below_98": true
+    },
+    "criterion_1_subgoals": {
+     "share": 1.0,
+     "pass": true
+    },
+    "criterion_acting": {
+     "which": 3,
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_ratio": 1.05,
+     "steps_within_1.25x": true,
+     "pass": true
+    },
+    "seconds": 104.2
+   },
+   "both": {
+    "arm1_shortest": {
+     "solved_within_budget": 1.0,
+     "mean_steps": 19.05,
+     "seconds": 0.1
+    },
+    "facts_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "model": {
+     "seconds": 0.8,
+     "poses": 484,
+     "pose_route_conflicts": 0,
+     "rules": [
+      {
+       "key": "pickup key blue",
+       "outcome": "floor / key blue",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15444.0,
+         "happened_weighted": 15444.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1464.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15627,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7162.2
+        }
+       ]
+      },
+      {
+       "key": "pickup key green",
+       "outcome": "floor / key green",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 14988.0,
+         "happened_weighted": 14988.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1784.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15211,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 8175.6
+        }
+       ]
+      },
+      {
+       "key": "pickup key red",
+       "outcome": "floor / key red",
+       "rules": [
+        {
+         "if": [
+          "held = floor"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 15329.0,
+         "happened_weighted": 15329.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 1576.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 15526,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=35"
+          ]
+         ],
+         "evidence_gain_bits": 7535.7
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door blue",
+       "outcome": "open door blue / same",
+       "rules": [
+        {
+         "if": [
+          "held = key blue",
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 83.0,
+         "happened_weighted": 83.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3808.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 559,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=60"
+          ]
+         ],
+         "evidence_gain_bits": 345.0
+        },
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 212.5
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door green",
+       "outcome": "open door green / same",
+       "rules": [
+        {
+         "if": [
+          "held = key green",
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 86.0,
+         "happened_weighted": 86.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3776.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 558,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=65"
+          ]
+         ],
+         "evidence_gain_bits": 341.4
+        },
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 231.6
+        }
+       ]
+      },
+      {
+       "key": "toggle closed door red",
+       "outcome": "open door red / same",
+       "rules": [
+        {
+         "if": [
+          "held = key red",
+          "switch on in view"
+         ],
+         "rate": 1.0,
+         "tries_weighted": 54.0,
+         "happened_weighted": 54.0
+        }
+       ],
+       "otherwise": {
+        "rate": 0.0,
+        "tries_weighted": 3272.0,
+        "happened_weighted": 0.0
+       },
+       "tries_stored": 463,
+       "trace": [
+        {
+         "move": [
+          0,
+          [
+           "0=70"
+          ]
+         ],
+         "evidence_gain_bits": 186.8
+        },
+        {
+         "move": [
+          0,
+          [
+           "1=41"
+          ]
+         ],
+         "evidence_gain_bits": 190.7
+        }
+       ]
+      }
+     ]
+    },
+    "model_check": {
+     "per_action": {
+      "left": {
+       "rows": 2672,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "right": {
+       "rows": 2644,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "forward": {
+       "rows": 2684,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "pickup": {
+       "rows": 4233,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "drop": {
+       "rows": 4247,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      },
+      "toggle": {
+       "rows": 3858,
+       "exact_share": 1.0,
+       "exact_share_weighted": 1.0
+      }
+     },
+     "all": 1.0,
+     "lowest": 1.0,
+     "errors_top": [],
+     "rules": {
+      "door_rules": {
+       "toggle closed door blue": [
+        [
+         "held = key blue",
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door green": [
+        [
+         "held = key green",
+         "switch on in view"
+        ]
+       ],
+       "toggle closed door red": [
+        [
+         "held = key red",
+         "switch on in view"
+        ]
+       ]
+      },
+      "exactly_as_expected": true
+     }
+    },
+    "arm2_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 20.3,
+     "random_steps": 0,
+     "moves": 406,
+     "random_share": 0.0,
+     "subgoals_ok_share": 1.0,
+     "layouts_subgoals_not_ok": 0,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {
+      "held = key green": 10,
+      "switch on in view": 20,
+      "held = key red": 3,
+      "held = key blue": 7
+     },
+     "door_opened_by": {
+      "key+switch": 20
+     },
+     "tiles_in_the_way": {
+      "subgoals": 20,
+      "door": 20,
+      "other": {},
+      "confirmed_blocking": 18
+     },
+     "steps_by_kind": {
+      "closer": 324,
+      "act": 80,
+      "move way": 2
+     },
+     "failed_acts": 0,
+     "actions_refused": 0,
+     "predictions_wrong": 0,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 9.0,
+     "seconds_per_layout_mean": 0.027,
+     "seconds_per_layout_max": 0.05,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "held = key green",
+       "facing key green (for pickup)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "held = key red",
+       "facing key red (for pickup)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "held = key blue",
+       "facing key blue (for pickup)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.1
+    },
+    "arm4_no_rules": {
+     "success": 0.0,
+     "mean_steps_when_successful": null,
+     "random_steps": 3854,
+     "moves": 4000,
+     "random_share": 0.9635,
+     "subgoals_ok_share": 0.0,
+     "layouts_subgoals_not_ok": 20,
+     "forbidden_pursued": {},
+     "pursued_before_door_opened": {},
+     "door_opened_by": {
+      "null": 20
+     },
+     "tiles_in_the_way": {
+      "subgoals": 20,
+      "door": 20,
+      "other": {},
+      "confirmed_blocking": 18
+     },
+     "steps_by_kind": {
+      "closer": 115,
+      "act": 20,
+      "move way": 11
+     },
+     "failed_acts": 72,
+     "actions_refused": 0,
+     "predictions_wrong": 72,
+     "largest_view_mismatch_placing_the_agent": 2,
+     "conditions_computed_per_move": 4.0,
+     "seconds_per_layout_mean": 0.108,
+     "seconds_per_layout_max": 0.15,
+     "chains_at_start": [
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 133 shows open door green",
+       "facing tile 133 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 87 shows open door red",
+       "facing tile 87 (for toggle)",
+       "walk: closer"
+      ],
+      [
+       "episode ended",
+       "facing goal (for forward)",
+       "walk: blocked",
+       "tile 69 shows open door blue",
+       "facing tile 69 (for toggle)",
+       "walk: closer"
+      ]
+     ],
+     "seconds": 0.2
+    },
+    "gate": {
+     "facts_agree": true,
+     "effects_exact": true,
+     "rules_as_expected": true,
+     "shortest_solves_all": true,
+     "baseline_below_98": true
+    },
+    "criterion_1_subgoals": {
+     "share": 1.0,
+     "pass": true
+    },
+    "criterion_acting": {
+     "which": 3,
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_ratio": 1.066,
+     "steps_within_1.25x": true,
+     "pass": true
+    },
+    "seconds": 9.5
+   }
+  },
+  "seconds": 132.4
+ }
+}
