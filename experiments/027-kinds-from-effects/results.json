@@ -1,0 +1,5946 @@
+{
+ "note": "Card 027. run1: first run (target rule without the revision rules), stopped at the gate. run2: revised rule (moves that end the way's condition refused; acts that do not turn the parent true marked for the episode), gate and main. run3: as run2 with the encoder's rows balanced by outcome. run4: counting decides the kinds, the network learns to recognise them; leave-one-out reported.",
+ "run1": {
+  "note": "Card 027, tools/card027/kinds.py; exact conditions and walking, kinds from pixels.",
+  "worlds": {
+   "key": {
+    "effects_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "tree_nodes": 58,
+    "goals_expanded": 11,
+    "rounds": "rebuilt from card 026",
+    "tree": [
+     [
+      "(goal square)",
+      "expanded"
+     ],
+     [
+      "forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle",
+      "expanded"
+     ],
+     [
+      "forward/right",
+      "not expanded"
+     ],
+     [
+      "forward/left",
+      "not expanded"
+     ],
+     [
+      "forward/forward",
+      "not expanded"
+     ],
+     [
+      "forward/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup",
+      "expanded"
+     ],
+     [
+      "forward/toggle/right",
+      "expanded"
+     ],
+     [
+      "forward/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup/drop",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/right",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/left",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/toggle",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/drop/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/forward",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/pickup/toggle/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup",
+      "expanded"
+     ],
+     [
+      "forward/toggle/right/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right/forward",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right/drop",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/toggle",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/pickup/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/toggle",
+      "leaf: depth limit"
+     ]
+    ],
+    "upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.4,
+     "random_steps": 0,
+     "moves": 8216,
+     "random_share": 0.0,
+     "ways_used_steps": {
+      "forward/toggle": 3007,
+      "forward": 2521,
+      "forward/toggle/pickup": 2303,
+      "forward/toggle/pickup/drop/pickup": 116,
+      "forward/toggle/pickup/right": 102,
+      "forward/toggle/pickup/toggle": 70,
+      "forward/toggle/pickup/drop": 46,
+      "forward/toggle/right": 31,
+      "forward/toggle/pickup/right/pickup": 19,
+      "forward/toggle/right/pickup/right": 1
+     }
+    },
+    "exact_kinds": {
+     "equals_expected": true,
+     "groups_mixing_kinds": [],
+     "codes_per_expected_kind": {
+      "closed door": 1,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door green",
+       "closed door red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "way_kinds_exact": {
+     "forward": {
+      "successes": 102,
+      "kind": "goal",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle": {
+      "successes": 554,
+      "kind": "closed door",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/pickup": {
+      "successes": 169,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/drop": {
+      "successes": 101,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup": {
+      "successes": 19141,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/drop": {
+      "successes": 101,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/toggle": {
+      "successes": 50,
+      "kind": "vase",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/drop": {
+      "successes": 16893,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/toggle": {
+      "successes": 458,
+      "kind": "vase",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/drop/pickup": {
+      "successes": 6120,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/drop/toggle": {
+      "successes": 444,
+      "kind": "vase",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/right/drop": {
+      "successes": 17794,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/right/pickup": {
+      "successes": 1622,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/right/toggle": {
+      "successes": 214,
+      "kind": "vase",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/left/drop": {
+      "successes": 17794,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/left/pickup": {
+      "successes": 1622,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/left/toggle": {
+      "successes": 214,
+      "kind": "vase",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/forward/drop": {
+      "successes": 17805,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/forward/pickup": {
+      "successes": 1634,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/forward/toggle": {
+      "successes": 215,
+      "kind": "vase",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/toggle/drop": {
+      "successes": 17464,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/pickup/toggle/pickup": {
+      "successes": 267,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/right/pickup": {
+      "successes": 21445,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/right/pickup/drop": {
+      "successes": 17910,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/right/pickup/toggle": {
+      "successes": 308,
+      "kind": "vase",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     }
+    },
+    "arm_exact_kinds": {
+     "success": 0.966,
+     "mean_steps_when_successful": 16.1,
+     "random_steps": 27,
+     "moves": 11200,
+     "random_share": 0.0024,
+     "move_way_steps": 253,
+     "dependence_checks_per_move": 0.717,
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 483,
+     "failing_layouts": 17,
+     "failing_that_picked_other_key": 16
+    },
+    "gate": {
+     "effects_agree": true,
+     "upper_bound_98": true,
+     "exact_kinds_equal_expected": true,
+     "exact_kinds_acting_98": false
+    }
+   },
+   "switch": {
+    "effects_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "tree_nodes": 20,
+    "goals_expanded": 4,
+    "rounds": 5,
+    "tree": [
+     [
+      "(goal square)",
+      "expanded"
+     ],
+     [
+      "forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle",
+      "expanded"
+     ],
+     [
+      "forward/left",
+      "not expanded"
+     ],
+     [
+      "forward/forward",
+      "not expanded"
+     ],
+     [
+      "forward/right",
+      "not expanded"
+     ],
+     [
+      "forward/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle",
+      "expanded"
+     ],
+     [
+      "forward/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/toggle",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/drop",
+      "not expanded"
+     ]
+    ],
+    "upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.1,
+     "random_steps": 0,
+     "moves": 8570,
+     "random_share": 0.0,
+     "ways_used_steps": {
+      "forward/toggle": 3198,
+      "forward/toggle/toggle": 2577,
+      "forward": 2521,
+      "forward/toggle/toggle/left": 161,
+      "forward/toggle/toggle/pickup": 103,
+      "forward/toggle/toggle/toggle": 10
+     }
+    },
+    "exact_kinds": {
+     "equals_expected": true,
+     "groups_mixing_kinds": [],
+     "codes_per_expected_kind": {
+      "closed door": 1,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door green",
+       "closed door red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "way_kinds_exact": {
+     "forward": {
+      "successes": 341,
+      "kind": "goal",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle": {
+      "successes": 1838,
+      "kind": "closed door",
+      "expected_kind_share": 0.9984,
+      "as_expected": true
+     },
+     "forward/pickup": {
+      "successes": 199,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/drop": {
+      "successes": 147,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/toggle": {
+      "successes": 10309,
+      "kind": "switch",
+      "expected_kind_share": 0.9884,
+      "as_expected": true
+     },
+     "forward/toggle/pickup": {
+      "successes": 2816,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/drop": {
+      "successes": 582,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/toggle/pickup": {
+      "successes": 8633,
+      "kind": "key",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     },
+     "forward/toggle/toggle/toggle": {
+      "successes": 1848,
+      "kind": "switch",
+      "expected_kind_share": 0.7614,
+      "as_expected": true
+     },
+     "forward/toggle/toggle/drop": {
+      "successes": 1008,
+      "kind": "floor",
+      "expected_kind_share": 1.0,
+      "as_expected": true
+     }
+    },
+    "arm_exact_kinds": {
+     "success": 0.952,
+     "mean_steps_when_successful": 17.0,
+     "random_steps": 42,
+     "moves": 12900,
+     "random_share": 0.0033,
+     "move_way_steps": 529,
+     "dependence_checks_per_move": 1.074,
+     "first_key_matching_success": 0.6667,
+     "layouts_first_key_matching": 9,
+     "failing_layouts": 24,
+     "failing_that_picked_other_key": 2
+    },
+    "gate": {
+     "effects_agree": true,
+     "upper_bound_98": true,
+     "exact_kinds_equal_expected": true,
+     "exact_kinds_acting_98": false
+    }
+   }
+  },
+  "gate_passed": false,
+  "run": "timeout 1800 bin/prun python tools/card027/kinds.py --out runs/027_kinds.json (log runs/027kinds.out); 115 s; stopped after the gate",
+  "diagnosis": {
+   "how": "each failing layout of the exact-kinds arm replayed step by step (scratch trace, same code and layouts)",
+   "key": {
+    "failing_layouts": [
+     12,
+     23,
+     52,
+     118,
+     167,
+     188,
+     189,
+     207,
+     261,
+     267,
+     279,
+     313,
+     353,
+     363,
+     364,
+     381,
+     463
+    ],
+    "pattern_examples": {
+     "12": "picks up the other key that blocks the matching key, drops it back on the tile it came from (every floor tile is a target), repeats",
+     "363": "both keys pass the dependence test; walking toward the nearer key's spot turns left, the exact condition turns right; alternates"
+    }
+   },
+   "switch": {
+    "failing_layouts": [
+     56,
+     71,
+     76,
+     109,
+     142,
+     189,
+     215,
+     227,
+     247,
+     256,
+     267,
+     288,
+     304,
+     329,
+     334,
+     363,
+     365,
+     375,
+     389,
+     427,
+     433,
+     470,
+     479,
+     482
+    ],
+    "switch_turned_off_again": 21,
+    "turning_back_and_forth": 3,
+    "pattern_examples": {
+     "56": "switch on; the way 'toggle so the door can be opened' still applies (breaking the vase would clear the path), the switch passes the dependence test, the agent faces it and toggles it off; repeats",
+     "71": "the switch is the right tile but only one side works (acting from the other side leaves the door out of reach); walking toward the nearer side turns right, the exact condition turns left; alternates"
+    }
+   },
+   "root_cause": "the target test asks whether the way's route depends on a thing (remove it and see), not whether acting on it from that spot would achieve the parent; the two differ for drop (a place), for a switch already on, and for which side to act from"
+  }
+ },
+ "run2": {
+  "note": "Card 027, tools/card027/kinds.py; exact conditions and walking, kinds from pixels.",
+  "worlds": {
+   "key": {
+    "effects_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "tree_nodes": 58,
+    "goals_expanded": 11,
+    "rounds": "rebuilt from card 026",
+    "tree": [
+     [
+      "(goal square)",
+      "expanded"
+     ],
+     [
+      "forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle",
+      "expanded"
+     ],
+     [
+      "forward/right",
+      "not expanded"
+     ],
+     [
+      "forward/left",
+      "not expanded"
+     ],
+     [
+      "forward/forward",
+      "not expanded"
+     ],
+     [
+      "forward/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup",
+      "expanded"
+     ],
+     [
+      "forward/toggle/right",
+      "expanded"
+     ],
+     [
+      "forward/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup/drop",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/right",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/left",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/toggle",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/drop/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/forward",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/pickup/toggle/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup",
+      "expanded"
+     ],
+     [
+      "forward/toggle/right/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right/forward",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right/drop",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/toggle",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/pickup/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/toggle",
+      "leaf: depth limit"
+     ]
+    ],
+    "upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.4,
+     "random_steps": 0,
+     "moves": 8216,
+     "random_share": 0.0,
+     "ways_used_steps": {
+      "forward/toggle": 3007,
+      "forward": 2521,
+      "forward/toggle/pickup": 2303,
+      "forward/toggle/pickup/drop/pickup": 116,
+      "forward/toggle/pickup/right": 102,
+      "forward/toggle/pickup/toggle": 70,
+      "forward/toggle/pickup/drop": 46,
+      "forward/toggle/right": 31,
+      "forward/toggle/pickup/right/pickup": 19,
+      "forward/toggle/right/pickup/right": 1
+     }
+    },
+    "exact_kinds": {
+     "equals_expected": true,
+     "groups_mixing_kinds": [],
+     "codes_per_expected_kind": {
+      "closed door": 1,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door green",
+       "closed door red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "way_kinds_exact": {
+     "forward": {
+      "successes": 102,
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle": {
+      "successes": 554,
+      "kinds": {
+       "closed door": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/pickup": {
+      "successes": 169,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/drop": {
+      "successes": 101,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup": {
+      "successes": 19141,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/drop": {
+      "successes": 101,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle": {
+      "successes": 50,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/drop": {
+      "successes": 16893,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/toggle": {
+      "successes": 458,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/drop/pickup": {
+      "successes": 6120,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/drop/toggle": {
+      "successes": 444,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/right/drop": {
+      "successes": 17794,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/right/pickup": {
+      "successes": 1622,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/right/toggle": {
+      "successes": 214,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/left/drop": {
+      "successes": 17794,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/left/pickup": {
+      "successes": 1622,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/left/toggle": {
+      "successes": 214,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/forward/drop": {
+      "successes": 17805,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/forward/pickup": {
+      "successes": 1634,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/forward/toggle": {
+      "successes": 215,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/toggle/drop": {
+      "successes": 17464,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/toggle/pickup": {
+      "successes": 267,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/right/pickup": {
+      "successes": 21445,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/right/pickup/drop": {
+      "successes": 17910,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/right/pickup/toggle": {
+      "successes": 308,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     }
+    },
+    "arm_exact_kinds": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.6,
+     "random_steps": 33,
+     "moves": 8303,
+     "random_share": 0.004,
+     "move_way_steps": 158,
+     "dependence_checks_per_move": 0.596,
+     "failed_acts": 45,
+     "layouts_with_failed_acts": 28,
+     "moves_refused": 6,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/pickup": 486,
+      "forward/toggle/pickup/drop": 47,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 59,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 484,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_exact_kinds_no_rules": {
+     "success": 0.966,
+     "mean_steps_when_successful": 16.1,
+     "random_steps": 27,
+     "moves": 11200,
+     "random_share": 0.0024,
+     "move_way_steps": 253,
+     "dependence_checks_per_move": 0.717,
+     "failed_acts": 0,
+     "layouts_with_failed_acts": 0,
+     "moves_refused": 0,
+     "ways_used": {
+      "forward": 483,
+      "forward/toggle": 483,
+      "forward/toggle/pickup": 566,
+      "forward/toggle/pickup/drop": 1560,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 1485,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 483,
+     "failing_layouts": 17,
+     "failing_that_picked_other_key": 16
+    },
+    "gate": {
+     "effects_agree": true,
+     "upper_bound_98": true,
+     "exact_kinds_equal_expected": true,
+     "exact_kinds_acting_98": true
+    },
+    "encoder": {
+     "seconds": 33.3,
+     "device": "cuda",
+     "code_of_appearance": {
+      "closed door blue": 14,
+      "closed door green": 4,
+      "goal": 4,
+      "open door blue": 1,
+      "open door green": 3,
+      "floor": 9,
+      "switch off": 7,
+      "switch on": 7,
+      "vase": 2,
+      "open door red": 0,
+      "key blue": 5,
+      "key green": 5,
+      "key red": 5,
+      "wall": 6,
+      "closed door red": 10
+     }
+    },
+    "criterion_1_learned_kinds": {
+     "equals_expected": false,
+     "groups_mixing_kinds": [
+      [
+       "closed door green",
+       "goal"
+      ]
+     ],
+     "codes_per_expected_kind": {
+      "closed door": 3,
+      "goal": 1,
+      "open door": 3,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue"
+      ],
+      [
+       "closed door green",
+       "goal"
+      ],
+      [
+       "open door blue"
+      ],
+      [
+       "open door green"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "open door red"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ],
+      [
+       "closed door red"
+      ]
+     ]
+    },
+    "arm_main": {
+     "success": 0.994,
+     "mean_steps_when_successful": 20.2,
+     "random_steps": 1806,
+     "moves": 10636,
+     "random_share": 0.1698,
+     "move_way_steps": 234,
+     "dependence_checks_per_move": 1.457,
+     "failed_acts": 45,
+     "layouts_with_failed_acts": 28,
+     "moves_refused": 263,
+     "ways_used": {
+      "forward": 497,
+      "forward/toggle": 493,
+      "forward/toggle/pickup": 636,
+      "forward/toggle/pickup/drop": 47,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 59,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "first_key_matching_success": 0.9938,
+     "layouts_first_key_matching": 484,
+     "failing_layouts": 3,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_kind_alone": {
+     "success": 0.986,
+     "mean_steps_when_successful": 23.1,
+     "random_steps": 2364,
+     "moves": 12811,
+     "random_share": 0.1845,
+     "move_way_steps": 412,
+     "dependence_checks_per_move": 0.0,
+     "failed_acts": 390,
+     "layouts_with_failed_acts": 234,
+     "moves_refused": 971,
+     "ways_used": {
+      "forward": 493,
+      "forward/toggle": 494,
+      "forward/toggle/pickup": 874,
+      "forward/toggle/pickup/drop": 443,
+      "forward/toggle/pickup/toggle": 20,
+      "forward/toggle/pickup/drop/pickup": 75,
+      "forward/toggle/pickup/drop/toggle": 1,
+      "forward/toggle/pickup/right/pickup": 5,
+      "forward/toggle/right/pickup/drop": 4
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 271,
+     "failing_layouts": 7,
+     "failing_that_picked_other_key": 4
+    },
+    "arm_contrast": {
+     "success": 0.964,
+     "mean_steps_when_successful": 24.2,
+     "random_steps": 5201,
+     "moves": 15262,
+     "random_share": 0.3408,
+     "move_way_steps": 612,
+     "dependence_checks_per_move": 5.055,
+     "failed_acts": 202,
+     "layouts_with_failed_acts": 158,
+     "moves_refused": 1571,
+     "ways_used": {
+      "forward": 482,
+      "forward/toggle": 488,
+      "forward/toggle/pickup": 723,
+      "forward/toggle/pickup/drop": 44,
+      "forward/toggle/pickup/toggle": 28,
+      "forward/toggle/pickup/drop/pickup": 76,
+      "forward/toggle/pickup/right/pickup": 4
+     },
+     "first_key_matching_success": 0.9936,
+     "layouts_first_key_matching": 470,
+     "failing_layouts": 18,
+     "failing_that_picked_other_key": 5
+    },
+    "way_kinds_learned": {
+     "forward": {
+      "successes": 102,
+      "codes": [
+       4
+      ],
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.0,
+      "held_kind": null
+     },
+     "forward/toggle": {
+      "successes": 554,
+      "codes": [
+       4,
+       10,
+       14
+      ],
+      "kinds": {
+       "closed door": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.6877,
+      "held_kind": null
+     },
+     "forward/pickup": {
+      "successes": 169,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/drop": {
+      "successes": 101,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup": {
+      "successes": 19141,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/drop": {
+      "successes": 101,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/toggle": {
+      "successes": 50,
+      "codes": [
+       2
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/drop": {
+      "successes": 16893,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/toggle": {
+      "successes": 458,
+      "codes": [
+       2
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/drop/pickup": {
+      "successes": 6120,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/drop/toggle": {
+      "successes": 444,
+      "codes": [
+       2
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/right/drop": {
+      "successes": 17794,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/right/pickup": {
+      "successes": 1622,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/right/toggle": {
+      "successes": 214,
+      "codes": [
+       2
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/left/drop": {
+      "successes": 17794,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/left/pickup": {
+      "successes": 1622,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/left/toggle": {
+      "successes": 214,
+      "codes": [
+       2
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/forward/drop": {
+      "successes": 17805,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/forward/pickup": {
+      "successes": 1634,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/forward/toggle": {
+      "successes": 215,
+      "codes": [
+       2
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/toggle/drop": {
+      "successes": 17464,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/toggle/pickup": {
+      "successes": 267,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/right/pickup": {
+      "successes": 21445,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/right/pickup/drop": {
+      "successes": 17910,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/right/pickup/toggle": {
+      "successes": 308,
+      "codes": [
+       2
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     }
+    },
+    "criterion_2": {
+     "ways_used_by_main": 7,
+     "lowest_code_pure_share": 0.0,
+     "failing_ways": {
+      "forward": 0.0,
+      "forward/toggle": 0.6877
+     },
+     "pass": false
+    },
+    "criterion_3": {
+     "success_98": true,
+     "random_share_1pct": false,
+     "steps_within_1_5x": true
+    }
+   },
+   "switch": {
+    "effects_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "tree_nodes": 20,
+    "goals_expanded": 4,
+    "rounds": 5,
+    "tree": [
+     [
+      "(goal square)",
+      "expanded"
+     ],
+     [
+      "forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle",
+      "expanded"
+     ],
+     [
+      "forward/left",
+      "not expanded"
+     ],
+     [
+      "forward/forward",
+      "not expanded"
+     ],
+     [
+      "forward/right",
+      "not expanded"
+     ],
+     [
+      "forward/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle",
+      "expanded"
+     ],
+     [
+      "forward/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/toggle",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/drop",
+      "not expanded"
+     ]
+    ],
+    "upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.1,
+     "random_steps": 0,
+     "moves": 8570,
+     "random_share": 0.0,
+     "ways_used_steps": {
+      "forward/toggle": 3198,
+      "forward/toggle/toggle": 2577,
+      "forward": 2521,
+      "forward/toggle/toggle/left": 161,
+      "forward/toggle/toggle/pickup": 103,
+      "forward/toggle/toggle/toggle": 10
+     }
+    },
+    "exact_kinds": {
+     "equals_expected": true,
+     "groups_mixing_kinds": [],
+     "codes_per_expected_kind": {
+      "closed door": 1,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door green",
+       "closed door red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "way_kinds_exact": {
+     "forward": {
+      "successes": 341,
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle": {
+      "successes": 1838,
+      "kinds": {
+       "closed door": 0.9984
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/pickup": {
+      "successes": 199,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/drop": {
+      "successes": 147,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle": {
+      "successes": 10309,
+      "kinds": {
+       "switch": 0.9884,
+       "vase": 0.0116
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup": {
+      "successes": 2816,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/drop": {
+      "successes": 582,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle/pickup": {
+      "successes": 8633,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle/toggle": {
+      "successes": 1848,
+      "kinds": {
+       "switch": 0.7614,
+       "vase": 0.2386
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle/drop": {
+      "successes": 1008,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     }
+    },
+    "arm_exact_kinds": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.3,
+     "random_steps": 51,
+     "moves": 8639,
+     "random_share": 0.0059,
+     "move_way_steps": 238,
+     "dependence_checks_per_move": 0.615,
+     "failed_acts": 60,
+     "layouts_with_failed_acts": 56,
+     "moves_refused": 10,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/toggle": 515,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 9,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_exact_kinds_no_rules": {
+     "success": 0.952,
+     "mean_steps_when_successful": 17.0,
+     "random_steps": 42,
+     "moves": 12900,
+     "random_share": 0.0033,
+     "move_way_steps": 529,
+     "dependence_checks_per_move": 1.074,
+     "failed_acts": 0,
+     "layouts_with_failed_acts": 0,
+     "moves_refused": 0,
+     "ways_used": {
+      "forward": 476,
+      "forward/toggle": 476,
+      "forward/toggle/toggle": 4582,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 0.6667,
+     "layouts_first_key_matching": 9,
+     "failing_layouts": 24,
+     "failing_that_picked_other_key": 2
+    },
+    "gate": {
+     "effects_agree": true,
+     "upper_bound_98": true,
+     "exact_kinds_equal_expected": true,
+     "exact_kinds_acting_98": true
+    },
+    "encoder": {
+     "seconds": 33.0,
+     "device": "cuda",
+     "code_of_appearance": {
+      "closed door blue": 2,
+      "closed door green": 10,
+      "goal": 10,
+      "open door blue": 3,
+      "open door green": 11,
+      "floor": 9,
+      "switch off": 0,
+      "switch on": 0,
+      "vase": 12,
+      "open door red": 3,
+      "key blue": 8,
+      "key green": 8,
+      "key red": 8,
+      "wall": 6,
+      "closed door red": 2
+     }
+    },
+    "criterion_1_learned_kinds": {
+     "equals_expected": false,
+     "groups_mixing_kinds": [
+      [
+       "closed door green",
+       "goal"
+      ]
+     ],
+     "codes_per_expected_kind": {
+      "closed door": 2,
+      "goal": 1,
+      "open door": 2,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door red"
+      ],
+      [
+       "closed door green",
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door red"
+      ],
+      [
+       "open door green"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "arm_main": {
+     "success": 0.994,
+     "mean_steps_when_successful": 19.8,
+     "random_steps": 1453,
+     "moves": 10426,
+     "random_share": 0.1394,
+     "move_way_steps": 275,
+     "dependence_checks_per_move": 1.461,
+     "failed_acts": 61,
+     "layouts_with_failed_acts": 57,
+     "moves_refused": 154,
+     "ways_used": {
+      "forward": 497,
+      "forward/toggle": 493,
+      "forward/toggle/toggle": 562,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 4
+     },
+     "first_key_matching_success": 0.9231,
+     "layouts_first_key_matching": 13,
+     "failing_layouts": 3,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_kind_alone": {
+     "success": 0.986,
+     "mean_steps_when_successful": 20.4,
+     "random_steps": 1902,
+     "moves": 11475,
+     "random_share": 0.1658,
+     "move_way_steps": 489,
+     "dependence_checks_per_move": 0.0,
+     "failed_acts": 292,
+     "layouts_with_failed_acts": 262,
+     "moves_refused": 1185,
+     "ways_used": {
+      "forward": 493,
+      "forward/toggle": 493,
+      "forward/toggle/toggle": 753,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 10
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 16,
+     "failing_layouts": 7,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_contrast": {
+     "success": 0.908,
+     "mean_steps_when_successful": 33.5,
+     "random_steps": 8826,
+     "moves": 24395,
+     "random_share": 0.3618,
+     "move_way_steps": 1214,
+     "dependence_checks_per_move": 5.502,
+     "failed_acts": 1020,
+     "layouts_with_failed_acts": 495,
+     "moves_refused": 4274,
+     "ways_used": {
+      "forward": 454,
+      "forward/toggle": 1216,
+      "forward/toggle/toggle": 1706,
+      "forward/toggle/pickup": 6,
+      "forward/toggle/toggle/pickup": 50,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 0.9583,
+     "layouts_first_key_matching": 24,
+     "failing_layouts": 46,
+     "failing_that_picked_other_key": 6
+    },
+    "way_kinds_learned": {
+     "forward": {
+      "successes": 341,
+      "codes": [
+       10
+      ],
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.0,
+      "held_kind": null
+     },
+     "forward/toggle": {
+      "successes": 1838,
+      "codes": [
+       2,
+       10
+      ],
+      "kinds": {
+       "closed door": 0.9984
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.654,
+      "held_kind": null
+     },
+     "forward/pickup": {
+      "successes": 199,
+      "codes": [
+       8
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/drop": {
+      "successes": 147,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/toggle": {
+      "successes": 10309,
+      "codes": [
+       0,
+       12
+      ],
+      "kinds": {
+       "switch": 0.9884,
+       "vase": 0.0116
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup": {
+      "successes": 2816,
+      "codes": [
+       8
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/drop": {
+      "successes": 582,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/toggle/pickup": {
+      "successes": 8633,
+      "codes": [
+       8
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/toggle/toggle": {
+      "successes": 1848,
+      "codes": [
+       0,
+       12
+      ],
+      "kinds": {
+       "switch": 0.7614,
+       "vase": 0.2386
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/toggle/drop": {
+      "successes": 1008,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     }
+    },
+    "criterion_2": {
+     "ways_used_by_main": 5,
+     "lowest_code_pure_share": 0.0,
+     "failing_ways": {
+      "forward": 0.0,
+      "forward/toggle": 0.654
+     },
+     "pass": false
+    },
+    "criterion_3": {
+     "success_98": true,
+     "random_share_1pct": false,
+     "steps_within_1_5x": true
+    }
+   }
+  },
+  "gate_passed": true,
+  "seconds": 195.8,
+  "run": "timeout 1800 bin/prun python tools/card027/kinds.py --out runs/027_kinds_r2.json (log runs/027kinds_r2.out); 196 s",
+  "diagnosis": {
+   "how": "the main arm replayed layout by layout with the run's learned codes (reproduces 0.994 and the random-move counts exactly); each random move classified by why no move was chosen",
+   "random_moves_key": {
+    "door-toggle way walking toward the goal square (no closer move)": 1525,
+    "door-toggle way, closer moves refused": 248,
+    "other": 33,
+    "total": 1806
+   },
+   "random_moves_switch": {
+    "door-toggle way walking toward the goal square (no closer move)": 1264,
+    "door-toggle way, closer moves refused": 138,
+    "other": 51,
+    "total": 1453
+   },
+   "cause": "the encoder gave the goal square the green closed door's code in both worlds; so the door-toggle way's kind includes the goal square, which is in every layout; the dependence test keeps it (removing the goal ends the route); it lies behind the closed door, so no move gets closer and the move is random",
+   "training_rows": {
+    "key": {
+     "total": 372302,
+     "goal": 154,
+     "closed door green": 1938,
+     "goal_forward_rows": 102
+    },
+    "switch": {
+     "total": 366854,
+     "goal": 477,
+     "closed door green": 2079,
+     "goal_forward_rows": 341
+    }
+   },
+   "pixels": {
+    "mean_abs_difference_goal_vs_green_door": 39.0,
+    "red_vs_green_door": 92.0,
+    "goal_vs_floor": 87.7,
+    "goal_mean_rgb": [
+     0,
+     255,
+     0
+    ],
+    "green_door_mean_rgb": [
+     0,
+     138,
+     0
+    ]
+   }
+  }
+ },
+ "run3": {
+  "note": "Card 027, tools/card027/kinds.py; exact conditions and walking, kinds from pixels.",
+  "worlds": {
+   "key": {
+    "effects_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "tree_nodes": 58,
+    "goals_expanded": 11,
+    "rounds": "rebuilt from card 026",
+    "tree": [
+     [
+      "(goal square)",
+      "expanded"
+     ],
+     [
+      "forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle",
+      "expanded"
+     ],
+     [
+      "forward/right",
+      "not expanded"
+     ],
+     [
+      "forward/left",
+      "not expanded"
+     ],
+     [
+      "forward/forward",
+      "not expanded"
+     ],
+     [
+      "forward/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup",
+      "expanded"
+     ],
+     [
+      "forward/toggle/right",
+      "expanded"
+     ],
+     [
+      "forward/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup/drop",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/right",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/left",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/toggle",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/drop/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/forward",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/pickup/toggle/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup",
+      "expanded"
+     ],
+     [
+      "forward/toggle/right/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right/forward",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right/drop",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/toggle",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/pickup/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/toggle",
+      "leaf: depth limit"
+     ]
+    ],
+    "upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.4,
+     "random_steps": 0,
+     "moves": 8216,
+     "random_share": 0.0,
+     "ways_used_steps": {
+      "forward/toggle": 3007,
+      "forward": 2521,
+      "forward/toggle/pickup": 2303,
+      "forward/toggle/pickup/drop/pickup": 116,
+      "forward/toggle/pickup/right": 102,
+      "forward/toggle/pickup/toggle": 70,
+      "forward/toggle/pickup/drop": 46,
+      "forward/toggle/right": 31,
+      "forward/toggle/pickup/right/pickup": 19,
+      "forward/toggle/right/pickup/right": 1
+     }
+    },
+    "exact_kinds": {
+     "equals_expected": true,
+     "groups_mixing_kinds": [],
+     "codes_per_expected_kind": {
+      "closed door": 1,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door green",
+       "closed door red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "way_kinds_exact": {
+     "forward": {
+      "successes": 102,
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle": {
+      "successes": 554,
+      "kinds": {
+       "closed door": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/pickup": {
+      "successes": 169,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/drop": {
+      "successes": 101,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup": {
+      "successes": 19141,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/drop": {
+      "successes": 101,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle": {
+      "successes": 50,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/drop": {
+      "successes": 16893,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/toggle": {
+      "successes": 458,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/drop/pickup": {
+      "successes": 6120,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/drop/toggle": {
+      "successes": 444,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/right/drop": {
+      "successes": 17794,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/right/pickup": {
+      "successes": 1622,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/right/toggle": {
+      "successes": 214,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/left/drop": {
+      "successes": 17794,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/left/pickup": {
+      "successes": 1622,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/left/toggle": {
+      "successes": 214,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/forward/drop": {
+      "successes": 17805,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/forward/pickup": {
+      "successes": 1634,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/forward/toggle": {
+      "successes": 215,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/toggle/drop": {
+      "successes": 17464,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/toggle/pickup": {
+      "successes": 267,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/right/pickup": {
+      "successes": 21445,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/right/pickup/drop": {
+      "successes": 17910,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/right/pickup/toggle": {
+      "successes": 308,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     }
+    },
+    "arm_exact_kinds": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.6,
+     "random_steps": 33,
+     "moves": 8303,
+     "random_share": 0.004,
+     "move_way_steps": 158,
+     "dependence_checks_per_move": 0.596,
+     "failed_acts": 45,
+     "layouts_with_failed_acts": 28,
+     "moves_refused": 6,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/pickup": 486,
+      "forward/toggle/pickup/drop": 47,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 59,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 484,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_exact_kinds_no_rules": {
+     "success": 0.966,
+     "mean_steps_when_successful": 16.1,
+     "random_steps": 27,
+     "moves": 11200,
+     "random_share": 0.0024,
+     "move_way_steps": 253,
+     "dependence_checks_per_move": 0.717,
+     "failed_acts": 0,
+     "layouts_with_failed_acts": 0,
+     "moves_refused": 0,
+     "ways_used": {
+      "forward": 483,
+      "forward/toggle": 483,
+      "forward/toggle/pickup": 566,
+      "forward/toggle/pickup/drop": 1560,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 1485,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 483,
+     "failing_layouts": 17,
+     "failing_that_picked_other_key": 16
+    },
+    "gate": {
+     "effects_agree": true,
+     "upper_bound_98": true,
+     "exact_kinds_equal_expected": true,
+     "exact_kinds_acting_98": true
+    },
+    "encoder": {
+     "seconds": 34.2,
+     "device": "cuda",
+     "sampling": "outcome",
+     "outcome_rows": {
+      "drop front changed, held changed": 44443,
+      "drop front same, held same": 60318,
+      "forward blocked": 33680,
+      "forward goal": 102,
+      "forward moved": 32424,
+      "pickup front changed, held changed": 45357,
+      "pickup front same, held same": 60882,
+      "toggle front changed, held same": 32740,
+      "toggle front same, held same": 62356
+     },
+     "code_of_appearance": {
+      "closed door blue": 2,
+      "closed door green": 12,
+      "goal": 12,
+      "open door blue": 1,
+      "open door green": 4,
+      "floor": 9,
+      "switch off": 15,
+      "switch on": 15,
+      "vase": 3,
+      "open door red": 5,
+      "key blue": 11,
+      "key green": 11,
+      "key red": 11,
+      "wall": 6,
+      "closed door red": 14
+     }
+    },
+    "criterion_1_learned_kinds": {
+     "equals_expected": false,
+     "groups_mixing_kinds": [
+      [
+       "closed door green",
+       "goal"
+      ]
+     ],
+     "codes_per_expected_kind": {
+      "closed door": 3,
+      "goal": 1,
+      "open door": 3,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue"
+      ],
+      [
+       "closed door green",
+       "goal"
+      ],
+      [
+       "open door blue"
+      ],
+      [
+       "open door green"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "open door red"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ],
+      [
+       "closed door red"
+      ]
+     ]
+    },
+    "arm_main": {
+     "success": 0.994,
+     "mean_steps_when_successful": 20.2,
+     "random_steps": 1806,
+     "moves": 10636,
+     "random_share": 0.1698,
+     "move_way_steps": 234,
+     "dependence_checks_per_move": 1.457,
+     "failed_acts": 45,
+     "layouts_with_failed_acts": 28,
+     "moves_refused": 263,
+     "ways_used": {
+      "forward": 497,
+      "forward/toggle": 493,
+      "forward/toggle/pickup": 636,
+      "forward/toggle/pickup/drop": 47,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 59,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "first_key_matching_success": 0.9938,
+     "layouts_first_key_matching": 484,
+     "failing_layouts": 3,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_kind_alone": {
+     "success": 0.986,
+     "mean_steps_when_successful": 23.1,
+     "random_steps": 2364,
+     "moves": 12811,
+     "random_share": 0.1845,
+     "move_way_steps": 412,
+     "dependence_checks_per_move": 0.0,
+     "failed_acts": 390,
+     "layouts_with_failed_acts": 234,
+     "moves_refused": 971,
+     "ways_used": {
+      "forward": 493,
+      "forward/toggle": 494,
+      "forward/toggle/pickup": 874,
+      "forward/toggle/pickup/drop": 443,
+      "forward/toggle/pickup/toggle": 20,
+      "forward/toggle/pickup/drop/pickup": 75,
+      "forward/toggle/pickup/drop/toggle": 1,
+      "forward/toggle/pickup/right/pickup": 5,
+      "forward/toggle/right/pickup/drop": 4
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 271,
+     "failing_layouts": 7,
+     "failing_that_picked_other_key": 4
+    },
+    "arm_contrast": {
+     "success": 0.964,
+     "mean_steps_when_successful": 24.2,
+     "random_steps": 5201,
+     "moves": 15262,
+     "random_share": 0.3408,
+     "move_way_steps": 612,
+     "dependence_checks_per_move": 5.055,
+     "failed_acts": 202,
+     "layouts_with_failed_acts": 158,
+     "moves_refused": 1571,
+     "ways_used": {
+      "forward": 482,
+      "forward/toggle": 488,
+      "forward/toggle/pickup": 723,
+      "forward/toggle/pickup/drop": 44,
+      "forward/toggle/pickup/toggle": 28,
+      "forward/toggle/pickup/drop/pickup": 76,
+      "forward/toggle/pickup/right/pickup": 4
+     },
+     "first_key_matching_success": 0.9936,
+     "layouts_first_key_matching": 470,
+     "failing_layouts": 18,
+     "failing_that_picked_other_key": 5
+    },
+    "way_kinds_learned": {
+     "forward": {
+      "successes": 102,
+      "codes": [
+       12
+      ],
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.0,
+      "held_kind": null
+     },
+     "forward/toggle": {
+      "successes": 554,
+      "codes": [
+       2,
+       12,
+       14
+      ],
+      "kinds": {
+       "closed door": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.6877,
+      "held_kind": null
+     },
+     "forward/pickup": {
+      "successes": 169,
+      "codes": [
+       11
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/drop": {
+      "successes": 101,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup": {
+      "successes": 19141,
+      "codes": [
+       11
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/drop": {
+      "successes": 101,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/toggle": {
+      "successes": 50,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/drop": {
+      "successes": 16893,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/toggle": {
+      "successes": 458,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/drop/pickup": {
+      "successes": 6120,
+      "codes": [
+       11
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/drop/toggle": {
+      "successes": 444,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/right/drop": {
+      "successes": 17794,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/right/pickup": {
+      "successes": 1622,
+      "codes": [
+       11
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/right/toggle": {
+      "successes": 214,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/left/drop": {
+      "successes": 17794,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/left/pickup": {
+      "successes": 1622,
+      "codes": [
+       11
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/left/toggle": {
+      "successes": 214,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/forward/drop": {
+      "successes": 17805,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/forward/pickup": {
+      "successes": 1634,
+      "codes": [
+       11
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/forward/toggle": {
+      "successes": 215,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/toggle/drop": {
+      "successes": 17464,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/toggle/pickup": {
+      "successes": 267,
+      "codes": [
+       11
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/right/pickup": {
+      "successes": 21445,
+      "codes": [
+       11
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/right/pickup/drop": {
+      "successes": 17910,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/right/pickup/toggle": {
+      "successes": 308,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     }
+    },
+    "criterion_2": {
+     "ways_used_by_main": 7,
+     "lowest_code_pure_share": 0.0,
+     "failing_ways": {
+      "forward": 0.0,
+      "forward/toggle": 0.6877
+     },
+     "pass": false
+    },
+    "criterion_3": {
+     "success_98": true,
+     "random_share_1pct": false,
+     "steps_within_1_5x": true
+    }
+   },
+   "switch": {
+    "effects_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "tree_nodes": 20,
+    "goals_expanded": 4,
+    "rounds": 5,
+    "tree": [
+     [
+      "(goal square)",
+      "expanded"
+     ],
+     [
+      "forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle",
+      "expanded"
+     ],
+     [
+      "forward/left",
+      "not expanded"
+     ],
+     [
+      "forward/forward",
+      "not expanded"
+     ],
+     [
+      "forward/right",
+      "not expanded"
+     ],
+     [
+      "forward/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle",
+      "expanded"
+     ],
+     [
+      "forward/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/toggle",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/drop",
+      "not expanded"
+     ]
+    ],
+    "upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.1,
+     "random_steps": 0,
+     "moves": 8570,
+     "random_share": 0.0,
+     "ways_used_steps": {
+      "forward/toggle": 3198,
+      "forward/toggle/toggle": 2577,
+      "forward": 2521,
+      "forward/toggle/toggle/left": 161,
+      "forward/toggle/toggle/pickup": 103,
+      "forward/toggle/toggle/toggle": 10
+     }
+    },
+    "exact_kinds": {
+     "equals_expected": true,
+     "groups_mixing_kinds": [],
+     "codes_per_expected_kind": {
+      "closed door": 1,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door green",
+       "closed door red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "way_kinds_exact": {
+     "forward": {
+      "successes": 341,
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle": {
+      "successes": 1838,
+      "kinds": {
+       "closed door": 0.9984
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/pickup": {
+      "successes": 199,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/drop": {
+      "successes": 147,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle": {
+      "successes": 10309,
+      "kinds": {
+       "switch": 0.9884,
+       "vase": 0.0116
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup": {
+      "successes": 2816,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/drop": {
+      "successes": 582,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle/pickup": {
+      "successes": 8633,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle/toggle": {
+      "successes": 1848,
+      "kinds": {
+       "switch": 0.7614,
+       "vase": 0.2386
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle/drop": {
+      "successes": 1008,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     }
+    },
+    "arm_exact_kinds": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.3,
+     "random_steps": 51,
+     "moves": 8639,
+     "random_share": 0.0059,
+     "move_way_steps": 238,
+     "dependence_checks_per_move": 0.615,
+     "failed_acts": 60,
+     "layouts_with_failed_acts": 56,
+     "moves_refused": 10,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/toggle": 515,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 9,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_exact_kinds_no_rules": {
+     "success": 0.952,
+     "mean_steps_when_successful": 17.0,
+     "random_steps": 42,
+     "moves": 12900,
+     "random_share": 0.0033,
+     "move_way_steps": 529,
+     "dependence_checks_per_move": 1.074,
+     "failed_acts": 0,
+     "layouts_with_failed_acts": 0,
+     "moves_refused": 0,
+     "ways_used": {
+      "forward": 476,
+      "forward/toggle": 476,
+      "forward/toggle/toggle": 4582,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 0.6667,
+     "layouts_first_key_matching": 9,
+     "failing_layouts": 24,
+     "failing_that_picked_other_key": 2
+    },
+    "gate": {
+     "effects_agree": true,
+     "upper_bound_98": true,
+     "exact_kinds_equal_expected": true,
+     "exact_kinds_acting_98": true
+    },
+    "encoder": {
+     "seconds": 33.8,
+     "device": "cuda",
+     "sampling": "outcome",
+     "outcome_rows": {
+      "drop front changed, held changed": 43045,
+      "drop front same, held same": 60173,
+      "forward blocked": 32997,
+      "forward goal": 341,
+      "forward moved": 32334,
+      "pickup front changed, held changed": 43892,
+      "pickup front same, held same": 59336,
+      "toggle front changed, held same": 33826,
+      "toggle front same, held same": 60910
+     },
+     "code_of_appearance": {
+      "closed door blue": 5,
+      "closed door green": 4,
+      "goal": 12,
+      "open door blue": 11,
+      "open door green": 11,
+      "floor": 9,
+      "switch off": 3,
+      "switch on": 7,
+      "vase": 5,
+      "open door red": 11,
+      "key blue": 4,
+      "key green": 4,
+      "key red": 4,
+      "wall": 6,
+      "closed door red": 5
+     }
+    },
+    "criterion_1_learned_kinds": {
+     "equals_expected": false,
+     "groups_mixing_kinds": [
+      [
+       "closed door blue",
+       "closed door red",
+       "vase"
+      ],
+      [
+       "closed door green",
+       "key blue",
+       "key green",
+       "key red"
+      ]
+     ],
+     "codes_per_expected_kind": {
+      "closed door": 2,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 2,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door red",
+       "vase"
+      ],
+      [
+       "closed door green",
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off"
+      ],
+      [
+       "switch on"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "arm_main": {
+     "success": 0.988,
+     "mean_steps_when_successful": 20.2,
+     "random_steps": 1548,
+     "moves": 11160,
+     "random_share": 0.1387,
+     "move_way_steps": 365,
+     "dependence_checks_per_move": 2.431,
+     "failed_acts": 204,
+     "layouts_with_failed_acts": 180,
+     "moves_refused": 476,
+     "ways_used": {
+      "forward": 494,
+      "forward/toggle": 524,
+      "forward/toggle/toggle": 627,
+      "forward/toggle/toggle/pickup": 27,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 0.9333,
+     "layouts_first_key_matching": 15,
+     "failing_layouts": 6,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_kind_alone": {
+     "success": 0.922,
+     "mean_steps_when_successful": 33.5,
+     "random_steps": 6609,
+     "moves": 23257,
+     "random_share": 0.2842,
+     "move_way_steps": 1768,
+     "dependence_checks_per_move": 0.0,
+     "failed_acts": 1505,
+     "layouts_with_failed_acts": 455,
+     "moves_refused": 5329,
+     "ways_used": {
+      "forward": 461,
+      "forward/toggle": 1582,
+      "forward/toggle/toggle": 834,
+      "forward/toggle/pickup": 4,
+      "forward/toggle/toggle/pickup": 27,
+      "forward/toggle/toggle/toggle": 9
+     },
+     "first_key_matching_success": 0.9524,
+     "layouts_first_key_matching": 42,
+     "failing_layouts": 39,
+     "failing_that_picked_other_key": 2
+    },
+    "arm_contrast": {
+     "success": 0.908,
+     "mean_steps_when_successful": 33.5,
+     "random_steps": 8826,
+     "moves": 24395,
+     "random_share": 0.3618,
+     "move_way_steps": 1214,
+     "dependence_checks_per_move": 5.502,
+     "failed_acts": 1020,
+     "layouts_with_failed_acts": 495,
+     "moves_refused": 4274,
+     "ways_used": {
+      "forward": 454,
+      "forward/toggle": 1216,
+      "forward/toggle/toggle": 1706,
+      "forward/toggle/pickup": 6,
+      "forward/toggle/toggle/pickup": 50,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 0.9583,
+     "layouts_first_key_matching": 24,
+     "failing_layouts": 46,
+     "failing_that_picked_other_key": 6
+    },
+    "way_kinds_learned": {
+     "forward": {
+      "successes": 341,
+      "codes": [
+       12
+      ],
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle": {
+      "successes": 1838,
+      "codes": [
+       4,
+       5
+      ],
+      "kinds": {
+       "closed door": 0.9984
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.654,
+      "held_kind": null
+     },
+     "forward/pickup": {
+      "successes": 199,
+      "codes": [
+       4
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.0,
+      "held_kind": null
+     },
+     "forward/drop": {
+      "successes": 147,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/toggle": {
+      "successes": 10309,
+      "codes": [
+       3,
+       5
+      ],
+      "kinds": {
+       "switch": 0.9884,
+       "vase": 0.0116
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup": {
+      "successes": 2816,
+      "codes": [
+       4
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.0,
+      "held_kind": null
+     },
+     "forward/toggle/drop": {
+      "successes": 582,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/toggle/pickup": {
+      "successes": 8633,
+      "codes": [
+       4
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.0,
+      "held_kind": null
+     },
+     "forward/toggle/toggle/toggle": {
+      "successes": 1848,
+      "codes": [
+       3,
+       5,
+       7
+      ],
+      "kinds": {
+       "switch": 0.7614,
+       "vase": 0.2386
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/toggle/drop": {
+      "successes": 1008,
+      "codes": [
+       9
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 0.0,
+      "held_kind": "key"
+     }
+    },
+    "criterion_2": {
+     "ways_used_by_main": 5,
+     "lowest_code_pure_share": 0.0,
+     "failing_ways": {
+      "forward/toggle": 0.654,
+      "forward/toggle/toggle/pickup": 0.0
+     },
+     "pass": false
+    },
+    "criterion_3": {
+     "success_98": true,
+     "random_share_1pct": false,
+     "steps_within_1_5x": true
+    }
+   }
+  },
+  "gate_passed": true,
+  "seconds": 197.7,
+  "run": "timeout 1800 bin/prun python tools/card027/kinds.py --out runs/027_kinds_r3.json (log runs/027kinds_r3.out); 198 s; encoder rows balanced by outcome",
+  "diagnosis": {
+   "random_moves_switch": {
+    "toggle-so-the-door-can-be-reached way heading for a closed door (shares the vase's code)": 1068,
+    "that way, closer moves refused": 287,
+    "door-toggle way, closer moves refused": 160,
+    "other": 33,
+    "total": 1548
+   },
+   "key_world": "learned grouping identical to run2 (code numbers differ), so acting identical"
+  }
+ },
+ "run4": {
+  "note": "Card 027, tools/card027/kinds.py; exact conditions and walking, kinds from pixels.",
+  "worlds": {
+   "key": {
+    "effects_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "tree_nodes": 58,
+    "goals_expanded": 11,
+    "rounds": "rebuilt from card 026",
+    "tree": [
+     [
+      "(goal square)",
+      "expanded"
+     ],
+     [
+      "forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle",
+      "expanded"
+     ],
+     [
+      "forward/right",
+      "not expanded"
+     ],
+     [
+      "forward/left",
+      "not expanded"
+     ],
+     [
+      "forward/forward",
+      "not expanded"
+     ],
+     [
+      "forward/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup",
+      "expanded"
+     ],
+     [
+      "forward/toggle/right",
+      "expanded"
+     ],
+     [
+      "forward/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup/drop",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/right",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/left",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/toggle",
+      "expanded"
+     ],
+     [
+      "forward/toggle/pickup/drop/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/drop/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/right/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/left/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/toggle",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/forward/forward",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/pickup/toggle/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/pickup/toggle/pickup",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup",
+      "expanded"
+     ],
+     [
+      "forward/toggle/right/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right/forward",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right/drop",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/toggle",
+      "rejected by self-check"
+     ],
+     [
+      "forward/toggle/right/pickup/drop",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/right",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/left",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/forward",
+      "leaf: depth limit"
+     ],
+     [
+      "forward/toggle/right/pickup/toggle",
+      "leaf: depth limit"
+     ]
+    ],
+    "upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.4,
+     "random_steps": 0,
+     "moves": 8216,
+     "random_share": 0.0,
+     "ways_used_steps": {
+      "forward/toggle": 3007,
+      "forward": 2521,
+      "forward/toggle/pickup": 2303,
+      "forward/toggle/pickup/drop/pickup": 116,
+      "forward/toggle/pickup/right": 102,
+      "forward/toggle/pickup/toggle": 70,
+      "forward/toggle/pickup/drop": 46,
+      "forward/toggle/right": 31,
+      "forward/toggle/pickup/right/pickup": 19,
+      "forward/toggle/right/pickup/right": 1
+     }
+    },
+    "exact_kinds": {
+     "equals_expected": true,
+     "groups_mixing_kinds": [],
+     "codes_per_expected_kind": {
+      "closed door": 1,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door green",
+       "closed door red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "way_kinds_exact": {
+     "forward": {
+      "successes": 102,
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle": {
+      "successes": 554,
+      "kinds": {
+       "closed door": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/pickup": {
+      "successes": 169,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/drop": {
+      "successes": 101,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup": {
+      "successes": 19141,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/drop": {
+      "successes": 101,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle": {
+      "successes": 50,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/drop": {
+      "successes": 16893,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/toggle": {
+      "successes": 458,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/drop/pickup": {
+      "successes": 6120,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/drop/toggle": {
+      "successes": 444,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/right/drop": {
+      "successes": 17794,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/right/pickup": {
+      "successes": 1622,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/right/toggle": {
+      "successes": 214,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/left/drop": {
+      "successes": 17794,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/left/pickup": {
+      "successes": 1622,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/left/toggle": {
+      "successes": 214,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/forward/drop": {
+      "successes": 17805,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/forward/pickup": {
+      "successes": 1634,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/forward/toggle": {
+      "successes": 215,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/toggle/drop": {
+      "successes": 17464,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup/toggle/pickup": {
+      "successes": 267,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/right/pickup": {
+      "successes": 21445,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/right/pickup/drop": {
+      "successes": 17910,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/right/pickup/toggle": {
+      "successes": 308,
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     }
+    },
+    "arm_exact_kinds": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.6,
+     "random_steps": 33,
+     "moves": 8303,
+     "random_share": 0.004,
+     "move_way_steps": 158,
+     "dependence_checks_per_move": 0.596,
+     "failed_acts": 45,
+     "layouts_with_failed_acts": 28,
+     "moves_refused": 6,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/pickup": 486,
+      "forward/toggle/pickup/drop": 47,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 59,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 484,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_exact_kinds_no_rules": {
+     "success": 0.966,
+     "mean_steps_when_successful": 16.1,
+     "random_steps": 27,
+     "moves": 11200,
+     "random_share": 0.0024,
+     "move_way_steps": 253,
+     "dependence_checks_per_move": 0.717,
+     "failed_acts": 0,
+     "layouts_with_failed_acts": 0,
+     "moves_refused": 0,
+     "ways_used": {
+      "forward": 483,
+      "forward/toggle": 483,
+      "forward/toggle/pickup": 566,
+      "forward/toggle/pickup/drop": 1560,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 1485,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 483,
+     "failing_layouts": 17,
+     "failing_that_picked_other_key": 16
+    },
+    "gate": {
+     "effects_agree": true,
+     "upper_bound_98": true,
+     "exact_kinds_equal_expected": true,
+     "exact_kinds_acting_98": true
+    },
+    "leave_one_out": {
+     "closed door blue": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "open door",
+       "vase",
+       "vase"
+      ]
+     },
+     "closed door green": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "goal",
+       "goal",
+       "goal"
+      ]
+     },
+     "open door blue": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "floor",
+       "floor",
+       "floor"
+      ]
+     },
+     "open door green": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "floor",
+       "floor",
+       "floor"
+      ]
+     },
+     "switch off": {
+      "correct_seeds": 1,
+      "of": 3,
+      "given": [
+       "key",
+       "switch",
+       "key"
+      ]
+     },
+     "switch on": {
+      "correct_seeds": 3,
+      "of": 3,
+      "given": [
+       "switch",
+       "switch",
+       "switch"
+      ]
+     },
+     "open door red": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "floor",
+       "floor",
+       "floor"
+      ]
+     },
+     "key blue": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "vase",
+       "vase",
+       "vase"
+      ]
+     },
+     "key green": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "switch",
+       "switch",
+       "switch"
+      ]
+     },
+     "key red": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "switch",
+       "switch",
+       "switch"
+      ]
+     },
+     "closed door red": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "open door",
+       "open door",
+       "open door"
+      ]
+     }
+    },
+    "encoder": {
+     "network": "recognise",
+     "seconds": 1.9,
+     "device": "cpu",
+     "sampling": "outcome",
+     "outcome_rows": {
+      "final_loss": 1.5e-05
+     },
+     "code_of_appearance": {
+      "closed door blue": 0,
+      "closed door green": 0,
+      "goal": 1,
+      "open door blue": 2,
+      "open door green": 2,
+      "floor": 3,
+      "switch off": 4,
+      "switch on": 4,
+      "vase": 5,
+      "open door red": 2,
+      "key blue": 6,
+      "key green": 6,
+      "key red": 6,
+      "wall": 7,
+      "closed door red": 0
+     }
+    },
+    "criterion_1_learned_kinds": {
+     "equals_expected": true,
+     "groups_mixing_kinds": [],
+     "codes_per_expected_kind": {
+      "closed door": 1,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door green",
+       "closed door red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "arm_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 16.6,
+     "random_steps": 33,
+     "moves": 8303,
+     "random_share": 0.004,
+     "move_way_steps": 158,
+     "dependence_checks_per_move": 0.596,
+     "failed_acts": 45,
+     "layouts_with_failed_acts": 28,
+     "moves_refused": 6,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/pickup": 486,
+      "forward/toggle/pickup/drop": 47,
+      "forward/toggle/pickup/toggle": 19,
+      "forward/toggle/pickup/drop/pickup": 59,
+      "forward/toggle/pickup/right/pickup": 2
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 484,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_kind_alone": {
+     "success": 0.988,
+     "mean_steps_when_successful": 21.3,
+     "random_steps": 1412,
+     "moves": 11734,
+     "random_share": 0.1203,
+     "move_way_steps": 404,
+     "dependence_checks_per_move": 0.0,
+     "failed_acts": 390,
+     "layouts_with_failed_acts": 234,
+     "moves_refused": 960,
+     "ways_used": {
+      "forward": 494,
+      "forward/toggle": 494,
+      "forward/toggle/pickup": 807,
+      "forward/toggle/pickup/drop": 443,
+      "forward/toggle/pickup/toggle": 20,
+      "forward/toggle/pickup/drop/pickup": 75,
+      "forward/toggle/pickup/drop/toggle": 1,
+      "forward/toggle/pickup/right/pickup": 5,
+      "forward/toggle/right/pickup/drop": 4
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 271,
+     "failing_layouts": 6,
+     "failing_that_picked_other_key": 3
+    },
+    "arm_contrast": {
+     "success": 0.964,
+     "mean_steps_when_successful": 24.2,
+     "random_steps": 5201,
+     "moves": 15262,
+     "random_share": 0.3408,
+     "move_way_steps": 612,
+     "dependence_checks_per_move": 5.055,
+     "failed_acts": 202,
+     "layouts_with_failed_acts": 158,
+     "moves_refused": 1571,
+     "ways_used": {
+      "forward": 482,
+      "forward/toggle": 488,
+      "forward/toggle/pickup": 723,
+      "forward/toggle/pickup/drop": 44,
+      "forward/toggle/pickup/toggle": 28,
+      "forward/toggle/pickup/drop/pickup": 76,
+      "forward/toggle/pickup/right/pickup": 4
+     },
+     "first_key_matching_success": 0.9936,
+     "layouts_first_key_matching": 470,
+     "failing_layouts": 18,
+     "failing_that_picked_other_key": 5
+    },
+    "way_kinds_learned": {
+     "forward": {
+      "successes": 102,
+      "codes": [
+       1
+      ],
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle": {
+      "successes": 554,
+      "codes": [
+       0
+      ],
+      "kinds": {
+       "closed door": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/pickup": {
+      "successes": 169,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/drop": {
+      "successes": 101,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup": {
+      "successes": 19141,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/drop": {
+      "successes": 101,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/toggle": {
+      "successes": 50,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/drop": {
+      "successes": 16893,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/toggle": {
+      "successes": 458,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/drop/pickup": {
+      "successes": 6120,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/drop/toggle": {
+      "successes": 444,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/right/drop": {
+      "successes": 17794,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/right/pickup": {
+      "successes": 1622,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/right/toggle": {
+      "successes": 214,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/left/drop": {
+      "successes": 17794,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/left/pickup": {
+      "successes": 1622,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/left/toggle": {
+      "successes": 214,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/forward/drop": {
+      "successes": 17805,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/forward/pickup": {
+      "successes": 1634,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/forward/toggle": {
+      "successes": 215,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup/toggle/drop": {
+      "successes": 17464,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/pickup/toggle/pickup": {
+      "successes": 267,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/right/pickup": {
+      "successes": 21445,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/right/pickup/drop": {
+      "successes": 17910,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/right/pickup/toggle": {
+      "successes": 308,
+      "codes": [
+       5
+      ],
+      "kinds": {
+       "vase": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     }
+    },
+    "criterion_2": {
+     "ways_used_by_main": 7,
+     "lowest_code_pure_share": 1.0,
+     "failing_ways": {},
+     "pass": true
+    },
+    "criterion_3": {
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_within_1_5x": true
+    }
+   },
+   "switch": {
+    "effects_check": {
+     "forward_moved_agree": 1.0,
+     "front_changed_agree": 1.0,
+     "held_changed_agree": 1.0,
+     "front_place_is_tile_in_front": 1.0
+    },
+    "tree_nodes": 20,
+    "goals_expanded": 4,
+    "rounds": 5,
+    "tree": [
+     [
+      "(goal square)",
+      "expanded"
+     ],
+     [
+      "forward",
+      "expanded"
+     ],
+     [
+      "forward/toggle",
+      "expanded"
+     ],
+     [
+      "forward/left",
+      "not expanded"
+     ],
+     [
+      "forward/forward",
+      "not expanded"
+     ],
+     [
+      "forward/right",
+      "not expanded"
+     ],
+     [
+      "forward/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle",
+      "expanded"
+     ],
+     [
+      "forward/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/drop",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/left",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/right",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/pickup",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/forward",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/toggle",
+      "not expanded"
+     ],
+     [
+      "forward/toggle/toggle/drop",
+      "not expanded"
+     ]
+    ],
+    "upper_bound": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.1,
+     "random_steps": 0,
+     "moves": 8570,
+     "random_share": 0.0,
+     "ways_used_steps": {
+      "forward/toggle": 3198,
+      "forward/toggle/toggle": 2577,
+      "forward": 2521,
+      "forward/toggle/toggle/left": 161,
+      "forward/toggle/toggle/pickup": 103,
+      "forward/toggle/toggle/toggle": 10
+     }
+    },
+    "exact_kinds": {
+     "equals_expected": true,
+     "groups_mixing_kinds": [],
+     "codes_per_expected_kind": {
+      "closed door": 1,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door green",
+       "closed door red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "way_kinds_exact": {
+     "forward": {
+      "successes": 341,
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle": {
+      "successes": 1838,
+      "kinds": {
+       "closed door": 0.9984
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/pickup": {
+      "successes": 199,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/drop": {
+      "successes": 147,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle": {
+      "successes": 10309,
+      "kinds": {
+       "switch": 0.9884,
+       "vase": 0.0116
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/pickup": {
+      "successes": 2816,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/drop": {
+      "successes": 582,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle/pickup": {
+      "successes": 8633,
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle/toggle": {
+      "successes": 1848,
+      "kinds": {
+       "switch": 0.7614,
+       "vase": 0.2386
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     },
+     "forward/toggle/toggle/drop": {
+      "successes": 1008,
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0
+     }
+    },
+    "arm_exact_kinds": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.3,
+     "random_steps": 51,
+     "moves": 8639,
+     "random_share": 0.0059,
+     "move_way_steps": 238,
+     "dependence_checks_per_move": 0.615,
+     "failed_acts": 60,
+     "layouts_with_failed_acts": 56,
+     "moves_refused": 10,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/toggle": 515,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 9,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_exact_kinds_no_rules": {
+     "success": 0.952,
+     "mean_steps_when_successful": 17.0,
+     "random_steps": 42,
+     "moves": 12900,
+     "random_share": 0.0033,
+     "move_way_steps": 529,
+     "dependence_checks_per_move": 1.074,
+     "failed_acts": 0,
+     "layouts_with_failed_acts": 0,
+     "moves_refused": 0,
+     "ways_used": {
+      "forward": 476,
+      "forward/toggle": 476,
+      "forward/toggle/toggle": 4582,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 0.6667,
+     "layouts_first_key_matching": 9,
+     "failing_layouts": 24,
+     "failing_that_picked_other_key": 2
+    },
+    "gate": {
+     "effects_agree": true,
+     "upper_bound_98": true,
+     "exact_kinds_equal_expected": true,
+     "exact_kinds_acting_98": true
+    },
+    "leave_one_out": {
+     "closed door blue": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "open door",
+       "vase",
+       "vase"
+      ]
+     },
+     "closed door green": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "goal",
+       "goal",
+       "goal"
+      ]
+     },
+     "open door blue": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "floor",
+       "floor",
+       "floor"
+      ]
+     },
+     "open door green": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "floor",
+       "floor",
+       "floor"
+      ]
+     },
+     "switch off": {
+      "correct_seeds": 1,
+      "of": 3,
+      "given": [
+       "key",
+       "switch",
+       "key"
+      ]
+     },
+     "switch on": {
+      "correct_seeds": 3,
+      "of": 3,
+      "given": [
+       "switch",
+       "switch",
+       "switch"
+      ]
+     },
+     "open door red": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "floor",
+       "floor",
+       "floor"
+      ]
+     },
+     "key blue": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "vase",
+       "vase",
+       "vase"
+      ]
+     },
+     "key green": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "switch",
+       "switch",
+       "switch"
+      ]
+     },
+     "key red": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "switch",
+       "switch",
+       "switch"
+      ]
+     },
+     "closed door red": {
+      "correct_seeds": 0,
+      "of": 3,
+      "given": [
+       "open door",
+       "open door",
+       "open door"
+      ]
+     }
+    },
+    "encoder": {
+     "network": "recognise",
+     "seconds": 0.6,
+     "device": "cpu",
+     "sampling": "outcome",
+     "outcome_rows": {
+      "final_loss": 1.5e-05
+     },
+     "code_of_appearance": {
+      "closed door blue": 0,
+      "closed door green": 0,
+      "goal": 1,
+      "open door blue": 2,
+      "open door green": 2,
+      "floor": 3,
+      "switch off": 4,
+      "switch on": 4,
+      "vase": 5,
+      "open door red": 2,
+      "key blue": 6,
+      "key green": 6,
+      "key red": 6,
+      "wall": 7,
+      "closed door red": 0
+     }
+    },
+    "criterion_1_learned_kinds": {
+     "equals_expected": true,
+     "groups_mixing_kinds": [],
+     "codes_per_expected_kind": {
+      "closed door": 1,
+      "goal": 1,
+      "open door": 1,
+      "floor": 1,
+      "switch": 1,
+      "vase": 1,
+      "key": 1,
+      "wall": 1
+     },
+     "groups": [
+      [
+       "closed door blue",
+       "closed door green",
+       "closed door red"
+      ],
+      [
+       "goal"
+      ],
+      [
+       "open door blue",
+       "open door green",
+       "open door red"
+      ],
+      [
+       "floor"
+      ],
+      [
+       "switch off",
+       "switch on"
+      ],
+      [
+       "vase"
+      ],
+      [
+       "key blue",
+       "key green",
+       "key red"
+      ],
+      [
+       "wall"
+      ]
+     ]
+    },
+    "arm_main": {
+     "success": 1.0,
+     "mean_steps_when_successful": 17.3,
+     "random_steps": 51,
+     "moves": 8639,
+     "random_share": 0.0059,
+     "move_way_steps": 238,
+     "dependence_checks_per_move": 0.615,
+     "failed_acts": 60,
+     "layouts_with_failed_acts": 56,
+     "moves_refused": 10,
+     "ways_used": {
+      "forward": 500,
+      "forward/toggle": 500,
+      "forward/toggle/toggle": 515,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 9,
+     "failing_layouts": 0,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_kind_alone": {
+     "success": 0.986,
+     "mean_steps_when_successful": 18.8,
+     "random_steps": 1175,
+     "moves": 10684,
+     "random_share": 0.11,
+     "move_way_steps": 472,
+     "dependence_checks_per_move": 0.0,
+     "failed_acts": 292,
+     "layouts_with_failed_acts": 262,
+     "moves_refused": 1129,
+     "ways_used": {
+      "forward": 493,
+      "forward/toggle": 493,
+      "forward/toggle/toggle": 724,
+      "forward/toggle/toggle/pickup": 24,
+      "forward/toggle/toggle/toggle": 10
+     },
+     "first_key_matching_success": 1.0,
+     "layouts_first_key_matching": 14,
+     "failing_layouts": 7,
+     "failing_that_picked_other_key": 0
+    },
+    "arm_contrast": {
+     "success": 0.908,
+     "mean_steps_when_successful": 33.5,
+     "random_steps": 8826,
+     "moves": 24395,
+     "random_share": 0.3618,
+     "move_way_steps": 1214,
+     "dependence_checks_per_move": 5.502,
+     "failed_acts": 1020,
+     "layouts_with_failed_acts": 495,
+     "moves_refused": 4274,
+     "ways_used": {
+      "forward": 454,
+      "forward/toggle": 1216,
+      "forward/toggle/toggle": 1706,
+      "forward/toggle/pickup": 6,
+      "forward/toggle/toggle/pickup": 50,
+      "forward/toggle/toggle/toggle": 3
+     },
+     "first_key_matching_success": 0.9583,
+     "layouts_first_key_matching": 24,
+     "failing_layouts": 46,
+     "failing_that_picked_other_key": 6
+    },
+    "way_kinds_learned": {
+     "forward": {
+      "successes": 341,
+      "codes": [
+       1
+      ],
+      "kinds": {
+       "goal": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle": {
+      "successes": 1838,
+      "codes": [
+       0
+      ],
+      "kinds": {
+       "closed door": 0.9984
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/pickup": {
+      "successes": 199,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/drop": {
+      "successes": 147,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/toggle": {
+      "successes": 10309,
+      "codes": [
+       4,
+       5
+      ],
+      "kinds": {
+       "switch": 0.9884,
+       "vase": 0.0116
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/pickup": {
+      "successes": 2816,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/drop": {
+      "successes": 582,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     },
+     "forward/toggle/toggle/pickup": {
+      "successes": 8633,
+      "codes": [
+       6
+      ],
+      "kinds": {
+       "key": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/toggle/toggle": {
+      "successes": 1848,
+      "codes": [
+       4,
+       5
+      ],
+      "kinds": {
+       "switch": 0.7614,
+       "vase": 0.2386
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": null
+     },
+     "forward/toggle/toggle/drop": {
+      "successes": 1008,
+      "codes": [
+       3
+      ],
+      "kinds": {
+       "floor": 1.0
+      },
+      "expected_share": 1.0,
+      "code_pure_share": 1.0,
+      "held_kind": "key"
+     }
+    },
+    "criterion_2": {
+     "ways_used_by_main": 5,
+     "lowest_code_pure_share": 1.0,
+     "failing_ways": {},
+     "pass": true
+    },
+    "criterion_3": {
+     "success_98": true,
+     "random_share_1pct": true,
+     "steps_within_1_5x": true
+    }
+   }
+  },
+  "gate_passed": true,
+  "seconds": 168.4,
+  "run": "timeout 1800 bin/prun python tools/card027/kinds.py --out runs/027_kinds_r4.json (log runs/027kinds_r4.out); 168 s; network trained to recognise the counted kinds"
+ }
+}

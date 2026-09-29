@@ -5,37 +5,35 @@ Overwritten each session. At most 40 lines.
 - **Date:** 2026-09-28. **Rung:** before rung 1. **Architecture:** version 3
   in code (`src/worldmodel/spatial_state.py`); the direction below replaces
   its readiness and walking parts.
-- **Direction (changed with the user, 2026-09-28,
+- **Direction (with the user, 2026-09-28,
   [card 022](experiments/022-effects-post-mortem/card.md)):** the primitive
   is the effect of an action on conditions, learned from the agent's own
-  outcomes. Moves are actions with effects on where things are relative to
-  the agent; walking is choosing moves whose effect brings the target
-  closer in view (subgoals where that gets stuck), not a separate part.
-  Readiness is removed.
-- **Cards 023–025 (fail, revise):** conditions as "approachable by moving
-  closer"; card 025's breadth-first tree of 64 reached the goal in 100% of
-  layouts with 1.27% random moves, one level short in 3 layouts.
-- **Card 026 (done, fail, keep, with the user):** subgoals grown only when
-  stuck, depth first with backtracking. Acting 100%, 16.4 steps (path
-  search 16.3), 0 random moves; 4.1 conditions checked per move (card 025:
-  25.6). Stored 58 conditions against a limit of 32: one layout of 500
-  (key in a pocket) searched the key's whole branch before backing up and
-  added 28 of them; without it, 30. Several stored ways look like
-  duplicates (identical evidence under "turn right" and "turn left").
+  outcomes; moves are actions like any other, and walking must not read
+  the simulator once conditions are learned. Readiness is removed.
+- **Cards 023–026:** conditions as "approachable by moving closer"; card
+  026 (keep) grows subgoals only when stuck, depth first with backtracking:
+  100% in the key world, 16.4 steps, no random moves, 58 stored conditions
+  (limit 32; one hard layout added 28; some look like duplicates).
 - **Cards 016, 021 (learned):** learned walking 48.4%; architecture 3's
-  conditions failed even with exact labels (held-out false positives up to
-  38%). Card 012's learned conditions: 95% with exact walking, 30.2% all
-  learned.
-- **Theory session (2026-09-28, with the user):** objects are what
-  conditions are about, found through them: kinds are learned where the
-  agent acts (the tile in front) and recognised everywhere; relations fall
-  out of conditions as one comparison between two things. Notes in card
-  027's appendix. GOAL.md hypotheses drafted, awaiting the user.
-- **Card 027 (draft, revised, not to run yet):** kinds learned from pixels
-  (what actions do in front); a way's target is the thing of its kind its
-  condition depends on. Conditions and walking stay exact; DFS as 026.
-- **After that:** transfer (relation, new colours); move effects; learned
-  conditions over things; then all learned (card 027 appendix K).
+  conditions failed even with exact labels. Card 012's learned conditions:
+  95% with exact walking, 30.2% all learned.
+- **Theory session (with the user):** objects are what conditions are
+  about; kinds are learned where the agent acts and recognised everywhere;
+  relations fall out of conditions. Notes in card 027's appendix. GOAL.md
+  hypotheses drafted, awaiting the user.
+- **Card 027 (four runs; pass; keep):** kinds are decided by counting
+  what actions do in front (pixels, no labels): the 8 expected kinds in
+  both worlds; acting 100%, 1.01× the simulator's steps. Target rule:
+  refuse moves that end the way's condition; mark actions that do not turn
+  the parent true. Networks that discover kinds merge rare look-alikes;
+  withheld appearances are placed by colour, not shape (4 of 33).
+- **Card 028 (draft, awaiting the user's approval):** one model learned
+  by counting from the agent's own pixels says what every action does,
+  moves included (facts: tiles in view and the held tile; effects; rules
+  for when an effect happens). Every condition, walking, target check and
+  tree label is computed on its predictions; nothing reads the simulator.
+  Literature focus refreshed for it. After it: transfer (new colours,
+  relations, recognising unseen things).
 - **Pinned:** duplicate detector merging needs literature; demonstrations
   once random play is too thin. LESSONS.md needs a merge pass (over two
-  pages). Nothing from cards 021–026 is committed.
+  pages). Nothing from cards 021–027 is committed.

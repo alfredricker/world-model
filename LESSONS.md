@@ -105,6 +105,13 @@ it; *suggestive* means one seed, small n, or a diagnostic.
   *Evidence:* old:phwm/docs/05-experimental-record.md §5.12,
   06-achievements-and-limitations.md; card 001 gate. *Confirmed* for the
   pattern.
+- **Choose what to act on by the action's effect on its parent condition,
+  not by whether the route depends on the thing.** Removing a thing shows
+  the route needs it, not that acting on it helps: dependence-chosen
+  targets looped in 41 of 1,000 layouts (a key dropped back where it
+  blocked, a switch turned off again, the wrong side of a thing). Refusing
+  moves that end the way's condition and marking actions that do not turn
+  the parent true gave 100% in both worlds. *Evidence:* card 027 runs 1–2.
 - **Offline or component gains need checking in live behaviour.** Gains on
   count worlds and crafting instruments did not survive live play.
   *Evidence:* old:grl/INHERITED.md (RLM-057, -061, -062). *Confirmed.*
@@ -119,14 +126,24 @@ it; *suggestive* means one seed, small n, or a diagnostic.
   as uniform, because one transition barely moves a window's summed
   priority. *Evidence:* stage A note, diagnosis. *Confirmed.*
 - **The learner's own "nothing happened" margin finds the rare
-  interactions.** Only 0.5% of all transitions carry a margin, against 47–63%
-  of interaction transitions; priority mass on interactions rose to 19–28%
-  from 0.36% under uniform. *Evidence:* stage A2 note. *Suggestive:* the full
-  stage A2 run had not reported when this was written.
-- **Surprise and learning-progress priorities concentrate too weakly.**
-  Surprise variants raised event sampling 1.9–13×; learning progress left
-  event mass at 0.4% after 2000 updates. *Evidence:* stage A2 note.
+  interactions; surprise and learning progress concentrate too weakly.**
+  Margin: 0.5% of all transitions, 47–63% of interactions; priority mass on
+  interactions 19–28% against 0.36% uniform. Surprise raised event sampling
+  1.9–13×; learning progress left it at 0.4%. *Evidence:* stage A2 note.
   *Suggestive.*
+- **A network trained on average error drops rare but certain
+  differences; evidence from counts keeps them.** A 4-bit code trained to
+  predict effects gave the goal square (0.04% of rows) the green door's
+  code in both worlds; balancing rows by outcome only moved the merge to
+  another minority. Grouping the same appearances by Dirichlet-multinomial
+  evidence found all 8 kinds: about 260 nats separate goal from door, under
+  0.001 nats per training row. Let counting decide discrete units; train
+  networks to recognise them. *Evidence:* card 027 runs 2–4 (both worlds,
+  1 seed each).
+- **A few labelled tiles teach colour, not shape.** A pixel network
+  trained on 14 appearances' counted kinds placed each withheld key and door
+  by colour and brightness (4 of 33 right; open doors called floor, the
+  green door the goal). *Evidence:* card 027 run 4 (3 seeds). *Suggestive.*
 
 ## Objectives
 

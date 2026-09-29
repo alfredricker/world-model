@@ -6,26 +6,25 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Card / rung:** theory sessions after card 026, then card 027 (kinds
-  from what actions do in front; before rung 1): how the agent discovers
-  conditions and the objects they are about, from three signals: contrast,
-  relations and causes. Changed with the user, 2026-09-28.
-- **Why these:** card 026 left conditions and their targets supplied by
-  exact computation. These papers define abstractions by what they look
-  like, what they relate to, or what they make a difference to.
-- **Until:** card 027 has a decision.
+- **Card / rung:** card 028 (one learned model of what every action does,
+  moves included; every condition of the tree computed on the agent's own
+  predictions; before rung 1). Changed with the user, 2026-09-28.
+- **Why these:** they learn action models (when an action works and what
+  it changes) over objects from experience, and plan with them. Their
+  objects, attributes or predicates are supplied; ours are appearances and
+  kinds counted from pixels (card 027).
+- **Until:** card 028 has a decision.
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |
-| `1412_2309`, `1512_07942` (Chalupka et al.) | A macro-variable is a cell of the causal partition: situations with the same effect of an intervention. Prediction from partial views gives finer classes than the causal ones, never coarser; the smallest change that flips the outcome locates the cause in the image |
-| `1812_03789`, `1707_00819` (causal abstraction) | Validity test: every way of making a high-level variable true must have the same effect (total cholesterol fails; "holding a key" against "holding the matching key" is ours) |
-| `2606_19594` (UCAD) | High-level variables as narrow points in the causal graph, identified by anchors |
-| `cs_9401101` (teleo-reactive programs) | Our tree almost exactly: each node the weakest condition from which its action achieves the parent; parameters bound at run time; Nilsson proposes growing the tree where no node holds |
-| `from-skills-to-symbols-learning-symbolic-representations-for` | The symbols needed and sufficient for planning are set by the skills: their initiation sets and effects. Our conditions are initiation sets |
-| `deepsym`, `2309_00889` | Object kinds and relations as whatever discrete codes predict action effects; objects supplied by perception |
-| `equivalence-notions-and-model-minimization-in-markov-decisio` (Givan, Dean & Greig 2003) | Card 027's kinds: the coarsest grouping in which every action has the same effect and leads into the same groups (stochastic bisimulation), found by splitting |
-| `2205_08515` (EISEN) | Objects as what moves together, from pairwise affinities without slots; the agent's own motion explained away first |
-| `learning-systems-of-concepts-with-an-infinite-relational-mod` (IRM), `a-theory-of-the-discovery-and-predication-of-relational-conc` (DORA), `the-relational-bottleneck-as-an-inductive-bias-for-efficient` | Kinds as sets of things that relate alike; properties before relations; relations as comparisons between learned codes, which transfer to new members. All start from given units |
+| `cs_9401101` (Nilsson, teleo-reactive programs) | Our tree: each node the weakest condition from which its action achieves the parent; the thing acted on is bound at run time |
+| `from-skills-to-symbols-learning-symbolic-representations-for` (Konidaris et al.) | The symbols needed for planning are set by the skills: their initiation sets (our conditions) and effects (our learned effects) |
+| `1905_12006`, `2205_02092` (James, Rosman & Konidaris) | Learn those symbols in the agent's own egocentric space, so rules carry across tasks, then bind them to a task's objects; ego- and object-centric observations. Our facts: things by kind, and where they are relative to the agent |
+| `1110_2211` (Pasula, Zettlemoyer & Kaelbling) | Effects that happen only sometimes: a rule is an action, a context and outcomes with probabilities (plus a noise outcome), found by greedy search scored by likelihood minus complexity; rules name objects by their relation to the one acted on |
+| `an-object-oriented-representation-for-efficient-reinforcemen` (Diuk, Cohen & Littman, OO-MDPs) | Deterministic effects on object attributes, conditioned on conjunctions of simple relations, learned from few examples; objects and relations supplied |
+| `schema-networks-zero-shot-transfer-with-a-generative-causal` | Rules from entity attributes and the action to each attribute's next value, used for planning by inference from the goal; entities supplied |
+| `1511_01644` (Letham et al., Bayesian rule lists) | Card 010's rule finder, reused for when an effect happens: rules admitted by Bayesian evidence |
+| `2203_09634`, `2603_08599` | Learned predicates and operators planned over abstractly: predicates from a grammar over supplied features (2203_09634); probabilistic rules from effect predictors, checked by a continuous model (2603_08599) |
 
 Previous focus (cards 001–002, until card 002 has a decision):
 
@@ -71,5 +70,5 @@ These are papers to guide the architecture to adhere to the goal. It is useful t
 | `1906_05253` (SoRB) | Not yet; deliberation (rung 4) | Plan over waypoints from the replay buffer, using a learned distance as edge weights: reasoning over a few states, not many simulated steps | Its waypoints are states, not conditions |
 | Quinlan, *Learning Logical Definitions from Relations* (FOIL, 1990) | Card 005's condition finder | FOIL's gain for choosing the next condition of a rule: kept successes × gain in log precision, tolerant of a few wrong labels | Our atoms are variable values, one rule per way of succeeding; not in papi |
 | `s-parse-autoencoders-f-ind-h-ighly-i-nter-pretable-f-eatures` (Cunningham et al. 2023) | Card 006: splitting a learned state into parts | A sparse autoencoder turns a vector into a few active directions from a large dictionary | Built for language models; papi has the title only, the text needs adding (arXiv 2309.08600) |
-| Letham, Rudin, McCormick & Madigan, *Interpretable Classifiers Using Rules and Bayesian Analysis* (Bayesian rule lists, 2015) | Card 010's condition finder | A decision list whose rules are admitted by Bayesian evidence, each rule with a Beta-Bernoulli success rate | Our rules are over conditions of an attempted action; greedy search with look-ahead instead of their sampler; not in papi |
+| `1511_01644` (Letham, Rudin, McCormick & Madigan, Bayesian rule lists, 2015) | Card 010's condition finder | A decision list whose rules are admitted by Bayesian evidence, each rule with a Beta-Bernoulli success rate | Our rules are over conditions of an attempted action; greedy search with look-ahead instead of their sampler |
 | `2203_09634` (predicate invention) | Not yet; deliberation over conditions (rung 4) | Learned predicates and operators with preconditions and effects, planned over abstractly (bilevel planning): the "if A, then B, then goal" of P21 | Predicates come from a grammar over supplied object features, and goals are supplied predicates; both conflict with C1 |

@@ -3,8 +3,8 @@ id: "027"
 title: kinds from what actions do in front
 rung: 0
 serves: [P7, P1, P12, P4]
-status: draft
-verdict:
+status: done
+verdict: pass
 arch_version: 3
 date: 2026-09-28
 ---
@@ -28,7 +28,11 @@ the simulator told each way where its target was.
 
 ## 2. What changes
 
-One component: what a way walks to and when it acts.
+One component: what a way walks to and when it acts. Revised with the
+user after the first run failed the gate (section 7): the two rules marked
+"revision" were added, judging moves and actions by the agent's own measure
+of a positive effect, the one its tree was built from (an action succeeds
+when its parent condition turns true).
 
 ```
 card 026: a way's target = the poses where its action achieves the parent,
@@ -41,6 +45,11 @@ card 027: candidates = tiles in view whose learned code is one the way's
                        If no candidate is needed (any floor tile will do for
                        drop), every candidate is a target.
           at a target, take the way's action
+revision: walking toward a target, never take a move after which the
+          way's own condition would stop holding
+revision: after acting, if the way's parent condition has not turned true,
+          that tile, from that spot, is marked as not working for this way
+          for the rest of the episode; the agent tries the next candidate
 ```
 
 What is learned and what is still exact:
@@ -52,6 +61,8 @@ What is learned and what is still exact:
 | **Kinds, recognition anywhere** | **Learned: a tile encoder with a 4-bit code** | The new component |
 | Which way to pursue | Card 026: tree grown on demand, depth-first search, exact conditions | Learned conditions failed card 021's gate; a separate problem |
 | Whether the way depends on a tile | The exact condition on the state with that tile swapped for floor | Stand-in; a learned condition would be asked the same of an edited frame |
+| Whether acting worked (revision) | The exact parent condition after the action | The agent's own success measure; nothing is learned from it in this card (card 028) |
+| Whether a move keeps the way open (revision) | The exact way condition after the move | Walking is exact in this card |
 | Walking (moving closer, free tiles) | Exact (card 024's step measure) | Move effects are a later card |
 
 - **Kind encoder (learned).** A small network maps one tile's pixels
@@ -65,7 +76,29 @@ What is learned and what is still exact:
   every tile in view (declared: a thing looks the same wherever it is);
   the agent's own place is never a candidate. Rows: card 012's stored
   transitions (every change, an eighth of the rest), sampled uniformly;
-  20,000 updates of 1,024 rows (declared).
+  20,000 updates of 1,024 rows (declared). Second revision, with the user,
+  after the second run (section 7): rows are sampled so that every outcome
+  is equally likely, an outcome being the action and what it did (forward:
+  moved, blocked or reached the goal; pick up, drop, toggle: which of the
+  front and held places changed). A rare effect then weighs as much as a
+  common one.
+- **Third revision, with the user, after the third run (section 7):
+  discovery and recognition are split.** Counting (arm 2's grouping, learned
+  from the agent's own pixels with no labels) decides what the kinds are,
+  where the agent acts. The network only learns to recognise them: the same
+  body (8×8×3 pixels → 128 → 128), now ending in one output per counted
+  kind, trained to give each appearance the kind counting assigned it. The
+  training set is the distinct appearances that were in front, each
+  weighted equally, since each is one fact ("this tile is of kind k"); 2,000
+  full-batch updates (declared). The network's kinds replace the 4-bit
+  codes everywhere in acting. This is the order of Chalupka et al.
+  (`1412_2309`, Algorithm 1): classes from experiments first, then a network
+  trained on them. Reported, not a criterion: **recognising something never
+  seen** (leave one out). For each appearance whose counted kind has
+  another member (the three keys, three closed doors, three open doors, two
+  switch states), the network is trained without it and asked its kind;
+  three seeds. The full test, with correction by acting, is the transfer
+  card.
 - **A way's kind:** the codes in front at its successes in experience (for
   drop, also the code held). The dependence test runs only when a way has
   more than one candidate: the two keys, or floor tiles for drop.
@@ -76,7 +109,9 @@ What is learned and what is still exact:
   of its colour; a key of another colour lies in the room) and the switch
   world (the door opens when the switch is on; keys do nothing).
 
-Arms, in each world:
+Arms, in each world. Arms 2–5 use the two revision rules; the marks are
+episode memory only, and no weights change while acting. With no spot
+left, or every closer move refused, the move is random (counted).
 
 1. Upper bound: the simulator's targets (card 026).
 2. Exact kinds: the main arm, but with kinds from exact grouping of tile
@@ -84,10 +119,14 @@ Arms, in each world:
    stochastic bisimulation (Givan, Dean & Greig 2003): every action has the
    same effect and leads into the same kinds, with groups split while card
    010's evidence supports it.
-3. **Main: learned kinds plus the dependence test.**
+3. **Main: learned kinds plus the dependence test.** From the third
+   revision on, the learned kinds are the network's recognition of the
+   counted kinds.
 4. Kind alone: candidates of the way's kind, without the dependence test.
 5. Contrast alone: candidates are any tile that stands out (neither floor
    nor wall), with the dependence test.
+6. Exact kinds without the revision rules: the first run's rule, reported
+   in the gate as a check that the rerun reproduces it.
 
 ## 3. Dependencies
 
@@ -131,7 +170,30 @@ matching key (in tiles) in 41.8%.
   before learning is tested.
 - **Trivial baseline:** contrast alone (arm 5).
 
-Result of the gate, before the main run:
+Result of the gate, first run (before the revision):
+
+Failed in both worlds on one check: acting with exact kinds. The main run
+(learned kinds) was not started. Numbers in [results.json](results.json).
+
+| Check | Key world | Switch world |
+|---|---|---|
+| Effects from pixels agree with the simulator | 100% | 100% |
+| Upper bound (simulator's targets) | 100%, 16.4 steps | 100%, 17.1 steps (tree of 20, grown in 5 rounds) |
+| Exact kinds equal the expected grouping | yes (8 kinds) | yes (8 kinds) |
+| Every way's kind is the expected one | yes, each way on one kind | yes by majority; two toggle ways act on both switch and vase (98.8% and 76% switch), both correct |
+| **Acting with exact kinds (at least 98%)** | **96.6%** (17 of 500 fail), 16.1 steps | **95.2%** (24 of 500 fail), 17.0 steps |
+
+Result of the gate, second run (with the revision rules): passed in both
+worlds. The first run's rule, rerun alongside, reproduced its numbers
+exactly (96.6% and 95.2%).
+
+| Acting with exact kinds | Key world | Switch world |
+|---|---|---|
+| Reaches the goal | **100%** | **100%** |
+| Mean steps when successful (upper bound) | 16.6 (16.4) | 17.3 (17.1) |
+| Random moves, share of all moves | 0.4% | 0.6% |
+| Actions that did not work (layouts with any) | 45 (28) | 60 (56) |
+| Moves refused | 6 | 10 |
 
 ## 6. Success criteria and prediction
 
@@ -143,8 +205,10 @@ Same 500 new layouts in both worlds, main arm:
    within a kind may share a code or not. Every appearance gets one code on
    at least 99% of its tiles.
 2. **Ways name things.** For each non-move way that acting uses, at least
-   99% of its successes have front codes from one expected kind, and it is
-   the expected one:
+   99% of its successes have front codes that belong only to expected kinds
+   for its action. A way may have more than one kind (revised: "toggle
+   something so the door can be reached" is rightly done to a switch or a
+   vase). Expected kinds:
    - step onto the goal square: goal;
    - toggle: closed door, vase or switch;
    - pick up: key;
@@ -155,7 +219,8 @@ Same 500 new layouts in both worlds, main arm:
 
 Reported with them: whether learned codes merge colours (the question for
 transfer, next); conditions evaluated per move by the dependence test;
-arms 2, 4 and 5; steps on move ways.
+arms 2, 4, 5 and 6; steps on move ways; actions that did not work and
+moves refused (revision), per layout.
 
 Prediction: criteria 1–3 pass. Kind alone fails in the key world (about
 45–70%, roughly the layouts where the matching key is reached first) by a
@@ -167,11 +232,52 @@ floor, which contrast calls background. So it falls short in the key world
 world. Colours may not merge in the learned code: nothing in training
 needs colour, and nothing asks for it to be dropped.
 
+Prediction for the revision (added before the second run): exact kinds
+now pass the gate in both worlds, with a few actions per failing layout of
+the first run that did not work (the switch turned on from the wrong side,
+say) and a small rise in steps. Kind alone now mostly succeeds, by trial
+and error: more actions that did not work and more steps than the main
+arm; the step criterion is where it should fall short. Contrast alone
+still fails where drop is needed: it never offers floor, so there is
+nothing to try.
+
+Prediction for the second revision (added before the third run): the goal
+gets its own code in both worlds (its forward outcome, reaching the goal,
+now carries one outcome's share of the rows instead of 0.04%), and
+criteria 1–3 pass. Random moves fall to near the exact-kinds arm (under
+1%). Risk: balancing gives rare outcomes a large share, so some common
+distinction could now be merged instead; criterion 1 checks every code.
+
+Prediction for the third revision (added before the fourth run): the
+network recognises every appearance as its counted kind, so criteria 1–3
+pass and the main arm acts exactly as arm 2 (same kinds, same choices).
+That part is close to a check that it can learn 15 labelled tiles. Leave
+one out: keys, closed doors and open doors are placed by shape, most of
+them correctly; the risk is colour, since the network sees raw pixels (a
+withheld green closed door may be called the goal, the nearest tile in
+pixels). The withheld switch state is the least certain: its only other
+member is a ball of another colour.
+
 What this card can show: that learned kinds name the right things, and
 that things found through conditions can replace the simulator's targets
 inside the search. What it cannot yet show: that kinds help acting beyond
 that. With exact conditions, the dependence test does most of the work;
 that needs learned conditions or new colours (later cards).
+
+Added before the run, from a smoke test (1,000 episodes, 40 layouts) and
+the implementation:
+
+- **Drop needs a place.** In 2 of 40 key-world layouts the agent picked up
+  the other key to clear its way to the matching key, then dropped it back
+  where it blocked, and looped. Drop's target is a place, not a thing, and
+  swapping floor for floor cannot find it. The gate's exact-kinds acting
+  (key world, at least 98%) may fail on this.
+- **Contrast alone fails more widely.** The dependence test also marks
+  things further up the chain (the door, the goal square) as targets,
+  because removing them ends the way's route too. So contrast alone should
+  fail wherever such a thing is nearer than the way's own thing.
+- **A grouping bug was fixed:** groups whose members all had one outcome
+  never merged.
 
 Risks: open doors are rare (93–176 tries per action) and pass like floor,
 so the encoder may lump them with floor (criterion 1). The switch world
@@ -181,7 +287,210 @@ acting arms per world. About 10–15 minutes, under 30.
 
 ## 7. Result
 
+### First run (before the revision)
+
+The learned part of the card was not tested. What was tested worked:
+effects read from pixels matched the simulator on every transition, and
+exact grouping by effects found the eight expected kinds in both worlds
+(colours merged; the two switch states merged), with every way's kind the
+expected one. The failure is in the target rule, and it would fail the
+same way with learned kinds.
+
+Every failing layout was replayed step by step. All 41 are loops, with
+three patterns and one cause:
+
+- **Dropping back where it blocked** (key world). The other key blocks the
+  matching key; the agent picks it up, then drops it on the tile it came
+  from, because every floor tile passes the test and it is already facing
+  one (layout 12). This is the pre-run note's failure.
+- **Turning the switch off again** (switch world, 21 of 24). With the switch
+  on, the agent still cannot walk to the door (the vase is in the way), so
+  the tree's next way, "toggle something so the door can be reached", still
+  applies. Breaking the vase would do it, but the switch also passes the
+  test (removing it ends the route), and the agent is facing it, so it
+  toggles it off; then on; and so on (layout 56).
+- **Turning back and forth** (switch world 3 of 24, and key-world layouts
+  such as 363). The test names the right tile but not the side to act from,
+  or names both keys. Walking toward the nearest candidate spot turns one
+  way; the exact condition, which knows the one spot that works, turns the
+  other; the agent alternates (layouts 71, 363).
+
+The cause: the rule asks whether the way's route *depends on* a thing
+(remove it and see), when acting needs to know whether *acting on it*, from
+that spot, would achieve the parent. The two agree for a key that must be
+picked up, and differ for a place to drop onto, for a switch that is
+already on, and for which side of a thing to stand on. The two-kind toggle
+ways also show that criterion 2 (one kind per way) is too strict: "toggle
+something so the door can be reached" is rightly done to a switch or a
+vase. 16 of the 17 key-world failures began by picking up the other key; when the matching key
+came first, acting always succeeded (483 layouts).
+
+The first run is a fail at the feasibility gate. Revised with the user
+(section 2); nothing is learned from the outcomes in this card, which
+leaves learning from the agent's own attempts to card 028.
+
+### Second run
+
+The gate passed (section 5), so the learned stage ran: 196 seconds in all,
+the encoder 33 seconds per world. Main arm against its criteria:
+
+| Criterion | Key world | Switch world |
+|---|---|---|
+| 1. Learned kinds pure | **fail**: goal shares the green closed door's code | **fail**: the same pair |
+| 2. Ways name things (99%) | **fail**: step onto the goal 0%, toggle the door 69% | **fail**: 0% and 65% |
+| 3. Reaches the goal (98%) | 99.4% | 99.4% |
+| 3. Random moves (at most 1%) | **17.0%** | **13.9%** |
+| 3. Steps (at most 1.5 × upper bound) | 20.2 (1.23 ×) | 19.8 (1.16 ×) |
+
+Apart from that one pair, the learned code is the kinds: every other code
+belongs to one expected kind, and every other way passes criterion 2 at
+100%. Keys of all three colours share one code in both worlds, and the
+two switch states share one. Closed doors keep one code per colour in the
+key world; in the switch world red and blue share one.
+
+**One cause for all three failures.** The goal square is the rarest thing
+in front in the training rows (154 of 372,302 in the key world, 477 of
+366,854 in the switch world; stepping onto it ends the episode), and its
+nearest neighbour in pixels is the green closed door (solid green against
+dark green; mean pixel difference 39, against 92 between door colours).
+Rows are sampled uniformly, so keeping the goal apart would lower the loss
+by very little, and the encoder gave it the door's code. That puts the goal
+square, present in every layout, into the kind of the way "toggle the
+door". The dependence test keeps it, because removing the goal does end the
+way's route. It lies behind the closed door, so no move brings the agent
+closer and the move is random. Replaying the arm layout by layout: of 1,806
+random moves in the key world, 1,525 are this way heading for the goal and
+248 more are its moves refused (switch world: 1,264 and 138 of 1,453). The
+random moves are spread over all door colours, since the goal is always
+there.
+
+Comparison arms, all with the revision rules:
+
+| Arm | Key: reaches goal, steps, random | Switch: reaches goal, steps, random | Actions that did not work (key, switch) |
+|---|---|---|---|
+| Upper bound (simulator's targets) | 100%, 16.4, 0% | 100%, 17.1, 0% | – |
+| Exact kinds | 100%, 16.6, 0.4% | 100%, 17.3, 0.6% | 45, 60 |
+| Main (learned kinds) | 99.4%, 20.2, 17.0% | 99.4%, 19.8, 13.9% | 45, 61 |
+| Kind alone (no dependence test) | 98.6%, 23.1, 18.5% | 98.6%, 20.4, 16.6% | 390, 292 |
+| Contrast alone | 96.4%, 24.2, 34.1% | 90.8%, 33.5, 36.2% | 202, 1,020 |
+
+Against the predictions: exact kinds passed the gate as predicted, with a
+small rise in steps. Kind alone mostly succeeded by trial and error, with
+five to nine times the main arm's failed actions, as predicted; but it did
+not fall short on steps (1.41 × and 1.19 ×), as predicted it would.
+Contrast alone did worse in the switch world than the key world, the
+opposite of the prediction (drop was not the problem). The first
+prediction, criteria 1–3 pass, was wrong on one pair of appearances.
+
+The dependence test also has a weakness this run exposed: anything further
+up the chain passes it (removing the goal ends every route), and the
+revision rules only catch a wrong target after acting on it, which never
+happens if the target cannot be reached.
+
+The second run is a fail: criteria 1 and 2 fail on one pair, and
+criterion 3 on random moves only. Revised with the user: the encoder's
+rows are balanced by outcome (section 2).
+
+### Third run
+
+Rows balanced by outcome; everything else as the second run (198 seconds).
+The gate passed again with the same numbers.
+
+| | Key world | Switch world |
+|---|---|---|
+| Codes shared by different kinds | goal with green closed door (as before) | blue and red closed doors with vase; green closed door with keys |
+| 2. Ways failing (share on pure codes) | step onto the goal 0%, toggle the door 69% | toggle the door 65%, pick up so the switch can be reached 0% |
+| 3. Reaches the goal | 99.4% | 98.8% |
+| 3. Random moves | 17.0% | 13.9% |
+| 3. Steps (× upper bound) | 20.2 (1.23 ×) | 20.2 (1.18 ×) |
+
+In the key world the learned grouping came out identical to the second
+run's (different code numbers), so acting was identical too. In the switch
+world the goal got its own code, as predicted, but two new merges
+appeared, as the risk note warned. Of 1,548 random moves there, 1,068 are
+the way "toggle something so the door can be reached" finding no move
+closer to its targets, which now include a closed door (it shares the
+vase's code), and 287 more are that way's moves refused.
+
+**Why balancing did not help.** When two appearances share a code, the
+network pays only for the rows of the one it predicts worse, so what
+matters is the smaller one's share of the rows. Uniform rows made the goal
+that minority (154 of its code's rows against the door's 1,938). Balanced
+by outcome, the goal's single outcome, reaching the goal, carries a ninth
+of all rows, and the green door's forward rows are now 449 of 33,680
+"blocked" rows, so the door is the minority and the merge costs as little
+as before. Whatever the weighting, some look-alike is a small share of its
+code and can be merged cheaply. The grouping by counts has no such
+weakness: about a hundred tries with a different effect are decisive
+evidence however rare they are among all rows.
+
+**The "exact kinds" arm is itself learned from pixels.** It uses no
+labels: appearances are distinct pixel tiles, effects are read from
+before/after pixels and from the episode ending, and groups are split by
+card 010's evidence. The card treated it as an upper bound for the
+network, but in these worlds, where one thing always looks pixel-identical,
+it is a learner, and it passed every check: the eight expected kinds in
+both worlds and acting at 100%. What the network adds is placing an
+appearance never seen before, which this card does not test (transfer).
+
+The third run is a fail: criteria 1 and 2 fail, and criterion 3 on random
+moves only. Revised with the user: counting decides the kinds, the network
+learns to recognise them (section 2).
+
+### Fourth run
+
+Counting decides the kinds; the network learns to recognise them (168
+seconds in all; the network trains in under a second per world). The gate
+passed with the same numbers as the second and third runs.
+
+| Criterion | Key world | Switch world |
+|---|---|---|
+| 1. Learned kinds pure | pass: the 8 expected kinds | pass: the 8 expected kinds |
+| 2. Ways name things (99%) | pass: every way used, 100% | pass: every way used, 100% |
+| 3. Reaches the goal (98%) | 100% | 100% |
+| 3. Random moves (at most 1%) | 0.4% | 0.6% |
+| 3. Steps (at most 1.5 × upper bound) | 16.6 against 16.4 (1.01 ×) | 17.3 against 17.1 (1.01 ×) |
+
+The network gives every appearance its counted kind, so the main arm acts
+exactly as the counting arm, move for move, as predicted. This part is
+little more than a check that a network can learn 15 labelled tiles; the
+substance is in what counting found and in the target rule (sections 5
+and 7 above). Comparison arms: kind alone 98.8% and 98.6%, with 12% and
+11% random moves and several times the failed actions; contrast alone
+96.4% and 90.8% (unchanged: it uses no kinds).
+
+**Recognising something never seen (leave one out, reported): 4 of 33
+right.** Withheld, each of the 11 appearances was given a kind by three
+networks:
+
+| Withheld | Given (three seeds) |
+|---|---|
+| Keys: blue; green; red | vase ×3; switch ×3; switch ×3 |
+| Closed doors: blue; green; red | open door, vase, vase; goal ×3; open door ×3 |
+| Open doors: blue; green; red | floor ×3 each |
+| Switch off; switch on | key, switch, key; switch ×3 |
+
+Every key and door was misplaced. The network goes by colour and overall
+brightness, not shape: an open door is mostly dark with a thin coloured
+edge, like floor; the green closed door is called the goal, the nearest
+tile in pixels (the one risk the prediction named). Only the switch, whose
+two states are the same shape in two colours, was placed by shape, and
+not reliably. Against the prediction (most placed correctly by shape):
+wrong. Fourteen labelled tiles, most kinds with two members that differ
+in colour, give the network no reason to separate shape from colour.
+Transfer to new appearances will need that separation from somewhere;
+the transfer card starts here.
+
+The fourth run is a pass on criteria 1–3.
+
 ## 8. Decision
+
+**Keep** (with the user, 2026-09-28). Later cards build on kinds decided
+by counting what actions do in front, and on the target rule with its two
+revision rules (refuse moves that end the way's condition; mark an action
+that does not turn its parent true). The network returns in the transfer
+card, trained on the counted kinds, where recognising appearances never
+seen (4 of 33 here, by colour rather than shape) is the problem to solve.
 
 ## Appendix: notes from the theory discussion (2026-09-28)
 
