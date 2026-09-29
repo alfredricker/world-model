@@ -13,17 +13,18 @@ date: 2026-09-28
 
 ## 1. Question
 
-Can the agent discover the kinds of things in its world from what its own
-actions do to the thing in front of it, name the kind that each way of its
-condition tree acts on, and then find that kind anywhere in view well
-enough to walk to it and act? A theory check with exact computation over
-pixel tiles. Serves P7 (the units worth tracking are found, not supplied),
-P1 (a thing means what actions do to it), P12 (conditions are about
-things) and P4 (only distinctions that change outcomes are kept). First
-card after the theory sessions that followed
-[card 026](../026-depth-first-subgoals/card.md); the appendix records that
-discussion. Card 026 reached the goal in every layout, but the simulator
-told each way where its target was ("the tile holding the matching key").
+Can the agent learn from its own pixels the kinds of things in its world,
+from what its actions do to the thing in front of it? And can it then find
+each way's target as "the thing of the way's kind that the current
+condition depends on", well enough for the depth-first search to reach the
+goal without the simulator saying which tile is which? Kinds are learned
+from pixels; conditions and walking are still exact (section 2 says why).
+Serves P7 (the units worth tracking are found, not supplied), P1 (a thing
+means what actions do to it), P12 (conditions are about things) and P4
+(only distinctions that change outcomes are kept). It follows
+[card 026](../026-depth-first-subgoals/card.md) and the theory sessions
+recorded in the appendix. Card 026 reached the goal in every layout, but
+the simulator told each way where its target was.
 
 ## 2. What changes
 
@@ -32,51 +33,72 @@ One component: what a way walks to and when it acts.
 ```
 card 026: a way's target = the poses where its action achieves the parent,
           computed by the simulator, which knows which tile is which
-card 027: a way's target = poses facing a tile of the way's kind;
+card 027: candidates = tiles in view whose learned code is one the way's
+                       action succeeded on in experience (the way's kind)
+          target     = the candidates the way's route depends on: swap the
+                       tile for floor; if the way's action can then no longer
+                       achieve its parent by moving closer, it is a target.
+                       If no candidate is needed (any floor tile will do for
+                       drop), every candidate is a target.
           at a target, take the way's action
-            kind of a tile: its appearance, grouped with the appearances that
-              the agent's actions affect in the same way (from its own frames)
-            kind of a way: the kind in front when the way's action succeeded
 ```
 
-- **Effects, from pixels.** In card 016's egocentric view (the room
-  centred on the agent, facing up, plus a place showing what it holds),
-  "in front" and "held" are fixed places. Forward shifts the view (moved),
-  leaves it (blocked) or reaches the goal (the supplied success signal).
-  Pick up, drop and toggle never move the agent; their effect is what the
-  front and held tiles became, from the frames before and after.
-- **Kinds.** Two appearances are one kind when every action has the same
-  effect on them and turns them into things of the same kind: stochastic
-  bisimulation (Givan, Dean & Greig 2003), found by splitting groups while
-  card 010's evidence supports a split. The number of kinds is not given.
-- **A way's kind** is the kind in front at the way's successes in
-  experience (for drop, also the kind held). **Recognition:** every tile in
-  view (the whole room, card 016) gets its appearance's kind; an
-  appearance never seen in front has none.
-- **Unchanged from card 026:** the tree, grown on demand; exact conditions
-  choosing the way (the depth-first search); moving closer; the
-  experience; the 500 new layouts; the 200-step budget. Move ways ("turn
-  beside the key") act on no thing and keep exact targets (declared; their
-  steps are reported).
+What is learned and what is still exact:
+
+| Part | In card 027 | Why |
+|---|---|---|
+| Input | Egocentric pixel frames (card 016's view) and the agent's own actions | C1 |
+| Effect of an action on the thing in front | Before/after pixel difference at the front and held places | Pick up, drop and toggle never move the agent |
+| **Kinds, recognition anywhere** | **Learned: a tile encoder with a 4-bit code** | The new component |
+| Which way to pursue | Card 026: tree grown on demand, depth-first search, exact conditions | Learned conditions failed card 021's gate; a separate problem |
+| Whether the way depends on a tile | The exact condition on the state with that tile swapped for floor | Stand-in; a learned condition would be asked the same of an edited frame |
+| Walking (moving closer, free tiles) | Exact (card 024's step measure) | Move effects are a later card |
+
+- **Kind encoder (learned).** A small network maps one tile's pixels
+  (8×8×3) to 4 on/off bits (straight-through, as DeepSym). Trained only on
+  the agent's own transitions: from the front tile's code and the action,
+  predict the effect (forward: moved, blocked or goal reached; pick up,
+  drop, toggle: did the front place change, did the held place change) and
+  the codes of what the front and held tiles became (same encoder, no
+  gradient through that path: the learned form of "turns into things of
+  the same kind"). One encoder reads the front place, the held place and
+  every tile in view (declared: a thing looks the same wherever it is);
+  the agent's own place is never a candidate. Rows: card 012's stored
+  transitions (every change, an eighth of the rest), sampled uniformly;
+  20,000 updates of 1,024 rows (declared).
+- **A way's kind:** the codes in front at its successes in experience (for
+  drop, also the code held). The dependence test runs only when a way has
+  more than one candidate: the two keys, or floor tiles for drop.
+- **Unchanged from card 026:** the tree, experience, 500 new layouts,
+  200-step budget, closeness. Move ways ("turn beside the key") act on no
+  thing and keep exact targets (declared; their steps are reported).
 - **Two worlds, same layouts:** the key world (the door opens for the key
   of its colour; a key of another colour lies in the room) and the switch
   world (the door opens when the switch is on; keys do nothing).
 
-Tiles are compared exactly, pixel for pixel; a learned encoder (DeepSym's
-binary code) is a later card. Declared priors: the tile grid as units; the
-fixed "in front" and "held" places; a thing looks the same wherever it is;
-the supplied goal's success signal.
+Arms, in each world:
+
+1. Upper bound: the simulator's targets (card 026).
+2. Exact kinds: the main arm, but with kinds from exact grouping of tile
+   appearances, as an upper bound for the encoder. The grouping is
+   stochastic bisimulation (Givan, Dean & Greig 2003): every action has the
+   same effect and leads into the same kinds, with groups split while card
+   010's evidence supports it.
+3. **Main: learned kinds plus the dependence test.**
+4. Kind alone: candidates of the way's kind, without the dependence test.
+5. Contrast alone: candidates are any tile that stands out (neither floor
+   nor wall), with the dependence test.
 
 ## 3. Dependencies
 
 Card 026's pipeline (`tools/card026/dfs.py`, `tools/card023/closer.py`),
 its key-world tree (`runs/026_dfs.json`) and result; card 012's exact
-discovery and data; card 010's evidence; card 016's egocentric view
-(`tools/card016/bench_ego.py`). Literature (papi): `deepsym` (kinds as what
-actions do to a thing),
+discovery and stored data; card 010's evidence; card 016's egocentric view
+(`tools/card016/bench_ego.py`). Literature (papi): `deepsym` (a binary
+code trained to predict action effects gives object kinds),
 `equivalence-notions-and-model-minimization-in-markov-decisio` (the
-coarsest grouping with equal effects, by splitting), `1412_2309` (the
-smallest change that flips an outcome locates its cause). Nothing learned.
+coarsest grouping with equal effects), `1412_2309` (the smallest change
+that flips an outcome locates its cause: the dependence test).
 
 ## 4. Data check
 
@@ -101,54 +123,61 @@ matching key (in tiles) in 41.8%.
 
 - **Effects from pixels** agree with the simulator's events on every
   stored transition (100% expected; the renderer is deterministic).
-- **Upper bound:** card 026's acting with the simulator's targets, in each
-  world. Key world: 100%, 16.4 steps. The switch world has not been run;
-  it must reach at least 98% for criterion 3 to be passable.
-- **Trivial baselines:** *contrast only*, where a way's target is any tile
-  that stands out (neither floor nor wall), predicted far below: contrast
-  gives candidate things, not the relevant one. *Kinds without grouping*,
-  where each appearance is its own kind, predicted to work only in the
-  third of layouts whose key or door has the way's most common colour.
+- **Upper bound:** the simulator's targets in each world. Key world: 100%,
+  16.4 steps (card 026). The switch world has not been run; it must reach
+  at least 98%.
+- **Exact kinds:** the grouping must equal the expected one, and acting
+  with it must reach at least 98% in both worlds. Otherwise the idea fails
+  before learning is tested.
+- **Trivial baseline:** contrast alone (arm 5).
 
 Result of the gate, before the main run:
 
 ## 6. Success criteria and prediction
 
-Same 500 new layouts in both worlds:
+Same 500 new layouts in both worlds, main arm:
 
-1. **Kinds:** the discovered grouping equals the expected one in both
-   worlds.
-   - In front: floor; wall; goal; closed door (3 colours); open door (3);
-     key (3); switch (off and on); vase.
-   - Held: nothing; key (3 colours).
-2. **Ways name things:** every non-move way that acting uses has one kind
-   for at least 99% of its successes, and it is the expected one.
-   - Step onto the goal square: goal.
-   - Toggle: closed door, vase or switch.
-   - Pick up: key.
-   - Drop: floor in front and a key held.
-3. **Acting, switch world:** reaches the goal in at least 98% of layouts,
+1. **Learned kinds are pure.** No code is shared by appearances of two
+   different expected kinds. The kinds in front are floor, wall, goal,
+   closed door, open door, key, switch and vase; colours and switch states
+   within a kind may share a code or not. Every appearance gets one code on
+   at least 99% of its tiles.
+2. **Ways name things.** For each non-move way that acting uses, at least
+   99% of its successes have front codes from one expected kind, and it is
+   the expected one:
+   - step onto the goal square: goal;
+   - toggle: closed door, vase or switch;
+   - pick up: key;
+   - drop: floor in front, key held.
+3. **Acting.** Reaches the goal in at least 98% of layouts in both worlds,
    with random moves at most 1% of all moves, and mean steps when
    successful at most 1.5 × the upper bound's.
-4. **The relation gap, key world:**
-   - Where the first key picked up is the matching one, at least 98% reach
-     the goal.
-   - At least 90% of the failing layouts picked up the other key.
 
-Reported with them: the key world's overall success; each kind split's
-evidence; appearances in view without a kind; steps taken on move ways
-(still exact); and each baseline.
+Reported with them: whether learned codes merge colours (the question for
+transfer, next); conditions evaluated per move by the dependence test;
+arms 2, 4 and 5; steps on move ways.
 
-Prediction: criteria 1–3 pass, since the data check shows colours behave
-alike within each kind. Key world overall about 45–70%, roughly the
-layouts where the matching key is reached first. The failures should be a
-loop: pick up the other key, drop it in front (the drop way), pick it up
-again. That loop is the point. "Key" is a kind; "the right key" is a
-relation between the held key and the door, which a next card would add.
-Risk: card 026's pipeline has not been run in the switch world (the gate
-checks). Budget: the switch world's tree grown on demand (the key world's
-is rebuilt from card 026), kinds in seconds, and four acting arms per
-world. About 6–10 minutes, under 30.
+Prediction: criteria 1–3 pass. Kind alone fails in the key world (about
+45–70%, roughly the layouts where the matching key is reached first) by a
+loop: pick up the other key, drop it, pick it up again. The kind says what
+to look for; the condition says which one matters. Contrast alone matches
+the main arm except where a way's thing is "any floor tile": you drop onto
+floor, which contrast calls background. So it falls short in the key world
+(card 026 used drop in a few dozen layouts) and matches in the switch
+world. Colours may not merge in the learned code: nothing in training
+needs colour, and nothing asks for it to be dropped.
+
+What this card can show: that learned kinds name the right things, and
+that things found through conditions can replace the simulator's targets
+inside the search. What it cannot yet show: that kinds help acting beyond
+that. With exact conditions, the dependence test does most of the work;
+that needs learned conditions or new colours (later cards).
+
+Risks: open doors are rare (93–176 tries per action) and pass like floor,
+so the encoder may lump them with floor (criterion 1). The switch world
+has not been run with card 026's pipeline (the gate checks). Budget: the
+switch world's tree grown on demand, the encoder in a few minutes, five
+acting arms per world. About 10–15 minutes, under 30.
 
 ## 7. Result
 
@@ -256,6 +285,9 @@ Agreed with the user:
    - With a comparison it needs one rule, "held matches door". Card 010's
      evidence test, which charges for every rule, prefers the one rule, and
      only it could cover new colours.
+   - Corrected in review (section K): for the colours already seen, the
+     conditions carry the relation without any comparison. The comparison
+     is for new colours and for learning from fewer examples.
 
 ### D. The order of operations
 
@@ -289,10 +321,13 @@ held or has changed.
    whatever their colour, because colour does not change what pick up does.
    The door comes out as "blocks me, toggling can open it", the vase as
    "toggling removes it", the floor as "I can step here".
-4. **The right key is a relation.** Both keys can be picked up, but only
-   one makes the door open. Toggle's success depends on the held key and
-   the door together, and one comparison of their codes ("held matches
-   front") explains every case.
+4. **The right key, through the condition.** Both keys can be picked up,
+   but only one makes the door open. The condition "I can pick up the key
+   that opens the door" depends on the matching key: remove it and the
+   condition fails; remove the other key and nothing changes. So the
+   condition picks the right key among the things of kind "key" (this
+   card). For new colours, one comparison of the two codes ("held matches
+   front") would state the rule once for every colour (a later card):
    - That comparison forces colour into the code, which step 3 alone would
      drop. The code keeps whatever any condition needs.
    - In our renderer a key and a door of one colour share the same RGB
@@ -370,19 +405,23 @@ and Minecraft's block under the crosshair.
   conditions through one comparison.
 - "Learn kinds where you act, recognise them everywhere", with no
   figure–ground contrast yet.
+- A way's target is the thing of its kind that its condition depends on,
+  not any thing of its kind (section K).
+- The new part is learned from pixels; conditions and walking stay exact
+  until their own cards pass (section K).
+- Transfer and generalisation are the next question once this card
+  succeeds.
 - INTerPRet (`interpret`) stays in papi only, not LITERATURE.md: this
   model does not use language feedback.
 
 ### J. Open questions and likely next cards
 
-- **The relation** (next, if this card behaves as predicted): toggle's
-  condition as one comparison between the held thing's and the front
-  thing's codes. A new-colour test in this world needs new colours: purple
-  and yellow are already the vase and the switch-on colour, and MiniGrid
-  has six colours in all.
-- **Learned codes:** a DeepSym-style encoder on front-tile pixels replacing
-  exact appearance matching. It must give unseen appearances distinct
-  codes.
+- **Transfer: the relation and new colours** (next, if this card
+  succeeds). Toggle's condition as one comparison between the held thing's
+  and the front thing's codes, and codes that give unseen appearances
+  distinct, sensible values. A new-colour test in this world needs new
+  colours: purple and yellow are already the vase and the switch-on
+  colour, and MiniGrid has six colours in all.
 - **Duplicates:** merge conditions that pick out the same situations, so
   the tree becomes a shared graph.
 - **Places, not things:** "in the last room" does not fit the front-tile
@@ -391,3 +430,35 @@ and Minecraft's block under the crosshair.
   causal; acting is a search over conditions; objects are what conditions
   are about; relations where a condition depends on two things; a
   condition is identified by what it picks out). Waiting for the user.
+
+### K. Review of the first draft (2026-09-28)
+
+- **The colour relation.** The user asked why the first draft expected
+  the conditions to fail at colour relations. They do not.
+  - Exact conditions carry the relation by construction.
+  - Learned ones did too: card 005's wrong-key cases were at least 99.7%
+    right, and card 012's learned conditions reached the goal in 95% of
+    key-world layouts with exact walking.
+  - What cannot carry it is the kind, which groups keys because pick up
+    does the same to each. The first draft's target rule ("any thing of the
+    way's kind") skipped step 2 of section D. The revision finds the target
+    through the condition, and keeps "kind alone" as a comparison arm.
+- **End to end.** The user asked whether this card should be learned end
+  to end. The finished system must be (C1, C2), and this card learns its
+  new part, the kinds, from pixels. Conditions and walking stay exact
+  because their learned versions have not passed their own tests:
+  - architecture 3's conditions failed card 021's gate, with held-out
+    false positives up to 38%;
+  - learned walking reached 48.4% (card 016).
+
+  Stacking them now would make a failure impossible to attribute (CHARTER
+  rules 3 and 7; LESSONS: interpret a capability only after its
+  prerequisite is learned). The depth-first search runs as in card 026.
+- **The way to end to end,** one exact part replaced per card:
+  1. kinds (this card);
+  2. the relation and new colours;
+  3. move effects, so that walking comes from learned effects;
+  4. conditions learned from pixels, stated over things. That may also
+     address card 021's failure to generalise, which happened with
+     conditions over whole views; this is a hypothesis;
+  5. everything learned, with one shared encoder (C2).

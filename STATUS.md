@@ -31,10 +31,11 @@ Overwritten each session. At most 40 lines.
   agent acts (the tile in front) and recognised everywhere; relations fall
   out of conditions as one comparison between two things. Notes in card
   027's appendix. GOAL.md hypotheses drafted, awaiting the user.
-- **Card 027 (draft, awaiting approval):** kinds from what actions do in
-  front, exact; ways walk to their kind. Switch world must reach ≥ 98%;
-  key world predicted to fail on the wrong key (the relation gap).
-- **After that:** the key-door relation; learned kind codes; move effects.
+- **Card 027 (draft, revised, not to run yet):** kinds learned from pixels
+  (what actions do in front); a way's target is the thing of its kind its
+  condition depends on. Conditions and walking stay exact; DFS as 026.
+- **After that:** transfer (relation, new colours); move effects; learned
+  conditions over things; then all learned (card 027 appendix K).
 - **Pinned:** duplicate detector merging needs literature; demonstrations
   once random play is too thin. LESSONS.md needs a merge pass (over two
   pages). Nothing from cards 021–026 is committed.
