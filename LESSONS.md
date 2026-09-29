@@ -62,6 +62,20 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   doors by colour and brightness, not shape (4 of 33 right). *Evidence:*
   phwm record §5.2; old:legacy/mgrid/README.md (t1); card 027 run 4.
   *Confirmed* (the last *suggestive*).
+- **Codes that rebuild pixels keep every distinction but do not factor a
+  thing's shape from its colour; nothing in the objective prefers it.**
+  Four codebooks of 8 kept all 20 tiles apart and the counted model lost
+  nothing (10 of 10 seeds). But a key or door in a new colour came out
+  "new" or as a blue one, never as its shape: 0 of 10 seeds, the same
+  without the change penalty or with one codebook of 64. The model over
+  ideal label codes carried to it fully. Key entries per group, not one
+  set per action: one set made "drop" name each key colour, which gives a
+  new colour nothing. A penalty on the number of codes merged tiles
+  before it made a shorter code. Where it left fewer codes, a new colour
+  fell on the nearest known one (the purple key took the blue key's codes
+  in 8 of 10 seeds). That carried the shared effects (pick up and drop
+  right in 9 of 10) and wrongly the colour rules too. *Evidence:* cards
+  031, 032. *Confirmed* (label arm as control).
 
 ## Conditions and acting
 

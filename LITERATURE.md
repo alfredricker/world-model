@@ -6,6 +6,78 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
+- **Card / rung:** [card 032](experiments/032-fewest-codes/card.md),
+  fewest codes: card 031's encoder must describe the tiles with as few
+  codes as it can. [Card 031](experiments/031-codes-from-pixels/card.md)
+  (codes from pixels; revise) found that learned codes lose nothing but
+  name tiles arbitrarily. Before rung 1. Changed with the user,
+  2026-09-29, when card 030 was stopped.
+- **Why these:** the user's direction (card 031, appendix B): tile, later
+  a segment → vector → several codebooks → rules and goals over codes. The
+  codebooks must not repeat each other, and what each code means must not
+  be engineered; principled mathematics should make them useful. The
+  papers cover how discrete codes are learned, and what does and does not
+  identify separate factors without labels.
+- **Until:** card 032 has a decision.
+
+**What the reading found** (2026-09-29, read in full; papi's automatic
+summaries failed for lack of a Gemini key):
+
+1. **Nothing identifies factors from single images** (`1811_12359`).
+   Infinitely many entangled codes fit the data equally well. Across
+   more than 12,000 models, the seed and the regularisation strength
+   mattered more than the method, and choosing a model by a label-based
+   score is supervised selection. So: declare the biases, fix the
+   settings in advance, report many seeds, and never tune on the test.
+2. **Changes identify factors**, when each change touches few of them and
+   which ones changes varies:
+   - Pairs sharing all but a few factors (`2002_02886`): median DCI
+     score (a disentanglement measure) on Shapes3D 94.6% against 70.9%
+     for the best unsupervised method. A partial failure on SmallNORB.
+   - A Laplace prior on changes between frames (`2007_10930`): dSprites
+     MCC 58.8 against 46.0 and 41.6 for two earlier methods (Ada-GVAE,
+     PCL). MCC is the mean correlation between matched true and learned
+     factors. No gain on Natural Sprites, where shape never changes
+     within a pair.
+   - Sparse masks on what each latent and action depends on
+     (`2107_10098`): MCC about 0.97 against about 0.58 unregularised, on
+     synthetic 20-number data only. No gain with linear transitions.
+3. **In our world these separate only what changes.**
+   - Toggling changes only a door's state; stepping into a doorway
+     changes only the agent drawn there.
+   - Colour never changes apart from the kind of thing (pick up and drop
+     change both), so no paper's condition holds for colour.
+   - An attribute that never changes is separated only by capacity
+     (codebooks too small to name every tile) and by the encoder's
+     structure.
+   - No guarantee covers discrete codes, or inputs outside the training
+     data.
+4. **Several codebooks** (`1803_03382`): cutting the encoder's output into
+   slices, each quantised against its own codebook, avoids index collapse
+   (only a few codes in use). Two slices were best for translation. The
+   paper says nothing about factors.
+5. **Pitfalls.**
+   - Pairs in which the thing leaves its place (a key picked up leaves
+     floor) share nothing, and pair methods then force false sharing.
+   - A codebook large enough to name every tile leaves the others free to
+     go unused.
+   - Counting dependencies alone can favour one merged kind × colour
+     code.
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| `1811_12359` (Locatello et al. 2019) | No factors without declared biases; seeds matter more than methods; fixed settings, many seeds, no selection by the test. Names interaction, grouping and time as sources of bias |
+| `2002_02886` (Locatello et al. 2020) | Pairs that share all but k factors identify them (continuous, invertible, varied sharing). Ada-GVAE estimates which factors changed with a threshold; paired reconstruction is a label-free selection score. Our door toggles and doorways fit (k = 1); pick up and the vase breaking share nothing |
+| `2007_10930` (Klindt et al. 2021, SlowVAE) | An absolute-value (Laplace) prior on changes identifies factors up to permutation; no help for factors that never change within a pair |
+| `2107_10098` (Lachapelle et al. 2022) | Sparse masks on what each latent and action depends on. In counts: each entry reads as few codebooks as possible. Synthetic vectors only |
+| `1803_03382` (Kaiser et al. 2018) | Sliced vector quantisation: several codebooks for one vector, avoiding index collapse |
+| `1711_00937` (VQ-VAE) | Nearest-code quantisation, straight-through gradients, codebook and commitment terms |
+| `1802_04942` (Chen et al. 2018, β-TCVAE) | The total correlation (the sum of each latent's entropy minus their joint entropy) is the term that measures latents sharing information; penalising it favours factorial codes. Card 032: with tiles kept distinct the joint entropy is fixed, so penalising the sum of codebook entropies penalises it exactly (Barlow's minimum entropy codes, 1989) |
+| `1802_05983` (Kim and Mnih 2018, FactorVAE) | The same penalty estimated with a discriminator; better trade-off of rebuilding against disentanglement than β-VAE. We compute it directly: codes are discrete and there are 20 tiles |
+
+Previous focus (card 030, stopped 2026-09-29; still the reading for the
+card on rules with a shared variable):
+
 - **Card / rung:** the transfer card, to be drafted from
   [card 029's appendix B](experiments/029-subgoals-from-the-model/card.md):
   attributes found as recurring differences, rules over relations, a
@@ -108,7 +180,7 @@ in full; papi's automatic summaries failed for lack of a Gemini key):
 | `2103_14230` (PrAE) | A rule's probability sums over the value assignments it allows, so rules can teach attributes. No attribute labels, but the attribute slots are given |
 | `1807_04225` (PGM), `bongard-logo`, `1911_01547` (Chollet), `2210_09880` (ARGA) | Test designs: graded held-out splits (held-out shape–colour fell from 59.1% to 12.5%, chance 12.5%), near-miss negatives, a record of what was built in. ARGA's dynamic parameter binding is our match rule, over given attributes |
 
-Previous focus (cards 001–002, until card 002 has a decision):
+Earlier focus (cards 001–002, until card 002 has a decision):
 
 - **Cards / rung:** 001 (architecture selection, before rung 1) and 002
   (rare-event sampling, rung 1).

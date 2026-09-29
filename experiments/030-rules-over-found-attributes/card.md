@@ -3,7 +3,7 @@ id: "030"
 title: rules over found attributes
 rung: 0
 serves: [P3, P4, P1, C5]
-status: draft
+status: abandoned
 verdict:
 arch_version: 5
 date: 2026-09-29
@@ -160,6 +160,15 @@ Estimate 10–20 minutes; over 30, handed to the user as commands.
 ## 7. Result
 
 ## 8. Decision
+
+**Stop** (not run; 2026-09-29, with the user). Attributes found by exact
+comparison of pixel values cannot reach the later worlds: they need exact
+repeats, and give a colour never seen no link to anything (appendix B).
+The user chose a learned front end instead: an encoder whose vectors map
+to several discrete codebooks, with rules and goals stated over the
+codes. What carries over: the tests (a withheld pairing, the permuted and
+any-key worlds, wrong keys at doors) and rules with a shared variable
+("the held key's colour equals the door's").
 
 ## Appendix A: the procedure
 

@@ -199,7 +199,3 @@ Language input, pretrained semantic models, a symbolic program language, a
 supplied event or skill vocabulary, pixel reconstruction as the
 definition of imagination, next-frame (t+1) prediction as the definition of a
 consequence, a fixed prediction horizon.
-
-## Avoid
-
-Fixed object slots, including slot attention.
