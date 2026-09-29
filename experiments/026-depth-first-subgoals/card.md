@@ -3,8 +3,8 @@ id: "026"
 title: depth-first subgoals
 rung: 0
 serves: [P12, P21, P17]
-status: draft
-verdict:
+status: done
+verdict: fail
 arch_version: 3
 date: 2026-09-28
 ---
@@ -44,10 +44,12 @@ card 026: nothing grown in advance. At each move, from the goal square down:
 The ways of a goal come from the stored experience, not from the layout
 being played, so discovering them on demand gives the same ways as
 discovering them in advance. To keep the computation batched, acting runs
-in rounds: a round plays all 500 layouts with the ways found so far and
-records every goal the search needed but had not expanded; those are
-expanded from the experience, and the next round plays again. The last
-round, when nothing new is needed, is the result.
+in rounds: a round replays all 500 layouts from the start with the ways
+found so far, and a layout pauses at the first goal its search needs that
+has not been expanded. Those goals are expanded from the experience, and
+the next round replays. Play up to a pause is exactly what discovery on
+demand would do, so the goals expanded are exactly the ones it would
+expand. The last round, when no layout pauses, is the result.
 
 Unchanged from card 025: conditions mean "approachable by moving closer"
 (card 024's measure), the evidence test and self-check, the 5,000-episode
@@ -72,7 +74,10 @@ goal square, the door, the key and five detours, 8,258 moves in all.
 - **Trivial baseline:** card 025's breadth-first tree: 100%, 16.5 steps,
   1.27% random moves, 64 goals stored.
 
-Result of the gate, before the main run:
+Result of the gate, before the main run: both rerun in the same script on
+the same 500 layouts, rebuilt from card 025's saved trees, and reproduced
+exactly: control 100%, 16.3 steps; card 025's tree 100%, 16.5 steps,
+1.27% random moves.
 
 ## 6. Success criteria and prediction
 
@@ -83,7 +88,9 @@ Same 500 new layouts:
 2. **No wandering:** mean steps when successful ≤ 1.5 × the control's
    (16.3). Depth first takes the first chain that works, not the shortest.
 3. **Fewer conditions:** conditions stored (every way of every goal the
-   search expanded) ≤ 32, half of card 025's 64.
+   search expanded) ≤ 32, half of card 025's 64. Counted as card 025's 64
+   was: every node of the tree, including the goal square and the ways the
+   self-check rejected (card 025: 49 accepted, 14 rejected).
 
 Reported with them: the goals expanded, the rounds needed, and the cost per
 move (conditions checked, mean and worst).
@@ -96,4 +103,51 @@ minutes, under 10.
 
 ## 7. Result
 
+`runs/026dfs.out`, 4.2 minutes. 500 new layouts, 200-step budget.
+
+| Arm | Reaches the goal | Mean steps | Random moves | Conditions stored | Conditions checked per move (mean / worst) |
+|---|---|---|---|---|---|
+| Control: card 012's conditions, path-search walking | 100% | 16.3 | 0% | 18 | 7.4 / 13 |
+| Card 025: breadth-first tree, grown in advance | 100% | 16.5 | 1.27% | 64 | 25.6 / 49 |
+| **Card 026: depth first, grown when stuck** | **100%** | **16.4** | **0%** | **58** | **4.1 / 50** |
+
+| Criterion | Result | Verdict |
+|---|---|---|
+| 1. Acting ≥ 98%, random moves ≤ 1% | 100%, 0 of 8,216 moves random | Pass |
+| 2. Mean steps ≤ 1.5 × control (24.5) | 16.4 (shortest route 15.9) | Pass |
+| 3. Conditions stored ≤ 32 | 58 (goal square, 53 accepted, 4 rejected) | Fail |
+
+The search expanded 11 goals over 12 rounds. Growing only where needed
+removed the "one level short" failure: the 3 layouts that made card 025's
+random moves now find a detour. Per move, the search checks 4.1 conditions
+on average, against 25.6 for card 025's chooser.
+
+Criterion 3 fails because of one layout. Replaying the final tree and
+recording which goals each layout's search opened: 405 of 500 layouts
+opened 3 goals (reach the goal square, step onto it, open the door), 63
+also "pick up the key", 28 also "drop the other key", 3 also "turn beside
+the key". Layout 202 opened all 11. Its key is in a pocket against the wall
+that can only be reached from one side, with the other key and the switch
+next to it. Nothing under "pick up the key" works there down to depth 6, so
+the search opened all five of its detours, about six ways each, before
+backing up to "turn at the door" and finding a chain under it. Without that
+layout the tree would hold 6 goals and 30 conditions. So what is stored is
+set by the hardest layout, not the typical one: once a branch fails,
+backtracking searches all of it. Many of the stored ways also look
+duplicated: under the key's way, "turn right" and "turn left" have
+children with identical evidence scores.
+
+Prediction: acting and steps as predicted. Stored conditions predicted
+25–35, actual 58; the typical layout needs 30.
+
 ## 8. Decision
+
+**Keep** (2026-09-28, with the user), although criterion 3 failed. Growing
+subgoals only when stuck and walking them depth first, with backtracking,
+reaches the goal in every layout with no random moves and checks about a
+sixth as many conditions per move as card 025. The failed storage criterion
+is understood: one layout of 500 searched a whole failed branch before
+backing up, and several stored ways look like duplicates. Neither blocks
+the next step. The next sessions are theory: how the agent discovers the
+conditions and objects themselves, which the exact checks here still
+supply.

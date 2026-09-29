@@ -1,0 +1,977 @@
+{
+ "note": "Card 026, tools/card026/dfs.py (runs/026dfs.out), exact computation, key world. acting_rerun: card 025's control and tree rebuilt from runs/025_tree.json, same 500 layouts.",
+ "episodes": 5000,
+ "layouts": 500,
+ "max_depth": 6,
+ "acting_rerun": {
+  "control": {
+   "success": 1.0,
+   "mean_steps_when_successful": 16.3,
+   "random_steps": 0,
+   "moves": 8139,
+   "tree_nodes": 18,
+   "checks_per_move_mean": 7.36,
+   "checks_per_move_max": 13,
+   "random_share": 0.0
+  },
+  "card 025": {
+   "success": 1.0,
+   "mean_steps_when_successful": 16.5,
+   "random_steps": 105,
+   "moves": 8258,
+   "tree_nodes": 64,
+   "checks_per_move_mean": 25.63,
+   "checks_per_move_max": 49,
+   "random_share": 0.0127
+  }
+ },
+ "rounds": [
+  {
+   "round": 0,
+   "goals_expanded_before": 0,
+   "tree_nodes_before": 1,
+   "layouts_paused": 500,
+   "goals_needed": {
+    "(goal square)": 500
+   },
+   "seconds": 0.4
+  },
+  {
+   "round": 1,
+   "goals_expanded_before": 1,
+   "tree_nodes_before": 2,
+   "layouts_paused": 500,
+   "goals_needed": {
+    "forward": 500
+   },
+   "seconds": 3.4
+  },
+  {
+   "round": 2,
+   "goals_expanded_before": 2,
+   "tree_nodes_before": 8,
+   "layouts_paused": 500,
+   "goals_needed": {
+    "forward/toggle": 500
+   },
+   "seconds": 13.7
+  },
+  {
+   "round": 3,
+   "goals_expanded_before": 3,
+   "tree_nodes_before": 14,
+   "layouts_paused": 95,
+   "goals_needed": {
+    "forward/toggle/pickup": 95
+   },
+   "seconds": 20.9
+  },
+  {
+   "round": 4,
+   "goals_expanded_before": 4,
+   "tree_nodes_before": 19,
+   "layouts_paused": 32,
+   "goals_needed": {
+    "forward/toggle/pickup/drop": 32
+   },
+   "seconds": 63.8
+  },
+  {
+   "round": 5,
+   "goals_expanded_before": 5,
+   "tree_nodes_before": 24,
+   "layouts_paused": 4,
+   "goals_needed": {
+    "forward/toggle/pickup/right": 4
+   },
+   "seconds": 21.6
+  },
+  {
+   "round": 6,
+   "goals_expanded_before": 6,
+   "tree_nodes_before": 30,
+   "layouts_paused": 1,
+   "goals_needed": {
+    "forward/toggle/pickup/left": 1
+   },
+   "seconds": 21.9
+  },
+  {
+   "round": 7,
+   "goals_expanded_before": 7,
+   "tree_nodes_before": 36,
+   "layouts_paused": 1,
+   "goals_needed": {
+    "forward/toggle/pickup/forward": 1
+   },
+   "seconds": 21.9
+  },
+  {
+   "round": 8,
+   "goals_expanded_before": 8,
+   "tree_nodes_before": 42,
+   "layouts_paused": 1,
+   "goals_needed": {
+    "forward/toggle/pickup/toggle": 1
+   },
+   "seconds": 25.0
+  },
+  {
+   "round": 9,
+   "goals_expanded_before": 9,
+   "tree_nodes_before": 47,
+   "layouts_paused": 1,
+   "goals_needed": {
+    "forward/toggle/right": 1
+   },
+   "seconds": 15.8
+  },
+  {
+   "round": 10,
+   "goals_expanded_before": 10,
+   "tree_nodes_before": 53,
+   "layouts_paused": 1,
+   "goals_needed": {
+    "forward/toggle/right/pickup": 1
+   },
+   "seconds": 22.8
+  },
+  {
+   "round": 11,
+   "goals_expanded_before": 11,
+   "tree_nodes_before": 58,
+   "layouts_paused": 0,
+   "goals_needed": {},
+   "seconds": 0.7
+  }
+ ],
+ "tree": [
+  {
+   "id": 0,
+   "path": "(goal square)",
+   "depth": 1,
+   "status": "expanded",
+   "way_evidence_nats": null,
+   "self_check": null
+  },
+  {
+   "id": 1,
+   "path": "forward",
+   "depth": 2,
+   "status": "expanded",
+   "way_evidence_nats": 1143.5,
+   "self_check": {
+    "evidence_nats": 35.5,
+    "rate_on": 0.0068,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 2,
+   "path": "forward/toggle",
+   "depth": 3,
+   "status": "expanded",
+   "way_evidence_nats": 4276.0,
+   "self_check": {
+    "evidence_nats": 180.6,
+    "rate_on": 0.0057,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 3,
+   "path": "forward/right",
+   "depth": 3,
+   "status": "not expanded",
+   "way_evidence_nats": 2437.5,
+   "self_check": {
+    "evidence_nats": 48.7,
+    "rate_on": 0.0109,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 4,
+   "path": "forward/left",
+   "depth": 3,
+   "status": "not expanded",
+   "way_evidence_nats": 2313.4,
+   "self_check": {
+    "evidence_nats": 132.9,
+    "rate_on": 0.0269,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 5,
+   "path": "forward/forward",
+   "depth": 3,
+   "status": "not expanded",
+   "way_evidence_nats": 1572.7,
+   "self_check": {
+    "evidence_nats": 164.5,
+    "rate_on": 0.0328,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 6,
+   "path": "forward/pickup",
+   "depth": 3,
+   "status": "not expanded",
+   "way_evidence_nats": 1273.7,
+   "self_check": {
+    "evidence_nats": 62.1,
+    "rate_on": 0.0119,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 7,
+   "path": "forward/drop",
+   "depth": 3,
+   "status": "not expanded",
+   "way_evidence_nats": 755.0,
+   "self_check": {
+    "evidence_nats": 18.2,
+    "rate_on": 0.0138,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 8,
+   "path": "forward/toggle/pickup",
+   "depth": 4,
+   "status": "expanded",
+   "way_evidence_nats": 106633.5,
+   "self_check": {
+    "evidence_nats": 737.7,
+    "rate_on": 0.018,
+    "rate_off": 0.0,
+    "on_at_start": 0.8184
+   }
+  },
+  {
+   "id": 9,
+   "path": "forward/toggle/right",
+   "depth": 4,
+   "status": "expanded",
+   "way_evidence_nats": 5610.4,
+   "self_check": {
+    "evidence_nats": 285.5,
+    "rate_on": 0.0277,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 10,
+   "path": "forward/toggle/left",
+   "depth": 4,
+   "status": "not expanded",
+   "way_evidence_nats": 5175.7,
+   "self_check": {
+    "evidence_nats": 380.1,
+    "rate_on": 0.0365,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 11,
+   "path": "forward/toggle/forward",
+   "depth": 4,
+   "status": "not expanded",
+   "way_evidence_nats": 3283.3,
+   "self_check": {
+    "evidence_nats": 307.0,
+    "rate_on": 0.0297,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 12,
+   "path": "forward/toggle/drop",
+   "depth": 4,
+   "status": "not expanded",
+   "way_evidence_nats": 483.2,
+   "self_check": {
+    "evidence_nats": 18.0,
+    "rate_on": 0.0138,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 13,
+   "path": "forward/toggle/toggle",
+   "depth": 4,
+   "status": "not expanded",
+   "way_evidence_nats": 234.4,
+   "self_check": {
+    "evidence_nats": 9.7,
+    "rate_on": 0.0066,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 14,
+   "path": "forward/toggle/pickup/drop",
+   "depth": 5,
+   "status": "expanded",
+   "way_evidence_nats": 59774.4,
+   "self_check": {
+    "evidence_nats": 2298.0,
+    "rate_on": 0.1236,
+    "rate_off": 0.0,
+    "on_at_start": 0.8184
+   }
+  },
+  {
+   "id": 15,
+   "path": "forward/toggle/pickup/right",
+   "depth": 5,
+   "status": "expanded",
+   "way_evidence_nats": 20011.9,
+   "self_check": {
+    "evidence_nats": 655.6,
+    "rate_on": 0.0395,
+    "rate_off": 0.0,
+    "on_at_start": 0.8812
+   }
+  },
+  {
+   "id": 16,
+   "path": "forward/toggle/pickup/left",
+   "depth": 5,
+   "status": "expanded",
+   "way_evidence_nats": 18891.0,
+   "self_check": {
+    "evidence_nats": 641.0,
+    "rate_on": 0.0387,
+    "rate_off": 0.0,
+    "on_at_start": 0.8812
+   }
+  },
+  {
+   "id": 17,
+   "path": "forward/toggle/pickup/forward",
+   "depth": 5,
+   "status": "expanded",
+   "way_evidence_nats": 10167.4,
+   "self_check": {
+    "evidence_nats": 540.6,
+    "rate_on": 0.0327,
+    "rate_off": 0.0,
+    "on_at_start": 0.8816
+   }
+  },
+  {
+   "id": 18,
+   "path": "forward/toggle/pickup/toggle",
+   "depth": 5,
+   "status": "expanded",
+   "way_evidence_nats": 1467.2,
+   "self_check": {
+    "evidence_nats": 116.9,
+    "rate_on": 0.0106,
+    "rate_off": 0.0,
+    "on_at_start": 0.8936
+   }
+  },
+  {
+   "id": 19,
+   "path": "forward/toggle/pickup/drop/pickup",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 21286.5,
+   "self_check": {
+    "evidence_nats": 201.4,
+    "rate_on": 0.0332,
+    "rate_off": 0.0,
+    "on_at_start": 0.953
+   }
+  },
+  {
+   "id": 20,
+   "path": "forward/toggle/pickup/drop/right",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 18137.3,
+   "self_check": {
+    "evidence_nats": 457.9,
+    "rate_on": 0.0403,
+    "rate_off": 0.0,
+    "on_at_start": 0.8812
+   }
+  },
+  {
+   "id": 21,
+   "path": "forward/toggle/pickup/drop/left",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 17070.4,
+   "self_check": {
+    "evidence_nats": 434.3,
+    "rate_on": 0.0383,
+    "rate_off": 0.0,
+    "on_at_start": 0.8812
+   }
+  },
+  {
+   "id": 22,
+   "path": "forward/toggle/pickup/drop/forward",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 8903.4,
+   "self_check": {
+    "evidence_nats": 367.4,
+    "rate_on": 0.0326,
+    "rate_off": 0.0,
+    "on_at_start": 0.8816
+   }
+  },
+  {
+   "id": 23,
+   "path": "forward/toggle/pickup/drop/toggle",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 1461.8,
+   "self_check": {
+    "evidence_nats": 89.7,
+    "rate_on": 0.0106,
+    "rate_off": 0.0,
+    "on_at_start": 0.8936
+   }
+  },
+  {
+   "id": 24,
+   "path": "forward/toggle/pickup/right/drop",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 73848.9,
+   "self_check": {
+    "evidence_nats": 2105.7,
+    "rate_on": 0.1482,
+    "rate_off": 0.0,
+    "on_at_start": 0.8812
+   }
+  },
+  {
+   "id": 25,
+   "path": "forward/toggle/pickup/right/pickup",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 5620.3,
+   "self_check": {
+    "evidence_nats": 268.2,
+    "rate_on": 0.0206,
+    "rate_off": 0.0,
+    "on_at_start": 0.978
+   }
+  },
+  {
+   "id": 26,
+   "path": "forward/toggle/pickup/right/toggle",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 724.1,
+   "self_check": {
+    "evidence_nats": 79.4,
+    "rate_on": 0.0111,
+    "rate_off": 0.0,
+    "on_at_start": 0.9252
+   }
+  },
+  {
+   "id": 27,
+   "path": "forward/toggle/pickup/right/left",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 511.1,
+   "self_check": {
+    "evidence_nats": 15.5,
+    "rate_on": 0.0294,
+    "rate_off": 0.0,
+    "on_at_start": 0.8818
+   }
+  },
+  {
+   "id": 28,
+   "path": "forward/toggle/pickup/right/right",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 319.0,
+   "self_check": {
+    "evidence_nats": 72.3,
+    "rate_on": 0.1029,
+    "rate_off": 0.0,
+    "on_at_start": 0.8818
+   }
+  },
+  {
+   "id": 29,
+   "path": "forward/toggle/pickup/right/forward",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 127.4,
+   "self_check": {
+    "evidence_nats": 12.5,
+    "rate_on": 0.0429,
+    "rate_off": 0.0,
+    "on_at_start": 0.8818
+   }
+  },
+  {
+   "id": 30,
+   "path": "forward/toggle/pickup/left/drop",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 73848.9,
+   "self_check": {
+    "evidence_nats": 2105.7,
+    "rate_on": 0.1482,
+    "rate_off": 0.0,
+    "on_at_start": 0.8812
+   }
+  },
+  {
+   "id": 31,
+   "path": "forward/toggle/pickup/left/pickup",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 5620.3,
+   "self_check": {
+    "evidence_nats": 268.2,
+    "rate_on": 0.0206,
+    "rate_off": 0.0,
+    "on_at_start": 0.978
+   }
+  },
+  {
+   "id": 32,
+   "path": "forward/toggle/pickup/left/toggle",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 724.1,
+   "self_check": {
+    "evidence_nats": 79.4,
+    "rate_on": 0.0111,
+    "rate_off": 0.0,
+    "on_at_start": 0.9252
+   }
+  },
+  {
+   "id": 33,
+   "path": "forward/toggle/pickup/left/left",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 511.1,
+   "self_check": {
+    "evidence_nats": 15.5,
+    "rate_on": 0.0294,
+    "rate_off": 0.0,
+    "on_at_start": 0.8818
+   }
+  },
+  {
+   "id": 34,
+   "path": "forward/toggle/pickup/left/right",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 319.0,
+   "self_check": {
+    "evidence_nats": 72.3,
+    "rate_on": 0.1029,
+    "rate_off": 0.0,
+    "on_at_start": 0.8818
+   }
+  },
+  {
+   "id": 35,
+   "path": "forward/toggle/pickup/left/forward",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 127.4,
+   "self_check": {
+    "evidence_nats": 12.5,
+    "rate_on": 0.0429,
+    "rate_off": 0.0,
+    "on_at_start": 0.8818
+   }
+  },
+  {
+   "id": 36,
+   "path": "forward/toggle/pickup/forward/drop",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 74190.8,
+   "self_check": {
+    "evidence_nats": 2106.7,
+    "rate_on": 0.1484,
+    "rate_off": 0.0,
+    "on_at_start": 0.8816
+   }
+  },
+  {
+   "id": 37,
+   "path": "forward/toggle/pickup/forward/pickup",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 5668.6,
+   "self_check": {
+    "evidence_nats": 266.3,
+    "rate_on": 0.0205,
+    "rate_off": 0.0,
+    "on_at_start": 0.979
+   }
+  },
+  {
+   "id": 38,
+   "path": "forward/toggle/pickup/forward/toggle",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 728.3,
+   "self_check": {
+    "evidence_nats": 79.7,
+    "rate_on": 0.0112,
+    "rate_off": 0.0,
+    "on_at_start": 0.9258
+   }
+  },
+  {
+   "id": 39,
+   "path": "forward/toggle/pickup/forward/left",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 182.2,
+   "self_check": {
+    "evidence_nats": 16.7,
+    "rate_on": 0.0377,
+    "rate_off": 0.0,
+    "on_at_start": 0.8818
+   }
+  },
+  {
+   "id": 40,
+   "path": "forward/toggle/pickup/forward/right",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 73.0,
+   "self_check": {
+    "evidence_nats": 52.3,
+    "rate_on": 0.0943,
+    "rate_off": 0.0,
+    "on_at_start": 0.8818
+   }
+  },
+  {
+   "id": 41,
+   "path": "forward/toggle/pickup/forward/forward",
+   "depth": 6,
+   "status": "rejected by self-check",
+   "way_evidence_nats": 73.0,
+   "self_check": {
+    "evidence_nats": -Infinity,
+    "rate_on": 0.0,
+    "rate_off": 0.0,
+    "on_at_start": 0.8818
+   }
+  },
+  {
+   "id": 42,
+   "path": "forward/toggle/pickup/toggle/drop",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 61187.3,
+   "self_check": {
+    "evidence_nats": 2138.1,
+    "rate_on": 0.1292,
+    "rate_off": 0.0,
+    "on_at_start": 0.8936
+   }
+  },
+  {
+   "id": 43,
+   "path": "forward/toggle/pickup/toggle/right",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 17522.0,
+   "self_check": {
+    "evidence_nats": 538.0,
+    "rate_on": 0.0374,
+    "rate_off": 0.0,
+    "on_at_start": 0.9306
+   }
+  },
+  {
+   "id": 44,
+   "path": "forward/toggle/pickup/toggle/left",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 16214.6,
+   "self_check": {
+    "evidence_nats": 568.5,
+    "rate_on": 0.0394,
+    "rate_off": 0.0,
+    "on_at_start": 0.9306
+   }
+  },
+  {
+   "id": 45,
+   "path": "forward/toggle/pickup/toggle/forward",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 9084.9,
+   "self_check": {
+    "evidence_nats": 519.6,
+    "rate_on": 0.0361,
+    "rate_off": 0.0,
+    "on_at_start": 0.9306
+   }
+  },
+  {
+   "id": 46,
+   "path": "forward/toggle/pickup/toggle/pickup",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 832.6,
+   "self_check": {
+    "evidence_nats": 73.2,
+    "rate_on": 0.0133,
+    "rate_off": 0.0,
+    "on_at_start": 0.9144
+   }
+  },
+  {
+   "id": 47,
+   "path": "forward/toggle/right/pickup",
+   "depth": 5,
+   "status": "expanded",
+   "way_evidence_nats": 125888.5,
+   "self_check": {
+    "evidence_nats": 572.2,
+    "rate_on": 0.0189,
+    "rate_off": 0.0,
+    "on_at_start": 0.9218
+   }
+  },
+  {
+   "id": 48,
+   "path": "forward/toggle/right/left",
+   "depth": 5,
+   "status": "not expanded",
+   "way_evidence_nats": 225.2,
+   "self_check": {
+    "evidence_nats": 8.2,
+    "rate_on": 0.0196,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 49,
+   "path": "forward/toggle/right/forward",
+   "depth": 5,
+   "status": "rejected by self-check",
+   "way_evidence_nats": 147.1,
+   "self_check": {
+    "evidence_nats": -Infinity,
+    "rate_on": 0.0,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 50,
+   "path": "forward/toggle/right/right",
+   "depth": 5,
+   "status": "not expanded",
+   "way_evidence_nats": 69.4,
+   "self_check": {
+    "evidence_nats": 68.2,
+    "rate_on": 0.098,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 51,
+   "path": "forward/toggle/right/drop",
+   "depth": 5,
+   "status": "rejected by self-check",
+   "way_evidence_nats": 21.2,
+   "self_check": {
+    "evidence_nats": -Infinity,
+    "rate_on": NaN,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 52,
+   "path": "forward/toggle/right/toggle",
+   "depth": 5,
+   "status": "rejected by self-check",
+   "way_evidence_nats": 11.8,
+   "self_check": {
+    "evidence_nats": -Infinity,
+    "rate_on": 0.0,
+    "rate_off": 0.0,
+    "on_at_start": 0.0
+   }
+  },
+  {
+   "id": 53,
+   "path": "forward/toggle/right/pickup/drop",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 57044.4,
+   "self_check": {
+    "evidence_nats": 1822.9,
+    "rate_on": 0.1432,
+    "rate_off": 0.0,
+    "on_at_start": 0.9218
+   }
+  },
+  {
+   "id": 54,
+   "path": "forward/toggle/right/pickup/right",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 16587.6,
+   "self_check": {
+    "evidence_nats": 546.7,
+    "rate_on": 0.0446,
+    "rate_off": 0.0,
+    "on_at_start": 0.9984
+   }
+  },
+  {
+   "id": 55,
+   "path": "forward/toggle/right/pickup/left",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 16369.3,
+   "self_check": {
+    "evidence_nats": 474.6,
+    "rate_on": 0.0389,
+    "rate_off": 0.0,
+    "on_at_start": 0.9984
+   }
+  },
+  {
+   "id": 56,
+   "path": "forward/toggle/right/pickup/forward",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 8205.7,
+   "self_check": {
+    "evidence_nats": 423.5,
+    "rate_on": 0.0348,
+    "rate_off": 0.0,
+    "on_at_start": 0.9986
+   }
+  },
+  {
+   "id": 57,
+   "path": "forward/toggle/right/pickup/toggle",
+   "depth": 6,
+   "status": "leaf: depth limit",
+   "way_evidence_nats": 867.7,
+   "self_check": {
+    "evidence_nats": 80.7,
+    "rate_on": 0.0129,
+    "rate_off": 0.0,
+    "on_at_start": 0.964
+   }
+  }
+ ],
+ "tree_nodes": 58,
+ "accepted_ways": 53,
+ "rejected_ways": 4,
+ "goals_expanded": 11,
+ "acting": {
+  "success": 1.0,
+  "mean_steps_when_successful": 16.4,
+  "random_steps": 0,
+  "moves": 8216,
+  "random_share": 0.0,
+  "random_no_way": 0,
+  "random_way_but_no_move": 0,
+  "layouts_with_random_moves": 0,
+  "checks_per_move_mean": 4.07,
+  "checks_per_move_max": 50,
+  "ways_used_steps": {
+   "forward/toggle": 3007,
+   "forward": 2521,
+   "forward/toggle/pickup": 2303,
+   "forward/toggle/pickup/drop/pickup": 116,
+   "forward/toggle/pickup/right": 102,
+   "forward/toggle/pickup/toggle": 70,
+   "forward/toggle/pickup/drop": 46,
+   "forward/toggle/right": 31,
+   "forward/toggle/pickup/right/pickup": 19,
+   "forward/toggle/right/pickup/right": 1
+  }
+ },
+ "complete": true,
+ "seconds": 252.3,
+ "diagnostic_goals_opened": {
+  "note": "Replay of the final tree: the goals whose ways each layout's search checked (scratch replay, not a criterion).",
+  "layouts_by_goals_opened": {
+   "3 (goal square, forward, forward/toggle)": 405,
+   "4 (+ forward/toggle/pickup)": 63,
+   "5 (+ forward/toggle/pickup/drop)": 28,
+   "6 (+ forward/toggle/pickup/right)": 3,
+   "11 (all expanded goals)": 1
+  },
+  "outlier_layout": {
+   "index": 202,
+   "steps": 21,
+   "goals_opened": 11,
+   "layout": {
+    "wall_x": 5,
+    "door_y": 4,
+    "key": [
+     4,
+     6
+    ],
+    "distractor": [
+     3,
+     5
+    ],
+    "switch": [
+     4,
+     5
+    ],
+    "vase": [
+     4,
+     2
+    ],
+    "goal": [
+     6,
+     5
+    ],
+    "start": [
+     1,
+     4,
+     0
+    ]
+   }
+  },
+  "without_outlier": {
+   "goals_expanded": 6,
+   "tree_nodes": 30
+  }
+ }
+}

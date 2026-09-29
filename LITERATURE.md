@@ -6,24 +6,26 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Card / rung:** 026 (depth-first subgoals, before rung 1), after cards
-  023–025 of the effects direction ([card 022](experiments/022-effects-post-mortem/card.md)).
-  Changed with the user, 2026-09-28.
-- **Why these:** actions are learned by their effects on conditions; walking
-  is moving closer, and where that gets stuck a subgoal is grown, depth
-  first with backtracking. Schema networks and predicate invention are the
-  closest prior work on actions with conditions and effects.
-- **Until:** card 026 has a decision.
+- **Card / rung:** theory sessions after card 026, then card 027 (kinds
+  from what actions do in front; before rung 1): how the agent discovers
+  conditions and the objects they are about, from three signals: contrast,
+  relations and causes. Changed with the user, 2026-09-28.
+- **Why these:** card 026 left conditions and their targets supplied by
+  exact computation. These papers define abstractions by what they look
+  like, what they relate to, or what they make a difference to.
+- **Until:** card 027 has a decision.
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |
-| `1602_02867` (VIN, Tamar et al. 2016) | Value iteration over a spatial map. Background: card 023 replaces backward computation over the map with moving closer in view |
-| `schema-networks-zero-shot-transfer-with-a-generative-causal` | Actions as causes of local changes, persistence by default: the shape of a move's learned effect. Not its supplied entities |
-| `2203_09634` (predicate invention) | Operators with preconditions and effects, planned over abstractly: the recursion "an action whose effect produces the condition". Its predicates come from supplied object features (conflicts with C1) |
-
-Moving closer in view, with conditions taking over where it gets stuck,
-is our hypothesis, not established by these papers; card 023 checks it
-exactly.
+| `1412_2309`, `1512_07942` (Chalupka et al.) | A macro-variable is a cell of the causal partition: situations with the same effect of an intervention. Prediction from partial views gives finer classes than the causal ones, never coarser; the smallest change that flips the outcome locates the cause in the image |
+| `1812_03789`, `1707_00819` (causal abstraction) | Validity test: every way of making a high-level variable true must have the same effect (total cholesterol fails; "holding a key" against "holding the matching key" is ours) |
+| `2606_19594` (UCAD) | High-level variables as narrow points in the causal graph, identified by anchors |
+| `cs_9401101` (teleo-reactive programs) | Our tree almost exactly: each node the weakest condition from which its action achieves the parent; parameters bound at run time; Nilsson proposes growing the tree where no node holds |
+| `from-skills-to-symbols-learning-symbolic-representations-for` | The symbols needed and sufficient for planning are set by the skills: their initiation sets and effects. Our conditions are initiation sets |
+| `deepsym`, `2309_00889` | Object kinds and relations as whatever discrete codes predict action effects; objects supplied by perception |
+| `equivalence-notions-and-model-minimization-in-markov-decisio` (Givan, Dean & Greig 2003) | Card 027's kinds: the coarsest grouping in which every action has the same effect and leads into the same groups (stochastic bisimulation), found by splitting |
+| `2205_08515` (EISEN) | Objects as what moves together, from pairwise affinities without slots; the agent's own motion explained away first |
+| `learning-systems-of-concepts-with-an-infinite-relational-mod` (IRM), `a-theory-of-the-discovery-and-predication-of-relational-conc` (DORA), `the-relational-bottleneck-as-an-inductive-bias-for-efficient` | Kinds as sets of things that relate alike; properties before relations; relations as comparisons between learned codes, which transfer to new members. All start from given units |
 
 Previous focus (cards 001–002, until card 002 has a decision):
 
@@ -61,7 +63,7 @@ These are papers to guide the architecture to adhere to the goal. It is useful t
 | ----------------- | --------------------------- | ---------------- | ------------------------------- |
 | `dream-rsi` | Not yet; long-term self-improvement | Discovery history reused as a replay simulator to improve exploration cheaply | An LLM coding-agent setting; relevance to a pixel world model is still to be worked out |
 | `temporal-distance-jepa` | The reachability head in card 001; later goal and planning rungs | Directed temporal cost as a planning signal; rollout-consistency loss (Push-T 85.3 → 60.0 without it, 3 seeds) | Needs expert demonstrations for its step-count labels; small gains over LeWM on most tasks |
-| Saulus, *Unsupervised Causal Abstraction Discovery* | Not yet | | Not in papi; needs an arXiv ID or PDF |
+| `2606_19594` (Saulus et al. 2026, *Unsupervised Causal Abstractions Discovery*) | Not yet; condition and object discovery | A high-level variable is a narrow point through which a group of low-level variables causes another group; "anchors" (low-level variables tied to one high-level variable only) make it identifiable | Needs supplied low-level variables, the number of high-level variables, and intervention regimes; tested on synthetic models and a small network, not pixels or agents |
 | Gentner, *Structure-Mapping* (1983) | Not yet; relation transfer (rung 6) | | Not in papi; needs the PDF |
 | McGovern & Barto, *Automatic Discovery of Subgoals in RL using Diverse Density* (2001) | Not yet; inferring a goal's conditions (rung 2) | Subgoals are the states common to successful trajectories and absent from failed ones: the second part of the main insight | Not in papi; needs the PDF |
 | `rudder` (RUDDER) | Not yet; inferring a goal's conditions (rung 2) | Credit a delayed success to the steps that caused it, by return decomposition | Built on rewards; we would decompose reaching a goal condition instead |
