@@ -2,7 +2,7 @@
 
 Overwritten each session. At most 40 lines.
 
-- **Date:** 2026-09-28. **Rung:** before rung 1. **Architecture:** version 5
+- **Date:** 2026-09-29. **Rung:** before rung 1. **Architecture:** version 5
   (card 029): a counted model of every action's effects (028), with
   subgoals worked backward through its learned rules at every step
   (`tools/card029/subgoals.py`). Version 3's neural learner is historical.
@@ -26,12 +26,15 @@ Overwritten each session. At most 40 lines.
   99.8-100% of layouts, 6-9 conditions per move, no tree. Weakest part:
   walking on long detours. Arm 3 in the both world unfinished (command in
   the card).
-- **Now:** the literature review for card 029's appendix B is written
-  (LITERATURE.md's current focus; 22 papers added to papi). No paper finds
-  attributes from raw pixels without labels; that step is ours. Our tiles:
-  colour is one recurring pixel substitution, but a key and its closed
-  door share no pixel value. Next, with the user: the transfer card.
+- **Now:** card 030 drafted, awaiting the user's approval: attributes
+  found from pixels (same shape = a one-to-one change of pixel values;
+  colour changes = symmetries of the learned model), outcome entries and
+  rules pooled along them by card 010's evidence. Test: a withheld
+  pairing (blue key never held at the blue door), plus permuted and
+  any-key control worlds. A colour never seen is left for the next card
+  (appendix B: a key and its closed door share no pixel value, so it
+  needs a pixel prior or "fewest new colours"; the user's choice).
+  Literature review: LITERATURE.md's current focus.
 - **Pinned:** duplicate detector merging needs literature; demonstrations
-  once random play is too thin. LESSONS.md needs a merge pass (over two
-  pages). GOAL.md hypotheses draft awaits the user. Nothing from cards
+  once random play is too thin. GOAL.md hypotheses draft awaits the user. Nothing from cards
   021–029 is committed.
