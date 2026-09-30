@@ -39,10 +39,10 @@ encoder's codebooks.
 | | Planner of cards 028–037 | Card 038 |
 |---|---|---|
 | A place holds | a label (tile ID or code tuple) | the encoder's vector |
-| "Is this like that?" | the labels are equal | recall's weight k ≥ 1/2, under the metric of the action asking |
-| Whether an action does something | a table entry per label | recall's vote over tries keyed on the thing in front (and, for pick up, toggle and drop, the thing held) |
+| Whether a need is met | the labels are equal | recall's forward prediction (revised; see below) |
+| Whether an action does something | a table entry per label | recall's vote over tries keyed on the thing in front (and, for pick up, toggle and drop, the thing held and what is in view) |
 | What results | a label from the table | the neighbours' change carried onto the vector, part by part |
-| Working backward | operators read from the table | memory retrieved by what tries achieved, each proposal checked by a forward prediction |
+| Working backward | operators read from the table | the shortest imagined sequences of actions that recall predicts make the need true |
 | Memory while acting | fixed | every try added (online learning) |
 
 - **Carrying a change over.** Each changed part is handled in one of four
@@ -55,18 +55,34 @@ encoder's codebooks.
   Leave-one-out over the stored things of the kind picks one way per part.
   Weights and priors are card 037's recall: a learned λ per action, prior
   1/4, and an outcome needing probability ≥ 1/2.
-- **Conditions** are predictions about things the agent knows of, for
-  example:
+- **Conditions** are predictions, checked by recall:
+  - "the episode ends";
   - "the thing at place j can be walked onto";
-  - "holding something like the thing at place i";
-  - "something like a switch that is on is in view", a condition the
-    evidence score finds (card 010).
-- **Working backward.** For an unmet condition, memory returns the stored
-  tries that achieved something like it, with their action and what was
-  held, as hindsight relabelling does (`1707_01495`). Those tries rank the
-  agent's candidates, and a forward prediction checks each one. The first
-  that passes becomes the subgoal, recursively to depth 6. Walking and the
-  search order are card 029's.
+  - "doing a on thing u, with what is held and in view now, makes
+    condition c true".
+- **Working backward: open, awaiting the user.** A search over imagined
+  sequences of up to 4 actions was written but withdrawn unrun. It
+  simulates latent steps instead of reasoning over conditions (GOAL.md
+  P21).
+  - Proposed instead: for an unmet "doing a on u makes c true", recall's
+    stored tries of that kind are split into those that achieved c and
+    those that did not. The conditions are the parts of the key (thing
+    held, what is in view) that separate the two groups.
+  - Each condition is met when recall predicts success with the current
+    value of that part and the other part as in a successful try. It is
+    achieved by an action whose predicted effect changes that part.
+  - Walking and card 029's order and backtracking stay.
+
+**Revision, 2026-09-30 (agreed with the user after the shakedown).** As
+first approved, a need was met when a thing was "like" the target (k ≥ 1/2
+under the asking action's λ). On oracle vectors that failed. λ is fitted
+only to predict which places change, so under toggle's λ holding nothing
+looks like holding the green key (k = 0.998), and switch on looks like
+switch off (0.98). Arm A showed the same (0.96–1.00). The goal was reached
+in 0–5% of layouts, although held-out effects were right in 98–100%.
+
+The "like" test is removed. Needs are checked by recall's prediction, and
+what is in view joins recall's key for pick up, toggle and drop.
 - **Online learning.** Each real try joins recall's memory, and that
   kind's cached predictions are dropped. λ is not refitted. Memory carries
   across the roughly 12 layouts each worker plays in turn.
@@ -88,8 +104,9 @@ the same planner:
   user's agreement.
 - The move maps and poses are card 028's, fitted on exact repeats of the
   vectors (pixels repeat exactly in this world).
-- Card 010's evidence score still finds context conditions. "Fits" is a
-  later card.
+- What is in view is one vector: the largest value per dimension among
+  the things in view, the agent's own place aside (a set pooled into one
+  vector, `1703_06114`). It replaces card 010's context rules.
 
 ## 3. Dependencies
 
@@ -183,32 +200,31 @@ search order. Nothing in it gives a vector a label.
 - **Recall per kind,** as in card 037:
   - the kinds are left, right, forward (the thing in front), the agent
     drawn onto and undrawn from a tile, and pick up, toggle and drop (the
-    thing in front and the thing held);
+    thing in front, the thing held and what is in view);
   - weights k = exp(−Σ λ|x − x′|), with own tries at weight 1;
+  - λ is fitted by card 037's leave-one-out, with every key of the same
+    thing in front and held (a pair) left out together;
   - outcome categories are only which places change (for moves: moved,
     blocked or ended);
   - an outcome needs probability ≥ 1/2 with prior 1/4.
 
   Forward decides whether the agent enters a tile. The draw and undraw
   kinds supply only how the agent looks on it.
-- **Context conditions:** where a kind's tries split between outcomes,
-  card 010's evidence score searches atoms of the form "something like
-  stored thing X is in view". "Like" means k ≥ 1/2 under that kind's λ
-  for the thing in front.
+- **What is in view** (revised): the largest value per dimension among
+  the things at the view's places, the agent's own place aside.
 - **Ways per part:** keep, copy, shift or set. The choice is made by
-  leave-one-out over the category's stored keys, with equal weight per
-  key. A category with one stored key uses shift.
-- **Working backward:**
-  - Conditions: "episode ended", "place j walkable", "holding something
-    like the thing at place i", "something like X in view", and "facing
-    place j".
-  - Achievers: memory is indexed by what each stored try achieved (ended
-    the episode, made its front walkable, put something in the hand, made
-    a context atom true). A condition retrieves the tries that achieved it,
-    weighted by how like the target their thing was.
-  - Candidates: the retrieved tries' actions and held things rank the
-    candidates among the places in the facts and the hand. Each candidate
-    is checked by a forward prediction with probability ≥ 1/2.
+  leaving out each pair's keys together over the category's stored keys,
+  with equal weight per key. A category with one pair uses shift.
+- **Working backward** (revised):
+  - Conditions: "episode ended", "place j walkable", "doing a on thing u
+    (at place j), with what is held and in view now, makes c true"
+    (recall's result written into the facts, then c checked), and
+    "facing".
+  - Achievers of "episode ended": forward onto a thing predicted to end
+    it. Of the others: open (see section 2). The imagined-sequence search
+    in `last_steps` is withdrawn and must be replaced before any run.
+  - Places in the way: a thing memory has seen made walkable (k ≥ 0.01 on
+    the front part of pick up's or toggle's λ) is checked as in the way.
   - Needs are then taken in card 029's order.
 - **Online learning:** each real step's try (things before and after,
   held, view) joins its kind's memory, and that kind's cached predictions

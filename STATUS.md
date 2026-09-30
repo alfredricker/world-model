@@ -25,16 +25,16 @@ Overwritten each session. At most 40 lines.
   - The fitted metric is needed. With λ at its start, no finished seed's
     model fitted in the planner's 254 tuples, so the arm was stopped at
     25 minutes. The command to finish it is in the card.
-- **[Card 038](experiments/038-planning-on-vectors/card.md) (approved
-  2026-09-30; built, shakedown failed, awaiting the user):** the planner
-  holds encoder vectors; recall predicts each effect. With oracle vectors
-  (seed 399, 40 layouts per world), held-out effects are right in
-  98–100%, but the goal is reached in 0–5%. The "like" test (k ≥ 1/2 under
-  the action's λ) cannot tell holding nothing from holding the green key
-  (k = 0.998), or switch on from off (0.98). λ is fitted only on which
-  places change. Arm A shows the same (0.96–1.00). Decision needed before
-  Appendix A changes.
-- **papi:** now set to GLM-5.3 through OpenRouter; the account needs
-  credit before summaries can be regenerated.
+- **[Card 038](experiments/038-planning-on-vectors/card.md) (approved;
+  revised 2026-09-30, shakedown in progress):** planner on encoder vectors.
+  The "like" test failed on oracle vectors, so needs are now recall
+  predictions and what is in view joins recall's key. Oracle, seed 399,
+  100 layouts: key and either worlds pass (goal 100%, 0.98 and 0.96 of
+  card 029's steps); switch 64%, both 43%. Missing: finding the view's
+  conditions (switch on). A search over imagined action sequences was
+  withdrawn unrun (GOAL.md P21: chains of conditions, not latent steps).
+  Next: the user decides on conditions inferred from memory (card 038,
+  section 2); then the oracle shakedown, arm A, arm B, gate, main runs.
+- **papi:** GLM-5.3 via OpenRouter; needs credit to regenerate summaries.
 - **Pinned:** card 029's arm 3 in the both world (command in the card);
   demonstrations once random play is too thin; GOAL.md hypotheses draft.

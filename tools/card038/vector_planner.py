@@ -59,6 +59,7 @@ CHANGED, UNCHANGED, ENDED = CO.CHANGED, CO.UNCHANGED, CO.ENDED
 APP0 = CO.APP0
 WORLDS = CO.WORLDS
 PRIOR, KMIN = 0.25, 0.01                     # card 037
+IMAX = 4                                     # declared: imagined sequences of at most 4 interactions
 BUDGET = 200
 ROOT = Path(__file__).resolve().parents[2]
 ENC_A = ROOT / "runs" / "037_enc"
@@ -455,7 +456,7 @@ class World:
         self.S, self.parts, self.judge = S, parts, Judge(S)
         self.keep = np.ones(NV, bool)
         self.keep[CENTRE] = False                              # what is in view: the agent's own place aside
-        self.ctxc = {}
+        self.ctxc, self.openc, self.openedc = {}, {}, {}
         lut = S.hof.astype(np.uint8)
         V0, V1 = lut[D["ego0"]], lut[D["ego1"]]
         act, w, term = D["act"], D["w"], D["term1"]
@@ -520,6 +521,29 @@ class World:
     def ctx_of_view(self, V):
         return self.ctx_of(np.unique(np.asarray(V)[:NV][self.keep]))
 
+    def openable(self, u):
+        """Memory holds a pick up or toggle that made a thing like u (k >= KMIN on the front part of that
+        kind's metric) into one to walk onto: places showing u are checked as things in the way."""
+        r = self.openc.get(u)
+        if r is None:
+            r = False
+            for a in (PICK, TOG):
+                kd = self.kinds[a]
+                fr = self.openedc.get(a)
+                if fr is None:
+                    out = set()
+                    for c in (1, 3):
+                        for t in np.flatnonzero(kd.aw[:, c] > 0):
+                            b = kd.keys[t][0]
+                            if not self.M.free[b] and self.M.free[self.S.add(kd.after_mat(c, 0)[t])]:
+                                out.add(b)
+                    fr = self.openedc[a] = np.array(sorted(out), np.int64)
+                if len(fr) and np.exp(-(np.abs(self.S.arr[fr] - self.S.arr[u]) @ kd.lam[:kd.D])).max() >= KMIN:
+                    r = True
+                    break
+            self.openc[u] = r
+        return r
+
     # -- predictions
     def move_cat(self, a, h):
         c = self.kinds[a].move((int(h),))
@@ -540,6 +564,8 @@ class World:
         self.clear_lazy()
 
     def clear_lazy(self):
+        self.openc.clear()
+        self.openedc.clear()
         for a in MOVES:
             self.M.move_out[a].clear()
         self.M.free.clear()
@@ -559,6 +585,8 @@ class World:
         f0, h0, f1, h1 = int(V[FRONT]), int(V[HELD]), int(V2[FRONT]), int(V2[HELD])
         cat = int(f1 != f0) + 2 * int(h1 != h0)
         self.kinds[a].add((f0, h0, self.ctx_of_view(V)), cat, after=(f1, h1))
+        self.openc.clear()
+        self.openedc.clear()
         return cat
 
 
@@ -581,13 +609,13 @@ class VPlan(G.Plan):
         self.failed, self.refused, self.version = set(), set(), 0
         self.psets, self.pids = [], {}
         self.fmemo, self.amemo, self.rmemo, self.cmemo, self.canmemo, self.premo = {}, {}, {}, {}, {}, {}
-        self.achmemo, self.opmemo, self.imemo, self.ctxmemo = {}, {}, {}, {}
+        self.achmemo, self.succmemo, self.imemo, self.ctxmemo = {}, {}, {}, {}
         self.n_refused, self.walk_kind = 0, Counter()
 
     def forget(self):
         """The model changed (a try was added): drop everything derived from its predictions."""
         for d in (self.steps, self.memo, self.rsets, self.appr, self.pres, self.fmemo, self.amemo, self.rmemo,
-                  self.cmemo, self.canmemo, self.premo, self.achmemo, self.opmemo, self.imemo):
+                  self.cmemo, self.canmemo, self.premo, self.achmemo, self.succmemo, self.imemo):
             d.clear()
 
     def intern(self, f):
@@ -756,70 +784,72 @@ class VPlan(G.Plan):
             r = self.canmemo[k] = [p for p in M.all_poses.tolist() if M.free[f[M.cidx[p]]]]
         return r
 
-    def things(self, st):
-        """Things in the facts, and things that could be held (those and what is held now); the recall
-        votes for every action on them are computed together."""
+    def successors(self, st):
+        """Every pick up, toggle and drop on a thing in the facts (at a place showing it) that is predicted
+        to change something, with what is held and in view: (action, thing, state after)."""
+        r = self.succmemo.get(st)
+        if r is None:
+            f = self.facts[st[0]]
+            U = np.unique(f[:NV]).tolist()
+            cid = self.ctx_id(st[0], st[1])
+            r = []
+            for a in INTER:
+                self.W.kinds[a].cat_of([(u, int(f[HELD]), cid) for u in U])
+                for u in U:
+                    s2 = self.imagine(st, a, u, None)
+                    if s2 is not None and s2[0] != st[0]:
+                        r.append((a, u, s2))
+            self.succmemo[st] = r
+        return r
+
+    def last_steps(self, c, st):
+        """The last actions of the shortest imagined sequences (at most IMAX pick ups, toggles and drops)
+        after which c holds, on things in the facts now; and how many actions come before them."""
         f = self.facts[st[0]]
-        held = int(f[HELD])
-        U = np.unique(f[:NV]).tolist()
-        H = sorted(set(U) | {held})
-        cid = self.ctx_id(st[0], st[1])
-        for a in INTER:
-            self.W.kinds[a].cat_of([(u, h, cid) for u in U for h in H])
-        return U, H, held
+        here = set(np.unique(f[:NV]).tolist())
+        frontier, seen = [st], {st[0]}
+        for d in range(IMAX):
+            found, nxt = set(), []
+            for s in frontier:
+                succ = list(self.successors(s))
+                if c[0] == "walk":                           # the thing at place j itself, at j
+                    u = int(self.facts[s[0]][c[1]])
+                    for a in (PICK, TOG):
+                        s2 = self.imagine(s, a, u, c[1])
+                        if s2 is not None:
+                            succ.append((a, u, s2))
+                for a, u, s2 in succ:
+                    if self.hold(c, s2):
+                        if u in here:
+                            found.add((a, u))
+                    elif s2[0] not in seen:
+                        seen.add(s2[0])
+                        nxt.append(s2)
+            if found:
+                return d, sorted(found)
+            frontier = nxt
+        return None, []
 
     def achievers(self, c, st):
-        """Actions on things in the facts whose predicted effect makes c true: with what is held now (the
-        action's needs: facing its thing), or with another thing held (also: its own "doing" condition)."""
+        """The episode ends: forward onto a thing predicted to end it. Otherwise: the last actions of the
+        shortest imagined sequences that make c true; one with actions before it needs its own "doing"
+        condition (met once those are done)."""
         key = (c, st[0], st[1])
         r = self.achmemo.get(key)
         if r is not None:
             return r
-        W = self.W
-        r = []
+        f = self.facts[st[0]]
         if c[0] == "end":
-            f = self.facts[st[0]]
             r = [(Ach(FWD, u, None), [("face", FWD, u, None)])
-                 for u in np.unique(f[:NV]).tolist() if W.move_cat(FWD, u) == ENDED]
-        elif c[0] in ("walk", "does"):
-            U, H, held = self.things(st)
-            if c[0] == "walk":
-                cands = [(a, int(self.facts[st[0]][c[1]]), c[1]) for a in (PICK, TOG)]
-            else:
-                cands = [(a, u, None) for a in INTER for u in U if (a, u) != (c[1], c[2])]
-            for a, u, j in cands:
-                now = some = False
-                for h in H:
-                    st2 = self.imagine(st, a, u, j, None if h == held else h)
-                    if st2 is not None and self.hold(c, st2):
-                        some = True
-                        if h == held:
-                            now = True
-                            break
-                if some:
-                    needs = [] if now else [("does", a, u, j, c)]
-                    r.append((Ach(a, u, j), needs + [("face", a, u, j)]))
+                 for u in np.unique(f[:NV]).tolist() if self.W.move_cat(FWD, u) == ENDED]
+        else:
+            d, last = self.last_steps(c, st)
+            r = []
+            for a, u in last:
+                j = c[1] if c[0] == "walk" and int(f[c[1]]) == u else None
+                needs = [] if d == 0 else [("does", a, u, j, c)]
+                r.append((Ach(a, u, j), needs + [("face", a, u, j)]))
         self.achmemo[key] = r
-        return r
-
-    def openers(self, st, u):
-        """What the thing u (at its first place) is predicted to become, when that is a thing one can walk
-        onto, by picking it up or toggling it with anything held."""
-        key = (st[0], st[1], u)
-        r = self.opmemo.get(key)
-        if r is None:
-            f = self.facts[st[0]]
-            j = int(np.flatnonzero(f[:NV] == u)[0])
-            _, H, held = self.things(st)
-            res = set()
-            for a in (PICK, TOG):
-                for h in H:
-                    st2 = self.imagine(st, a, u, j, None if h == held else h)
-                    if st2 is not None:
-                        v = int(self.facts[st2[0]][j])
-                        if F.M.free[v]:
-                            res.add(v)
-            r = self.opmemo[key] = sorted(res)
         return r
 
     def walk(self, need, st, depth, chain, protect, faces):
@@ -829,26 +859,25 @@ class VPlan(G.Plan):
             return G.Result(r, [need, ("walk", kind)], self.closeness(st, self.psets[pid]))
         if depth + 1 > G.MAXD:
             return None
-        # a place in the way that an action is predicted to make one to walk onto
+        # a place in the way, showing a thing memory has seen made into one to walk onto: would walking
+        # reach the need if it could be walked onto? (checked with the thing the agent stands on there)
         f = self.facts[st[0]]
         M = F.M
+        stand = int(f[M.cidx[st[1]]])
+        if not M.free[stand]:
+            return None
         cands = []
         for u in np.unique(f[:NV]).tolist():
-            if M.free[u]:
-                continue
-            res = self.openers(st, u)
-            if not res:
+            if M.free[u] or not self.W.openable(u):
                 continue
             for j in np.flatnonzero(f[:NV] == u).tolist():
-                for v in res:
-                    st2 = self.with_tile(st, j, v)
-                    pid2 = self.face_pid(st2[0], need)
-                    if not (self.connected(st2) & self.psets[pid2]):
-                        continue
-                    if self.reach(st2, pid2)[0] is None:
-                        continue
-                    cands.append((self.closeness(st, M.facing[j]) or (99, 9), j))
-                    break
+                st2 = self.with_tile(st, j, stand)
+                pid2 = self.face_pid(st2[0], need)
+                if not (self.connected(st2) & self.psets[pid2]):
+                    continue
+                if self.reach(st2, pid2)[0] is None:
+                    continue
+                cands.append((self.closeness(st, M.facing[j]) or (99, 9), j))
         for _, j in sorted(set(cands)):
             c = ("walk", j)
             if c in chain:
