@@ -6,6 +6,100 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
+- **Card / rung:** [card 036](experiments/036-fresh-codes/card.md), fresh
+  codes for new things, then [card 037](experiments/037-recall-in-the-planner/card.md),
+  recall in the planner. Before rung 1. Set with the user on 2026-09-29,
+  after card 035 stopped. Recall on the encoder's vectors replaces the
+  counted lookup behind the planner's entries, and novelty is judged per
+  action by the vote's weight. Card 036 first gives each new tile a name
+  of its own.
+- **Why these:** exemplar recall as the source of predictions, with a
+  learned metric per action and its weight as doubt.
+- **Until:** card 037 has a decision.
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| `1703_01988` (Pritzel et al. 2017, Neural Episodic Control) | Predictions from a kernel-weighted sum over stored experiences in a slowly changing embedding; it latches onto a success as soon as it is seen. Card 037's entries are this over the planner's stored tries |
+| Nosofsky 1986, the generalized context model (not in papi) | A new item is judged by a similarity-weighted vote of stored items, with learned attention per dimension: recall's k and λ |
+| Kruschke 1992, ALCOVE (not in papi) | Attention per dimension learned from error; it shifts to the dimensions that tell outcomes apart. Card 037 learns λ per world and action |
+| `1604_02354` (Bayesian NCA; restates Goldberger et al. 2004) | Leave-one-out prediction as the objective for the metric: card 037's λ fit |
+| `1703_05175` (Snell et al. 2017, prototypical networks) | Distance to a prototype as doubt; card 035's radius and card 036's fresh codes |
+
+Previous focus (card 035, stopped 2026-09-29):
+
+- **Card / rung:** [card 035](experiments/035-novelty-from-own-tiles/card.md),
+  novelty from a code's own tiles: card 034's recall-trained codes, read
+  with a new rule. A tile is "new" in a codebook only when it lies
+  farther from its nearest code than α times that code's own spread, with
+  α set by leave-one-out on familiar tiles. Before rung 1. Approved by the
+  user on 2026-09-29 ("get the novelty signal working"), under CHARTER.md's
+  new point "One latent space". It was first drafted as a sparsity
+  penalty on recall's weights; that probe placed the failure in the
+  novelty rule.
+- **Why these:** a code as a prototype with a radius, and choosing that
+  radius without the test; the sparsity papers were read for the first
+  draft.
+- **Until:** card 035 has a decision (stopped; see its section 8).
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| `2107_10098` (Lachapelle et al. 2022, mechanism sparsity) | Latent factors are recovered, up to permutation, when each mechanism depends on few of them, the learned dependency graph is penalised for its edges, and the data vary enough (a graph connectivity condition). Binary masks with a penalty on their expected count; synthetic data only. Card 035's first draft used the continuous analogue on recall's weights, one group per part |
+| Yuan and Lin 2006, "Model selection and estimation in regression with grouped variables" (not in papi) | The group lasso: a Euclidean norm per group of weights, summed, sets whole groups to zero. Card 035's first draft grouped recall's weights by the part a codebook quantises |
+| `1811_12359` (Locatello et al. 2019) | Without declared biases nothing identifies factors, and seeds matter as much as methods: fixed settings, many seeds, no selection by the test |
+| `1703_05175` (Snell et al. 2017, prototypical networks) | A class is a prototype, and a query's distance to it is the doubt. Card 035's code is a prototype whose radius comes from its own training tiles |
+| `1604_02354` (Bayesian NCA; restates Goldberger et al. 2004) | Leave-one-out prediction on the training set as the selection signal: card 035 chooses α this way, on familiar tiles only |
+| Kruschke 1992, ALCOVE (not in papi) | An exemplar model that learns attention per dimension by error-driven learning; attention shifts to the dimensions that tell the categories apart. Recall's per-action weights are this attention |
+
+Previous focus (card 034, stopped 2026-09-29):
+
+- **Card / rung:** [card 034](experiments/034-recall-teaches-the-encoder/card.md),
+  recall teaches the encoder: card 033's recall term trains card 031's
+  encoder, with room in the codebooks, so that things that act alike share
+  codes and a new appearance falls in with them. Before
+  rung 1. Set with the user on 2026-09-29, after card 033 stopped (its
+  section 8, and CHARTER.md's "Current direction"). Kinds are distributed
+  across the codebooks, never merged. The user's fallback is to build
+  outline and appearance as separate parts of the encoder.
+- **Why these:** the direction's second layer needs encoder features in
+  which a kind's members agree. Card 031's encoder has none (card 033,
+  section 8).
+- **Until:** card 034 has a decision (stopped at its gate; see its section 8).
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| `1802_02745` (Feinman & Lake 2018) | A small convolutional network trained to name objects by shape, with colour and texture random, learns to generalise by shape. Doing so for a new colour of a trained category (first order) takes less data than for a new category (second order). Second order reaches 0.7 at 6 examples of 8 categories, 3 of 32, or 12 of 4. We have 4 kinds with several members, 3 members each: the edge of that range. L2 regularisation and small random shifts mattered |
+| `1706_08606` (Ritter et al. 2017) | ImageNet-trained one-shot models prefer shape to colour, but the strength varies greatly across seeds of equal accuracy: report many seeds |
+| `1811_12231` (Geirhos et al. 2019) | ImageNet networks judge by texture, not shape. Training on style-transferred images makes them judge by shape, so the bias comes from the data |
+| `2004_11362` (Khosla et al. 2020, supervised contrastive) | The kind term of the drafting probes: each item is pulled toward the others with its label and away from the rest (temperature 0.1). Hard labels; card 034 uses recall's graded, per-action similarity instead |
+| `1703_05175` (Snell et al. 2017, prototypical networks) | A class is the mean of its members; a new item is classed by its distance to the means. This is the second layer's "which kind is this new appearance", with distance as doubt |
+| Smith et al. 2002, "Object name learning provides on-the-job training for attention" (not in papi) | Toddlers taught four categories organised by shape start to extend new names by shape: the shape bias is learned |
+
+Previous focus (card 033, stopped 2026-09-29):
+
+- **Card / rung:** [card 033](experiments/033-relation-codes/card.md),
+  relation codes: recall of door tries, compared in card 031's encoder,
+  predicts a door of a never-seen colour; "fits" becomes a code when it
+  explains the tries more cheaply than one rule per colour. Before rung 1.
+  Drafted with the user, 2026-09-29, after card 032 was stopped.
+- **Why these:** the user's direction, counting → recall → weights. Recall
+  is fast and nonparametric; replay trains the encoder slowly. The
+  comparison must be computed, never looked up, to reach a new colour.
+  Card 030's reading on relations, Plotkin and description length (below)
+  still applies.
+- **Until:** card 033 has a decision (stopped; see its section 8).
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| `1703_01988` (Pritzel et al. 2017, Neural Episodic Control) | A slowly changing encoder writes every experience to a memory; a lookup is a kernel-weighted sum over the p nearest keys (p = 50). It learns significantly faster than DQN and A3C, and latches onto a success as soon as it is experienced. Card 033's recall is this with one neighbour and our comparison as the key |
+| `1606_04460` (Blundell et al. 2016, Model-Free Episodic Control) | Nearest-neighbour memory over a VAE's 32 numbers learns one-shot and faster than parametric learners early on, and may be overtaken later: the case for recall first, weights later |
+| Shepard 1987, "Toward a universal law of generalization" (not in papi) | Generalisation falls off exponentially with distance in a psychological space: card 033's vote weight exp(−distance) |
+| Nosofsky 1986, the generalized context model (not in papi) | Exemplar model: a new item is classed by a similarity-weighted vote of stored items, with learned attention weights per dimension; card 033's λ |
+| `1604_02354` (Bayesian NCA; restates Goldberger et al. 2004) | Neighbourhood components analysis learns a metric by leave-one-out nearest-neighbour prediction: each point is predicted from the others. Card 033's objective, with unnormalised weights and a prior so that distance shows as doubt |
+| `2012_14601` (Webb et al. 2021, ESBN) | A memory binds entity embeddings to abstract variables, retrieved by comparison; rules carry to withheld entities (at least 95% with 95 of 100 images withheld). Labelled tasks |
+| `the-relational-bottleneck-as-an-inductive-bias-for-efficient`, `2304_00195` | Processing that sees only comparisons between objects transfers to new objects |
+
+Previous focus (card 032, stopped 2026-09-29):
+
 - **Card / rung:** [card 032](experiments/032-fewest-codes/card.md),
   fewest codes: card 031's encoder must describe the tiles with as few
   codes as it can. [Card 031](experiments/031-codes-from-pixels/card.md)

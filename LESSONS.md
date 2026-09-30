@@ -76,6 +76,25 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   in 8 of 10 seeds). That carried the shared effects (pick up and drop
   right in 9 of 10) and wrongly the colour rules too. *Evidence:* cards
   031, 032. *Confirmed* (label arm as control).
+- **An exact lookup over codes cannot use "like a key but not a known
+  key"; novelty depends on the action.** One radius per code, the same for
+  every action, either lets a new appearance share familiar codes (it
+  carried picking up a new key in 9 of 10 seeds, but gave new open doors a
+  familiar door's codes in 5–7) or marks it "new" (every new tile told
+  apart, 10 and 8 of 10, and nothing predicted, 0 of 10). Recall's
+  per-action weights over the same vectors predicted all four new-key and
+  open-door cases in 10 of 10. *Evidence:* cards 034, 035 (both rules on
+  the same encoders). *Confirmed* (label arm as control).
+- **Recall-weighted entries carry what a new thing does, but a code tuple
+  cannot name a tile that mixes a familiar part with a new one.** Entries
+  built from recall-weighted tries lost nothing familiar and carried
+  picking up and dropping a new key (8 of 9 seeds per colour; counting on
+  the same codes, 0–2 of 10). Forward onto the new open door was exact in
+  3 of 9, although recall's vote was right in 9 of 9: the agent in a new
+  doorway usually has a code no familiar doorway has, and no familiar
+  statement produces it. State each tile's outcome from its own tries;
+  over a pooled group, statements pick up coincidences. *Evidence:* card
+  037. *Confirmed* (label arm as control).
 
 ## Conditions and acting
 
@@ -143,6 +162,17 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   updates drifted on repeated evidence (.052 mean, .991 max). *Evidence:*
   old:gamma/notes/2026-09-21-continuous-learnability.md; RLM-003, -007.
   *Confirmed* (drift *suggestive*).
+- **Recall by a similarity-weighted vote needs a space where shared
+  properties are near and new things are far.** On label codes the vote
+  found "same colour" and opened a new-coloured door at the first try.
+  On card 031's encoder nothing carried (the yellow key's pick-up was
+  wrong in 10 of 10 seeds). Replay into that encoder carried pick-up and
+  drop (10 of 10) and found "same colour" in 2 of 10. It also pushed
+  familiar tiles off their codebook codes in 9 of 10 seeds, which broke
+  acting. A new door's vote then weighed as much as a familiar door's
+  (1.3–13 against 2.6–11.1; labels 0.15 against 2.0), so one success
+  could not correct it. *Evidence:* card 033. *Confirmed* (label arm as
+  control).
 
 ## Process
 

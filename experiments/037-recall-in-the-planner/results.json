@@ -1,0 +1,682 @@
+{
+ "card": "037",
+ "seeds": [
+  400,
+  401,
+  402,
+  403,
+  404,
+  405,
+  406,
+  407,
+  408,
+  409
+ ],
+ "gate": {
+  "alpha": 4.0,
+  "loo_right_of_800": {
+   "1.0": 667,
+   "1.5": 779,
+   "2.0": 788,
+   "3.0": 791,
+   "4.0": 796,
+   "6.0": 794,
+   "8.0": 792,
+   "never new": 740,
+   "always new": 60
+  },
+  "seeds_named_apart": 9,
+  "names_pass": true
+ },
+ "arm_1_labels": {
+  "criterion_1": true,
+  "criterion_2": true,
+  "criterion_3": true,
+  "per_colour": {
+   "yellow": {
+    "criterion_2": true,
+    "criterion_3": true
+   },
+   "purple": {
+    "criterion_2": true,
+    "criterion_3": true
+   }
+  }
+ },
+ "arms": {
+  "2_recall": {
+   "seeds_run": [
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409
+   ],
+   "criteria_seeds": {
+    "criterion_1": 9,
+    "criterion_2": 2,
+    "criterion_3": 8
+   },
+   "model_too_big": [
+    405
+   ],
+   "criterion_1_failing_seeds": [],
+   "yellow": {
+    "cases_at_99pct_seeds": {
+     "pick up the yellow key": 8,
+     "drop the yellow key": 8,
+     "forward into the yellow key (blocked)": 9,
+     "forward into the closed yellow door (blocked)": 9,
+     "forward onto the open yellow door": 3,
+     "toggle the open yellow door (closes)": 0,
+     "toggle the closed yellow door without the yellow key (stays)": 9,
+     "toggle the closed yellow door holding the yellow key": 0
+    },
+    "acting_success_and_steps_ratio": [
+     [
+      400,
+      1.0,
+      1.052
+     ],
+     [
+      401,
+      1.0,
+      1.234
+     ],
+     [
+      402,
+      1.0,
+      1.052
+     ],
+     [
+      403,
+      1.0,
+      1.052
+     ],
+     [
+      404,
+      1.0,
+      1.052
+     ],
+     [
+      406,
+      1.0,
+      1.052
+     ],
+     [
+      407,
+      1.0,
+      1.052
+     ],
+     [
+      408,
+      1.0,
+      1.052
+     ],
+     [
+      409,
+      1.0,
+      1.052
+     ]
+    ],
+    "world_b_acting": [
+     0.056,
+     0.056,
+     0.056,
+     0.056,
+     0.056,
+     0.056,
+     0.056,
+     0.056,
+     0.056
+    ],
+    "forward_onto_open_door": [
+     {
+      "seed": 400,
+      "draw_vote": 1.253,
+      "exact_share": 1.0
+     },
+     {
+      "seed": 401,
+      "draw_vote": 0.41,
+      "exact_share": 0.0
+     },
+     {
+      "seed": 402,
+      "draw_vote": 0.85,
+      "exact_share": 0.0
+     },
+     {
+      "seed": 403,
+      "draw_vote": 0.021,
+      "exact_share": 0.0
+     },
+     {
+      "seed": 404,
+      "draw_vote": 2.972,
+      "exact_share": 0.0
+     },
+     {
+      "seed": 406,
+      "draw_vote": 1.4,
+      "exact_share": 1.0
+     },
+     {
+      "seed": 407,
+      "draw_vote": 3.795,
+      "exact_share": 1.0
+     },
+     {
+      "seed": 408,
+      "draw_vote": 0.192,
+      "exact_share": 0.0
+     },
+     {
+      "seed": 409,
+      "draw_vote": 1.219,
+      "exact_share": 0.0
+     }
+    ],
+    "recall_own_right_seeds": {
+     "pick up the key": 9,
+     "drop the key": 9,
+     "forward onto the open door": 9,
+     "toggle the open door (closes)": 9
+    }
+   },
+   "purple": {
+    "cases_at_99pct_seeds": {
+     "pick up the purple key": 8,
+     "drop the purple key": 8,
+     "forward into the purple key (blocked)": 9,
+     "forward into the closed purple door (blocked)": 9,
+     "forward onto the open purple door": 3,
+     "toggle the open purple door (closes)": 0,
+     "toggle the closed purple door without the purple key (stays)": 9,
+     "toggle the closed purple door holding the purple key": 0
+    },
+    "acting_success_and_steps_ratio": [
+     [
+      400,
+      1.0,
+      1.052
+     ],
+     [
+      401,
+      1.0,
+      1.234
+     ],
+     [
+      402,
+      1.0,
+      1.052
+     ],
+     [
+      403,
+      1.0,
+      1.052
+     ],
+     [
+      404,
+      1.0,
+      1.052
+     ],
+     [
+      406,
+      1.0,
+      1.052
+     ],
+     [
+      407,
+      1.0,
+      1.052
+     ],
+     [
+      408,
+      1.0,
+      1.052
+     ],
+     [
+      409,
+      1.0,
+      1.052
+     ]
+    ],
+    "world_b_acting": [
+     0.056,
+     0.056,
+     0.056,
+     0.056,
+     0.056,
+     0.056,
+     0.056,
+     0.056,
+     0.056
+    ],
+    "forward_onto_open_door": [
+     {
+      "seed": 400,
+      "draw_vote": 2.272,
+      "exact_share": 0.0
+     },
+     {
+      "seed": 401,
+      "draw_vote": 1.084,
+      "exact_share": 0.0
+     },
+     {
+      "seed": 402,
+      "draw_vote": 0.605,
+      "exact_share": 0.0
+     },
+     {
+      "seed": 403,
+      "draw_vote": 0.126,
+      "exact_share": 0.0
+     },
+     {
+      "seed": 404,
+      "draw_vote": 3.72,
+      "exact_share": 1.0
+     },
+     {
+      "seed": 406,
+      "draw_vote": 2.103,
+      "exact_share": 1.0
+     },
+     {
+      "seed": 407,
+      "draw_vote": 3.871,
+      "exact_share": 1.0
+     },
+     {
+      "seed": 408,
+      "draw_vote": 0.393,
+      "exact_share": 0.0
+     },
+     {
+      "seed": 409,
+      "draw_vote": 1.721,
+      "exact_share": 0.0
+     }
+    ],
+    "recall_own_right_seeds": {
+     "pick up the key": 8,
+     "drop the key": 9,
+     "forward onto the open door": 9,
+     "toggle the open door (closes)": 9
+    }
+   },
+   "lambda_fit_not_better": [],
+   "tuples_per_world": {
+    "400": [
+     101,
+     101,
+     101,
+     108
+    ],
+    "401": [
+     56,
+     59,
+     59,
+     59
+    ],
+    "402": [
+     69,
+     94,
+     94,
+     97
+    ],
+    "403": [
+     128,
+     128,
+     128,
+     128
+    ],
+    "404": [
+     109,
+     114,
+     114,
+     114
+    ],
+    "406": [
+     193,
+     197,
+     197,
+     199
+    ],
+    "407": [
+     98,
+     125,
+     127,
+     127
+    ],
+    "408": [
+     57,
+     57,
+     57,
+     57
+    ],
+    "409": [
+     111,
+     111,
+     111,
+     120
+    ]
+   },
+   "model_seconds": {
+    "400": [
+     5.8,
+     3.9,
+     3.9,
+     3.5
+    ],
+    "401": [
+     3.8,
+     4.4,
+     3.9,
+     7.2
+    ],
+    "402": [
+     11.2,
+     6.2,
+     5.1,
+     18.8
+    ],
+    "403": [
+     7.5,
+     5.5,
+     5.1,
+     5.3
+    ],
+    "404": [
+     4.3,
+     5.4,
+     5.2,
+     4.2
+    ],
+    "406": [
+     136.7,
+     72.8,
+     13.7,
+     113.0
+    ],
+    "407": [
+     4.3,
+     8.8,
+     8.8,
+     4.7
+    ],
+    "408": [
+     3.1,
+     3.1,
+     3.2,
+     3.1
+    ],
+    "409": [
+     12.7,
+     8.5,
+     7.4,
+     13.5
+    ]
+   }
+  },
+  "3_counted": {
+   "seeds_run": [
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409
+   ],
+   "criteria_seeds": {
+    "criterion_1": 6,
+    "criterion_2": 0,
+    "criterion_3": 2
+   },
+   "model_too_big": [],
+   "criterion_1_failing_seeds": [
+    400,
+    401,
+    405,
+    407
+   ],
+   "yellow": {
+    "cases_at_99pct_seeds": {
+     "pick up the yellow key": 0,
+     "drop the yellow key": 1,
+     "forward into the yellow key (blocked)": 10,
+     "forward into the closed yellow door (blocked)": 10,
+     "forward onto the open yellow door": 2,
+     "toggle the open yellow door (closes)": 0,
+     "toggle the closed yellow door without the yellow key (stays)": 10,
+     "toggle the closed yellow door holding the yellow key": 0
+    },
+    "acting_success_and_steps_ratio": [
+     [
+      400,
+      1.0,
+      1.234
+     ],
+     [
+      401,
+      1.0,
+      1.234
+     ],
+     [
+      402,
+      0.184,
+      8.647
+     ],
+     [
+      403,
+      0.184,
+      8.647
+     ],
+     [
+      404,
+      1.0,
+      1.052
+     ],
+     [
+      405,
+      0.184,
+      8.647
+     ],
+     [
+      406,
+      1.0,
+      1.052
+     ],
+     [
+      407,
+      1.0,
+      1.052
+     ],
+     [
+      408,
+      0.184,
+      8.647
+     ],
+     [
+      409,
+      0.184,
+      8.647
+     ]
+    ],
+    "world_b_acting": [
+     0.056,
+     0.056,
+     0.028,
+     0.028,
+     0.056,
+     0.028,
+     0.056,
+     0.056,
+     0.028,
+     0.028
+    ]
+   },
+   "purple": {
+    "cases_at_99pct_seeds": {
+     "pick up the purple key": 2,
+     "drop the purple key": 2,
+     "forward into the purple key (blocked)": 10,
+     "forward into the closed purple door (blocked)": 10,
+     "forward onto the open purple door": 2,
+     "toggle the open purple door (closes)": 0,
+     "toggle the closed purple door without the purple key (stays)": 10,
+     "toggle the closed purple door holding the purple key": 0
+    },
+    "acting_success_and_steps_ratio": [
+     [
+      400,
+      1.0,
+      1.234
+     ],
+     [
+      401,
+      1.0,
+      1.234
+     ],
+     [
+      402,
+      0.184,
+      8.647
+     ],
+     [
+      403,
+      1.0,
+      1.234
+     ],
+     [
+      404,
+      1.0,
+      1.052
+     ],
+     [
+      405,
+      0.184,
+      8.647
+     ],
+     [
+      406,
+      1.0,
+      1.052
+     ],
+     [
+      407,
+      0.184,
+      8.647
+     ],
+     [
+      408,
+      0.184,
+      8.647
+     ],
+     [
+      409,
+      0.184,
+      8.647
+     ]
+    ],
+    "world_b_acting": [
+     0.056,
+     0.056,
+     0.028,
+     0.056,
+     0.056,
+     0.028,
+     0.056,
+     0.028,
+     0.028,
+     0.028
+    ]
+   }
+  },
+  "4_recall_lambda_at_start": {
+   "seeds_run": [
+    405,
+    406,
+    407,
+    408
+   ],
+   "criteria_seeds": {
+    "criterion_1": 0,
+    "criterion_2": 0,
+    "criterion_3": 0
+   },
+   "model_too_big": [
+    405,
+    406,
+    407,
+    408
+   ],
+   "criterion_1_failing_seeds": [],
+   "yellow": {
+    "cases_at_99pct_seeds": {},
+    "acting_success_and_steps_ratio": [],
+    "world_b_acting": []
+   },
+   "purple": {
+    "cases_at_99pct_seeds": {},
+    "acting_success_and_steps_ratio": [],
+    "world_b_acting": []
+   },
+   "stopped_at_25_minutes": {
+    "not_finished": {
+     "400": "first world's model not built after 25 minutes",
+     "409": "building for about 10 minutes"
+    },
+    "not_run": [
+     401,
+     402,
+     403,
+     404
+    ]
+   }
+  }
+ },
+ "first_launch_of_arm_2": {
+  "400": {
+   "criterion_1": true,
+   "criterion_2": false,
+   "criterion_3": true,
+   "per_colour": {
+    "yellow": {
+     "criterion_2": true,
+     "criterion_3": true
+    },
+    "purple": {
+     "criterion_2": false,
+     "criterion_3": true
+    }
+   }
+  },
+  "401": {
+   "criterion_1": true,
+   "criterion_2": false,
+   "criterion_3": false,
+   "per_colour": {
+    "yellow": {
+     "criterion_2": false,
+     "criterion_3": false
+    },
+    "purple": {
+     "criterion_2": false,
+     "criterion_3": false
+    }
+   }
+  }
+ }
+}

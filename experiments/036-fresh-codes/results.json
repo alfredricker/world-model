@@ -1,0 +1,64 @@
+{
+ "card": "036",
+ "seeds": [
+  300,
+  301,
+  302,
+  303,
+  304,
+  305,
+  306,
+  307,
+  308,
+  309
+ ],
+ "alpha": 6.0,
+ "criterion_1_named_apart_seeds": 8,
+ "one_marker_named_apart_seeds": 1,
+ "labels_named_apart": true,
+ "failures": {
+  "307": [
+   "agent in doorway blue = agent in doorway purple"
+  ],
+  "309": [
+   "agent in doorway blue = agent in doorway purple",
+   "open door blue = open door purple"
+  ]
+ },
+ "colour_fresh_code_seeds": {
+  "yellow": 0,
+  "purple": 0
+ },
+ "fresh_codes_per_seed": [
+  102,
+  107,
+  100,
+  82,
+  89,
+  79,
+  90,
+  89,
+  110,
+  60
+ ],
+ "new_pieces_per_seed": [
+  113,
+  115,
+  108,
+  95,
+  96,
+  85,
+  103,
+  95,
+  117,
+  75
+ ],
+ "open_door_vs_doorway_shared_codebooks": {
+  "3": 16,
+  "2": 2,
+  "1": 2
+ },
+ "key_vs_closed_door_shared_fresh_codes": {
+  "0": 20
+ }
+}

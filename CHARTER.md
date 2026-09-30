@@ -74,6 +74,48 @@ three combinations of the first round's parts, each justified by first-round
 diagnostics. This is the only exception to "one component per experiment",
 and it applies once.
 
+## Current direction
+
+Agreed with the user between 2026-09-28 and 2026-09-29. New cards build on
+these; rule 8 guards against sliding back.
+
+- **Effects of actions.** The primitive is how an action changes
+  conditions, learned from the agent's own outcomes. Moves are actions
+  too; walking is move effects in the same learner. Nothing is read from
+  the simulator.
+- **One encoder.** A new comparison or readout reads, and if needed
+  trains, the existing encoder that feeds the codebooks. It does not add a
+  side network (C2).
+- **One latent space** (agreed 2026-09-29, after card 034). Codes,
+  recall, planner conditions, relations and later fast weights all read
+  the same encoder vectors. Codes quantise them. Recall is a learned
+  metric on them, one per action. A condition is a region of them: a
+  code's cell, or what recall treats as alike for an action. A relation is
+  a constraint between two things' vectors in one part, such as sharing a
+  code there. There is no second output head and no second family of
+  codebooks, since either would be a second representation (C2; P12's
+  goals "in the same terms as experience"). When objectives conflict
+  inside the space, the answer is to organise it into parts, with what
+  things share apart from what varies among them, not to add a space.
+- **Codes are names, and kinds are distributed.** Tiles, later segments,
+  become vectors, then several codebooks. What a code means is never
+  engineered. A kind is not a label: each rule reads only the codebooks it
+  needs, and the tiles sharing codes there act as a kind for that action.
+  New codes for a new thing are fine.
+- **Recall replaces counting.** Experiences are kept, not reduced to
+  tallies or merged into hard kinds, so that old experience can be re-read
+  when new structure appears. Similarity is graded, specific to the action,
+  and learned. Trying confirms or corrects what recall infers.
+- **Weights take over from recall** (System 1, P21) only for rules where
+  they agree with recall on every case, rare ones included. Recall stays
+  the fallback, and novelty is judged outside the network as well as by it.
+- **Similarity and relations come from what things do.** Relations such
+  as "this key fits this door" sit on top of the codes, as codes or in
+  weights, rather than being forced into the encoder's numbers (card 033).
+- **Transfer is judged by tries.** How quickly a new thing is mapped onto
+  known ones matters more than getting it right at first sight.
+- **Goals are any condition** over codes, positions and relations.
+
 ## Rules
 
 Agreed with the user 2026-09-24.
@@ -108,3 +150,12 @@ Agreed with the user 2026-09-24.
    test it attached to the parts that have already passed, not in isolation
    and not with a stand-in. Oracle or label-driven stand-ins may show a test
    is passable (a feasibility gate) but never show the component works.
+8. **No regressions** (agreed with the user 2026-09-29). A new card keeps
+   every point of "Current direction". Where it still relies on something
+   the direction replaces (for example the counted model while recall is
+   not yet in the planner), section 2 lists that as a declared exception,
+   with the reason and the card that will remove it. It must not
+   reintroduce a replaced mechanism as a new part: merging into hard kinds,
+   counting in place of recall, a side network, or engineered code
+   meanings. Changing "Current direction" itself needs the user's explicit
+   agreement.
