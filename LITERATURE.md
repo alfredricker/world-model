@@ -24,6 +24,7 @@ The papers agents should work from until the user changes or requests a change t
 | Kruschke 1992, ALCOVE (not in papi) | Attention per dimension learned from error; it shifts to the dimensions that tell outcomes apart. Card 037 learns λ per world and action |
 | `1604_02354` (Bayesian NCA; restates Goldberger et al. 2004) | Leave-one-out prediction as the objective for the metric: card 037's λ fit |
 | `1703_05175` (Snell et al. 2017, prototypical networks) | Distance to a prototype as doubt; card 035's radius and card 036's fresh codes |
+| MacKay and Peto 1995, "A hierarchical Dirichlet language model" (not in papi) | A context's own counts are smoothed toward a shared back-off distribution through a Dirichlet prior whose strength α is fitted by leave-one-out likelihood. Card 038's recall (revision agreed with the user on 2026-09-30): a key's own tries with the neighbours' vote as the prior, α fitted per world and action |
 
 Previous focus (card 035, stopped 2026-09-29):
 
@@ -166,6 +167,7 @@ summaries failed for lack of a Gemini key):
 | `2107_10098` (Lachapelle et al. 2022) | Sparse masks on what each latent and action depends on. In counts: each entry reads as few codebooks as possible. Synthetic vectors only |
 | `1803_03382` (Kaiser et al. 2018) | Sliced vector quantisation: several codebooks for one vector, avoiding index collapse |
 | `1711_00937` (VQ-VAE) | Nearest-code quantisation, straight-through gradients, codebook and commitment terms |
+| `1705_00154` (Asai and Fukunaga 2018, LatPlan) | Discrete latent propositions learned from pixels, so that a classical planner can test them exactly. Card 042: codes give recall the identity a planner needs; a weighting of continuous vectors could not |
 | `1802_04942` (Chen et al. 2018, β-TCVAE) | The total correlation (the sum of each latent's entropy minus their joint entropy) is the term that measures latents sharing information; penalising it favours factorial codes. Card 032: with tiles kept distinct the joint entropy is fixed, so penalising the sum of codebook entropies penalises it exactly (Barlow's minimum entropy codes, 1989) |
 | `1802_05983` (Kim and Mnih 2018, FactorVAE) | The same penalty estimated with a discriminator; better trade-off of rebuilding against disentanglement than β-VAE. We compute it directly: codes are discrete and there are 20 tiles |
 

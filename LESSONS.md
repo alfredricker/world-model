@@ -1,6 +1,6 @@
 # Lessons
 
-Durable lessons, each backed by evidence. At most two pages: merge or delete
+Durable lessons, each backed by evidence. At most three pages: merge or delete
 rather than append.
 
 `old:` is `~/Projects/demilabs/experiments/research/trajectories/`; "phwm
@@ -42,9 +42,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   shuffled. With
   three fixed colours, per-colour rules and "same colour" fit our data
   equally; card 010's cost per condition is what can separate them, and
-  new colours per episode is the stronger test. *Evidence:* phwm record
-  §5.4–5.5; old:phwm/docs/06-achievements-and-limitations.md §6.1.1.
-  *Confirmed.*
+  new colours per episode is the stronger test. A learned dot-product score
+  between two things, (Wq a)·(Wk b), is such a table: on one-hot vectors
+  it fit three colours and carried to none, while a distance along learned
+  weights carried. *Evidence:* phwm record §5.4–5.5;
+  old:phwm/docs/06-achievements-and-limitations.md §6.1.1; card 040
+  appendix A. *Confirmed.*
 - **Verify that held-out cases are really held out.** PHWM's first held
   run left about 98% of query pairs in the support set; corrected, held
   cells scored .917 (6/6 seeds above .90). *Evidence:* phwm record §5.6.
@@ -98,6 +101,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
 
 ## Conditions and acting
 
+- **Check a condition only in a situation the learned effects produce.**
+  Splicing the hand of one memory with the view of another assumes the
+  parts are independent; "holding the green key while it lies in view"
+  got a base-rate guess and the either world fell to 87.8–90.6% (card
+  042). Checked in the imagined result of the achieving action instead:
+  100% in 5 of 5 seeds (card 043). *Confirmed.*
 - **Chains of prerequisites are the hard part, and one smooth distance
   cannot mark conditions.** PHWM: one-step held combinations 0.54–0.71,
   furnace → iron pickaxe 0.11; card 001: one-step conditions 0.66–0.88,
@@ -173,6 +182,13 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   (1.3–13 against 2.6–11.1; labels 0.15 against 2.0), so one success
   could not correct it. *Evidence:* card 033. *Confirmed* (label arm as
   control).
+
+- **A planner needs crisp identity; one learned weighting of vectors per
+  action cannot supply it.** Colour had to count at doors and nowhere
+  else: adding colour weight fixed doors (held-out −0.73 → −0.16) and hurt
+  everything else (−0.010 → −0.040). Recall in two levels, equal codes for
+  the same thing and vectors for similar things, matched the counted
+  planner in all four worlds (cards 042–043). *Confirmed.*
 
 ## Process
 

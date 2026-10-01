@@ -7,22 +7,29 @@ numbers; nothing is merged by similarity.
 Recall predicts every effect. A kind's key is the thing in front (left, right, forward, and the agent drawn
 onto and undrawn from a tile), or the thing in front, the thing held and what is in view (pick up, toggle,
 drop). What is in view is one vector: the largest value, per dimension, among the things in view, the
-agent's own place aside (a set pooled into one vector, 1703_06114). Every stored try votes with weight
-k = exp(-sum_j lambda_j |x_j - x'_j|): the key's own tries at weight 1 each, another key's tries k / n in all
-(card 037). Lambda is fitted per world and kind by card 037's leave-one-out, with every key of the same
-thing in front and held (a pair) left out together. An outcome category (which places change; for moves:
-moved, blocked, ended) is predicted when its probability (W_c + 1/4) / (W + 1) is at least one half. What
+agent's own place aside (a set pooled into one vector, 1703_06114). The other keys vote with weight
+k = exp(-sum_j lambda_j |x_j - x'_j|), a key's tries k / n each (card 037): q_c = (W_c + 1/4) / (W + 1).
+Lambda is fitted per world and kind by card 037's leave-one-out, with every key of the same thing in front
+and held (a pair) left out together. The key's own tries n_c join with that vote as a prior of strength
+alpha (revision, agreed with the user on 2026-09-30; hierarchical Dirichlet smoothing, MacKay & Peto 1995):
+P_c = (n_c + alpha q_c) / (n + alpha), alpha fitted per world and kind by leave-one-try-out, not refitted
+while acting. A key with no tries of its own gets q, as in card 037, whose rule is alpha = W + 1. An outcome
+category (which places change; for moves: moved, blocked, ended) is predicted when P_c >= 1/2. What
 results is carried over part by part: kept, copied from the other changed place, shifted by the
 neighbours' weighted mean change, or set to their weighted mean result; the way per part is chosen by
 leave-one-pair-out over the category's keys. Forward decides whether the agent enters a tile; draw and
 undraw supply only how the agent looks on it (on forward's lambda).
 
 Working backward keeps card 029's search, walking and order, and every condition is a prediction:
-"episode ended"; "place j can be walked onto" (forward's prediction for its thing); "doing a on thing u (at
-place j), with what is held and in view now, makes condition c true" (recall's prediction written into the
-facts, then c checked); "facing". A condition's achievers are the actions on things in the facts whose
-predicted effect makes it true, with the thing held now or with any other thing that could be held; in
-the second case the achiever's own "doing" condition is a need. Online learning: every real try joins its
+"episode ended"; "place j can be walked onto" (forward's prediction for its thing); "facing"; and part
+conditions, inferred from memory (section 2, agreed with the user on 2026-09-30). When doing a on thing u
+does not make condition c true with what is held and in view now, the (held, view) pairs of the kind's
+stored tries on things like u are split into successes (with that pair, recall predicts that doing a on u
+makes c true) and failures. A part (the thing held, what is in view) is a condition when doing a on u fails
+with that part as now and the other part as in a success. It is met when recall predicts success with that
+part as it is and the other part as in the success, and achieved by a pick up, toggle or drop whose
+predicted effect changes that part. Each condition is one prediction; nothing searches over sequences of
+imagined actions (GOAL.md P21). Online learning: every real try joins its
 kind's memory and that kind's cached predictions are dropped (lambda fixed); memory carries across the
 layouts of one worker's chunk. The evaluator judges a predicted place by the real tile nearest its vector
 (L1, among the 52 tiles the view can show).
@@ -31,11 +38,12 @@ Steps:
   bin/prun python tools/card038/vector_planner.py --encoders --seeds 399-409        arm B's encoders
   bin/prun python tools/card038/vector_planner.py --gate                            arm B's encoders checked
   bin/prun python tools/card038/vector_planner.py --dev --arm A --seeds 399-399 [--worlds key] [--layouts 40]
-  bin/prun python tools/card038/vector_planner.py --arm B --seeds 400-404 --out runs/038_armB_a.json
+  bin/prun python tools/card038/vector_planner.py --arm B --seeds 400-409 [--layouts-b 100] --out runs/038_armB.json
 Arms: 1 oracle vectors (one-hot kind, colour, state, agent), seed-independent; A card 037's encoders (the
 codebooks exist but are never read); B the same recipe without the codebook terms.
 """
 import json
+import os
 import pickle
 import sys
 import time
@@ -59,7 +67,7 @@ CHANGED, UNCHANGED, ENDED = CO.CHANGED, CO.UNCHANGED, CO.ENDED
 APP0 = CO.APP0
 WORLDS = CO.WORLDS
 PRIOR, KMIN = 0.25, 0.01                     # card 037
-IMAX = 4                                     # declared: imagined sequences of at most 4 interactions
+HELDP, VIEWP = 0, 1                          # the parts of a pick up, toggle or drop key a condition is about
 BUDGET = 200
 ROOT = Path(__file__).resolve().parents[2]
 ENC_A = ROOT / "runs" / "037_enc"
@@ -70,6 +78,18 @@ WAYS = ("keep", "copy", "shift", "set")
 KEEP, COPY, SHIFT, SET = range(4)
 KNAME = {LEFT: "left", RIGHT: "right", FWD: "forward", PICK: "pickup", DROP: "drop", TOG: "toggle"}
 WORLD = None                                           # the model the workers use (set before forking)
+LAYOUTS_B = None                                       # --layouts-b: acting layouts in world (b), reported only
+PROG = None                                            # main runs: the progress file and its contents
+
+
+def progress(**kw):
+    """Main runs: merge kw into the progress file next to the results (read by monitor.py)."""
+    if PROG is None:
+        return
+    PROG["data"].update(kw, updated=time.time())
+    tmp = PROG["path"].with_suffix(".tmp")
+    tmp.write_text(json.dumps(PROG["data"], default=str) + "\n")
+    tmp.replace(PROG["path"])
 
 
 # ---------------------------------------------------------------- vectors
@@ -144,11 +164,15 @@ def oracle_vectors():
     return z, parts
 
 
-def wl1(A, B, lam, chunk=64):
-    """Weighted L1 distances between the rows of A and the rows of B."""
-    out = np.empty((len(A), len(B)))
-    for s in range(0, len(A), chunk):
-        out[s:s + chunk] = np.abs(A[s:s + chunk, None] - B[None]) @ lam
+def wl1(A, B, lam):
+    """Weighted L1 distances between the rows of A and the rows of B. Beyond two rows of A, summed one
+    dimension at a time: the same numbers (to about 1e-14) without a len(A) x len(B) x d temporary."""
+    if len(A) <= 2:
+        return np.abs(A[:, None] - B[None]) @ lam
+    out = np.zeros((len(A), len(B)))
+    Bt = np.ascontiguousarray(B.T)
+    for j in range(A.shape[1]):
+        out += lam[j] * np.abs(A[:, j, None] - Bt[j][None])
     return out
 
 
@@ -188,6 +212,39 @@ def fit_lambda(X, Rk, group, steps=1500, lr=0.02):
         l1 = float(ll(th))
         lam = torch.nn.functional.softplus(th).double().cpu().numpy()
     return lam, l0, l1
+
+
+def neighbour_vote(k, share, own):
+    """Card 037's vote from the other keys, with its prior: q_c = (W_c + 1/4) / (W + 1), W_c = sum over the
+    other keys of k x share; and W."""
+    wn = k @ share if own is None else k @ share - k[own] * share[own]
+    return (wn + PRIOR) / (wn.sum() + 1.0), float(wn.sum())
+
+
+def fit_alpha(X, counts, lam):
+    """The strength of the neighbours' vote as a prior (hierarchical Dirichlet smoothing, MacKay & Peto
+    1995): P_c = (n_c + alpha q_c) / (n + alpha), n_c a key's own tries. alpha maximises the leave-one-try-
+    out log-likelihood of the stored tries (weighted tries count as that many tries), on a grid of log alpha.
+    Also: the same objective under card 037's rule, which is alpha = W + 1 for each key."""
+    k = np.exp(-wl1(X, X, lam))
+    k[k < KMIN] = 0.0
+    np.fill_diagonal(k, 0.0)
+    share = counts / counts.sum(1, keepdims=True)
+    wn = k @ share
+    q = (wn + PRIOR) / (wn.sum(1, keepdims=True) + 1.0)
+    n = counts.sum(1, keepdims=True)
+    m = counts > 0
+    rest = np.maximum(counts - 1.0, 0.0)
+
+    def ll(alpha):
+        a = np.broadcast_to(alpha, n.shape)
+        P = (rest + a * q) / np.maximum(n - 1.0 + a, 1e-12)
+        return float((counts[m] * np.log(P[m])).sum() / counts.sum())
+
+    grid = np.exp(np.linspace(-9.0, 9.0, 181))
+    vals = [ll(a) for a in grid]
+    i = int(np.argmax(vals))
+    return float(grid[i]), vals[i], ll(wn.sum(1, keepdims=True) + 1.0)
 
 
 # ---------------------------------------------------------------- one kind's memory
@@ -243,6 +300,11 @@ class Kind:
             self.lam = lam
             self.report = {"keys": nk, "lambda": "forward's"}
         self.lam = np.asarray(self.lam, np.float64)
+        self.alpha = None                                      # draw and undraw: look() weighs as before
+        if lam is None:
+            self.alpha, la, l37 = fit_alpha(self.X, self.counts, self.lam)
+            self.report.update({"alpha": round(self.alpha, 5), "loo_per_try_alpha": round(la, 5),
+                                "loo_per_try_card037": round(l37, 5)})
         self.base = (list(self.keys), dict(self.gid), list(self.group), self.X.copy(), self.counts.copy(),
                      dict(self.aft), None if self.moves else (self.sums.copy(), self.aw.copy()))
         self.forget()
@@ -270,7 +332,7 @@ class Kind:
         self.forget()
 
     def forget(self):
-        self.ccache, self.rcache, self.ways_cache, self.amat = {}, {}, {}, {}
+        self.ccache, self.rcache, self.ways_cache, self.amat, self.tcache = {}, {}, {}, {}, {}
 
     def add(self, key, cat, after=None, w=1.0):
         key = tuple(int(h) for h in key)
@@ -316,16 +378,32 @@ class Kind:
             share = self.counts / self.counts.sum(1, keepdims=True)
             k = np.exp(-wl1(np.stack([self.key_vec(q) for q in todo]), self.X, self.lam))
             k[k < KMIN] = 0.0
-            Wc = k @ share
             for i, q in enumerate(todo):
                 own = self.index.get(q)
-                wc = Wc[i] if own is None else Wc[i] - k[i, own] * share[own] + self.counts[own]
-                P = (wc + PRIOR) / (wc.sum() + 1.0)
+                P, _ = neighbour_vote(k[i], share, own)
+                if own is not None:                                 # the vote as a prior of strength alpha
+                    P = (self.counts[own] + self.alpha * P) / (self.counts[own].sum() + self.alpha)
                 self.ccache[q] = int(P.argmax()) if P.max() >= 0.5 else None
         return [self.ccache[q] for q in qs]
 
     def move(self, q):
         return self.cat_of([q])[0]
+
+    def templates(self, u):
+        """The distinct (held, view) pairs of the stored tries on things like u (k >= KMIN on the front part
+        of the metric)."""
+        r = self.tcache.get(u)
+        if r is None:
+            D = self.D
+            kf = np.exp(-(np.abs(self.X[:, :D] - self.S.arr[int(u)]) @ self.lam[:D]))
+            r = self.tcache[u] = sorted({self.keys[t][1:] for t in np.flatnonzero(kf >= KMIN)})
+        return r
+
+    def pair_distance(self, p, q):
+        """Recall's distance between two (held, view) pairs (the metric's held and view parts)."""
+        D = self.D
+        return float(np.abs(np.concatenate([self.S.arr[p[0]] - self.S.arr[q[0]], self.S.arr[p[1]] - self.S.arr[q[1]]]))
+                     @ self.lam[D:3 * D])
 
     def result(self, q, c):
         """Category c's result for key q: handles per changed place (None where unchanged)."""
@@ -335,7 +413,8 @@ class Kind:
             k[k < KMIN] = 0.0
             wk = k * self.counts[:, c] / self.counts.sum(1)
             own = self.index.get(q)
-            if own is not None:
+            if own is not None:                                     # the others' results as the prior's share
+                wk *= self.alpha / (k.sum() - k[own] + 1.0)
                 wk[own] = self.counts[own, c]
             r = self.rcache[(q, c)] = tuple(self.transport(q, c, wk))
         return r
@@ -600,8 +679,8 @@ class Ach:
 
 
 class VPlan(G.Plan):
-    """Card 029's working backward, walking and revision, with the facts as handles of vectors and every
-    condition a prediction."""
+    """Card 029's working backward, walking and revision, with the facts as handles of vectors, every
+    condition a prediction, and conditions of an action inferred from memory (conditions())."""
 
     def __init__(self, W):
         F.Think.__init__(self, [-1], [-1], True)
@@ -609,13 +688,13 @@ class VPlan(G.Plan):
         self.failed, self.refused, self.version = set(), set(), 0
         self.psets, self.pids = [], {}
         self.fmemo, self.amemo, self.rmemo, self.cmemo, self.canmemo, self.premo = {}, {}, {}, {}, {}, {}
-        self.achmemo, self.succmemo, self.imemo, self.ctxmemo = {}, {}, {}, {}
+        self.achmemo, self.condmemo, self.imemo, self.ctxmemo = {}, {}, {}, {}
         self.n_refused, self.walk_kind = 0, Counter()
 
     def forget(self):
         """The model changed (a try was added): drop everything derived from its predictions."""
         for d in (self.steps, self.memo, self.rsets, self.appr, self.pres, self.fmemo, self.amemo, self.rmemo,
-                  self.cmemo, self.canmemo, self.premo, self.achmemo, self.succmemo, self.imemo):
+                  self.cmemo, self.canmemo, self.premo, self.achmemo, self.condmemo, self.imemo):
             d.clear()
 
     def intern(self, f):
@@ -720,20 +799,29 @@ class VPlan(G.Plan):
         b[i] = u
         return (self.intern(b), st[1], st[2])
 
-    def imagine(self, st, a, u, j, h=None):
-        """The facts after doing a on thing u (at place j, else at a place showing it), with h held (None:
-        what is held) and what is in view now; None when nothing is predicted to change."""
-        k = (st, a, u, j, h)
+    def imagine_place(self, st, u, j):
+        """Place j, else the place in front if it shows u, else the first place showing u (None: none)."""
+        if j is not None:
+            return j
+        f = self.facts[st[0]]
+        fi = F.M.fidx[st[1]]
+        if 0 <= fi < NV and f[fi] == u:
+            return fi
+        where = np.flatnonzero(f[:NV] == u)
+        return int(where[0]) if len(where) else None
+
+    def imagine(self, st, a, u, j, h=None, v=None):
+        """The facts after doing a on thing u (at place j, else at a place showing it), with h held and v
+        in view (None: as now); None when nothing is predicted to change."""
+        k = (st, a, u, j, h, v)
         if k in self.imemo:
             return self.imemo[k]
         f = self.facts[st[0]]
-        if j is None:
-            fi = F.M.fidx[st[1]]
-            where = np.flatnonzero(f[:NV] == u)
-            j = fi if 0 <= fi < NV and f[fi] == u else (int(where[0]) if len(where) else None)
+        j = self.imagine_place(st, u, j)
         r = None
         if j is not None:
-            c, (fa, ha) = self.W.outcome(a, int(f[j]), int(f[HELD]) if h is None else h, self.ctx_id(st[0], st[1]))
+            c, (fa, ha) = self.W.outcome(a, int(f[j]), int(f[HELD]) if h is None else h,
+                                         self.ctx_id(st[0], st[1]) if v is None else v)
             if c:
                 b = f.copy()
                 if fa is not None:
@@ -754,9 +842,9 @@ class VPlan(G.Plan):
             return st[1] in self.psets[self.face_pid(st[0], c)]
         if k == "walk":
             return bool(F.M.free[self.facts[st[0]][c[1]]])
-        if k == "does":
-            st2 = self.imagine(st, c[1], c[2], c[3])
-            return st2 is not None and self.hold(c[4], st2)
+        if k == "part":
+            _, p, a, u, j, c2, o = c
+            return self.does(st, a, u, j, c2, None, o) if p == HELDP else self.does(st, a, u, j, c2, o, None)
         raise ValueError(c)
 
     def face_pid(self, fid, need):
@@ -784,56 +872,58 @@ class VPlan(G.Plan):
             r = self.canmemo[k] = [p for p in M.all_poses.tolist() if M.free[f[M.cidx[p]]]]
         return r
 
-    def successors(self, st):
-        """Every pick up, toggle and drop on a thing in the facts (at a place showing it) that is predicted
-        to change something, with what is held and in view: (action, thing, state after)."""
-        r = self.succmemo.get(st)
-        if r is None:
-            f = self.facts[st[0]]
-            U = np.unique(f[:NV]).tolist()
-            cid = self.ctx_id(st[0], st[1])
-            r = []
-            for a in INTER:
-                self.W.kinds[a].cat_of([(u, int(f[HELD]), cid) for u in U])
-                for u in U:
-                    s2 = self.imagine(st, a, u, None)
-                    if s2 is not None and s2[0] != st[0]:
-                        r.append((a, u, s2))
-            self.succmemo[st] = r
+    def does(self, st, a, u, j, c, h=None, v=None):
+        """Doing a on thing u (at place j) makes c true, with h held and v in view (None: as now)."""
+        s2 = self.imagine(st, a, u, j, h, v)
+        return s2 is not None and self.hold(c, s2)
+
+    def conditions(self, a, u, j, c, st, bit):
+        """The ways doing a on thing u (at place j) can make the unmet condition c true, each a list of
+        needs. If it does so with what is held and in view now: one way, no needs. Otherwise from memory:
+        the (held, view) pairs of the kind's stored tries on things like u (k >= KMIN on the front part)
+        are split into successes (doing a on u with that pair makes c true) and failures. For a success,
+        a part is a condition when doing a on u fails with that part as now and the other part as in the
+        pair: ("part", p, a, u, j, c, the pair's other part). Successes needing the same parts are one way,
+        the pair nearest the present one (recall's metric) standing for them; a success needing no part
+        explains nothing and is left out. bit: the place c depends on (1 front, 2 held); a pair whose
+        predicted category leaves it unchanged cannot make c true and is not checked."""
+        k = (st[0], st[1], a, u, j, c)
+        r = self.condmemo.get(k)
+        if r is not None:
+            return r
+        r = []
+        if self.does(st, a, u, j, c):
+            r = [[]]
+        elif self.imagine_place(st, u, j) is not None:
+            kd = self.W.kinds[a]
+            hc, vc = int(self.facts[st[0]][HELD]), self.ctx_id(st[0], st[1])
+            pairs = kd.templates(u)
+            cats = kd.cat_of([(u, h, v) for h, v in pairs])
+            best = {}
+            for (h, v), cat in zip(pairs, cats):
+                if not cat or not cat & bit or not self.does(st, a, u, j, c, h, v):
+                    continue
+                needs = []
+                if not self.does(st, a, u, j, c, None, v):
+                    needs.append(("part", HELDP, a, u, j, c, v))
+                if not self.does(st, a, u, j, c, h, None):
+                    needs.append(("part", VIEWP, a, u, j, c, h))
+                if not needs:
+                    continue
+                sig = tuple(n[1] for n in needs)
+                d = kd.pair_distance((h, v), (hc, vc))
+                if sig not in best or d < best[sig][0]:
+                    best[sig] = (d, needs)
+            r = [best[s][1] for s in sorted(best)]
+        self.condmemo[k] = r
         return r
 
-    def last_steps(self, c, st):
-        """The last actions of the shortest imagined sequences (at most IMAX pick ups, toggles and drops)
-        after which c holds, on things in the facts now; and how many actions come before them."""
-        f = self.facts[st[0]]
-        here = set(np.unique(f[:NV]).tolist())
-        frontier, seen = [st], {st[0]}
-        for d in range(IMAX):
-            found, nxt = set(), []
-            for s in frontier:
-                succ = list(self.successors(s))
-                if c[0] == "walk":                           # the thing at place j itself, at j
-                    u = int(self.facts[s[0]][c[1]])
-                    for a in (PICK, TOG):
-                        s2 = self.imagine(s, a, u, c[1])
-                        if s2 is not None:
-                            succ.append((a, u, s2))
-                for a, u, s2 in succ:
-                    if self.hold(c, s2):
-                        if u in here:
-                            found.add((a, u))
-                    elif s2[0] not in seen:
-                        seen.add(s2[0])
-                        nxt.append(s2)
-            if found:
-                return d, sorted(found)
-            frontier = nxt
-        return None, []
-
     def achievers(self, c, st):
-        """The episode ends: forward onto a thing predicted to end it. Otherwise: the last actions of the
-        shortest imagined sequences that make c true; one with actions before it needs its own "doing"
-        condition (met once those are done)."""
+        """The episode ends: forward onto a thing predicted to end it. "Place j can be walked onto": pick up
+        or toggle the thing at j. A part condition: a pick up, toggle or drop on a thing in the facts (other
+        than the action and thing the condition is about) whose predicted effect changes that part (the held
+        thing, or a thing in view) so that the condition holds. Each achiever's needs are its conditions
+        (conditions()), then facing its thing."""
         key = (c, st[0], st[1])
         r = self.achmemo.get(key)
         if r is not None:
@@ -843,12 +933,15 @@ class VPlan(G.Plan):
             r = [(Ach(FWD, u, None), [("face", FWD, u, None)])
                  for u in np.unique(f[:NV]).tolist() if self.W.move_cat(FWD, u) == ENDED]
         else:
-            d, last = self.last_steps(c, st)
+            if c[0] == "walk":
+                cands, bit = [(a, int(f[c[1]]), c[1]) for a in (PICK, TOG)], 1
+            else:
+                cands = [(a, u, None) for a in INTER for u in np.unique(f[:NV]).tolist() if (a, u) != (c[2], c[3])]
+                bit = 2 if c[1] == HELDP else 1
             r = []
-            for a, u in last:
-                j = c[1] if c[0] == "walk" and int(f[c[1]]) == u else None
-                needs = [] if d == 0 else [("does", a, u, j, c)]
-                r.append((Ach(a, u, j), needs + [("face", a, u, j)]))
+            for a, u, j in cands:
+                for needs in self.conditions(a, u, j, c, st, bit):
+                    r.append((Ach(a, u, j), needs + [("face", a, u, j)]))
         self.achmemo[key] = r
         return r
 
@@ -987,9 +1080,19 @@ def _act_job(job):
     return out
 
 
+def _act_indexed(job):
+    return job[0], _act_job(job[1])
+
+
 def act_arm(pool, test, online=True):
     chunks = [c.tolist() for c in np.array_split(np.arange(len(test)), 40) if len(c)]
-    parts = pool.map(_act_job, [(c, [test[i] for i in c], online) for c in chunks])
+    parts, n = [None] * len(chunks), 0
+    progress(layouts_done=0, layouts_total=len(test))
+    jobs = [(k, (c, [test[i] for i in c], online)) for k, c in enumerate(chunks)]
+    for k, p in pool.imap_unordered(_act_indexed, jobs):          # progress as chunks finish; order kept
+        parts[k] = p
+        n += len(p)
+        progress(layouts_done=n, goal_so_far=sum(r["done"] for q in parts if q for r in q))
     recs = [r for p in parts for r in p]
     done = np.array([r["done"] for r in recs])
     steps = np.array([r["steps"] for r in recs])
@@ -1060,6 +1163,7 @@ def run_vectors(label, z, parts, data, tests, dev, log, ref, worlds=WORLDS, layo
         for world in worlds:
             t0 = time.monotonic()
             D = data[world]
+            progress(world=world, stage="model and held-out effects", layouts_done=None, layouts_total=None)
             r = out[world] = {}
             W = World(S, parts, D, dev, log)
             WORLD, F.M = W, W.M
@@ -1073,6 +1177,7 @@ def run_vectors(label, z, parts, data, tests, dev, log, ref, worlds=WORLDS, layo
                                     "lowest": min(v["exact_share"] for v in pa.values()),
                                     "errors_top": [[list(map(str, k)), v] for k, v in errs.most_common(6)]}
             test = D["test"] if layouts is None else D["test"][:layouts]
+            progress(stage="acting, familiar layouts")
             res, _ = act_arm(pool, test, online)
             pool.close()
             r["acting"] = res
@@ -1093,8 +1198,11 @@ def run_vectors(label, z, parts, data, tests, dev, log, ref, worlds=WORLDS, layo
                 q = r[f"test_{tk}"] = {}
                 CO.patch(door_open=bool(door_open))
                 pool = F.pool20()
+                progress(stage=f"test {tk}: effects", layouts_done=None, layouts_total=None)
                 ok, errs = eval_rows(pool, lut, X["ego0"], X["ego1"], X["act"], X["term1"])
-                res, _ = act_arm(pool, X["test"] if layouts is None else X["test"][:layouts], online)
+                progress(stage=f"test {tk}: acting")
+                cap = LAYOUTS_B if tw == "switch" and LAYOUTS_B else layouts          # world (b): reported only
+                res, _ = act_arm(pool, X["test"] if cap is None else X["test"][:cap], online)
                 pool.close()
                 CO.patch()
                 q["cases"] = {k: {"rows": int(len(rows)),
@@ -1245,6 +1353,8 @@ def main():
     ref = json.loads(T.REF.read_text())
     arm = get("--arm", "A")
     layouts = int(get("--layouts", "0")) or None
+    global LAYOUTS_B
+    LAYOUTS_B = int(get("--layouts-b", "0")) or None
 
     if flag("--dev"):                   # shakedown on a spare seed: familiar worlds only
         CO.TESTS = {}
@@ -1264,16 +1374,26 @@ def main():
     out = Path(get("--out", f"runs/038_arm{arm}.json"))
     res = {"note": "Card 038, tools/card038/vector_planner.py", "arm": arm, "seeds": []}
     save = lambda: out.write_text(json.dumps(res, indent=1, default=str) + "\n")
-    for seed in (seeds[:1] if arm == "1" else seeds):
+    global PROG
+    run_seeds = seeds[:1] if arm == "1" else seeds
+    PROG = {"path": out.with_suffix(".progress.json"), "data": {}}
+    progress(arm=arm, seeds=list(run_seeds), out=str(out), pid=os.getpid(),
+             started=time.time(), layouts_b=LAYOUTS_B, seeds_done=[], seed_seconds=[], finished=False)
+    for seed in run_seeds:
+        ts = time.monotonic()
+        progress(seed=seed, seed_started=time.time())
         z, parts, erep = vectors_of(arm, seed, tiles, pairs, groups, dev, log)
         oc = run_vectors(f"arm {arm} seed {seed}", z, parts, data, tests, dev, log, ref, WORLDS, layouts)
         o = {"seed": seed, "encoder": erep, "worlds": oc, "verdicts": T.verdicts(oc)}
         res["seeds"].append(o)
         log(f"arm {arm} seed {seed}: verdicts {o['verdicts']}")
         save()
+        progress(seeds_done=PROG["data"]["seeds_done"] + [seed],
+                 seed_seconds=PROG["data"]["seed_seconds"] + [round(time.monotonic() - ts, 1)])
     res["seeds_passing"] = {c: sum(s["verdicts"][c] for s in res["seeds"]) for c in ("criterion_1", "criterion_2", "criterion_3")}
     res["seconds"] = round(time.monotonic() - t00, 1)
     save()
+    progress(finished=True, stage="finished")
     log(f"done: {res['seeds_passing']} -> {out}")
 
 

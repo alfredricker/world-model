@@ -29,7 +29,7 @@ There are no other documents. Do not create notes, reviews or summaries.
 | A planned or finished experiment | `experiments/NNN-name/card.md` from [the template](experiments/_template/card.md), numbers in `results.json` |
 | Where we are now | `STATUS.md`, **overwritten**, at most 40 lines |
 | The current model | `ARCHITECTURE.md`; bump `arch_version` and add a change-log line when it changes |
-| A durable lesson with evidence | `LESSONS.md`; prune or merge, never let it exceed two pages |
+| A durable lesson with evidence | `LESSONS.md`; prune or merge, never let it exceed three pages (the user, 2026-10-01) |
 | Which paper shaped which component; the current paper focus | `LITERATURE.md` |
 
 ## Rules
