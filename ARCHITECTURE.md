@@ -1,12 +1,14 @@
 ---
-arch_version: 6
+arch_version: 7
 ---
 
 # Architecture
 
-Version 6 plans on the encoder's vectors. It was built up in cards
-038–043 and kept with
-[card 043](experiments/043-consistent-hypotheticals/card.md). It follows
+Version 7 plans on the encoder's vectors, with the state held as tokens.
+It was built up in cards 038–044: version 6 was kept with
+[card 043](experiments/043-consistent-hypotheticals/card.md), and
+[card 044](experiments/044-state-as-tokens/card.md) made the state a set
+of tokens, each a what and a where. It follows
 the direction signed off in
 [card 022](experiments/022-effects-post-mortem/card.md): the primitive is
 the effect of an action, learned from the agent's own outcomes, and moves
@@ -17,15 +19,18 @@ Given only "reach the goal square", it works backward through what recall
 predicts at every step. In four logic-door worlds (the door opens with
 the key, the switch, either, or both) it reaches the goal in 100% of 500
 new layouts in 5 of 5 encoder seeds. It takes the same steps as version 5
-(card 029) to within 0.3%. It is not a passed rung: the world is fully
+(card 029) to within 0.3%; card 044's tokens changed no decision in the
+familiar worlds. It is not a passed rung: the world is fully
 visible, repeats pixels exactly, and every familiar appearance has been
 seen.
 
-The code is `tools/card043/consistent.py`, which builds on:
+The code is `tools/card044/tokens.py`, which builds on:
+- `tools/card043/consistent.py`: conditions checked in produced situations;
 - `tools/card042/code_recall.py`: recall in two levels;
 - `tools/card039/slot_planner.py`: the view as a set;
 - `tools/card038/vector_planner.py`: the planner on vectors;
-- `tools/card028/effects.py`: poses and facts, through card 037's chain.
+- `tools/card028/effects.py`: the counted move correspondences the
+  transformations are fitted to, through card 037's chain.
 
 Version 5, the counted model over exact tile IDs, is in git (commit
 `33f9949`).
@@ -48,16 +53,45 @@ Version 5, the counted model over exact tile IDs, is in git (commit
 - **Acting** is card 029's means-ends search, recomputed at every step. A
   condition is checked only in situations that recall's predicted effects
   produce from the present.
-- About 0.26–0.92 seconds per layout (version 5: 0.015–0.024).
+- About 0.31–1.09 seconds per layout (version 6: 0.26–0.92; version 5:
+  0.015–0.024).
+
+## How the state is represented
+
+Since card 044 the state is a set of tokens:
+- **A token** is a what (a tile's vector; its codes are read from it) and a
+  where: its offset from the agent (x to the right, y ahead; the place
+  ahead is (0, 1)), or the hand. Every tile seen is a token, floor and
+  walls included, and so is the held thing. A token exists once seen; a
+  where no token holds shows the learned appearance of places entering the
+  view (wall here).
+- **A move** sends every where but the hand's to M_m where + b_m, fitted
+  by least squares to the counted move correspondences (exact: quarter
+  turns and a one-tile shift). Since a move moves every token alike, a
+  situation stores the whats by token id and one transformation; a
+  token's where is that transformation applied to its where at first
+  sight. There is no pose table.
+- **Readers address tokens by where:** ahead is the token at (0, 1), held
+  is the hand's, in view are the tokens within 6 tiles.
+- **Recall still reads three roles** (declared exception, card 044): the
+  token ahead, the hand's, and what is in view as the set of distinct
+  appearances, positions dropped. Comparing token sets with positions
+  costs 545 times as much per comparison and is left to a later card.
+- **Codes** are discrete per tile (4 codebook indices, as in a VQ-VAE).
+  Recall uses them for "the same thing". They name appearances, not
+  things.
+
+Card 040's tokens (each thing its vector plus its role, with attention
+over pairs) were stopped and are not used.
 
 ```mermaid
 flowchart TD
     P["Pixels: 13 × 13 tiles of 8 × 8 × 3 around the agent, plus the held tile"] --> E["Encoder: 32 numbers per tile (4 pieces of 8); codes read from them"]
-    E --> V["View: the vectors at 182 places"]
+    E --> V["View: a token per tile (what) at its offset from the agent (where), plus the hand"]
     X["Experience: ~500,000 stored tries per world"] --> M["Memory: tries per action, keyed by front, held and the set in view"]
     M --> R["Recall: same thing (equal codes) over similar things (vectors); weights fitted by leaving one key out"]
-    V --> O["Placing: the pose whose predicted view is nearest (L1)"]
-    O --> FA["Facts: a vector handle per place, plus a pose"]
+    V --> O["Placing: the placement whose predicted view is nearest (L1)"]
+    O --> FA["Tokens: a what per token, one transformation giving every where"]
     FA --> S["Means-ends search over conditions, checked in produced situations"]
     R --> S
     S --> A["Action: 1 of 6"]
@@ -69,13 +103,14 @@ flowchart TD
 |---|---|---|---|
 | Tile vector | float[32], 4 pieces of 8 | One tile's appearance; each distinct vector is stored once (a handle) | The encoder (card 037's recipe) |
 | Code tuple | 4 ints, or "new" per piece | Which codebook region each piece falls in | Nearest used code within 6 × its radius, else "new" (card 035), with fresh codes for new pieces (card 036) |
-| View | 182 handles | What the agent sees now | Encoder on the renderer's tiles |
+| View | 182 handles: 169 wheres within 6 tiles, plus the held row | What the agent sees now | Encoder on the renderer's tiles |
 | Key of a try | (front handle, held handle, view set) | Pick up, toggle, drop. Moves, draw and undraw are keyed by one handle | From the stored views |
 | Outcome class | (which places changed, the codes they became) | What a try did | From the try's next view |
 | Memory | Per action: keys with outcome counts and result vectors | Every stored try, never merged | 5,000 random episodes per world; real tries are added while acting |
 | Recall weights | Similar level λ2 (front, held, view); same level's view weights λ1v ≥ λ2v; mix β | What recall compares | Fitted jointly by leaving one stored key out (card 042) |
-| Move maps, poses | As version 5: 484 poses, each with the first view's place per view place | Where the agent is | Counted co-occurrences of handles before and after moves (card 028) |
-| Facts, situation | Handles per place in the first view's frame; (facts, pose, ended) | Belief, real or imagined | Placed views, written in |
+| Move transformation | Per move: M (2 × 2), b (2) | How a move changes every where | Least squares on the counted correspondences of places before and after moves (cards 028, 044) |
+| Placement | One transformation, of 676 reachable by composing the moves' | Where every token is relative to the agent | Composed from the move transformations |
+| Tokens, situation | A handle per token id (638 ids: the first view's places, the held row, the rest within 12 tiles), "absent" where none seen; (tokens, placement, ended) | Belief, real or imagined | Placed views, written in by where |
 | Condition | ("end"), ("walk", j), ("face", a, u, j), ("part", hand or view, a, u, j, c, …) | What must hold for an action to have an effect | Worked out from memory (card 038) |
 
 ## Learning
@@ -90,7 +125,8 @@ Per world:
      outcomes.
 
    Nothing names what a code means.
-2. **Move maps and poses**, counted as in version 5.
+2. **Move transformations**: card 028's counted correspondences, then a
+   least-squares fit per move (card 044).
 3. **Memory**: the stored tries, grouped by key, with outcome counts.
 4. **Recall weights**, fitted by leave-one-key-out likelihood of the
    outcome classes, about 25 seconds per world:
@@ -100,8 +136,9 @@ Per world:
 ## Acting
 
 At every step:
-1. **Place the view.** Take the pose whose predicted view is nearest the
-   real one (L1 over vectors, the centre aside). Write it into the facts.
+1. **Place the view.** Take the placement whose predicted view is nearest
+   the real one (L1 over vectors, the centre aside). The tokens in view
+   take the view's whats.
 2. **Predict effects by recall.**
    - Where the same thing has tries, the category and the result are what
      it did then: the stored result of the best supported outcome class.
@@ -119,7 +156,8 @@ At every step:
      situation's own hand and view. That situation comes from imagining
      an achiever's effect on the present (card 043).
 4. **Walk** and **revise** as in version 5. Walking is the hand-set
-   closeness, moving closer in imagination, and move ways.
+   closeness, moving closer in imagination (now moving tokens), and move
+   ways.
 
 ## Present but not used by the agent
 
@@ -134,9 +172,9 @@ At every step:
 |---|---|---|---|---|
 | Encoder and codes | Tiles to vectors and their codebook regions | Pixels → 32 numbers, 4 codes | `1711_00937`, `1803_03382`, cards 031–036 | Pair and recall terms added; "new" by radius; fresh codes |
 | Recall | An action's outcome from stored tries | Key → outcome class and result | MacKay and Peto 1995; Nosofsky's GCM; `1604_02354`; card 042 | Two levels: equal codes, then a learned vector metric; fitted by leave-one-key-out |
-| Facts and poses | Where the agent is in what it has seen | View → (facts, pose) | Card 016; `1905_12006` | Matching by L1 over vectors |
+| Tokens and placements | What the agent has seen and where it is now | View → (tokens, placement) | Card 016; `1905_12006`; transformer patch tokens (Dosovitskiy et al. 2020); `1812_02230`; card 044 | Moves as fitted transformations of where; matching by L1 over vectors |
 | Subgoals | Which condition to pursue next, down to an action | Facts, recall → action | `strips`, `cs_9401101`; cards 029, 038, 043 | Conditions from memory, checked in produced situations |
-| Walking | Reach a pose facing a target | Facts, poses, move recall → move | Cards 024, 026 | Unchanged from version 5 |
+| Walking | Reach a placement facing a target | Tokens, placements, move recall → move | Cards 024, 026 | Unchanged from version 5, on tokens |
 
 ## Built-in priors and supplied information
 
@@ -145,7 +183,10 @@ At every step:
   centre facing up, and the held tile in a fixed place. The agent receives
   pixels only.
 - **Declared forms:**
-  - "in front", "held" and "in view" are fixed slots of recall's key;
+  - "in front", "held" and "in view" are where-values recall's key reads
+    (the token at (0, 1), the hand's, the tokens within 6 tiles);
+  - wheres lie on the view's grid; tokens are kept within 12 tiles of the
+    first view's centre;
   - a tile is 4 pieces of 8 numbers, with codebooks of 8;
   - "new" is 6 × a code's radius;
   - an outcome is predicted when its probability is at least one half;
@@ -182,12 +223,12 @@ At every step:
     every standing pose.
   - Only a place that must change, such as a door, becomes a condition;
     an obstacle to go around does not.
-  - Card 041 (where-tokens, a learned how-soon) and card 044 (obstacles as
-    conditions) are next.
+  - Card 045 (movement through conditions, draft) is next.
 - **The choice between alternatives** (the key or the switch) is a
   declared rule, the nearest target.
-- **Slower than version 5:** 0.26–0.92 s per layout, against
-  0.015–0.024.
+- **Slower than version 5:** 0.31–1.09 s per layout, against
+  0.015–0.024. Tokens cost 6–18% over version 6 (a larger state copied at
+  every imagined step).
 
 ## Change log
 
@@ -199,3 +240,4 @@ At every step:
 | 4 | 2026-09-28 | 022–028 | Direction change signed off with card 022; kept with card 028. Replace the neural spatial learner with counted kinds (027) and a counted model of every action's effects (028); conditions, walking, tree growth and targets computed on it, nothing read from the simulator. 100% in both worlds, the simulator's moves exactly |
 | 5 | 2026-09-28 | 029 | Subgoals worked backward through the learned rules (means-ends analysis, recomputed every step) replace the evidence-grown tree and the target rule for acting. 100% in four worlds (key, switch, either, both), 1.03–1.11 times the shortest route, 6–9 conditions per move |
 | 6 | 2026-10-01 | 038–043 | Plan on encoder vectors: recall over stored tries replaces the counted tables; the view as a set (039); recall in two levels, equal codes for the same thing and vectors for similar things (042); conditions checked only in situations the learned effects produce (043). Kept by the user with card 043: 100% in all four worlds in 5 of 5 seeds, effects exact, card 029's steps |
+| 7 | 2026-10-01 | 044 | The state as tokens: every tile and the held thing a what and a where (offset from the agent, or the hand); moves as least-squares transformations of where, fitted to the counted correspondences (exact); no pose table. Kept by the user with card 044: the same decisions as version 6 in every familiar world, 5 of 5 seeds; 12% slower per layout |

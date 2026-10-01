@@ -1,0 +1,737 @@
+{
+ "note": "Card 044: compact numbers from runs/044_armA.json (main run), runs/044_token_check.json (gate; the four worlds were identical, key shown) and runs/043_armA.json (comparison)",
+ "seconds": 1073.2,
+ "seconds_card043": 1021.2,
+ "seeds": [
+  {
+   "seed": 400,
+   "verdicts_card038_labels": {
+    "criterion_1": true,
+    "criterion_2": false,
+    "criterion_3": true,
+    "per_colour": {
+     "yellow": {
+      "criterion_2": false,
+      "criterion_3": true
+     },
+     "purple": {
+      "criterion_2": false,
+      "criterion_3": true
+     }
+    }
+   },
+   "worlds": {
+    "key": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 16.38,
+      "moves": 8189,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.367
+     },
+     "moves_card043": 8189,
+     "test_a_yellow": {
+      "acting": {
+       "success": 1.0,
+       "mean_steps_when_successful": 11.06,
+       "moves": 5530,
+       "predictions_wrong": 0,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 0.084
+      },
+      "moves_card043": 5530
+     },
+     "test_a_purple": {
+      "acting": {
+       "success": 1.0,
+       "mean_steps_when_successful": 11.06,
+       "moves": 5530,
+       "predictions_wrong": 0,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 0.084
+      },
+      "moves_card043": 5530
+     }
+    },
+    "switch": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 17.27,
+      "moves": 8634,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.356
+     },
+     "moves_card043": 8634,
+     "test_b_yellow": {
+      "acting": {
+       "success": 0.54,
+       "mean_steps_when_successful": 83.15,
+       "moves": 13690,
+       "predictions_wrong": 68,
+       "actions_refused": 3,
+       "seconds_per_layout_mean": 2.564
+      },
+      "moves_card043": 13690
+     },
+     "test_b_purple": {
+      "acting": {
+       "success": 0.52,
+       "mean_steps_when_successful": 80.06,
+       "moves": 13763,
+       "predictions_wrong": 76,
+       "actions_refused": 16,
+       "seconds_per_layout_mean": 2.577
+      },
+      "moves_card043": 13763
+     }
+    },
+    "either": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 0.997,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 15.42,
+      "moves": 7709,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.407
+     },
+     "moves_card043": 7709
+    },
+    "both": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 21.77,
+      "moves": 10883,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.309
+     },
+     "moves_card043": 10883
+    }
+   }
+  },
+  {
+   "seed": 401,
+   "verdicts_card038_labels": {
+    "criterion_1": true,
+    "criterion_2": false,
+    "criterion_3": true,
+    "per_colour": {
+     "yellow": {
+      "criterion_2": false,
+      "criterion_3": true
+     },
+     "purple": {
+      "criterion_2": false,
+      "criterion_3": true
+     }
+    }
+   },
+   "worlds": {
+    "key": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 16.38,
+      "moves": 8189,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 1.071
+     },
+     "moves_card043": 8189,
+     "test_a_yellow": {
+      "acting": {
+       "success": 1.0,
+       "mean_steps_when_successful": 11.06,
+       "moves": 5530,
+       "predictions_wrong": 0,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 0.095
+      },
+      "moves_card043": 5530
+     },
+     "test_a_purple": {
+      "acting": {
+       "success": 1.0,
+       "mean_steps_when_successful": 11.06,
+       "moves": 5530,
+       "predictions_wrong": 0,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 0.096
+      },
+      "moves_card043": 5530
+     }
+    },
+    "switch": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 17.27,
+      "moves": 8634,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.359
+     },
+     "moves_card043": 8634,
+     "test_b_yellow": {
+      "acting": {
+       "success": 0.11,
+       "mean_steps_when_successful": 58.64,
+       "moves": 18445,
+       "predictions_wrong": 93,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 2.858
+      },
+      "moves_card043": 18445
+     },
+     "test_b_purple": {
+      "acting": {
+       "success": 0.11,
+       "mean_steps_when_successful": 58.64,
+       "moves": 18445,
+       "predictions_wrong": 7,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 3.642
+      },
+      "moves_card043": 18445
+     }
+    },
+    "either": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 0.997,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 15.42,
+      "moves": 7709,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.408
+     },
+     "moves_card043": 7709
+    },
+    "both": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 21.77,
+      "moves": 10883,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.305
+     },
+     "moves_card043": 10883
+    }
+   }
+  },
+  {
+   "seed": 402,
+   "verdicts_card038_labels": {
+    "criterion_1": true,
+    "criterion_2": true,
+    "criterion_3": true,
+    "per_colour": {
+     "yellow": {
+      "criterion_2": true,
+      "criterion_3": true
+     },
+     "purple": {
+      "criterion_2": true,
+      "criterion_3": true
+     }
+    }
+   },
+   "worlds": {
+    "key": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 16.38,
+      "moves": 8189,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.372
+     },
+     "moves_card043": 8189,
+     "test_a_yellow": {
+      "acting": {
+       "success": 1.0,
+       "mean_steps_when_successful": 11.06,
+       "moves": 5530,
+       "predictions_wrong": 0,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 0.091
+      },
+      "moves_card043": 5530
+     },
+     "test_a_purple": {
+      "acting": {
+       "success": 1.0,
+       "mean_steps_when_successful": 11.06,
+       "moves": 5530,
+       "predictions_wrong": 0,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 0.092
+      },
+      "moves_card043": 5530
+     }
+    },
+    "switch": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 17.27,
+      "moves": 8634,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.365
+     },
+     "moves_card043": 8634,
+     "test_b_yellow": {
+      "acting": {
+       "success": 0.16,
+       "mean_steps_when_successful": 94.94,
+       "moves": 18319,
+       "predictions_wrong": 154,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 2.894
+      },
+      "moves_card043": 18319
+     },
+     "test_b_purple": {
+      "acting": {
+       "success": 0.6,
+       "mean_steps_when_successful": 81.0,
+       "moves": 12860,
+       "predictions_wrong": 72,
+       "actions_refused": 13,
+       "seconds_per_layout_mean": 2.331
+      },
+      "moves_card043": 12984
+     }
+    },
+    "either": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 0.997,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 15.42,
+      "moves": 7709,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.418
+     },
+     "moves_card043": 7709
+    },
+    "both": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 21.77,
+      "moves": 10883,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.307
+     },
+     "moves_card043": 10883
+    }
+   }
+  },
+  {
+   "seed": 403,
+   "verdicts_card038_labels": {
+    "criterion_1": true,
+    "criterion_2": false,
+    "criterion_3": true,
+    "per_colour": {
+     "yellow": {
+      "criterion_2": false,
+      "criterion_3": true
+     },
+     "purple": {
+      "criterion_2": false,
+      "criterion_3": true
+     }
+    }
+   },
+   "worlds": {
+    "key": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 16.38,
+      "moves": 8189,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.373
+     },
+     "moves_card043": 8189,
+     "test_a_yellow": {
+      "acting": {
+       "success": 1.0,
+       "mean_steps_when_successful": 11.06,
+       "moves": 5530,
+       "predictions_wrong": 0,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 0.089
+      },
+      "moves_card043": 5530
+     },
+     "test_a_purple": {
+      "acting": {
+       "success": 1.0,
+       "mean_steps_when_successful": 11.06,
+       "moves": 5532,
+       "predictions_wrong": 0,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 0.091
+      },
+      "moves_card043": 5532
+     }
+    },
+    "switch": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 17.27,
+      "moves": 8634,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.36
+     },
+     "moves_card043": 8634,
+     "test_b_yellow": {
+      "acting": {
+       "success": 0.08,
+       "mean_steps_when_successful": 73.75,
+       "moves": 18990,
+       "predictions_wrong": 28,
+       "actions_refused": 31,
+       "seconds_per_layout_mean": 13.333
+      },
+      "moves_card043": 18990
+     },
+     "test_b_purple": {
+      "acting": {
+       "success": 0.09,
+       "mean_steps_when_successful": 84.78,
+       "moves": 18963,
+       "predictions_wrong": 131,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 11.941
+      },
+      "moves_card043": 18963
+     }
+    },
+    "either": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 0.997,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 15.42,
+      "moves": 7709,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.407
+     },
+     "moves_card043": 7709
+    },
+    "both": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 21.77,
+      "moves": 10883,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.308
+     },
+     "moves_card043": 10883
+    }
+   }
+  },
+  {
+   "seed": 404,
+   "verdicts_card038_labels": {
+    "criterion_1": true,
+    "criterion_2": true,
+    "criterion_3": true,
+    "per_colour": {
+     "yellow": {
+      "criterion_2": true,
+      "criterion_3": true
+     },
+     "purple": {
+      "criterion_2": true,
+      "criterion_3": true
+     }
+    }
+   },
+   "worlds": {
+    "key": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 16.38,
+      "moves": 8189,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 1.087
+     },
+     "moves_card043": 8189,
+     "test_a_yellow": {
+      "acting": {
+       "success": 1.0,
+       "mean_steps_when_successful": 11.06,
+       "moves": 5530,
+       "predictions_wrong": 0,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 0.094
+      },
+      "moves_card043": 5530
+     },
+     "test_a_purple": {
+      "acting": {
+       "success": 1.0,
+       "mean_steps_when_successful": 11.06,
+       "moves": 5530,
+       "predictions_wrong": 0,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 0.091
+      },
+      "moves_card043": 5530
+     }
+    },
+    "switch": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 17.27,
+      "moves": 8634,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.361
+     },
+     "moves_card043": 8634,
+     "test_b_yellow": {
+      "acting": {
+       "success": 0.11,
+       "mean_steps_when_successful": 99.73,
+       "moves": 18897,
+       "predictions_wrong": 77,
+       "actions_refused": 0,
+       "seconds_per_layout_mean": 2.848
+      },
+      "moves_card043": 18897
+     },
+     "test_b_purple": {
+      "acting": {
+       "success": 0.74,
+       "mean_steps_when_successful": 50.99,
+       "moves": 8973,
+       "predictions_wrong": 66,
+       "actions_refused": 1,
+       "seconds_per_layout_mean": 1.927
+      },
+      "moves_card043": 8973
+     }
+    },
+    "either": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 0.997,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 15.42,
+      "moves": 7709,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.416
+     },
+     "moves_card043": 7709
+    },
+    "both": {
+     "heldout_effects_lowest": 1.0,
+     "steps_ratio_to_card029": 1.0,
+     "acting": {
+      "success": 1.0,
+      "mean_steps_when_successful": 21.77,
+      "moves": 10883,
+      "predictions_wrong": 0,
+      "actions_refused": 0,
+      "seconds_per_layout_mean": 0.307
+     },
+     "moves_card043": 10883
+    }
+   }
+  }
+ ],
+ "gate": {
+  "key": {
+   "moves": {
+    "left": {
+     "affine_M": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       -1.0,
+       0.0
+      ]
+     ],
+     "affine_b": [
+      -0.0,
+      -0.0
+     ],
+     "affine_max_residual": 0.0,
+     "affine_equals_rigid": true,
+     "quarter_turns": 3,
+     "shift": [
+      0,
+      0
+     ],
+     "places_agreeing": 121,
+     "places_with_a_source": 121,
+     "sources_disagreeing": 0,
+     "entering_but_source_in_view": 48,
+     "held_row_moved": 0
+    },
+    "right": {
+     "affine_M": [
+      [
+       -0.0,
+       -1.0
+      ],
+      [
+       1.0,
+       -0.0
+      ]
+     ],
+     "affine_b": [
+      -0.0,
+      -0.0
+     ],
+     "affine_max_residual": 0.0,
+     "affine_equals_rigid": true,
+     "quarter_turns": 1,
+     "shift": [
+      0,
+      0
+     ],
+     "places_agreeing": 121,
+     "places_with_a_source": 121,
+     "sources_disagreeing": 0,
+     "entering_but_source_in_view": 48,
+     "held_row_moved": 0
+    },
+    "forward": {
+     "affine_M": [
+      [
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0
+      ]
+     ],
+     "affine_b": [
+      0.0,
+      -1.0
+     ],
+     "affine_max_residual": 0.0,
+     "affine_equals_rigid": true,
+     "quarter_turns": 0,
+     "shift": [
+      0,
+      -1
+     ],
+     "places_agreeing": 110,
+     "places_with_a_source": 110,
+     "sources_disagreeing": 0,
+     "entering_but_source_in_view": 46,
+     "held_row_moved": 0
+    }
+   },
+   "poses": {
+    "poses": 484,
+    "view_places": 81796,
+    "places_checked": 33172,
+    "places_where_disagrees": 0,
+    "entering_places_inside_the_first_frame": 17904,
+    "held_place_fixed": true,
+    "route_conflicts": 0
+   },
+   "stepping_heldout": {
+    "left": {
+     "transitions": 13281,
+     "places_per_transition": 168,
+     "exact_share": 1.0,
+     "transitions_all_exact": 1.0,
+     "held_unchanged": 1.0
+    },
+    "right": {
+     "transitions": 13303,
+     "places_per_transition": 168,
+     "exact_share": 1.0,
+     "transitions_all_exact": 1.0,
+     "held_unchanged": 1.0
+    },
+    "forward": {
+     "transitions": 6424,
+     "places_per_transition": 154,
+     "exact_share": 1.0,
+     "transitions_all_exact": 1.0,
+     "held_unchanged": 1.0
+    }
+   },
+   "size": {
+    "tries": 306096,
+    "tokens_per_view": 168,
+    "plus_hand": 1,
+    "distinct_appearances_per_view_mean": 7.16,
+    "distinct_appearances_per_view_max": 8,
+    "distinct_views_as_sets_of_appearances": 144,
+    "distinct_views_as_token_sets": 207840,
+    "matching_cost_per_pair_ratio": 545.5
+   },
+   "views_at_start": {
+    "layouts": 100,
+    "placements_matched": 484,
+    "placements": 676,
+    "poses": 484,
+    "all": {
+     "views": 48400,
+     "view_places": 8131200,
+     "view_places_differing": 192832,
+     "views_whose_set_differs": 26640
+    },
+    "standing": {
+     "views": 9600,
+     "view_places": 1612800,
+     "view_places_differing": 0,
+     "views_whose_set_differs": 0
+    }
+   }
+  }
+ }
+}

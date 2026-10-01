@@ -3,7 +3,7 @@ id: "041"
 title: where things are, and how soon they can be faced
 rung: 0
 serves: [P12, P21, P6, P17, C1]
-status: approved
+status: abandoned
 verdict:
 arch_version: 6
 date: 2026-09-30
@@ -16,11 +16,12 @@ date: 2026-09-30
 Walking is the part of the planner that is not yet conditional
 (ARCHITECTURE.md, known limits). "Moving closer" is a hand-set distance:
 grid steps, then turns. It is checked by imagining one step at a time, and
-it takes about 45% of planning time (card 038). Suppose instead:
-- every thing carries a where-vector, its place relative to the agent;
-- each move is a learned transformation of where-vectors;
-- a small network, trained on the agent's own transitions, predicts how
-  soon a thing can be faced, and picks the move that lowers that most.
+it takes about 45% of planning time (card 038). After
+[card 044](../044-state-as-tokens/card.md), every thing is a token with a
+where (its offset from the agent), and each move is a transformation of
+where. Suppose a small network, trained on the agent's own transitions,
+predicts from a thing's where how soon it can be faced, and picks the move
+that lowers that most.
 
 Does the agent then reach its goals as well as before, in rooms it has
 never seen? Does it predict how soon a thing can be faced? Serves:
@@ -32,28 +33,18 @@ never seen? Does it predict how soon a thing can be faced? Serves:
 
 ## 2. What changes
 
-One component, walking, in two parts that the user asked for together
-(2026-09-30). Obstacles as conditions are card 044.
+One component, walking's closeness. Revised 2026-10-01 with the user:
+the where-tokens and the moves as transformations (T_m) moved to card 044,
+since tokens need a way to move. Obstacles as conditions are card 045.
 
 ```
-before: closeness(pose, target) = grid distance, then turns          (hand-set)
+before: closeness(where, target) = grid distance, then turns         (hand-set)
         move = the first of forward, left, right that lowers closeness in imagination
-after:  where(thing) = its tile's offset from the agent, turned to the agent's heading
-        T_m: where → where after move m (learned, one affine map per move)
-        Q(w, m) = steps until the thing at w is ahead, after move m   (a small network)
+after:  Q(w, m) = steps until the thing at w is ahead, after move m   (a small network)
         closeness = V(w) = min_m Q(w, m);  move = argmin_m Q(w, m)    (no imagined step)
+        w is card 044's where; T_m is card 044's transformation
 ```
 
-- **Where-tokens.** Each thing in view becomes a token with a what part
-  (the encoder's vector and its codes, as in card 042) and a where part
-  (its offset in tiles). The offsets come from the view's grid, a
-  declared prior like the tiles themselves.
-- **Moves as transformations.** T_m is fitted to the place
-  correspondences before and after each move, which card 028 already
-  counts from pixel transitions. Forward's map applies when recall's
-  forward kind predicts "moved"; a blocked forward leaves where unchanged.
-  An affine map holds at offsets and in rooms never seen, which the
-  current table of places does not.
 - **How soon, learned from experience.** Q is a small network: two inputs
   (the offset) and three outputs (left, right, forward). Every thing in
   view in every stored move transition is a target (hindsight,
@@ -66,25 +57,23 @@ after:  where(thing) = its tile's offset from the agent, turned to the agent's h
   - a real step toward a target takes argmin Q.
 
   Imagined walks stop being the way to choose a move.
-- **Declared exceptions** (CHARTER rule 8), removed by card 044: the
+- **Declared exceptions** (CHARTER rule 8), removed by card 045: the
   check that an approach reaches its target, the move ways (one and two
   moves deep) and the check that places connect still imagine moves.
-  Placing the view still uses card 028's pose table, until views stop
-  covering the whole room.
-- **Unchanged:** card 043's planner and card 042's recall (two levels:
-  codes for the same thing, vectors for similar things), arm A's encoders
-  (seeds 400–404), the three-colour data.
+  Placing the view stays card 044's, until views stop covering the whole
+  room.
+- **Unchanged:** card 044's state as tokens, card 043's planner and card
+  042's recall (two levels: codes for the same thing, vectors for similar
+  things), arm A's encoders (seeds 400–404), the three-colour data.
 
 ## 3. Dependencies
 
-- **Card 043's planner with card 042's recall.** Card 042's effects were
-  exact in every seed; its one failing world is card 043's subject. Card
-  041 runs after card 043's main run passes, so that walking's failures
-  cannot be confused with the planner's.
-- Card 028's move correspondences and poses (passed); recall's forward
-  kind (moved or blocked; held-out effects 1.0 in card 042's shakedown).
-- Methods: `universal-value-function-approximators`, `1707_01495`;
-  transformations acting on states (`1812_02230`).
+- **Card 044's state as tokens,** on card 043's planner with card 042's
+  recall. Card 041 runs after card 044's main run passes, so that
+  walking's failures cannot be confused with the state's.
+- Recall's forward kind (moved or blocked; held-out effects 1.0 in card
+  042's shakedown).
+- Methods: `universal-value-function-approximators`, `1707_01495`.
 
 ## 4. Data check
 
@@ -109,12 +98,12 @@ familiar room with another heading.
   is) on the same layouts. Moves chosen at random within walking are
   reported as a floor.
 - **Mechanism:** Q's error against the evaluator's steps on held-out
-  familiar states. T_m's fit to the correspondences.
+  familiar states. (T_m's fit is card 044's gate: exact.)
 - **Shakedown:** spare seed 399, 30 layouts per world and room.
 
 ## 6. Success criteria and prediction
 
-Arm B, seeds 400–404; each criterion in at least 4 of 5 seeds.
+Arm A, seeds 400–404; each criterion in at least 4 of 5 seeds.
 
 1. **Nothing lost.** Familiar rooms, four worlds: goal in ≥ 99% of 500
    layouts, mean steps within 5% of card 029's.
@@ -130,11 +119,22 @@ Arm B, seeds 400–404; each criterion in at least 4 of 5 seeds.
 **Prediction.** All three pass. How soon depends only on the offset in
 open space, and training views cover every offset from both sides.
 Where a wall stands between, V underestimates. The move ways still rescue
-those cases, and card 044 makes them conditions. Planning time falls,
+those cases, and card 045 makes them conditions. Planning time falls,
 since no imagined steps choose moves.
 
 **Budget.**
-- Building: T_m, Q and its training, and the unseen rooms.
+- Building: Q and its training, and the unseen rooms.
 - Q trains once per world, independent of the encoder seed; minutes.
 - Acting: 2,000 familiar and 1,200 unseen layouts per seed, at about 1.5–2
   seconds each: about an hour per seed. The main run goes to the user.
+
+## 7. Result
+
+Not run.
+
+## 8. Decision
+
+**Stop** (the user, 2026-10-01). Replaced by
+[card 045](../045-movement-through-conditions/card.md): its where-tokens
+and move transformations became card 044's, and its learned how-soon
+became card 045's System 1, without the imagined checks this card kept.
