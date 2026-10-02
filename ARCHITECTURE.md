@@ -1,14 +1,22 @@
 ---
-arch_version: 7
+arch_version: 8
 ---
 
 # Architecture
 
-Version 7 plans on the encoder's vectors, with the state held as tokens.
-It was built up in cards 038–044: version 6 was kept with
-[card 043](experiments/043-consistent-hypotheticals/card.md), and
-[card 044](experiments/044-state-as-tokens/card.md) made the state a set
-of tokens, each a what and a where. It follows
+Version 8 plans on the encoder's vectors, with the state held as tokens
+and walking as a learned approach plus its conditions. It was built up in
+cards 038–047:
+- version 6 was kept with
+  [card 043](experiments/043-consistent-hypotheticals/card.md);
+- [card 044](experiments/044-state-as-tokens/card.md) made the state a
+  set of tokens, each a what and a where;
+- [card 045](experiments/045-movement-through-conditions/card.md) made
+  walking a learned approach plus its conditions;
+- [card 047](experiments/047-situations-from-both-levels/card.md) takes
+  the situations for an action on a thing from both of recall's levels.
+
+It follows
 the direction signed off in
 [card 022](experiments/022-effects-post-mortem/card.md): the primitive is
 the effect of an action, learned from the agent's own outcomes, and moves
@@ -19,12 +27,14 @@ Given only "reach the goal square", it works backward through what recall
 predicts at every step. In four logic-door worlds (the door opens with
 the key, the switch, either, or both) it reaches the goal in 100% of 500
 new layouts in 5 of 5 encoder seeds. It takes the same steps as version 5
-(card 029) to within 0.3%; card 044's tokens changed no decision in the
-familiar worlds. It is not a passed rung: the world is fully
-visible, repeats pixels exactly, and every familiar appearance has been
-seen.
+(card 029) to within 0.8%. In unseen rooms (6 × 6, 7 × 7 and mirrored
+8 × 8) it reaches the goal in 100%, at 1.01–1.11 times the shortest
+route. It is not a passed rung: the world is fully visible, repeats
+pixels exactly, and every familiar appearance has been seen.
 
-The code is `tools/card044/tokens.py`, which builds on:
+The code is `tools/card047/situations.py`, which builds on:
+- `tools/card045/movement.py`: walking through conditions;
+- `tools/card044/tokens.py`: the state as tokens;
 - `tools/card043/consistent.py`: conditions checked in produced situations;
 - `tools/card042/code_recall.py`: recall in two levels;
 - `tools/card039/slot_planner.py`: the view as a set;
@@ -45,16 +55,24 @@ Version 5, the counted model over exact tile IDs, is in git (commit
 - **Memory** keeps every stored try per action, keyed by the vectors of
   the thing in front, the held thing and the set of things in view, with
   its outcomes.
-- **Recall** predicts an action's outcome in two levels:
+- **Recall** predicts an action's outcome in two levels, mixed:
   - the same thing: stored tries whose front and held things have equal
     codes, weighted by how alike their views are;
-  - similar things: a learned weighting of the vectors, used where the
-    same thing has no tries.
+  - similar things: a learned weighting of the vectors, counting as β
+    tries against the same thing's (β fitted).
 - **Acting** is card 029's means-ends search, recomputed at every step. A
   condition is checked only in situations that recall's predicted effects
-  produce from the present.
-- About 0.31–1.09 seconds per layout (version 6: 0.26–0.92; version 5:
-  0.015–0.024).
+  produce from the present. The situations in which an action could work
+  on a thing come from tries on the same thing and on similar things, and
+  recall judges each (card 047): a failed try rules out its own
+  situation, not the thing.
+- **Walking** (card 045): a small network predicts how soon the agent can
+  stand at a placement (System 1); the approach works when the tokens on
+  its route are walkable, and chains of approaches through waypoints, or
+  a door as a condition, cover the rest (System 2). No step is imagined
+  while walking.
+- About 0.42–0.72 seconds per layout in the familiar worlds (version 7:
+  0.31–1.09; version 5: 0.015–0.024).
 
 ## How the state is represented
 
@@ -94,6 +112,10 @@ flowchart TD
     O --> FA["Tokens: a what per token, one transformation giving every where"]
     FA --> S["Means-ends search over conditions, checked in produced situations"]
     R --> S
+    Q["How soon: a network over placements, fitted on the move transformations"] --> WK["Walking: routes' tokens walkable, waypoint chains, doors as conditions"]
+    FA --> WK
+    R --> WK
+    WK --> S
     S --> A["Action: 1 of 6"]
 ```
 
@@ -112,6 +134,8 @@ flowchart TD
 | Placement | One transformation, of 676 reachable by composing the moves' | Where every token is relative to the agent | Composed from the move transformations |
 | Tokens, situation | A handle per token id (638 ids: the first view's places, the held row, the rest within 12 tiles), "absent" where none seen; (tokens, placement, ended) | Belief, real or imagined | Placed views, written in by where |
 | Condition | ("end"), ("walk", j), ("face", a, u, j), ("part", hand or view, a, u, j, c, …) | What must hold for an action to have an effect | Worked out from memory (card 038) |
+| How-soon network | 4 inputs (the placement's offset from the agent and its relative heading), 3 outputs (one per move) | Steps until the agent stands at a placement, after each move | Fitted Q-iteration on the move transformations, every place within 6 tiles and heading a target (card 045) |
+| Routes | Per pair of the 676 placements: steps V, first move, the tokens stepped onto | The approach between two placements | Worked out once from the network's moves and the transformations |
 
 ## Learning
 
@@ -132,6 +156,9 @@ Per world:
    outcome classes, about 25 seconds per world:
    - pick up, toggle and drop: card 042's two levels;
    - moves: card 038's single level on the thing in front.
+5. **How-soon network** (card 045): Q(g, m) = 1 + min Q(T_m g, ·), and 0
+   at the target, where T_m is move m's transformation; hindsight, so every
+   place and heading is a target. It is exact in open space.
 
 ## Acting
 
@@ -150,14 +177,24 @@ At every step:
      makes it true;
    - an achiever's needs are its conditions, then facing its thing;
    - a condition on a pick up, toggle or drop comes from memory: which
-     part (the hand, or what is in view) must change, from the stored
-     successes on the same thing;
+     part (the hand, or what is in view) must change. Its candidates are
+     the situations of the tries on the same thing and on similar things,
+     each judged by recall's prediction (card 047);
    - such a need is met in a situation where the action works with that
      situation's own hand and view. That situation comes from imagining
      an achiever's effect on the present (card 043).
-4. **Walk** and **revise** as in version 5. Walking is the hand-set
-   closeness, moving closer in imagination (now moving tokens), and move
-   ways.
+4. **Walk** through conditions (card 045):
+   - System 1: the how-soon network gives the steps and first move to any
+     placement facing the target, and the route's tokens;
+   - System 2: the route works when its tokens are walkable (recall's
+     forward kind). Otherwise a chain of clear approaches through up to 6
+     waypoints is taken (least total steps);
+   - when no chain exists, tokens recall predicts a pick up or toggle can
+     make walkable (card 047) are counted walkable; those a least chain
+     crosses become conditions ("walk", j), pursued like any other;
+   - alternatives (the key or the switch) are chosen by the chains'
+     predicted steps.
+5. **Revise** as in version 5.
 
 ## Present but not used by the agent
 
@@ -174,7 +211,7 @@ At every step:
 | Recall | An action's outcome from stored tries | Key → outcome class and result | MacKay and Peto 1995; Nosofsky's GCM; `1604_02354`; card 042 | Two levels: equal codes, then a learned vector metric; fitted by leave-one-key-out |
 | Tokens and placements | What the agent has seen and where it is now | View → (tokens, placement) | Card 016; `1905_12006`; transformer patch tokens (Dosovitskiy et al. 2020); `1812_02230`; card 044 | Moves as fitted transformations of where; matching by L1 over vectors |
 | Subgoals | Which condition to pursue next, down to an action | Facts, recall → action | `strips`, `cs_9401101`; cards 029, 038, 043 | Conditions from memory, checked in produced situations |
-| Walking | Reach a placement facing a target | Tokens, placements, move recall → move | Cards 024, 026 | Unchanged from version 5, on tokens |
+| Walking | Reach a placement facing a target | Tokens, placements, recall → move | `universal-value-function-approximators`, `1707_01495`, `1906_05253`; skill chaining (Konidaris and Barto 2009); card 045 | One how-soon network over the learned move transformations; the route's tokens as its conditions; waypoint chains; doors as conditions |
 
 ## Built-in priors and supplied information
 
@@ -191,9 +228,9 @@ At every step:
   - "new" is 6 × a code's radius;
   - an outcome is predicted when its probability is at least one half;
   - a vector-level neighbour counts at k ≥ 0.01.
-- **The procedures are designed, not learned:** the order of needs,
-  choosing the nearest target among alternatives, the search depth,
-  walking's closeness and move ways.
+- **The procedures are designed, not learned:** the order of needs, the
+  search depth (6), the route procedure (card 045's declared exception),
+  and the order of moves among equals (forward, left, right).
 - **Goal and experience.** The episode's end is observed, and reaching the
   goal square is the only goal. Experience is 5,000 random episodes per
   world, stored as in version 5.
@@ -206,29 +243,28 @@ At every step:
   the codebooks it needs" is not done, and colour transfer needs it.
 - **New colours.**
   - First-sight effects were right in 2 of 5 seeds.
-  - The switch world with a new-colour door reached the goal in 8–74%.
+  - The switch world with a new-colour door reaches the goal in 8–93%
+    (mean 40%, card 047). It succeeds where recall's similarity between
+    the new door and the nearest known door is 0.035–0.064, and fails
+    (8–16%) where it is 0.005–0.021: the encoder puts the colour too far
+    from the doors for recall to carry anything over.
   - There are no relations ("this key fits this door"), and colour
     transfer is paused by the user.
+- **Chance.** An outcome is acted on only when its probability is at least
+  one half, so an action that works some of the time in the same
+  situation reads as not working (the user, 2026-10-01: later).
 - **Conjunctions.** A success that needs both the hand and the view
   changed is still checked in a spliced situation (card 043's declared
   exception).
 - **Exact views.** It needs the whole room in view and exact pixel
   repeats. Codes absorb small differences, but this is untested with
   noise, and vectors near a region's edge could flip codes between views.
-- **Movement is not yet fully conditional** (noted with the user on
-  2026-09-30).
-  - Facing a thing is a condition, but reaching it is a fixed rule: moving
-    closer by a hand-set distance (grid distance, then turns), checked by
-    playing it forward in the head one step at a time, with move ways from
-    every standing pose.
-  - Only a place that must change, such as a door, becomes a condition;
-    an obstacle to go around does not.
-  - Card 045 (movement through conditions, draft) is next.
-- **The choice between alternatives** (the key or the switch) is a
-  declared rule, the nearest target.
-- **Slower than version 5:** 0.31–1.09 s per layout, against
-  0.015–0.024. Tokens cost 6–18% over version 6 (a larger state copied at
-  every imagined step).
+- **A small fixed world.** Routes are worked out for every pair of the
+  676 placements, and tokens live on a fixed grid of 638 places. A larger
+  or partly seen world needs routes on demand and a map.
+- **Slower than version 5:** 0.42–0.72 s per layout in the familiar
+  worlds, against 0.015–0.024; the switch world with a new-colour door
+  4–19 s. Card 047's wider situations cost 31–77% over card 046.
 
 ## Change log
 
@@ -241,3 +277,4 @@ At every step:
 | 5 | 2026-09-28 | 029 | Subgoals worked backward through the learned rules (means-ends analysis, recomputed every step) replace the evidence-grown tree and the target rule for acting. 100% in four worlds (key, switch, either, both), 1.03–1.11 times the shortest route, 6–9 conditions per move |
 | 6 | 2026-10-01 | 038–043 | Plan on encoder vectors: recall over stored tries replaces the counted tables; the view as a set (039); recall in two levels, equal codes for the same thing and vectors for similar things (042); conditions checked only in situations the learned effects produce (043). Kept by the user with card 043: 100% in all four worlds in 5 of 5 seeds, effects exact, card 029's steps |
 | 7 | 2026-10-01 | 044 | The state as tokens: every tile and the held thing a what and a where (offset from the agent, or the hand); moves as least-squares transformations of where, fitted to the counted correspondences (exact); no pose table. Kept by the user with card 044: the same decisions as version 6 in every familiar world, 5 of 5 seeds; 12% slower per layout |
+| 8 | 2026-10-01 | 045–047 | Walking through conditions (045): a how-soon network fitted on the move transformations (System 1), the route's tokens walkable as its conditions, waypoint chains and doors as conditions (System 2), no imagined step. Situations for an action on a thing from both of recall's levels, each judged by recall (047, after 046 used the levels as a switch). Kept by the user with card 047: the same results in the familiar worlds, 100% in unseen rooms at 1.01–1.11 times the shortest route; new-colour switch tests 40% (version 7: 31%); 31–77% slower than card 046 |

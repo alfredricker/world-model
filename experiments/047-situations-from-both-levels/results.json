@@ -1,0 +1,1455 @@
+{
+ "note": "Card 047: compact numbers from runs/047_armA.json (main run); runs/047_check.json, runs/047_shakedown_399.json (gate); runs/046_armA.json, card 045s main run files and runs/044_armA.json (comparison)",
+ "seconds": 1647.9,
+ "seeds": [
+  {
+   "seed": 400,
+   "worlds": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.28,
+     "steps_ratio_to_card029": 0.994,
+     "moves": 8139,
+     "seconds_per_layout": 0.469,
+     "seconds_per_layout_card046": 0.355,
+     "seconds_per_layout_card045": 0.373,
+     "seconds_per_layout_card044": 0.367,
+     "walking_share_of_planning_time": 0.4447,
+     "imagined_moves_per_move": 0.0,
+     "test_a_yellow": {
+      "success": 1.0,
+      "seconds_per_layout": 0.12,
+      "layouts_with_switch_by_plan": 0,
+      "mean_steps_when_successful": 10.96,
+      "card046": {
+       "success": 1.0,
+       "seconds_per_layout": 0.108
+      },
+      "card045": {
+       "success": 1.0,
+       "seconds_per_layout": 0.112
+      },
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.084
+      }
+     },
+     "test_a_purple": {
+      "success": 1.0,
+      "seconds_per_layout": 0.12,
+      "layouts_with_switch_by_plan": 0,
+      "mean_steps_when_successful": 10.96,
+      "card046": {
+       "success": 1.0,
+       "seconds_per_layout": 0.108
+      },
+      "card045": {
+       "success": 1.0,
+       "seconds_per_layout": 0.112
+      },
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.084
+      }
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 17.21,
+     "steps_ratio_to_card029": 0.997,
+     "moves": 8603,
+     "seconds_per_layout": 0.552,
+     "seconds_per_layout_card046": 0.344,
+     "seconds_per_layout_card045": 0.362,
+     "seconds_per_layout_card044": 0.356,
+     "walking_share_of_planning_time": 0.5629,
+     "imagined_moves_per_move": 0.0,
+     "test_b_yellow": {
+      "success": 0.93,
+      "seconds_per_layout": 5.58,
+      "layouts_with_switch_by_plan": 79,
+      "mean_steps_when_successful": 61.8,
+      "card046": {
+       "success": 0.13,
+       "seconds_per_layout": 2.2
+      },
+      "card045": {
+       "success": 0.54,
+       "seconds_per_layout": 2.448
+      },
+      "card044": {
+       "success": 0.54,
+       "seconds_per_layout": 2.564
+      }
+     },
+     "test_b_purple": {
+      "success": 0.82,
+      "seconds_per_layout": 5.101,
+      "layouts_with_switch_by_plan": 90,
+      "mean_steps_when_successful": 41.79,
+      "card046": {
+       "success": 0.13,
+       "seconds_per_layout": 2.167
+      },
+      "card045": {
+       "success": 0.51,
+       "seconds_per_layout": 2.607
+      },
+      "card044": {
+       "success": 0.52,
+       "seconds_per_layout": 2.577
+      }
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 15.35,
+     "steps_ratio_to_card029": 0.992,
+     "moves": 7673,
+     "seconds_per_layout": 0.691,
+     "seconds_per_layout_card046": 0.39,
+     "seconds_per_layout_card045": 0.415,
+     "seconds_per_layout_card044": 0.407,
+     "walking_share_of_planning_time": 0.4713,
+     "imagined_moves_per_move": 0.0
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.69,
+     "steps_ratio_to_card029": 0.996,
+     "moves": 10843,
+     "seconds_per_layout": 0.433,
+     "seconds_per_layout_card046": 0.293,
+     "seconds_per_layout_card045": 0.307,
+     "seconds_per_layout_card044": 0.309,
+     "walking_share_of_planning_time": 0.5485,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.014,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.03,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.033,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.015,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.082,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.078,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.031,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.043,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.055,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.083,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.111,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.093,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "tests_matching_card046": 18,
+   "tests": 20,
+   "differences_from_card046": [
+    [
+     "switch",
+     "test_b_yellow",
+     [
+      "actions_refused",
+      "moves",
+      "predictions_wrong",
+      "steps_by_kind",
+      "success"
+     ]
+    ],
+    [
+     "switch",
+     "test_b_purple",
+     [
+      "actions_refused",
+      "moves",
+      "predictions_wrong",
+      "steps_by_kind",
+      "success"
+     ]
+    ]
+   ],
+   "howsoon": {
+    "rank_correlation": 1.0,
+    "pairs": 83710
+   },
+   "criterion_1": true,
+   "criterion_3": true,
+   "time_over_median": {
+    "key": 0.998,
+    "switch": 1.036,
+    "either": 1.027,
+    "both": 1.0
+   },
+   "criterion_2": true
+  },
+  {
+   "seed": 401,
+   "worlds": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.28,
+     "steps_ratio_to_card029": 0.994,
+     "moves": 8139,
+     "seconds_per_layout": 0.465,
+     "seconds_per_layout_card046": 0.355,
+     "seconds_per_layout_card045": 2.922,
+     "seconds_per_layout_card044": 1.071,
+     "walking_share_of_planning_time": 0.4579,
+     "imagined_moves_per_move": 0.0,
+     "test_a_yellow": {
+      "success": 1.0,
+      "seconds_per_layout": 0.124,
+      "layouts_with_switch_by_plan": 0,
+      "mean_steps_when_successful": 10.96,
+      "card046": {
+       "success": 1.0,
+       "seconds_per_layout": 0.11
+      },
+      "card045": {
+       "success": 1.0,
+       "seconds_per_layout": 1.155
+      },
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.095
+      }
+     },
+     "test_a_purple": {
+      "success": 1.0,
+      "seconds_per_layout": 0.123,
+      "layouts_with_switch_by_plan": 0,
+      "mean_steps_when_successful": 10.96,
+      "card046": {
+       "success": 1.0,
+       "seconds_per_layout": 0.112
+      },
+      "card045": {
+       "success": 1.0,
+       "seconds_per_layout": 1.169
+      },
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.096
+      }
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 17.21,
+     "steps_ratio_to_card029": 0.997,
+     "moves": 8603,
+     "seconds_per_layout": 0.462,
+     "seconds_per_layout_card046": 0.342,
+     "seconds_per_layout_card045": 0.366,
+     "seconds_per_layout_card044": 0.359,
+     "walking_share_of_planning_time": 0.5745,
+     "imagined_moves_per_move": 0.0,
+     "test_b_yellow": {
+      "success": 0.11,
+      "seconds_per_layout": 5.351,
+      "layouts_with_switch_by_plan": 5,
+      "mean_steps_when_successful": 58.64,
+      "card046": {
+       "success": 0.11,
+       "seconds_per_layout": 2.648
+      },
+      "card045": {
+       "success": 0.11,
+       "seconds_per_layout": 2.672
+      },
+      "card044": {
+       "success": 0.11,
+       "seconds_per_layout": 2.858
+      }
+     },
+     "test_b_purple": {
+      "success": 0.11,
+      "seconds_per_layout": 5.923,
+      "layouts_with_switch_by_plan": 5,
+      "mean_steps_when_successful": 58.64,
+      "card046": {
+       "success": 0.11,
+       "seconds_per_layout": 3.547
+      },
+      "card045": {
+       "success": 0.11,
+       "seconds_per_layout": 3.431
+      },
+      "card044": {
+       "success": 0.11,
+       "seconds_per_layout": 3.642
+      }
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 15.35,
+     "steps_ratio_to_card029": 0.992,
+     "moves": 7673,
+     "seconds_per_layout": 0.569,
+     "seconds_per_layout_card046": 0.396,
+     "seconds_per_layout_card045": 0.417,
+     "seconds_per_layout_card044": 0.408,
+     "walking_share_of_planning_time": 0.4815,
+     "imagined_moves_per_move": 0.0
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.69,
+     "steps_ratio_to_card029": 0.996,
+     "moves": 10843,
+     "seconds_per_layout": 0.42,
+     "seconds_per_layout_card046": 0.294,
+     "seconds_per_layout_card045": 0.308,
+     "seconds_per_layout_card044": 0.305,
+     "walking_share_of_planning_time": 0.5447,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.014,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.03,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.033,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.015,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.082,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.078,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.031,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.043,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.055,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.083,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.111,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.093,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "tests_matching_card046": 20,
+   "tests": 20,
+   "differences_from_card046": [],
+   "howsoon": {
+    "rank_correlation": 1.0,
+    "pairs": 83710
+   },
+   "criterion_1": true,
+   "criterion_3": true,
+   "time_over_median": {
+    "key": 0.989,
+    "switch": 0.867,
+    "either": 0.845,
+    "both": 0.97
+   },
+   "criterion_2": true
+  },
+  {
+   "seed": 402,
+   "worlds": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.28,
+     "steps_ratio_to_card029": 0.994,
+     "moves": 8139,
+     "seconds_per_layout": 0.47,
+     "seconds_per_layout_card046": 0.353,
+     "seconds_per_layout_card045": 0.37,
+     "seconds_per_layout_card044": 0.372,
+     "walking_share_of_planning_time": 0.4475,
+     "imagined_moves_per_move": 0.0,
+     "test_a_yellow": {
+      "success": 1.0,
+      "seconds_per_layout": 0.124,
+      "layouts_with_switch_by_plan": 0,
+      "mean_steps_when_successful": 10.96,
+      "card046": {
+       "success": 1.0,
+       "seconds_per_layout": 0.112
+      },
+      "card045": {
+       "success": 1.0,
+       "seconds_per_layout": 0.107
+      },
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.091
+      }
+     },
+     "test_a_purple": {
+      "success": 1.0,
+      "seconds_per_layout": 0.123,
+      "layouts_with_switch_by_plan": 0,
+      "mean_steps_when_successful": 10.96,
+      "card046": {
+       "success": 1.0,
+       "seconds_per_layout": 0.111
+      },
+      "card045": {
+       "success": 1.0,
+       "seconds_per_layout": 0.11
+      },
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.092
+      }
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 17.21,
+     "steps_ratio_to_card029": 0.997,
+     "moves": 8603,
+     "seconds_per_layout": 0.533,
+     "seconds_per_layout_card046": 0.344,
+     "seconds_per_layout_card045": 0.362,
+     "seconds_per_layout_card044": 0.365,
+     "walking_share_of_planning_time": 0.5958,
+     "imagined_moves_per_move": 0.0,
+     "test_b_yellow": {
+      "success": 0.16,
+      "seconds_per_layout": 16.181,
+      "layouts_with_switch_by_plan": 6,
+      "mean_steps_when_successful": 99.69,
+      "card046": {
+       "success": 0.1,
+       "seconds_per_layout": 2.509
+      },
+      "card045": {
+       "success": 0.16,
+       "seconds_per_layout": 2.753
+      },
+      "card044": {
+       "success": 0.16,
+       "seconds_per_layout": 2.894
+      }
+     },
+     "test_b_purple": {
+      "success": 0.91,
+      "seconds_per_layout": 4.064,
+      "layouts_with_switch_by_plan": 90,
+      "mean_steps_when_successful": 54.12,
+      "card046": {
+       "success": 0.13,
+       "seconds_per_layout": 2.172
+      },
+      "card045": {
+       "success": 0.59,
+       "seconds_per_layout": 2.244
+      },
+      "card044": {
+       "success": 0.6,
+       "seconds_per_layout": 2.331
+      }
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 15.35,
+     "steps_ratio_to_card029": 0.992,
+     "moves": 7673,
+     "seconds_per_layout": 0.658,
+     "seconds_per_layout_card046": 0.395,
+     "seconds_per_layout_card045": 0.414,
+     "seconds_per_layout_card044": 0.418,
+     "walking_share_of_planning_time": 0.5044,
+     "imagined_moves_per_move": 0.0
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.69,
+     "steps_ratio_to_card029": 0.996,
+     "moves": 10843,
+     "seconds_per_layout": 0.442,
+     "seconds_per_layout_card046": 0.292,
+     "seconds_per_layout_card045": 0.31,
+     "seconds_per_layout_card044": 0.307,
+     "walking_share_of_planning_time": 0.5384,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.014,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.03,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.033,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.015,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.082,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.078,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.031,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.043,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.055,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.083,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.111,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.093,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "tests_matching_card046": 18,
+   "tests": 20,
+   "differences_from_card046": [
+    [
+     "switch",
+     "test_b_yellow",
+     [
+      "actions_refused",
+      "moves",
+      "predictions_wrong",
+      "steps_by_kind",
+      "success"
+     ]
+    ],
+    [
+     "switch",
+     "test_b_purple",
+     [
+      "actions_refused",
+      "moves",
+      "predictions_wrong",
+      "steps_by_kind",
+      "success"
+     ]
+    ]
+   ],
+   "howsoon": {
+    "rank_correlation": 1.0,
+    "pairs": 83710
+   },
+   "criterion_1": true,
+   "criterion_3": true,
+   "time_over_median": {
+    "key": 1.0,
+    "switch": 1.0,
+    "either": 0.978,
+    "both": 1.021
+   },
+   "criterion_2": true
+  },
+  {
+   "seed": 403,
+   "worlds": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.28,
+     "steps_ratio_to_card029": 0.994,
+     "moves": 8139,
+     "seconds_per_layout": 0.528,
+     "seconds_per_layout_card046": 0.364,
+     "seconds_per_layout_card045": 0.373,
+     "seconds_per_layout_card044": 0.373,
+     "walking_share_of_planning_time": 0.429,
+     "imagined_moves_per_move": 0.0,
+     "test_a_yellow": {
+      "success": 1.0,
+      "seconds_per_layout": 0.129,
+      "layouts_with_switch_by_plan": 0,
+      "mean_steps_when_successful": 10.96,
+      "card046": {
+       "success": 1.0,
+       "seconds_per_layout": 0.115
+      },
+      "card045": {
+       "success": 1.0,
+       "seconds_per_layout": 0.111
+      },
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.089
+      }
+     },
+     "test_a_purple": {
+      "success": 1.0,
+      "seconds_per_layout": 0.127,
+      "layouts_with_switch_by_plan": 0,
+      "mean_steps_when_successful": 10.96,
+      "card046": {
+       "success": 1.0,
+       "seconds_per_layout": 0.117
+      },
+      "card045": {
+       "success": 1.0,
+       "seconds_per_layout": 0.112
+      },
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.091
+      }
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 17.21,
+     "steps_ratio_to_card029": 0.997,
+     "moves": 8603,
+     "seconds_per_layout": 0.592,
+     "seconds_per_layout_card046": 0.354,
+     "seconds_per_layout_card045": 0.363,
+     "seconds_per_layout_card044": 0.36,
+     "walking_share_of_planning_time": 0.4716,
+     "imagined_moves_per_move": 0.0,
+     "test_b_yellow": {
+      "success": 0.08,
+      "seconds_per_layout": 18.743,
+      "layouts_with_switch_by_plan": 4,
+      "mean_steps_when_successful": 73.75,
+      "card046": {
+       "success": 0.08,
+       "seconds_per_layout": 12.286
+      },
+      "card045": {
+       "success": 0.08,
+       "seconds_per_layout": 12.95
+      },
+      "card044": {
+       "success": 0.08,
+       "seconds_per_layout": 13.333
+      }
+     },
+     "test_b_purple": {
+      "success": 0.09,
+      "seconds_per_layout": 5.504,
+      "layouts_with_switch_by_plan": 4,
+      "mean_steps_when_successful": 84.78,
+      "card046": {
+       "success": 0.09,
+       "seconds_per_layout": 4.188
+      },
+      "card045": {
+       "success": 0.09,
+       "seconds_per_layout": 20.55
+      },
+      "card044": {
+       "success": 0.09,
+       "seconds_per_layout": 11.941
+      }
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 15.35,
+     "steps_ratio_to_card029": 0.992,
+     "moves": 7673,
+     "seconds_per_layout": 0.716,
+     "seconds_per_layout_card046": 0.405,
+     "seconds_per_layout_card045": 0.422,
+     "seconds_per_layout_card044": 0.407,
+     "walking_share_of_planning_time": 0.4037,
+     "imagined_moves_per_move": 0.0
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.69,
+     "steps_ratio_to_card029": 0.996,
+     "moves": 10843,
+     "seconds_per_layout": 0.444,
+     "seconds_per_layout_card046": 0.304,
+     "seconds_per_layout_card045": 0.308,
+     "seconds_per_layout_card044": 0.308,
+     "walking_share_of_planning_time": 0.5302,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.014,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.03,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.033,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.015,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.082,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.078,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.031,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.043,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.055,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.083,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.111,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.093,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "tests_matching_card046": 18,
+   "tests": 20,
+   "differences_from_card046": [
+    [
+     "switch",
+     "test_b_yellow",
+     [
+      "actions_refused",
+      "steps_by_kind"
+     ]
+    ],
+    [
+     "switch",
+     "test_b_purple",
+     [
+      "steps_by_kind"
+     ]
+    ]
+   ],
+   "howsoon": {
+    "rank_correlation": 1.0,
+    "pairs": 83710
+   },
+   "criterion_1": true,
+   "criterion_3": true,
+   "time_over_median": {
+    "key": 1.123,
+    "switch": 1.111,
+    "either": 1.064,
+    "both": 1.025
+   },
+   "criterion_2": false
+  },
+  {
+   "seed": 404,
+   "worlds": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.28,
+     "steps_ratio_to_card029": 0.994,
+     "moves": 8139,
+     "seconds_per_layout": 0.509,
+     "seconds_per_layout_card046": 0.363,
+     "seconds_per_layout_card045": 2.953,
+     "seconds_per_layout_card044": 1.087,
+     "walking_share_of_planning_time": 0.444,
+     "imagined_moves_per_move": 0.0,
+     "test_a_yellow": {
+      "success": 1.0,
+      "seconds_per_layout": 0.125,
+      "layouts_with_switch_by_plan": 0,
+      "mean_steps_when_successful": 10.96,
+      "card046": {
+       "success": 1.0,
+       "seconds_per_layout": 0.11
+      },
+      "card045": {
+       "success": 1.0,
+       "seconds_per_layout": 1.167
+      },
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.094
+      }
+     },
+     "test_a_purple": {
+      "success": 1.0,
+      "seconds_per_layout": 0.125,
+      "layouts_with_switch_by_plan": 0,
+      "mean_steps_when_successful": 10.96,
+      "card046": {
+       "success": 1.0,
+       "seconds_per_layout": 0.11
+      },
+      "card045": {
+       "success": 1.0,
+       "seconds_per_layout": 1.168
+      },
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.091
+      }
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 17.21,
+     "steps_ratio_to_card029": 0.997,
+     "moves": 8603,
+     "seconds_per_layout": 0.531,
+     "seconds_per_layout_card046": 0.347,
+     "seconds_per_layout_card045": 0.365,
+     "seconds_per_layout_card044": 0.361,
+     "walking_share_of_planning_time": 0.6219,
+     "imagined_moves_per_move": 0.0,
+     "test_b_yellow": {
+      "success": 0.11,
+      "seconds_per_layout": 6.048,
+      "layouts_with_switch_by_plan": 6,
+      "mean_steps_when_successful": 99.0,
+      "card046": {
+       "success": 0.11,
+       "seconds_per_layout": 2.637
+      },
+      "card045": {
+       "success": 0.11,
+       "seconds_per_layout": 2.613
+      },
+      "card044": {
+       "success": 0.11,
+       "seconds_per_layout": 2.848
+      }
+     },
+     "test_b_purple": {
+      "success": 0.64,
+      "seconds_per_layout": 6.129,
+      "layouts_with_switch_by_plan": 77,
+      "mean_steps_when_successful": 47.58,
+      "card046": {
+       "success": 0.68,
+       "seconds_per_layout": 1.829
+      },
+      "card045": {
+       "success": 0.74,
+       "seconds_per_layout": 1.837
+      },
+      "card044": {
+       "success": 0.74,
+       "seconds_per_layout": 1.927
+      }
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 15.35,
+     "steps_ratio_to_card029": 0.992,
+     "moves": 7673,
+     "seconds_per_layout": 0.673,
+     "seconds_per_layout_card046": 0.406,
+     "seconds_per_layout_card045": 0.417,
+     "seconds_per_layout_card044": 0.416,
+     "walking_share_of_planning_time": 0.5224,
+     "imagined_moves_per_move": 0.0
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.69,
+     "steps_ratio_to_card029": 0.996,
+     "moves": 10843,
+     "seconds_per_layout": 0.429,
+     "seconds_per_layout_card046": 0.296,
+     "seconds_per_layout_card045": 0.308,
+     "seconds_per_layout_card044": 0.307,
+     "walking_share_of_planning_time": 0.5456,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.014,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.03,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.033,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.015,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.082,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.078,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.031,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.043,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.055,
+     "imagined_moves_per_move": 0.0
+    },
+    "room6_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.083,
+     "imagined_moves_per_move": 0.0
+    },
+    "room7_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.111,
+     "imagined_moves_per_move": 0.0
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.093,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "tests_matching_card046": 19,
+   "tests": 20,
+   "differences_from_card046": [
+    [
+     "switch",
+     "test_b_purple",
+     [
+      "actions_refused",
+      "moves",
+      "predictions_wrong",
+      "steps_by_kind",
+      "success"
+     ]
+    ]
+   ],
+   "howsoon": {
+    "rank_correlation": 1.0,
+    "pairs": 83710
+   },
+   "criterion_1": true,
+   "criterion_3": false,
+   "time_over_median": {
+    "key": 1.083,
+    "switch": 0.996,
+    "either": 1.0,
+    "both": 0.991
+   },
+   "criterion_2": true
+  }
+ ],
+ "gate": {
+  "openable_key_world": {
+   "399": {
+    "closed door red": [
+     true,
+     true
+    ],
+    "closed door green": [
+     true,
+     true
+    ],
+    "closed door blue": [
+     true,
+     true
+    ],
+    "key red": [
+     true,
+     true
+    ],
+    "key green": [
+     true,
+     true
+    ],
+    "key blue": [
+     true,
+     true
+    ],
+    "switch off": [
+     true,
+     false
+    ],
+    "switch on": [
+     true,
+     false
+    ],
+    "vase": [
+     true,
+     true
+    ]
+   },
+   "400": {
+    "closed door red": [
+     true,
+     true
+    ],
+    "closed door green": [
+     true,
+     true
+    ],
+    "closed door blue": [
+     true,
+     true
+    ],
+    "key red": [
+     true,
+     true
+    ],
+    "key green": [
+     true,
+     true
+    ],
+    "key blue": [
+     true,
+     true
+    ],
+    "switch off": [
+     true,
+     false
+    ],
+    "switch on": [
+     true,
+     false
+    ],
+    "vase": [
+     true,
+     true
+    ]
+   },
+   "401": {
+    "wall": [
+     true,
+     false
+    ],
+    "closed door red": [
+     true,
+     true
+    ],
+    "closed door green": [
+     true,
+     true
+    ],
+    "closed door blue": [
+     true,
+     true
+    ],
+    "key red": [
+     true,
+     true
+    ],
+    "key green": [
+     true,
+     true
+    ],
+    "key blue": [
+     true,
+     true
+    ],
+    "switch off": [
+     true,
+     false
+    ],
+    "switch on": [
+     true,
+     false
+    ],
+    "vase": [
+     true,
+     true
+    ]
+   },
+   "402": {
+    "closed door red": [
+     true,
+     true
+    ],
+    "closed door green": [
+     true,
+     true
+    ],
+    "closed door blue": [
+     true,
+     true
+    ],
+    "key red": [
+     true,
+     true
+    ],
+    "key green": [
+     true,
+     true
+    ],
+    "key blue": [
+     true,
+     true
+    ],
+    "switch off": [
+     true,
+     false
+    ],
+    "switch on": [
+     true,
+     false
+    ],
+    "vase": [
+     true,
+     true
+    ]
+   },
+   "403": {
+    "closed door red": [
+     true,
+     true
+    ],
+    "closed door green": [
+     true,
+     true
+    ],
+    "closed door blue": [
+     true,
+     true
+    ],
+    "key red": [
+     true,
+     true
+    ],
+    "key green": [
+     true,
+     true
+    ],
+    "key blue": [
+     true,
+     true
+    ],
+    "switch off": [
+     true,
+     false
+    ],
+    "switch on": [
+     true,
+     false
+    ],
+    "vase": [
+     true,
+     true
+    ]
+   },
+   "404": {
+    "wall": [
+     true,
+     false
+    ],
+    "goal": [
+     true,
+     false
+    ],
+    "closed door red": [
+     true,
+     true
+    ],
+    "closed door green": [
+     true,
+     true
+    ],
+    "closed door blue": [
+     true,
+     true
+    ],
+    "key red": [
+     true,
+     true
+    ],
+    "key green": [
+     true,
+     true
+    ],
+    "key blue": [
+     true,
+     true
+    ],
+    "switch off": [
+     true,
+     false
+    ],
+    "switch on": [
+     true,
+     false
+    ],
+    "vase": [
+     true,
+     true
+    ]
+   }
+  }
+ },
+ "median_seconds_per_layout": {
+  "key": 0.47,
+  "switch": 0.533,
+  "either": 0.673,
+  "both": 0.433
+ },
+ "new_colour_switch_mean_success": {
+  "card047": 0.396,
+  "card046": 0.16699999999999998,
+  "card045": 0.304
+ },
+ "new_colour_door_at_first_sight": {
+  "note": "Switch world, layout 0, step 0 (scratchpad check after the main run): card 047's openable, toggle situations considered, and recall's toggle similarity to the red, green and blue closed doors (KMIN 0.01)",
+  "seeds": {
+   "400": {
+    "yellow": {
+     "openable": true,
+     "toggle_situations": 154,
+     "similarity_red_green_blue": [
+      0.043,
+      0.034,
+      0.003
+     ]
+    },
+    "purple": {
+     "openable": true,
+     "toggle_situations": 154,
+     "similarity_red_green_blue": [
+      0.033,
+      0.004,
+      0.035
+     ]
+    }
+   },
+   "401": {
+    "yellow": {
+     "openable": false,
+     "toggle_situations": 0,
+     "similarity_red_green_blue": [
+      0.0,
+      0.0,
+      0.005
+     ]
+    },
+    "purple": {
+     "openable": false,
+     "toggle_situations": 24,
+     "similarity_red_green_blue": [
+      0.005,
+      0.0,
+      0.2
+     ]
+    }
+   },
+   "402": {
+    "yellow": {
+     "openable": true,
+     "toggle_situations": 48,
+     "similarity_red_green_blue": [
+      0.021,
+      0.012,
+      0.003
+     ]
+    },
+    "purple": {
+     "openable": true,
+     "toggle_situations": 48,
+     "similarity_red_green_blue": [
+      0.027,
+      0.007,
+      0.064
+     ]
+    }
+   },
+   "403": {
+    "yellow": {
+     "openable": true,
+     "toggle_situations": 154,
+     "similarity_red_green_blue": [
+      0.011,
+      0.002,
+      0.005
+     ]
+    },
+    "purple": {
+     "openable": false,
+     "toggle_situations": 154,
+     "similarity_red_green_blue": [
+      0.007,
+      0.003,
+      0.009
+     ]
+    }
+   },
+   "404": {
+    "yellow": {
+     "openable": false,
+     "toggle_situations": 0,
+     "similarity_red_green_blue": [
+      0.001,
+      0.005,
+      0.004
+     ]
+    },
+    "purple": {
+     "openable": true,
+     "toggle_situations": 24,
+     "similarity_red_green_blue": [
+      0.002,
+      0.001,
+      0.038
+     ]
+    }
+   }
+  }
+ }
+}

@@ -254,6 +254,18 @@ class Chains:
         return int(np.flatnonzero(self.W[i] + self.Hs[k - 1] == h)[0]), False, k - 1
 
 
+def reach_set(A, start):
+    """Nodes reached from start (an index or a mask) along A's edges."""
+    seen = np.zeros(len(A), bool)
+    seen[start] = True
+    front = seen.copy()
+    while front.any():
+        nxt = A[front].any(0) & ~seen
+        seen |= nxt
+        front = nxt
+    return seen
+
+
 class Walk(TK.TPlan):
     """Walking through conditions (card 045)."""
 
@@ -345,6 +357,31 @@ class Walk(TK.TPlan):
             r = self.hmemo[k] = (S, Wm, stand, ix)
         return r
 
+    def may_open(self, fid, pid, c):
+        """The tokens whose opening alone could give a chain from placement c to the need's placements (pid,
+        whatever they stand on). Exact as a filter: such a chain leaves what c reaches now by a route that the
+        token alone blocks, and its last such route (or one out of a placement on the token) ends where the
+        need's placements are reached now, or on the token at one of them."""
+        k = ("may", fid, pid, c)
+        r = self.hmemo.get(k)
+        if r is None:
+            M = F.M
+            S, ok, nb, first, V, ix = self.routes(fid)
+            on = M.cidx_arr[S]
+            stand = self.walkable(fid)[on]
+            base, single = ok & (nb == 0), ok & (nb == 1)
+            now = base & stand[:, None] & stand[None, :]
+            np.fill_diagonal(now, False)
+            P = self.psets[pid]
+            inP = np.isin(S, np.fromiter(P, np.int64, len(P)))
+            Rf = reach_set(now, ix[int(c)])
+            Rb = reach_set(now.T, inP & stand)
+            out = set(first[Rf][single[Rf]].tolist())
+            back = set(first[:, Rb][single[:, Rb]].tolist())
+            back |= set(on[~stand & base[:, Rb].any(1)].tolist()) | set(on[inP & ~stand].tolist())
+            r = self.hmemo[k] = out & back
+        return r
+
     def _plan(self, fid, pid, w, key):
         S, Wm, stand, ix = self.clear(fid, key)
         P = self.psets[pid]
@@ -418,8 +455,11 @@ class Walk(TK.TPlan):
         if not op.any() or not w[F.M.cidx[st[1]]]:
             return None
         pid = self.face_open(fid, need)
+        may = self.may_open(fid, pid, st[1])
         cands = []
         for j in np.flatnonzero(op).tolist():
+            if j not in may:
+                continue
             w2 = w.copy()
             w2[j] = True
             ch = self.plan(fid, pid, w2, ("opened", j))

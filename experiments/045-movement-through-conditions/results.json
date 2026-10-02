@@ -1,0 +1,1789 @@
+{
+ "note": "Card 045: compact numbers from runs/045_armA_400-402.json, runs/045_seed403_filter.json, runs/045_armA_404.json (main run, one code version; seed 403 run alone), runs/045_route_check.json and runs/045_shakedown_399_*.json (gate), runs/044_armA.json (comparison)",
+ "seconds": {
+  "runs/045_armA_400-402.json": 857.8,
+  "runs/045_seed403_filter.json": 405.7,
+  "runs/045_armA_404.json": 401.4
+ },
+ "seeds": [
+  {
+   "seed": 400,
+   "worlds": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.28,
+     "steps_ratio_to_card029": 0.994,
+     "moves": 8139,
+     "seconds_per_layout": 0.373,
+     "seconds_per_layout_max": 1.07,
+     "walking_share_of_planning_time": 0.3246,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 6263,
+      "act": 1500,
+      "waypoint": 376
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 16.38,
+      "moves": 8189,
+      "seconds_per_layout": 0.367
+     },
+     "test_a_yellow": {
+      "success": 1.0,
+      "mean_steps": 10.96,
+      "seconds_per_layout": 0.112,
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.084
+      }
+     },
+     "test_a_purple": {
+      "success": 1.0,
+      "mean_steps": 10.96,
+      "seconds_per_layout": 0.112,
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.084
+      }
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 17.21,
+     "steps_ratio_to_card029": 0.997,
+     "moves": 8603,
+     "seconds_per_layout": 0.362,
+     "seconds_per_layout_max": 1.09,
+     "walking_share_of_planning_time": 0.3618,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 6366,
+      "act": 1500,
+      "waypoint": 737
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 17.27,
+      "moves": 8634,
+      "seconds_per_layout": 0.356
+     },
+     "test_b_yellow": {
+      "success": 0.54,
+      "mean_steps": 83.22,
+      "seconds_per_layout": 2.448,
+      "card044": {
+       "success": 0.54,
+       "seconds_per_layout": 2.564
+      }
+     },
+     "test_b_purple": {
+      "success": 0.51,
+      "mean_steps": 79.47,
+      "seconds_per_layout": 2.607,
+      "card044": {
+       "success": 0.52,
+       "seconds_per_layout": 2.577
+      }
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 15.35,
+     "steps_ratio_to_card029": 0.992,
+     "moves": 7673,
+     "seconds_per_layout": 0.415,
+     "seconds_per_layout_max": 1.3,
+     "walking_share_of_planning_time": 0.2874,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 5735,
+      "act": 1500,
+      "waypoint": 438
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 15.42,
+      "moves": 7709,
+      "seconds_per_layout": 0.407
+     }
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.69,
+     "steps_ratio_to_card029": 0.996,
+     "moves": 10843,
+     "seconds_per_layout": 0.307,
+     "seconds_per_layout_max": 0.67,
+     "walking_share_of_planning_time": 0.4559,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 8208,
+      "act": 2000,
+      "waypoint": 635
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 21.77,
+      "moves": 10883,
+      "seconds_per_layout": 0.309
+     }
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "mean_steps": 11.18,
+     "steps_ratio_to_shortest": 1.014,
+     "seconds_per_layout": 0.36,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 730,
+     "steps_by_kind": {
+      "approach": 806,
+      "act": 300,
+      "waypoint": 12
+     }
+    },
+    "room7_key": {
+     "success": 1.0,
+     "mean_steps": 14.59,
+     "steps_ratio_to_shortest": 1.03,
+     "seconds_per_layout": 0.38,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1017,
+     "steps_by_kind": {
+      "approach": 1080,
+      "act": 300,
+      "waypoint": 79
+     }
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "mean_steps": 16.72,
+     "steps_ratio_to_shortest": 1.033,
+     "seconds_per_layout": 0.395,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1151,
+     "steps_by_kind": {
+      "approach": 1278,
+      "act": 300,
+      "waypoint": 94
+     }
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "mean_steps": 11.23,
+     "steps_ratio_to_shortest": 1.015,
+     "seconds_per_layout": 0.356,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 735,
+     "steps_by_kind": {
+      "approach": 802,
+      "act": 300,
+      "waypoint": 21
+     }
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "mean_steps": 14.99,
+     "steps_ratio_to_shortest": 1.082,
+     "seconds_per_layout": 0.379,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1076,
+     "steps_by_kind": {
+      "approach": 1063,
+      "act": 300,
+      "waypoint": 136
+     }
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "mean_steps": 18.03,
+     "steps_ratio_to_shortest": 1.078,
+     "seconds_per_layout": 0.401,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1258,
+     "steps_by_kind": {
+      "approach": 1341,
+      "act": 300,
+      "waypoint": 162
+     }
+    },
+    "room6_either": {
+     "success": 1.0,
+     "mean_steps": 10.43,
+     "steps_ratio_to_shortest": 1.031,
+     "seconds_per_layout": 0.408,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 674,
+     "steps_by_kind": {
+      "approach": 724,
+      "act": 300,
+      "waypoint": 19
+     }
+    },
+    "room7_either": {
+     "success": 1.0,
+     "mean_steps": 13.51,
+     "steps_ratio_to_shortest": 1.043,
+     "seconds_per_layout": 0.421,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 889,
+     "steps_by_kind": {
+      "approach": 1000,
+      "act": 300,
+      "waypoint": 51
+     }
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "mean_steps": 15.26,
+     "steps_ratio_to_shortest": 1.055,
+     "seconds_per_layout": 0.436,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1015,
+     "steps_by_kind": {
+      "approach": 1132,
+      "act": 300,
+      "waypoint": 94
+     }
+    },
+    "room6_both": {
+     "success": 1.0,
+     "mean_steps": 15.41,
+     "steps_ratio_to_shortest": 1.083,
+     "seconds_per_layout": 0.244,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1157,
+     "steps_by_kind": {
+      "approach": 1094,
+      "act": 400,
+      "waypoint": 47
+     }
+    },
+    "room7_both": {
+     "success": 1.0,
+     "mean_steps": 19.67,
+     "steps_ratio_to_shortest": 1.111,
+     "seconds_per_layout": 0.273,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1499,
+     "steps_by_kind": {
+      "approach": 1456,
+      "act": 400,
+      "waypoint": 111
+     }
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "mean_steps": 20.74,
+     "steps_ratio_to_shortest": 1.093,
+     "seconds_per_layout": 0.287,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1576,
+     "steps_by_kind": {
+      "approach": 1571,
+      "act": 400,
+      "waypoint": 103
+     }
+    }
+   },
+   "criteria": {
+    "1": true,
+    "2": true,
+    "3": true
+   },
+   "howsoon": {
+    "rank_correlation": 1.0,
+    "pairs": 83710,
+    "predicted_unreachable": 0
+   }
+  },
+  {
+   "seed": 401,
+   "worlds": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.28,
+     "steps_ratio_to_card029": 0.994,
+     "moves": 8139,
+     "seconds_per_layout": 2.922,
+     "seconds_per_layout_max": 5.63,
+     "walking_share_of_planning_time": 0.8972,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 6263,
+      "act": 1500,
+      "waypoint": 376
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 16.38,
+      "moves": 8189,
+      "seconds_per_layout": 1.071
+     },
+     "test_a_yellow": {
+      "success": 1.0,
+      "mean_steps": 10.96,
+      "seconds_per_layout": 1.155,
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.095
+      }
+     },
+     "test_a_purple": {
+      "success": 1.0,
+      "mean_steps": 10.96,
+      "seconds_per_layout": 1.169,
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.096
+      }
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 17.21,
+     "steps_ratio_to_card029": 0.997,
+     "moves": 8603,
+     "seconds_per_layout": 0.366,
+     "seconds_per_layout_max": 1.1,
+     "walking_share_of_planning_time": 0.36,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 6366,
+      "act": 1500,
+      "waypoint": 737
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 17.27,
+      "moves": 8634,
+      "seconds_per_layout": 0.359
+     },
+     "test_b_yellow": {
+      "success": 0.11,
+      "mean_steps": 58.64,
+      "seconds_per_layout": 2.672,
+      "card044": {
+       "success": 0.11,
+       "seconds_per_layout": 2.858
+      }
+     },
+     "test_b_purple": {
+      "success": 0.11,
+      "mean_steps": 58.64,
+      "seconds_per_layout": 3.431,
+      "card044": {
+       "success": 0.11,
+       "seconds_per_layout": 3.642
+      }
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 15.35,
+     "steps_ratio_to_card029": 0.992,
+     "moves": 7673,
+     "seconds_per_layout": 0.417,
+     "seconds_per_layout_max": 1.05,
+     "walking_share_of_planning_time": 0.2841,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 5735,
+      "act": 1500,
+      "waypoint": 438
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 15.42,
+      "moves": 7709,
+      "seconds_per_layout": 0.408
+     }
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.69,
+     "steps_ratio_to_card029": 0.996,
+     "moves": 10843,
+     "seconds_per_layout": 0.308,
+     "seconds_per_layout_max": 0.66,
+     "walking_share_of_planning_time": 0.455,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 8208,
+      "act": 2000,
+      "waypoint": 635
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 21.77,
+      "moves": 10883,
+      "seconds_per_layout": 0.305
+     }
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "mean_steps": 11.18,
+     "steps_ratio_to_shortest": 1.014,
+     "seconds_per_layout": 0.736,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 730,
+     "steps_by_kind": {
+      "approach": 806,
+      "act": 300,
+      "waypoint": 12
+     }
+    },
+    "room7_key": {
+     "success": 1.0,
+     "mean_steps": 14.59,
+     "steps_ratio_to_shortest": 1.03,
+     "seconds_per_layout": 0.988,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1017,
+     "steps_by_kind": {
+      "approach": 1080,
+      "act": 300,
+      "waypoint": 79
+     }
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "mean_steps": 16.72,
+     "steps_ratio_to_shortest": 1.033,
+     "seconds_per_layout": 1.3,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1151,
+     "steps_by_kind": {
+      "approach": 1278,
+      "act": 300,
+      "waypoint": 94
+     }
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "mean_steps": 11.23,
+     "steps_ratio_to_shortest": 1.015,
+     "seconds_per_layout": 0.359,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 735,
+     "steps_by_kind": {
+      "approach": 802,
+      "act": 300,
+      "waypoint": 21
+     }
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "mean_steps": 14.99,
+     "steps_ratio_to_shortest": 1.082,
+     "seconds_per_layout": 0.381,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1076,
+     "steps_by_kind": {
+      "approach": 1063,
+      "act": 300,
+      "waypoint": 136
+     }
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "mean_steps": 18.03,
+     "steps_ratio_to_shortest": 1.078,
+     "seconds_per_layout": 0.407,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1258,
+     "steps_by_kind": {
+      "approach": 1341,
+      "act": 300,
+      "waypoint": 162
+     }
+    },
+    "room6_either": {
+     "success": 1.0,
+     "mean_steps": 10.43,
+     "steps_ratio_to_shortest": 1.031,
+     "seconds_per_layout": 0.417,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 674,
+     "steps_by_kind": {
+      "approach": 724,
+      "act": 300,
+      "waypoint": 19
+     }
+    },
+    "room7_either": {
+     "success": 1.0,
+     "mean_steps": 13.51,
+     "steps_ratio_to_shortest": 1.043,
+     "seconds_per_layout": 0.429,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 889,
+     "steps_by_kind": {
+      "approach": 1000,
+      "act": 300,
+      "waypoint": 51
+     }
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "mean_steps": 15.26,
+     "steps_ratio_to_shortest": 1.055,
+     "seconds_per_layout": 0.439,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1015,
+     "steps_by_kind": {
+      "approach": 1132,
+      "act": 300,
+      "waypoint": 94
+     }
+    },
+    "room6_both": {
+     "success": 1.0,
+     "mean_steps": 15.41,
+     "steps_ratio_to_shortest": 1.083,
+     "seconds_per_layout": 0.243,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1157,
+     "steps_by_kind": {
+      "approach": 1094,
+      "act": 400,
+      "waypoint": 47
+     }
+    },
+    "room7_both": {
+     "success": 1.0,
+     "mean_steps": 19.67,
+     "steps_ratio_to_shortest": 1.111,
+     "seconds_per_layout": 0.272,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1499,
+     "steps_by_kind": {
+      "approach": 1456,
+      "act": 400,
+      "waypoint": 111
+     }
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "mean_steps": 20.74,
+     "steps_ratio_to_shortest": 1.093,
+     "seconds_per_layout": 0.282,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1576,
+     "steps_by_kind": {
+      "approach": 1571,
+      "act": 400,
+      "waypoint": 103
+     }
+    }
+   },
+   "criteria": {
+    "1": true,
+    "2": true,
+    "3": true
+   },
+   "howsoon": {
+    "rank_correlation": 1.0,
+    "pairs": 83710,
+    "predicted_unreachable": 0
+   }
+  },
+  {
+   "seed": 402,
+   "worlds": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.28,
+     "steps_ratio_to_card029": 0.994,
+     "moves": 8139,
+     "seconds_per_layout": 0.37,
+     "seconds_per_layout_max": 1.0,
+     "walking_share_of_planning_time": 0.316,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 6263,
+      "act": 1500,
+      "waypoint": 376
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 16.38,
+      "moves": 8189,
+      "seconds_per_layout": 0.372
+     },
+     "test_a_yellow": {
+      "success": 1.0,
+      "mean_steps": 10.96,
+      "seconds_per_layout": 0.107,
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.091
+      }
+     },
+     "test_a_purple": {
+      "success": 1.0,
+      "mean_steps": 10.96,
+      "seconds_per_layout": 0.11,
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.092
+      }
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 17.21,
+     "steps_ratio_to_card029": 0.997,
+     "moves": 8603,
+     "seconds_per_layout": 0.362,
+     "seconds_per_layout_max": 1.05,
+     "walking_share_of_planning_time": 0.365,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 6366,
+      "act": 1500,
+      "waypoint": 737
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 17.27,
+      "moves": 8634,
+      "seconds_per_layout": 0.365
+     },
+     "test_b_yellow": {
+      "success": 0.16,
+      "mean_steps": 95.19,
+      "seconds_per_layout": 2.753,
+      "card044": {
+       "success": 0.16,
+       "seconds_per_layout": 2.894
+      }
+     },
+     "test_b_purple": {
+      "success": 0.59,
+      "mean_steps": 81.15,
+      "seconds_per_layout": 2.244,
+      "card044": {
+       "success": 0.6,
+       "seconds_per_layout": 2.331
+      }
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 15.35,
+     "steps_ratio_to_card029": 0.992,
+     "moves": 7673,
+     "seconds_per_layout": 0.414,
+     "seconds_per_layout_max": 1.07,
+     "walking_share_of_planning_time": 0.2817,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 5735,
+      "act": 1500,
+      "waypoint": 438
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 15.42,
+      "moves": 7709,
+      "seconds_per_layout": 0.418
+     }
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.69,
+     "steps_ratio_to_card029": 0.996,
+     "moves": 10843,
+     "seconds_per_layout": 0.31,
+     "seconds_per_layout_max": 0.63,
+     "walking_share_of_planning_time": 0.4561,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 8208,
+      "act": 2000,
+      "waypoint": 635
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 21.77,
+      "moves": 10883,
+      "seconds_per_layout": 0.307
+     }
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "mean_steps": 11.18,
+     "steps_ratio_to_shortest": 1.014,
+     "seconds_per_layout": 0.37,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 730,
+     "steps_by_kind": {
+      "approach": 806,
+      "act": 300,
+      "waypoint": 12
+     }
+    },
+    "room7_key": {
+     "success": 1.0,
+     "mean_steps": 14.59,
+     "steps_ratio_to_shortest": 1.03,
+     "seconds_per_layout": 0.385,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1017,
+     "steps_by_kind": {
+      "approach": 1080,
+      "act": 300,
+      "waypoint": 79
+     }
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "mean_steps": 16.72,
+     "steps_ratio_to_shortest": 1.033,
+     "seconds_per_layout": 0.389,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1151,
+     "steps_by_kind": {
+      "approach": 1278,
+      "act": 300,
+      "waypoint": 94
+     }
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "mean_steps": 11.23,
+     "steps_ratio_to_shortest": 1.015,
+     "seconds_per_layout": 0.352,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 735,
+     "steps_by_kind": {
+      "approach": 802,
+      "act": 300,
+      "waypoint": 21
+     }
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "mean_steps": 14.99,
+     "steps_ratio_to_shortest": 1.082,
+     "seconds_per_layout": 0.379,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1076,
+     "steps_by_kind": {
+      "approach": 1063,
+      "act": 300,
+      "waypoint": 136
+     }
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "mean_steps": 18.03,
+     "steps_ratio_to_shortest": 1.078,
+     "seconds_per_layout": 0.393,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1258,
+     "steps_by_kind": {
+      "approach": 1341,
+      "act": 300,
+      "waypoint": 162
+     }
+    },
+    "room6_either": {
+     "success": 1.0,
+     "mean_steps": 10.43,
+     "steps_ratio_to_shortest": 1.031,
+     "seconds_per_layout": 0.413,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 674,
+     "steps_by_kind": {
+      "approach": 724,
+      "act": 300,
+      "waypoint": 19
+     }
+    },
+    "room7_either": {
+     "success": 1.0,
+     "mean_steps": 13.51,
+     "steps_ratio_to_shortest": 1.043,
+     "seconds_per_layout": 0.426,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 889,
+     "steps_by_kind": {
+      "approach": 1000,
+      "act": 300,
+      "waypoint": 51
+     }
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "mean_steps": 15.26,
+     "steps_ratio_to_shortest": 1.055,
+     "seconds_per_layout": 0.436,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1015,
+     "steps_by_kind": {
+      "approach": 1132,
+      "act": 300,
+      "waypoint": 94
+     }
+    },
+    "room6_both": {
+     "success": 1.0,
+     "mean_steps": 15.41,
+     "steps_ratio_to_shortest": 1.083,
+     "seconds_per_layout": 0.246,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1157,
+     "steps_by_kind": {
+      "approach": 1094,
+      "act": 400,
+      "waypoint": 47
+     }
+    },
+    "room7_both": {
+     "success": 1.0,
+     "mean_steps": 19.67,
+     "steps_ratio_to_shortest": 1.111,
+     "seconds_per_layout": 0.277,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1499,
+     "steps_by_kind": {
+      "approach": 1456,
+      "act": 400,
+      "waypoint": 111
+     }
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "mean_steps": 20.74,
+     "steps_ratio_to_shortest": 1.093,
+     "seconds_per_layout": 0.291,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1576,
+     "steps_by_kind": {
+      "approach": 1571,
+      "act": 400,
+      "waypoint": 103
+     }
+    }
+   },
+   "criteria": {
+    "1": true,
+    "2": true,
+    "3": true
+   },
+   "howsoon": {
+    "rank_correlation": 1.0,
+    "pairs": 83710,
+    "predicted_unreachable": 0
+   }
+  },
+  {
+   "seed": 403,
+   "worlds": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.28,
+     "steps_ratio_to_card029": 0.994,
+     "moves": 8139,
+     "seconds_per_layout": 0.373,
+     "seconds_per_layout_max": 1.08,
+     "walking_share_of_planning_time": 0.3128,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 6263,
+      "act": 1500,
+      "waypoint": 376
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 16.38,
+      "moves": 8189,
+      "seconds_per_layout": 0.373
+     },
+     "test_a_yellow": {
+      "success": 1.0,
+      "mean_steps": 10.96,
+      "seconds_per_layout": 0.111,
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.089
+      }
+     },
+     "test_a_purple": {
+      "success": 1.0,
+      "mean_steps": 10.96,
+      "seconds_per_layout": 0.112,
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.091
+      }
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 17.21,
+     "steps_ratio_to_card029": 0.997,
+     "moves": 8603,
+     "seconds_per_layout": 0.363,
+     "seconds_per_layout_max": 1.04,
+     "walking_share_of_planning_time": 0.3671,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 6366,
+      "act": 1500,
+      "waypoint": 737
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 17.27,
+      "moves": 8634,
+      "seconds_per_layout": 0.36
+     },
+     "test_b_yellow": {
+      "success": 0.08,
+      "mean_steps": 73.75,
+      "seconds_per_layout": 12.95,
+      "card044": {
+       "success": 0.08,
+       "seconds_per_layout": 13.333
+      }
+     },
+     "test_b_purple": {
+      "success": 0.09,
+      "mean_steps": 84.78,
+      "seconds_per_layout": 20.55,
+      "card044": {
+       "success": 0.09,
+       "seconds_per_layout": 11.941
+      }
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 15.35,
+     "steps_ratio_to_card029": 0.992,
+     "moves": 7673,
+     "seconds_per_layout": 0.422,
+     "seconds_per_layout_max": 1.2,
+     "walking_share_of_planning_time": 0.2878,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 5735,
+      "act": 1500,
+      "waypoint": 438
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 15.42,
+      "moves": 7709,
+      "seconds_per_layout": 0.407
+     }
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.69,
+     "steps_ratio_to_card029": 0.996,
+     "moves": 10843,
+     "seconds_per_layout": 0.308,
+     "seconds_per_layout_max": 0.68,
+     "walking_share_of_planning_time": 0.4556,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 8208,
+      "act": 2000,
+      "waypoint": 635
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 21.77,
+      "moves": 10883,
+      "seconds_per_layout": 0.308
+     }
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "mean_steps": 11.18,
+     "steps_ratio_to_shortest": 1.014,
+     "seconds_per_layout": 0.361,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 730,
+     "steps_by_kind": {
+      "approach": 806,
+      "act": 300,
+      "waypoint": 12
+     }
+    },
+    "room7_key": {
+     "success": 1.0,
+     "mean_steps": 14.59,
+     "steps_ratio_to_shortest": 1.03,
+     "seconds_per_layout": 0.389,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1017,
+     "steps_by_kind": {
+      "approach": 1080,
+      "act": 300,
+      "waypoint": 79
+     }
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "mean_steps": 16.72,
+     "steps_ratio_to_shortest": 1.033,
+     "seconds_per_layout": 0.398,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1151,
+     "steps_by_kind": {
+      "approach": 1278,
+      "act": 300,
+      "waypoint": 94
+     }
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "mean_steps": 11.23,
+     "steps_ratio_to_shortest": 1.015,
+     "seconds_per_layout": 0.358,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 735,
+     "steps_by_kind": {
+      "approach": 802,
+      "act": 300,
+      "waypoint": 21
+     }
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "mean_steps": 14.99,
+     "steps_ratio_to_shortest": 1.082,
+     "seconds_per_layout": 0.378,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1076,
+     "steps_by_kind": {
+      "approach": 1063,
+      "act": 300,
+      "waypoint": 136
+     }
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "mean_steps": 18.03,
+     "steps_ratio_to_shortest": 1.078,
+     "seconds_per_layout": 0.403,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1258,
+     "steps_by_kind": {
+      "approach": 1341,
+      "act": 300,
+      "waypoint": 162
+     }
+    },
+    "room6_either": {
+     "success": 1.0,
+     "mean_steps": 10.43,
+     "steps_ratio_to_shortest": 1.031,
+     "seconds_per_layout": 0.409,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 674,
+     "steps_by_kind": {
+      "approach": 724,
+      "act": 300,
+      "waypoint": 19
+     }
+    },
+    "room7_either": {
+     "success": 1.0,
+     "mean_steps": 13.51,
+     "steps_ratio_to_shortest": 1.043,
+     "seconds_per_layout": 0.417,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 889,
+     "steps_by_kind": {
+      "approach": 1000,
+      "act": 300,
+      "waypoint": 51
+     }
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "mean_steps": 15.26,
+     "steps_ratio_to_shortest": 1.055,
+     "seconds_per_layout": 0.435,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1015,
+     "steps_by_kind": {
+      "approach": 1132,
+      "act": 300,
+      "waypoint": 94
+     }
+    },
+    "room6_both": {
+     "success": 1.0,
+     "mean_steps": 15.41,
+     "steps_ratio_to_shortest": 1.083,
+     "seconds_per_layout": 0.247,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1157,
+     "steps_by_kind": {
+      "approach": 1094,
+      "act": 400,
+      "waypoint": 47
+     }
+    },
+    "room7_both": {
+     "success": 1.0,
+     "mean_steps": 19.67,
+     "steps_ratio_to_shortest": 1.111,
+     "seconds_per_layout": 0.276,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1499,
+     "steps_by_kind": {
+      "approach": 1456,
+      "act": 400,
+      "waypoint": 111
+     }
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "mean_steps": 20.74,
+     "steps_ratio_to_shortest": 1.093,
+     "seconds_per_layout": 0.286,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1576,
+     "steps_by_kind": {
+      "approach": 1571,
+      "act": 400,
+      "waypoint": 103
+     }
+    }
+   },
+   "criteria": {
+    "1": true,
+    "2": true,
+    "3": true
+   },
+   "howsoon": {
+    "rank_correlation": 1.0,
+    "pairs": 83710,
+    "predicted_unreachable": 0
+   }
+  },
+  {
+   "seed": 404,
+   "worlds": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.28,
+     "steps_ratio_to_card029": 0.994,
+     "moves": 8139,
+     "seconds_per_layout": 2.953,
+     "seconds_per_layout_max": 6.11,
+     "walking_share_of_planning_time": 0.8996,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 6263,
+      "act": 1500,
+      "waypoint": 376
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 16.38,
+      "moves": 8189,
+      "seconds_per_layout": 1.087
+     },
+     "test_a_yellow": {
+      "success": 1.0,
+      "mean_steps": 10.96,
+      "seconds_per_layout": 1.167,
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.094
+      }
+     },
+     "test_a_purple": {
+      "success": 1.0,
+      "mean_steps": 10.96,
+      "seconds_per_layout": 1.168,
+      "card044": {
+       "success": 1.0,
+       "seconds_per_layout": 0.091
+      }
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 17.21,
+     "steps_ratio_to_card029": 0.997,
+     "moves": 8603,
+     "seconds_per_layout": 0.365,
+     "seconds_per_layout_max": 0.98,
+     "walking_share_of_planning_time": 0.3641,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 6366,
+      "act": 1500,
+      "waypoint": 737
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 17.27,
+      "moves": 8634,
+      "seconds_per_layout": 0.361
+     },
+     "test_b_yellow": {
+      "success": 0.11,
+      "mean_steps": 99.0,
+      "seconds_per_layout": 2.613,
+      "card044": {
+       "success": 0.11,
+       "seconds_per_layout": 2.848
+      }
+     },
+     "test_b_purple": {
+      "success": 0.74,
+      "mean_steps": 51.01,
+      "seconds_per_layout": 1.837,
+      "card044": {
+       "success": 0.74,
+       "seconds_per_layout": 1.927
+      }
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 15.35,
+     "steps_ratio_to_card029": 0.992,
+     "moves": 7673,
+     "seconds_per_layout": 0.417,
+     "seconds_per_layout_max": 0.98,
+     "walking_share_of_planning_time": 0.2835,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 5735,
+      "act": 1500,
+      "waypoint": 438
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 15.42,
+      "moves": 7709,
+      "seconds_per_layout": 0.416
+     }
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.69,
+     "steps_ratio_to_card029": 0.996,
+     "moves": 10843,
+     "seconds_per_layout": 0.308,
+     "seconds_per_layout_max": 0.67,
+     "walking_share_of_planning_time": 0.4555,
+     "imagined_moves_per_move": 0.0,
+     "steps_by_kind": {
+      "approach": 8208,
+      "act": 2000,
+      "waypoint": 635
+     },
+     "card044": {
+      "success": 1.0,
+      "mean_steps": 21.77,
+      "moves": 10883,
+      "seconds_per_layout": 0.307
+     }
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "mean_steps": 11.18,
+     "steps_ratio_to_shortest": 1.014,
+     "seconds_per_layout": 0.722,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 730,
+     "steps_by_kind": {
+      "approach": 806,
+      "act": 300,
+      "waypoint": 12
+     }
+    },
+    "room7_key": {
+     "success": 1.0,
+     "mean_steps": 14.59,
+     "steps_ratio_to_shortest": 1.03,
+     "seconds_per_layout": 1.016,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1017,
+     "steps_by_kind": {
+      "approach": 1080,
+      "act": 300,
+      "waypoint": 79
+     }
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "mean_steps": 16.72,
+     "steps_ratio_to_shortest": 1.033,
+     "seconds_per_layout": 1.275,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1151,
+     "steps_by_kind": {
+      "approach": 1278,
+      "act": 300,
+      "waypoint": 94
+     }
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "mean_steps": 11.23,
+     "steps_ratio_to_shortest": 1.015,
+     "seconds_per_layout": 0.352,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 735,
+     "steps_by_kind": {
+      "approach": 802,
+      "act": 300,
+      "waypoint": 21
+     }
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "mean_steps": 14.99,
+     "steps_ratio_to_shortest": 1.082,
+     "seconds_per_layout": 0.381,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1076,
+     "steps_by_kind": {
+      "approach": 1063,
+      "act": 300,
+      "waypoint": 136
+     }
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "mean_steps": 18.03,
+     "steps_ratio_to_shortest": 1.078,
+     "seconds_per_layout": 0.4,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1258,
+     "steps_by_kind": {
+      "approach": 1341,
+      "act": 300,
+      "waypoint": 162
+     }
+    },
+    "room6_either": {
+     "success": 1.0,
+     "mean_steps": 10.43,
+     "steps_ratio_to_shortest": 1.031,
+     "seconds_per_layout": 0.405,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 674,
+     "steps_by_kind": {
+      "approach": 724,
+      "act": 300,
+      "waypoint": 19
+     }
+    },
+    "room7_either": {
+     "success": 1.0,
+     "mean_steps": 13.51,
+     "steps_ratio_to_shortest": 1.043,
+     "seconds_per_layout": 0.426,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 889,
+     "steps_by_kind": {
+      "approach": 1000,
+      "act": 300,
+      "waypoint": 51
+     }
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "mean_steps": 15.26,
+     "steps_ratio_to_shortest": 1.055,
+     "seconds_per_layout": 0.437,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1015,
+     "steps_by_kind": {
+      "approach": 1132,
+      "act": 300,
+      "waypoint": 94
+     }
+    },
+    "room6_both": {
+     "success": 1.0,
+     "mean_steps": 15.41,
+     "steps_ratio_to_shortest": 1.083,
+     "seconds_per_layout": 0.248,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1157,
+     "steps_by_kind": {
+      "approach": 1094,
+      "act": 400,
+      "waypoint": 47
+     }
+    },
+    "room7_both": {
+     "success": 1.0,
+     "mean_steps": 19.67,
+     "steps_ratio_to_shortest": 1.111,
+     "seconds_per_layout": 0.277,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1499,
+     "steps_by_kind": {
+      "approach": 1456,
+      "act": 400,
+      "waypoint": 111
+     }
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "mean_steps": 20.74,
+     "steps_ratio_to_shortest": 1.093,
+     "seconds_per_layout": 0.289,
+     "imagined_moves_per_move": 0.0,
+     "steps_through_door_conditions": 1576,
+     "steps_by_kind": {
+      "approach": 1571,
+      "act": 400,
+      "waypoint": 103
+     }
+    }
+   },
+   "criteria": {
+    "1": true,
+    "2": true,
+    "3": true
+   },
+   "howsoon": {
+    "rank_correlation": 1.0,
+    "pairs": 83710,
+    "predicted_unreachable": 0
+   }
+  }
+ ],
+ "gate": {
+  "q": {
+   "exact_view_and_trained": {
+    "q_seconds": 25.9,
+    "q_final_loss": 0.000594,
+    "V_exact_share_view": 1.0,
+    "V_largest_error_view": 0,
+    "Q_min_largest_error_view": 0.483,
+    "V_exact_share_trained": 1.0,
+    "V_largest_error_trained": 0,
+    "Q_min_largest_error_trained": 0.483
+   },
+   "held_out": {
+    "held_0.05": {
+     "held_out_placements": 108,
+     "of": 2500,
+     "final_loss": 0.000355,
+     "V_exact_share_held_out": 1.0,
+     "V_within_one_held_out": 1.0,
+     "mean_error_held_out": 0.0478,
+     "V_exact_share_trained": 1.0,
+     "mean_error_trained": 0.0446
+    },
+    "held_0.2": {
+     "held_out_placements": 497,
+     "of": 2500,
+     "final_loss": 0.028462,
+     "V_exact_share_held_out": 0.3038,
+     "V_within_one_held_out": 0.7988,
+     "mean_error_held_out": 1.0171,
+     "V_exact_share_trained": 0.3012,
+     "mean_error_trained": 1.0324
+    }
+   }
+  },
+  "route_check": {
+   "key": {
+    "pairs": 89084,
+    "agreement": 1.0,
+    "clear_through": 35909,
+    "clear_stopped": 0,
+    "blocked_through": 0,
+    "blocked_stopped": 53175,
+    "through_in_V_moves": 1.0
+   },
+   "switch": {
+    "pairs": 89147,
+    "agreement": 1.0,
+    "clear_through": 35887,
+    "clear_stopped": 0,
+    "blocked_through": 0,
+    "blocked_stopped": 53260,
+    "through_in_V_moves": 1.0
+   },
+   "either": {
+    "pairs": 89144,
+    "agreement": 1.0,
+    "clear_through": 35968,
+    "clear_stopped": 0,
+    "blocked_through": 0,
+    "blocked_stopped": 53176,
+    "through_in_V_moves": 1.0
+   },
+   "both": {
+    "pairs": 89140,
+    "agreement": 1.0,
+    "clear_through": 36099,
+    "clear_stopped": 0,
+    "blocked_through": 0,
+    "blocked_stopped": 53041,
+    "through_in_V_moves": 1.0
+   }
+  },
+  "shakedown_399_045": {
+   "familiar": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 15.93,
+     "seconds_per_layout": 0.694,
+     "imagined_moves_per_move": 0.0
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 16.67,
+     "seconds_per_layout": 0.709,
+     "imagined_moves_per_move": 0.0
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 14.4,
+     "seconds_per_layout": 0.714,
+     "imagined_moves_per_move": 0.0
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.0,
+     "seconds_per_layout": 0.537,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.003
+    },
+    "room7_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.016
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.062
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.017
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.053
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.077
+    },
+    "room6_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.036
+    },
+    "room7_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.042
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.059
+    },
+    "room6_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.091
+    },
+    "room7_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.132
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.114
+    }
+   }
+  },
+  "shakedown_399_044": {
+   "familiar": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 16.07,
+     "seconds_per_layout": 0.608,
+     "imagined_moves_per_move": 800.158
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 16.67,
+     "seconds_per_layout": 0.643,
+     "imagined_moves_per_move": 852.62
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 14.53,
+     "seconds_per_layout": 0.636,
+     "imagined_moves_per_move": 775.016
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.0,
+     "seconds_per_layout": 0.415,
+     "imagined_moves_per_move": 868.117
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.003
+    },
+    "room7_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.016
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.16
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.017
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.053
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.065
+    },
+    "room6_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.029
+    },
+    "room7_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.036
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.059
+    },
+    "room6_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.091
+    },
+    "room7_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.132
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.117
+    }
+   }
+  },
+  "shakedown_399_exact": {
+   "familiar": {
+    "key": {
+     "success": 1.0,
+     "mean_steps": 15.93,
+     "seconds_per_layout": 0.609,
+     "imagined_moves_per_move": 0.0
+    },
+    "switch": {
+     "success": 1.0,
+     "mean_steps": 16.67,
+     "seconds_per_layout": 0.642,
+     "imagined_moves_per_move": 0.0
+    },
+    "either": {
+     "success": 1.0,
+     "mean_steps": 14.4,
+     "seconds_per_layout": 0.664,
+     "imagined_moves_per_move": 0.0
+    },
+    "both": {
+     "success": 1.0,
+     "mean_steps": 21.0,
+     "seconds_per_layout": 0.42,
+     "imagined_moves_per_move": 0.0
+    }
+   },
+   "unseen": {
+    "room6_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.003
+    },
+    "room7_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.016
+    },
+    "mirror8_key": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.062
+    },
+    "room6_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.017
+    },
+    "room7_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.053
+    },
+    "mirror8_switch": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.077
+    },
+    "room6_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.036
+    },
+    "room7_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.042
+    },
+    "mirror8_either": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.059
+    },
+    "room6_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.091
+    },
+    "room7_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.132
+    },
+    "mirror8_both": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.114
+    }
+   }
+  },
+  "floor_random_399": {
+   "key": 0.1333,
+   "switch": 0.1,
+   "either": 0.1333,
+   "both": 0.0667
+  }
+ }
+}

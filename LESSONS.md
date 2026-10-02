@@ -188,7 +188,13 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   else: adding colour weight fixed doors (held-out −0.73 → −0.16) and hurt
   everything else (−0.010 → −0.040). Recall in two levels, equal codes for
   the same thing and vectors for similar things, matched the counted
-  planner in all four worlds (cards 042–043). *Confirmed.*
+  planner in all four worlds (cards 042–043). But the levels must be
+  mixed, not switched: when a thing's own tries replaced similar things,
+  one failed toggle (switch off) made a new door never openable, and the
+  new-colour switch tests fell from 30% to 17%. Judging every remembered
+  situation by the mixed prediction gave 40%, with the switch turned on by
+  plan (cards 046–047). A failed try rules out its situation, not the
+  thing. *Confirmed.*
 
 ## Process
 
