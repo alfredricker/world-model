@@ -1,0 +1,140 @@
+{
+ "note": "Card 048: compact numbers from runs/048_seed40{0..4}.json (main run), runs/048_shakedown_399.json and runs/048_layouts.pkl (gate); tools/card048/chain.py",
+ "seeds": {
+  "400": {
+   "one_door": {
+    "layouts": 100,
+    "success": 0.97,
+    "steps_ratio_to_shortest": 1.0973,
+    "random_share": 0.3115,
+    "predictions_wrong": 220,
+    "seconds_per_layout": 0.592,
+    "planned_only_successes": 90,
+    "layouts_door_A_opened": null
+   },
+   "two_doors": {
+    "layouts": 30,
+    "success": 0.0,
+    "steps_ratio_to_shortest": null,
+    "random_share": 0.914,
+    "predictions_wrong": 825,
+    "seconds_per_layout": 9.097,
+    "planned_only_successes": 0,
+    "layouts_door_A_opened": 5
+   },
+   "criterion_1": true
+  },
+  "401": {
+   "one_door": {
+    "layouts": 100,
+    "success": 0.46,
+    "steps_ratio_to_shortest": 2.3269,
+    "random_share": 0.8651,
+    "predictions_wrong": 1711,
+    "seconds_per_layout": 5.205,
+    "planned_only_successes": 35,
+    "layouts_door_A_opened": null
+   },
+   "two_doors": {
+    "layouts": 30,
+    "success": 0.0,
+    "steps_ratio_to_shortest": null,
+    "random_share": 0.3642,
+    "predictions_wrong": 3872,
+    "seconds_per_layout": 13.41,
+    "planned_only_successes": 0,
+    "layouts_door_A_opened": 4
+   },
+   "criterion_1": false
+  },
+  "402": {
+   "one_door": {
+    "layouts": 100,
+    "success": 0.97,
+    "steps_ratio_to_shortest": 1.0973,
+    "random_share": 0.3115,
+    "predictions_wrong": 220,
+    "seconds_per_layout": 0.593,
+    "planned_only_successes": 90,
+    "layouts_door_A_opened": null
+   },
+   "two_doors": {
+    "layouts": 30,
+    "success": 0.0333,
+    "steps_ratio_to_shortest": 2.84,
+    "random_share": 0.91,
+    "predictions_wrong": 836,
+    "seconds_per_layout": 9.112,
+    "planned_only_successes": 0,
+    "layouts_door_A_opened": 5
+   },
+   "criterion_1": true
+  },
+  "403": {
+   "one_door": {
+    "layouts": 100,
+    "success": 0.97,
+    "steps_ratio_to_shortest": 1.0973,
+    "random_share": 0.3115,
+    "predictions_wrong": 220,
+    "seconds_per_layout": 0.6,
+    "planned_only_successes": 90,
+    "layouts_door_A_opened": null
+   },
+   "two_doors": {
+    "layouts": 30,
+    "success": 0.0333,
+    "steps_ratio_to_shortest": 2.84,
+    "random_share": 0.4588,
+    "predictions_wrong": 3258,
+    "seconds_per_layout": 14.025,
+    "planned_only_successes": 0,
+    "layouts_door_A_opened": 4
+   },
+   "criterion_1": true
+  },
+  "404": {
+   "one_door": {
+    "layouts": 100,
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "predictions_wrong": 208,
+    "seconds_per_layout": 0.553,
+    "planned_only_successes": 90,
+    "layouts_door_A_opened": null
+   },
+   "two_doors": {
+    "layouts": 30,
+    "success": 0.0,
+    "steps_ratio_to_shortest": null,
+    "random_share": 0.0333,
+    "predictions_wrong": 5695,
+    "seconds_per_layout": 18.792,
+    "planned_only_successes": 0,
+    "layouts_door_A_opened": 0
+   },
+   "criterion_1": true
+  }
+ },
+ "gate": {
+  "random_actions_success": {
+   "one_door": 0.0015,
+   "two_doors": 0.0
+  },
+  "shortest_mean": {
+   "one_door": 17.52,
+   "two_doors": 37.09
+  },
+  "shakedown_399": {
+   "one_door": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.0941
+   },
+   "two_doors": {
+    "success": 0.0,
+    "random_share": 0.928
+   }
+  }
+ }
+}

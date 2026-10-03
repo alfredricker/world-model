@@ -13,22 +13,22 @@ Overwritten each session. At most 40 lines.
   imagined action sequences (GOAL.md P21). User, 2026-10-01: codes for
   identity, vectors for similarity; fixes must be general principles;
   tokenize everything (tiles, the held thing), optimize recall later.
-- **Next decision:** the next card, with the user. Discussed 2026-10-01
-  toward Crafter: partial view and a map first (chained rooms), then an
-  inventory with counts and goals as conditions on the state. Open
-  within MiniGrid: new colours fail where the encoder puts them far from
-  known doors (similarity 0.005–0.021; transfer, paused by the user);
-  chance outcomes (an action that works sometimes reads as never).
+- **Next decision:** card 048 (done, pass 4 of 5; proposed keep, a
+  measurement). Version 8 in three chained rooms (13 x 8, inside its 6-tile
+  placement range): one locked door 97–98% by plan in four seeds (seed
+  401: 46%); two doors in a row 2 of 150. Both failures come from recall's
+  view part: the planner splices the hand in imagination (key A vanishes,
+  so no key lies in view) and new combinations in view sway predictions.
+  Next cards proposed: hand changes imagined, not spliced (planner); what
+  in view matters, per action (recall, the relations direction).
 - **Recent cards:**
+  - [048](experiments/048-chained-rooms/card.md): pass, keep proposed;
   - [047](experiments/047-situations-from-both-levels/card.md): pass,
     keep (version 8);
-  - [046](experiments/046-openable-by-identity/card.md): pass, revise
-    (the user): one failed try made a new-colour door never openable;
-  - [045](experiments/045-movement-through-conditions/card.md) (walking
-    through conditions, no imagined step): pass, revise (the user): its
-    filter worked around recall's similarity-only "openable";
-  - [044](experiments/044-state-as-tokens/card.md): pass, keep;
-  - [043](experiments/043-consistent-hypotheticals/card.md): pass, keep.
+  - [046](experiments/046-openable-by-identity/card.md): pass, revise;
+  - [045](experiments/045-movement-through-conditions/card.md): pass,
+    revise (walking through conditions);
+  - [044](experiments/044-state-as-tokens/card.md): pass, keep.
 - **Open in version 8:** the same-thing level reads all four codebooks;
   conjunctions are still checked in spliced situations; no relations;
   routes for a small fixed world; 0.42–0.72 s per layout (version 5:
