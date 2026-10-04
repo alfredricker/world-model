@@ -1120,6 +1120,58 @@ parts stay continuous vectors under the codes, and the relation term is a
 constraint between two things in one part, never a learned pair table
 (LESSONS, card 040).
 
+**Sameness from three sources (added 2026-10-04, with the user, after
+steps 2a–2h).** Tiles that must share a code, or lie close, need a
+reason to. The revised plan rests on three sources, each answering a
+different question:
+- **Continuity says what is the same object.** One cell's renderings a
+  moment apart are the same thing, whatever their effects (Földiák 1991;
+  Wiskott and Sejnowski 2002; Wood and Wood 2018: newborn chicks form
+  invariant object recognition only from temporally smooth experience).
+  Its copies under nuisance should share a code. This needs nuisance
+  that changes while the agent watches (R1); a per-episode tint never
+  shows one tile under two tints, so nothing could learn it (step 2h).
+- **Effects and conditions say which differences matter.** Tiles that
+  meet the same conditions and give the same effects are equivalent
+  (above; acquired equivalence, Honey and Hall 1989); tiles whose
+  outcomes differ must be told apart (acquired distinctiveness,
+  Goldstone 1994). This acts in the parts each action reads (card 049's
+  admitted conditions), not everywhere: a red and a blue ball become
+  close where pick up looks and stay distinct elsewhere, so codes remain
+  names and kinds form on top. Step 2g's effect term pulled everywhere
+  and merged tiles (15 tuples for 30).
+- **Errors say when a new distinction is needed.** An error recall makes
+  is answered by admitting an existing part that explains it
+  (attention) or, when none does, by pushing the tiles apart
+  (perception), as in Drescher's schema mechanism (1991), whose
+  synthetic items are made when no existing item explains a result.
+The gap these close: effects alone cannot tell nuisance from a rarely
+relevant difference until a try reveals it; a tint change and a key's
+colour change leave pick up, drop and walking alike, and only a locked
+door separates them. The pixel anchor above was replaced by uniformity
+with a fixed codebook (step 2g); reconstruction is no longer the term
+that keeps what has not mattered yet.
+
+**Rare effects: starts the agent could reach, as contrasts (added
+2026-10-04, with the user).** The events that separate relevant from
+irrelevant differences are rare in random play (0.018% unlocks in
+chained rooms, LESSONS). Play starts begin episodes in states the agent
+could reach itself but rarely does (CHARTER's declared curriculum):
+- **Now:** each rare event with its near miss, so that two tries differ
+  only in the condition that matters: the door's key and another key at
+  a locked door; the switch on and off at a switch door; a door locked
+  and unlocked with the key in hand; an object held next to the one to
+  place it beside; states just before each mission succeeds (also R3's
+  goal frames).
+- **Later (BabyAI, Crafter):** checkpoints from the agent's own play.
+  As in Go-Explore (Ecoffet et al. 2021), states the agent reached are
+  archived in cells (here the code tuples of front, held and the
+  admitted view conditions) and episodes restart from rare cells and
+  from cells where recall errs, so every start is reachable by
+  construction and the curriculum follows the same errors the encoder
+  learns from. Starts near goals, moving outward, cover goal-directed
+  cases (reverse curricula, Florensa et al. 2017).
+
 ## Appendix B: the longer plan
 
 **The interface stays fixed.** Tokens, each a what and a where (card 044),
