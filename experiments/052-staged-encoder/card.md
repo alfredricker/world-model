@@ -366,14 +366,13 @@ baselines.
   the encoder's vectors before quantisation, and predicts outcomes almost
   perfectly from them. Its loss is near its floor, so it gives little
   gradient, and nothing in it depends on which code a vector falls in.
-  The codes still flip at the codebook's boundaries. The tiles that
-  change code are mostly ones whose outcomes recall still predicts the
-  same.
+  The codes still flip at the codebook's boundaries. Whether those flips
+  change recall's predictions is not measured yet (option 2).
 - **Decision (the declared rule):** the progress criterion is not met,
   so this term alone is not the fix for drift. The result points to
   option 2, which the user named next: measure drift by recall's
-  predictions, since the codes change while what recall predicts from
-  the vectors does not. The user decides.
+  predictions, with memory keyed by each checkpoint's codes. The user
+  decides.
 
 ## 3. Dependencies
 
