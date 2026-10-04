@@ -405,6 +405,45 @@ Criteria, over the last 10 checkpoints:
 - Otherwise reported as not met, with how much of the code flips change
   predictions.
 
+### Step 2c result: met as declared, but the probe does not test colour
+
+Seed 399, 40 checkpoints, 24 minutes (`runs/052/predflip_399.json`,
+`runs/052/predflip.sh`). Over the last 10 checkpoints:
+
+| Measure | Recall by codes | Recall by vectors |
+|---|---|---|
+| Probe tiles whose code tuple changed | 8.7–17.1% (mean 12.6) | – |
+| Probe tries whose prediction changed | 0.0–0.3% (mean 0.17) | 0.0–0.2% (mean 0.07) |
+| Accuracy on the 1,200 probe tries | 98.8–99.0% | 99.8–99.9% |
+| Probe tries with no memory try on their key | 0.0–0.2% | – |
+
+References: the trivial baseline (each action's most frequent outcome)
+scores 50%. The "upper bound" (memory keyed by the evaluator's exact
+identities) scores 97.5%: it is not an upper bound, since codes group
+tiles and so answer tries whose exact pair of tiles memory never saw.
+
+- **By the declared rule, gate 2 by predictions is met.** Prediction
+  flips stay below 1% from the third checkpoint on (1.5% at checkpoint
+  3, at most 0.8% after), and accuracy is within 5 points of the
+  reference.
+- **But the test is too easy to count.** Accuracy was 99.5% at the first
+  checkpoint, and the codes here are collapsed: 19–22 tuples for 84
+  identities, part 0 uses 1 code, part 2 uses 2 (step 2b's run of the
+  same arm had 37; GPU non-determinism). Counting the probe tries by what
+  they hold explains it. Almost every outcome depends only on the kind of
+  tile (a key, ball or box in front is picked up; a switch, box or door
+  toggles; a wall does nothing). Only 2 of 1,200 probe tries are a held
+  key at a locked door of its colour, and no try at all contrasts a
+  matching key with a non-matching one at a locked door. Random play
+  almost never produces those tries, and they are the ones whose
+  outcome depends on colour.
+- So this shows that code flips rarely change kind-level predictions. It
+  does not show that colour-level predictions are stable, which is what
+  the hand-off needs. **Proposed (not run): revise** the probe with step
+  1's play starts (the agent facing a locked door or switch door,
+  holding a key of the same or another colour), stratified per kind and
+  colour, and rerun this measurement. The user decides.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

@@ -66,3 +66,12 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   prediction from the vectors is near perfect (-0.02 to -0.04 nats vs
   -0.72 shuffled), so the term has little left to teach, and it does
   not act on code boundaries.
+- Step 2c (option 2, approved): drift by recall's predictions on step
+  2b's plain arm at mu 0.1. Prediction flips 0.0-0.3% by codes, 0.0-0.2%
+  by vectors, accuracy 98.9% / 99.8%, while 9-17% of probe tiles change
+  code. Met as declared, but the probe (random play) holds almost only
+  kind-level outcomes: 2 of 1,200 tries are a key at a locked door of
+  its colour, none a mismatched key there. Accuracy was 99.5% at the
+  first checkpoint and the codes were collapsed (19-22 tuples). Proposed:
+  rebuild the probe with play starts, stratified by kind and colour, and
+  rerun. Not run; the user decides.
