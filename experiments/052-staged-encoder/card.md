@@ -250,6 +250,51 @@ Numbers: `runs/052/gate1.json` (not in git; summarised here).
     0.0077 per channel, under the noise's 0.0125); it still separates
     over a tile's pixels, but it is the first place codes may merge.
 
+### Step 2a (the encoder online, and its code drift): gate 2 not met; revise (Claude, overnight)
+
+Built: `tools/card052/drift.py`. Version 8's objective (rebuild,
+codebook and commitment, adaptive pair term on tiles an action changed in
+place), trained online on the generator's tiles: one update of 256
+tiles from a buffer of the last 20,000 every 10 steps of random play.
+Drift is the share of a fixed probe set's tiles (stratified, up to 40 per
+identity, 84 identities, rendered once with nuisance) whose code tuple
+changes between checkpoints of 2,000 updates. Seed 399 only; 40
+checkpoints (80,000 updates, 800,000 steps of play) each.
+
+| Configuration | Flip rate, last 5 checkpoints | Tuples for 84 identities | Identities split / tuples shared |
+|---|---|---|---|
+| Plain, constant rate | 24–33% | 23 (collapsed: parts 0 and 2 use one code) | 29 / 17 |
+| Codebooks as moving averages, restarts every 2,000 | 33–46% | 55 | 34 / 10 |
+| Moving averages, rate × 0.9 per checkpoint | 42–82% | 51 | 25 / 17 |
+| Plain, rate × 0.9 per checkpoint (last rate 2e-5) | 10–16% | 13 (collapsed) | 46 / 13 |
+
+Also tried and dropped: no re-seeding at first (6–9 tuples); restarts
+every 250 updates (nearly every tile flipped every checkpoint).
+
+What it shows:
+- With version 8's objective the codes do not settle online. Most flips
+  are in one part, whose code boundaries cut through dense clusters of
+  noisy, tinted tiles, so even tiny updates move many tiles across them.
+- Where flips fall (plain, decaying rate), the codes have collapsed, and
+  a third to a half of the identities are split by nuisance. Low drift
+  there means nothing.
+- The card's rule says the card stops if the rates never settle. That
+  rule was written for the hand-off; this result is about version 8's
+  pixel objective under nuisance, which the card already expected to be
+  a weak anchor. So the decision proposed is **revise**, not stop.
+
+Options for the user (none taken overnight):
+1. Run gate 2 with step 3's objective (interaction terms, pixels as a
+   weak anchor) instead of version 8's: what must settle is the encoder
+   that will be used.
+2. Measure drift by recall's predictions (the card's second rate), not
+   raw code tuples: a flip that changes no prediction does not hurt
+   memory.
+3. Remove the tint before encoding (subtract the floor's colour, which
+   the agent sees every step): a declared prior about lighting.
+4. Fewer codes per part, or a hysteresis on reading codes (a tile keeps
+   its code until clearly past the boundary).
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

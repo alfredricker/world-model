@@ -222,6 +222,17 @@ class IndexKind(OWN.OwnKind):
         if getattr(self, "ways_keep", None) is not None:
             self.ways_cache = self.ways_keep
 
+    def sub_dists(self, idx):
+        """Version 8's key distances (card 039: vectors plus chamfer over the view sets) among the keys idx only;
+        card 039's key_dists computed them against every stored key and kept the columns of idx."""
+        D = self.D
+        A = self.X[idx]
+        out = VP.wl1(A, A, self.lam[:2 * D])
+        sids = [int(self.keys[t][2]) for t in idx]
+        for r, sid in enumerate(sids):
+            out[r] += SP.chamfer_to(self.S, sid, sids, self.lam[2 * D:])
+        return out
+
     def ways(self, c):
         keep = getattr(self, "ways_keep", None)
         if keep is None:
@@ -241,7 +252,7 @@ class IndexKind(OWN.OwnKind):
             A = self.after_mat(c, p)[idx]
             B, O = self.before_rows(idx, p), self.other_rows(idx, p, c)
             share = self.counts[idx, c] / self.counts[idx].sum(1)
-            logw = -self.key_dists(idx) + np.log(share)[None]
+            logw = -self.sub_dists(idx) + np.log(share)[None]
             logw[grp[:, None] == grp[None]] = -np.inf
             wgt = np.exp(logw - logw.max(1, keepdims=True))
             wgt /= wgt.sum(1, keepdims=True)

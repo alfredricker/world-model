@@ -31,6 +31,7 @@ import generator as GN                                 # noqa: E402
 
 fn = torch.nn.functional
 K, M, DIM = 4, 8, 8
+DECAY = 1.0
 
 
 class Stream:
@@ -196,6 +197,8 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         pairs.extend(p)
         steps += 1
     for ck in range(checkpoints):
+        for g in enc.opt.param_groups:                 # the schedule: plasticity decays (DECAY = 1: constant)
+            g["lr"] = 1e-3 * DECAY ** ck
         for _ in range(upd_per_ck):
             for _ in range(every):
                 t, p = stream.step()
@@ -228,6 +231,8 @@ def main():
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     Path(get("--out", "runs/052/drift.json")).parent.mkdir(parents=True, exist_ok=True)
+    global DECAY
+    DECAY = float(get("--decay", "1"))
     Encoder.EMA = float(get("--ema", "0"))
     Encoder.RESTART_EVERY = int(get("--restart", "250"))
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),
