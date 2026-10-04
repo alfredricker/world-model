@@ -338,6 +338,43 @@ Criteria, per arm, over the last 10 checkpoints:
   leave-one-out log-likelihood with outcomes shuffled across events
   differs from the unshuffled one; reported at every checkpoint.
 
+### Step 2b result: gate 2 not met; progress criterion narrowly not met
+
+Seed 399, 40 checkpoints per arm (`runs/052/effect_*_399.json`,
+`runs/052/effect.sh`); 32 minutes with four arms in parallel. Flip rate
+is the share of probe tiles whose code tuple changed since the previous
+checkpoint, over the last 10 checkpoints; the step-2a rows are the
+baselines.
+
+| Arm | Flip rate, last 10 | Tuples (step 2a) | Identities split (step 2a) | Codes used per part |
+|---|---|---|---|---|
+| Plain, μ = 0.1 | 9–19% (mean 15; step 2a 22–33, mean 28) | 37 (23) | 14 (29) | 1, 8, 2, 8 |
+| Plain, μ = 1 | 10–19% (mean 16) | 49 (23) | 19 (29) | 7, 3, 7, 4 |
+| Moving averages, μ = 0.1 | 16–42% (mean 29; step 2a 25–46, mean 34) | 38 (55) | 16 (34) | 7, 8, 8, 8 |
+| Moving averages, μ = 1 | 31–58% (mean 47) | 89 (55) | 35 (34) | 8, 8, 7, 8 |
+
+- **Gate 2:** not met in any arm (1% needed).
+- **Progress:** with plain codebooks the term roughly halves drift (mean
+  15–16% against 28%; the criterion asked for at most half, so 0.54–0.57
+  of it narrowly fails) and collapses less: 37–49 tuples against 23, and
+  half as many identities split by nuisance (14–19 against 29). With
+  moving-average codebooks it does not help.
+- **Action sensitivity:** passes clearly. Recall's leave-one-out
+  log-likelihood is −0.02 to −0.04 nats per try, against −0.72 with
+  outcomes shuffled, in every arm and action.
+- **Why it cannot settle the codes on its own:** recall here compares
+  the encoder's vectors before quantisation, and predicts outcomes almost
+  perfectly from them. Its loss is near its floor, so it gives little
+  gradient, and nothing in it depends on which code a vector falls in.
+  The codes still flip at the codebook's boundaries. The tiles that
+  change code are mostly ones whose outcomes recall still predicts the
+  same.
+- **Decision (the declared rule):** the progress criterion is not met,
+  so this term alone is not the fix for drift. The result points to
+  option 2, which the user named next: measure drift by recall's
+  predictions, since the codes change while what recall predicts from
+  the vectors does not. The user decides.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

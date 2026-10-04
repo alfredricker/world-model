@@ -1,0 +1,1921 @@
+{
+ "note": "Card 052 step 2b, tools/card052/effect.py",
+ "seed": 399,
+ "mu": 0.1,
+ "ema": 0.0,
+ "buffer": 20000,
+ "update_every_steps": 10,
+ "updates_per_checkpoint": 2000,
+ "rows": [
+  {
+   "checkpoint": 1,
+   "updates": 2000,
+   "play_steps": 20868,
+   "loss": 0.02199,
+   "effect": 0.3595,
+   "loo_loglik_per_action": [
+    -0.0577,
+    -0.0647,
+    -0.0583
+   ],
+   "loo_loglik_shuffled": [
+    -0.7307,
+    -0.7382,
+    -0.7416
+   ],
+   "probe_rebuild_mse": 0.039774,
+   "code_flip_rate": null,
+   "pair_change_per_part": null,
+   "flip_per_part": null,
+   "distinct_tuples": 7,
+   "probe_identities": 84,
+   "identities_split": 7,
+   "tuples_shared_by_identities": 5,
+   "codes_used_per_part": [
+    1,
+    3,
+    2,
+    2
+   ],
+   "tries_changed_per_action": [
+    233,
+    197,
+    128
+   ],
+   "restarts": 0,
+   "seconds": 112.9
+  },
+  {
+   "checkpoint": 2,
+   "updates": 4000,
+   "play_steps": 40868,
+   "loss": 0.01672,
+   "effect": 0.1528,
+   "loo_loglik_per_action": [
+    -0.0471,
+    -0.0494,
+    -0.0417
+   ],
+   "loo_loglik_shuffled": [
+    -0.7408,
+    -0.7372,
+    -0.7365
+   ],
+   "probe_rebuild_mse": 0.038489,
+   "code_flip_rate": 0.4775,
+   "pair_change_per_part": [
+    0.0,
+    0.312,
+    0.0,
+    0.0876
+   ],
+   "flip_per_part": [
+    0.0,
+    0.4387,
+    0.0,
+    0.0459
+   ],
+   "distinct_tuples": 6,
+   "probe_identities": 84,
+   "identities_split": 7,
+   "tuples_shared_by_identities": 5,
+   "codes_used_per_part": [
+    1,
+    3,
+    2,
+    2
+   ],
+   "tries_changed_per_action": [
+    475,
+    405,
+    227
+   ],
+   "restarts": 0,
+   "seconds": 158.8
+  },
+  {
+   "checkpoint": 3,
+   "updates": 6000,
+   "play_steps": 60868,
+   "loss": 0.01415,
+   "effect": 0.1307,
+   "loo_loglik_per_action": [
+    -0.0444,
+    -0.0411,
+    -0.0337
+   ],
+   "loo_loglik_shuffled": [
+    -0.7222,
+    -0.7427,
+    -0.7368
+   ],
+   "probe_rebuild_mse": 0.038445,
+   "code_flip_rate": 0.0912,
+   "pair_change_per_part": [
+    0.0,
+    0.0517,
+    0.0,
+    0.0966
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0404,
+    0.0,
+    0.0509
+   ],
+   "distinct_tuples": 6,
+   "probe_identities": 84,
+   "identities_split": 2,
+   "tuples_shared_by_identities": 4,
+   "codes_used_per_part": [
+    1,
+    4,
+    2,
+    2
+   ],
+   "tries_changed_per_action": [
+    723,
+    619,
+    363
+   ],
+   "restarts": 0,
+   "seconds": 205.3
+  },
+  {
+   "checkpoint": 4,
+   "updates": 8000,
+   "play_steps": 80868,
+   "loss": 0.01556,
+   "effect": 0.1173,
+   "loo_loglik_per_action": [
+    -0.0334,
+    -0.0443,
+    -0.0459
+   ],
+   "loo_loglik_shuffled": [
+    -0.7184,
+    -0.7392,
+    -0.7387
+   ],
+   "probe_rebuild_mse": 0.037603,
+   "code_flip_rate": 0.0919,
+   "pair_change_per_part": [
+    0.0,
+    0.0226,
+    0.0,
+    0.0676
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0419,
+    0.0,
+    0.0499
+   ],
+   "distinct_tuples": 7,
+   "probe_identities": 84,
+   "identities_split": 4,
+   "tuples_shared_by_identities": 6,
+   "codes_used_per_part": [
+    1,
+    4,
+    2,
+    3
+   ],
+   "tries_changed_per_action": [
+    911,
+    761,
+    478
+   ],
+   "restarts": 0,
+   "seconds": 251.3
+  },
+  {
+   "checkpoint": 5,
+   "updates": 10000,
+   "play_steps": 100868,
+   "loss": 0.0145,
+   "effect": 0.1099,
+   "loo_loglik_per_action": [
+    -0.0229,
+    -0.0365,
+    -0.0435
+   ],
+   "loo_loglik_shuffled": [
+    -0.7256,
+    -0.7426,
+    -0.7401
+   ],
+   "probe_rebuild_mse": 0.031737,
+   "code_flip_rate": 0.1464,
+   "pair_change_per_part": [
+    0.0,
+    0.0243,
+    0.0,
+    0.1345
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0475,
+    0.0,
+    0.1048
+   ],
+   "distinct_tuples": 12,
+   "probe_identities": 84,
+   "identities_split": 9,
+   "tuples_shared_by_identities": 8,
+   "codes_used_per_part": [
+    1,
+    4,
+    2,
+    5
+   ],
+   "tries_changed_per_action": [
+    1126,
+    938,
+    620
+   ],
+   "restarts": 0,
+   "seconds": 297.1
+  },
+  {
+   "checkpoint": 6,
+   "updates": 12000,
+   "play_steps": 120868,
+   "loss": 0.01473,
+   "effect": 0.0996,
+   "loo_loglik_per_action": [
+    -0.0225,
+    -0.0345,
+    -0.0328
+   ],
+   "loo_loglik_shuffled": [
+    -0.7249,
+    -0.7418,
+    -0.7328
+   ],
+   "probe_rebuild_mse": 0.031744,
+   "code_flip_rate": 0.0891,
+   "pair_change_per_part": [
+    0.0,
+    0.031,
+    0.0,
+    0.0569
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0391,
+    0.0,
+    0.0527
+   ],
+   "distinct_tuples": 12,
+   "probe_identities": 84,
+   "identities_split": 9,
+   "tuples_shared_by_identities": 8,
+   "codes_used_per_part": [
+    1,
+    4,
+    2,
+    5
+   ],
+   "tries_changed_per_action": [
+    1364,
+    1139,
+    724
+   ],
+   "restarts": 0,
+   "seconds": 343.8
+  },
+  {
+   "checkpoint": 7,
+   "updates": 14000,
+   "play_steps": 140868,
+   "loss": 0.01279,
+   "effect": 0.0907,
+   "loo_loglik_per_action": [
+    -0.0213,
+    -0.0384,
+    -0.0234
+   ],
+   "loo_loglik_shuffled": [
+    -0.7249,
+    -0.7527,
+    -0.7209
+   ],
+   "probe_rebuild_mse": 0.031047,
+   "code_flip_rate": 0.066,
+   "pair_change_per_part": [
+    0.0,
+    0.0337,
+    0.0,
+    0.0244
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0345,
+    0.0,
+    0.0314
+   ],
+   "distinct_tuples": 12,
+   "probe_identities": 84,
+   "identities_split": 10,
+   "tuples_shared_by_identities": 8,
+   "codes_used_per_part": [
+    1,
+    4,
+    2,
+    5
+   ],
+   "tries_changed_per_action": [
+    1606,
+    1355,
+    854
+   ],
+   "restarts": 0,
+   "seconds": 389.5
+  },
+  {
+   "checkpoint": 8,
+   "updates": 16000,
+   "play_steps": 160868,
+   "loss": 0.01191,
+   "effect": 0.0821,
+   "loo_loglik_per_action": [
+    -0.0213,
+    -0.0388,
+    -0.0245
+   ],
+   "loo_loglik_shuffled": [
+    -0.7256,
+    -0.7484,
+    -0.717
+   ],
+   "probe_rebuild_mse": 0.029705,
+   "code_flip_rate": 0.1372,
+   "pair_change_per_part": [
+    0.0,
+    0.0441,
+    0.0,
+    0.1204
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0524,
+    0.0,
+    0.09
+   ],
+   "distinct_tuples": 15,
+   "probe_identities": 84,
+   "identities_split": 13,
+   "tuples_shared_by_identities": 10,
+   "codes_used_per_part": [
+    1,
+    4,
+    2,
+    6
+   ],
+   "tries_changed_per_action": [
+    1801,
+    1514,
+    978
+   ],
+   "restarts": 0,
+   "seconds": 435.3
+  },
+  {
+   "checkpoint": 9,
+   "updates": 18000,
+   "play_steps": 180868,
+   "loss": 0.01125,
+   "effect": 0.0789,
+   "loo_loglik_per_action": [
+    -0.0237,
+    -0.0353,
+    -0.0227
+   ],
+   "loo_loglik_shuffled": [
+    -0.7242,
+    -0.7469,
+    -0.7184
+   ],
+   "probe_rebuild_mse": 0.028598,
+   "code_flip_rate": 0.1141,
+   "pair_change_per_part": [
+    0.0,
+    0.0355,
+    0.0,
+    0.0408
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0413,
+    0.0,
+    0.0838
+   ],
+   "distinct_tuples": 18,
+   "probe_identities": 84,
+   "identities_split": 14,
+   "tuples_shared_by_identities": 12,
+   "codes_used_per_part": [
+    1,
+    4,
+    2,
+    7
+   ],
+   "tries_changed_per_action": [
+    2030,
+    1702,
+    1078
+   ],
+   "restarts": 0,
+   "seconds": 481.0
+  },
+  {
+   "checkpoint": 10,
+   "updates": 20000,
+   "play_steps": 200868,
+   "loss": 0.01162,
+   "effect": 0.0756,
+   "loo_loglik_per_action": [
+    -0.0235,
+    -0.0379,
+    -0.0139
+   ],
+   "loo_loglik_shuffled": [
+    -0.7161,
+    -0.7384,
+    -0.7162
+   ],
+   "probe_rebuild_mse": 0.027673,
+   "code_flip_rate": 0.1791,
+   "pair_change_per_part": [
+    0.0,
+    0.0217,
+    0.0,
+    0.1301
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0444,
+    0.0,
+    0.1384
+   ],
+   "distinct_tuples": 20,
+   "probe_identities": 84,
+   "identities_split": 22,
+   "tuples_shared_by_identities": 17,
+   "codes_used_per_part": [
+    1,
+    4,
+    2,
+    7
+   ],
+   "tries_changed_per_action": [
+    2193,
+    1840,
+    1156
+   ],
+   "restarts": 0,
+   "seconds": 526.4
+  },
+  {
+   "checkpoint": 11,
+   "updates": 22000,
+   "play_steps": 220868,
+   "loss": 0.01158,
+   "effect": 0.0739,
+   "loo_loglik_per_action": [
+    -0.0213,
+    -0.0384,
+    -0.0165
+   ],
+   "loo_loglik_shuffled": [
+    -0.7234,
+    -0.7469,
+    -0.7126
+   ],
+   "probe_rebuild_mse": 0.025214,
+   "code_flip_rate": 0.1757,
+   "pair_change_per_part": [
+    0.0,
+    0.038,
+    0.0,
+    0.1002
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0721,
+    0.0,
+    0.1174
+   ],
+   "distinct_tuples": 23,
+   "probe_identities": 84,
+   "identities_split": 14,
+   "tuples_shared_by_identities": 15,
+   "codes_used_per_part": [
+    1,
+    5,
+    2,
+    7
+   ],
+   "tries_changed_per_action": [
+    2374,
+    1982,
+    1248
+   ],
+   "restarts": 0,
+   "seconds": 572.6
+  },
+  {
+   "checkpoint": 12,
+   "updates": 24000,
+   "play_steps": 240868,
+   "loss": 0.01186,
+   "effect": 0.0756,
+   "loo_loglik_per_action": [
+    -0.0215,
+    -0.0364,
+    -0.018
+   ],
+   "loo_loglik_shuffled": [
+    -0.7271,
+    -0.7404,
+    -0.7137
+   ],
+   "probe_rebuild_mse": 0.024953,
+   "code_flip_rate": 0.1273,
+   "pair_change_per_part": [
+    0.0,
+    0.034,
+    0.0,
+    0.096
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0422,
+    0.0,
+    0.0919
+   ],
+   "distinct_tuples": 25,
+   "probe_identities": 84,
+   "identities_split": 21,
+   "tuples_shared_by_identities": 17,
+   "codes_used_per_part": [
+    1,
+    5,
+    2,
+    7
+   ],
+   "tries_changed_per_action": [
+    2623,
+    2193,
+    1385
+   ],
+   "restarts": 0,
+   "seconds": 619.2
+  },
+  {
+   "checkpoint": 13,
+   "updates": 26000,
+   "play_steps": 260868,
+   "loss": 0.01114,
+   "effect": 0.0766,
+   "loo_loglik_per_action": [
+    -0.0229,
+    -0.037,
+    -0.019
+   ],
+   "loo_loglik_shuffled": [
+    -0.7299,
+    -0.7438,
+    -0.7162
+   ],
+   "probe_rebuild_mse": 0.021778,
+   "code_flip_rate": 0.2395,
+   "pair_change_per_part": [
+    0.0,
+    0.0839,
+    0.0,
+    0.061
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1797,
+    0.0,
+    0.0749
+   ],
+   "distinct_tuples": 27,
+   "probe_identities": 84,
+   "identities_split": 22,
+   "tuples_shared_by_identities": 17,
+   "codes_used_per_part": [
+    1,
+    6,
+    2,
+    7
+   ],
+   "tries_changed_per_action": [
+    2816,
+    2358,
+    1512
+   ],
+   "restarts": 0,
+   "seconds": 664.9
+  },
+  {
+   "checkpoint": 14,
+   "updates": 28000,
+   "play_steps": 280868,
+   "loss": 0.01282,
+   "effect": 0.0758,
+   "loo_loglik_per_action": [
+    -0.0228,
+    -0.038,
+    -0.0141
+   ],
+   "loo_loglik_shuffled": [
+    -0.7221,
+    -0.7384,
+    -0.7163
+   ],
+   "probe_rebuild_mse": 0.021423,
+   "code_flip_rate": 0.1341,
+   "pair_change_per_part": [
+    0.0,
+    0.0256,
+    0.0,
+    0.0423
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0774,
+    0.0,
+    0.0629
+   ],
+   "distinct_tuples": 28,
+   "probe_identities": 84,
+   "identities_split": 18,
+   "tuples_shared_by_identities": 18,
+   "codes_used_per_part": [
+    1,
+    6,
+    2,
+    7
+   ],
+   "tries_changed_per_action": [
+    3000,
+    2517,
+    1614
+   ],
+   "restarts": 0,
+   "seconds": 710.2
+  },
+  {
+   "checkpoint": 15,
+   "updates": 30000,
+   "play_steps": 300868,
+   "loss": 0.01157,
+   "effect": 0.0773,
+   "loo_loglik_per_action": [
+    -0.0217,
+    -0.0367,
+    -0.0156
+   ],
+   "loo_loglik_shuffled": [
+    -0.7264,
+    -0.7363,
+    -0.7091
+   ],
+   "probe_rebuild_mse": 0.020028,
+   "code_flip_rate": 0.2981,
+   "pair_change_per_part": [
+    0.0,
+    0.0533,
+    0.0,
+    0.1199
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1523,
+    0.0,
+    0.1581
+   ],
+   "distinct_tuples": 28,
+   "probe_identities": 84,
+   "identities_split": 14,
+   "tuples_shared_by_identities": 18,
+   "codes_used_per_part": [
+    1,
+    6,
+    2,
+    7
+   ],
+   "tries_changed_per_action": [
+    3219,
+    2699,
+    1748
+   ],
+   "restarts": 0,
+   "seconds": 756.0
+  },
+  {
+   "checkpoint": 16,
+   "updates": 32000,
+   "play_steps": 320868,
+   "loss": 0.01193,
+   "effect": 0.077,
+   "loo_loglik_per_action": [
+    -0.0213,
+    -0.0384,
+    -0.0209
+   ],
+   "loo_loglik_shuffled": [
+    -0.7246,
+    -0.7461,
+    -0.7148
+   ],
+   "probe_rebuild_mse": 0.019967,
+   "code_flip_rate": 0.1341,
+   "pair_change_per_part": [
+    0.0,
+    0.0339,
+    0.0,
+    0.0289
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0592,
+    0.0,
+    0.0771
+   ],
+   "distinct_tuples": 28,
+   "probe_identities": 84,
+   "identities_split": 18,
+   "tuples_shared_by_identities": 18,
+   "codes_used_per_part": [
+    1,
+    6,
+    2,
+    7
+   ],
+   "tries_changed_per_action": [
+    3449,
+    2886,
+    1864
+   ],
+   "restarts": 0,
+   "seconds": 802.2
+  },
+  {
+   "checkpoint": 17,
+   "updates": 34000,
+   "play_steps": 340868,
+   "loss": 0.01246,
+   "effect": 0.0789,
+   "loo_loglik_per_action": [
+    -0.0242,
+    -0.0358,
+    -0.0171
+   ],
+   "loo_loglik_shuffled": [
+    -0.7188,
+    -0.7411,
+    -0.7155
+   ],
+   "probe_rebuild_mse": 0.018836,
+   "code_flip_rate": 0.2001,
+   "pair_change_per_part": [
+    0.0,
+    0.0626,
+    0.0,
+    0.0371
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1307,
+    0.0,
+    0.0774
+   ],
+   "distinct_tuples": 30,
+   "probe_identities": 84,
+   "identities_split": 19,
+   "tuples_shared_by_identities": 20,
+   "codes_used_per_part": [
+    1,
+    7,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    3650,
+    3047,
+    1966
+   ],
+   "restarts": 0,
+   "seconds": 848.8
+  },
+  {
+   "checkpoint": 18,
+   "updates": 36000,
+   "play_steps": 360868,
+   "loss": 0.01247,
+   "effect": 0.0776,
+   "loo_loglik_per_action": [
+    -0.027,
+    -0.0383,
+    -0.0191
+   ],
+   "loo_loglik_shuffled": [
+    -0.7316,
+    -0.7396,
+    -0.7168
+   ],
+   "probe_rebuild_mse": 0.017981,
+   "code_flip_rate": 0.2099,
+   "pair_change_per_part": [
+    0.0,
+    0.0436,
+    0.0,
+    0.0316
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1501,
+    0.0,
+    0.0669
+   ],
+   "distinct_tuples": 30,
+   "probe_identities": 84,
+   "identities_split": 20,
+   "tuples_shared_by_identities": 16,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    3846,
+    3209,
+    2068
+   ],
+   "restarts": 0,
+   "seconds": 894.1
+  },
+  {
+   "checkpoint": 19,
+   "updates": 38000,
+   "play_steps": 380868,
+   "loss": 0.0108,
+   "effect": 0.0773,
+   "loo_loglik_per_action": [
+    -0.0208,
+    -0.0378,
+    -0.0155
+   ],
+   "loo_loglik_shuffled": [
+    -0.7228,
+    -0.7462,
+    -0.7158
+   ],
+   "probe_rebuild_mse": 0.018346,
+   "code_flip_rate": 0.2787,
+   "pair_change_per_part": [
+    0.0,
+    0.0721,
+    0.0,
+    0.0312
+   ],
+   "flip_per_part": [
+    0.0,
+    0.2256,
+    0.0,
+    0.066
+   ],
+   "distinct_tuples": 32,
+   "probe_identities": 84,
+   "identities_split": 15,
+   "tuples_shared_by_identities": 16,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    4097,
+    3419,
+    2155
+   ],
+   "restarts": 0,
+   "seconds": 940.1
+  },
+  {
+   "checkpoint": 20,
+   "updates": 40000,
+   "play_steps": 400868,
+   "loss": 0.01031,
+   "effect": 0.0776,
+   "loo_loglik_per_action": [
+    -0.0254,
+    -0.0357,
+    -0.0155
+   ],
+   "loo_loglik_shuffled": [
+    -0.7301,
+    -0.7433,
+    -0.7143
+   ],
+   "probe_rebuild_mse": 0.017998,
+   "code_flip_rate": 0.2081,
+   "pair_change_per_part": [
+    0.0,
+    0.0775,
+    0.0,
+    0.0234
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1581,
+    0.0,
+    0.0691
+   ],
+   "distinct_tuples": 32,
+   "probe_identities": 84,
+   "identities_split": 17,
+   "tuples_shared_by_identities": 13,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    4319,
+    3596,
+    2241
+   ],
+   "restarts": 0,
+   "seconds": 985.6
+  },
+  {
+   "checkpoint": 21,
+   "updates": 42000,
+   "play_steps": 420868,
+   "loss": 0.00976,
+   "effect": 0.0775,
+   "loo_loglik_per_action": [
+    -0.0245,
+    -0.0381,
+    -0.0128
+   ],
+   "loo_loglik_shuffled": [
+    -0.7288,
+    -0.7467,
+    -0.7137
+   ],
+   "probe_rebuild_mse": 0.015972,
+   "code_flip_rate": 0.1409,
+   "pair_change_per_part": [
+    0.0,
+    0.0454,
+    0.0,
+    0.0155
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0903,
+    0.0,
+    0.0576
+   ],
+   "distinct_tuples": 34,
+   "probe_identities": 84,
+   "identities_split": 14,
+   "tuples_shared_by_identities": 14,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    4547,
+    3790,
+    2369
+   ],
+   "restarts": 0,
+   "seconds": 1031.7
+  },
+  {
+   "checkpoint": 22,
+   "updates": 44000,
+   "play_steps": 440868,
+   "loss": 0.01274,
+   "effect": 0.0782,
+   "loo_loglik_per_action": [
+    -0.0235,
+    -0.0367,
+    -0.0178
+   ],
+   "loo_loglik_shuffled": [
+    -0.728,
+    -0.7498,
+    -0.7173
+   ],
+   "probe_rebuild_mse": 0.018045,
+   "code_flip_rate": 0.1159,
+   "pair_change_per_part": [
+    0.0,
+    0.0332,
+    0.0244,
+    0.0548
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0749,
+    0.0123,
+    0.0684
+   ],
+   "distinct_tuples": 35,
+   "probe_identities": 84,
+   "identities_split": 17,
+   "tuples_shared_by_identities": 16,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    4740,
+    3955,
+    2478
+   ],
+   "restarts": 0,
+   "seconds": 1077.5
+  },
+  {
+   "checkpoint": 23,
+   "updates": 46000,
+   "play_steps": 460868,
+   "loss": 0.01162,
+   "effect": 0.0789,
+   "loo_loglik_per_action": [
+    -0.025,
+    -0.0372,
+    -0.021
+   ],
+   "loo_loglik_shuffled": [
+    -0.7263,
+    -0.7393,
+    -0.7175
+   ],
+   "probe_rebuild_mse": 0.017873,
+   "code_flip_rate": 0.2309,
+   "pair_change_per_part": [
+    0.0,
+    0.0495,
+    0.0244,
+    0.0977
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1338,
+    0.0123,
+    0.1292
+   ],
+   "distinct_tuples": 36,
+   "probe_identities": 84,
+   "identities_split": 22,
+   "tuples_shared_by_identities": 17,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    4979,
+    4159,
+    2597
+   ],
+   "restarts": 0,
+   "seconds": 1123.2
+  },
+  {
+   "checkpoint": 24,
+   "updates": 48000,
+   "play_steps": 480868,
+   "loss": 0.00996,
+   "effect": 0.0781,
+   "loo_loglik_per_action": [
+    -0.0198,
+    -0.0362,
+    -0.0153
+   ],
+   "loo_loglik_shuffled": [
+    -0.7236,
+    -0.743,
+    -0.7158
+   ],
+   "probe_rebuild_mse": 0.017878,
+   "code_flip_rate": 0.1896,
+   "pair_change_per_part": [
+    0.0,
+    0.0616,
+    0.0,
+    0.0376
+   ],
+   "flip_per_part": [
+    0.0,
+    0.127,
+    0.0,
+    0.074
+   ],
+   "distinct_tuples": 33,
+   "probe_identities": 84,
+   "identities_split": 18,
+   "tuples_shared_by_identities": 21,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    5195,
+    4337,
+    2707
+   ],
+   "restarts": 0,
+   "seconds": 1169.5
+  },
+  {
+   "checkpoint": 25,
+   "updates": 50000,
+   "play_steps": 500868,
+   "loss": 0.01155,
+   "effect": 0.0741,
+   "loo_loglik_per_action": [
+    -0.022,
+    -0.0322,
+    -0.0222
+   ],
+   "loo_loglik_shuffled": [
+    -0.7237,
+    -0.7416,
+    -0.7157
+   ],
+   "probe_rebuild_mse": 0.017306,
+   "code_flip_rate": 0.1473,
+   "pair_change_per_part": [
+    0.0,
+    0.0454,
+    0.0,
+    0.0489
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0866,
+    0.0,
+    0.0875
+   ],
+   "distinct_tuples": 33,
+   "probe_identities": 84,
+   "identities_split": 11,
+   "tuples_shared_by_identities": 17,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    5447,
+    4557,
+    2818
+   ],
+   "restarts": 0,
+   "seconds": 1216.1
+  },
+  {
+   "checkpoint": 26,
+   "updates": 52000,
+   "play_steps": 520868,
+   "loss": 0.01102,
+   "effect": 0.0811,
+   "loo_loglik_per_action": [
+    -0.0234,
+    -0.0429,
+    -0.0219
+   ],
+   "loo_loglik_shuffled": [
+    -0.7304,
+    -0.7413,
+    -0.7168
+   ],
+   "probe_rebuild_mse": 0.016945,
+   "code_flip_rate": 0.3816,
+   "pair_change_per_part": [
+    0.0,
+    0.0511,
+    0.3342,
+    0.0624
+   ],
+   "flip_per_part": [
+    0.0,
+    0.107,
+    0.2121,
+    0.0956
+   ],
+   "distinct_tuples": 32,
+   "probe_identities": 84,
+   "identities_split": 18,
+   "tuples_shared_by_identities": 20,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    5675,
+    4746,
+    2904
+   ],
+   "restarts": 0,
+   "seconds": 1262.2
+  },
+  {
+   "checkpoint": 27,
+   "updates": 54000,
+   "play_steps": 540868,
+   "loss": 0.00881,
+   "effect": 0.0801,
+   "loo_loglik_per_action": [
+    -0.0197,
+    -0.0391,
+    -0.0191
+   ],
+   "loo_loglik_shuffled": [
+    -0.7261,
+    -0.731,
+    -0.7128
+   ],
+   "probe_rebuild_mse": 0.017524,
+   "code_flip_rate": 0.1584,
+   "pair_change_per_part": [
+    0.0,
+    0.0372,
+    0.0,
+    0.0642
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0703,
+    0.0,
+    0.0919
+   ],
+   "distinct_tuples": 30,
+   "probe_identities": 84,
+   "identities_split": 16,
+   "tuples_shared_by_identities": 18,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    5923,
+    4956,
+    3031
+   ],
+   "restarts": 0,
+   "seconds": 1307.9
+  },
+  {
+   "checkpoint": 28,
+   "updates": 56000,
+   "play_steps": 560868,
+   "loss": 0.01499,
+   "effect": 0.0801,
+   "loo_loglik_per_action": [
+    -0.0207,
+    -0.0338,
+    -0.0158
+   ],
+   "loo_loglik_shuffled": [
+    -0.724,
+    -0.748,
+    -0.7116
+   ],
+   "probe_rebuild_mse": 0.016973,
+   "code_flip_rate": 0.1991,
+   "pair_change_per_part": [
+    0.0,
+    0.0509,
+    0.0,
+    0.0632
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0962,
+    0.0,
+    0.1134
+   ],
+   "distinct_tuples": 30,
+   "probe_identities": 84,
+   "identities_split": 19,
+   "tuples_shared_by_identities": 19,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    6142,
+    5136,
+    3149
+   ],
+   "restarts": 0,
+   "seconds": 1353.8
+  },
+  {
+   "checkpoint": 29,
+   "updates": 58000,
+   "play_steps": 580868,
+   "loss": 0.01094,
+   "effect": 0.0795,
+   "loo_loglik_per_action": [
+    -0.0233,
+    -0.037,
+    -0.0159
+   ],
+   "loo_loglik_shuffled": [
+    -0.728,
+    -0.7399,
+    -0.7146
+   ],
+   "probe_rebuild_mse": 0.017941,
+   "code_flip_rate": 0.1344,
+   "pair_change_per_part": [
+    0.0,
+    0.0393,
+    0.0,
+    0.0395
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0983,
+    0.0,
+    0.0502
+   ],
+   "distinct_tuples": 31,
+   "probe_identities": 84,
+   "identities_split": 19,
+   "tuples_shared_by_identities": 22,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    6294,
+    5261,
+    3281
+   ],
+   "restarts": 0,
+   "seconds": 1399.0
+  },
+  {
+   "checkpoint": 30,
+   "updates": 60000,
+   "play_steps": 600868,
+   "loss": 0.01134,
+   "effect": 0.0807,
+   "loo_loglik_per_action": [
+    -0.0228,
+    -0.0387,
+    -0.0196
+   ],
+   "loo_loglik_shuffled": [
+    -0.7259,
+    -0.7505,
+    -0.7176
+   ],
+   "probe_rebuild_mse": 0.016377,
+   "code_flip_rate": 0.1594,
+   "pair_change_per_part": [
+    0.0,
+    0.0403,
+    0.0,
+    0.0394
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1076,
+    0.0,
+    0.0623
+   ],
+   "distinct_tuples": 34,
+   "probe_identities": 84,
+   "identities_split": 21,
+   "tuples_shared_by_identities": 24,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    6511,
+    5443,
+    3384
+   ],
+   "restarts": 0,
+   "seconds": 1445.6
+  },
+  {
+   "checkpoint": 31,
+   "updates": 62000,
+   "play_steps": 620868,
+   "loss": 0.01093,
+   "effect": 0.0851,
+   "loo_loglik_per_action": [
+    -0.0262,
+    -0.0422,
+    -0.0261
+   ],
+   "loo_loglik_shuffled": [
+    -0.727,
+    -0.749,
+    -0.7158
+   ],
+   "probe_rebuild_mse": 0.016747,
+   "code_flip_rate": 0.1575,
+   "pair_change_per_part": [
+    0.0,
+    0.0388,
+    0.0,
+    0.0373
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1042,
+    0.0,
+    0.0583
+   ],
+   "distinct_tuples": 32,
+   "probe_identities": 84,
+   "identities_split": 19,
+   "tuples_shared_by_identities": 21,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    6726,
+    5627,
+    3527
+   ],
+   "restarts": 0,
+   "seconds": 1491.4
+  },
+  {
+   "checkpoint": 32,
+   "updates": 64000,
+   "play_steps": 640868,
+   "loss": 0.01213,
+   "effect": 0.0854,
+   "loo_loglik_per_action": [
+    -0.0244,
+    -0.036,
+    -0.0142
+   ],
+   "loo_loglik_shuffled": [
+    -0.7268,
+    -0.7375,
+    -0.711
+   ],
+   "probe_rebuild_mse": 0.016685,
+   "code_flip_rate": 0.1856,
+   "pair_change_per_part": [
+    0.0,
+    0.0465,
+    0.0,
+    0.0449
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1023,
+    0.0,
+    0.1002
+   ],
+   "distinct_tuples": 32,
+   "probe_identities": 84,
+   "identities_split": 20,
+   "tuples_shared_by_identities": 18,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    6924,
+    5796,
+    3662
+   ],
+   "restarts": 0,
+   "seconds": 1537.2
+  },
+  {
+   "checkpoint": 33,
+   "updates": 66000,
+   "play_steps": 660868,
+   "loss": 0.01325,
+   "effect": 0.0836,
+   "loo_loglik_per_action": [
+    -0.0215,
+    -0.0433,
+    -0.0132
+   ],
+   "loo_loglik_shuffled": [
+    -0.7233,
+    -0.7475,
+    -0.7145
+   ],
+   "probe_rebuild_mse": 0.015449,
+   "code_flip_rate": 0.1575,
+   "pair_change_per_part": [
+    0.0,
+    0.029,
+    0.0,
+    0.0436
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0694,
+    0.0,
+    0.099
+   ],
+   "distinct_tuples": 35,
+   "probe_identities": 84,
+   "identities_split": 15,
+   "tuples_shared_by_identities": 15,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    7164,
+    5993,
+    3784
+   ],
+   "restarts": 0,
+   "seconds": 1582.9
+  },
+  {
+   "checkpoint": 34,
+   "updates": 68000,
+   "play_steps": 680868,
+   "loss": 0.01283,
+   "effect": 0.0811,
+   "loo_loglik_per_action": [
+    -0.0229,
+    -0.0436,
+    -0.0165
+   ],
+   "loo_loglik_shuffled": [
+    -0.726,
+    -0.7476,
+    -0.7157
+   ],
+   "probe_rebuild_mse": 0.0158,
+   "code_flip_rate": 0.1763,
+   "pair_change_per_part": [
+    0.0,
+    0.039,
+    0.0,
+    0.0435
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1116,
+    0.0,
+    0.0801
+   ],
+   "distinct_tuples": 33,
+   "probe_identities": 84,
+   "identities_split": 15,
+   "tuples_shared_by_identities": 19,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    7365,
+    6155,
+    3903
+   ],
+   "restarts": 0,
+   "seconds": 1628.6
+  },
+  {
+   "checkpoint": 35,
+   "updates": 70000,
+   "play_steps": 700868,
+   "loss": 0.01008,
+   "effect": 0.0811,
+   "loo_loglik_per_action": [
+    -0.0238,
+    -0.0379,
+    -0.0206
+   ],
+   "loo_loglik_shuffled": [
+    -0.7238,
+    -0.7413,
+    -0.7159
+   ],
+   "probe_rebuild_mse": 0.017373,
+   "code_flip_rate": 0.188,
+   "pair_change_per_part": [
+    0.0,
+    0.0555,
+    0.0,
+    0.0595
+   ],
+   "flip_per_part": [
+    0.0,
+    0.1137,
+    0.0,
+    0.0823
+   ],
+   "distinct_tuples": 32,
+   "probe_identities": 84,
+   "identities_split": 14,
+   "tuples_shared_by_identities": 19,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    7588,
+    6349,
+    4008
+   ],
+   "restarts": 0,
+   "seconds": 1674.6
+  },
+  {
+   "checkpoint": 36,
+   "updates": 72000,
+   "play_steps": 720868,
+   "loss": 0.01378,
+   "effect": 0.0835,
+   "loo_loglik_per_action": [
+    -0.0218,
+    -0.041,
+    -0.0177
+   ],
+   "loo_loglik_shuffled": [
+    -0.7252,
+    -0.7476,
+    -0.7138
+   ],
+   "probe_rebuild_mse": 0.015536,
+   "code_flip_rate": 0.168,
+   "pair_change_per_part": [
+    0.0,
+    0.0411,
+    0.0,
+    0.0736
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0851,
+    0.0,
+    0.0943
+   ],
+   "distinct_tuples": 31,
+   "probe_identities": 84,
+   "identities_split": 14,
+   "tuples_shared_by_identities": 17,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    7819,
+    6543,
+    4131
+   ],
+   "restarts": 0,
+   "seconds": 1721.0
+  },
+  {
+   "checkpoint": 37,
+   "updates": 74000,
+   "play_steps": 740868,
+   "loss": 0.01095,
+   "effect": 0.0818,
+   "loo_loglik_per_action": [
+    -0.0231,
+    -0.0375,
+    -0.0147
+   ],
+   "loo_loglik_shuffled": [
+    -0.7324,
+    -0.7382,
+    -0.714
+   ],
+   "probe_rebuild_mse": 0.014972,
+   "code_flip_rate": 0.0863,
+   "pair_change_per_part": [
+    0.0,
+    0.0265,
+    0.0,
+    0.0221
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0549,
+    0.0,
+    0.0425
+   ],
+   "distinct_tuples": 33,
+   "probe_identities": 84,
+   "identities_split": 19,
+   "tuples_shared_by_identities": 18,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    8044,
+    6733,
+    4254
+   ],
+   "restarts": 0,
+   "seconds": 1767.4
+  },
+  {
+   "checkpoint": 38,
+   "updates": 76000,
+   "play_steps": 760868,
+   "loss": 0.01152,
+   "effect": 0.0792,
+   "loo_loglik_per_action": [
+    -0.0223,
+    -0.0406,
+    -0.0164
+   ],
+   "loo_loglik_shuffled": [
+    -0.7239,
+    -0.7395,
+    -0.7168
+   ],
+   "probe_rebuild_mse": 0.015627,
+   "code_flip_rate": 0.1504,
+   "pair_change_per_part": [
+    0.0,
+    0.0267,
+    0.0,
+    0.0582
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0731,
+    0.0,
+    0.0805
+   ],
+   "distinct_tuples": 34,
+   "probe_identities": 84,
+   "identities_split": 15,
+   "tuples_shared_by_identities": 21,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    8266,
+    6917,
+    4352
+   ],
+   "restarts": 0,
+   "seconds": 1813.4
+  },
+  {
+   "checkpoint": 39,
+   "updates": 78000,
+   "play_steps": 780868,
+   "loss": 0.01391,
+   "effect": 0.0785,
+   "loo_loglik_per_action": [
+    -0.0255,
+    -0.0373,
+    -0.0159
+   ],
+   "loo_loglik_shuffled": [
+    -0.7222,
+    -0.7418,
+    -0.7114
+   ],
+   "probe_rebuild_mse": 0.015264,
+   "code_flip_rate": 0.1178,
+   "pair_change_per_part": [
+    0.0,
+    0.0235,
+    0.0,
+    0.0361
+   ],
+   "flip_per_part": [
+    0.0,
+    0.066,
+    0.0,
+    0.053
+   ],
+   "distinct_tuples": 32,
+   "probe_identities": 84,
+   "identities_split": 17,
+   "tuples_shared_by_identities": 16,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    8477,
+    7085,
+    4452
+   ],
+   "restarts": 0,
+   "seconds": 1859.3
+  },
+  {
+   "checkpoint": 40,
+   "updates": 80000,
+   "play_steps": 800868,
+   "loss": 0.01012,
+   "effect": 0.079,
+   "loo_loglik_per_action": [
+    -0.023,
+    -0.0367,
+    -0.0187
+   ],
+   "loo_loglik_shuffled": [
+    -0.7225,
+    -0.7381,
+    -0.7169
+   ],
+   "probe_rebuild_mse": 0.015334,
+   "code_flip_rate": 0.1276,
+   "pair_change_per_part": [
+    0.0,
+    0.04,
+    0.0,
+    0.046
+   ],
+   "flip_per_part": [
+    0.0,
+    0.0709,
+    0.0,
+    0.0632
+   ],
+   "distinct_tuples": 37,
+   "probe_identities": 84,
+   "identities_split": 14,
+   "tuples_shared_by_identities": 15,
+   "codes_used_per_part": [
+    1,
+    8,
+    2,
+    8
+   ],
+   "tries_changed_per_action": [
+    8695,
+    7276,
+    4587
+   ],
+   "restarts": 0,
+   "seconds": 1904.9
+  }
+ ]
+}

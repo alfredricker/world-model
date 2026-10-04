@@ -54,3 +54,15 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   memory keeps its names, and freeze or slow the part that still
   regroups. Only gate 2 changes with this option. It is not run; the
   user picks the revision.
+- 2026-10-04 (morning, with the user): the user chose option 1 (gate 2
+  with step 3's objective), then maybe option 2; the overlap mapping is
+  set aside. Step 2b declared in the card, then built
+  (`tools/card052/effect.py`; drift.py gained an `extra()` hook for
+  further loss terms). First launch stopped within a minute: the plain
+  arms had dead-code restarts on, step 2a's plain baseline had them off.
+  Relaunched matched. Results in the card: plain codebooks halve drift
+  roughly (15-16% vs 28%) and collapse less, moving averages do not;
+  the declared "at most half" is narrowly missed. Recall's outcome
+  prediction from the vectors is near perfect (-0.02 to -0.04 nats vs
+  -0.72 shuffled), so the term has little left to teach, and it does
+  not act on code boundaries.
