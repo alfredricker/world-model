@@ -33,6 +33,8 @@ D_KEY = 2 * K * DIM + K
 MU = 0.1
 PER = 128
 CHECK = None
+REL_W = 0.0                                            # step 2e: the relation term's weight (rho)
+REL_N = 512
 START_SHARE = 0.0                                      # step 2d: share of episodes that are play starts
 START_LEN = 10
 STARTS = [(ev, k, c) for c in DR.GN.TRAIN for ev, k in
@@ -142,7 +144,35 @@ class Encoder(DR.Encoder):
             return 0.0
         e = self.effect(tries)
         self.last_effect = float(e.detach())
-        return MU * e
+        out = MU * e
+        if REL_W > 0 and getattr(self, "_rel", None):
+            r = self.relation(self._rel)
+            self.last_relation = None if r is None else float(r.detach())
+            if r is not None:
+                out = out + REL_W * r
+        return out
+
+    def relation(self, tries):
+        """Step 2e: toggle tries grouped by the front tile's code tuple; in groups with both outcomes, P(same) =
+        sigmoid(a - b * min over parts of |front - held|), trained against "the front tile changed"."""
+        if not hasattr(self, "rel_ab"):
+            self.rel_ab = nn.Parameter(torch.tensor([0.0, 0.5413], device=self.dev))   # a = 0, b = softplus(.) = 1
+            self.opt.add_param_group({"params": [self.rel_ab]})
+        zf, zh = self.pieces(self.x([t[0] for t in tries])), self.pieces(self.x([t[1] for t in tries]))
+        with torch.no_grad():
+            _, idx = self.quant(zf)
+        y = np.array([t[2] & 1 for t in tries])
+        groups = {}
+        for i, g in enumerate(map(tuple, idx.cpu().numpy().tolist())):
+            groups.setdefault(g, []).append(i)
+        sel = [i for g in groups.values() if len(set(y[g])) > 1 for i in g]
+        self.rel_used = len(sel)
+        if not sel:
+            return None
+        sel = torch.as_tensor(sel, device=self.dev)
+        d = (zf[sel] - zh[sel]).norm(dim=-1).amin(1)
+        logit = self.rel_ab[0] - fn.softplus(self.rel_ab[1]) * d
+        return fn.binary_cross_entropy_with_logits(logit, torch.as_tensor(y, dtype=torch.float32, device=self.dev)[sel])
 
     @torch.no_grad()
     def sensitivity(self, tries, rng):
@@ -190,15 +220,22 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
     for ck in range(checkpoints):
         for g in enc.opt.param_groups:
             g["lr"] = 1e-3 * DR.DECAY ** ck
-        effs = []
+        effs, rels = [], []
         for _ in range(upd_per_ck):
             for _ in range(every):
                 play()
             bi = rng.integers(len(tiles), size=256)
             pi = rng.integers(len(pairs), size=min(64, len(pairs))) if pairs else []
             enc._tries = draw(buf, rng)
+            if REL_W > 0:                              # step 2e: toggle tries for the relation term, half changed
+                ch, no = buf[5][1], buf[5][0]
+                nc = min(REL_N // 2, len(ch))
+                enc._rel = [ch[i] for i in rng.choice(len(ch), size=nc, replace=False)] + \
+                           [no[i] for i in rng.choice(len(no), size=REL_N - nc, replace=False)]
             loss = enc.update([tiles[i] for i in bi], [pairs[i] for i in pi])
             effs.append(enc.last_effect)
+            if REL_W > 0:
+                rels.append((getattr(enc, "last_relation", None), getattr(enc, "rel_used", 0)))
         sens = [enc.sensitivity(draw(buf, rng), rng) for _ in range(10)]
         ll = np.mean([s[0] for s in sens], 0)
         ll_sh = np.mean([s[1] for s in sens], 0)
@@ -215,6 +252,8 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         prev = tup
         row = {"checkpoint": ck + 1, "updates": (ck + 1) * upd_per_ck, "play_steps": steps, "loss": round(loss, 5),
                "effect": round(float(np.mean(effs)), 4),
+               "relation": None if not rels else round(float(np.mean([r for r, _ in rels if r is not None] or [np.nan])), 4),
+               "relation_tries_used": None if not rels else round(float(np.mean([u for _, u in rels])), 1),
                "loo_loglik_per_action": [round(v, 4) for v in ll.tolist()],
                "loo_loglik_shuffled": [round(v, 4) for v in ll_sh.tolist()],
                "probe_rebuild_mse": round(err, 6), "code_flip_rate": None if flip is None else round(flip, 4),
@@ -230,12 +269,12 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         rows.append(row)
         print(row, flush=True)
         Path(out).write_text(json.dumps({"note": "Card 052 step 2b, tools/card052/effect.py", "seed": seed, "mu": MU,
-                                         "ema": DR.Encoder.EMA, "start_share": START_SHARE, "buffer": buffer, "update_every_steps": every,
+                                         "ema": DR.Encoder.EMA, "start_share": START_SHARE, "relation_weight": REL_W, "buffer": buffer, "update_every_steps": every,
                                          "updates_per_checkpoint": upd_per_ck, "rows": rows}, indent=1) + "\n")
 
 
 def main():
-    global MU, START_SHARE
+    global MU, START_SHARE, REL_W
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     Path(get("--out", "runs/052/effect.json")).parent.mkdir(parents=True, exist_ok=True)
@@ -244,6 +283,7 @@ def main():
     DR.Encoder.EMA = float(get("--ema", "0"))
     DR.Encoder.RESTART_EVERY = int(get("--restart", "250"))
     START_SHARE = float(get("--starts", "0"))
+    REL_W = float(get("--rel", "0"))
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),
         int(get("--every", "10")), int(get("--updates", "2000")), get("--out", "runs/052/effect.json"))
 

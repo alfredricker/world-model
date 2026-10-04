@@ -531,6 +531,48 @@ colour) in memory. Over the last 10 checkpoints:
   only); if it cannot, the pixel anchor or collapse is losing it and the
   relation term would have nothing to align. The user decides.
 
+### Step 2e (is colour in the vectors; the relation term): declared before the run
+
+The user approved (2026-10-04) both: the check, then the relation term
+if colour is there. No encoder was saved by steps 2a–2d, so the check
+runs inside training. Three runs in parallel, all on step 2d's stream
+and measurements (seed 399, 40 checkpoints); the relation arms are read
+only if the check finds colour in the vectors.
+
+- **Colour check (report only, evaluator labels):** at every
+  checkpoint, on step 2a's probe tiles that have a colour (keys, balls,
+  boxes, doors, switches), a linear classifier (multinomial logistic
+  regression, 300 steps, half the tiles to fit and half to test) reads
+  the evaluator's colour from (i) the encoder's whole vector, (ii) each
+  part's vector, (iii) each part's code. Chance is the most frequent
+  colour's share. The same for kind (key, ball, box, door, switch).
+- **Arm A:** step 2d unchanged, with the check.
+- **Relation term (arms B and C, weight ρ = 0.1 and 1, μ = 0.1):** per
+  update, 512 toggle tries; tries are grouped by the front tile's code
+  tuple, and only groups with both outcomes are used (there, whether the
+  toggle works depends on something other than the front tile: the
+  label-free form of "depends on the held tile"). For each try, the
+  smallest distance over parts between the front and held tiles' vectors
+  gives P(same) = sigmoid(a − b·d) with a and b learned; the loss is the
+  cross-entropy of P(same) against "the front tile changed". Successes
+  pull one part of the two tiles together; failures push the closest
+  part apart.
+
+Criteria:
+- **Colour is in the vectors** if the whole-vector classifier is at
+  least 90% right on test tiles at the last checkpoint (a design floor:
+  9 training colours). **Amended before the run:** the smoke test shows
+  an untrained encoder already scores 99.1% (chance 11.6%; per part
+  49–63%, per part's code 14–24%), so the floor says nothing. What is
+  read instead: whether training lowers the whole-vector score from the
+  untrained 99.1% (colour lost), and whether any part's vector or code
+  reads colour better than the untrained parts (colour gathered into a
+  part, which the relation term needs).
+- **The relation term works** (arms B, C) if, over the last 10
+  checkpoints, accuracy on the colour tries reaches 90% for both the
+  matching and the other key, by codes or by vectors; gate 2 by
+  predictions as declared in step 2d.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

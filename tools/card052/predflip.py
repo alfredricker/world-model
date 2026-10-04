@@ -154,12 +154,64 @@ class Check:
         return out
 
 
+class ColourCheck:
+    """Step 2e (report only, evaluator labels): can a linear classifier read colour (and kind) from the encoder?
+    On step 2a's probe tiles that have a colour (keys, balls, boxes, doors, switches): multinomial logistic
+    regression, 300 Adam steps, fitted on alternate tiles and tested on the rest; from the whole vector, each part's
+    vector and each part's code (one-hot)."""
+
+    KINDS = ("key", "ball", "box", "door", "switch")
+
+    def __init__(self, seed):
+        tiles, ids = EF.DR.probe_set(seed)
+        keep = [i for i, q in enumerate(ids) if q is not None and IDX_TO_OBJECT[q[0]] in self.KINDS]
+        self.tiles = tiles[keep]
+        self.colour = np.array([ids[i][1] for i in keep])
+        self.kind = np.array([self.KINDS.index(IDX_TO_OBJECT[ids[i][0]]) for i in keep])
+        self.fit_ix, self.test_ix = np.arange(len(keep))[0::2], np.arange(len(keep))[1::2]
+
+    def classify(self, X, y, dev):
+        X = torch.as_tensor(X, dtype=torch.float32, device=dev)
+        X = (X - X[self.fit_ix].mean(0)) / (X[self.fit_ix].std(0) + 1e-6)
+        _, yy = np.unique(y, return_inverse=True)
+        yt = torch.as_tensor(yy, device=dev)
+        W = torch.zeros(X.shape[1], int(yy.max()) + 1, device=dev, requires_grad=True)
+        b = torch.zeros(int(yy.max()) + 1, device=dev, requires_grad=True)
+        opt = torch.optim.Adam([W, b], lr=0.05)
+        fi = torch.as_tensor(self.fit_ix, device=dev)
+        for _ in range(300):
+            loss = fn.cross_entropy(X[fi] @ W + b, yt[fi]) + 1e-4 * (W ** 2).sum()
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+        ti = torch.as_tensor(self.test_ix, device=dev)
+        with torch.no_grad():
+            return round(float(((X[ti] @ W + b).argmax(1) == yt[ti]).float().mean()), 3)
+
+    def __call__(self, enc):
+        with torch.no_grad():
+            z = torch.cat([enc.pieces(enc.x(self.tiles[i:i + 1000])) for i in range(0, len(self.tiles), 1000)])
+            _, idx = enc.quant(z)
+        z, idx = z.cpu().numpy(), idx.cpu().numpy()
+        out = {}
+        for name, y in (("colour", self.colour), ("kind", self.kind)):
+            with torch.enable_grad():
+                out[f"{name}_from_vector"] = self.classify(z.reshape(len(z), -1), y, enc.dev)
+                out[f"{name}_from_part_vector"] = [self.classify(z[:, k], y, enc.dev) for k in range(EF.K)]
+                out[f"{name}_from_part_code"] = [self.classify(np.eye(EF.M)[idx[:, k]], y, enc.dev) for k in range(EF.K)]
+            out[f"{name}_chance"] = round(float(np.bincount(np.unique(y, return_inverse=True)[1][self.test_ix]).max() / len(self.test_ix)), 3)
+        return out
+
+
 def main():
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     EF.START_SHARE = float(get("--starts", "0"))      # the tries come from the same stream as training
     chk = Check(int(get("--seed", "399")), strat=get("--strat", "0") == "1")
     EF.CHECK = chk
+    if get("--colour", "0") == "1":                   # step 2e: the colour check as well
+        cc = ColourCheck(int(get("--seed", "399")))
+        EF.CHECK = lambda enc: {**chk(enc), **cc(enc)}
     EF.main()
 
 
