@@ -677,6 +677,16 @@ Layout 11 of two doors fails in every seed: the planner finds no chain
 from the start and acts at random (not traced further). Cluttered layout
 66 of seed 403 still fails (step 4b).
 
+### Change 2, readable half only (no change in acting)
+
+`tools/card051/rules.py` prints every own situation recall holds, per
+action, with its tries and outcome, in the evaluator's names:
+[rules_seed400.md](rules_seed400.md). For example, toggle reads the front
+tile's parts and one relation (part 2, front against held), and the
+table shows a closed door opening only with the key of its colour. The
+compiled rules that would answer the planner's questions (change 2
+proper) are not built.
+
 ### Step 4b (seeds 400–404): pass, kept (Claude, overnight)
 
 | Seed | Two doors | One door | Cluttered (step 4a) | Familiar worlds |
