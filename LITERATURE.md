@@ -7,7 +7,9 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
 - **Card / rung:** [card 049](experiments/049-recall-through-conditions/card.md),
-  recall through the conditions that matter. Before rung 1. Set with the user on
+  recall through the conditions that matter, and
+  [card 050](experiments/050-own-tries-first/card.md), own tries first
+  (kept as version 9, 2026-10-04). Before rung 1. Set with the user on
   2026-10-03, after tracing card 048's failures. In both, a token in view
   that does not matter to the action (a second door; a key missing from
   the floor) dropped every matching stored try's weight to zero. Recall
@@ -20,7 +22,7 @@ The papers agents should work from until the user changes or requests a change t
   cue competition); conditions matched one way, from the stored try to
   the present; references relative to the target and the hand; relations
   as distances within one part; conditions from few contrasting tries.
-- **Until:** card 049 has a decision.
+- **Until:** the user sets the focus for card 051 (the planner).
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |

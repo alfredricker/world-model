@@ -1,22 +1,25 @@
 ---
-id: "050"
+id: "052"
 title: an encoder learned from interaction, in stages, over diverse worlds
 rung: 0
 serves: [P4, P7, P1, P3, P12, P10, P19, P17]
 status: draft
 verdict:
-arch_version: 8
+arch_version: 9
 date: 2026-10-02
 ---
 
-# 050: an encoder learned from interaction, in stages, over diverse worlds
+# 052: an encoder learned from interaction, in stages, over diverse worlds
 
 Drafted on 2026-10-02 from a discussion with the user. It is not
-approved, and its numbers are proposals. Renumbered from 049 on
-2026-10-03: the user put card 049, recall through the conditions that
-matter, first. If 049 passes, this card uses its recall, and step 4 takes
-conditions from it instead of card 010's rule lists. The user agreed to one card in four steps, each
-with its own gate, because the change is large (section 2). Appendix A
+approved, and its numbers are proposals. Renumbered twice: from 049 to
+050 on 2026-10-03, when the user put card 049 (recall through the
+conditions that matter) first, and from 050 to 052 on 2026-10-04, so
+that the cards run in the order they depend on each other: 049 and 050
+(recall, kept as architecture version 9), 051 (the planner, near-linear
+cost), then this card. This card uses version 9's recall, and step 4
+takes conditions from it instead of card 010's rule lists. The user
+agreed to one card in four steps, each with its own gate, because the change is large (section 2). Appendix A
 records the theory; appendix B the longer plan.
 
 ## 1. Question
@@ -60,7 +63,7 @@ The step-3 ablation arms give each part its credit.
 version 8:
   5,000 random episodes in one world -> encoder: pixels + codebooks + pairs
   + 0.01 recall -> freeze -> memory -> recall weights -> act
-card 050:
+card 052:
   infant:        random play over the step-1 generator; encoder learns
                  online from a buffer of the last N tries, mostly
                  interaction terms (step 3) and conditions (step 4);
@@ -183,8 +186,7 @@ reported at 3, 10 and 30 successes.
 
 ## 3. Dependencies
 
-- Version 8's planner and tokens (kept with card 047), and card 049's
-  recall if it passes.
+- Version 9's recall (cards 049 and 050), planner and tokens.
 - **Before this card's BabyAI runs:** recall and the planner's reasoning
   over conditions near-linear in cost per step, independent of memory
   size (the user, 2026-10-03; ARCHITECTURE.md, "Known limits").

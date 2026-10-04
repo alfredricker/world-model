@@ -12,7 +12,7 @@ date: 2026-10-03
 # 049: recall through the conditions that matter
 
 Drafted 2026-10-03 at the user's request, after tracing card 048's
-failures. The staged encoder moved to card 050, which will use this
+failures. The staged encoder moved to card 052, which will use this
 card's recall if it passes. Approved by the user on 2026-10-03.
 
 ## 1. Question
@@ -75,7 +75,7 @@ card 049:   weight of stored try i = exp(-Σ over admitted conditions c of λ_c 
 - **Declared exceptions:** card 043's spliced check for conjunctions in
   the planner; card 045's route procedure.
 - **Not in this card:** "no match" read as unknown, prompting a try (a
-  planner change); the encoder (card 050).
+  planner change); the encoder (card 052).
 
 ## 3. Dependencies
 
@@ -195,7 +195,7 @@ Reported:
   key A" through the hand need (appendix A). If it does, two doors rise
   well above card 048's 2 of 150; if not, they stay below 50%.
 - New colours: little change. Version 8's encoder puts a new colour far
-  away in every part, so no part matches until card 050.
+  away in every part, so no part matches until card 052.
 - With three colours, per-colour parts and the relation fit equally, and
   the cost decides (LESSONS).
 
@@ -263,7 +263,7 @@ Reported:
 
 ## 8. Decision
 
-**Revise** (the user, 2026-10-03; card 051). Recall through admitted
+**Revise** (the user, 2026-10-03; card 050). Recall through admitted
 conditions does what the theory says: irrelevant tokens no longer veto
 (card 048's seed 401 from 46% to 98%), the conditions are the right ones
 in every seed, nothing familiar is lost, and new colours carry over far

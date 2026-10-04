@@ -1,6 +1,6 @@
 {
- "card": "051",
- "note": "tools/card051/own.py; runs/051_small.sh; raw outputs runs/051_{familiar,chain1,clutter}_40[0-4].*",
+ "card": "050",
+ "note": "tools/card050/own.py; runs/050_small.sh; raw outputs runs/050_{familiar,chain1,clutter}_40[0-4].*",
  "seeds": {
   "400": {
    "familiar": {

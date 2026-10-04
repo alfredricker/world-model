@@ -1,15 +1,15 @@
 ---
-id: "052"
+id: "051"
 title: the planner keeps its chain of conditions, checks rules compiled from recall, and costs per step what is in play
 rung: 0
 serves: [P12, P21, P17, P14, P8, P5, P15]
 status: draft
 verdict:
-arch_version: 8
+arch_version: 9
 date: 2026-10-04
 ---
 
-# 052: the planner keeps its chain of conditions, checks rules compiled from recall, and costs per step what is in play
+# 051: the planner keeps its chain of conditions, checks rules compiled from recall, and costs per step what is in play
 
 Drafted 2026-10-04 at the user's request: "a detailed card about your
 proposed efficiency, generalization, and understanding improvements to
@@ -19,8 +19,10 @@ design card: seven changes, each with its before and after, what it buys,
 its risk and its test. Section 9 proposes the order and how to split them
 into runs, because CHARTER asks for one component per experiment.
 
-It builds on card 051 (recall through admitted conditions, own tries
-first), whose main run is pending.
+It builds on cards 049 and 050 (recall through admitted conditions, own
+tries first), kept as architecture version 9. Renumbered from 052 to 051
+on 2026-10-04, so that it comes before the staged encoder (card 052),
+which needs its near-linear cost.
 
 ## 1. Question
 
@@ -33,12 +35,12 @@ problems stop it from scaling:
   for near-linear per-step cost before BabyAI or Crafter (2026-10-03).
 - **Commitment.** The chain is forgotten between steps, so the agent can
   undo at one step what it did at the previous one: card 049's two doors
-  (key A picked up and dropped in turn, 0 of 150) and card 051's
+  (key A picked up and dropped in turn, 0 of 150) and card 050's
   cluttered layout 66 (the purple key the same way).
 - **Understanding.** The planner's reasons exist only during one call.
   Nothing records "door A is open because the agent holds key A, which
   it picked up for that", so a failure cannot be attributed to the link
-  that broke. Card 050's encoder needs exactly such events (conditions
+  that broke. Card 052's encoder needs exactly such events (conditions
   met or broken).
 
 Can the planner keep the backward hierarchy of conditions and gain all
@@ -115,7 +117,7 @@ every stored try on every admitted condition (card 049). Card 049's
 shakedown worked out 65 conditions per move in the key world and 120 in
 the either world.
 
-**Layout 66, read against this** (card 051's trial, seed 403; traced
+**Layout 66, read against this** (card 050's trial, seed 403; traced
 2026-10-03). The agent stands at (2,2), facing a locked red door. It
 holds a purple key, which it has just learned does not open the door.
 - Step 9's chain: door open ← a different hand ← (an achiever through
@@ -148,7 +150,7 @@ Each change below has the same five parts: before, after, what it buys
 - A recall query compares the query with every stored try on every
   admitted condition: about 0.1 ms per thousand tries, linear in memory
   (card 049's timing).
-- The query's own situation (card 051) is found by the same scan.
+- The query's own situation (card 050) is found by the same scan.
 - Admission of conditions builds an n × n distance matrix per candidate,
   which is 1–5 s at 771 tries and about 20 GB per candidate at 50,000.
 
@@ -182,7 +184,7 @@ candidate reads. That is not CHARTER's forbidden merging into hard
 kinds: the tries themselves stay stored, and groups are rebuilt from
 them whenever the candidates change.
 
-**Test.** Predictions identical to card 051's on all held-out tries (at
+**Test.** Predictions identical to card 050's on all held-out tries (at
 least 99.9% the same class). Query time flat (at most 2 times) from 1,000
 to 50,000 stored tries (synthetic growth, as card 049's timing).
 
@@ -205,7 +207,7 @@ A rule is a cache. It is rebuilt from the kept tries, never edited, and
 never counted as evidence of its own:
 - recall decides whenever no rule covers the situation;
 - recall decides whenever a rule's prediction fails (the own situation
-  then contradicts it, card 051), and the rule is rebuilt for that
+  then contradicts it, card 050), and the rule is rebuilt for that
   situation;
 - recall decides when a token has no code, a "new" piece.
 
@@ -267,7 +269,7 @@ view whose code tuple lies in it. These are the candidates to pick up.
 **Risk.** Small. The index must follow every change to the tokens, so
 it is rebuilt from the tokens if a check fails.
 
-**Test.** For every node in card 051's runs, the same answers as the
+**Test.** For every node in card 050's runs, the same answers as the
 scan.
 
 ### Change 4: one backward pass of cost estimates guides the descent
@@ -310,9 +312,9 @@ prefer a branch that conflicts with another. Change 5 handles the
 conflict.
 
 **Test.**
-- Same decisions as card 051 in the familiar worlds (at least 99% of
+- Same decisions as card 050 in the familiar worlds (at least 99% of
   actions identical).
-- Fewer nodes expanded per step (reported against card 051).
+- Fewer nodes expanded per step (reported against card 050).
 - The estimates' rank correlation with the evaluator's true steps over
   test states (reported; rung 1's measure).
 
@@ -361,7 +363,7 @@ repaired incrementally as in LPA* and D* Lite (Koenig and Likhachev
 - *Understanding:* the chain is an object that persists and can be
   printed: "goal ← door B open ← holding key B ← drop key A after door A
   is open". When an act fails, the broken link names the expected
-  condition that did not hold: the event card 050's encoder term needs.
+  condition that did not hold: the event card 052's encoder term needs.
 
 **Risk.**
 - *Commitment against new information:* a kept chain can ignore a
@@ -373,7 +375,7 @@ repaired incrementally as in LPA* and D* Lite (Koenig and Likhachev
 **Test.**
 - Card 049's two doors: at least 80% of the 30 layouts in 4 of 5 seeds
   (card 049: 0 of 150; card 048 with version 8: 2 of 150).
-- Card 051's cluttered layouts with walls of objects: at least 99%.
+- Card 050's cluttered layouts with walls of objects: at least 99%.
 - Familiar worlds unchanged.
 
 ### Change 6: needs met in states the learned effects produce, not spliced
@@ -412,7 +414,7 @@ expose missing effects.
 
 **Before.** A prediction under one half reads as "does not work". A new
 colour door with no matching tries reads as closed for good, and the
-agent either acts at random (card 051's seed 401, random in 97% of steps)
+agent either acts at random (card 050's seed 401, random in 97% of steps)
 or never tries.
 
 **After.** Recall reports its support: the summed weight of the own and
@@ -420,7 +422,7 @@ neighbouring tries behind a prediction. With low support, the outcome is
 **unknown**, not false. In change 4's pass, an unknown achiever costs its
 walking cost plus a price for a try that may fail. If it is still the
 cheapest option, the planner tries it. The try's outcome is then the own
-situation's first try (card 051), which settles it.
+situation's first try (card 050), which settles it.
 
 **Buys.**
 - *Efficiency:* fewer random steps.
@@ -439,7 +441,7 @@ mostly random walks); the share of random steps there.
 
 ## 5. Before and after, in one table
 
-| | Before (version 8 with cards 049 and 051) | After |
+| | Before (version 8 with cards 049 and 050) | After |
 |---|---|---|
 | Search | Depth-first over achievers in a fixed order, from the top every step | Depth-first over achievers in order of estimated cost, from the kept chain |
 | What a node asks | Recall over all of memory | A rule checked against indexed tokens; recall when the rule does not apply |
@@ -461,8 +463,8 @@ mostly random walks); the share of random steps there.
 
 ## 7. Dependencies
 
-- Card 051 (own tries first), whose main run is pending. If it fails,
-  changes 1 and 2 still apply to card 049's recall.
+- Cards 049 and 050 (recall through admitted conditions, own tries
+  first): passed, kept as version 9.
 - Card 029's means-ends planner, card 043's conditions in produced
   situations, and card 045's walking: all passed.
 - Literature, to add to LITERATURE.md when this card becomes the focus:
@@ -505,7 +507,7 @@ are in recall, and five in the planner:
 Proposed order, each a run with its own gate, numbered as cards when the
 user approves each:
 1. **Changes 1 and 3 (efficiency, no change in behaviour).** Test:
-   identical decisions to card 051, and per-step time flat from 1,000 to
+   identical decisions to card 050, and per-step time flat from 1,000 to
    50,000 stored tries. This is the near-linear requirement on its own,
    with nothing else changed, so any difference in behaviour is a bug.
 2. **Change 2 (rules).** Test: rule predictions equal recall's (at least

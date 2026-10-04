@@ -1,5 +1,5 @@
 ---
-id: "051"
+id: "050"
 title: recall through conditions, with a query's own tries first
 rung: 0
 serves: [P10, P11, P12, P19, P14]
@@ -9,11 +9,13 @@ arch_version: 8
 date: 2026-10-03
 ---
 
-# 051: recall through conditions, with a query's own tries first
+# 050: recall through conditions, with a query's own tries first
 
 The revision of [card 049](../049-recall-through-conditions/card.md),
 asked for by the user on 2026-10-03 ("run that revision, ideally on a
-trial not as long as the main run"). Card 050 waits on this card.
+trial not as long as the main run"). Renumbered from 051 to 050 on
+2026-10-04 (run files kept their old number until then and were renamed
+with it). Card 052 waits on this card.
 
 ## 1. Question
 
@@ -38,7 +40,7 @@ combine with its neighbours.
 
 ```
 card 049:  P = (Σ_i w_i n_i + a/L) / (Σ_i w_i |n_i| + a)              all stored tries as neighbours
-card 051:  P = (N_own + α P_nb) / (|N_own| + α),  P_nb = card 049's P
+card 050:  P = (N_own + α P_nb) / (|N_own| + α),  P_nb = card 049's P
            N_own: tries with the same front and held code tuples and the same admitted view values
 ```
 
@@ -49,7 +51,7 @@ card 051:  P = (N_own + α P_nb) / (|N_own| + α),  P_nb = card 049's P
 - **α** is fitted after admission by leaving one try out, as card 038
   fitted its back-off (MacKay and Peto 1995).
 - **Unchanged:** admission, the candidates, the planner, tokens, walking.
-- **Code:** `tools/card051/own.py`, a subclass of card 049's recall.
+- **Code:** `tools/card050/own.py`, a subclass of card 049's recall.
 
 ## 3. Dependencies
 
@@ -71,7 +73,7 @@ cases card 049 failed or was weakest, under 10 minutes:
 - seed 401, chained rooms with one door, 100 layouts (card 049: 98%);
 - seed 401, new-colour switch door, 6 layouts per colour (card 049: 14%).
 
-Result of the trial (2026-10-03, about 9 minutes, `runs/051_trial_*`):
+Result of the trial (2026-10-03, about 9 minutes, `runs/050_trial_*`):
 - **α = 0.00012**, the smallest value on the grid, for every action: a
   situation's own tries decide as soon as there is one, as in card 038.
 - **Seed 403, cluttered world: 98%** (card 049: 91%; version 8: 95%).
@@ -106,18 +108,18 @@ thorough as other cards"):
 
 Each criterion in 5 of 5 seeds. Reported: the fitted α, and failed tries
 repeated in the same situation. Two doors are not run (the planner's
-subgoal order, card 052).
+subgoal order, card 051).
 
 **Prediction.** α near zero, as in card 038, so one failed try flips the
 prediction. Seed 403's cluttered world reaches 100%; the other results
 stay as in card 049. Seed 401's new-colour test: uncertain.
 
 **Budget.** All fifteen runs (five seeds by three tests) in parallel:
-about 15 minutes (`runs/051_small.sh`).
+about 15 minutes (`runs/050_small.sh`).
 
 ## 7. Result
 
-Reduced main run 2026-10-04 (`runs/051_small.sh`, fifteen runs in
+Reduced main run 2026-10-04 (`runs/050_small.sh`, fifteen runs in
 parallel, about 15 minutes; one run, chained rooms seed 400, ran out of
 GPU memory and was rerun alone). Numbers: [results.json](results.json).
 
@@ -136,7 +138,7 @@ GPU memory and was rerun alone). Numbers: [results.json](results.json).
   recall and the upper bound. Cluttered world: 98–100% (card 049: 91% in
   seed 403). Seed 403's two failures are the trial's: layout 47 fails
   under every recall, and layout 66 is the planner's pick-up and drop
-  alternation (card 052, change 5).
+  alternation (card 051, change 5).
 - **Criterion 3: pass, 5 of 5.** The same conditions as card 049 in every
   seed (admission is unchanged).
 - **α = 0.00012 in every seed and action:** a situation's own tries
@@ -147,11 +149,11 @@ GPU memory and was rerun alone). Numbers: [results.json](results.json).
 
 ## 8. Decision
 
-**Proposed: keep** (awaiting the user). With card 049, this is recall
+**Keep** (the user, 2026-10-04). With card 049, this is recall
 through the conditions that matter, with a query's own tries first: no
 vetoes from irrelevant tokens, the right conditions in every seed,
 nothing lost in the familiar worlds, and one failed try corrects recall.
-Keeping it makes cards 049 and 051 architecture version 9. Left for card
-052: the planner's subgoal order (two doors, cluttered layout 66),
+Keeping it makes cards 049 and 050 architecture version 9. Left for card
+051: the planner's subgoal order (two doors, cluttered layout 66),
 the cost per step, and "unknown" read as "fails" (seed 401's new-colour
 door).

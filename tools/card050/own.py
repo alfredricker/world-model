@@ -1,4 +1,4 @@
-"""Card 051: card 049's recall, with a query's own tries first.
+"""Card 050: card 049's recall, with a query's own tries first.
 
   P(class | q) = (N_own + alpha P_nb) / (|N_own| + alpha)
 
@@ -11,8 +11,8 @@
 A failed try is the situation's own evidence: after one failure in a situation the neighbours called a success,
 the prediction there is alpha P_nb / (1 + alpha).
 
-  bin/prun python tools/card051/own.py --clutter --seed 403 --n 100 --out runs/051_trial_clutter_403.json
-  bin/prun python tools/card051/own.py --dev --arm A --seeds 403-403 --layouts 30 --out runs/051_trial_familiar_403.json
+  bin/prun python tools/card050/own.py --clutter --seed 403 --n 100 --out runs/050_trial_clutter_403.json
+  bin/prun python tools/card050/own.py --dev --arm A --seeds 403-403 --layouts 30 --out runs/050_trial_familiar_403.json
 """
 import sys
 from pathlib import Path

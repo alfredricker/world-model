@@ -1,12 +1,17 @@
 ---
-arch_version: 8
+arch_version: 9
 ---
 
 # Architecture
 
-Version 8 plans on the encoder's vectors, with the state held as tokens
-and walking as a learned approach plus its conditions. It was built up in
-cards 038–047:
+Version 9 is version 8 with a new recall: an action's outcome is
+predicted only from the conditions that changed outcomes in memory, and
+a situation's own tries come before its neighbours
+([card 049](experiments/049-recall-through-conditions/card.md) and
+[card 050](experiments/050-own-tries-first/card.md), kept on
+2026-10-04). Version 8 plans on the encoder's vectors, with the state
+held as tokens and walking as a learned approach plus its conditions. It
+was built up in cards 038–047:
 - version 6 was kept with
   [card 043](experiments/043-consistent-hypotheticals/card.md);
 - [card 044](experiments/044-state-as-tokens/card.md) made the state a
@@ -29,10 +34,18 @@ the key, the switch, either, or both) it reaches the goal in 100% of 500
 new layouts in 5 of 5 encoder seeds. It takes the same steps as version 5
 (card 029) to within 0.8%. In unseen rooms (6 × 6, 7 × 7 and mirrored
 8 × 8) it reaches the goal in 100%, at 1.01–1.11 times the shortest
-route. It is not a passed rung: the world is fully visible, repeats
-pixels exactly, and every familiar appearance has been seen.
+route. Version 9 keeps these results (card 050: familiar worlds 100%,
+steps 0.93–0.97 times card 029's) and adds robustness to tokens that do
+not matter: card 048's chained rooms with one door 98% in every seed
+(version 8: 46% in seed 401), and a key world cluttered with extra keys,
+switches and vases 98–100% (version 8: 92–100%). It is not a passed
+rung: the world is fully visible, repeats pixels exactly, and every
+familiar appearance has been seen.
 
-The code is `tools/card047/situations.py`, which builds on:
+The code is `tools/card050/own.py` (own tries first), on
+`tools/card049/conditions.py` (recall through admitted conditions;
+`worlds.py` holds card 048's chained rooms and the cluttered key world),
+on `tools/card047/situations.py`, which builds on:
 - `tools/card045/movement.py`: walking through conditions;
 - `tools/card044/tokens.py`: the state as tokens;
 - `tools/card043/consistent.py`: conditions checked in produced situations;
@@ -55,11 +68,19 @@ Version 5, the counted model over exact tile IDs, is in git (commit
 - **Memory** keeps every stored try per action, keyed by the vectors of
   the thing in front, the held thing and the set of things in view, with
   its outcomes.
-- **Recall** predicts an action's outcome in two levels, mixed:
-  - the same thing: stored tries whose front and held things have equal
-    codes, weighted by how alike their views are;
-  - similar things: a learned weighting of the vectors, counting as β
-    tries against the same thing's (β fitted).
+- **Recall** (version 9) predicts a pick up, toggle or drop from the
+  **conditions admitted** for that action, and nothing else in view:
+  - candidates are the front and held tiles' four parts, a front–held
+    relation per part (a distance), and "a token with this code tuple is
+    in view";
+  - a candidate is admitted while it raises the leave-one-out likelihood
+    of the stored outcomes by more than log(number of candidates), so a
+    token present in every try (a key always on the floor) never enters;
+  - **own tries first:** the tries in the query's own situation (the
+    same front and held code tuples, the same admitted view values) are
+    the evidence, and the condition-weighted neighbours only their prior
+    (α fitted, 0.00012): one failed try overrules the neighbours there.
+  Moves, draw and undraw keep version 8's recall.
 - **Acting** is card 029's means-ends search, recomputed at every step. A
   condition is checked only in situations that recall's predicted effects
   produce from the present. The situations in which an action could work
@@ -71,8 +92,10 @@ Version 5, the counted model over exact tile IDs, is in git (commit
   its route are walkable, and chains of approaches through waypoints, or
   a door as a condition, cover the rest (System 2). No step is imagined
   while walking.
-- About 0.42–0.72 seconds per layout in the familiar worlds (version 7:
-  0.31–1.09; version 5: 0.015–0.024).
+- About 0.42–0.72 seconds per layout in the familiar worlds in version 8
+  (version 5: 0.015–0.024); version 9 was timed only with many runs
+  sharing the machine (2–17 s), and its cost per query grows with memory
+  (Known limits).
 
 ## How the state is represented
 
@@ -91,10 +114,11 @@ Since card 044 the state is a set of tokens:
   sight. There is no pose table.
 - **Readers address tokens by where:** ahead is the token at (0, 1), held
   is the hand's, in view are the tokens within 6 tiles.
-- **Recall still reads three roles** (declared exception, card 044): the
-  token ahead, the hand's, and what is in view as the set of distinct
-  appearances, positions dropped. Comparing token sets with positions
-  costs 545 times as much per comparison and is left to a later card.
+- **Recall reads three roles** (declared exception, card 044): the
+  token ahead, the hand's, and what is in view, positions dropped. Since
+  card 049 the view enters only through admitted conditions, each "a
+  token with this code tuple is in view", so tokens no condition reads
+  cost nothing.
 - **Codes** are discrete per tile (4 codebook indices, as in a VQ-VAE).
   Recall uses them for "the same thing". They name appearances, not
   things.
@@ -107,7 +131,7 @@ flowchart TD
     P["Pixels: 13 × 13 tiles of 8 × 8 × 3 around the agent, plus the held tile"] --> E["Encoder: 32 numbers per tile (4 pieces of 8); codes read from them"]
     E --> V["View: a token per tile (what) at its offset from the agent (where), plus the hand"]
     X["Experience: ~500,000 stored tries per world"] --> M["Memory: tries per action, keyed by front, held and the set in view"]
-    M --> R["Recall: same thing (equal codes) over similar things (vectors); weights fitted by leaving one key out"]
+    M --> R["Recall: own situation's tries first, then neighbours over the admitted conditions only; admitted by leave-one-out gain"]
     V --> O["Placing: the placement whose predicted view is nearest (L1)"]
     O --> FA["Tokens: a what per token, one transformation giving every where"]
     FA --> S["Means-ends search over conditions, checked in produced situations"]
@@ -129,7 +153,9 @@ flowchart TD
 | Key of a try | (front handle, held handle, view set) | Pick up, toggle, drop. Moves, draw and undraw are keyed by one handle | From the stored views |
 | Outcome class | (which places changed, the codes they became) | What a try did | From the try's next view |
 | Memory | Per action: keys with outcome counts and result vectors | Every stored try, never merged | 5,000 random episodes per world; real tries are added while acting |
-| Recall weights | Similar level λ2 (front, held, view); same level's view weights λ1v ≥ λ2v; mix β | What recall compares | Fitted jointly by leaving one stored key out (card 042) |
+| Admitted conditions | Per pick up, toggle and drop: the front tile's 4 parts plus up to about 4 more (held part, front–held relation per part, a code tuple in view), each with a weight λ | What recall reads | Greedy admission by leave-one-key-out likelihood, cost log(candidates) per condition; λ refitted jointly (card 049) |
+| Own-situation prior | α per action | How much the neighbours count against a situation's own tries | Leave-one-try-out likelihood (card 050) |
+| Version 8's recall weights | λ1, λ2, β | Still fitted: the planner's situations (card 047) read them | As version 8 (card 042) |
 | Move transformation | Per move: M (2 × 2), b (2) | How a move changes every where | Least squares on the counted correspondences of places before and after moves (cards 028, 044) |
 | Placement | One transformation, of 676 reachable by composing the moves' | Where every token is relative to the agent | Composed from the move transformations |
 | Tokens, situation | A handle per token id (638 ids: the first view's places, the held row, the rest within 12 tiles), "absent" where none seen; (tokens, placement, ended) | Belief, real or imagined | Placed views, written in by where |
@@ -154,7 +180,9 @@ Per world:
 3. **Memory**: the stored tries, grouped by key, with outcome counts.
 4. **Recall weights**, fitted by leave-one-key-out likelihood of the
    outcome classes, about 25 seconds per world:
-   - pick up, toggle and drop: card 042's two levels;
+   - pick up, toggle and drop: card 042's two levels (kept for the
+     planner's situations), then card 049's admission of conditions
+     (1–5 s per action) and card 050's α;
    - moves: card 038's single level on the thing in front.
 5. **How-soon network** (card 045): Q(g, m) = 1 + min Q(T_m g, ·), and 0
    at the target, where T_m is move m's transformation; hindsight, so every
@@ -167,11 +195,11 @@ At every step:
    the real one (L1 over vectors, the centre aside). The tokens in view
    take the view's whats.
 2. **Predict effects by recall.**
-   - Where the same thing has tries, the category and the result are what
-     it did then: the stored result of the best supported outcome class.
-   - Otherwise the similar-thing level predicts, and the result is
-     imagined by carrying the change over from similar things (card 038's
-     ways: keep, copy, shift, set).
+   - Where the query's own situation has tries, the category and the
+     result are what it did then.
+   - Otherwise the neighbours over the admitted conditions predict, and
+     the result is imagined by carrying the change over from them (card
+     038's ways: keep, copy, shift, set).
 3. **Work backward** from "episode ended", as in version 5:
    - the achievers of a condition are the actions whose predicted effect
      makes it true;
@@ -208,7 +236,7 @@ At every step:
 | Component | What it does | Input → output | Source (see LITERATURE.md) | Borrowed vs changed |
 |---|---|---|---|---|
 | Encoder and codes | Tiles to vectors and their codebook regions | Pixels → 32 numbers, 4 codes | `1711_00937`, `1803_03382`, cards 031–036 | Pair and recall terms added; "new" by radius; fresh codes |
-| Recall | An action's outcome from stored tries | Key → outcome class and result | MacKay and Peto 1995; Nosofsky's GCM; `1604_02354`; card 042 | Two levels: equal codes, then a learned vector metric; fitted by leave-one-key-out |
+| Recall | An action's outcome from stored tries | Key → outcome class and result | MacKay and Peto 1995; Nosofsky's GCM; `1604_02354`; Cheng 1997; Griffiths and Tenenbaum 2005; `1110_2211`; cards 042, 049, 050 | Only admitted conditions read (contrast with a cost per condition); own situation first, neighbours as prior |
 | Tokens and placements | What the agent has seen and where it is now | View → (tokens, placement) | Card 016; `1905_12006`; transformer patch tokens (Dosovitskiy et al. 2020); `1812_02230`; card 044 | Moves as fitted transformations of where; matching by L1 over vectors |
 | Subgoals | Which condition to pursue next, down to an action | Facts, recall → action | `strips`, `cs_9401101`; cards 029, 038, 043 | Conditions from memory, checked in produced situations |
 | Walking | Reach a placement facing a target | Tokens, placements, recall → move | `universal-value-function-approximators`, `1707_01495`, `1906_05253`; skill chaining (Konidaris and Barto 2009); card 045 | One how-soon network over the learned move transformations; the route's tokens as its conditions; waypoint chains; doors as conditions |
@@ -226,6 +254,9 @@ At every step:
     first view's centre;
   - a tile is 4 pieces of 8 numbers, with codebooks of 8;
   - "new" is 6 × a code's radius;
+  - recall's candidate conditions: per part of the front and held tiles,
+    a front–held distance per part, a code tuple present in view; a
+    condition costs log(number of candidates) to admit;
   - an outcome is predicted when its probability is at least one half;
   - a vector-level neighbour counts at k ≥ 0.01.
 - **The procedures are designed, not learned:** the order of needs, the
@@ -238,16 +269,20 @@ At every step:
 
 ## Known limits
 
-- **One identity level.** The same-thing level reads all four codebooks
-  for every action, so each thing is its own kind. "Each rule reads only
-  the codebooks it needs" is not done, and colour transfer needs it.
+- **Parts mix kind and colour.** Each action now reads only the parts
+  admitted for it, but which parts differs by seed (part 0, 2 or 3, held
+  or relation), because the encoder spreads colour and kind over all four.
+  In seed 403 this let a never-seen purple key read as fitting the red
+  door until one try said otherwise. Card 052 (the staged encoder) is
+  meant to give colour a part of its own.
 - **New colours.**
   - First-sight effects were right in 2 of 5 seeds.
-  - The switch world with a new-colour door reaches the goal in 8–93%
-    (mean 40%, card 047). It succeeds where recall's similarity between
-    the new door and the nearest known door is 0.035–0.064, and fails
-    (8–16%) where it is 0.005–0.021: the encoder puts the colour too far
-    from the doors for recall to carry anything over.
+  - The switch world with a new-colour door: mean 76% with card 049's
+    recall (above 90% in 7 of 10 runs; seed 401 14%, mostly random
+    steps), against 40% in version 8 (card 047). Not rerun with own
+    tries first beyond a 6-layout trial.
+  - Low support reads as "fails", not "unknown", so a new door may never
+    be tried (card 051, change 7).
   - There are no relations ("this key fits this door"), and colour
     transfer is paused by the user.
 - **Chance.** An outcome is acted on only when its probability is at least
@@ -256,6 +291,10 @@ At every step:
 - **Conjunctions.** A success that needs both the hand and the view
   changed is still checked in a spliced situation (card 043's declared
   exception).
+- **No commitment between steps.** The chain of conditions is rebuilt
+  every step and protects only what is in the current chain, so a later
+  need can undo an earlier one: two doors 0 of 150 (key A picked up and
+  dropped in turn), and one cluttered layout the same way (card 051).
 - **Exact views.** It needs the whole room in view and exact pixel
   repeats. Codes absorb small differences, but this is untested with
   noise, and vectors near a region's edge could flip codes between views.
@@ -289,3 +328,4 @@ At every step:
 | 6 | 2026-10-01 | 038–043 | Plan on encoder vectors: recall over stored tries replaces the counted tables; the view as a set (039); recall in two levels, equal codes for the same thing and vectors for similar things (042); conditions checked only in situations the learned effects produce (043). Kept by the user with card 043: 100% in all four worlds in 5 of 5 seeds, effects exact, card 029's steps |
 | 7 | 2026-10-01 | 044 | The state as tokens: every tile and the held thing a what and a where (offset from the agent, or the hand); moves as least-squares transformations of where, fitted to the counted correspondences (exact); no pose table. Kept by the user with card 044: the same decisions as version 6 in every familiar world, 5 of 5 seeds; 12% slower per layout |
 | 8 | 2026-10-01 | 045–047 | Walking through conditions (045): a how-soon network fitted on the move transformations (System 1), the route's tokens walkable as its conditions, waypoint chains and doors as conditions (System 2), no imagined step. Situations for an action on a thing from both of recall's levels, each judged by recall (047, after 046 used the levels as a switch). Kept by the user with card 047: the same results in the familiar worlds, 100% in unseen rooms at 1.01–1.11 times the shortest route; new-colour switch tests 40% (version 7: 31%); 31–77% slower than card 046 |
+| 9 | 2026-10-04 | 049–050 | Recall through the conditions that matter: for pick up, toggle and drop, only conditions admitted by their leave-one-out gain (front and held parts, front–held relations, code tuples in view) are compared, so tokens that never changed an outcome cannot veto a memory (049); a query's own situation first, neighbours as its prior, so one failed try corrects recall (050). Kept by the user with card 050: familiar worlds 100% in 5 of 5 seeds, chained rooms with one door 98% (version 8: 46% in seed 401), cluttered key world 98–100%; new-colour switch door 76% with card 049 (version 8: 40%) |
