@@ -573,6 +573,24 @@ Criteria:
   matching and the other key, by codes or by vectors; gate 2 by
   predictions as declared in step 2d.
 
+### Step 2f (the harness on the old setting, an upper bound): declared before the run
+
+The user approved (2026-10-04). Steps 2a–2e had no upper bound for the
+encoder. This runs step 2d's configuration with step 2e's colour check
+(effect term μ = 0.1, plain codebooks, play starts at 0.5, tries
+stratified by kind) on the setting the earlier encoders learned: three
+colours (red, green, blue), no tint, no noise. The generator's kinds and
+rooms are unchanged, so it is closer to the old setting, not identical.
+Shorter, because the setting is smaller: 20 checkpoints of 1,000 updates
+(200,000 steps of play), tries collected over 150,000 steps, seed 399.
+
+Reading, over the last 5 checkpoints:
+- **The harness works (scale is the problem)** if, by codes, both colour
+  tries are at least 90% right and prediction flips are below 1%.
+- **The harness or objective is broken** if colour tries stay near
+  ignoring colour (the two accuracies adding to about 100%).
+- In between: reported as it is.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

@@ -26,6 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import effect as EF                                    # noqa: E402
 
 fn = torch.nn.functional
+COLLECT_STEPS = 400000
 
 
 def collect(seed, n_mem=2000, n_probe=200, steps=400000):
@@ -60,11 +61,11 @@ def kind_of(a, ids):
 COLOUR = {"locked, same key": (5, "door/2", "key/same"), "locked, other key": (5, "door/2", "key/other")}
 
 
-def collect_strat(seed, n_mem=300, n_probe=40, steps=400000):
+def collect_strat(seed, n_mem=300, n_probe=40, steps=None):
     """Step 2d: per kind of try, up to n_probe probe tries first, then up to n_mem memory tries."""
     s = EF.Stream(seed)
     mem, probe = defaultdict(list), defaultdict(list)
-    for _ in range(steps):
+    for _ in range(steps or COLLECT_STEPS):
         s.step()
         for a, f, h, o, ids in s.tries:
             q = kind_of(a, ids)
@@ -120,9 +121,10 @@ class Check:
             Xp = enc.keys([t[0] for t in p], [t[1] for t in p])
             R = fn.one_hot(torch.as_tensor([t[2] for t in m], device=enc.dev), EF.NK).float()
             lam = fn.softplus(enc.theta[ai])
-            k = torch.exp(-(torch.abs(Xp[:, None] - Xm[None]) * lam).sum(-1))
-            P = (k @ R + 1.0 / EF.NK) / (k.sum(-1, keepdim=True) + 1.0)
-            pred += P.argmax(1).cpu().numpy().tolist()
+            for j in range(0, len(Xp), 100):          # in chunks of probe tries (GPU memory)
+                k = torch.exp(-(torch.abs(Xp[j:j + 100, None] - Xm[None]) * lam).sum(-1))
+                P = (k @ R + 1.0 / EF.NK) / (k.sum(-1, keepdim=True) + 1.0)
+                pred += P.argmax(1).cpu().numpy().tolist()
         return np.array(pred)
 
     def codes(self, enc):
@@ -206,6 +208,13 @@ class ColourCheck:
 def main():
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
+    if get("--colours", None):                        # step 2f: the old setting (TRAIN is shared by reference)
+        EF.DR.GN.TRAIN[:] = get("--colours", None).split(",")
+        EF.STARTS[:] = [st for st in EF.STARTS if st[2] in EF.DR.GN.TRAIN]
+    EF.DR.GN.TINT = float(get("--tint", str(EF.DR.GN.TINT)))
+    EF.DR.GN.NOISE = float(get("--noise", str(EF.DR.GN.NOISE)))
+    global COLLECT_STEPS
+    COLLECT_STEPS = int(get("--collect-steps", "400000"))
     EF.START_SHARE = float(get("--starts", "0"))      # the tries come from the same stream as training
     chk = Check(int(get("--seed", "399")), strat=get("--strat", "0") == "1")
     EF.CHECK = chk

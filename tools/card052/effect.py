@@ -231,7 +231,7 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
                 ch, no = buf[5][1], buf[5][0]
                 nc = min(REL_N // 2, len(ch))
                 enc._rel = [ch[i] for i in rng.choice(len(ch), size=nc, replace=False)] + \
-                           [no[i] for i in rng.choice(len(no), size=REL_N - nc, replace=False)]
+                           [no[i] for i in rng.choice(len(no), size=min(REL_N - nc, len(no)), replace=False)]
             loss = enc.update([tiles[i] for i in bi], [pairs[i] for i in pi])
             effs.append(enc.last_effect)
             if REL_W > 0:
