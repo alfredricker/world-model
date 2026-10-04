@@ -783,6 +783,27 @@ criteria name; step 2f did not have it):
   differentiation (B: more tiles kept apart, pick-ups with a full hand
   wrong), neither is clearly better.
 
+### Step 2h (arms A and B on the main setting): declared before the run
+
+The user approved (2026-10-04): the pixel anchor is dropped; arms A
+(uniformity with a fixed codebook, effect term) and B (the same, error-
+driven differentiation) run on the main setting: nine training colours,
+tint and noise, play starts at 0.5, tries stratified by kind, seed 399,
+40 checkpoints of 2,000 updates, as steps 2d–2e. Here the invariance
+term is active (two noisy renderings of one cell), and B's skip
+threshold comes from it. Baseline: step 2e's check arm (pixels and the
+effect term on the same stream; 5% / 99% on the colour tries by codes).
+
+Criteria, over the last 10 checkpoints:
+1. **Codes keep identities:** at most 8 of the 84 identities split over
+   several tuples by nuisance, and at most 8 tuples shared by several
+   identities.
+2. **Colour tries:** at least 90% for both the matching and the other
+   key, by codes then vectors.
+3. **Stable:** prediction flips by codes then vectors below 1%.
+Also reported: probe tiles changing code, accuracy on all tries, the
+worst kinds of try.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.
