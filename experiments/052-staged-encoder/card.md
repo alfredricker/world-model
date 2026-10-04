@@ -295,6 +295,49 @@ Options for the user (none taken overnight):
 4. Fewer codes per part, or a hysteresis on reading codes (a tile keeps
    its code until clearly past the boundary).
 
+**The user's choice (2026-10-04, morning):** option 1 first, then
+option 2 if needed. The user approved the runs below; the overnight
+"sixth" option (codes mapped by overlap) is set aside. It was the fifth;
+the numbering was wrong.
+
+### Step 2b (gate 2 with the interaction terms): declared before the run
+
+This reverses the card's order (gate 2 was to pass before step 3) with
+the user's approval. The terms are added one at a time, so that each
+one's effect on drift is seen; this step adds the first.
+
+Built: `tools/card052/effect.py`, on step 2a's harness (same stream,
+buffer, probe set, checkpoints of 2,000 updates = 20,000 steps of play,
+seed 399, 40 checkpoints).
+- **Effect term** (card 033's): for pick up, drop and toggle, events
+  (front tile and held tile before the action, rendered with the
+  episode's nuisance; an empty hand is the floor tile) and their outcome
+  (nothing, the front tile changes, the hand changes, both). Per update
+  and per action, 128 events from a buffer of the last 20,000: half with
+  a change, half without (the card's interaction-dense batches). The key
+  of an event is the two tiles' pieces and their distance in each part
+  (card 033's "rel" keys); the loss is minus recall's leave-one-out
+  log-likelihood within the batch, with attention weights λ per action
+  learned alongside. Weight μ.
+- **Persistence:** version 8's pair term, as in step 2a (the
+  generalisation waits for the next term).
+- **Pixels:** rebuilding kept at weight 1; μ sets the relative weight.
+
+Arms (4 in parallel): μ = 0.1 (card 033's choice) and μ = 1 (pixels as
+the weaker term), each with plain codebooks and with moving-average
+codebooks (step 2a's first two rows are the baselines).
+
+Criteria, per arm, over the last 10 checkpoints:
+- **Gate 2 met:** code flip rate below 1%, and it stays there.
+- **Progress (revise on to the next term, else drop this term):** flip
+  rate at most half the matching step-2a arm's (plain 22–33%, moving
+  averages 25–51%), with no more collapse (distinct tuples on the probe
+  set at least step 2a's: 23 plain, 55 moving averages) and the
+  label-free pair change per part reported.
+- **Action sensitivity (gate 3's check, on this term):** the
+  leave-one-out log-likelihood with outcomes shuffled across events
+  differs from the unshuffled one; reported at every checkpoint.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

@@ -142,6 +142,7 @@ class Encoder:
             d = (za - zb).norm(dim=-1)
             mid = (d.amax(1, keepdim=True) + d.amin(1, keepdim=True)).detach() / 2
             loss = loss + pair_w * (d * (d < mid)).sum(1).mean()
+        loss = loss + self.extra()                    # further terms (step 2b on); none in step 2a
         self.opt.zero_grad()
         loss.backward()
         self.opt.step()
@@ -169,6 +170,9 @@ class Encoder:
                         self.restarts += 1
                 self.used.zero_()
         return float(loss)
+
+    def extra(self):
+        return 0.0
 
     @torch.no_grad()
     def codes(self, tiles):
