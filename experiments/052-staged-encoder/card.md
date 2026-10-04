@@ -184,6 +184,43 @@ the evaluator knows (for example "holding the X key" for "open the X
 door") from at most 30 successes per task type. The P19 curve is
 reported at 3, 10 and 30 successes.
 
+## Overnight work (2026-10-04)
+
+The user delegated cards 051 and 052 overnight (2026-10-04: "proceed
+with reasonable keep / throwaway / revisions"). Steps here are recorded
+as Claude's, with their criteria written before they run; the running
+record is [log.md](log.md).
+
+### Step 1, as built (`tools/card052/generator.py`), declared before gate 1
+
+- BabyAI's room grids (`minigrid.core.roomgrid`) with BabyAI's verifier
+  for success conditions (go to, pick up, open, put next to, unlock).
+- 12 hues: MiniGrid's 6 and orange, cyan, pink, brown, white, teal.
+  **Held out:** pink, brown and teal (tests only). Training colours: 9.
+- Kinds: keys, balls, boxes in every training colour; doors closed,
+  locked (key of the same colour reachable) or switch-operated (a switch
+  of the same colour reachable; a switch door looks like a locked door);
+  switches (a plate with a lever, on and off). Lava as an obstacle;
+  coloured floor tiles as decoration nothing involves.
+- Rooms: 1 × 1 (sizes 5–10; split by a wall with a door 60% of the time
+  at size 6 or more), 1 × 2 and 2 × 1 (5–8), 2 × 2 (5–7).
+- Nuisance in rendered 8-pixel tiles: a per-episode floor tint (up to
+  24/255 per channel on the background) and pixel noise σ = 4/255.
+- Not yet: our 13 × 13 egocentric view of these worlds (step 2 needs
+  it).
+
+**Gate 1 passes when:**
+1. After 5,000 episodes of random play (100 steps each) plus play starts
+   for any cell below 30, every training colour has at least 30 of each:
+   pick-ups of key, ball and box; door opens; key unlocks; switch-door
+   unlocks; switch presses; and each of the five success conditions at
+   least 30 times. Play starts are the agent starting in front of the
+   event's object (holding the key for an unlock; the switch on for a
+   switch door; holding an object for a put-next).
+2. Rendering: 200 draws of random tint and noise per tile (each kind,
+   state and hue, 101 tiles); every draw is nearest (L1) to its own clean
+   tile.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

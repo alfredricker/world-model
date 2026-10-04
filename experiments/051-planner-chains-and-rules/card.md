@@ -538,6 +538,84 @@ set, about 40 minutes, handed to the user.
   agent tries the new door once with the switch on instead of walking at
   random.
 
-## 11. Result
+## 11. Overnight work (2026-10-04)
 
-## 12. Decision
+The user delegated card 051 and card 052 overnight (2026-10-04: "proceed
+with reasonable keep / throwaway / revisions"). Each step's criteria are
+written here before it runs; decisions taken overnight are marked as
+Claude's and can be reversed. The running record is [log.md](log.md).
+
+### Step 1: memory indexed by situation (changes 1 and 3), declared before the run
+
+**What is built** (`tools/card051/index.py`, on card 050's recall):
+- **Groups of stored keys.** Recall's prediction for a pick up, toggle
+  or drop depends on a stored key only through its front tile, its held
+  tile and the admitted view conditions. Keys equal on those form one
+  group with summed outcome counts. A query is compared with each group
+  once, not with each key: the same numbers, at a cost that grows with
+  the distinct situations, not with memory. A key's own situation is a
+  hash lookup.
+- **Admission on groups.** The same leave-one-out likelihood, computed
+  over groups of keys equal on every candidate condition.
+- **Situations for the planner by class.** Card 047's templates list
+  every distinct (held tile, view) of the stored tries on a tile, which
+  grows with memory. Situations equal on the held tile and the admitted
+  view conditions get the same prediction, so one per class is kept.
+  The same for the situations that made a tile walkable.
+
+**Gate.** Profile of version 9 on 10 cluttered layouts, seed 399, alone
+on the machine: 1.08 s per layout. Recall's per-query scan takes 7.5 s
+of the 10.8 s of acting; setup 61 s.
+
+**Criteria** (seed 399, the spare seed):
+1. **Same decisions.** Cluttered world, 30 layouts, and the key and
+   switch worlds, 30 layouts each: at least 99% of actions identical to
+   card 050's, the same successes.
+2. **Flat cost.** Memory grown by real tries from random play in
+   cluttered layouts to about 5,000, 20,000 and 50,000 stored pick up,
+   toggle and drop keys: time per step within 2 times the base memory's
+   (about 800 keys per action). Card 050's recall measured alongside, to
+   20,000 keys.
+
+Keep if both pass; otherwise revise once, then stop and record.
+
+### Step 4a: threats between the needs of one achiever (part of change 5), declared before the run
+
+Taken before steps 2 and 3, because step 1 already removed most of the
+cost those two were for, and the two-door failure is the largest gap.
+
+**The failure, traced** (seed 399, two doors, layout 0;
+`runs/051/trace_two_doors_399_0.txt`). "Pick up key red" has two
+unmet needs: an empty hand, and facing key red. Facing key red needs
+door blue open, which needs key blue in hand. Card 029's pursue() takes
+the first unmet need, the hand, so the agent drops key blue; the next
+step it picks key blue up again to reach key red, and so on for 200
+steps. Protection covered only conditions above in the chain, not what
+the other need's plan relies on.
+
+**What is built** (`tools/card051/threats.py`). When an achiever has two
+or more unmet needs, each is planned from the present. A plan records the
+conditions it relies on that hold now: the needs met along its chain,
+and, for an achiever with no needs because it works as things are,
+"this action works with the present hand and view". A need threatens
+another when the act its plan works toward (the drop, the toggle),
+imagined on the present, breaks a condition the other's plan relies on.
+The first need that threatens none is pursued; if all do, card 029's
+order. Recorded: how often needs were weighed and reordered.
+
+**Shakedown** (seed 399, two doors, layouts 0–4): 5 of 5 reach the goal
+(36–49 steps), against 0 of 30 under card 050.
+
+**Criteria** (seed 399 first, then seeds 400–404):
+1. Two doors (30 layouts): at least 80% in 4 of 5 seeds (card 049 and
+   card 050's recall: 0 of 150).
+2. Nothing lost: chained rooms with one door and the cluttered world (100
+   layouts each) no more than one layout worse than card 050 in any
+   seed; the four familiar worlds (30 layouts) pass card 049's
+   criterion 1.
+
+Keep if both pass.
+
+## 12. Result
+
+## 13. Decision
