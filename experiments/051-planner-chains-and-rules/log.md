@@ -80,3 +80,12 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
 - Step 4d on seeds 400–404: everything passes (two doors 30/30, one door
   100%, cluttered 100% but seed 403 layout 93, familiar worlds 100% with
   card 029's steps). Steps 4c and 4d kept together.
+- Why the +50,000 point blew up, measured (seed 399, `index` agent): the
+  agent's own arrays are small and grow with keys (per action at +10,000
+  keys: stored memory snapshot 10.8 MB, result sums 8.4 MB, vectors 2.1
+  MB; 643 distinct view sets in all); peak memory stayed 3.4 GB. New
+  distinct keys get rare as memory fills: +5,000 keys took 47,109 random
+  tries, the next +5,000 took 169,490. Reaching +50,000 would take
+  millions of tries held in the test's list, which is what filled 22 GB.
+  A harness limit, not the agent's; in this world distinct situations
+  saturate well before 50,000.

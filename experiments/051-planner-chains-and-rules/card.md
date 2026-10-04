@@ -735,7 +735,10 @@ episodes is seed 403's cluttered layout 93 (see step 4b).
   recall's weights; decisions stayed identical.
 - **Left:** re-admission on grown memory took 50 s at +20,000 keys
   (1.8 s at +5,000); it runs only on surprise, but it is not yet linear.
-  Result at +50,000 keys: see log.md. Imagining a result for a new
+  +50,000 keys was not reached: new distinct keys get rare as memory
+  fills (+5,000 keys took 47,000 random tries, the next +5,000 took
+  169,000), and the test's list of tries filled 22 GB; the agent's own
+  arrays at +10,000 keys are about 25 MB per action (log.md). Imagining a result for a new
   situation (card 038's transport) still reads every key of the outcome
   class, linear but cheap at these sizes.
 
