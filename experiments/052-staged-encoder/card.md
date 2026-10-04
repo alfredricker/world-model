@@ -488,6 +488,49 @@ Criteria, over the last 10 checkpoints:
 - Also reported: whether the play starts change code collapse (tuples on
   the probe tiles; step 2c had 19–22).
 
+### Step 2d result: gate 2 not met; the encoder does not learn colour matching
+
+Seed 399, 40 checkpoints, 25 minutes plus 7 to collect the tries
+(`runs/052/predflip_starts_399.json`, `runs/052/predflip_starts.sh`).
+Colour tries: 40 + 40 in the probe, 193 (matching key) and 300 (other
+colour) in memory. Over the last 10 checkpoints:
+
+| Measure | Recall by codes | Recall by vectors |
+|---|---|---|
+| Probe tiles whose code tuple changed | 10–36% (mean 22) | – |
+| Prediction flips, all tries | 3.6–16.7% (mean 8.5) | 1.3–1.9% (mean 1.6) |
+| Accuracy, all tries (trivial baseline 84%) | 83–90% (mean 86) | 97–98% (mean 97) |
+| Accuracy, locked door + matching key | 18–78% (mean 51) | 48–98% (mean 75) |
+| Accuracy, locked door + other key | 58–95% (mean 75) | 15–48% (mean 32) |
+| Prediction flips, the colour tries | 28–32% per checkpoint (means) | – |
+
+- **Gate 2 not met.** Predictions are no longer stable once the tries
+  include the cases that need colour: 8.5% flip overall by codes, about
+  30% on the colour tries.
+- **Colour matching is not learned, by codes or by vectors.** The two
+  colour accuracies add to about 125% by codes and 106% by vectors; a
+  recall that ignores colour predicts the same for both and adds to
+  100%. The tries are there (193 and 300 in memory), so it is not for
+  lack of data now that the play starts work.
+- **The play starts did not stop collapse:** 17–26 tuples on the probe
+  tiles (step 2c 19–22); parts use 3, 8, 3 and 2 codes.
+- **Overall accuracy by codes, 86%, is hardly above the trivial 84%** on
+  this stratified probe; recall by vectors, 97%, does better on
+  everything except colour.
+- **Reading:** the effect term asks recall to predict outcomes from the
+  two tiles' vectors and their distance in each part. A "same colour"
+  relation needs a part where a key and a door of one colour are close
+  and of two colours far apart. Nothing builds that part: the encoder's
+  parts mix kind and colour (an open limit since card 042). Step 3's
+  relation term (success with the held tile and the tile in front
+  sharing a code in some part; other colours the negatives) targets
+  exactly this.
+- **Decision proposed: revise.** Next, step 3's relation term on this
+  stream. A cheap check before it: whether colour can be read from the
+  vectors at all (a linear probe on the evaluator's colour, report
+  only); if it cannot, the pixel anchor or collapse is losing it and the
+  relation term would have nothing to align. The user decides.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

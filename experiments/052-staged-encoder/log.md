@@ -75,3 +75,12 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   first checkpoint and the codes were collapsed (19-22 tuples). Proposed:
   rebuild the probe with play starts, stratified by kind and colour, and
   rerun. Not run; the user decides.
+- Step 2d (approved): play starts in the stream (share 0.5, 10-step
+  episodes) and tries stratified by kind. Found and fixed a step-1 bug:
+  minigrid's reset() emptied the hand after the play start gave the key,
+  so gate 1's unlock starts never held a key. Result: gate 2 not met.
+  On a held key at a locked door, recall ignores colour (codes: 51% /
+  75% matching / other; vectors 75% / 32%), and those predictions flip
+  about 30% per checkpoint. Overall by codes 86% against a trivial 84%.
+  Proposed: step 3's relation term, after a linear-probe check that
+  colour is in the vectors at all. Not run; the user decides.
