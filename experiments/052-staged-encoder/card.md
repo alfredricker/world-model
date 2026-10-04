@@ -221,6 +221,35 @@ record is [log.md](log.md).
    state and hue, 101 tiles); every draw is nearest (L1) to its own clean
    tile.
 
+### Gate 1 result: pass, with one revision of the rendering check (Claude, overnight)
+
+Numbers: `runs/052/gate1.json` (not in git; summarised here).
+
+- **Event counts: pass.** 5,000 random episodes (430,547 steps, 37 s).
+  Random play alone left 22 cells below 30 (mostly key unlocks and
+  switch-door unlocks per colour, and put-next successes); 13,050
+  play-start episodes over 21 cells brought every cell to 30 or more.
+  Per training colour after play starts: key pick-ups 1,066–1,364, ball
+  pick-ups 499–645, box pick-ups 227–298, door opens 46–85, key unlocks
+  30–31, switch-door unlocks 33–51, switch presses 139–202. Successes:
+  go to 1,589, pick up 583, open 208, put next to 66, unlock 130 (random
+  play alone: 540, 176, 70, 13, 13).
+- **Rendering: pass under the revised comparison.**
+  - First run: 6 of 20,200 noisy draws of an empty tile read as a grey or
+    brown box, because MiniGrid's grid lines are drawn in the grey of a
+    grey box's outline. Grid lines carry no information and are no longer
+    drawn.
+  - Second run: still 11 of 20,200 (empty to dark box), because the
+    comparison was against untinted clean tiles and the tint alone moves
+    an empty tile toward a dark box's thin outline. **Revision:** two
+    kinds "look alike" when they give the same image under the same
+    nuisance, so the comparison is now against clean tiles with the
+    episode's tint (every tile of an episode shares it). Under it: 0 of
+    20,200 misread. The tint-unknown figure is kept in the results.
+  - Closest pair: a switch that is off, in yellow against orange (mean
+    0.0077 per channel, under the noise's 0.0125); it still separates
+    over a tile's pixels, but it is the first place codes may merge.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

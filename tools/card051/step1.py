@@ -28,6 +28,9 @@ def setup(recall, seed):
     global WD
     if recall == "index":
         IX.install()
+    elif recall == "commit":
+        import commit                                   # noqa: E402
+        commit.install()
     elif recall == "threats":
         import threats                                  # noqa: E402
         threats.install()

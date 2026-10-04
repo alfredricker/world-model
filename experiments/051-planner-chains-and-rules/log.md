@@ -52,3 +52,8 @@ Running record of the overnight work (2026-10-04), newest last. Branch
 - **03:40** Step 4a, seeds 400–404: two doors 29/30 in every seed (layout
   11 fails in all); one door 98% and cluttered 98–100%, the same failing
   layouts as card 050 in every seed. Familiar worlds running.
+- **04:55** Step 4a familiar worlds: pass in 5/5 seeds with card 050's
+  steps. Step 4a kept.
+- **05:00** Step 4b (commitment between steps, `tools/card051/commit.py`):
+  seed 403 cluttered 98% to 99% (layouts 47 and 66 now succeed, 93 now
+  fails, traced); every other test as step 4a in all seeds. Kept.

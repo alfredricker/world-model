@@ -616,6 +616,84 @@ order. Recorded: how often needs were weighed and reordered.
 
 Keep if both pass.
 
+### Step 4b: the chain's choices kept between steps (the rest of change 5), declared before the run
+
+**The failure, traced** (seed 403, cluttered layout 66;
+`runs/051/trace_clutter_403_66.txt`). Recall on seed 403 lets the purple
+key read as fitting the red door (parts mix kind and colour); one failed
+try corrects that (card 050). Then step 9 chooses the blue key (drop the
+purple key first), step 10 the red key, whose route the dropped purple
+key now blocks (pick it up), and the two alternate for the rest of the
+episode. Step 4a does not help: the two keys are alternative achievers,
+not needs of one achiever.
+
+**What is built** (`tools/card051/commit.py`). Each step records, for
+every condition in the chain it acts on, the achiever it chose; the next
+step tries that achiever first for the same condition and searches as
+before only when it no longer gives a plan. No cost margin yet (change
+5's step 4).
+
+**Shakedown** (seed 403 layout 66: goal at step 32; layout 47 still
+fails, as under every recall; seed 399 two doors layouts 0–2: the same
+steps as step 4a).
+
+**Criteria** (seeds 400–404, with step 4a's tests):
+1. Cluttered world: at least 99% in every seed (card 050: 98% in seed
+   403, 100% elsewhere).
+2. Two doors at least 80% in 4 of 5 seeds; one door and the familiar
+   worlds no worse than step 4a (one layout of slack per test).
+
 ## 12. Result
+
+### Step 1 (seed 399): pass, kept (Claude, overnight)
+
+| | Card 050 | Step 1 |
+|---|---|---|
+| Decisions, 30 cluttered + 30 chained layouts | | identical, action for action |
+| Familiar worlds (moves, step kinds) | | identical |
+| Time per layout, key world | 2.7 s | 0.24 s |
+| Time per step at +0 / +5,000 / +20,000 stored keys | 43 / 579 / 4,640 ms | 9.9 / 6.3 / 5.7 ms |
+| Recall groups per action at the same sizes | (keys: 725 / 2,450 / 7,500) | 50 / 82 / 95 |
+| Admission at base memory | 725–771 keys | 50–52 groups, same conditions, gains and α |
+
+- One revision: the first version still grew (328 ms per step at
+  +20,000) because card 038's ways were refitted over every pair of a
+  class's keys after every stored try. They are now fitted once, like
+  recall's weights; decisions stayed identical.
+- **Left:** re-admission on grown memory took 50 s at +20,000 keys
+  (1.8 s at +5,000); it runs only on surprise, but it is not yet linear.
+  Result at +50,000 keys: see log.md. Imagining a result for a new
+  situation (card 038's transport) still reads every key of the outcome
+  class, linear but cheap at these sizes.
+
+### Step 4a (seeds 399–404): pass, kept (Claude, overnight)
+
+| Seed | Two doors (card 050: 0/30) | One door | Cluttered | Familiar worlds |
+|---|---|---|---|---|
+| 399 | 29/30, 1.05 | 98%, as card 050 | 99%, as card 050 | pass, same moves |
+| 400–404 | 29/30, 1.05 in each | 98%, as card 050 | 98–100%, as card 050 | pass in 5/5, card 050's steps |
+
+Layout 11 of two doors fails in every seed: the planner finds no chain
+from the start and acts at random (not traced further). Cluttered layout
+66 of seed 403 still fails (step 4b).
+
+### Step 4b (seeds 400–404): pass, kept (Claude, overnight)
+
+| Seed | Two doors | One door | Cluttered (step 4a) | Familiar worlds |
+|---|---|---|---|---|
+| 400–402, 404 | 29/30, 1.05 | 98%, as card 050 | 100% (100%) | pass, card 050's steps |
+| 403 | 29/30, 1.05 | 98%, as card 050 | **99%** (98%) | pass, card 050's steps |
+
+- Seed 403: layouts 47 and 66 now reach the goal; layout 93, which step
+  4a solved, now fails (`runs/051/trace_clutter_403_93.txt`). On this
+  seed recall lets the purple key read as fitting the red door; after
+  that try fails, the planner looks for "a different hand" through
+  dropping the purple key in front of the vase, and alternates between
+  that achiever's two needs, which take different forms on alternate
+  steps, so neither step 4a's threat check nor step 4b's commitment
+  (keyed by condition) catches it. One layout in 500 cluttered episodes.
+- Time per layout rose slightly with step 4a's sibling planning (key
+  world about 0.25 s, against step 1's 0.24 s; two doors 0.51 s).
+
 
 ## 13. Decision
