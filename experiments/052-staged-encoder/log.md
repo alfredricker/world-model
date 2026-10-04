@@ -105,3 +105,9 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   (`tools/card052/diag/collapse_*.py`). Also found: on clean tiles the
   linear colour check reads colour from vanishingly small differences
   (it standardises each number), so it says little there.
+- Step 2g: all three replacements fix the colour tries (97.5% / 100%
+  against 2f's 2.5% / 100%) with prediction flips under 1%; none keeps
+  27 of 30 tiles apart in codes (15, 23, 26). Differentiation arms miss
+  "pick up with a full hand" (recall's stopped attention weights ignore
+  the held slot). Uniformity + effect (A): 99.5% overall, codes most
+  stable, most tiles merged. Revise; the user picks the next arm.

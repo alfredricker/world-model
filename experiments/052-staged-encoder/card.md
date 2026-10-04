@@ -735,6 +735,54 @@ for good):
    other key, by codes then vectors.
 3. **Stable:** prediction flips by codes then vectors below 1%.
 
+### Step 2g result: every replacement fixes the colour tries; none keeps all tiles apart
+
+Seed 399, old setting, 20 checkpoints of 1,000 updates, three arms in
+parallel, 17 minutes (`runs/052/s2g_*_399.json`, `runs/052/s2g.sh`).
+Over the last 5 checkpoints ("codes then vectors" is the measure the
+criteria name; step 2f did not have it):
+
+| | 2f: pixels + effect | A: uniformity + effect | B: uniformity + differentiation | C: pixels + differentiation |
+|---|---|---|---|---|
+| 1. Tuples for 30 identities (≥ 27) | 9–11 | 15 | 22–24 | 25–26 |
+| 1. Colour from the best part's code (≥ 90%; chance 33%) | 46% | 46% | 75% | 67% |
+| Codes used per part | 1, 3, 2, 4 | 4, 4, 7, 5 | 7, 7, 7, 6 | 8, 7, 2, 1 |
+| 2. Matching key / other key (≥ 90% each) | 2.5% / 100% (codes) | **97.5% / 100%** | **97.5% / 100%** | **97.5% / 100%** |
+| 3. Prediction flips (< 1%) | 2.4% (codes) | **0.2%** | **0.5%** | **0.0%** |
+| All tries, codes then vectors | – (codes 84%) | **99.5%** | 94.3% | 94.6% |
+| All tries, vectors alone | 98.6% | 99% | 92% | 93% |
+| Probe tiles changing code (step 2a's rate) | 0–20%, mean 8.7 | 0–3%, mean 0.7 | 0–13%, mean 6.0 | 3–13%, mean 6.7 |
+
+- **Criterion 1 is not met by any arm**, so none goes on as declared, and
+  no piece is removed for good by the declared rule.
+- **Criteria 2 and 3 are met by all three.** Recall now separates a key
+  of the door's colour from another (39 of 40 and 40 of 40; the one miss
+  is the same try in every arm). Step 2f, the old recipe, got 1 of 40.
+  With differentiation (B, C) the key colours are separated from the
+  first checkpoint; with uniformity and the effect term (A), from the
+  twelfth.
+- **The differentiation arms lose elsewhere:** picking up while the hand
+  is full (the outcome is "nothing") is predicted wrong in every such
+  kind of try (0%), by vectors. Differentiation pushes apart tiles that
+  already differ (a held key and an empty hand), but recall's attention
+  weights, fitted on stopped vectors, do not weigh the held slot for
+  pick-ups, so pushing does not help. In A, where the effect term trains
+  the vectors and the weights together, those tries are right.
+- **Uniformity uses all four parts** (B: 6–7 codes in each); the pixel
+  anchor leaves two parts nearly unused (2f, C). A's codes are the most
+  stable (0.7% of probe tiles change code, spikes to 13% and 20% at two
+  checkpoints), but A merges the most tiles (15 tuples): the effect term
+  pulls tiles that behave alike together.
+- **Colour still does not gather into one part's code** in any arm (at
+  most 75%): the open limit "parts mix kind and colour" remains.
+- **Decision proposed: revise** (the user decides which arm goes to the
+  main setting): uniformity with a fixed codebook replaces the pixel
+  anchor on this evidence (better than pixels on criteria 2 and 3 with
+  either interaction term, and all parts used); between the effect term
+  (A: best predictions and stability, more tiles merged) and
+  differentiation (B: more tiles kept apart, pick-ups with a full hand
+  wrong), neither is clearly better.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.
