@@ -12,6 +12,7 @@ outcome (trivial baseline).
 
   bin/prun python tools/card052/predflip.py --seed 399 --checkpoints 40 --mu 0.1 --restart 100000000 \
       --out runs/052/predflip_399.json
+Step 2d: --starts 0.5 (play starts in the stream, effect.py) --strat 1 (tries stratified by kind of try).
 """
 import sys
 from collections import Counter, defaultdict
@@ -19,6 +20,7 @@ from pathlib import Path
 
 import numpy as np
 import torch
+from minigrid.core.constants import IDX_TO_OBJECT
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import effect as EF                                    # noqa: E402
@@ -46,6 +48,34 @@ def collect(seed, n_mem=2000, n_probe=200, steps=400000):
     return flat(mem), flat(probe)
 
 
+def kind_of(a, ids):
+    """Step 2d's kind of try (evaluator side, for stratifying and reporting): the action, the front tile's kind
+    (and door state), the held tile's kind and whether its colour matches the front's."""
+    k0, c0 = ids
+    front = "none" if k0 is None else IDX_TO_OBJECT[k0[0]] + (f"/{k0[2]}" if IDX_TO_OBJECT[k0[0]] == "door" else "")
+    held = "none" if c0 is None else IDX_TO_OBJECT[c0[0]] + ("" if k0 is None else ("/same" if k0[1] == c0[1] else "/other"))
+    return (a, front, held)
+
+
+COLOUR = {"locked, same key": (5, "door/2", "key/same"), "locked, other key": (5, "door/2", "key/other")}
+
+
+def collect_strat(seed, n_mem=300, n_probe=40, steps=400000):
+    """Step 2d: per kind of try, up to n_probe probe tries first, then up to n_mem memory tries."""
+    s = EF.Stream(seed)
+    mem, probe = defaultdict(list), defaultdict(list)
+    for _ in range(steps):
+        s.step()
+        for a, f, h, o, ids in s.tries:
+            q = kind_of(a, ids)
+            if len(probe[q]) < n_probe:
+                probe[q].append((f, h, o, ids))
+            elif len(mem[q]) < n_mem:
+                mem[q].append((f, h, o, ids))
+    flat = lambda d: {a: [t for q in sorted(d, key=str) if q[0] == a for t in d[q]] for a in EF.ACTS}
+    return flat(mem), flat(probe)
+
+
 def table(mem, keyf):
     out = {}
     for a in EF.ACTS:
@@ -63,8 +93,9 @@ def code_tuples(enc, tries):
 
 
 class Check:
-    def __init__(self, seed):
-        self.mem, self.probe = collect(seed + 555)
+    def __init__(self, seed, strat=False):
+        self.mem, self.probe = (collect_strat if strat else collect)(seed + 555)
+        self.kinds = np.array([str(kind_of(a, t[3])) for a in EF.ACTS for t in self.probe[a]])
         self.prev = {"codes": None, "vectors": None}
         truth = [t[2] for a in EF.ACTS for t in self.probe[a]]
         self.truth = np.array(truth)
@@ -72,9 +103,11 @@ class Check:
         pred = [ids[a].get(t[3], -1) for a in EF.ACTS for t in self.probe[a]]
         major = {a: Counter(t[2] for t in self.mem[a]).most_common(1)[0][0] for a in EF.ACTS}
         self.fixed = {
-            "upper_bound_accuracy": round(float(np.mean(np.array(pred) == self.truth)), 4),
+            "identity_keyed_accuracy": round(float(np.mean(np.array(pred) == self.truth)), 4),
             "trivial_accuracy": round(float(np.mean(np.array([major[a] for a in EF.ACTS for _ in self.probe[a]]) == self.truth)), 4),
             "memory_tries": {int(a): [sum(t[2] > 0 for t in self.mem[a]), sum(t[2] == 0 for t in self.mem[a])] for a in EF.ACTS},
+            "colour_probe_tries": {n: int((self.kinds == str(q)).sum()) for n, q in COLOUR.items()},
+            "colour_memory_tries": {n: sum(kind_of(a, t[3]) == q for a in EF.ACTS for t in self.mem[a]) for n, q in COLOUR.items()},
             "probe_tries": {int(a): [sum(t[2] > 0 for t in self.probe[a]), sum(t[2] == 0 for t in self.probe[a])] for a in EF.ACTS}}
         print(self.fixed, flush=True)
 
@@ -109,6 +142,14 @@ class Check:
             out[f"accuracy_{name}"] = round(float(np.mean(pred == self.truth)), 4)
             if name == "codes":
                 out["unknown_codes"] = round(float(np.mean(pred == -1)), 4)
+            for n, q in COLOUR.items():                 # the colour tries
+                m = self.kinds == str(q)
+                if m.any():
+                    out[f"accuracy_{name}: {n}"] = round(float(np.mean(pred[m] == self.truth[m])), 4)
+                    if prev is not None:
+                        out[f"pred_flip_{name}: {n}"] = round(float(np.mean(pred[m] != prev[m])), 4)
+            out[f"accuracy_per_kind_{name}"] = {k: round(float(np.mean(pred[self.kinds == k] == self.truth[self.kinds == k])), 3)
+                                                for k in sorted(set(self.kinds))}
             self.prev[name] = pred
         return out
 
@@ -116,7 +157,8 @@ class Check:
 def main():
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
-    chk = Check(int(get("--seed", "399")))
+    EF.START_SHARE = float(get("--starts", "0"))      # the tries come from the same stream as training
+    chk = Check(int(get("--seed", "399")), strat=get("--strat", "0") == "1")
     EF.CHECK = chk
     EF.main()
 

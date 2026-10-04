@@ -33,16 +33,35 @@ D_KEY = 2 * K * DIM + K
 MU = 0.1
 PER = 128
 CHECK = None
+START_SHARE = 0.0                                      # step 2d: share of episodes that are play starts
+START_LEN = 10
+STARTS = [(ev, k, c) for c in DR.GN.TRAIN for ev, k in
+          (("unlock_key", "door"), ("wrong_key", "door"), ("unlock_switch", "door"), ("switch", "switch"),
+           ("open", "door"), ("pickup", "key"), ("pickup", "ball"), ("pickup", "box"))]
 
 
 class Stream(DR.Stream):
     """Step 2a's stream, also returning the tries of pick up, drop and toggle with their outcome."""
 
-    def step(self):
-        if self.env is None or self.t >= 100:
+    def new_episode(self):
+        """Random play, or (step 2d) with probability START_SHARE a play start drawn uniformly from STARTS."""
+        self.limit = 100
+        if START_SHARE > 0 and self.rng.random() < START_SHARE:
+            st = STARTS[int(self.rng.integers(len(STARTS)))]
+            if not hasattr(self, "gens"):
+                self.gens = {}
+            if st not in self.gens:
+                self.gens[st] = DR.GN.Generator(int(self.rng.integers(2 ** 31)), start=st)
+            self.env = self.gens[st].episode()
+            self.limit = START_LEN
+        else:
             self.env = self.gen.episode()
-            self.tint = self.rng.uniform(0, DR.GN.TINT, 3)
-            self.t = 0
+        self.tint = self.rng.uniform(0, DR.GN.TINT, 3)
+        self.t = 0
+
+    def step(self):
+        if self.env is None or self.t >= getattr(self, "limit", 100):
+            self.new_episode()
         a = int(self.rng.integers(6))
         f0 = self._front()
         k0 = None if f0 is None else tuple(f0.encode())
@@ -211,12 +230,12 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         rows.append(row)
         print(row, flush=True)
         Path(out).write_text(json.dumps({"note": "Card 052 step 2b, tools/card052/effect.py", "seed": seed, "mu": MU,
-                                         "ema": DR.Encoder.EMA, "buffer": buffer, "update_every_steps": every,
+                                         "ema": DR.Encoder.EMA, "start_share": START_SHARE, "buffer": buffer, "update_every_steps": every,
                                          "updates_per_checkpoint": upd_per_ck, "rows": rows}, indent=1) + "\n")
 
 
 def main():
-    global MU
+    global MU, START_SHARE
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     Path(get("--out", "runs/052/effect.json")).parent.mkdir(parents=True, exist_ok=True)
@@ -224,6 +243,7 @@ def main():
     DR.DECAY = float(get("--decay", "1"))
     DR.Encoder.EMA = float(get("--ema", "0"))
     DR.Encoder.RESTART_EVERY = int(get("--restart", "250"))
+    START_SHARE = float(get("--starts", "0"))
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),
         int(get("--every", "10")), int(get("--updates", "2000")), get("--out", "runs/052/effect.json"))
 

@@ -444,6 +444,50 @@ tiles and so answer tries whose exact pair of tiles memory never saw.
   holding a key of the same or another colour), stratified per kind and
   colour, and rerun this measurement. The user decides.
 
+### Step 2d (play starts in training and in the test tries): declared before the run
+
+The user approved (2026-10-04), pointing out that the encoder must train
+on the situations random play rarely reaches, as step 1's play starts
+provide (states the agent could reach itself). Steps 2a–2c used random
+play only; that was a gap in the harness.
+
+- **Stream:** each new episode is a play start with probability 0.5,
+  otherwise random play as before. A play start is drawn uniformly from,
+  per training colour: facing a locked door holding its key (gate 1's
+  unlock start); **facing a locked door holding a key of another
+  colour** (new: the agent can reach it, and it is where the toggle does
+  nothing); a switch door with its switch on; a switch; a closed door; a
+  key, ball or box in front. Play-start episodes last 10 steps (the
+  start's event comes first; the rest is random play), random episodes
+  100 as before.
+- **A bug found while building this (fixed before the run):** a play
+  start's held key was lost. Minigrid's `reset()` empties the hand after
+  building the grid, so gate 1's unlock starts faced the locked door
+  with an empty hand, not holding its key as step 1 says. Gate 1's
+  counts stand (they count unlocks that happened), but the agent had to
+  find the key first, which is why 13,050 play-start episodes were
+  needed. `Generator.episode()` now hands the key over after the reset;
+  checked on 200 starts each: the matching key 192 times, another colour
+  192 times (the rest are starts where the door could not be faced).
+- **Training:** step 2b's plain arm at μ = 0.1, seed 399, 40 checkpoints,
+  on this stream. The code flip rate uses step 2a's probe tiles
+  (unchanged, comparable).
+- **Tries for recall's predictions** (step 2c's measurement), from this
+  stream in separate episodes, stratified by kind of try (action; the
+  front tile's kind and door state; the held tile's kind, and whether
+  its colour matches the front's): memory up to 300 tries per kind of
+  try, probe up to 40. Reported per kind of try as well as overall; the
+  colour tries are a held key at a locked door, matching and not.
+
+Criteria, over the last 10 checkpoints:
+- **Gate 2 by predictions met:** prediction flip rate below 1% overall
+  and on the colour tries, with accuracy on the colour tries at least
+  90% for both matching and non-matching keys (chance: a recall that
+  ignores colour predicts the same for both, so at most about 50% of the
+  two together).
+- Also reported: whether the play starts change code collapse (tuples on
+  the probe tiles; step 2c had 19–22).
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

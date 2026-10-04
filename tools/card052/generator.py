@@ -204,7 +204,7 @@ class Level(RoomGrid):
         ev, kind, colour = self.start
         if colour == "-":                              # a success start: the door's colour drawn per episode
             colour = self._sc
-        if ev in ("unlock_key", "success:unlock"):
+        if ev in ("unlock_key", "success:unlock", "wrong_key"):
             return ("locked", colour)
         if ev in ("unlock_switch", "switch"):
             return ("switch", colour)
@@ -286,9 +286,10 @@ class Level(RoomGrid):
             if ev == "unlock_switch" and isinstance(d, SwitchDoor):
                 d.switch.is_on = True                 # the switch already on: start facing its door
             self._face(d.cur_pos)
-            if want[0] == "locked":
-                self.carrying = Key(d.color)
-                self.carrying.cur_pos = np.array([-1, -1])
+            if want[0] == "locked":                   # card 052 step 2d: "wrong_key" holds a key of another colour
+                kc = self._rand_elem([c for c in self.colours if c != d.color]) if ev == "wrong_key" else d.color
+                self._carry = Key(kc)                 # minigrid's reset() empties the hand after _gen_grid:
+                self._carry.cur_pos = np.array([-1, -1])  # Generator.episode() hands it over (fixed 2026-10-04)
             return
         if ev.startswith("success:goto") or ev.startswith("success:pickup") or ev.startswith("success:putnext"):
             kind = self._rand_elem(["key", "ball", "box"])
@@ -352,7 +353,10 @@ class Generator:
         if key not in self.levels:
             self.levels[key] = Level(*cfg, colours=self.colours, start=self.start)
         env = self.levels[key]
+        env._carry = None
         env.reset(seed=int(self.rng.integers(2 ** 31)))
+        if env._carry is not None:                     # a play start's held key (before 2026-10-04 it was lost)
+            env.carrying, env._carry = env._carry, None
         return env
 
 
