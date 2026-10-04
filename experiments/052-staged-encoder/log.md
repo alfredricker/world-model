@@ -111,3 +111,11 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   "pick up with a full hand" (recall's stopped attention weights ignore
   the held slot). Uniformity + effect (A): 99.5% overall, codes most
   stable, most tiles merged. Revise; the user picks the next arm.
+- Step 2h (approved): A and B on nine colours with tint and noise. Both
+  fail all three criteria: 330-420 tuples, 49-61 identities split, ~90%
+  of test tries with no memory under their code key, colour tries near
+  ignoring colour, prediction flips 2-5%. Uniformity pushes tinted
+  copies apart; the invariance term only pairs views within an episode
+  (same tint). The user raised that card 052's main idea, the needs of
+  acting and planning shaping the encoder, has not entered yet (step 4,
+  the agent's recall, gate 2's acting test); a revised plan follows.

@@ -804,6 +804,41 @@ Criteria, over the last 10 checkpoints:
 Also reported: probe tiles changing code, accuracy on all tries, the
 worst kinds of try.
 
+### Step 2h result: under tint and noise the codes fragment; gate 2 not met
+
+Seed 399, 40 checkpoints, 39 and 43 minutes (`runs/052/s2h_*_399.json`).
+Over the last 10 checkpoints; baseline step 2e's check arm (pixels and
+the effect term, same stream):
+
+| | 2e check (pixels + effect) | A: uniformity + effect | B: uniformity + differentiation |
+|---|---|---|---|
+| 1. Identities split by nuisance (≤ 8 of 84) | 11 (2d) | 55–61 | 49–58 |
+| 1. Tuples shared by identities (≤ 8) | – | 78–89 | 82–105 |
+| Distinct tuples on the probe tiles | 24–28 | 324–357 | 363–421 |
+| Test tries with no memory under their code key | 10% | 86–90% | 89–94% |
+| 2. Matching / other key, codes then vectors (≥ 90% each) | – (codes 5% / 99%) | 72–85% / 18–40% | 20–57% / 78–95% |
+| 3. Prediction flips, codes then vectors (< 1%) | – (codes 1.5%) | 3–4% | 2–5% |
+| All tries, codes then vectors (trivial 84%) | – (codes 88%) | 89–92% | 88–90% |
+| Probe tiles changing code | 7–18% | 26–35% | 31–38% |
+
+- **All three criteria fail in both arms.** Step 2g's result on clean
+  tiles does not carry over to tint and noise.
+- **Why:** uniformity pushes every pair of different vectors apart,
+  tinted and noisy copies of one tile included, and its push is
+  strongest for the closest pairs. The invariance term pulls together
+  only two renderings of one cell within an episode, which share the
+  tint, so nothing says that two tints of a tile are the same tile. The
+  codes split each identity over many tuples; nearly every test try
+  then finds no memory under its own code key and falls back to recall
+  by vectors, which ignores colour (as in steps 2d–2f).
+- **Decision proposed: revise.** The collapse prevention needs a notion
+  of "the same tile" across tint that does not come from labels.
+  Candidates: discount the floor colour the agent sees in every view (a
+  declared prior, as colour constancy discounts the illuminant), or let
+  what tiles do in the agent's tries say which differences matter (the
+  planner's conditions, step 4). The user decides, with the revised
+  plan.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.
