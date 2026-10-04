@@ -36,6 +36,7 @@ CHECK = None
 INTERACTION = "effect"                                 # step 2g: "diff" replaces the effect term
 DIFF_W = 1.0
 INV_W = 1.0
+DRIFT = 0.0                                            # step R1: the tint's random-walk step, as a share of TINT
 VIEWS = False                                          # step 2g: the stream also returns natural views
 REL_W = 0.0                                            # step 2e: the relation term's weight (rho)
 REL_N = 512
@@ -48,6 +49,10 @@ STARTS = [(ev, k, c) for c in DR.GN.TRAIN for ev, k in
 
 class Stream(DR.Stream):
     """Step 2a's stream, also returning the tries of pick up, drop and toggle with their outcome."""
+
+    def __init__(self, seed, colours=None):
+        super().__init__(seed, colours=DR.GN.TRAIN if colours is None else colours)
+        self.seed = seed
 
     def new_episode(self):
         """Random play, or (step 2d) with probability START_SHARE a play start drawn uniformly from STARTS."""
@@ -85,6 +90,12 @@ class Stream(DR.Stream):
                     views.append(((x, y), self._tile(self.env.grid.get(x, y))))
         _, _, term, trunc, _ = self.env.step(a)
         self.t += 1
+        if DRIFT > 0:                                  # step R1: the tint drifts between moments (own generator,
+            if not hasattr(self, "drift_rng"):         # so the rest of the stream is drawn as before)
+                self.drift_rng = np.random.default_rng(self.seed + 99)
+            t = self.tint + self.drift_rng.normal(0, DRIFT * DR.GN.TINT, 3)
+            t = np.abs(t)                              # reflected at 0 ...
+            self.tint = DR.GN.TINT - np.abs(DR.GN.TINT - t)   # ... and at TINT
         self.views = [(v, self._tile(self.env.grid.get(*xy))) for xy, v in views]   # ... and after it
         tiles, pairs, tries = [], [], []
         if a in ACTS:
@@ -356,12 +367,12 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         print(row, flush=True)
         Path(out).write_text(json.dumps({"note": "Card 052 step 2b, tools/card052/effect.py", "seed": seed, "mu": MU,
                                          "ema": DR.Encoder.EMA, "start_share": START_SHARE, "relation_weight": REL_W,
-                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "buffer": buffer, "update_every_steps": every,
+                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "drift": DRIFT, "buffer": buffer, "update_every_steps": every,
                                          "updates_per_checkpoint": upd_per_ck, "rows": rows}, indent=1) + "\n")
 
 
 def main():
-    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS
+    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     Path(get("--out", "runs/052/effect.json")).parent.mkdir(parents=True, exist_ok=True)
@@ -377,6 +388,7 @@ def main():
     DIFF_W = float(get("--diff-w", "1"))
     INV_W = float(get("--inv-w", "1"))
     VIEWS = DR.Encoder.ANCHOR != "pixels" or INTERACTION == "diff"
+    DRIFT = float(get("--drift", "0"))
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),
         int(get("--every", "10")), int(get("--updates", "2000")), get("--out", "runs/052/effect.json"))
 

@@ -3,7 +3,7 @@ id: "052"
 title: an encoder learned from interaction, in stages, over diverse worlds
 rung: 0
 serves: [P4, P7, P1, P3, P12, P10, P19, P17]
-status: draft
+status: approved
 verdict:
 arch_version: 9
 date: 2026-10-02
@@ -51,7 +51,7 @@ kind, so nothing tells it that a key is a shape and red is something else
 (LESSONS, "In one fixed world a lookup table and a general rule fit
 equally well").
 
-## Revised plan (proposed 2026-10-04, for the user's approval)
+## Revised plan (approved by the user, 2026-10-04)
 
 Steps 2a–2h tuned the encoder against a stand-in for recall, with random
 play and no planner. Card 052's central idea, that the needs of acting
@@ -923,6 +923,35 @@ the effect term, same stream):
   what tiles do in the agent's tries say which differences matter (the
   planner's conditions, step 4). The user decides, with the revised
   plan.
+
+### Step R1 (nuisance that changes over time): declared before the run
+
+The revised plan's first step (approved 2026-10-04).
+- **Tint drift:** in the training stream the floor tint takes a random
+  walk within the episode: after every step each channel moves by a
+  normal step of σ = TINT/20 (1.2/255), reflected at 0 and TINT
+  (24/255), from the episode's random start. Over a 100-step episode
+  it wanders across about half the range. Noise stays per render.
+  **Amended before the run:** the plan also named a tint per room; it
+  is left out, because a cell never changes room, so a room's tint never
+  shows one tile under two tints.
+- **The invariance term** then pairs one cell's renderings a step apart
+  under neighbouring tints; through overlapping pairs (slowness,
+  Földiák 1991) it may reach the whole range.
+- **Unchanged from step 2h:** uniformity with the fixed codebook,
+  commitment, version 8's pair term; seed 399, 40 checkpoints of 2,000
+  updates; the probe tiles and the test tries are step 2h's (collected
+  without drift, tint fixed per episode), so invariance is measured
+  across episodes' tints.
+- **Arms:** with the effect term (μ = 0.1) and with error-driven
+  differentiation, as A and B in step 2h.
+
+**Gate R1,** per arm, over the last 10 checkpoints: at most 8 of the 84
+identities split over several tuples and at most 8 tuples shared by
+several identities (step 2h: 49–61 and 78–105). Also reported: the
+colour tries, prediction flips, test tries with no memory under their
+code key. If neither arm meets it, the next proposal is the declared
+colour-constancy prior, with the user's agreement.
 
 ## 3. Dependencies
 
