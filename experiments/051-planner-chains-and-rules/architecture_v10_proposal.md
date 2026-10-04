@@ -1,13 +1,14 @@
-# Proposed architecture version 10 (card 051, overnight; not applied)
+# Architecture version 10 (card 051): applied 2026-10-04
 
 Staged here instead of in ARCHITECTURE.md, as promised to the user on
 2026-10-04: the decisions below were Claude's under delegation, and the
-user applies or rejects them. If applied, ARCHITECTURE.md gets
+user applies or rejects them. The user kept steps 1 and 4a–4d on
+2026-10-04 and version 10 was applied. When applied, ARCHITECTURE.md gets
 `arch_version: 10` and the change-log line at the end.
 
 ## What changes
 
-Version 9 with three planner and memory changes from card 051:
+Version 9 with five planner and memory changes from card 051:
 
 1. **Memory indexed by situation** (step 1, `tools/card051/index.py`).
    - Recall for pick up, toggle and drop compares a query with groups of
@@ -54,7 +55,7 @@ test episodes.
 ## Sections of ARCHITECTURE.md to update
 
 - **Intro:** version 10 = version 9 + card 051's index, threats and
-  commitment; results: two doors 29/30 in every seed (version 9: 0/30),
+  commitment; results: two doors 30/30 in every seed (version 9: 0/30),
   cluttered 99–100%, familiar worlds unchanged, per-step time flat with
   memory.
 - **In brief, Recall:** "compared with groups of keys equal on what the

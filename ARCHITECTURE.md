@@ -1,10 +1,16 @@
 ---
-arch_version: 9
+arch_version: 10
 ---
 
 # Architecture
 
-Version 9 is version 8 with a new recall: an action's outcome is
+Version 10 is version 9 with memory indexed by situation, so the cost
+per step no longer grows with memory, and a planner that keeps its
+chain between steps: threats between the needs of one achiever, the
+choices of the last step tried first, routes through two blocked tokens,
+and the hand kept when only the view is asked for
+([card 051](experiments/051-planner-chains-and-rules/card.md), kept on
+2026-10-04). Version 9 is version 8 with a new recall: an action's outcome is
 predicted only from the conditions that changed outcomes in memory, and
 a situation's own tries come before its neighbours
 ([card 049](experiments/049-recall-through-conditions/card.md) and
@@ -38,11 +44,19 @@ route. Version 9 keeps these results (card 050: familiar worlds 100%,
 steps 0.93–0.97 times card 029's) and adds robustness to tokens that do
 not matter: card 048's chained rooms with one door 98% in every seed
 (version 8: 46% in seed 401), and a key world cluttered with extra keys,
-switches and vases 98–100% (version 8: 92–100%). It is not a passed
+switches and vases 98–100% (version 8: 92–100%). Version 10 keeps the
+familiar worlds at 100% with card 029's steps and reaches card 048's two
+doors in 30 of 30 layouts in every seed (version 9: 0 of 30), one door
+100%, the cluttered key world 99–100%; one failure is left in 1,950 test
+episodes. Its time per step is 5.7–9.9 ms from base memory to +20,000
+stored keys (version 9: 43–4,640 ms). It is not a passed
 rung: the world is fully visible, repeats pixels exactly, and every
 familiar appearance has been seen.
 
-The code is `tools/card050/own.py` (own tries first), on
+The code is `tools/card051/walk2.py` (routes through two tokens), on
+`commit.py` (the chain's choices kept between steps), `threats.py`
+(threats between needs; the hand kept) and `index.py` (memory indexed by
+situation) in the same folder, on `tools/card050/own.py` (own tries first), on
 `tools/card049/conditions.py` (recall through admitted conditions;
 `worlds.py` holds card 048's chained rooms and the cluttered key world),
 on `tools/card047/situations.py`, which builds on:
@@ -80,8 +94,18 @@ Version 5, the counted model over exact tile IDs, is in git (commit
     same front and held code tuples, the same admitted view values) are
     the evidence, and the condition-weighted neighbours only their prior
     (α fitted, 0.00012): one failed try overrules the neighbours there.
+  - **indexed by situation** (version 10): a query is compared with
+    groups of stored keys equal on what the admitted conditions read
+    (front tile, held tile, admitted view values), with summed counts,
+    not with every key; its own situation is a hash lookup. The same
+    predictions as comparing every key.
   Moves, draw and undraw keep version 8's recall.
-- **Acting** is card 029's means-ends search, recomputed at every step. A
+- **Acting** is card 029's means-ends search, recomputed at every step,
+  with the chain kept between steps (version 10): the achiever chosen
+  last step for a condition is tried first; when an achiever has two
+  unmet needs, one whose plan would break what the other relies on is
+  not pursued first (threats); and when only the view is asked for, the
+  present hand is protected. A
   condition is checked only in situations that recall's predicted effects
   produce from the present. The situations in which an action could work
   on a thing come from tries on the same thing and on similar things, and
@@ -90,12 +114,13 @@ Version 5, the counted model over exact tile IDs, is in git (commit
 - **Walking** (card 045): a small network predicts how soon the agent can
   stand at a placement (System 1); the approach works when the tokens on
   its route are walkable, and chains of approaches through waypoints, or
-  a door as a condition, cover the rest (System 2). No step is imagined
-  while walking.
-- About 0.42–0.72 seconds per layout in the familiar worlds in version 8
-  (version 5: 0.015–0.024); version 9 was timed only with many runs
-  sharing the machine (2–17 s), and its cost per query grows with memory
-  (Known limits).
+  a door as a condition, cover the rest (System 2). When no route needs
+  only one blocked token cleared, pairs of tokens are tried (version 10).
+  No step is imagined while walking.
+- Time per step 5.7–9.9 ms from base memory to +20,000 stored keys
+  (version 9: 43–4,640 ms); 0.24 s per layout in the key world (version
+  9: 2.7 s), 0.20–0.64 s in the familiar worlds with five runs sharing
+  the machine (version 8: 0.42–0.72 s; version 5: 0.015–0.024 s).
 
 ## How the state is represented
 
@@ -154,6 +179,10 @@ flowchart TD
 | Outcome class | (which places changed, the codes they became) | What a try did | From the try's next view |
 | Memory | Per action: keys with outcome counts and result vectors | Every stored try, never merged | 5,000 random episodes per world; real tries are added while acting |
 | Admitted conditions | Per pick up, toggle and drop: the front tile's 4 parts plus up to about 4 more (held part, front–held relation per part, a code tuple in view), each with a weight λ | What recall reads | Greedy admission by leave-one-key-out likelihood, cost log(candidates) per condition; λ refitted jointly (card 049) |
+| Recall groups (version 10) | Per action: group key → summed outcome counts and a representative key | Stored keys equal on the front tile, the held tile and the admitted view values | Built with memory; per candidate condition while admission weighs it |
+| Own situations (version 10) | Hash → outcome counts | A query's own situation | Built with memory |
+| Situation classes (version 10) | Front tile → (held tile, admitted view values) → one stored situation | The planner's situations (card 047), one per class | Built with memory |
+| Kept choices (version 10) | Condition → achiever, per episode | The chain's choices from the last step | Recorded at each step |
 | Own-situation prior | α per action | How much the neighbours count against a situation's own tries | Leave-one-try-out likelihood (card 050) |
 | Version 8's recall weights | λ1, λ2, β | Still fitted: the planner's situations (card 047) read them | As version 8 (card 042) |
 | Move transformation | Per move: M (2 × 2), b (2) | How a move changes every where | Least squares on the counted correspondences of places before and after moves (cards 028, 044) |
@@ -183,7 +212,10 @@ Per world:
    - pick up, toggle and drop: card 042's two levels (kept for the
      planner's situations), then card 049's admission of conditions
      (1–5 s per action) and card 050's α;
-   - moves: card 038's single level on the thing in front.
+   - moves: card 038's single level on the thing in front;
+   - card 038's ways (keep, copy, shift, set) are fitted once on stored
+     memory (at most 1,000 keys per class) and refitted with admission,
+     not after every try (version 10).
 5. **How-soon network** (card 045): Q(g, m) = 1 + min Q(T_m g, ·), and 0
    at the target, where T_m is move m's transformation; hindsight, so every
    place and heading is a target. It is exact in open space.
@@ -210,13 +242,22 @@ At every step:
      each judged by recall's prediction (card 047);
    - such a need is met in a situation where the action works with that
      situation's own hand and view. That situation comes from imagining
-     an achiever's effect on the present (card 043).
+     an achiever's effect on the present (card 043);
+   - (version 10) the achiever chosen for a condition at the last step is
+     tried first, and the search runs only when it no longer gives a
+     plan; of an achiever's unmet needs, each is planned from the
+     present, and one whose act breaks what another's plan relies on is
+     not pursued first; when card 043 asks only for the view, the
+     present hand is a protected link.
 4. **Walk** through conditions (card 045):
    - System 1: the how-soon network gives the steps and first move to any
      placement facing the target, and the route's tokens;
    - System 2: the route works when its tokens are walkable (recall's
      forward kind). Otherwise a chain of clear approaches through up to 6
      waypoints is taken (least total steps);
+   - when no single blocked token gives a route, pairs are tried, and the
+     token the cheapest route steps onto first becomes the condition
+     (version 10);
    - when no chain exists, tokens recall predicts a pick up or toggle can
      make walkable (card 047) are counted walkable; those a least chain
      crosses become conditions ("walk", j), pursued like any other;
@@ -291,30 +332,29 @@ At every step:
 - **Conjunctions.** A success that needs both the hand and the view
   changed is still checked in a spliced situation (card 043's declared
   exception).
-- **No commitment between steps.** The chain of conditions is rebuilt
-  every step and protects only what is in the current chain, so a later
-  need can undo an earlier one: two doors 0 of 150 (key A picked up and
-  dropped in turn), and one cluttered layout the same way (card 051).
+- **An achiever whose needs change form.** One failure is left in
+  card 051's 1,950 test episodes: cluttered seed 403 layout 93, where
+  the chosen achiever's needs alternate in form from step to step, so
+  commitment does not hold it. Walking considers pairs of blocked
+  tokens, not more.
 - **Exact views.** It needs the whole room in view and exact pixel
   repeats. Codes absorb small differences, but this is untested with
   noise, and vectors near a region's edge could flip codes between views.
 - **A small fixed world.** Routes are worked out for every pair of the
   676 placements, and tokens live on a fixed grid of 638 places. A larger
   or partly seen world needs routes on demand and a map.
-- **Slower than version 5:** 0.42–0.72 s per layout in the familiar
-  worlds, against 0.015–0.024; the switch world with a new-colour door
-  4–19 s. Card 047's wider situations cost 31–77% over card 046.
-- **Cost grows with memory; must be near-linear before BabyAI or
-  Crafter** (the user, 2026-10-03). Every recall query compares the
-  query with every stored try (about 0.1 ms per thousand tries, card
-  049), and memory grows by up to one try per step, so a lifetime of T
-  steps costs about T². Card 049's admission of conditions builds an n × n
-  matrix per candidate (20 GB per candidate at 50,000 tries). The
-  planner re-derives its whole chain of conditions every step. Target:
-  per-step cost linear in the tokens and conditions in play, independent
-  of memory size (own situations by hash, neighbours by approximate
-  nearest-neighbour search, admission on groups of equal codes, the
-  chain kept and repaired rather than rebuilt).
+- **Slower than version 5:** 0.20–0.64 s per layout in the familiar
+  worlds (version 5: 0.015–0.024); the switch world with a new-colour
+  door was 4–19 s in version 8 and is not retimed.
+- **Cost and memory size** (the user, 2026-10-03: near-linear before
+  BabyAI or Crafter). Per-step cost is flat in memory in the tests (5.7–
+  9.9 ms to +20,000 stored keys, card 051). Left: re-admission of
+  conditions on grown memory is slower (50 s at +20,000 keys), run only
+  on surprise; card 038's transport for a new situation reads every key
+  of an outcome class; +50,000 keys was not reached (the test harness,
+  not the agent, ran out of memory). Not built: rules compiled from
+  recall and a backward pass of cost estimates (card 051, changes 2 and
+  4).
 
 ## Change log
 
@@ -329,3 +369,4 @@ At every step:
 | 7 | 2026-10-01 | 044 | The state as tokens: every tile and the held thing a what and a where (offset from the agent, or the hand); moves as least-squares transformations of where, fitted to the counted correspondences (exact); no pose table. Kept by the user with card 044: the same decisions as version 6 in every familiar world, 5 of 5 seeds; 12% slower per layout |
 | 8 | 2026-10-01 | 045–047 | Walking through conditions (045): a how-soon network fitted on the move transformations (System 1), the route's tokens walkable as its conditions, waypoint chains and doors as conditions (System 2), no imagined step. Situations for an action on a thing from both of recall's levels, each judged by recall (047, after 046 used the levels as a switch). Kept by the user with card 047: the same results in the familiar worlds, 100% in unseen rooms at 1.01–1.11 times the shortest route; new-colour switch tests 40% (version 7: 31%); 31–77% slower than card 046 |
 | 9 | 2026-10-04 | 049–050 | Recall through the conditions that matter: for pick up, toggle and drop, only conditions admitted by their leave-one-out gain (front and held parts, front–held relations, code tuples in view) are compared, so tokens that never changed an outcome cannot veto a memory (049); a query's own situation first, neighbours as its prior, so one failed try corrects recall (050). Kept by the user with card 050: familiar worlds 100% in 5 of 5 seeds, chained rooms with one door 98% (version 8: 46% in seed 401), cluttered key world 98–100%; new-colour switch door 76% with card 049 (version 8: 40%) |
+| 10 | 2026-10-04 | 051 | Memory indexed by situation (exact: the same decisions as version 9, per-step time flat from base memory to +20,000 stored keys, 5.7–9.9 ms against version 9's 43–4,640 ms); threats between the needs of one achiever; the chain's choices kept between steps; routes through two tokens made walkable; the hand kept when only the view is asked for. Two doors 30/30 in 5 of 5 seeds (version 9: 0/30), one door 100% (98%), cluttered 99–100%, familiar worlds 100% with card 029's steps. Kept by the user on Claude's overnight runs |

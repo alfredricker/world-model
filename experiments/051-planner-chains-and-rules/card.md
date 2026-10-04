@@ -3,8 +3,8 @@ id: "051"
 title: the planner keeps its chain of conditions, checks rules compiled from recall, and costs per step what is in play
 rung: 0
 serves: [P12, P21, P17, P14, P8, P5, P15]
-status: draft
-verdict:
+status: done
+verdict: pass
 arch_version: 9
 date: 2026-10-04
 ---
@@ -783,3 +783,22 @@ proper) are not built.
 
 
 ## 13. Decision
+
+**Keep** steps 1 and 4a–4d (the user, 2026-10-04, confirming Claude's
+overnight keeps). Keeping them makes this card architecture version 10:
+memory indexed by situation, threats between the needs of one achiever,
+commitment between steps, routes through two tokens, and the hand kept
+when only the view is asked for. On seeds 400–404: two doors 30/30
+(version 9: 0/30), one door 100% (98%), cluttered 99–100% (98–100%),
+the four familiar worlds 100% with card 029's steps; time per step
+5.7–9.9 ms from base memory to +20,000 stored keys (version 9: 43–4,640
+ms).
+
+Not done, left for a later card when BabyAI's scale calls for them:
+change 2's compiled rules (only the readable table was built), change
+4's cost pass, and change 7 ("unknown" kept apart from "fails"; it
+touches chance and waits for the user). Change 6 was not needed: the
+spliced check came up 0 times in 1,041 planning steps. Open: cluttered
+seed 403 layout 93 (an achiever whose needs alternate in form);
+re-admission on grown memory is not yet linear (50 s at +20,000 keys,
+run only on surprise); the +50,000-key point was not reached.
