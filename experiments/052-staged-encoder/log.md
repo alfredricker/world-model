@@ -96,3 +96,12 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   and objective are broken, not only the scale. The earlier encoders
   relied on offline training over distinct tiles and identity-informed
   re-seeding.
+- Step 2g (the user: replace, not add; error-driven differentiation;
+  a better collapse prevention than pixels, VISReg suggested). Declared,
+  then amended before any arm ran: VISReg's shape term kills the network
+  on this data (spread 0, ReLUs dead, in 150-200 updates); its scale term
+  or VICReg keep 7-16 tuples for 30 tiles; uniformity (Wang and Isola
+  2020) with a fixed codebook keeps 25 and every pair of tiles apart
+  (`tools/card052/diag/collapse_*.py`). Also found: on clean tiles the
+  linear colour check reads colour from vanishingly small differences
+  (it standardises each number), so it says little there.

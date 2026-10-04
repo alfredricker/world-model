@@ -98,7 +98,29 @@ def probe_set(seed, n=2000):
     return np.stack(out), ids
 
 
+def visreg(z, slices=64, target=1.0):
+    """VISReg's regularizer (Wu, Balestriero and Levine 2026, Algorithm 1): centring, scale (target - std per
+    dimension) and shape (sliced Wasserstein distance of the standardised numbers, scale stopped, to an isotropic
+    Gaussian). Step 2g applies it to the normalised parts, where an even spread has std 1/sqrt(DIM)."""
+    mu = z.mean(0)
+    zc = z - mu
+    std = zc.std(0, unbiased=False)
+    p = (zc / (std.detach() + 1e-6)) @ fn.normalize(torch.randn(z.shape[1], slices, device=z.device), dim=0)
+    n = len(z)
+    q = torch.distributions.Normal(0.0, 1.0).icdf(torch.arange(1, n + 1, device=z.device) / (n + 1))
+    return mu.pow(2).mean() + (target - std).pow(2).mean() + (torch.sort(p, 0).values - q[:, None]).pow(2).mean()
+
+
+def uniformity(z, t=2.0):
+    """Wang and Isola (2020): log of the mean Gaussian potential over all pairs of the batch's whole vectors (the
+    four parts together, normalised); every pair of different vectors is pushed apart, however often each occurs."""
+    v = fn.normalize(z.reshape(len(z), -1), dim=-1)
+    return torch.pdist(v).pow(2).mul(-t).exp().mean().log()
+
+
 class Encoder:
+    ANCHOR = "pixels"                                  # step 2g: "uniformity" replaces the decoder ("visreg" dropped)
+    CODEBOOK = "learned"                               # step 2g: "fixed" entries
     EMA = 0.0                                          # > 0: codebooks as moving averages (VQ-VAE-2), restarts rarer
     RESTART_EVERY = 250
 
@@ -110,6 +132,10 @@ class Encoder:
         self.dec = nn.Sequential(nn.Linear(K * DIM, 32 * 16), nn.ReLU(), nn.Unflatten(1, (32, 4, 4)),
                                  nn.ConvTranspose2d(32, 3, 4, stride=2, padding=1), nn.Sigmoid()).to(dev)
         self.books = nn.Parameter(torch.randn(K, M, DIM, device=dev))
+        if self.CODEBOOK == "fixed":                   # step 2g: fixed entries, the part's axes (as FSQ: no codebook loss)
+            with torch.no_grad():
+                self.books.copy_(torch.eye(M, DIM, device=dev).expand(K, M, DIM))
+            self.books.requires_grad_(False)
         self.opt = torch.optim.Adam(list(self.enc.parameters()) + list(self.dec.parameters()) + [self.books], lr=1e-3)
         self.used = torch.zeros(K, M, device=dev)
         self.ema_n = torch.ones(K, M, device=dev)
@@ -131,11 +157,18 @@ class Encoder:
 
     def update(self, tiles, pairs, pair_w=0.1):
         x = self.x(tiles)
-        z = self.pieces(x)
+        raw = self.enc(x)
+        z = fn.normalize(raw.reshape(len(x), K, DIM), dim=-1)
         zq, _ = self.quant(z)
-        st = z + (zq - z).detach()
-        loss = fn.mse_loss(self.dec(st.reshape(len(x), -1)), x)
-        loss = loss + (0.0 if self.EMA else fn.mse_loss(zq, z.detach())) + 0.25 * fn.mse_loss(z, zq.detach())
+        if self.ANCHOR == "pixels":                    # version 8: rebuild the tile through the codes
+            st = z + (zq - z).detach()
+            loss = fn.mse_loss(self.dec(st.reshape(len(x), -1)), x)
+        elif self.ANCHOR == "visreg":                  # step 2g, dropped: its shape term collapsed the network here
+            loss = visreg(z.reshape(len(x), -1), target=DIM ** -0.5) + self.invariance()
+        else:                                          # step 2g: uniformity (Wang and Isola 2020), no decoder
+            loss = uniformity(z) + self.invariance()
+        book = 0.0 if (self.EMA or self.CODEBOOK == "fixed") else fn.mse_loss(zq, z.detach())
+        loss = loss + book + 0.25 * fn.mse_loss(z, zq.detach())
         if pairs:
             za = self.pieces(self.x([p[0] for p in pairs]))
             zb = self.pieces(self.x([p[1] for p in pairs]))
@@ -159,6 +192,8 @@ class Encoder:
             self.n += 1
             if self.n % self.RESTART_EVERY == 0:      # dead-code restart
                 err = ((self.dec(zq.reshape(len(x), -1)) - x) ** 2).mean((1, 2, 3))
+                if self.ANCHOR != "pixels":            # no decoder: a uniformly drawn tile
+                    err = torch.ones_like(err)
                 p = err.cpu().numpy().astype(np.float64)
                 p /= p.sum()
                 for k in range(K):
@@ -172,6 +207,9 @@ class Encoder:
         return float(loss)
 
     def extra(self):
+        return 0.0
+
+    def invariance(self):
         return 0.0
 
     @torch.no_grad()

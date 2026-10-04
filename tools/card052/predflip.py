@@ -97,7 +97,7 @@ class Check:
     def __init__(self, seed, strat=False):
         self.mem, self.probe = (collect_strat if strat else collect)(seed + 555)
         self.kinds = np.array([str(kind_of(a, t[3])) for a in EF.ACTS for t in self.probe[a]])
-        self.prev = {"codes": None, "vectors": None}
+        self.prev = {"codes": None, "vectors": None, "codes_then_vectors": None}
         truth = [t[2] for a in EF.ACTS for t in self.probe[a]]
         self.truth = np.array(truth)
         ids = table(self.mem, lambda a, i: self.mem[a][i][3])
@@ -138,7 +138,9 @@ class Check:
 
     def __call__(self, enc):
         out = dict(self.fixed) if self.prev["codes"] is None else {}
-        for name, pred in (("codes", self.codes(enc)), ("vectors", self.vectors(enc))):
+        pc, pv = self.codes(enc), self.vectors(enc)
+        # step 2g: codes, then vectors (version 9 takes the own situation first, neighbours otherwise)
+        for name, pred in (("codes", pc), ("vectors", pv), ("codes_then_vectors", np.where(pc == -1, pv, pc))):
             prev = self.prev[name]
             out[f"pred_flip_{name}"] = None if prev is None else round(float(np.mean(pred != prev)), 4)
             out[f"accuracy_{name}"] = round(float(np.mean(pred == self.truth)), 4)

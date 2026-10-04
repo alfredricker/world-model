@@ -640,6 +640,101 @@ label-free restarts. Recall by vectors also ignores colour here even
 where the vectors hold it: its attention weights are fitted on batches
 dominated by tries where colour does not matter.
 
+### Step 2g (replace, not add: VISReg for collapse, error-driven differentiation): declared before the run
+
+The user's direction (2026-10-04): change the encoder by replacing
+pieces that do not work, not by adding terms; try error-driven
+differentiation; the pixel anchor may not be helping, and VISReg
+(Wu, Balestriero and Levine 2026, `visreg-variance-invariance-sketching-regularization-for-jepa`)
+may prevent collapse better, though not preserve colour alone.
+
+Two replacements, crossed, on step 2f's old setting (three clean
+colours; seed 399; 20 checkpoints of 1,000 updates), so that each
+piece's effect is seen; step 2f is the fourth cell:
+
+| | Effect term (card 033) | Error-driven differentiation |
+|---|---|---|
+| **Pixel reconstruction** | step 2f (done) | arm C |
+| **Uniformity, fixed codebook, no decoder** (VISReg dropped, below) | arm A | arm B |
+
+Removed from every arm: the relation term (step 2e), dead-code restarts
+(as in the plain arms). Kept: the codebook and commitment terms (codes
+are read from the vectors) and version 8's pair term.
+
+- **VISReg** (replaces the decoder and pixel loss): the paper's
+  centring, scale ((σ* − σ_j)² per dimension) and shape terms (sliced
+  Wasserstein distance to an isotropic Gaussian over 64 random
+  projections, scale stopped), weights 1 as the paper's default, on the
+  32 numbers of the normalised parts, where an even spread has
+  σ* = 1/√8. **Amended before the run:** declared first on the raw
+  numbers before normalisation, but the smoke test (200 updates) left
+  every part with one code: the scale term was met by the vectors'
+  lengths while their directions, which the codes read, collapsed. Its
+  invariance term uses natural views, not augmentations (colour jitter
+  would teach colour blindness): the same cell, other than the front
+  cell, rendered before and after one step, 64 pairs per update, MSE
+  between their vectors, weight 1. On the clean old setting the two
+  views are identical, so this term is zero there. Correspondence of a
+  cell across one step comes from the simulator here; in the
+  architecture the agent's placements give it (card 044). The MSE is
+  taken on the normalised parts as well.
+- **Error-driven differentiation** (replaces the effect term): per
+  update and per action, step 2b's batch of 128 tries. Recall by vectors
+  predicts each try from the others (leave-one-out); its attention
+  weights λ are fitted to that likelihood on stopped vectors (they train
+  recall, not the encoder). A try is an **error** if recall gives its
+  true outcome less than 0.5. For each error, the most similar try (by
+  recall's kernel) with another outcome is its partner. Of the two
+  slots (front tile, held tile), the one whose tiles differ more is
+  taken (the other is likely the same tile), and within it the part
+  where they differ most; that part's two vectors are pushed apart by a
+  hinge, up to the median distance between that part's codebook
+  entries, weighted by the error's surprise (−log of the probability
+  recall gave the true outcome). Nothing pulls tiles together. A pair
+  whose two tiles differ by no more than two views of one cell do (the
+  95th percentile of the invariance pairs' part distances) is skipped:
+  the cause lies outside the two tiles. Weight 1.
+- **Measurement added:** recall by codes, then vectors (a try whose code
+  key memory holds is predicted from those tries, otherwise by vectors),
+  as version 9's recall takes the own situation first and neighbours
+  otherwise. Distinct codes leave more keys unseen, so codes alone would
+  punish keeping tiles apart.
+
+**Amended before the run: VISReg dropped, uniformity instead.** Checked
+on the old setting's 30 distinct tiles before any arm ran (the
+collapse-prevention term alone, plus commitment; 1,500 updates; scripts
+in the log):
+- VISReg as published (on the raw or the normalised numbers) kills the
+  network within 150–200 updates: every number's spread falls to 0 and
+  the ReLUs die. Its shape term alone does this. Matching standardised
+  projections to a Gaussian, with the spread held fixed within a step,
+  shrinks the vectors at every step when the data is a few repeated
+  tiles (most of every batch is walls and floor).
+- Its scale and centring terms alone, or VICReg's variance and
+  covariance terms, spread the vectors but keep only 7–16 code tuples
+  for the 30 tiles: per-number statistics are dominated by the frequent
+  tiles, so rare tiles merge cheaply.
+- **Uniformity** (Wang and Isola 2020: the log of the mean Gaussian
+  potential, t = 2, over all pairs of the batch's whole normalised
+  vectors) keeps every pair of tiles apart (closest pair 0.65–1.03) and
+  gives 25 tuples for the 30 tiles with a **fixed codebook** (each
+  part's 8 axes, as FSQ: no codebook loss and no restarts; a learned
+  codebook gave 20). The pixel anchor gave 9–11 (step 2f).
+So arms A and B use uniformity (weight 1) with the fixed codebook and
+commitment 0.25, plus the invariance term on natural views (Wang and
+Isola's alignment; zero on the clean setting). Arm C keeps step 2f's
+pixel anchor and learned codebook.
+
+Criteria, over the last 5 checkpoints (an arm that meets all three goes
+on to the main setting; a piece whose replacement meets them is removed
+for good):
+1. **Codes keep the tiles apart:** at least 27 distinct tuples for the 30
+   identities, and colour read from the best part's code at least 90%
+   (chance 33%). The earlier encoders kept all 20 tiles apart here.
+2. **Colour tries:** at least 90% right for both the matching and the
+   other key, by codes then vectors.
+3. **Stable:** prediction flips by codes then vectors below 1%.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

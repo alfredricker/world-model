@@ -33,6 +33,10 @@ D_KEY = 2 * K * DIM + K
 MU = 0.1
 PER = 128
 CHECK = None
+INTERACTION = "effect"                                 # step 2g: "diff" replaces the effect term
+DIFF_W = 1.0
+INV_W = 1.0
+VIEWS = False                                          # step 2g: the stream also returns natural views
 REL_W = 0.0                                            # step 2e: the relation term's weight (rho)
 REL_N = 512
 START_SHARE = 0.0                                      # step 2d: share of episodes that are play starts
@@ -71,8 +75,17 @@ class Stream(DR.Stream):
         c0 = None if h0 is None else tuple(h0.encode())
         t0 = self._tile(f0) if a in ACTS else None
         th = self._tile(h0) if a in ACTS else None
+        views = []
+        if VIEWS:                                      # step 2g: two cells other than the front cell, before the step
+            W, H = self.env.grid.width, self.env.grid.height
+            fx, fy = (int(v) for v in self.env.front_pos)
+            for _ in range(2):
+                x, y = int(self.rng.integers(W)), int(self.rng.integers(H))
+                if (x, y) != (fx, fy):
+                    views.append(((x, y), self._tile(self.env.grid.get(x, y))))
         _, _, term, trunc, _ = self.env.step(a)
         self.t += 1
+        self.views = [(v, self._tile(self.env.grid.get(*xy))) for xy, v in views]   # ... and after it
         tiles, pairs, tries = [], [], []
         if a in ACTS:
             f1 = self._front()
@@ -138,10 +151,76 @@ class Encoder(DR.Encoder):
             self.start_theta(X.detach())
         return -loo(X, R, fn.softplus(self.theta)).sum()
 
+    def invariance(self):
+        """Step 2g, VISReg's invariance term on natural views: two renderings of one cell, one step apart."""
+        v = getattr(self, "_inv", None)
+        if not v:
+            return 0.0
+        return INV_W * fn.mse_loss(self.pieces(self.x([p[0] for p in v])), self.pieces(self.x([p[1] for p in v])))
+
+    @torch.no_grad()
+    def noise_tau(self):
+        """How far apart two views of one cell lie, per part: the 95th percentile (0 when there are no views)."""
+        v = getattr(self, "_inv", None)
+        if not v:
+            return 0.0
+        d = (self.pieces(self.x([p[0] for p in v])) - self.pieces(self.x([p[1] for p in v]))).norm(dim=-1)
+        return float(torch.quantile(d.flatten(), 0.95))
+
+    def differentiate(self, tries):
+        """Step 2g, error-driven differentiation. Recall by vectors predicts each try from the others; for each error
+        (true outcome given < 0.5), its most similar try with another outcome is the partner; in the slot (front or
+        held tile) whose two tiles differ more, the part where they differ most is pushed apart by a hinge up to the
+        median distance between that part's codebook entries, weighted by the error's surprise. Pairs whose tiles
+        differ no more than two views of one cell are skipped. Recall's attention weights are fitted on stopped
+        vectors. Nothing pulls tiles together."""
+        X, R = self.batch(tries)
+        if self.theta is None:
+            self.start_theta(X.detach())
+        fit = -loo(X.detach(), R, fn.softplus(self.theta)).sum()
+        tau = max(self.noise_tau(), 1e-6)
+        books = fn.normalize(self.books.detach(), dim=-1)
+        margin = torch.stack([torch.pdist(books[k]).median() for k in range(K)])
+        total, n_err, n_push, n_held = 0.0, 0, 0, 0
+        for a in range(len(tries)):
+            x, r = X[a], R[a]
+            with torch.no_grad():
+                d = (torch.abs(x[:, None] - x[None]) * fn.softplus(self.theta[a])).sum(-1)
+                k = torch.exp(-d) * (1 - torch.eye(len(x), device=self.dev))
+                P = (k @ r + 1.0 / NK) / (k.sum(-1, keepdim=True) + 1.0)
+                pt = (P * r).sum(-1)
+                other = (r @ r.T) == 0
+                kk = torch.where(other, k, torch.full_like(k, -1.0))
+                j = kk.argmax(1)
+                err = pt < 0.5
+                ok = err & (kk.amax(1) >= 0)
+            n_err += int(err.sum())
+            if not ok.any():
+                continue
+            i = torch.nonzero(ok).flatten()
+            jj = j[i]
+            zf = x[:, :K * DIM].reshape(len(x), K, DIM)
+            zh = x[:, K * DIM:2 * K * DIM].reshape(len(x), K, DIM)
+            df = (zf[i] - zf[jj]).norm(dim=-1)
+            dh = (zh[i] - zh[jj]).norm(dim=-1)
+            use_h = dh.detach().amax(1) > df.detach().amax(1)
+            dsel = torch.where(use_h[:, None], dh, df)
+            part = dsel.detach().argmax(1)
+            dmax = dsel.gather(1, part[:, None]).squeeze(1)
+            real = (dmax.detach() > tau).float()
+            total = total + (-torch.log(pt[i]) * real * torch.relu(margin[part] - dmax)).sum() / len(x)
+            n_push += int(real.sum())
+            n_held += int((use_h.float() * real).sum())
+        self.diff_stats = (n_err, n_push, n_held)
+        self.last_effect = float(fit.detach())
+        return DIFF_W * total + fit
+
     def extra(self):
         tries = getattr(self, "_tries", None)
         if not tries:
             return 0.0
+        if INTERACTION == "diff":                      # step 2g: replaces the effect term
+            return self.differentiate(tries)
         e = self.effect(tries)
         self.last_effect = float(e.detach())
         out = MU * e
@@ -203,6 +282,7 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
     enc = Encoder(seed)
     tiles, pairs = deque(maxlen=buffer), deque(maxlen=max(buffer // 10, 100))
     buf = {a: (deque(maxlen=buffer // 2), deque(maxlen=buffer // 2)) for a in ACTS}
+    views = deque(maxlen=max(buffer // 10, 100))       # step 2g: natural views
     rng = np.random.default_rng(seed + 2)
     prev, rows, steps = None, [], 0
 
@@ -213,6 +293,7 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         pairs.extend(p)
         for a, f, h, o, _ in stream.tries:
             buf[a][int(o > 0)].append((f, h, o))
+        views.extend(getattr(stream, "views", []))
         steps += 1
 
     while len(tiles) < 2000 or min(len(buf[a][0]) for a in ACTS) < PER:
@@ -220,13 +301,15 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
     for ck in range(checkpoints):
         for g in enc.opt.param_groups:
             g["lr"] = 1e-3 * DR.DECAY ** ck
-        effs, rels = [], []
+        effs, rels, diffs = [], [], []
         for _ in range(upd_per_ck):
             for _ in range(every):
                 play()
             bi = rng.integers(len(tiles), size=256)
             pi = rng.integers(len(pairs), size=min(64, len(pairs))) if pairs else []
             enc._tries = draw(buf, rng)
+            if views:
+                enc._inv = [views[i] for i in rng.integers(len(views), size=min(64, len(views)))]
             if REL_W > 0:                              # step 2e: toggle tries for the relation term, half changed
                 ch, no = buf[5][1], buf[5][0]
                 nc = min(REL_N // 2, len(ch))
@@ -234,6 +317,8 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
                            [no[i] for i in rng.choice(len(no), size=min(REL_N - nc, len(no)), replace=False)]
             loss = enc.update([tiles[i] for i in bi], [pairs[i] for i in pi])
             effs.append(enc.last_effect)
+            if INTERACTION == "diff":
+                diffs.append(enc.diff_stats)
             if REL_W > 0:
                 rels.append((getattr(enc, "last_relation", None), getattr(enc, "rel_used", 0)))
         sens = [enc.sensitivity(draw(buf, rng), rng) for _ in range(10)]
@@ -252,6 +337,7 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         prev = tup
         row = {"checkpoint": ck + 1, "updates": (ck + 1) * upd_per_ck, "play_steps": steps, "loss": round(loss, 5),
                "effect": round(float(np.mean(effs)), 4),
+               "diff_errors_pushes_held_per_update": None if not diffs else [round(float(v), 2) for v in np.mean(diffs, 0)],
                "relation": None if not rels else round(float(np.mean([r for r, _ in rels if r is not None] or [np.nan])), 4),
                "relation_tries_used": None if not rels else round(float(np.mean([u for _, u in rels])), 1),
                "loo_loglik_per_action": [round(v, 4) for v in ll.tolist()],
@@ -269,12 +355,13 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         rows.append(row)
         print(row, flush=True)
         Path(out).write_text(json.dumps({"note": "Card 052 step 2b, tools/card052/effect.py", "seed": seed, "mu": MU,
-                                         "ema": DR.Encoder.EMA, "start_share": START_SHARE, "relation_weight": REL_W, "buffer": buffer, "update_every_steps": every,
+                                         "ema": DR.Encoder.EMA, "start_share": START_SHARE, "relation_weight": REL_W,
+                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "buffer": buffer, "update_every_steps": every,
                                          "updates_per_checkpoint": upd_per_ck, "rows": rows}, indent=1) + "\n")
 
 
 def main():
-    global MU, START_SHARE, REL_W
+    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     Path(get("--out", "runs/052/effect.json")).parent.mkdir(parents=True, exist_ok=True)
@@ -284,6 +371,12 @@ def main():
     DR.Encoder.RESTART_EVERY = int(get("--restart", "250"))
     START_SHARE = float(get("--starts", "0"))
     REL_W = float(get("--rel", "0"))
+    DR.Encoder.ANCHOR = get("--anchor", "pixels")
+    DR.Encoder.CODEBOOK = get("--codebook", "learned")
+    INTERACTION = get("--interaction", "effect")
+    DIFF_W = float(get("--diff-w", "1"))
+    INV_W = float(get("--inv-w", "1"))
+    VIEWS = DR.Encoder.ANCHOR != "pixels" or INTERACTION == "diff"
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),
         int(get("--every", "10")), int(get("--updates", "2000")), get("--out", "runs/052/effect.json"))
 
