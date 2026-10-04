@@ -57,3 +57,26 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
 - Step 4b (commitment between steps, `tools/card051/commit.py`):
   seed 403 cluttered 98% to 99% (layouts 47 and 66 now succeed, 93 now
   fails, traced); every other test as step 4a in all seeds. Kept.
+- Step 4c (routes needing two tokens made walkable) built after tracing
+  two doors layout 11; its evaluation on seeds 400–404 started.
+- Change 6 (no spliced checks) measured before building it: with step
+  4c's agent on seed 400, 10 two-door and 10 cluttered layouts, card
+  043's spliced case (a success needing both the hand and the view
+  changed) was computed 0 times (731 single-part conditions) and used in
+  0 of 1,041 chosen steps. Not built: it would change nothing in these
+  tests (the familiar "both" world was not counted).
+- Step 4c on seeds 400–404: two doors 30/30, one door 100%, cluttered
+  100% (seed 403 99%), routes much shorter; but both world 26/30 in
+  seeds 403 and 404. Traced: the hand that card 043 assumes "as it is
+  now" was not protected. Step 4d adds that link; shakedown both world
+  30/30. Full run started.
+- The +50,000-key growth point was stopped unfinished: after 1 h 40 min
+  the test harness was still adding tries and held 22 GB of memory,
+  growing about 5 GB in 25 minutes, while step 4d's runs needed the
+  machine. The per-step result stands to +20,000 keys (5.7 ms per step,
+  re-admission 10 s after computing card 038's ways among sampled keys
+  only). What grows that fast while adding tries (the test's bulk add,
+  card 039's set registry, or the per-key result sums) is not yet known.
+- Step 4d on seeds 400–404: everything passes (two doors 30/30, one door
+  100%, cluttered 100% but seed 403 layout 93, familiar worlds 100% with
+  card 029's steps). Steps 4c and 4d kept together.

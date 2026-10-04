@@ -23,7 +23,9 @@ import index as IX                                     # noqa: E402
 S7 = IX.S7
 G = S7.MV.G
 DEBUG = False
-ACTS = (3, 4, 5)                                       # pick up, drop, toggle
+ACTS = (3, 4, 5)
+HAND_LINK = True                                       # step 4d: the hand kept when only the view is asked for
+VP = IX.VP                                       # pick up, drop, toggle
 STATS = {"orders_weighed": 0, "reordered": 0, "all_threaten": 0}
 
 
@@ -42,6 +44,12 @@ def _one(self, c, n, st, depth, chain, prot, faces, mine):
     return self.solve(n, st, depth + 1, chain + [c], prot, faces + mine)
 
 
+def hold(self, c, st):
+    if c[0] == "hand":                                 # the hand holds what it held when the link was made
+        return int(self.front_held(st)[1]) == c[1]
+    return _hold(self, c, st)
+
+
 def _holds(self, p, st):
     """A condition a plan relies on: a need, or ("does", a, u, j, c): doing a on u makes c true with the hand
     and view of st (an achiever that works as things are has no needs, card 043, but still relies on them)."""
@@ -54,6 +62,12 @@ def pursue(self, c, op, needs, st, depth, chain, protect, faces):
     met = [n for n in needs if n[0] != "face" and self.hold(n, st)]
     links = met + ([("does", op.a, op.u, op.j, c)] if getattr(op, "a", None) in ACTS else [])
     prot = protect + met
+    if HAND_LINK and any(n[0] == "part" and n[1] == VP.VIEWP and n[-1] is None and not self.hold(n, st)
+                         for n in needs):
+        # card 043 asks only for the view because the hand works as it is now: the hand is a link to keep
+        h = int(self.front_held(st)[1])
+        prot = prot + [("hand", h)]
+        links = links + [("hand", h)]
     mine = [n for n in needs if n[0] == "face"]
     unmet = [n for n in needs if not self.hold(n, st)]
     if len(unmet) == 1:
@@ -101,9 +115,13 @@ def pursue(self, c, op, needs, st, depth, chain, protect, faces):
     return None if res is None else _uses(res, links, op)
 
 
+_hold = S7.Plan047.hold
+
+
 def install():
     IX.install()
     S7.Plan047.pursue = pursue
+    S7.Plan047.hold = hold
 
 
 def main():

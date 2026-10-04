@@ -643,6 +643,79 @@ steps as step 4a).
 2. Two doors at least 80% in 4 of 5 seeds; one door and the familiar
    worlds no worse than step 4a (one layout of slack per test).
 
+### Step 4c: routes that need two tokens made walkable (walking, card 045's component), declared before the run
+
+**The failure, traced** (seed 400, two doors, layout 11; it fails in
+every seed). The cell before door green is reachable only through the
+cell where key green lies (the switch and the vase wall off the rest), so
+reaching key red needs key green picked up and door green opened. Card
+045's walking counts one token at a time walkable when no route exists;
+no single token gives a route, so no chain was found and the agent acted
+at random for 200 steps.
+
+**What is built** (`tools/card051/walk2.py`): when no single token gives
+a route, pairs of tokens that recall says can be made walkable are tried
+(each approach of a chain may cross one of them, chains through waypoints
+as card 045); the token the cheapest such route steps onto first becomes
+the condition ("walk", j). It acts only where card 045's walking returns
+nothing, so decisions elsewhere should not change.
+
+**Shakedown** (seed 400): layout 11 reaches the goal at step 45; layout
+0 at step 46, as before.
+
+**Criteria** (seeds 400–404, on step 4b's agent): two doors at least
+29/30 in every seed and layout 11 solved in at least 4 of 5; one door,
+cluttered and familiar worlds no worse than step 4b (one layout of
+slack per test).
+
+### Step 4c result: revise (both world lost 4 layouts in seeds 403 and 404); fixed by step 4d
+
+| Seed | Two doors | One door | Cluttered | Familiar worlds |
+|---|---|---|---|---|
+| 400–402 | **30/30**, 1.06 | **100%**, 1.00 | 100%, 1.00–1.08 | pass |
+| 403 | 30/30 | 100% | 99% (layout 93) | **both world 26/30: fail** |
+| 404 | 30/30 | 100% | 100% | **both world 26/30: fail** |
+
+Large gains beyond two doors: one door's layouts 78 and 88, which failed
+under every recall and the upper bound, now succeed, and cluttered routes
+fell from 1.29–1.46 to 1.00–1.16 times the shortest route. The both
+world's regression, traced (`runs/051/trace_both_403.txt`, layout 13):
+holding key blue, the toggle at door blue still needs the switch on in
+view; card 043 asks only for the view because the hand works as it is
+now, so holding key blue is no condition and nothing protects it. With
+routes through two tokens, a cheap achiever for the view need appears
+that starts by dropping key blue, and the agent picks it up and drops it
+in turn.
+
+### Step 4d: the hand kept when only the view is asked for, declared before the run
+
+**What is built** (`tools/card051/threats.py`, `HAND_LINK`): when an
+achiever's need is on the view because the hand works as it is now (card
+043's single-part need), the present hand is added to the conditions
+protected in that branch and to the plan's links. An action that changes
+the hand there is refused, as card 029 refuses one that breaks a met need.
+
+**Shakedown:** both world seed 403, 30/30 (step 4c: 26/30); two doors
+seed 400 layouts 0 and 11, as step 4c.
+
+**Criteria:** step 4c's (seeds 400–404, everything no worse than step 4b,
+one layout of slack; two doors at least 29/30 in every seed), with every
+familiar world passing card 049's criterion 1.
+
+### Step 4d result (seeds 400–404): pass; steps 4c and 4d kept together (Claude, overnight)
+
+| Seed | Two doors (version 9: 0/30) | One door (version 9: 98%) | Cluttered (version 9: 98–100%) | Familiar worlds |
+|---|---|---|---|---|
+| 400–402, 404 | 30/30, 1.06 | 100%, 1.00 | 100%, 1.00–1.08 | 100% in all four, card 029's steps |
+| 403 | 30/30, 1.06 | 100%, 1.00 | 99% (layout 93), 1.16 | 100% in all four, card 029's steps |
+
+Ratios are steps against the evaluator's shortest route, which may not
+move objects other than the door's key; the agent sometimes beats it by
+picking up a key in its way (one door 0.997). Time per layout 0.10–0.16 s
+(one door, cluttered), 0.43 s (two doors), 0.20–0.64 s (familiar worlds,
+five runs sharing the machine). The only failure left in 1,950 test
+episodes is seed 403's cluttered layout 93 (see step 4b).
+
 ## 12. Result
 
 ### Step 1 (seed 399): pass, kept (Claude, overnight)

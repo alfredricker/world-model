@@ -37,6 +37,20 @@ Version 9 with three planner and memory changes from card 051:
    chain; the next step tries that achiever first and searches only when
    it no longer gives a plan.
 
+4. **Routes through two tokens** (step 4c, `tools/card051/walk2.py`).
+   When no route faces a target with one token made walkable, pairs of
+   tokens that recall says can be made walkable are tried; the one the
+   cheapest route steps onto first becomes the condition ("walk", j).
+5. **The hand kept when only the view is asked for** (step 4d,
+   `tools/card051/threats.py`, `HAND_LINK`). When card 043 asks only for
+   the view because the hand works as it is now, the present hand is a
+   protected link in that branch.
+
+Results with all five (seeds 400–404): two doors 30/30 (version 9: 0/30),
+one door 100% (98%), cluttered 100% except one layout (98–100%), the four
+familiar worlds 100% with card 029's steps; one failure left in 1,950
+test episodes.
+
 ## Sections of ARCHITECTURE.md to update
 
 - **Intro:** version 10 = version 9 + card 051's index, threats and
@@ -61,12 +75,12 @@ Version 9 with three planner and memory changes from card 051:
     in the tests (to +20,000 keys); re-admission on grown memory slower
     (50 s at +20,000 keys), run only on surprise; card 038's transport
     for new situations reads every key of an outcome class;
-  - replace "No commitment between steps" with what remains: two doors
-    layout 11 (no chain found at all), cluttered seed 403 layout 93 (an
-    achiever whose needs alternate in form);
+  - replace "No commitment between steps" with what remains: cluttered
+    seed 403 layout 93 (an achiever whose needs alternate in form);
+  - walking now considers pairs of blocked tokens, not more;
   - keep "unknown read as fails", "parts mix kind and colour",
     "conjunctions spliced".
 
 ## Change-log line
 
-| 10 | 2026-10-04 | 051 | Memory indexed by situation (exact: the same decisions as version 9, per-step time flat from base memory to +20,000 stored keys, 5.7–9.9 ms against version 9's 43–4,640 ms); threats between the needs of one achiever; the chain's choices kept between steps. Two doors 29/30 in 5 of 5 seeds (version 9: 0/30), cluttered key world 99–100%, familiar worlds and one door unchanged. Kept by Claude overnight under the user's delegation; to confirm |
+| 10 | 2026-10-04 | 051 | Memory indexed by situation (exact: the same decisions as version 9, per-step time flat from base memory to +20,000 stored keys, 5.7–9.9 ms against version 9's 43–4,640 ms); threats between the needs of one achiever; the chain's choices kept between steps; routes through two tokens made walkable; the hand kept when only the view is asked for. Two doors 30/30 in 5 of 5 seeds (version 9: 0/30), one door 100% (98%), cluttered 99–100%, familiar worlds 100% with card 029's steps. Kept by Claude overnight under the user's delegation; to confirm |
