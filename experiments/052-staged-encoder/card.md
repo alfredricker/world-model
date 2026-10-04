@@ -374,6 +374,37 @@ baselines.
   predictions, with memory keyed by each checkpoint's codes. The user
   decides.
 
+### Step 2c (option 2: drift measured by recall's predictions): declared before the run
+
+The user approved (2026-10-04). Step 2b's plain arm at μ = 0.1, rerun
+the same way (seed 399, 40 checkpoints), with the card's second rate
+measured at every checkpoint (`tools/card052/predflip.py`).
+
+- **Tries, rendered once with nuisance, from separate episodes:** for
+  pick up, drop and toggle, a memory set (up to 2,000 tries with a change
+  and 2,000 without, per action) and a probe set (up to 200 and 200 per
+  action). Each try: the front and held tiles before, and the outcome
+  (nothing, front changes, hand changes, both).
+- **Recall by codes** (as the agent's memory is keyed): at each
+  checkpoint, memory tries are keyed by (action, front code tuple, held
+  code tuple) under that checkpoint's codes; a probe try is predicted as
+  its key's most frequent outcome, or "unknown" if no memory try has its
+  key. Also reported: recall by vectors (step 2b's term, the memory as
+  voters, λ as learned).
+- **Prediction flip rate:** the share of probe tries whose prediction
+  (an outcome or "unknown") differs from the previous checkpoint's.
+- **Accuracy:** the share of probe tries predicted correctly ("unknown"
+  is wrong). Upper bound: the same recall keyed by the evaluator's
+  identities (minigrid's object encoding), computed once; trivial
+  baseline: each action's most frequent outcome in memory.
+
+Criteria, over the last 10 checkpoints:
+- **Gate 2 by predictions met:** prediction flip rate below 1% and
+  staying there, with accuracy within 5 points of the upper bound (a
+  stable but wrong recall does not count).
+- Otherwise reported as not met, with how much of the code flips change
+  predictions.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

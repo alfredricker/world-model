@@ -32,6 +32,7 @@ NK = 4                                                 # nothing, front changes,
 D_KEY = 2 * K * DIM + K
 MU = 0.1
 PER = 128
+CHECK = None
 
 
 class Stream(DR.Stream):
@@ -59,7 +60,7 @@ class Stream(DR.Stream):
             c1 = None if h1 is None else tuple(h1.encode())
             if k0 != k1:
                 pairs.append((t0, self._tile(f1)))
-            tries.append((a, t0, th, int(k0 != k1) + 2 * int(c0 != c1)))
+            tries.append((a, t0, th, int(k0 != k1) + 2 * int(c0 != c1), (k0, c0)))
         W, H = self.env.grid.width, self.env.grid.height
         self.last_ids = []
         fr = self._front()
@@ -161,7 +162,7 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         t, p = stream.step()
         tiles.extend(t)
         pairs.extend(p)
-        for a, f, h, o in stream.tries:
+        for a, f, h, o, _ in stream.tries:
             buf[a][int(o > 0)].append((f, h, o))
         steps += 1
 
@@ -205,6 +206,8 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
                "codes_used_per_part": [len(set(c[:, k].tolist())) for k in range(K)],
                "tries_changed_per_action": [len(buf[a][1]) for a in ACTS],
                "restarts": enc.restarts, "seconds": round(time.monotonic() - t0, 1)}
+        if CHECK is not None:                           # further measures at each checkpoint (step 2c)
+            row.update(CHECK(enc))
         rows.append(row)
         print(row, flush=True)
         Path(out).write_text(json.dumps({"note": "Card 052 step 2b, tools/card052/effect.py", "seed": seed, "mu": MU,
