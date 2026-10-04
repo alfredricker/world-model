@@ -24,7 +24,7 @@ Overwritten each session. At most 40 lines.
   Steps 2 and 3 (compiled rules, cost pass), changes 6 and 7 not done.
 - **Card 052:** gate 1 passed (generator; the rendering check revised,
   see the card); step 2a (encoder trained online) has not settled: code
-  flip rates far above the gate's 1% (see its log).
+  flip rates far above the gate's 1%, mostly relabelling, not regrouping (see its log).
 - **Recent cards:**
   - [052](experiments/052-staged-encoder/card.md): draft, gate 1 pass;
   - [051](experiments/051-planner-chains-and-rules/card.md): steps 1,

@@ -35,3 +35,22 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   codebooks: neither settles with useful codes (see the card's step 2a
   table). Step 2a written up as revise, options for the user; not
   continuing to step 3 without the user.
+- Nuisance diagnostics (moving-average codebooks, 20 checkpoints, seed
+  399): flip rate at the last checkpoints, no tint 34–42%; no noise
+  56–73%; neither (every identity one exact tile) 45–61%, with no
+  identity split but 39 tuples for 84 identities. The drift is not
+  caused by the nuisance: the online objective keeps moving the codes.
+  Running a label-free measure (pairs of probe tiles whose
+  same-code / different-code status changes) to tell relabelling from
+  regrouping.
+- Label-free drift (clean tiles, moving-average codebooks, seed 399).
+  Over the last five checkpoints the code flip rate is 32–51%, but the
+  share of probe-tile pairs whose same-code / different-code status
+  changes is much lower: part 0 at 0.1–1.3%, part 2 at 1–5%, part 3 at
+  2–9%, part 1 at 7–13%. Most of the measured drift is therefore
+  relabelling: the same groups of tiles under new code numbers. Part 1
+  keeps regrouping. A sixth option for step 2's revision: map each
+  checkpoint's codes to the previous checkpoint's by overlap, so that
+  memory keeps its names, and freeze or slow the part that still
+  regroups. Only gate 2 changes with this option. It is not run; the
+  user picks the revision.

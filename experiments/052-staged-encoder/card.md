@@ -510,3 +510,13 @@ one moving itself developed visually guided behaviour (Held and Hein
   pixel anchor and varied goals guard against it.
 - Diversity thins rare events per kind; play starts and interaction-dense
   batches compensate.
+
+**Overnight diagnostics after step 2a (Claude):** the drift remains
+without tint or noise, so the online objective keeps moving the codes
+and the nuisance does not cause it. Measured without labels, most of it
+is relabelling: by the last checkpoints only 0.1–13% of probe-tile pairs
+change between the same code and different codes, against 32–51% of
+tiles changing code number. One part (part 1) keeps regrouping. A sixth
+revise option follows: keep code names by mapping each checkpoint's codes
+to the last checkpoint's by overlap, and slow or freeze the part that
+regroups. Details are in log.md.

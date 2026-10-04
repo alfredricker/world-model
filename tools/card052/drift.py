@@ -211,10 +211,21 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         c, err = enc.codes(probe)
         tup = [tuple(r) for r in c.tolist()]
         flip = None if prev is None else float(np.mean([a != b for a, b in zip(tup, prev)]))
+        # label-free: per part, the share of probe-tile pairs whose same-code / different-code status changed
+        if prev is not None:
+            P0, P1 = np.array(prev), np.array(tup)
+            pr = []
+            for k in range(K):
+                s0 = P0[:, k][:, None] == P0[:, k][None]
+                s1 = P1[:, k][:, None] == P1[:, k][None]
+                pr.append(float((s0 != s1).mean()))
+            pair_change = [round(v, 4) for v in pr]
+        else:
+            pair_change = None
         per_part = None if prev is None else [float(np.mean([a[k] != b[k] for a, b in zip(tup, prev)])) for k in range(K)]
         prev = tup
         row = {"checkpoint": ck + 1, "updates": (ck + 1) * upd_per_ck, "play_steps": steps, "loss": round(loss, 5),
-               "probe_rebuild_mse": round(err, 6), "code_flip_rate": None if flip is None else round(flip, 4),
+               "probe_rebuild_mse": round(err, 6), "code_flip_rate": None if flip is None else round(flip, 4), "pair_change_per_part": pair_change,
                "flip_per_part": None if per_part is None else [round(v, 4) for v in per_part],
                "distinct_tuples": len(set(tup)), "probe_identities": len(ident),
                "identities_split": sum(len({t for t, q in zip(tup, pid) if q == i}) > 1 for i in ident),
@@ -233,6 +244,8 @@ def main():
     Path(get("--out", "runs/052/drift.json")).parent.mkdir(parents=True, exist_ok=True)
     global DECAY
     DECAY = float(get("--decay", "1"))
+    GN.TINT = float(get("--tint", str(GN.TINT)))      # diagnostics: nuisance switched off
+    GN.NOISE = float(get("--noise", str(GN.NOISE)))
     Encoder.EMA = float(get("--ema", "0"))
     Encoder.RESTART_EVERY = int(get("--restart", "250"))
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),
