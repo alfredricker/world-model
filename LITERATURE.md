@@ -6,6 +6,40 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
+- **Card / rung:** [card 049](experiments/049-recall-through-conditions/card.md),
+  recall through the conditions that matter. Before rung 1. Set with the user on
+  2026-10-03, after tracing card 048's failures. In both, a token in view
+  that does not matter to the action (a second door; a key missing from
+  the floor) dropped every matching stored try's weight to zero. Recall
+  compares the whole view, and its similar-thing level is off (β ≈ 0 in
+  all five seeds). The aim is memory queried through the conditions that
+  matter for each action, generative and preventive, so that irrelevant
+  tokens cannot veto a memory and new but similar situations can query
+  old ones.
+- **Why these:** which cues enter a query (contrast, default exclusion,
+  cue competition); conditions matched one way, from the stored try to
+  the present; references relative to the target and the hand; relations
+  as distances within one part; conditions from few contrasting tries.
+- **Until:** card 049 has a decision.
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| Cheng 1997, causal power (not in papi); Cheng and Novick 1991 (not in papi) | A cue's generative and preventive power come from the contrast in outcomes with and without it. A cue that never varied has no measurable power: it is background (an enabling condition), not a mismatch |
+| Griffiths and Tenenbaum 2005, causal support (not in papi) | Whether a cue matters at all is a model comparison, "matters" against "does not", decided from few tries. Exclusion is the default |
+| `1110_2211` (Pasula, Zettlemoyer and Kaelbling 2007) | Rules name only the objects they need, by their relation to the action's target, with a penalty on rule size and a noise outcome for rare exceptions |
+| `2406_03234` (Hwang et al. 2024) | Which inputs matter changes with the situation: a learned codebook over (state, action), each code with its own sparse dependencies |
+| `2007_02863` (Pitis et al. 2020, CoDA) | Interactions are local, so tokens outside an action's local dependencies should not affect a match. Its dependencies come from query–key attention, which LESSONS warns against |
+| `2106_03443` (Seitzer et al. 2021); `elden` (Hu et al. 2023) | Whether a token mattered in one try, scored by how much the model's prediction changes with it |
+| `2103_00589` (Silver et al. 2021); `2105_14074` (NSRTs, Chitnis et al. 2022); `schema-networks-zero-shot-transfer-with-a-generative-causal` (Schema Networks); DOORMAX (Diuk et al. 2008) | Group tries by effect, keep what every success shares, add a condition only when a failure forces it; stored conditions are matched one way, so extra objects cost nothing. Their attributes are given, ours are learned |
+| Rescorla and Wagner 1972; Kamin 1969; Kruschke 2001, EXIT (none in papi) | Cue competition: a cue earns weight only by predicting what the others leave unexplained (blocking). Attention fast and specific to the situation |
+| Kruschke 1992, ALCOVE; Nosofsky 1986; Medin and Schaffer 1978 (none in papi) | Recall's present base. Similarity multiplied over dimensions lets one mismatch veto a memory, unless attention on irrelevant dimensions is near zero |
+| `the-relational-bottleneck-as-an-inductive-bias-for-efficient` (Webb et al.); Gentner et al. 1993; Hummel and Holyoak 1997, LISA | Relations as similarities between two objects in one part, never their attributes: what carries "same colour" to a new colour |
+| Gopnik and Sobel 2000; Mitchell, Keller and Kedar-Cabelli 1986; Love et al. 2004, SUSTAIN (none in papi) | One success and one failure differing in one token can settle a condition; a surprising outcome stores a new case or re-indexes old ones |
+| `1501_01332` (Peters, Bühlmann and Meinshausen 2016, invariant causal prediction) | A true condition predicts the outcome alike in every room or layout; a distractor does not |
+| `neural-production-systems` | A rule binds one primary slot and one context slot. Its selection is query–key attention, the failure in LESSONS |
+
+Previous focus (cards 036–037, set 2026-09-29):
+
 - **Card / rung:** [card 036](experiments/036-fresh-codes/card.md), fresh
   codes for new things, then [card 037](experiments/037-recall-in-the-planner/card.md),
   recall in the planner. Before rung 1. Set with the user on 2026-09-29,

@@ -265,6 +265,17 @@ At every step:
 - **Slower than version 5:** 0.42–0.72 s per layout in the familiar
   worlds, against 0.015–0.024; the switch world with a new-colour door
   4–19 s. Card 047's wider situations cost 31–77% over card 046.
+- **Cost grows with memory; must be near-linear before BabyAI or
+  Crafter** (the user, 2026-10-03). Every recall query compares the
+  query with every stored try (about 0.1 ms per thousand tries, card
+  049), and memory grows by up to one try per step, so a lifetime of T
+  steps costs about T². Card 049's admission of conditions builds an n × n
+  matrix per candidate (20 GB per candidate at 50,000 tries). The
+  planner re-derives its whole chain of conditions every step. Target:
+  per-step cost linear in the tokens and conditions in play, independent
+  of memory size (own situations by hash, neighbours by approximate
+  nearest-neighbour search, admission on groups of equal codes, the
+  chain kept and repaired rather than rebuilt).
 
 ## Change log
 

@@ -1,0 +1,541 @@
+---
+id: "052"
+title: the planner keeps its chain of conditions, checks rules compiled from recall, and costs per step what is in play
+rung: 0
+serves: [P12, P21, P17, P14, P8, P5, P15]
+status: draft
+verdict:
+arch_version: 8
+date: 2026-10-04
+---
+
+# 052: the planner keeps its chain of conditions, checks rules compiled from recall, and costs per step what is in play
+
+Drafted 2026-10-04 at the user's request: "a detailed card about your
+proposed efficiency, generalization, and understanding improvements to
+the planner ... I want to know clearly the before and after of each
+change". The user allowed it to exceed the template's length. It is a
+design card: seven changes, each with its before and after, what it buys,
+its risk and its test. Section 9 proposes the order and how to split them
+into runs, because CHARTER asks for one component per experiment.
+
+It builds on card 051 (recall through admitted conditions, own tries
+first), whose main run is pending.
+
+## 1. Question
+
+Version 8's planner works backward from the goal over conditions, as
+GOAL.md's P12 asks, and it is right in the familiar worlds. Three
+problems stop it from scaling:
+- **Cost.** Each step rebuilds the whole chain and asks recall, which
+  scans all of memory, hundreds of times. A lifetime of T steps costs
+  about T² (card 049; ARCHITECTURE.md, "Known limits"). The user asked
+  for near-linear per-step cost before BabyAI or Crafter (2026-10-03).
+- **Commitment.** The chain is forgotten between steps, so the agent can
+  undo at one step what it did at the previous one: card 049's two doors
+  (key A picked up and dropped in turn, 0 of 150) and card 051's
+  cluttered layout 66 (the purple key the same way).
+- **Understanding.** The planner's reasons exist only during one call.
+  Nothing records "door A is open because the agent holds key A, which
+  it picked up for that", so a failure cannot be attributed to the link
+  that broke. Card 050's encoder needs exactly such events (conditions
+  met or broken).
+
+Can the planner keep the backward hierarchy of conditions and gain all
+three? Before rung 1. Serves:
+- P12, the hierarchy made explicit and kept: conditions, the actions that
+  achieve them, and what each serves;
+- P21, System 2 deliberates over chains of conditions without simulating
+  steps, and simple decisions become lookups (System 1);
+- P17, per-step cost independent of memory size;
+- P14, a broken link is repaired where it broke;
+- P8, rules composed into new chains in new layouts;
+- P5 and P15, "unknown" kept apart from "fails", and tried when worth it.
+
+## 2. Are we leaving the subgoal hierarchy and its depth-first search?
+
+No. The user asked this directly (2026-10-04), so here is the answer
+first.
+
+**What stays.** Working backward from the goal: a condition's achievers
+are the actions whose predicted effect makes it true, an achiever's needs
+are its conditions, and needs become subgoals down to actions (card 029,
+means-ends analysis, as STRIPS). The search still descends depth-first
+into one achiever's needs, with the same depth limit (6). Walking stays
+card 045's: a learned how-soon network (System 1) and routes whose tokens
+are conditions.
+
+**What changes in the search.** Three things around the depth-first
+descent:
+1. *Which achiever is expanded first.* Today the planner tries achievers
+   in a fixed order (fewest unmet needs, then nearest) and expands each
+   one fully until one works. After the change, one cheap backward pass
+   gives every condition an estimated cost first. The descent then takes
+   the cheapest achiever, and the others remain fallbacks (change 4).
+   Depth-first, guided by estimates, instead of depth-first in a fixed
+   order.
+2. *What a step starts from.* Today the descent restarts from "episode
+   ended" at every step. After the change, the previous step's chain is
+   kept, and a step re-examines only the parts the last observation
+   touched (change 5).
+3. *What the descent asks at each node.* Today each node asks recall.
+   After the change, it checks a rule compiled from recall, and asks
+   recall only where the rule does not apply (changes 2 and 3).
+
+The hierarchy is the same, and so is the order of reasoning (goal, then
+conditions, then subgoals, then actions). The search is still
+depth-first. What changes is how the planner chooses what to expand,
+what it remembers between steps, and what it asks at each node.
+
+## 3. How the planner works today
+
+The code: `tools/card029/subgoals.py` (`solve`, `pursue`, `choose`),
+with walking from `tools/card045/movement.py` (`Walk.walk`), conditions
+from `tools/card043/consistent.py` and situations from
+`tools/card047/situations.py`.
+
+At every step, from the top:
+1. `choose` calls `solve(("end",))`, retrying up to 12 times when a
+   refusal changes what is allowed.
+2. `solve(c)` lists c's achievers (actions whose recall-predicted effect
+   makes c true) with their needs, sorts them by the number of unmet
+   needs, and expands each group in turn with `pursue`, keeping the
+   nearest that works.
+3. `pursue` takes the achiever's first unmet need and recurses into it
+   (`solve`, or `walk` for facing). When every need is met, it imagines
+   the action and refuses it if the imagined step undoes a met need
+   higher in this chain, or makes a facing in this chain unreachable.
+4. A need on the hand or the view (card 043) is met in a situation where
+   recall predicts the action works with that situation's own hand and
+   view. The situations come from stored tries on the same tile and on
+   similar tiles (card 047), each judged by recall.
+
+Each node asks recall at least once, and recall compares the query with
+every stored try on every admitted condition (card 049). Card 049's
+shakedown worked out 65 conditions per move in the key world and 120 in
+the either world.
+
+**Layout 66, read against this** (card 051's trial, seed 403; traced
+2026-10-03). The agent stands at (2,2), facing a locked red door. It
+holds a purple key, which it has just learned does not open the door.
+- Step 9's chain: door open ← a different hand ← (an achiever through
+  the blue key) ← pick up the blue key ← an empty hand ← **drop**. The
+  imagined drop puts the purple key on the cell in front, (2,3). That is
+  the only open cell next to the agent, so it walls the agent in. The
+  red key is not in this chain, so the refusal check does not protect
+  the route to it.
+- Step 10, hand empty: the descent restarts from the top and now
+  chooses the red key. Its route is blocked by the purple key, so
+  "make (2,3) walkable" becomes a need, achieved by **picking up the
+  purple key**.
+- Step 11, holding the purple key: the chain of step 9 again, so
+  **drop**. Then the pair repeats for the rest of the episode.
+
+Each step's chain is reasonable on its own. Two causes combine: the
+choice of achiever changes between steps (blue key, then red key), and
+protection covers only the chain of the current step. Why step 9's
+chain went through the blue key is not traced; the trace shows a need
+for a drop facing the vase, which is not yet understood.
+
+## 4. The seven changes
+
+Each change below has the same five parts: before, after, what it buys
+(efficiency, generalization, understanding), its risk, and its test.
+
+### Change 1: memory indexed by situation (recall)
+
+**Before.**
+- A recall query compares the query with every stored try on every
+  admitted condition: about 0.1 ms per thousand tries, linear in memory
+  (card 049's timing).
+- The query's own situation (card 051) is found by the same scan.
+- Admission of conditions builds an n × n distance matrix per candidate,
+  which is 1–5 s at 771 tries and about 20 GB per candidate at 50,000.
+
+**After.**
+- **Own situations by hash.** The key is (front code tuple, held code
+  tuple, the values of the admitted view conditions), and each entry
+  holds the outcome counts of its tries. A lookup takes constant time.
+- **Neighbours by approximate nearest-neighbour search,** over the
+  admitted-condition features, weighted by recall's λ. The nearest k
+  (for example 32) replace the full scan, at about log n per query
+  (Neural Episodic Control does this; `1703_01988`). They are asked
+  only when the own situation has no tries, or for the prior α.
+- **Admission on groups.** Tries with equal codes on every candidate
+  are one group with summed outcomes, so the fit is over S distinct
+  situations, not n tries. In the key world that is 50 groups against
+  771 tries per action. It is refitted only on surprise: a failed
+  prediction, or a new situation.
+
+**Buys.**
+- *Efficiency:* query cost independent of memory size; admission
+  quadratic in distinct situations, which grow far more slowly than
+  tries.
+- *Generalization:* unchanged. The neighbours are the same, only found
+  faster.
+- *Understanding:* each situation has an entry that can be read: "this
+  door with this key in hand, 412 tries, opened 412".
+
+**Risk.** The approximate search can miss a neighbour that a full scan
+would weight. The groups merge tries that differ only in tokens no
+candidate reads. That is not CHARTER's forbidden merging into hard
+kinds: the tries themselves stay stored, and groups are rebuilt from
+them whenever the candidates change.
+
+**Test.** Predictions identical to card 051's on all held-out tries (at
+least 99.9% the same class). Query time flat (at most 2 times) from 1,000
+to 50,000 stored tries (synthetic growth, as card 049's timing).
+
+### Change 2: rules compiled from recall (System 1 for conditions)
+
+**Before.** Every node of the descent asks recall what an action does to
+a tile in a situation. The same questions repeat across steps and
+layouts.
+
+**After.** For each action and outcome, one or more **rules**, compiled
+from recall:
+- *Conditions:* the admitted conditions (card 049), each with its
+  region. The front tile's region is the code tuples whose own situations
+  give the outcome. A relation is a distance below a radius. A view
+  condition is "a token with this code tuple is in view".
+- *Effect:* the outcome class (what the front and the hand become).
+- *Support:* the own situations and the tries behind the rule.
+
+A rule is a cache. It is rebuilt from the kept tries, never edited, and
+never counted as evidence of its own:
+- recall decides whenever no rule covers the situation;
+- recall decides whenever a rule's prediction fails (the own situation
+  then contradicts it, card 051), and the rule is rebuilt for that
+  situation;
+- recall decides when a token has no code, a "new" piece.
+
+This is CHARTER's "weights take over from recall" applied to conditions.
+Rules answer only where they agree with recall on every stored case, rare
+ones included, and novelty is judged outside the rule.
+
+**Buys.**
+- *Efficiency:* a node checks a rule against the current tokens in
+  constant time (change 3) instead of querying memory. Recall is asked
+  once per new situation, not once per node per step.
+- *Generalization:* a rule's regions say how far a condition extends. A
+  purple key inside the region of "keys that fit" meets the condition
+  until a try says otherwise; outside it, recall decides. This is card
+  049's transfer, made explicit.
+- *Understanding:* the rules can be printed: "toggle at a closed door
+  works when the held tile's part 1 is near the door's part 1
+  (relation)". Card 049 already admitted conditions of this shape.
+
+**Risk.**
+- *Sliding back to card 028's counted tables.* That is what rule 8
+  forbids. The guard: rules hold no counts of their own and are
+  regenerated from tries, and recall is the authority wherever they
+  disagree.
+- *Rare outcomes absorbed by a dominant one.* Rules are compiled per
+  outcome class, and a class with any own situation keeps its own rule.
+
+**Test.** On held-out tries in the four familiar worlds, the rule-backed
+prediction equals recall's in at least 99.9%. The share of nodes answered
+by a rule, and of nodes that fall back to recall, is reported.
+
+### Change 3: conditions checked by lookup in the current tokens
+
+**Before.**
+- "Is X held?" reads the hand token.
+- "Is X in view?" and "which tokens show X?" scan the 638 token
+  places.
+- Situations for a hand or view need are gathered from memory (card
+  047's templates) and judged one by one by recall.
+
+**After.** The current tokens are indexed by code tuple (tuple to the
+tokens showing it), updated by the step's changes only. Checking a rule's
+condition becomes:
+- a hash lookup for a tile condition;
+- a scan of the few candidate pairs for a relation;
+- an index entry for "in view".
+
+A need on the hand ("a hand that makes toggle work here") becomes "a
+held tile inside the rule's region", answered by listing the tokens in
+view whose code tuple lies in it. These are the candidates to pick up.
+
+**Buys.**
+- *Efficiency:* a node's check is constant time.
+- *Generalization:* candidates for a need come from the region, so a
+  tile never seen in that role can be one.
+- *Understanding:* "which keys in view would work" is a list the planner
+  can report.
+
+**Risk.** Small. The index must follow every change to the tokens, so
+it is rebuilt from the tokens if a check fails.
+
+**Test.** For every node in card 051's runs, the same answers as the
+scan.
+
+### Change 4: one backward pass of cost estimates guides the descent
+
+**Before.** `solve` sorts achievers by their number of unmet needs, then
+expands them group by group, fully, until one works. It keeps the
+nearest by walking cost (card 029, then card 045's how-soon network).
+The cost of an unmet need is not estimated before it is expanded, so
+the search can descend into an expensive or impossible branch first. A
+step's work grows with how many branches it tries.
+
+**After.** Before the descent, one pass over the conditions in play
+gives each an estimated cost:
+- cost(c) = 0 if c holds;
+- otherwise, the minimum over c's achievers of (the action, plus
+  walking to face its tile from the how-soon network, plus the summed
+  cost of its needs).
+
+The pass ignores what actions undo. It is the additive cost estimate of
+HSP (Bonet and Geffner 2001) and close to FF's relaxed plan (Hoffmann
+and Nebel 2001), and it is linear in the number of rules and conditions
+in play. The descent then expands achievers in order of estimated cost
+and keeps the others as fallbacks. The choice between the key and the
+switch, now made by comparing walking chains (card 045), becomes a
+comparison of two estimates.
+
+**Buys.**
+- *Efficiency:* the descent usually expands one branch, not all of
+  them.
+- *Generalization:* new combinations (two doors, three keys) get
+  estimates from the same rules, so longer chains cost the pass more
+  conditions, not more search (P8).
+- *Understanding:* every condition has a number ("open door B: about 31
+  steps away"). That is P12's "how soon", measured against outcomes
+  (rung 1's test) rather than only used.
+
+**Risk.** Estimates that ignore undoing are optimistic. That is safe for
+ordering, because the descent still checks every need, but it can still
+prefer a branch that conflicts with another. Change 5 handles the
+conflict.
+
+**Test.**
+- Same decisions as card 051 in the familiar worlds (at least 99% of
+  actions identical).
+- Fewer nodes expanded per step (reported against card 051).
+- The estimates' rank correlation with the evaluator's true steps over
+  test states (reported; rung 1's measure).
+
+### Change 5: the chain kept between steps, as links, and repaired
+
+**Before.** Teleo-reactive (card 029): rebuilt from the top at every
+step. Protection covers only the needs met higher in the chain of the
+current step and the facings in it. A choice can flip between steps:
+layout 66's blue key at step 9 and red key at step 10, or two doors' key
+A.
+
+**After.** The chain is a set of **links**. A link is (producer,
+condition, consumer): "pick up key A gives *holding key A* for toggling
+door A". Each step:
+1. **Check the links the observation touched.** For each link whose
+   condition changed: if it now holds as planned, advance; if it was
+   broken, mark it.
+2. **Repair the broken part only.** Re-derive the subtree under a broken
+   link with changes 2–4, and keep the rest.
+3. **Protect every open link.** An action whose predicted effect breaks
+   an open link is a **threat**, and the planner then has three choices:
+   - order it after the link's consumer (open door A first, then drop
+     key A);
+   - choose another way to do it (drop the purple key on a cell no route
+     link crosses);
+   - choose another achiever.
+
+   The kinds of link include holding an object, a door open, and a
+   route's tokens walkable (card 045's walk conditions).
+4. **Rebuild from the top** only when the goal's own link is broken, or
+   when the cost estimate of the kept chain rises above an alternative's
+   by more than a margin. That margin is the one new declared parameter.
+
+This is partial-order planning's causal links and threats (SNLP,
+McAllester and Rosenblitt 1991; UCPOP, Penberthy and Weld 1992),
+repaired incrementally as in LPA* and D* Lite (Koenig and Likhachev
+2002).
+
+**Buys.**
+- *Efficiency:* a step's work is proportional to what changed, not to
+  the chain's size.
+- *Generalization:* two doors and layout 66 are the same failure (a
+  later need undoes an earlier one), and links fix it in any layout
+  without a rule about keys (the user's warning against engineered
+  patches, 2026-09-29).
+- *Understanding:* the chain is an object that persists and can be
+  printed: "goal ← door B open ← holding key B ← drop key A after door A
+  is open". When an act fails, the broken link names the expected
+  condition that did not hold: the event card 050's encoder term needs.
+
+**Risk.**
+- *Commitment against new information:* a kept chain can ignore a
+  better option that appears (a door opened by someone else, later). The
+  margin in step 4 bounds this.
+- *Stale links:* a link whose condition changed outside view. P2's
+  belief is not modelled yet, so such links are checked when seen.
+
+**Test.**
+- Card 049's two doors: at least 80% of the 30 layouts in 4 of 5 seeds
+  (card 049: 0 of 150; card 048 with version 8: 2 of 150).
+- Card 051's cluttered layouts with walls of objects: at least 99%.
+- Familiar worlds unchanged.
+
+### Change 6: needs met in states the learned effects produce, not spliced
+
+**Before.** A need on the hand or the view is checked by writing the
+needed hand or view into the present state (card 043's declared
+exception for conjunctions, extended by card 048 to hands needed inside
+another action's conditions). In card 048 this made key A vanish from
+the imagined room.
+
+**After.** A need is met through the actions that produce it, imagined
+by their predicted effects:
+- "an empty hand" is the drop, with the dropped object on the drop
+  cell;
+- "holding key B" is the pick up, with key B gone from the floor;
+- each produced state is then checked by the rules.
+
+Where the drop goes is a choice. The drop cells are ranked by change 4's
+cost of the links they would threaten, using change 5's threats.
+
+**Buys.**
+- *Efficiency:* neutral (one imagined action per need, as now).
+- *Generalization:* the imagined state is one that can occur, so recall
+  and the rules are asked about situations like the ones they were
+  learned from.
+- *Understanding:* the planner's imagined chain is a sequence of real
+  effects, which can be checked against what happens.
+
+**Risk.** A need with no producing action becomes unmeetable, where a
+splice would have pretended it was met. That is correct, but it may
+expose missing effects.
+
+**Test.** No spliced states left (counted). The two tests of change 5.
+
+### Change 7: "unknown" kept apart from "fails", and tried when worth it
+
+**Before.** A prediction under one half reads as "does not work". A new
+colour door with no matching tries reads as closed for good, and the
+agent either acts at random (card 051's seed 401, random in 97% of steps)
+or never tries.
+
+**After.** Recall reports its support: the summed weight of the own and
+neighbouring tries behind a prediction. With low support, the outcome is
+**unknown**, not false. In change 4's pass, an unknown achiever costs its
+walking cost plus a price for a try that may fail. If it is still the
+cheapest option, the planner tries it. The try's outcome is then the own
+situation's first try (card 051), which settles it.
+
+**Buys.**
+- *Efficiency:* fewer random steps.
+- *Generalization:* new objects get tried rather than ignored, the
+  behaviour card 047 and CHARTER ask of transfer ("judged by tries").
+- *Understanding:* the planner can say "I don't know whether the purple
+  key fits; trying costs 6 steps".
+
+**Risk.** The user deferred chance on 2026-10-01 ("later"). This change
+does not add chance: it separates "never tried here" from "tried and
+failed". It is still a new decision rule with a price to declare, and it
+should come last.
+
+**Test.** Seed 401's new-colour switch door, 100 layouts (card 049: 14%,
+mostly random walks); the share of random steps there.
+
+## 5. Before and after, in one table
+
+| | Before (version 8 with cards 049 and 051) | After |
+|---|---|---|
+| Search | Depth-first over achievers in a fixed order, from the top every step | Depth-first over achievers in order of estimated cost, from the kept chain |
+| What a node asks | Recall over all of memory | A rule checked against indexed tokens; recall when the rule does not apply |
+| Memory lookup | Linear scan per query | Own situation by hash; neighbours by approximate search |
+| Admission | n × n per candidate, once per world | Over distinct situations, again on surprise |
+| Between steps | Nothing kept | Links kept, threats refused, broken links repaired |
+| Hand and view needs | Spliced into the present state | Produced by imagined actions; the drop's cell chosen |
+| Low support | Read as "fails" | Read as "unknown", tried at a price |
+| Per-step cost | Grows with memory and with the chain | Grows with what changed and the rules in play |
+| What can be printed | The current step's trace | The chain with its links, the rules, each condition's estimated cost |
+
+## 6. What this does not change
+
+- The goal (the episode's end) and the hierarchy of conditions.
+- Recall as the source of every prediction (rules are its caches).
+- The encoder, tokens and walking (card 045).
+- Chance: an outcome is still predicted at one half or more.
+- Belief out of view (P2, rung 5).
+
+## 7. Dependencies
+
+- Card 051 (own tries first), whose main run is pending. If it fails,
+  changes 1 and 2 still apply to card 049's recall.
+- Card 029's means-ends planner, card 043's conditions in produced
+  situations, and card 045's walking: all passed.
+- Literature, to add to LITERATURE.md when this card becomes the focus:
+  - Bonet and Geffner 2001 (HSP); Hoffmann and Nebel 2001 (FF);
+  - McAllester and Rosenblitt 1991 (SNLP); Penberthy and Weld 1992
+    (UCPOP);
+  - Koenig and Likhachev 2002 (D* Lite);
+  - Nilsson 1994 (teleo-reactive programs, the planner's present form);
+  - `1703_01988` (Neural Episodic Control, approximate search);
+  - `1110_2211` (Pasula et al., rules over learned outcomes).
+
+## 8. How this differs from classical planning
+
+Asked by the user on 2026-10-03. The search parts (goal regression,
+relaxed cost estimates, causal links) are classical and borrowed on
+purpose (CHARTER rule 7). The difference is the model they run on:
+- conditions are regions of a learned latent space, admitted from
+  contrasts in the agent's own tries, not predicates written by a
+  designer (C1);
+- rules are caches over recall, rebuilt from kept tries and overruled
+  per situation by a single failed try. They are not operators fitted
+  once;
+- matching is graded, so a new object can meet a condition by distance,
+  and low support reads as unknown;
+- walking is System 1, and only conditions are deliberated (P21).
+
+The planners that also learn their rules (Pasula et al. 2007, Silver et
+al. 2021, Chitnis et al. 2022, Konidaris et al. 2018) start from given
+objects and predicates, or features to invent them from. The tests here
+should therefore aim where a hand-written domain could not do as well:
+new objects, partly known situations, conditions nobody named.
+
+## 9. Order and runs
+
+CHARTER asks for one component per experiment. Two of the seven changes
+are in recall, and five in the planner:
+- **recall:** change 1 (index), and change 2's compilation;
+- **planner:** changes 3–7.
+
+Proposed order, each a run with its own gate, numbered as cards when the
+user approves each:
+1. **Changes 1 and 3 (efficiency, no change in behaviour).** Test:
+   identical decisions to card 051, and per-step time flat from 1,000 to
+   50,000 stored tries. This is the near-linear requirement on its own,
+   with nothing else changed, so any difference in behaviour is a bug.
+2. **Change 2 (rules).** Test: rule predictions equal recall's (at least
+   99.9%), and decisions unchanged.
+3. **Change 4 (cost pass).** Test: decisions unchanged in the familiar
+   worlds; fewer nodes per step; the estimates' rank correlation with
+   true steps reported.
+4. **Changes 5 and 6 together (links, produced states).** They share the
+   threat check, which needs the drop's real effect. Test: two doors at
+   least 80% in 4 of 5 seeds; cluttered at least 99%; familiar worlds
+   unchanged.
+5. **Change 7 (unknown).** Last, with the user's agreement, since it
+   touches chance. Test: seed 401's new-colour door.
+
+**Budget.** Steps 1–3 should change no decisions, so each can be checked
+on spare seed 399 in under 10 minutes. Step 4 needs card 049's full test
+set, about 40 minutes, handed to the user.
+
+## 10. Prediction
+
+- Step 1 removes most of the slowdown between card 047 (0.42–0.72 s per
+  layout) and card 049 (5.8–11.2 s). Per-step time stays within 2 times
+  from 1,000 to 50,000 stored tries.
+- Step 4 lifts two doors from 0 to above 80%. Some two-door layouts may
+  still fail where key A must be put down on a cell that blocks no link,
+  and none exists without a detour the cost pass underrates.
+- Step 5 lifts seed 401's new-colour door well above 14%, because the
+  agent tries the new door once with the switch on instead of walking at
+  random.
+
+## 11. Result
+
+## 12. Decision

@@ -1,0 +1,952 @@
+{
+ "card": "049",
+ "note": "tools/card049/conditions.py, worlds.py; raw outputs runs/049_*_40[0-4].json",
+ "seeds": {
+  "400": {
+   "familiar": {
+    "key": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.994,
+     "effects_right": true,
+     "seconds_per_layout": 7.361,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:2"
+      ]
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.997,
+     "effects_right": true,
+     "seconds_per_layout": 8.791,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'yellow')"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:2"
+      ]
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.992,
+     "effects_right": true,
+     "seconds_per_layout": 10.417,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'yellow')",
+       "rel:2"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:2"
+      ]
+     }
+    },
+    "both": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.996,
+     "effects_right": true,
+     "seconds_per_layout": 5.988,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2",
+       "view:('ball', 'yellow')",
+       "rel:1"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:2"
+      ]
+     }
+    }
+   },
+   "unseen": {
+    "key_room6": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.014
+    },
+    "key_room7": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.03
+    },
+    "key_mirror8": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.033
+    },
+    "switch_room6": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.015
+    },
+    "switch_room7": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.082
+    },
+    "switch_mirror8": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.078
+    }
+   },
+   "new_colour_switch": {
+    "yellow": 0.95,
+    "purple": 0.95
+   },
+   "first_sight_key_test": {
+    "yellow": false,
+    "purple": false
+   },
+   "chain1": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "seconds_per_layout": 0.78,
+    "layouts": 100
+   },
+   "chain2": {
+    "success": 0.0,
+    "steps_ratio_to_shortest": null,
+    "random_share": 0.0333,
+    "seconds_per_layout": 35.065,
+    "layouts": 30
+   },
+   "clutter": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.3364,
+    "random_share": 0.1865,
+    "seconds_per_layout": 0.769,
+    "layouts": 100
+   },
+   "clutter_v8": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.2858,
+    "random_share": 0.1931,
+    "seconds_per_layout": 0.477,
+    "layouts": 100
+   }
+  },
+  "401": {
+   "familiar": {
+    "key": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.994,
+     "effects_right": true,
+     "seconds_per_layout": 7.679,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:3",
+       "rel:0"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:3",
+       "held:0"
+      ]
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.997,
+     "effects_right": true,
+     "seconds_per_layout": 8.232,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'yellow')"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:3",
+       "held:0"
+      ]
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.992,
+     "effects_right": true,
+     "seconds_per_layout": 8.3,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'yellow')",
+       "held:3",
+       "rel:0"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:3",
+       "held:0"
+      ]
+     }
+    },
+    "both": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.996,
+     "effects_right": true,
+     "seconds_per_layout": 5.84,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:3",
+       "view:('ball', 'yellow')",
+       "rel:0",
+       "view:('ball', 'grey')"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:3",
+       "held:0"
+      ]
+     }
+    }
+   },
+   "unseen": {
+    "key_room6": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.014
+    },
+    "key_room7": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.03
+    },
+    "key_mirror8": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.033
+    },
+    "switch_room6": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.015
+    },
+    "switch_room7": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.082
+    },
+    "switch_mirror8": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.078
+    }
+   },
+   "new_colour_switch": {
+    "yellow": 0.14,
+    "purple": 0.14
+   },
+   "first_sight_key_test": {
+    "yellow": false,
+    "purple": false
+   },
+   "chain1": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "seconds_per_layout": 0.825,
+    "layouts": 100
+   },
+   "chain2": {
+    "success": 0.0,
+    "steps_ratio_to_shortest": null,
+    "random_share": 0.0333,
+    "seconds_per_layout": 38.707,
+    "layouts": 30
+   },
+   "clutter": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.2902,
+    "random_share": 0.1927,
+    "seconds_per_layout": 0.773,
+    "layouts": 100
+   },
+   "clutter_v8": {
+    "success": 0.92,
+    "steps_ratio_to_shortest": 1.2621,
+    "random_share": 0.5501,
+    "seconds_per_layout": 1.126,
+    "layouts": 100
+   }
+  },
+  "402": {
+   "familiar": {
+    "key": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.994,
+     "effects_right": true,
+     "seconds_per_layout": 7.642,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:0"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:0",
+       "rel:0"
+      ]
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.997,
+     "effects_right": true,
+     "seconds_per_layout": 8.558,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'grey')"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:0",
+       "rel:0"
+      ]
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.992,
+     "effects_right": true,
+     "seconds_per_layout": 10.952,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'grey')",
+       "rel:0",
+       "rel:1"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:0",
+       "held:3"
+      ]
+     }
+    },
+    "both": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.996,
+     "effects_right": true,
+     "seconds_per_layout": 5.835,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:0",
+       "view:('ball', 'grey')"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:0",
+       "rel:0"
+      ]
+     }
+    }
+   },
+   "unseen": {
+    "key_room6": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.014
+    },
+    "key_room7": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.03
+    },
+    "key_mirror8": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.033
+    },
+    "switch_room6": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.015
+    },
+    "switch_room7": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.082
+    },
+    "switch_mirror8": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.078
+    }
+   },
+   "new_colour_switch": {
+    "yellow": 0.95,
+    "purple": 0.92
+   },
+   "first_sight_key_test": {
+    "yellow": false,
+    "purple": true
+   },
+   "chain1": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "seconds_per_layout": 0.767,
+    "layouts": 100
+   },
+   "chain2": {
+    "success": 0.0,
+    "steps_ratio_to_shortest": null,
+    "random_share": 0.0333,
+    "seconds_per_layout": 35.042,
+    "layouts": 30
+   },
+   "clutter": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.2902,
+    "random_share": 0.1927,
+    "seconds_per_layout": 0.713,
+    "layouts": 100
+   },
+   "clutter_v8": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.2858,
+    "random_share": 0.1931,
+    "seconds_per_layout": 0.469,
+    "layouts": 100
+   }
+  },
+  "403": {
+   "familiar": {
+    "key": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.994,
+     "effects_right": true,
+     "seconds_per_layout": 7.274,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:0",
+       "rel:0"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:0",
+       "held:1"
+      ]
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.997,
+     "effects_right": true,
+     "seconds_per_layout": 8.948,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'yellow')"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:0",
+       "held:1"
+      ]
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.992,
+     "effects_right": true,
+     "seconds_per_layout": 11.226,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'yellow')",
+       "held:0"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:0",
+       "held:1"
+      ]
+     }
+    },
+    "both": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.996,
+     "effects_right": true,
+     "seconds_per_layout": 6.015,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:0",
+       "view:('ball', 'yellow')"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:0",
+       "held:1"
+      ]
+     }
+    }
+   },
+   "unseen": {
+    "key_room6": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.014
+    },
+    "key_room7": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.03
+    },
+    "key_mirror8": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.033
+    },
+    "switch_room6": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.015
+    },
+    "switch_room7": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.082
+    },
+    "switch_mirror8": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.078
+    }
+   },
+   "new_colour_switch": {
+    "yellow": 0.95,
+    "purple": 0.95
+   },
+   "first_sight_key_test": {
+    "yellow": false,
+    "purple": false
+   },
+   "chain1": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "seconds_per_layout": 0.837,
+    "layouts": 100
+   },
+   "chain2": {
+    "success": 0.0,
+    "steps_ratio_to_shortest": null,
+    "random_share": 0.0333,
+    "seconds_per_layout": 36.865,
+    "layouts": 30
+   },
+   "clutter": {
+    "success": 0.91,
+    "steps_ratio_to_shortest": 1.373,
+    "random_share": 0.1025,
+    "seconds_per_layout": 2.996,
+    "layouts": 100
+   },
+   "clutter_v8": {
+    "success": 0.95,
+    "steps_ratio_to_shortest": 1.1612,
+    "random_share": 0.4188,
+    "seconds_per_layout": 0.927,
+    "layouts": 100
+   }
+  },
+  "404": {
+   "familiar": {
+    "key": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.994,
+     "effects_right": true,
+     "seconds_per_layout": 7.5,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:2"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:2",
+       "rel:2"
+      ]
+     }
+    },
+    "switch": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.997,
+     "effects_right": true,
+     "seconds_per_layout": 8.666,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'grey')"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:2",
+       "rel:2"
+      ]
+     }
+    },
+    "either": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.992,
+     "effects_right": true,
+     "seconds_per_layout": 10.852,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'grey')",
+       "rel:2",
+       "held:2"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:2",
+       "rel:2"
+      ]
+     }
+    },
+    "both": {
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.996,
+     "effects_right": true,
+     "seconds_per_layout": 6.14,
+     "admitted": {
+      "pickup": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "toggle": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:2",
+       "view:('ball', 'grey')",
+       "held:2"
+      ],
+      "drop": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:2",
+       "rel:2"
+      ]
+     }
+    }
+   },
+   "unseen": {
+    "key_room6": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.014
+    },
+    "key_room7": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.03
+    },
+    "key_mirror8": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.033
+    },
+    "switch_room6": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.015
+    },
+    "switch_room7": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.082
+    },
+    "switch_mirror8": {
+     "success": 1.0,
+     "steps_ratio_to_shortest": 1.078
+    }
+   },
+   "new_colour_switch": {
+    "yellow": 0.71,
+    "purple": 0.95
+   },
+   "first_sight_key_test": {
+    "yellow": true,
+    "purple": false
+   },
+   "chain1": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "seconds_per_layout": 0.799,
+    "layouts": 100
+   },
+   "chain2": {
+    "success": 0.0,
+    "steps_ratio_to_shortest": null,
+    "random_share": 0.0333,
+    "seconds_per_layout": 35.684,
+    "layouts": 30
+   },
+   "clutter": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.3752,
+    "random_share": 0.18,
+    "seconds_per_layout": 0.818,
+    "layouts": 100
+   },
+   "clutter_v8": {
+    "success": 0.92,
+    "steps_ratio_to_shortest": 1.3917,
+    "random_share": 0.5715,
+    "seconds_per_layout": 1.27,
+    "layouts": 100
+   }
+  }
+ },
+ "new_colour_switch_mean": 0.761
+}

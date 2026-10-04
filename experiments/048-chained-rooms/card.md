@@ -167,7 +167,7 @@ the estimate came from seed 399 alone.
 
 ## 8. Decision
 
-**Proposed: keep** (awaiting the user), as a measurement: nothing in the
+**Keep** (the user, 2026-10-03), as a measurement: nothing in the
 agent changed. Version 8 crosses chained rooms with one locked door. It
 cannot yet chain two, and one seed fails with one door. Both failures
 come from recall's view part, which compares the whole set of things in

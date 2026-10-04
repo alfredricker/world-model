@@ -1,5 +1,5 @@
 ---
-id: "049"
+id: "050"
 title: an encoder learned from interaction, in stages, over diverse worlds
 rung: 0
 serves: [P4, P7, P1, P3, P12, P10, P19, P17]
@@ -9,11 +9,13 @@ arch_version: 8
 date: 2026-10-02
 ---
 
-# 049: an encoder learned from interaction, in stages, over diverse worlds
+# 050: an encoder learned from interaction, in stages, over diverse worlds
 
 Drafted on 2026-10-02 from a discussion with the user. It is not
-approved, and its numbers are proposals. Card 048 (on the user's other
-machine) comes first. The user agreed to one card in four steps, each
+approved, and its numbers are proposals. Renumbered from 049 on
+2026-10-03: the user put card 049, recall through the conditions that
+matter, first. If 049 passes, this card uses its recall, and step 4 takes
+conditions from it instead of card 010's rule lists. The user agreed to one card in four steps, each
 with its own gate, because the change is large (section 2). Appendix A
 records the theory; appendix B the longer plan.
 
@@ -58,7 +60,7 @@ The step-3 ablation arms give each part its credit.
 version 8:
   5,000 random episodes in one world -> encoder: pixels + codebooks + pairs
   + 0.01 recall -> freeze -> memory -> recall weights -> act
-card 049:
+card 050:
   infant:        random play over the step-1 generator; encoder learns
                  online from a buffer of the last N tries, mostly
                  interaction terms (step 3) and conditions (step 4);
@@ -70,9 +72,9 @@ card 049:
                  (card 036); act as version 8
 ```
 
-- **Unchanged:** recall, tokens, walking and the planner; the
-  observation (card 016's 13 × 13 egocentric view, 8-pixel tiles); goals
-  in acting tests (the episode's end).
+- **Unchanged:** recall as card 049 leaves it, tokens, walking and the
+  planner; the observation (card 016's 13 × 13 egocentric view, 8-pixel
+  tiles); goals in acting tests (the episode's end).
 - **Not in this card:** goals given to the planner as example frames (the
   next card; here example frames shape the encoder only), relations in
   the planner (the relation term gives them a part to read; reading it is
@@ -83,8 +85,8 @@ card 049:
 
 ### Step 1: the generator
 
-BabyAI's level generator (`minigrid.envs.babyai`; not installed on this
-machine, to be checked on the run machine), changed so that:
+BabyAI's level generator (`minigrid.envs.babyai`, installed with minigrid
+3.1.0; run through `bin/prun`), changed so that:
 - **Colours:** about 12 hues instead of MiniGrid's 6. 3–4 are held out of
   training and used only in tests.
 - **Every kind in every training colour:** keys, doors, boxes, balls, and
@@ -163,10 +165,11 @@ of cards 033–034, in 4 of 5 seeds.
 - **Goals as example frames:** each success yields positive frames (the
   goal holds) and free negatives (frames from the same episode before it
   held).
-- **Conditions by contrast:** card 010's rule lists over code parts find
-  the condition that separates positives from negatives. Then the same is
-  done for each achieving action's own successes and failures, down to
-  actions. Never a smooth distance to the example frames (card 001: rank
+- **Conditions by contrast:** card 049's admitted conditions, found by
+  recall: what separates positives from negatives. Then the same is done
+  for each achieving action's own successes and failures, down to
+  actions. (First drafted with card 010's rule lists; changed 2026-10-03
+  so that the planner and the encoder share one notion of a condition.) Never a smooth distance to the example frames (card 001: rank
   correlation 0.01–0.05).
 - **The encoder term:** an event that meets or breaks a found condition
   pulls the things involved into, or out of, the region that condition
@@ -180,10 +183,14 @@ reported at 3, 10 and 30 successes.
 
 ## 3. Dependencies
 
-- Version 8's planner, recall and tokens (kept with card 047).
+- Version 8's planner and tokens (kept with card 047), and card 049's
+  recall if it passes.
+- **Before this card's BabyAI runs:** recall and the planner's reasoning
+  over conditions near-linear in cost per step, independent of memory
+  size (the user, 2026-10-03; ARCHITECTURE.md, "Known limits").
 - Card 036's fresh codes; card 037's encoder objective.
-- Card 010's rule lists for conditions by contrast (exact variables there;
-  here on codes, so gate 4 checks them).
+- Card 049's admitted conditions for conditions by contrast (gate 4
+  checks them on codes over the new generator).
 - Card 033's recall term (it broke codes on three colours; gate 3 checks
   it on diverse data).
 - New and untested: the generator (gate 1), drift and the hand-off (gate

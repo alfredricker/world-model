@@ -1,0 +1,393 @@
+{
+ "card": "051",
+ "note": "tools/card051/own.py; runs/051_small.sh; raw outputs runs/051_{familiar,chain1,clutter}_40[0-4].*",
+ "seeds": {
+  "400": {
+   "familiar": {
+    "key": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.973,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "rel:2"
+     ],
+     "alpha": 0.000123
+    },
+    "switch": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.965,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "view:('ball', 'yellow')"
+     ],
+     "alpha": 0.000123
+    },
+    "either": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.931,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "view:('ball', 'yellow')",
+      "rel:2"
+     ],
+     "alpha": 0.000123
+    },
+    "both": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.965,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "rel:2",
+      "view:('ball', 'yellow')",
+      "rel:1"
+     ],
+     "alpha": 0.000123
+    }
+   },
+   "chain1": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "layouts": 100,
+    "failed_layouts": [
+     78,
+     88
+    ]
+   },
+   "clutter": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.3839,
+    "random_share": 0.1775,
+    "layouts": 100,
+    "failed_layouts": []
+   }
+  },
+  "401": {
+   "familiar": {
+    "key": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.973,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "held:3",
+      "rel:0"
+     ],
+     "alpha": 0.000123
+    },
+    "switch": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.965,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "view:('ball', 'yellow')"
+     ],
+     "alpha": 0.000123
+    },
+    "either": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.931,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "view:('ball', 'yellow')",
+      "held:3",
+      "rel:0"
+     ],
+     "alpha": 0.000123
+    },
+    "both": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.965,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "held:3",
+      "view:('ball', 'yellow')",
+      "rel:0",
+      "view:('ball', 'grey')"
+     ],
+     "alpha": 0.000123
+    }
+   },
+   "chain1": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "layouts": 100,
+    "failed_layouts": [
+     78,
+     88
+    ]
+   },
+   "clutter": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.2902,
+    "random_share": 0.1927,
+    "layouts": 100,
+    "failed_layouts": []
+   }
+  },
+  "402": {
+   "familiar": {
+    "key": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.973,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "rel:0"
+     ],
+     "alpha": 0.000123
+    },
+    "switch": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.965,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "view:('ball', 'grey')"
+     ],
+     "alpha": 0.000123
+    },
+    "either": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.931,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "view:('ball', 'grey')",
+      "rel:0",
+      "rel:1"
+     ],
+     "alpha": 0.000123
+    },
+    "both": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.965,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "rel:0",
+      "view:('ball', 'grey')"
+     ],
+     "alpha": 0.000123
+    }
+   },
+   "chain1": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "layouts": 100,
+    "failed_layouts": [
+     78,
+     88
+    ]
+   },
+   "clutter": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.2902,
+    "random_share": 0.1927,
+    "layouts": 100,
+    "failed_layouts": []
+   }
+  },
+  "403": {
+   "familiar": {
+    "key": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.973,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "held:0",
+      "rel:0"
+     ],
+     "alpha": 0.000123
+    },
+    "switch": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.965,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "view:('ball', 'yellow')"
+     ],
+     "alpha": 0.000123
+    },
+    "either": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.931,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "view:('ball', 'yellow')",
+      "held:0"
+     ],
+     "alpha": 0.000123
+    },
+    "both": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.965,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "held:0",
+      "view:('ball', 'yellow')"
+     ],
+     "alpha": 0.000123
+    }
+   },
+   "chain1": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "layouts": 100,
+    "failed_layouts": [
+     78,
+     88
+    ]
+   },
+   "clutter": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.4093,
+    "random_share": 0.1428,
+    "layouts": 100,
+    "failed_layouts": [
+     47,
+     66
+    ]
+   }
+  },
+  "404": {
+   "familiar": {
+    "key": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.973,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "held:2"
+     ],
+     "alpha": 0.000123
+    },
+    "switch": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.965,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "view:('ball', 'grey')"
+     ],
+     "alpha": 0.000123
+    },
+    "either": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.931,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "view:('ball', 'grey')",
+      "rel:2",
+      "held:2"
+     ],
+     "alpha": 0.000123
+    },
+    "both": {
+     "pass": true,
+     "success": 1.0,
+     "steps_ratio_to_card029": 0.965,
+     "toggle_admitted": [
+      "front:0",
+      "front:1",
+      "front:2",
+      "front:3",
+      "rel:2",
+      "view:('ball', 'grey')",
+      "held:2"
+     ],
+     "alpha": 0.000123
+    }
+   },
+   "chain1": {
+    "success": 0.98,
+    "steps_ratio_to_shortest": 1.0847,
+    "random_share": 0.2435,
+    "layouts": 100,
+    "failed_layouts": [
+     78,
+     88
+    ]
+   },
+   "clutter": {
+    "success": 1.0,
+    "steps_ratio_to_shortest": 1.3491,
+    "random_share": 0.1837,
+    "layouts": 100,
+    "failed_layouts": []
+   }
+  }
+ }
+}
