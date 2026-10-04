@@ -84,3 +84,15 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   about 30% per checkpoint. Overall by codes 86% against a trivial 84%.
   Proposed: step 3's relation term, after a linear-probe check that
   colour is in the vectors at all. Not run; the user decides.
+- Step 2e: the check arm shows colour lost early (99% untrained, 51%
+  after 2,000 updates, ~80% at the end); the relation term separates key
+  colours by codes but fragments the codes (rho 1: 40% of tries without
+  memory, 58% overall). Removed. First launch of the relation arms
+  crashed on a sampling bug, rho 1 then ran out of GPU memory with three
+  runs; recall by vectors now runs in chunks.
+- Step 2f (approved, upper bound): on three clean colours the codes
+  collapse to 9-11 tuples for 30 identities and recall ignores colour
+  completely (2.5% / 100%), by codes and by vectors. The online harness
+  and objective are broken, not only the scale. The earlier encoders
+  relied on offline training over distinct tiles and identity-informed
+  re-seeding.

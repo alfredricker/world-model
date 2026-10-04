@@ -591,6 +591,55 @@ Reading, over the last 5 checkpoints:
   ignoring colour (the two accuracies adding to about 100%).
 - In between: reported as it is.
 
+### Step 2e result: training loses colour; the relation term trades it for fragmentation
+
+Seed 399, 40 checkpoints each (`runs/052/s2e_*_399.json`; the ρ = 1 arm
+ran after the others, out of GPU memory with three at once). Over the
+last 10 checkpoints (colour check at the last):
+
+| | Step 2d (check arm) | Relation ρ = 0.1 | Relation ρ = 1 |
+|---|---|---|---|
+| Colour from the whole vector (untrained 99%) | 79% (51% after 2,000 updates) | 78% | 91% |
+| Colour from the best part's code (chance 12%) | 25% | 25% | 32% |
+| Codes: locked door, matching key | 5% | 81% | 91% |
+| Codes: locked door, other key | 99% | 69% | 67% |
+| Codes: all tries (trivial 84%) | 88% | 81% | 58% |
+| Codes: tries with no memory on their key | 10% | 18% | 40% |
+| Codes: prediction flips | 1.5% | 7.5% | 23% |
+| Vectors: matching / other key | 62% / 37% | 37% / 76% | 11% / 79% |
+| Distinct tuples | 27 | 64 | 76–132 |
+
+- **Colour is lost early in training** (99% untrained, 51% after the
+  first 2,000 updates, about 80% at the end), while kind is read
+  perfectly; the codes carry almost none of it.
+- **The relation term** separates key colours by codes (the two colour
+  accuracies add to 150% and 158%, against 104%), but it fragments the
+  codes under nuisance, so many tries find no memory, overall accuracy
+  falls below the trivial baseline and predictions flip more. It used
+  7–20 tries per batch once the codes spread (about 200 at first).
+  **Not met; removed** from later steps.
+
+### Step 2f result: the harness fails on the old setting too
+
+Seed 399, 20 checkpoints of 1,000 updates, three colours, no tint or
+noise, 13 minutes (`runs/052/s2f_old_399.json`). Over the last 5:
+- codes collapse to 9–11 tuples for 30 identities; colour from three
+  parts' codes is at chance (33%), the fourth 46%;
+- the colour tries: matching key 2.5%, other key 100%, **by codes and by
+  vectors alike**: recall ignores colour entirely, although a linear
+  classifier reads colour from the vectors 79–92% of the time;
+- overall 84% by codes against a trivial 83%, 99% by vectors.
+
+**By the declared reading, the harness or objective is broken, not
+only the scale.** The earlier encoders (cards 031–037) kept the
+training tiles apart in this setting because they trained offline on
+the 19–20 distinct clean tiles, each once, and re-seeded codes whenever
+two distinct tiles shared one (knowledge of which tiles are distinct).
+Steps 2a–2f have neither: an online stream weighted by frequency and
+label-free restarts. Recall by vectors also ignores colour here even
+where the vectors hold it: its attention weights are fitted on batches
+dominated by tries where colour does not matter.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.
