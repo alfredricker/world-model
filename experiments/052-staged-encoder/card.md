@@ -51,7 +51,92 @@ kind, so nothing tells it that a key is a shape and red is something else
 (LESSONS, "In one fixed world a lookup table and a general rule fit
 equally well").
 
+## Revised plan (proposed 2026-10-04, for the user's approval)
+
+Steps 2a–2h tuned the encoder against a stand-in for recall, with random
+play and no planner. Card 052's central idea, that the needs of acting
+and planning shape the encoder, has not entered yet (the user,
+2026-10-04). This plan brings it in, keeps what those steps settled, and
+supersedes section 2's steps 2–4 where they differ (kept below for the
+record).
+
+**Settled by steps 2a–2h** (details in "Overnight work" and log.md):
+- Settling is judged by recall's predictions, not raw codes: most code
+  changes were relabelling (2a, 2c).
+- Test tries are stratified by kind, with the colour cases from play
+  starts (a held key at a locked door, its colour or another); the play
+  starts' held key had been lost to minigrid's reset (2d).
+- The pixel anchor with a learned codebook merges tiles and loses
+  colour, even on three clean colours (2e, 2f). Uniformity (Wang and
+  Isola 2020) with a fixed codebook replaces it (2g); VISReg was tried
+  and dropped (its shape term killed the network on this data).
+- The relation term is removed (2e: it fragments the codes).
+- The effect term and error-driven differentiation both separate key
+  colours on clean tiles (2g); differentiation fails where recall's
+  attention, not the tiles, is wrong (pick up with a full hand).
+- Under tint, uniformity splits every tile's copies apart (2h). The
+  stream never shows one tile under two tints, since the tint is fixed
+  per episode, so no label-free method could learn that invariance from
+  it (Wood and Wood 2018: invariant object recognition in newborn chicks
+  needs temporally smooth experience of one object).
+
+**Steps, each with its own gate and declared before its run:**
+
+- **R1, nuisance that changes over time.** The generator's floor tint
+  drifts slowly within an episode and differs between rooms, as light
+  does; noise stays per render. The invariance term (two renderings of
+  one cell a step apart) then sees one tile under neighbouring tints.
+  Encoder: uniformity, fixed codebook, invariance; arms with the effect
+  term and with differentiation; the stand-in measurement as in 2h.
+  **Gate R1** (main setting, seed 399): at most 8 of 84 identities split
+  and at most 8 tuples shared (2h's criterion 1). If it fails: a
+  declared colour-constancy prior (the view's floor colour discounted),
+  with the user's agreement.
+- **R2, the agent's recall as the source of errors.** Version 10's
+  recall (card 049's admitted conditions, card 050's own tries first,
+  card 051's index), refitted on the buffer at every checkpoint, replaces
+  the stand-in in the encoder's error signal and in the measurements. An
+  error recall makes is answered in two ways, the loop Drescher's schema
+  mechanism describes: if an existing part explains it, admission takes
+  that part in (attention: the 2g failure); if none does, the tiles are
+  pushed apart (perception). Arms: effect term against differentiation,
+  so the user's choice of term is made on the agent's own recall.
+  **Gate R2** (main setting): the colour tries at least 90% each and
+  prediction flips below 1%, by the agent's recall; R1's gate still met.
+- **R3, conditions from goals** (section 2's step 4, unchanged in
+  substance): goals as example frames; conditions found by contrast
+  through card 049's admission; an event that meets or breaks a found
+  condition pulls the tiles involved into, or out of, the region the
+  condition reads. **Gate 4** as declared (the contrast recovers "holding
+  the X key" for "open the X door" from at most 30 successes per task
+  type; P19 curve at 3, 10, 30).
+- **R4, the encoder drives the agent.** Version 10's agent, with the
+  infant-stage encoder at checkpoints, in the familiar worlds rendered by
+  the generator in training colours. The hand-off: prediction flips by
+  the agent's recall below 1% for K checkpoints (buffer N and K set on
+  seed 399). **Gate 2's acting half:** an always-plastic arm (memory from
+  the first step, never re-encoded) loses familiar-world success before
+  the hand-off point.
+- **R5, consolidation and adult,** as in section 2, with one new rule:
+  with a fixed codebook every vector falls in some code's cell, so a
+  vector farther than a set multiple of its cell's radius from the
+  code's centre reads "new" and gets a fresh code (cards 035 and 036,
+  adapted).
+- **Main runs:** section 6's criteria on seeds 400–404 with step 3's
+  ablation arms (no diversity, no interaction terms, no staging), handed
+  to the user as commands.
+
+**Budget.** R1: about 45 minutes of runs (two arms in parallel). R2: a
+bridge from the encoder's buffer to card 049–051's recall (the larger
+build), then about 45 minutes. R3 and R4: estimated when R2 passes.
+Runs over 30 minutes have been run by Claude in this card with the
+user's approval; the user may say otherwise.
+
 ## 2. What changes
+
+*Steps 2–4 below are the plan as first approved in outline; the revised
+plan above supersedes them where they differ.*
+
 
 One component, how the encoder is learned: its data, its objective and
 its schedule. They are one component because none can be tested without
