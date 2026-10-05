@@ -30,8 +30,7 @@ Overwritten each session. At most 40 lines.
     (memory learned from the small view),
     [064](experiments/064-small-view-on-the-harder-worlds/card.md) (two
     doors 30/30, cluttered 100/100).
-  - [058](experiments/058-route-or-clear-the-way/card.md) stop: pricing
-    clearing every step made the agent dither.
+  - [058](experiments/058-route-or-clear-the-way/card.md) stop (dithering).
 - **Next decisions for the user:** confirm versions 11–14; whether card
   054's encoder replaces version 10's, and the next encoder step (compare
   key and door by a learned comparison, not per part); rung 1: walking
