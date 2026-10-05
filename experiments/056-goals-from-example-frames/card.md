@@ -3,8 +3,8 @@ id: "056"
 title: goals from example frames
 rung: 1
 serves: [P12, P16, C1, P4, P17]
-status: approved
-verdict:
+status: done
+verdict: fail
 arch_version: 10
 date: 2026-10-05
 ---
@@ -139,4 +139,60 @@ falls below 80% of the upper bound.
 
 ## 7. Result
 
+**Smoke tests** (3 key-world layouts) changed two things before the main
+run, both in how the evidence is drawn, not in the inference: goal
+frames come from play like the agent's own (ordinary starts, up to 640
+steps; card 034's collection), since frames from shorter play had an
+intact vase far more often than its experience and the size principle
+admitted it; and a feature costs log N with N the agent's vocabulary
+(19–20 features), not the features the frames share, so that the prior
+does not depend on the examples.
+
+**The four encoders behave identically**: every catalogue tile gets its
+own identity on each, so the planner and the inference see the same
+appearance ids (`runs/056/main_*.json`, `rev_*.json`). Numbers below
+hold for all four.
+
+| | Key | Switch | Either | Both |
+|---|---|---|---|---|
+| 2. Acting, goals from frames (main run) | 99.2% | 100% | 100% | 99.2% |
+| 2. Acting, after the revision | 100% | 100% | 100% | 100% |
+| 2. Goal written in (upper bound) | 100% | 100% | 100% | 100% |
+| 2. Goal-swapped control | 2.5% | 26.7% | 12.5% | 26.7% |
+| Steps / shortest route (frames) | 1.04 | 1.08 | 1.07 | 1.09 |
+| 1. Lowest balanced accuracy, K = 5 (main) | 93.6% | 98.1% | 95.6% | 77.5% |
+| 1. The same, after the revision | 94.9% | 95.6% | 96.9% | 50%* |
+| 3. Forks: frames / written in / swapped | 88.9 / 88.9 / 10.7 | 84.0 / 84.0 / 29.9 | 86.6 / 86.6 / 29.0 | 82.2 / 82.2 / 20.0 |
+
+\* The both world's door goals: random play opened the door in 1–8 of
+600 episodes, so "door green open" had a single episode to draw five
+frames from (red and blue had too few test states to score).
+
+Criterion 2 holds: the agent reaches goals given only as frames as well
+as goals written in, and through the same chains (the door goal went
+through a condition on the hand in 29–30 of 30 key-world episodes). Criterion
+1 fails narrowly: with five frames, about one draw in ten shares an
+incidental feature that half of comparable states have (a key of the
+other colour lying in view), and five agreeing examples are fair
+evidence for it under the size principle; with ten frames every goal
+with enough episodes scores 98–100%, except the either world's blue
+door (93%). Criterion 3 fails: 82–89%, exactly as with the goal written
+in. Traced: the missed forks are ones where picking up a key in the way
+is fastest and version 10's walking takes a detour, which is the
+planner, not the goal.
+
+**The declared revision** (criterion 1 failed in the main run): one
+goal frame per episode, so that five frames are five independent
+examples. It raised acting to 100% everywhere and the key and either
+worlds' inference, and left the both world without enough examples.
+
 ## 8. Decision
+
+**Revise.** Goals given as frames work: the agent infers them from five
+frames by contrast with its own experience and reaches them as well as
+goals written in, through the same chain of conditions. Two shortfalls
+remain, neither in the goal component: forks are lost to walking that
+never prices clearing the way (card 058), and five frames are sometimes
+too few to rule out a companion feature (more frames, or the agent
+asking for one more when two hypotheses are close). The rung-1 test as
+CHARTER states it also needs its second criterion, how soon (card 059).

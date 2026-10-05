@@ -1,0 +1,2807 @@
+{
+ "note": "Card 056, tools/card056/goals.py",
+ "weights": "runs/054/b_m0.5_399.pt",
+ "path": "runs/056/rev_399.json",
+ "K": 5,
+ "one_frame_per_episode": true,
+ "identity": {
+  "tau": [
+   0.058,
+   0.1439,
+   0.0547,
+   0.3739
+  ],
+  "classes_per_part": [
+   59,
+   34,
+   44,
+   76
+  ]
+ },
+ "worlds": {
+  "key": {
+   "goal_frame_pools": {
+    "hold green": 334,
+    "switch None": 531,
+    "hold red": 340,
+    "hold blue": 339,
+    "door green": 18,
+    "door blue": 19,
+    "door red": 14
+   },
+   "vocabulary": 19,
+   "criterion_1": {
+    "door blue": {
+     "positives": 359,
+     "pool": 19,
+     "K=1": 1.0,
+     "K=1, no base rates": 0.5544,
+     "K=2": 0.9352,
+     "K=2, no base rates": 0.7575,
+     "K=3": 0.9784,
+     "K=3, no base rates": 0.8921,
+     "K=5": 0.9833,
+     "K=5: goals": [
+      [
+       "shows open door blue",
+       18
+      ],
+      [
+       "shows open door blue and shows switch on",
+       1
+      ],
+      [
+       "shows open door blue and shows key green",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9932,
+     "K=5, no base rates: goals": [
+      [
+       "shows floor and shows wall and shows goal and shows open door blue",
+       18
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows open door blue and shows key blue",
+       2
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 1.0
+    },
+    "door green": {
+     "positives": 1195,
+     "pool": 18,
+     "K=1": 1.0,
+     "K=1, no base rates": 0.5599,
+     "K=2": 0.7354,
+     "K=2, no base rates": 0.6614,
+     "K=3": 0.8732,
+     "K=3, no base rates": 0.7701,
+     "K=5": 0.9486,
+     "K=5: goals": [
+      [
+       "shows open door green",
+       17
+      ],
+      [
+       "shows open door green and shows key blue",
+       2
+      ],
+      [
+       "holds key green and shows open door green",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9673,
+     "K=5, no base rates: goals": [
+      [
+       "shows floor and shows wall and shows goal and shows open door green",
+       18
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door green and shows switch off",
+       1
+      ],
+      [
+       "holds key green and shows floor and shows wall and shows goal and shows open door green",
+       1
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 1.0
+    },
+    "door red": {
+     "positives": 315,
+     "pool": 14,
+     "K=1": 1.0,
+     "K=1, no base rates": 0.5459,
+     "K=2": 0.8794,
+     "K=2, no base rates": 0.6975,
+     "K=3": 0.9759,
+     "K=3, no base rates": 0.9133,
+     "K=5": 1.0,
+     "K=5: goals": [
+      [
+       "shows open door red",
+       20
+      ]
+     ],
+     "K=5, no base rates": 0.9821,
+     "K=5, no base rates: goals": [
+      [
+       "shows floor and shows wall and shows goal and shows open door red",
+       17
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door red and shows key blue",
+       2
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door red and shows switch off",
+       1
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 1.0
+    },
+    "hold blue": {
+     "positives": 5165,
+     "pool": 339,
+     "K=1": 0.5,
+     "K=1, no base rates": 0.5386,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.7011,
+     "K=3": 0.9479,
+     "K=3, no base rates": 0.8549,
+     "K=5": 0.982,
+     "K=5: goals": [
+      [
+       "holds key blue",
+       19
+      ],
+      [
+       "holds key blue and shows key red",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9735,
+     "K=5, no base rates: goals": [
+      [
+       "holds key blue and shows floor and shows wall and shows goal",
+       18
+      ],
+      [
+       "holds key blue and shows floor and shows wall and shows goal and shows switch off",
+       1
+      ],
+      [
+       "holds key blue and shows floor and shows wall and shows goal and shows key red",
+       1
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.9915
+    },
+    "hold green": {
+     "positives": 5157,
+     "pool": 334,
+     "K=1": 0.5003,
+     "K=1, no base rates": 0.5443,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.7258,
+     "K=3": 0.9455,
+     "K=3, no base rates": 0.8666,
+     "K=5": 0.9879,
+     "K=5: goals": [
+      [
+       "holds key green",
+       19
+      ],
+      [
+       "holds key green and shows closed door green",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9549,
+     "K=5, no base rates: goals": [
+      [
+       "holds key green and shows floor and shows wall and shows goal",
+       15
+      ],
+      [
+       "holds key green and shows floor and shows wall and shows goal and shows switch off",
+       3
+      ],
+      [
+       "holds key green and shows floor and shows wall and shows goal and shows closed door green",
+       1
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.9809
+    },
+    "hold red": {
+     "positives": 3557,
+     "pool": 340,
+     "K=1": 0.5,
+     "K=1, no base rates": 0.5533,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.7168,
+     "K=3": 0.984,
+     "K=3, no base rates": 0.8839,
+     "K=5": 0.9526,
+     "K=5: goals": [
+      [
+       "holds key red",
+       17
+      ],
+      [
+       "holds key red and shows key blue",
+       2
+      ],
+      [
+       "holds key red and shows vase",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9816,
+     "K=5, no base rates: goals": [
+      [
+       "holds key red and shows floor and shows wall and shows goal",
+       18
+      ],
+      [
+       "holds key red and shows floor and shows wall and shows goal and shows switch off",
+       1
+      ],
+      [
+       "holds key red and shows floor and shows wall and shows goal and shows key green",
+       1
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 1.0
+    },
+    "switch None": {
+     "positives": 25623,
+     "pool": 400,
+     "K=1": 0.5,
+     "K=1, no base rates": 0.5471,
+     "K=2": 0.5,
+     "K=2, no base rates": 0.7636,
+     "K=3": 0.8947,
+     "K=3, no base rates": 0.8161,
+     "K=5": 1.0,
+     "K=5: goals": [
+      [
+       "shows switch on",
+       20
+      ]
+     ],
+     "K=5, no base rates": 0.9154,
+     "K=5, no base rates: goals": [
+      [
+       "shows floor and shows wall and shows goal and shows switch on",
+       9
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows switch on",
+       7
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows key red and shows switch on",
+       2
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.9951
+    }
+   },
+   "acting": {
+    "frames": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.043,
+     "random_share": 0.0,
+     "idle_steps": 0,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 0.9667,
+     "seconds_per_episode": 0.463
+    },
+    "supplied": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.043,
+     "random_share": 0.0,
+     "idle_steps": 0,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 1.0,
+     "seconds_per_episode": 0.469
+    },
+    "swapped": {
+     "success": 0.025,
+     "per_goal": {
+      "key_match": 0.0667,
+      "key_other": 0.0,
+      "door": 0.0,
+      "switch": 0.0333
+     },
+     "steps_ratio_to_shortest": 1.857,
+     "random_share": 0.0308,
+     "idle_steps": 21876,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 0.0,
+     "seconds_per_episode": 7.626
+    }
+   },
+   "goals_inferred": [
+    [
+     "switch: shows switch on",
+     30
+    ],
+    [
+     "door: shows open door green",
+     12
+    ],
+    [
+     "key_match: holds key blue",
+     12
+    ],
+    [
+     "door: shows open door blue",
+     12
+    ],
+    [
+     "key_match: holds key green",
+     11
+    ],
+    [
+     "key_other: holds key red",
+     11
+    ],
+    [
+     "key_other: holds key green",
+     10
+    ],
+    [
+     "key_other: holds key blue",
+     7
+    ],
+    [
+     "key_match: holds key red",
+     4
+    ],
+    [
+     "door: shows open door red",
+     4
+    ],
+    [
+     "door: shows open door blue and shows key green",
+     1
+    ],
+    [
+     "key_match: holds key green and shows key red",
+     1
+    ]
+   ],
+   "frames_equal_supplied": 0.9417,
+   "criterion_3": {
+    "candidate_states": 300,
+    "decisive_forks": 298,
+    "per_goal": {
+     "key_match": 89,
+     "key_other": 77,
+     "door": 83,
+     "switch": 49
+    },
+    "top1_frames": 0.8893,
+    "top1_frames_per_goal": {
+     "key_match": 0.9326,
+     "key_other": 0.8961,
+     "door": 0.9277,
+     "switch": 0.7347
+    },
+    "top1_supplied": 0.8893,
+    "top1_supplied_per_goal": {
+     "key_match": 0.9326,
+     "key_other": 0.8961,
+     "door": 0.9277,
+     "switch": 0.7347
+    },
+    "top1_swapped": 0.1074,
+    "top1_swapped_per_goal": {
+     "key_match": 0.1124,
+     "key_other": 0.1429,
+     "door": 0.0241,
+     "switch": 0.1837
+    },
+    "misses": [
+     {
+      "front": "key red",
+      "held": "floor",
+      "state": [
+       "1",
+       "6",
+       "3",
+       "0",
+       "(1, 3)",
+       "(1, 5)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('all', (('has', 65), ('shows', 70)))",
+       "('has', 65)",
+       "('face', 3, 65, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "key_match",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key red",
+      "held": "floor",
+      "state": [
+       "1",
+       "6",
+       "3",
+       "0",
+       "(1, 3)",
+       "(1, 5)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 40)",
+       "('part', 0, 5, 30, None, ('shows', 40), None)",
+       "('face', 3, 65, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key green",
+      "held": "floor",
+      "state": [
+       "2",
+       "6",
+       "3",
+       "0",
+       "(2, 5)",
+       "(4, 6)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key green",
+      "held": "floor",
+      "state": [
+       "2",
+       "4",
+       "1",
+       "0",
+       "(2, 6)",
+       "(2, 5)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('has', 70)",
+       "('face', 3, 70, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "key_match",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key green",
+      "held": "floor",
+      "state": [
+       "2",
+       "4",
+       "1",
+       "0",
+       "(2, 6)",
+       "(2, 5)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 55)",
+       "('part', 0, 5, 45, None, ('shows', 55), None)",
+       "('face', 3, 70, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "1",
+       "6",
+       "3",
+       "0",
+       "(1, 5)",
+       "(2, 1)",
+       "0",
+       "1",
+       "1"
+      ],
+      "trace": [
+       "('has', 65)",
+       "('face', 3, 65, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "key_other",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key red",
+      "held": "floor",
+      "state": [
+       "3",
+       "1",
+       "1",
+       "0",
+       "(1, 5)",
+       "(3, 2)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "1",
+       "4",
+       "1",
+       "0",
+       "(1, 5)",
+       "(1, 6)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('has', 60)",
+       "('face', 3, 60, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "key_other",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key red",
+      "held": "floor",
+      "state": [
+       "2",
+       "3",
+       "1",
+       "0",
+       "(2, 4)",
+       "(3, 1)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key red",
+      "held": "floor",
+      "state": [
+       "1",
+       "2",
+       "3",
+       "0",
+       "(1, 1)",
+       "(2, 2)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "1",
+       "5",
+       "3",
+       "0",
+       "(1, 4)",
+       "(2, 6)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "2",
+       "2",
+       "1",
+       "0",
+       "(1, 5)",
+       "(2, 3)",
+       "0",
+       "1",
+       "0"
+      ],
+      "trace": [
+       "('shows', 40)",
+       "('part', 0, 5, 30, None, ('shows', 40), None)",
+       "('face', 3, 65, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     }
+    ]
+   },
+   "seconds": 77.9
+  },
+  "switch": {
+   "goal_frame_pools": {
+    "switch None": 524,
+    "hold red": 332,
+    "hold green": 317,
+    "hold blue": 335,
+    "door green": 50,
+    "door red": 50,
+    "door blue": 46
+   },
+   "vocabulary": 19,
+   "criterion_1": {
+    "door blue": {
+     "positives": 2368,
+     "pool": 46,
+     "K=1": 0.9509,
+     "K=1, no base rates": 0.5998,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.7655,
+     "K=3": 1.0,
+     "K=3, no base rates": 0.8782,
+     "K=5": 0.9962,
+     "K=5: goals": [
+      [
+       "shows open door blue",
+       19
+      ],
+      [
+       "shows open door blue and shows key green",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9094,
+     "K=5, no base rates: goals": [
+      [
+       "shows floor and shows wall and shows goal and shows open door blue and shows key blue",
+       7
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows open door blue and shows key blue and shows switch on",
+       6
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door blue and shows key blue and shows switch on",
+       3
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.9392
+    },
+    "door green": {
+     "positives": 1264,
+     "pool": 50,
+     "K=1": 1.0,
+     "K=1, no base rates": 0.602,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.751,
+     "K=3": 1.0,
+     "K=3, no base rates": 0.8823,
+     "K=5": 0.9558,
+     "K=5: goals": [
+      [
+       "shows open door green",
+       15
+      ],
+      [
+       "shows open door green and shows key blue",
+       5
+      ]
+     ],
+     "K=5, no base rates": 0.9229,
+     "K=5, no base rates: goals": [
+      [
+       "shows floor and shows wall and shows goal and shows open door green",
+       8
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows open door green and shows key green",
+       4
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door green and shows switch on",
+       2
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.9832
+    },
+    "door red": {
+     "positives": 505,
+     "pool": 50,
+     "K=1": 1.0,
+     "K=1, no base rates": 0.6125,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.8111,
+     "K=3": 1.0,
+     "K=3, no base rates": 0.8865,
+     "K=5": 0.966,
+     "K=5: goals": [
+      [
+       "shows open door red",
+       18
+      ],
+      [
+       "shows open door red and shows key blue",
+       2
+      ]
+     ],
+     "K=5, no base rates": 0.9673,
+     "K=5, no base rates: goals": [
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows open door red and shows key red",
+       7
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door red and shows key red",
+       4
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door red",
+       3
+      ]
+     ],
+     "K=10": 0.983,
+     "K=10, no base rates": 0.9891
+    },
+    "hold blue": {
+     "positives": 4627,
+     "pool": 335,
+     "K=1": 0.5005,
+     "K=1, no base rates": 0.5668,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.7747,
+     "K=3": 0.9829,
+     "K=3, no base rates": 0.8824,
+     "K=5": 0.9909,
+     "K=5: goals": [
+      [
+       "holds key blue",
+       19
+      ],
+      [
+       "holds key blue and shows key green",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9266,
+     "K=5, no base rates: goals": [
+      [
+       "holds key blue and shows floor and shows wall and shows goal",
+       12
+      ],
+      [
+       "holds key blue and shows floor and shows wall and shows goal and shows switch off",
+       5
+      ],
+      [
+       "holds key blue and shows floor and shows wall and shows goal and shows key green",
+       2
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 1.0
+    },
+    "hold green": {
+     "positives": 5538,
+     "pool": 317,
+     "K=1": 0.5002,
+     "K=1, no base rates": 0.5628,
+     "K=2": 0.9797,
+     "K=2, no base rates": 0.7805,
+     "K=3": 1.0,
+     "K=3, no base rates": 0.8456,
+     "K=5": 0.9611,
+     "K=5: goals": [
+      [
+       "holds key green",
+       17
+      ],
+      [
+       "holds key green and shows closed door green",
+       3
+      ]
+     ],
+     "K=5, no base rates": 0.9496,
+     "K=5, no base rates: goals": [
+      [
+       "holds key green and shows floor and shows wall and shows goal",
+       16
+      ],
+      [
+       "holds key green and shows floor and shows wall and shows goal and shows switch off",
+       1
+      ],
+      [
+       "holds key green and shows floor and shows wall and shows goal and shows closed door green and shows switch off",
+       1
+      ]
+     ],
+     "K=10": 0.9937,
+     "K=10, no base rates": 0.9937
+    },
+    "hold red": {
+     "positives": 2791,
+     "pool": 332,
+     "K=1": 0.4998,
+     "K=1, no base rates": 0.5373,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.7036,
+     "K=3": 0.9641,
+     "K=3, no base rates": 0.8648,
+     "K=5": 0.9927,
+     "K=5: goals": [
+      [
+       "holds key red",
+       19
+      ],
+      [
+       "holds key red and shows key green",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9111,
+     "K=5, no base rates: goals": [
+      [
+       "holds key red and shows floor and shows wall and shows goal",
+       14
+      ],
+      [
+       "holds key red and shows floor and shows wall and shows goal and shows key blue",
+       3
+      ],
+      [
+       "holds key red and shows floor and shows wall and shows goal and shows switch off",
+       2
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 1.0
+    },
+    "switch None": {
+     "positives": 23891,
+     "pool": 400,
+     "K=1": 0.5008,
+     "K=1, no base rates": 0.5413,
+     "K=2": 0.5,
+     "K=2, no base rates": 0.7305,
+     "K=3": 0.97,
+     "K=3, no base rates": 0.7997,
+     "K=5": 1.0,
+     "K=5: goals": [
+      [
+       "shows switch on",
+       20
+      ]
+     ],
+     "K=5, no base rates": 0.9474,
+     "K=5, no base rates: goals": [
+      [
+       "shows floor and shows wall and shows goal and shows switch on",
+       10
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows switch on",
+       8
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows key red and shows switch on",
+       1
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.993
+    }
+   },
+   "acting": {
+    "frames": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.079,
+     "random_share": 0.0,
+     "idle_steps": 0,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 0.0,
+     "seconds_per_episode": 0.458
+    },
+    "supplied": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.079,
+     "random_share": 0.0,
+     "idle_steps": 0,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 0.0,
+     "seconds_per_episode": 0.426
+    },
+    "swapped": {
+     "success": 0.2667,
+     "per_goal": {
+      "key_match": 0.0667,
+      "key_other": 0.0,
+      "door": 0.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.069,
+     "random_share": 0.0098,
+     "idle_steps": 16972,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 0.0,
+     "seconds_per_episode": 4.627
+    }
+   },
+   "goals_inferred": [
+    [
+     "switch: shows switch on",
+     30
+    ],
+    [
+     "door: shows open door green",
+     13
+    ],
+    [
+     "door: shows open door blue",
+     13
+    ],
+    [
+     "key_match: holds key green",
+     12
+    ],
+    [
+     "key_other: holds key red",
+     12
+    ],
+    [
+     "key_other: holds key green",
+     11
+    ],
+    [
+     "key_match: holds key blue",
+     11
+    ],
+    [
+     "key_other: holds key blue",
+     6
+    ],
+    [
+     "key_match: holds key red",
+     4
+    ],
+    [
+     "door: shows open door red",
+     4
+    ],
+    [
+     "key_match: holds key blue and shows key red",
+     2
+    ],
+    [
+     "key_match: holds key green and shows closed door green and shows key blue",
+     1
+    ]
+   ],
+   "frames_equal_supplied": 0.9667,
+   "criterion_3": {
+    "candidate_states": 300,
+    "decisive_forks": 281,
+    "per_goal": {
+     "key_match": 85,
+     "key_other": 74,
+     "door": 68,
+     "switch": 54
+    },
+    "top1_frames": 0.8399,
+    "top1_frames_per_goal": {
+     "key_match": 0.9765,
+     "key_other": 0.9595,
+     "door": 0.6471,
+     "switch": 0.7037
+    },
+    "top1_supplied": 0.8399,
+    "top1_supplied_per_goal": {
+     "key_match": 0.9765,
+     "key_other": 0.9595,
+     "door": 0.6471,
+     "switch": 0.7037
+    },
+    "top1_swapped": 0.2989,
+    "top1_swapped_per_goal": {
+     "key_match": 0.0706,
+     "key_other": 0.0946,
+     "door": 0.5294,
+     "switch": 0.6481
+    },
+    "misses": [
+     {
+      "front": "key green",
+      "held": "floor",
+      "state": [
+       "1",
+       "5",
+       "0",
+       "0",
+       "(2, 5)",
+       "(2, 1)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 40)",
+       "('part', 1, 5, 30, None, ('shows', 40), None)",
+       "('face', 5, 75, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "1",
+       "3",
+       "0",
+       "0",
+       "(1, 1)",
+       "(2, 3)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 40)",
+       "('part', 1, 5, 30, None, ('shows', 40), None)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "1",
+       "3",
+       "0",
+       "0",
+       "(1, 1)",
+       "(2, 3)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "1",
+       "2",
+       "1",
+       "0",
+       "(1, 3)",
+       "(1, 1)",
+       "0",
+       "1",
+       "1"
+      ],
+      "trace": [
+       "('shows', 55)",
+       "('face', 5, 45, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key green",
+      "held": "floor",
+      "state": [
+       "3",
+       "3",
+       "1",
+       "0",
+       "(2, 1)",
+       "(3, 4)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 55)",
+       "('part', 1, 5, 45, None, ('shows', 55), None)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "3",
+       "6",
+       "3",
+       "0",
+       "(3, 5)",
+       "(2, 3)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 55)",
+       "('part', 1, 5, 45, None, ('shows', 55), None)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "3",
+       "6",
+       "3",
+       "0",
+       "(3, 5)",
+       "(2, 3)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "floor",
+      "held": "key green",
+      "state": [
+       "3",
+       "1",
+       "2",
+       "1",
+       "None",
+       "(3, 2)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "switch",
+      "best": [
+       4
+      ],
+      "chosen": 2
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "2",
+       "3",
+       "3",
+       "0",
+       "(2, 2)",
+       "(1, 2)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 55)",
+       "('part', 1, 5, 45, None, ('shows', 55), None)",
+       "('face', 5, 75, None)",
+       "('walk', 'blocked')",
+       "('walk', 70)",
+       "('face', 3, 60, 70)"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "floor",
+      "held": "key green",
+      "state": [
+       "3",
+       "5",
+       "0",
+       "2",
+       "(3, 3)",
+       "None",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "switch",
+      "best": [
+       4
+      ],
+      "chosen": 2
+     },
+     {
+      "front": "key red",
+      "held": "floor",
+      "state": [
+       "2",
+       "1",
+       "0",
+       "0",
+       "(2, 6)",
+       "(3, 1)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 40)",
+       "('part', 1, 5, 30, None, ('shows', 40), None)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key red",
+      "held": "floor",
+      "state": [
+       "2",
+       "1",
+       "0",
+       "0",
+       "(2, 6)",
+       "(3, 1)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     }
+    ]
+   },
+   "seconds": 68.8
+  },
+  "either": {
+   "goal_frame_pools": {
+    "hold red": 320,
+    "hold green": 340,
+    "hold blue": 335,
+    "switch None": 528,
+    "door blue": 57,
+    "door red": 69,
+    "door green": 54
+   },
+   "vocabulary": 19,
+   "criterion_1": {
+    "door blue": {
+     "positives": 3000,
+     "pool": 57,
+     "K=1": 0.975,
+     "K=1, no base rates": 0.5902,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.7185,
+     "K=3": 0.9867,
+     "K=3, no base rates": 0.7866,
+     "K=5": 1.0,
+     "K=5: goals": [
+      [
+       "shows open door blue",
+       20
+      ]
+     ],
+     "K=5, no base rates": 0.8173,
+     "K=5, no base rates: goals": [
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows open door blue and shows key blue",
+       6
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door blue and shows switch on",
+       5
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows open door blue and shows key blue and shows switch on",
+       3
+      ]
+     ],
+     "K=10": 0.9286,
+     "K=10, no base rates": 0.9148
+    },
+    "door green": {
+     "positives": 1342,
+     "pool": 54,
+     "K=1": 1.0,
+     "K=1, no base rates": 0.632,
+     "K=2": 0.977,
+     "K=2, no base rates": 0.7802,
+     "K=3": 1.0,
+     "K=3, no base rates": 0.8696,
+     "K=5": 1.0,
+     "K=5: goals": [
+      [
+       "shows open door green",
+       20
+      ]
+     ],
+     "K=5, no base rates": 0.949,
+     "K=5, no base rates: goals": [
+      [
+       "shows floor and shows wall and shows goal and shows open door green",
+       10
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows open door green and shows key green",
+       7
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door green and shows key green and shows switch on",
+       1
+      ]
+     ],
+     "K=10": 0.9943,
+     "K=10, no base rates": 0.967
+    },
+    "door red": {
+     "positives": 450,
+     "pool": 69,
+     "K=1": 0.9287,
+     "K=1, no base rates": 0.6545,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.8478,
+     "K=3": 1.0,
+     "K=3, no base rates": 0.9462,
+     "K=5": 1.0,
+     "K=5: goals": [
+      [
+       "shows open door red",
+       20
+      ]
+     ],
+     "K=5, no base rates": 0.9745,
+     "K=5, no base rates: goals": [
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows open door red and shows key red",
+       8
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door red and shows key red",
+       4
+      ],
+      [
+       "shows floor and shows wall and shows goal and shows open door red",
+       4
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.9908
+    },
+    "hold blue": {
+     "positives": 4064,
+     "pool": 335,
+     "K=1": 0.5063,
+     "K=1, no base rates": 0.5328,
+     "K=2": 0.9761,
+     "K=2, no base rates": 0.7646,
+     "K=3": 0.9839,
+     "K=3, no base rates": 0.8558,
+     "K=5": 0.9691,
+     "K=5: goals": [
+      [
+       "holds key blue",
+       18
+      ],
+      [
+       "holds key blue and shows key red",
+       1
+      ],
+      [
+       "holds key blue and shows vase",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9822,
+     "K=5, no base rates: goals": [
+      [
+       "holds key blue and shows floor and shows wall and shows goal",
+       18
+      ],
+      [
+       "holds key blue and shows floor and shows wall and shows goal and shows switch off",
+       2
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 1.0
+    },
+    "hold green": {
+     "positives": 5303,
+     "pool": 340,
+     "K=1": 0.4998,
+     "K=1, no base rates": 0.562,
+     "K=2": 0.9789,
+     "K=2, no base rates": 0.7231,
+     "K=3": 0.9822,
+     "K=3, no base rates": 0.8864,
+     "K=5": 0.9767,
+     "K=5: goals": [
+      [
+       "holds key green",
+       18
+      ],
+      [
+       "holds key green and shows key blue",
+       1
+      ],
+      [
+       "holds key green and shows closed door green",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9526,
+     "K=5, no base rates: goals": [
+      [
+       "holds key green and shows floor and shows wall and shows goal",
+       15
+      ],
+      [
+       "holds key green and shows floor and shows wall and shows goal and shows switch off",
+       3
+      ],
+      [
+       "holds key green and shows floor and shows wall and shows goal and shows closed door green",
+       1
+      ]
+     ],
+     "K=10": 0.9932,
+     "K=10, no base rates": 1.0
+    },
+    "hold red": {
+     "positives": 3079,
+     "pool": 320,
+     "K=1": 0.9497,
+     "K=1, no base rates": 0.5316,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.757,
+     "K=3": 0.9841,
+     "K=3, no base rates": 0.8925,
+     "K=5": 0.9834,
+     "K=5: goals": [
+      [
+       "holds key red",
+       19
+      ],
+      [
+       "holds key red and shows key blue",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9361,
+     "K=5, no base rates: goals": [
+      [
+       "holds key red and shows floor and shows wall and shows goal",
+       15
+      ],
+      [
+       "holds key red and shows floor and shows wall and shows goal and shows switch off",
+       3
+      ],
+      [
+       "holds key red and shows floor and shows wall and shows goal and shows closed door red",
+       1
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 1.0
+    },
+    "switch None": {
+     "positives": 24665,
+     "pool": 400,
+     "K=1": 0.5033,
+     "K=1, no base rates": 0.527,
+     "K=2": 0.5,
+     "K=2, no base rates": 0.7264,
+     "K=3": 0.9557,
+     "K=3, no base rates": 0.8153,
+     "K=5": 1.0,
+     "K=5: goals": [
+      [
+       "shows switch on",
+       20
+      ]
+     ],
+     "K=5, no base rates": 0.9402,
+     "K=5, no base rates: goals": [
+      [
+       "shows floor and shows wall and shows goal and shows switch on",
+       13
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows switch on",
+       3
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows key red and shows switch on",
+       2
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.9828
+    }
+   },
+   "acting": {
+    "frames": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.066,
+     "random_share": 0.0,
+     "idle_steps": 0,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 1.0,
+     "seconds_per_episode": 0.522
+    },
+    "supplied": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.066,
+     "random_share": 0.0,
+     "idle_steps": 0,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 1.0,
+     "seconds_per_episode": 0.508
+    },
+    "swapped": {
+     "success": 0.125,
+     "per_goal": {
+      "key_match": 0.0667,
+      "key_other": 0.0,
+      "door": 0.0,
+      "switch": 0.4333
+     },
+     "steps_ratio_to_shortest": 1.0,
+     "random_share": 0.0361,
+     "idle_steps": 19626,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 0.0,
+     "seconds_per_episode": 7.521
+    }
+   },
+   "goals_inferred": [
+    [
+     "switch: shows switch on",
+     30
+    ],
+    [
+     "door: shows open door green",
+     13
+    ],
+    [
+     "door: shows open door blue",
+     13
+    ],
+    [
+     "key_other: holds key red",
+     12
+    ],
+    [
+     "key_match: holds key green",
+     10
+    ],
+    [
+     "key_other: holds key green",
+     10
+    ],
+    [
+     "key_match: holds key blue",
+     9
+    ],
+    [
+     "key_other: holds key blue",
+     6
+    ],
+    [
+     "key_match: holds key red",
+     4
+    ],
+    [
+     "door: shows open door red",
+     3
+    ],
+    [
+     "key_match: holds key blue and shows closed door blue",
+     3
+    ],
+    [
+     "key_match: holds key green and shows key red",
+     2
+    ]
+   ],
+   "frames_equal_supplied": 0.9167,
+   "criterion_3": {
+    "candidate_states": 300,
+    "decisive_forks": 307,
+    "per_goal": {
+     "key_match": 82,
+     "key_other": 79,
+     "door": 90,
+     "switch": 56
+    },
+    "top1_frames": 0.8664,
+    "top1_frames_per_goal": {
+     "key_match": 0.9756,
+     "key_other": 0.9494,
+     "door": 0.7778,
+     "switch": 0.7321
+    },
+    "top1_supplied": 0.8664,
+    "top1_supplied_per_goal": {
+     "key_match": 0.9756,
+     "key_other": 0.9494,
+     "door": 0.7778,
+     "switch": 0.7321
+    },
+    "top1_swapped": 0.2899,
+    "top1_swapped_per_goal": {
+     "key_match": 0.0488,
+     "key_other": 0.1139,
+     "door": 0.3333,
+     "switch": 0.8214
+    },
+    "misses": [
+     {
+      "front": "key red",
+      "held": "floor",
+      "state": [
+       "4",
+       "4",
+       "3",
+       "0",
+       "(2, 4)",
+       "(4, 3)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "floor",
+      "held": "key red",
+      "state": [
+       "2",
+       "1",
+       "0",
+       "1",
+       "None",
+       "(2, 2)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "switch",
+      "best": [
+       4
+      ],
+      "chosen": 2
+     },
+     {
+      "front": "vase",
+      "held": "floor",
+      "state": [
+       "4",
+       "4",
+       "2",
+       "0",
+       "(2, 4)",
+       "(1, 4)",
+       "0",
+       "1",
+       "0"
+      ],
+      "trace": [
+       "('has', 65)",
+       "('face', 3, 65, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "key_match",
+      "best": [
+       5
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key green",
+      "held": "floor",
+      "state": [
+       "3",
+       "1",
+       "1",
+       "0",
+       "(3, 2)",
+       "(2, 3)",
+       "0",
+       "1",
+       "1"
+      ],
+      "trace": [
+       "('shows', 40)",
+       "('face', 5, 30, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "vase",
+      "held": "floor",
+      "state": [
+       "3",
+       "5",
+       "0",
+       "0",
+       "(1, 6)",
+       "(2, 6)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 55)",
+       "('part', 0, 5, 45, None, ('shows', 55), None)",
+       "('face', 5, 75, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "door",
+      "best": [
+       5
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "key green",
+      "held": "floor",
+      "state": [
+       "3",
+       "4",
+       "1",
+       "0",
+       "(1, 4)",
+       "(3, 5)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('all', (('shows', 25), ('shows', 70)))",
+       "('shows', 25)",
+       "('part', 0, 5, 15, None, ('shows', 25), None)",
+       "('face', 3, 60, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "floor",
+      "held": "key green",
+      "state": [
+       "2",
+       "2",
+       "3",
+       "2",
+       "(3, 5)",
+       "None",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 25)",
+       "('part', 0, 5, 15, None, ('shows', 25), None)",
+       "('face', 5, 75, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "door",
+      "best": [
+       4
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key red",
+      "held": "floor",
+      "state": [
+       "4",
+       "4",
+       "3",
+       "0",
+       "(2, 4)",
+       "(4, 3)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "vase",
+      "held": "floor",
+      "state": [
+       "3",
+       "3",
+       "3",
+       "0",
+       "(1, 6)",
+       "(2, 6)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 55)",
+       "('part', 0, 5, 45, None, ('shows', 55), None)",
+       "('face', 5, 75, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "door",
+      "best": [
+       5
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key green",
+      "held": "floor",
+      "state": [
+       "1",
+       "3",
+       "1",
+       "0",
+       "(1, 4)",
+       "(3, 3)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "3",
+       "4",
+       "3",
+       "0",
+       "(3, 3)",
+       "(2, 3)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "vase",
+      "held": "floor",
+      "state": [
+       "1",
+       "5",
+       "3",
+       "0",
+       "(1, 6)",
+       "(3, 2)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('has', 60)",
+       "('face', 3, 60, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "key_other",
+      "best": [
+       5
+      ],
+      "chosen": 1
+     }
+    ]
+   },
+   "seconds": 72.7
+  },
+  "both": {
+   "goal_frame_pools": {
+    "hold red": 353,
+    "hold blue": 347,
+    "switch None": 529,
+    "hold green": 312,
+    "door blue": 8,
+    "door red": 4,
+    "door green": 1
+   },
+   "vocabulary": 19,
+   "criterion_1": {
+    "door blue": {
+     "positives": 8,
+     "pool": 8
+    },
+    "door green": {
+     "positives": 202,
+     "pool": 1,
+     "K=1": 1.0,
+     "K=1, no base rates": 0.5,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.5,
+     "K=3": 1.0,
+     "K=3, no base rates": 0.5,
+     "K=5": 0.5,
+     "K=5: goals": [
+      [
+       "shows open door green and shows key blue",
+       20
+      ]
+     ],
+     "K=5, no base rates": 0.5,
+     "K=5, no base rates: goals": [
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows open door green and shows key green and shows key blue and shows switch on",
+       20
+      ]
+     ],
+     "K=10": 0.5,
+     "K=10, no base rates": 0.5
+    },
+    "door red": {
+     "positives": 0,
+     "pool": 4
+    },
+    "hold blue": {
+     "positives": 5525,
+     "pool": 347,
+     "K=1": 0.5,
+     "K=1, no base rates": 0.5751,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.8092,
+     "K=3": 0.9841,
+     "K=3, no base rates": 0.8594,
+     "K=5": 0.9652,
+     "K=5: goals": [
+      [
+       "holds key blue",
+       17
+      ],
+      [
+       "holds key blue and shows vase",
+       1
+      ],
+      [
+       "holds key blue and shows key red",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9664,
+     "K=5, no base rates: goals": [
+      [
+       "holds key blue and shows floor and shows wall and shows goal",
+       16
+      ],
+      [
+       "holds key blue and shows floor and shows wall and shows goal and shows switch off",
+       3
+      ],
+      [
+       "holds key blue and shows floor and shows wall and shows goal and shows closed door blue",
+       1
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.9909
+    },
+    "hold green": {
+     "positives": 4927,
+     "pool": 312,
+     "K=1": 0.5,
+     "K=1, no base rates": 0.5609,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.7497,
+     "K=3": 0.9834,
+     "K=3, no base rates": 0.8531,
+     "K=5": 0.9894,
+     "K=5: goals": [
+      [
+       "holds key green",
+       19
+      ],
+      [
+       "holds key green and shows key blue",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9226,
+     "K=5, no base rates: goals": [
+      [
+       "holds key green and shows floor and shows wall and shows goal",
+       11
+      ],
+      [
+       "holds key green and shows floor and shows wall and shows goal and shows switch off",
+       8
+      ],
+      [
+       "holds key green and shows floor and shows wall and shows goal and shows key blue",
+       1
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.9916
+    },
+    "hold red": {
+     "positives": 3023,
+     "pool": 353,
+     "K=1": 0.5,
+     "K=1, no base rates": 0.5497,
+     "K=2": 1.0,
+     "K=2, no base rates": 0.681,
+     "K=3": 1.0,
+     "K=3, no base rates": 0.8236,
+     "K=5": 0.9551,
+     "K=5: goals": [
+      [
+       "holds key red",
+       17
+      ],
+      [
+       "holds key red and shows closed door red",
+       1
+      ],
+      [
+       "holds key red and shows key green",
+       1
+      ]
+     ],
+     "K=5, no base rates": 0.9368,
+     "K=5, no base rates: goals": [
+      [
+       "holds key red and shows floor and shows wall and shows goal",
+       15
+      ],
+      [
+       "holds key red and shows floor and shows wall and shows goal and shows switch off",
+       2
+      ],
+      [
+       "holds key red and shows floor and shows wall and shows goal and shows closed door red and shows switch off",
+       1
+      ]
+     ],
+     "K=10": 0.9916,
+     "K=10, no base rates": 1.0
+    },
+    "switch None": {
+     "positives": 26493,
+     "pool": 400,
+     "K=1": 0.5,
+     "K=1, no base rates": 0.5492,
+     "K=2": 0.5,
+     "K=2, no base rates": 0.7507,
+     "K=3": 0.9822,
+     "K=3, no base rates": 0.8299,
+     "K=5": 1.0,
+     "K=5: goals": [
+      [
+       "shows switch on",
+       20
+      ]
+     ],
+     "K=5, no base rates": 0.8793,
+     "K=5, no base rates: goals": [
+      [
+       "shows floor and shows wall and shows goal and shows switch on",
+       7
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows switch on",
+       6
+      ],
+      [
+       "holds floor and shows floor and shows wall and shows goal and shows key red and shows switch on",
+       4
+      ]
+     ],
+     "K=10": 1.0,
+     "K=10, no base rates": 0.9851
+    }
+   },
+   "acting": {
+    "frames": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.091,
+     "random_share": 0.0,
+     "idle_steps": 0,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 1.0,
+     "seconds_per_episode": 0.587
+    },
+    "supplied": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.091,
+     "random_share": 0.0,
+     "idle_steps": 0,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 1.0,
+     "seconds_per_episode": 0.574
+    },
+    "swapped": {
+     "success": 0.2667,
+     "per_goal": {
+      "key_match": 0.0667,
+      "key_other": 0.0,
+      "door": 0.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 2.09,
+     "random_share": 0.0301,
+     "idle_steps": 16581,
+     "ended_on_goal_square": 0,
+     "door_via_hand_condition": 0.0,
+     "seconds_per_episode": 6.37
+    }
+   },
+   "goals_inferred": [
+    [
+     "switch: shows switch on",
+     30
+    ],
+    [
+     "door: shows open door green and shows key blue",
+     13
+    ],
+    [
+     "door: shows open door blue",
+     13
+    ],
+    [
+     "key_match: holds key green",
+     12
+    ],
+    [
+     "key_match: holds key blue",
+     11
+    ],
+    [
+     "key_other: holds key red",
+     11
+    ],
+    [
+     "key_other: holds key green",
+     10
+    ],
+    [
+     "key_other: holds key blue",
+     7
+    ],
+    [
+     "key_match: holds key red",
+     4
+    ],
+    [
+     "door: shows open door red",
+     2
+    ],
+    [
+     "key_match: holds key green and shows key blue",
+     1
+    ],
+    [
+     "key_match: holds key blue and shows key green",
+     1
+    ]
+   ],
+   "frames_equal_supplied": 0.8333,
+   "criterion_3": {
+    "candidate_states": 300,
+    "decisive_forks": 325,
+    "per_goal": {
+     "key_match": 77,
+     "key_other": 84,
+     "door": 102,
+     "switch": 62
+    },
+    "top1_frames": 0.8215,
+    "top1_frames_per_goal": {
+     "key_match": 0.974,
+     "key_other": 0.9405,
+     "door": 0.6275,
+     "switch": 0.7903
+    },
+    "top1_supplied": 0.8215,
+    "top1_supplied_per_goal": {
+     "key_match": 0.974,
+     "key_other": 0.9405,
+     "door": 0.6275,
+     "switch": 0.7903
+    },
+    "top1_swapped": 0.2,
+    "top1_swapped_per_goal": {
+     "key_match": 0.039,
+     "key_other": 0.0714,
+     "door": 0.4216,
+     "switch": 0.2097
+    },
+    "misses": [
+     {
+      "front": "switch off",
+      "held": "floor",
+      "state": [
+       "1",
+       "2",
+       "0",
+       "0",
+       "(3, 6)",
+       "(1, 6)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('all', (('shows', 40), ('shows', 70)))",
+       "('shows', 40)",
+       "('part', 0, 5, 30, None, ('shows', 40), 12)",
+       "('face', 3, 65, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       5
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "switch off",
+      "held": "floor",
+      "state": [
+       "2",
+       "3",
+       "3",
+       "0",
+       "(3, 4)",
+       "(3, 3)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('all', (('shows', 25), ('shows', 70)))",
+       "('shows', 25)",
+       "('part', 0, 5, 15, None, ('shows', 25), 124)",
+       "('face', 3, 60, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "door",
+      "best": [
+       5
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "floor",
+      "held": "key blue",
+      "state": [
+       "1",
+       "6",
+       "0",
+       "1",
+       "None",
+       "(1, 3)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "switch",
+      "best": [
+       4
+      ],
+      "chosen": 2
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "2",
+       "2",
+       "1",
+       "0",
+       "(1, 5)",
+       "(2, 3)",
+       "0",
+       "1",
+       "0"
+      ],
+      "trace": [
+       "('all', (('shows', 40), ('shows', 70)))",
+       "('shows', 40)",
+       "('part', 0, 5, 30, None, ('shows', 40), None)",
+       "('face', 3, 65, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "switch off",
+      "held": "floor",
+      "state": [
+       "1",
+       "5",
+       "0",
+       "0",
+       "(2, 1)",
+       "(3, 3)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 55)",
+       "('part', 0, 5, 45, None, ('shows', 55), 48)",
+       "('face', 3, 70, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "door",
+      "best": [
+       5
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "switch off",
+      "held": "floor",
+      "state": [
+       "2",
+       "1",
+       "0",
+       "0",
+       "(1, 4)",
+       "(3, 5)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('shows', 55)",
+       "('part', 0, 5, 45, None, ('shows', 55), 48)",
+       "('face', 3, 70, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "door",
+      "best": [
+       5
+      ],
+      "chosen": 1
+     },
+     {
+      "front": "floor",
+      "held": "key green",
+      "state": [
+       "2",
+       "3",
+       "2",
+       "1",
+       "None",
+       "(2, 2)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "switch",
+      "best": [
+       4
+      ],
+      "chosen": 2
+     },
+     {
+      "front": "switch off",
+      "held": "floor",
+      "state": [
+       "2",
+       "1",
+       "2",
+       "0",
+       "(1, 6)",
+       "(2, 3)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 55)",
+       "('part', 0, 5, 45, None, ('shows', 55), 48)",
+       "('face', 3, 70, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "door",
+      "best": [
+       5
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "vase",
+      "held": "key green",
+      "state": [
+       "2",
+       "5",
+       "2",
+       "1",
+       "None",
+       "(1, 6)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('has', 70)",
+       "('part', 0, 3, 70, None, ('has', 70), None)",
+       "('face', 4, 0, None)",
+       "('walk', 'approach')"
+      ],
+      "goal": "key_other",
+      "best": [
+       5
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key blue",
+      "held": "floor",
+      "state": [
+       "3",
+       "1",
+       "2",
+       "0",
+       "(2, 1)",
+       "(3, 3)",
+       "0",
+       "0",
+       "1"
+      ],
+      "trace": [
+       "('shows', 80)",
+       "('face', 5, 75, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "switch",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key green",
+      "held": "floor",
+      "state": [
+       "3",
+       "2",
+       "1",
+       "0",
+       "(3, 3)",
+       "(1, 6)",
+       "0",
+       "0",
+       "0"
+      ],
+      "trace": [
+       "('has', 70)",
+       "('face', 3, 70, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "key_other",
+      "best": [
+       3
+      ],
+      "chosen": 0
+     },
+     {
+      "front": "key red",
+      "held": "floor",
+      "state": [
+       "1",
+       "5",
+       "3",
+       "0",
+       "(1, 4)",
+       "(1, 1)",
+       "0",
+       "1",
+       "1"
+      ],
+      "trace": [
+       "('has', 65)",
+       "('face', 3, 65, None)",
+       "('walk', 'waypoint')"
+      ],
+      "goal": "key_other",
+      "best": [
+       3
+      ],
+      "chosen": 1
+     }
+    ]
+   },
+   "seconds": 63.4
+  }
+ },
+ "seconds": 864.9
+}

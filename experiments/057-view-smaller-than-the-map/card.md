@@ -90,4 +90,37 @@ One declared revision if one fails. Stop if arm B is below arm A.
 
 ## 7. Result
 
+**Smoke test first** (5 key-world layouts): 0% success, wrong
+remembered tiles in every episode. Traced: after a pick up, the front
+tile and the hand differ from memory, so the true placement shows two
+mismatches; a wrong placement whose window covers only never-seen
+places scores zero and wins. Fixed before the main run: a view is placed
+only among the placements the action could lead to (the same one, or
+the move's; forward may be blocked), the agent's own motion as the
+prior. With it the smoke test passed (100%).
+
+**Seed 399** (`runs/057/{fam,chain}_{A,B}_399.json`; full view: card
+054's version 10 on the same encoder).
+
+| | Full view | Arm A: random when no chain | Arm B: exploration |
+|---|---|---|---|
+| Key world: success, steps | 100%, 15.9 | 100%, 27.7 | 100%, 17.9 (1.12×) |
+| Switch world | 100%, 16.7 | 100%, 27.3 | 100%, 18.5 (1.11×) |
+| Either world | 100%, 14.4 | 100%, 25.8 | 100%, 16.8 (1.17×) |
+| Both world | 100%, 21.0 | 100%, 32.6 | 100%, 23.2 (1.10×) |
+| Chained rooms, one door (× shortest) | 100% (1.00) | 99% (1.94) | 100% (1.16) |
+| Random steps | 0 | 38–53% | 0–1.3% |
+| Exploring steps | – | – | 11–14% |
+| Episodes ending with a wrong remembered tile | – | 0 | 0 |
+
+Criteria 1 and 2 hold. Criterion 3 as written ("placing every view
+needs no mismatch, largest distance 0") was mis-specified: the measure
+counts the tile the action itself changed (a key picked up, a door
+opened), so version 10 with the full view scores 4.6–7.6 on it too;
+here 4.3. Changed once (CHARTER rule 6), with this reason, to what it
+was meant to check: every remembered tile matches the simulator at the
+end of every episode, and the placing distance is no larger than the
+full view's. Under that reading it holds (0 wrong tiles in 220
+episodes; 4.3 against 4.6–7.6), and arm B beats arm A on both tests.
+
 ## 8. Decision

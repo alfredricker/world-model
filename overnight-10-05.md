@@ -59,4 +59,31 @@ of conditions.
   episodes share an incidental key. Rung 1's forks: 82–89% (bar 90%),
   the same with the goal written in; the misses are version 10's
   walking taking a detour where picking up a key in the way is faster.
-- **Declared revision:** one goal frame per episode (running).
+- **Declared revision:** one goal frame per episode, so five frames are
+  five independent examples. Acting 100% in every world; inference
+  94.9–96.9% in three worlds, but the both world's door goals had only
+  1–8 episodes of random play to draw from.
+- **Decision: revise.** Goals given as frames work behaviourally (as
+  well as goals written in, through the same chains). Left: forks lost
+  to walking that never prices clearing the way (card 058), five frames
+  sometimes too few, and rung 1's "how soon" (card 059).
+
+## Card 057: a view smaller than the map
+
+The agent sees MiniGrid's 7 × 7 view (six rows ahead, three columns to
+each side) instead of a window holding the whole map. It keeps what it
+has seen (its tokens) and, when it has no chain of conditions, walks to
+the nearest spot from which unseen places come into view (frontier
+exploration).
+
+- **Smoke test:** 0% at first. Placing a partial view by matching alone
+  picked wrong placements that saw only unknown places; placing it
+  among the placements the agent's own action could lead to fixed it.
+- **Seed 399:** with exploration, 100% in all four familiar worlds at
+  1.10–1.17× the full-view agent's steps, and 100% in the chained rooms
+  (1.16× the shortest route); random when stuck: 100% at about 1.7× the
+  steps, and 99% in the chained rooms at 1.94×. Every remembered tile
+  right at the end of all 220 episodes. Criterion 3 was mis-specified
+  (its measure counts the tile an action changes, nonzero for the full
+  view too); corrected once, openly, to what it was meant to check.
+  Seeds 400–402 running.
