@@ -12,6 +12,7 @@ Also reported at every checkpoint: the term's value with outcomes shuffled acros
 
   bin/prun python tools/card052/effect.py --seed 399 --checkpoints 40 --mu 0.1 --out runs/052/effect_399.json
 """
+import copy
 import json
 import sys
 import time
@@ -36,6 +37,10 @@ CHECK = None
 INTERACTION = "effect"                                 # step 2g: "diff" replaces the effect term
 DIFF_W = 1.0
 INV_W = 1.0
+GATES = True                                           # step T: the transition model reads its inputs through gates
+SP_W = 0.01                                            # step T: L1 weight on the gates
+VAR_W = 10.0                                           # step T: the variance floor's weight
+TARGET_RATE = 0.99                                     # step T: the target encoder's moving average
 VIEW_N = 64                                            # view pairs per update (step R1b: 256)
 DRIFT = 0.0                                            # step R1: the tint's random-walk step, as a share of TINT
 VIEWS = False                                          # step 2g: the stream also returns natural views
@@ -106,7 +111,8 @@ class Stream(DR.Stream):
             c1 = None if h1 is None else tuple(h1.encode())
             if k0 != k1:
                 pairs.append((t0, self._tile(f1)))
-            tries.append((a, t0, th, int(k0 != k1) + 2 * int(c0 != c1), (k0, c0)))
+            tries.append((a, t0, th, int(k0 != k1) + 2 * int(c0 != c1), (k0, c0),
+                          self._tile(f1), self._tile(h1)))     # step T: the front and held tiles after
         W, H = self.env.grid.width, self.env.grid.height
         self.last_ids = []
         fr = self._front()
@@ -135,6 +141,66 @@ class Encoder(DR.Encoder):
     def __init__(self, seed, dev="cuda"):
         super().__init__(seed, dev)
         self.theta = None
+        if INTERACTION == "transition":                # step T
+            self.target = copy.deepcopy(self.enc)
+            for q in self.target.parameters():
+                q.requires_grad_(False)
+            n_in = 2 * K * DIM + K
+            self.trans = nn.ModuleList([nn.Sequential(nn.Linear(n_in, 128), nn.ReLU(), nn.Linear(128, 2 * K * DIM))
+                                        for _ in ACTS]).to(dev)
+            self.gates = nn.Parameter(torch.zeros(len(ACTS), 3 * K, device=dev))   # logits; sigmoid 0.5 at start
+            self.opt.add_param_group({"params": list(self.trans.parameters()) + ([self.gates] if GATES else [])})
+
+    # -- step T: transitions read through sparse conditions
+    def tpieces(self, x):
+        return fn.normalize(self.target(x).reshape(len(x), K, DIM), dim=-1)
+
+    def gate_values(self):
+        return torch.sigmoid(self.gates) if GATES else torch.ones_like(self.gates)
+
+    def predict_after(self, ai, zf, zh):
+        """The transition model of action ACTS[ai]: the after-pieces of front and held from the before-pieces, read
+        through the gates on the 12 candidate conditions (front parts, held parts, front-held distance per part)."""
+        g = self.gate_values()[ai]
+        rel = (zf - zh).norm(dim=-1)
+        inp = torch.cat([(zf * g[:K, None]).reshape(len(zf), -1), (zh * g[K:2 * K, None]).reshape(len(zh), -1),
+                         rel * g[2 * K:]], 1)
+        d = self.trans[ai](inp).reshape(len(zf), 2, K, DIM)
+        return fn.normalize(zf + d[:, 0], dim=-1), fn.normalize(zh + d[:, 1], dim=-1)
+
+    def transition(self, tries):
+        total, parts = 0.0, []
+        for ai, tr in enumerate(tries):
+            zf, zh = self.pieces(self.x([t[0] for t in tr])), self.pieces(self.x([t[1] for t in tr]))
+            pf, ph = self.predict_after(ai, zf, zh)
+            with torch.no_grad():
+                tf, th = self.tpieces(self.x([t[3] for t in tr])), self.tpieces(self.x([t[4] for t in tr]))
+            l = ((pf - tf) ** 2).sum((-1, -2)).mean() + ((ph - th) ** 2).sum((-1, -2)).mean()
+            total = total + l
+            parts.append(float(l.detach()))
+        if GATES:
+            total = total + SP_W * self.gate_values().sum()
+        self.last_trans = parts
+        return total
+
+    def anchor_transition(self, z):
+        """Step T's anchor: a variance floor (VICReg's hinge, each number's spread at least 1/sqrt(DIM) over the
+        batch) and the identity transition of one cell a step apart, against the target encoder."""
+        zf = z.reshape(len(z), -1)
+        floor = VAR_W * torch.relu(DIM ** -0.5 - zf.std(0)).mean()
+        v = getattr(self, "_inv", None)
+        if not v:
+            return floor
+        a = self.pieces(self.x([p[0] for p in v]))
+        with torch.no_grad():
+            b = self.tpieces(self.x([p[1] for p in v]))
+        return floor + ((a - b) ** 2).sum((-1, -2)).mean()
+
+    def after_step(self):
+        if INTERACTION == "transition":
+            with torch.no_grad():
+                for pt, po in zip(self.target.parameters(), self.enc.parameters()):
+                    pt.mul_(TARGET_RATE).add_(po, alpha=1 - TARGET_RATE)
 
     def keys(self, f, h):
         zf, zh = self.pieces(self.x(f)), self.pieces(self.x(h))
@@ -246,6 +312,13 @@ class Encoder(DR.Encoder):
             return 0.0
         if INTERACTION == "diff":                      # step 2g: replaces the effect term
             return self.differentiate(tries)
+        if INTERACTION == "transition":                # step T: replaces it too; recall's weights on stopped vectors
+            X, R = self.batch(tries)
+            if self.theta is None:
+                self.start_theta(X.detach())
+            fit = -loo(X.detach(), R, fn.softplus(self.theta)).sum()
+            self.last_effect = float(fit.detach())
+            return self.transition(tries) + fit
         e = self.effect(tries)
         self.last_effect = float(e.detach())
         out = MU * e
@@ -316,8 +389,9 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         t, p = stream.step()
         tiles.extend(t)
         pairs.extend(p)
-        for a, f, h, o, _ in stream.tries:
-            buf[a][int(o > 0)].append((f, h, o))
+        for t in stream.tries:
+            a, f, h, o = t[:4]
+            buf[a][int(o > 0)].append((f, h, o) + tuple(t[5:7]))
         views.extend(getattr(stream, "views", []))
         steps += 1
 
@@ -364,6 +438,8 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
                "effect": round(float(np.mean(effs)), 4),
                "diff_errors_pushes_held_per_update": None if not diffs else [round(float(v), 2) for v in np.mean(diffs, 0)],
                "align_uniform_last": [round(v, 4) for v in getattr(enc, "last_au", ())] or None,
+               "transition_loss_per_action": [round(v, 4) for v in getattr(enc, "last_trans", ())] or None,
+               "gates": None if INTERACTION != "transition" else [[round(float(v), 3) for v in r] for r in enc.gate_values()],
                "relation": None if not rels else round(float(np.mean([r for r, _ in rels if r is not None] or [np.nan])), 4),
                "relation_tries_used": None if not rels else round(float(np.mean([u for _, u in rels])), 1),
                "loo_loglik_per_action": [round(v, 4) for v in ll.tolist()],
@@ -382,15 +458,18 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         print(row, flush=True)
         if ck == checkpoints - 1:                      # from step R1b: the encoder is kept for diagnostics
             torch.save({"enc": enc.enc.state_dict(), "dec": enc.dec.state_dict(), "books": enc.books.detach().cpu(),
-                        "theta": None if enc.theta is None else enc.theta.detach().cpu()}, str(out).replace(".json", ".pt"))
+                        "theta": None if enc.theta is None else enc.theta.detach().cpu(),
+                        "trans": enc.trans.state_dict() if hasattr(enc, "trans") else None,
+                        "gates": enc.gates.detach().cpu() if hasattr(enc, "gates") else None},
+                       str(out).replace(".json", ".pt"))
         Path(out).write_text(json.dumps({"note": "Card 052 step 2b, tools/card052/effect.py", "seed": seed, "mu": MU,
                                          "ema": DR.Encoder.EMA, "start_share": START_SHARE, "relation_weight": REL_W,
-                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "drift": DRIFT, "buffer": buffer, "update_every_steps": every,
+                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "drift": DRIFT, "gates_on": GATES, "sp_w": SP_W, "var_w": VAR_W, "buffer": buffer, "update_every_steps": every,
                                          "updates_per_checkpoint": upd_per_ck, "rows": rows}, indent=1) + "\n")
 
 
 def main():
-    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT, VIEW_N
+    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT, VIEW_N, GATES
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     Path(get("--out", "runs/052/effect.json")).parent.mkdir(parents=True, exist_ok=True)
@@ -407,7 +486,8 @@ def main():
     INV_W = float(get("--inv-w", "1"))
     VIEWS = DR.Encoder.ANCHOR != "pixels" or INTERACTION == "diff"
     DRIFT = float(get("--drift", "0"))
-    VIEW_N = 256 if DR.Encoder.ANCHOR == "align_uniform" else 64
+    GATES = get("--gates", "1") == "1"
+    VIEW_N = 256 if DR.Encoder.ANCHOR in ("align_uniform", "transition") else 64
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),
         int(get("--every", "10")), int(get("--updates", "2000")), get("--out", "runs/052/effect.json"))
 

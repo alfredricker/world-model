@@ -167,6 +167,8 @@ class Encoder:
             loss = visreg(z.reshape(len(x), -1), target=DIM ** -0.5) + self.invariance()
         elif self.ANCHOR == "align_uniform":           # step R1b: alignment and uniformity on one batch of view pairs
             loss = self.align_uniform()
+        elif self.ANCHOR == "transition":              # step T: a variance floor and the identity transition of views
+            loss = self.anchor_transition(z)
         else:                                          # step 2g: uniformity (Wang and Isola 2020), no decoder
             loss = uniformity(z) + self.invariance()
         book = 0.0 if (self.EMA or self.CODEBOOK == "fixed") else fn.mse_loss(zq, z.detach())
@@ -181,6 +183,7 @@ class Encoder:
         self.opt.zero_grad()
         loss.backward()
         self.opt.step()
+        self.after_step()
         with torch.no_grad():
             _, idx = self.quant(z.detach())
             for k in range(K):
@@ -216,6 +219,12 @@ class Encoder:
 
     def align_uniform(self):
         return 0.0
+
+    def anchor_transition(self, z):
+        return 0.0
+
+    def after_step(self):
+        pass
 
     @torch.no_grad()
     def codes(self, tiles):

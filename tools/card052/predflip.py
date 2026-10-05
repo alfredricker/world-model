@@ -37,12 +37,13 @@ def collect(seed, n_mem=2000, n_probe=200, steps=400000):
     probe = {a: ([], []) for a in EF.ACTS}
     for _ in range(steps):
         s.step()
-        for a, f, h, o, ids in s.tries:
+        for t in s.tries:
+            a, f, h, o, ids = t[:5]
             c = int(o > 0)
             if len(probe[a][c]) < n_probe:
-                probe[a][c].append((f, h, o, ids))
+                probe[a][c].append((f, h, o, ids) + tuple(t[5:7]))
             elif len(mem[a][c]) < n_mem:
-                mem[a][c].append((f, h, o, ids))
+                mem[a][c].append((f, h, o, ids) + tuple(t[5:7]))
         if all(len(mem[a][c]) >= n_mem for a in EF.ACTS for c in (0, 1)):
             break
     flat = lambda d: {a: d[a][0] + d[a][1] for a in EF.ACTS}
@@ -67,12 +68,13 @@ def collect_strat(seed, n_mem=300, n_probe=40, steps=None):
     mem, probe = defaultdict(list), defaultdict(list)
     for _ in range(steps or COLLECT_STEPS):
         s.step()
-        for a, f, h, o, ids in s.tries:
+        for t in s.tries:
+            a, f, h, o, ids = t[:5]
             q = kind_of(a, ids)
             if len(probe[q]) < n_probe:
-                probe[q].append((f, h, o, ids))
+                probe[q].append((f, h, o, ids) + tuple(t[5:7]))
             elif len(mem[q]) < n_mem:
-                mem[q].append((f, h, o, ids))
+                mem[q].append((f, h, o, ids) + tuple(t[5:7]))
     flat = lambda d: {a: [t for q in sorted(d, key=str) if q[0] == a for t in d[q]] for a in EF.ACTS}
     return flat(mem), flat(probe)
 
@@ -127,6 +129,34 @@ class Check:
                 pred += P.argmax(1).cpu().numpy().tolist()
         return np.array(pred)
 
+    @torch.no_grad()
+    def effects_known(self, enc):
+        """Step T: on the probe tries, the share whose predicted after-pieces (front and held) fall in the same code
+        tuples as the real after-tiles; overall and per action; also for the tries that changed something."""
+        if not hasattr(enc, "trans"):
+            return {}
+        res, res_t, allk, allc = {}, {}, [], []
+        for ai, a in enumerate(EF.ACTS):
+            p = self.probe[a]
+            zf, zh = enc.pieces(enc.x([t[0] for t in p])), enc.pieces(enc.x([t[1] for t in p]))
+            pf, ph = enc.predict_after(ai, zf, zh)
+            _, cf = enc.quant(pf)
+            _, ch = enc.quant(ph)
+            rf, _ = enc.codes(np.stack([t[4] for t in p]))
+            rh, _ = enc.codes(np.stack([t[5] for t in p]))
+            ok = (cf.cpu().numpy() == rf).all(1) & (ch.cpu().numpy() == rh).all(1)
+            _, tf = enc.quant(enc.tpieces(enc.x([t[4] for t in p])))
+            _, th = enc.quant(enc.tpieces(enc.x([t[5] for t in p])))
+            okt = ((cf == tf).all(1) & (ch == th).all(1)).cpu().numpy()   # against the target encoder's codes
+            res_t[int(a)] = round(float(okt.mean()), 4)
+            changed = np.array([t[2] > 0 for t in p])
+            res[int(a)] = round(float(ok.mean()), 4)
+            allk.append(ok)
+            allc.append(changed)
+        ok, ch = np.concatenate(allk), np.concatenate(allc)
+        return {"effects_known": round(float(ok.mean()), 4), "effects_known_changed": round(float(ok[ch].mean()), 4),
+                "effects_known_per_action": res, "effects_known_vs_target_per_action": res_t}
+
     def codes(self, enc):
         keys_m = {a: code_tuples(enc, self.mem[a]) for a in EF.ACTS}
         tab = table(self.mem, lambda a, i: (keys_m[a][0][i], keys_m[a][1][i]))
@@ -139,6 +169,7 @@ class Check:
     def __call__(self, enc):
         out = dict(self.fixed) if self.prev["codes"] is None else {}
         pc, pv = self.codes(enc), self.vectors(enc)
+        out.update(self.effects_known(enc))
         # step 2g: codes, then vectors (version 9 takes the own situation first, neighbours otherwise)
         for name, pred in (("codes", pc), ("vectors", pv), ("codes_then_vectors", np.where(pc == -1, pv, pc))):
             prev = self.prev[name]

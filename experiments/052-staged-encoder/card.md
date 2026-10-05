@@ -1032,6 +1032,81 @@ The saved encoder on the probe tiles rendered four ways
   for unexplained pieces), with uniformity weakened or replaced by a
   variance floor that stops collapse without spreading copies.
 
+### Theory discussion and redirection (the user, 2026-10-04, after R1b)
+
+- **Tint is set aside** (the user): the agent never acts on it and no
+  outcome depends on it, so it does not test the card's central idea;
+  BabyAI has none, and Crafter's day and night is a later rung. When it
+  returns, the test is that tint never changes recall's predictions or
+  the agent's actions (decisions invariant), met by factorisation (tint
+  in a part no condition admits), not that codes are invariant. Pixel
+  noise stays.
+- **The objective changes to latent transitions plus conditions** (the
+  user: combine latent transition prediction with the longer-term
+  condition formation). Proven world-model encoders train the
+  representation to predict its own next state under actions, with
+  collapse held off by a target network or a margin, not by pushing
+  every pair apart: C-SWM (Kipf et al. 2020), SPR (Schwarzer et al.
+  2021), EfficientZero, TD-MPC2, DreamerV3 (with reconstruction),
+  LeWorldModel. Ours predicted a 4-way outcome class for three actions
+  (little information per try) and prevented collapse by uniformity,
+  which on duplicate-heavy data splits a tile's copies.
+
+### Step T (one objective: transitions read through sparse conditions): declared before the run
+
+It replaces R1 and R1b, and these pieces of the encoder: the effect
+term, differentiation, uniformity, the invariance term, version 8's pair
+term and the fixed codebook. In their place:
+- **Transitions.** For every pick up, drop and toggle in the stream, the
+  front and held tiles before and after. A transition model per action
+  predicts the after-vectors of both from the before-vectors:
+  ẑ' = normalise(z + Δ_a(·)), per part. Its target is a slowly updated
+  copy of the encoder (moving average, rate 0.99; SPR, BYOL), with the
+  gradient stopped. One cell a step apart, untouched by the action,
+  is the identity transition (continuity, for free).
+- **Conditions as sparse gates.** Δ_a reads card 049's candidate
+  conditions: the front tile's 4 parts, the held tile's 4 parts and the
+  front–held distance per part (12 inputs), each through a gate g ∈
+  [0, 1] per action with an L1 penalty (group sparsity; mechanism
+  sparsity, Lachapelle et al. 2022). An action's effect then depends on
+  few parts, which is what makes kind and colour separable, and the
+  open gates are that action's conditions, the same kind recall admits.
+  This is the condition-formation half at the action level; goals'
+  conditions by contrast (R3) build on it later.
+- **Collapse.** The target network, plus a variance floor (VICReg's
+  hinge: each number's spread at least 1/√8 over the batch) that acts
+  only when the space shrinks and never spreads copies apart.
+- **Codes placed at the data.** A codebook of moving averages of the
+  vectors assigned to each entry (VQ-VAE-2), unused entries restarted at
+  a random batch vector every 250 updates; commitment 0.25. Recall's
+  weights are fitted on stopped vectors for the measurements, as in
+  step 2g's B.
+
+Weights, set before the run: gates' L1 0.01 (summed over the 12 gates
+per action), variance floor 10, the identity transition of views 1,
+256 view pairs per update. In the smoke test (900 updates) "effects
+known" read 0% at first because the transition model learns the target
+encoder's vectors, which trail the online encoder; against the
+target's codes it read 29–46% at once, and against the online codes it
+rose to 64% by 900 updates. Both are reported.
+
+Setting: nine colours, **no tint**, noise kept, play starts at 0.5,
+tries stratified by kind, seed 399, 40 checkpoints of 2,000 updates.
+Arms (parallel): **T** (as above); **T0** (no gates: does condition
+sparsity matter?); **baseline** (step 2h's A, uniformity with the fixed
+codebook and the effect term, also without tint).
+
+Criteria, over the last 10 checkpoints:
+1. **Identities kept under noise:** at most 8 of 84 split and at most 8
+   tuples shared.
+2. **Colour tries:** at least 90% each, codes then vectors.
+3. **Stable:** prediction flips below 1%.
+4. **Effects known:** on the probe tries, the predicted after-vector's
+   code tuple equals the real after-tile's in at least 95%.
+Reported: each action's open gates (its conditions), against what the
+evaluator knows (toggle should read the held tile and the front–held
+relation for locked doors).
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.
