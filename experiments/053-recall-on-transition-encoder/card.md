@@ -142,6 +142,39 @@ Step 2, on the frozen encoder from step 1:
    051's familiar worlds, clean pixels, seeds 400–404: at least 99% in
    each world (version 10: 100%), steps within 5% of card 029's.
 
+**Step 2 as built, declared before its run** (2026-10-05):
+- **2a** (`tools/card053/recall_probe.py`): version 10's recall
+  (`IndexKind`, card 051) built from the generator's stratified tries
+  (seed 954's stream; 300 memory and 40 probe tries per kind of try).
+  Version 10 compares every pair of distinct memory keys, so memory is
+  keyed by code tuples (card 035's reading, radii from the memory
+  tiles): a tile's handle is its tuple's mean vector; a tile with a
+  "new" piece, or a tuple no memory tile has, keeps its own vector. No
+  fresh codes. Every try has the same view, so only the front and held
+  tiles' parts and their relations can be admitted. Criterion 2 draws
+  the probe's noise again from the same objects. Reported: the share of
+  probe tries whose own situation (front and held code tuples) is in
+  memory. Every colour's matching pair is in memory here, so criterion 1
+  does not tell own tries from the relation; card 054 does.
+- **2b** (`tools/card053/planner_check.py`): the frozen encoder replaces
+  version 10's at its one loading point (`novelty.encoder`). The
+  agent's 130 catalogue tiles are drawn as the generator draws them
+  (MiniGrid's drawing without the grid lines, which the generator drops,
+  no noise, the agent's triangle kept). The generator never draws the
+  agent on a tile or a goal square; they reach the encoder unseen, and
+  version 10's "new" reading and fresh codes handle them as any new
+  appearance. **Amendment:** in version 10 the seed only selects the
+  encoder, so with one frozen encoder the five seeds would be one
+  deterministic run: criterion 3 is one run (encoder seed 399). If it
+  fails, a control (version 10's own encoder trained on the re-drawn
+  tiles) separates the drawing from the encoder.
+- **Dry run on step T's T0 encoder** (not a result of this card; it
+  checks the code): 2a gave both colour cases 40 of 40 (card 052's
+  stand-in: 27% and 84%), toggle admitting the front's 4 parts and the
+  front–held relation in part 3; the same prediction under two noise
+  draws in 99.94%; all probe tries 91.1% (pick up 86%, drop 89%, toggle
+  98%); 29 code tuples among the memory tiles.
+
 **Prediction.** Step 1: T0 passes 1 and 3; the calibrated gates leave
 toggle reading the held tile and the relation. Code stability (2) is
 the doubtful one. Step 2a: criterion 1 depends on colour sitting in one
