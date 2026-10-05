@@ -124,7 +124,7 @@ T's saved weights and three short checks; criteria unchanged):
 - Reported per checkpoint: entry pairs whose regions overlap (card 035's
   radius), and the share of probe pieces within 0.05 of a boundary.
 
-Result of the gate: (running)
+Result of the gate: (running; the revised step 1 below)
 
 ## 6. Success criteria and prediction
 
@@ -141,6 +141,33 @@ Step 2, on the frozen encoder from step 1:
 3. **The planner still works** (step 2b). Version 10's agent on card
    051's familiar worlds, clean pixels, seeds 400–404: at least 99% in
    each world (version 10: 100%), steps within 5% of card 029's.
+
+**Step 1 revised (2026-10-05; the user chose fix 1), declared before
+the run.** The first step-1 run (arms T and T0, above) used step T's
+objective, which erases what actions change (card 052's step T
+correction); it is reported as the "before" arm. The revision adds one
+term, C-SWM's margin (Kipf et al. 2020) on the agent's own observed
+changes:
+- **Visibility margin:** a front or held tile whose mean absolute pixel
+  difference across the action exceeds 1.25 × the largest among the
+  first 1,000 untouched cells' pairs (0.026 at seed 399) must move at
+  least 1.0 (whole vector, hinge, weight 1). Measured before setting it:
+  untouched pairs differ by at most 0.021 (seeds 399 and 400); the
+  simulator's real changes by at least 0.028 (front) and 0.063 (held).
+- **Criterion 3 is scored against the simulator:** effects known ≥ 95%
+  means the transition model's predicted category (front and held code
+  tuples changed or not) equals the simulator's outcome. Reported per
+  checkpoint: "changes visible" (the real after-tiles' codes differ from
+  the before-tiles' exactly where the simulator says), and the
+  transition model's two colour cases.
+- Arms: **V** (gates as amended) and **V0** (no gates), seed 399, 40
+  checkpoints. Criteria 1 and 2 unchanged.
+- Smoke (3 checkpoints, 6,000 updates): the margin met by 2,000 updates
+  (hinge 0.0); changes visible in 96–100% of changed probe tries
+  (step T: a door's opening in 0 of 36); V0's transition model, against
+  the simulator, 100% on the matching key and 80% on other keys;
+  toggle's gates in V open on the front (0.84–0.89) and held part 3
+  (0.71); identities split 4–16 and tuples shared 18–23 (bars 8).
 
 **Step 2 as built, declared before its run** (2026-10-05):
 - **2a** (`tools/card053/recall_probe.py`): version 10's recall

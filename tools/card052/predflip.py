@@ -131,31 +131,38 @@ class Check:
 
     @torch.no_grad()
     def effects_known(self, enc):
-        """Step T: on the probe tries, the share whose predicted after-pieces (front and held) fall in the same code
-        tuples as the real after-tiles; overall and per action; also for the tries that changed something."""
+        """On the probe tries, scored against the simulator (card 053; step T's version compared code tuples, which
+        cannot see a change the codes do not show). effects_known: the transition model's predicted category (front
+        code tuple changed, held code tuple changed: before against predicted after) equals the simulator's outcome.
+        changes_visible: the real after-tiles' code tuples differ from the before-tiles' exactly where the
+        simulator's outcome says something changed. Also the two colour cases at a locked door."""
         if not hasattr(enc, "trans"):
             return {}
-        res, res_t, allk, allc = {}, {}, [], []
+        res, vis, allk, allv, allo, kinds = {}, {}, [], [], [], []
         for ai, a in enumerate(EF.ACTS):
             p = self.probe[a]
             zf, zh = enc.pieces(enc.x([t[0] for t in p])), enc.pieces(enc.x([t[1] for t in p]))
             pf, ph = enc.predict_after(ai, zf, zh)
-            _, cf = enc.quant(pf)
-            _, ch = enc.quant(ph)
-            rf, _ = enc.codes(np.stack([t[4] for t in p]))
-            rh, _ = enc.codes(np.stack([t[5] for t in p]))
-            ok = (cf.cpu().numpy() == rf).all(1) & (ch.cpu().numpy() == rh).all(1)
-            _, tf = enc.quant(enc.tpieces(enc.x([t[4] for t in p])))
-            _, th = enc.quant(enc.tpieces(enc.x([t[5] for t in p])))
-            okt = ((cf == tf).all(1) & (ch == th).all(1)).cpu().numpy()   # against the target encoder's codes
-            res_t[int(a)] = round(float(okt.mean()), 4)
-            changed = np.array([t[2] > 0 for t in p])
-            res[int(a)] = round(float(ok.mean()), 4)
-            allk.append(ok)
-            allc.append(changed)
-        ok, ch = np.concatenate(allk), np.concatenate(allc)
-        return {"effects_known": round(float(ok.mean()), 4), "effects_known_changed": round(float(ok[ch].mean()), 4),
-                "effects_known_per_action": res, "effects_known_vs_target_per_action": res_t}
+            bf, bh = enc.quant(zf)[1], enc.quant(zh)[1]
+            pc = ((enc.quant(pf)[1] != bf).any(1).long() + 2 * (enc.quant(ph)[1] != bh).any(1).long()).cpu().numpy()
+            rf = enc.quant(enc.pieces(enc.x([t[4] for t in p])))[1]
+            rh = enc.quant(enc.pieces(enc.x([t[5] for t in p])))[1]
+            rc = ((rf != bf).any(1).long() + 2 * (rh != bh).any(1).long()).cpu().numpy()
+            o = np.array([t[2] for t in p])
+            res[int(a)] = round(float((pc == o).mean()), 4)
+            vis[int(a)] = round(float((rc == o).mean()), 4)
+            allk.append(pc == o)
+            allv.append(rc == o)
+            allo.append(o)
+            kinds += [kind_of(a, t[3]) for t in p]
+        ok, vv, o = np.concatenate(allk), np.concatenate(allv), np.concatenate(allo)
+        out = {"effects_known": round(float(ok.mean()), 4), "effects_known_changed": round(float(ok[o > 0].mean()), 4),
+               "effects_known_per_action": res, "changes_visible": round(float(vv.mean()), 4),
+               "changes_visible_changed": round(float(vv[o > 0].mean()), 4), "changes_visible_per_action": vis}
+        for name, q in COLOUR.items():
+            m = np.array([k == q for k in kinds])
+            out[f"transition_model: {name}"] = round(float(ok[m].mean()), 4) if m.any() else None
+        return out
 
     def codes(self, enc):
         keys_m = {a: code_tuples(enc, self.mem[a]) for a in EF.ACTS}

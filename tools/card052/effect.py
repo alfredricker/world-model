@@ -40,6 +40,9 @@ INV_W = 1.0
 GATES = True                                           # step T: the transition model reads its inputs through gates
 SP_W = 0.01                                            # step T: L1 weight on the gates; card 053: None = measured
 MASK_TAU = 0.5                                         # card 053: the gates are random on/off masks (Gumbel-sigmoid)
+VIS_W = 0.0                                            # card 053 (fix 1): weight of the visibility margin; 0 = off
+VIS_MARGIN = 1.0                                       # card 053: a visibly changed tile's vector moves at least this
+VIS_THRESH = None                                      # card 053: pixel change beyond noise (set from untouched cells)
 CALIBRATE_AT = 2000                                    # card 053: updates with the gates at 0.5 before the measurement
 VAR_W = 10.0                                           # step T: the variance floor's weight
 TARGET_RATE = 0.99                                     # step T: the target encoder's moving average
@@ -201,11 +204,29 @@ class Encoder(DR.Encoder):
             l = ((pf - tf) ** 2).sum((-1, -2)).mean() + ((ph - th) ** 2).sum((-1, -2)).mean()
             total = total + l
             parts.append(float(l.detach()))
+            if VIS_W > 0:                              # card 053, fix 1: what an action visibly changes moves the vector
+                total = total + VIS_W * self.visibility(tr, zf, zh)
         if GATES and self.sp_w is not None:            # card 053: one weight per action, from its own gains
             w = torch.as_tensor(self.sp_w, dtype=torch.float32, device=self.dev).reshape(-1, 1)
             total = total + (w * self.gate_values()).sum()
         self.last_trans = parts
         return total
+
+    def visibility(self, tr, zf, zh):
+        """C-SWM's margin (Kipf et al. 2020) on the agent's own observed changes: a front or held tile whose pixels
+        changed beyond noise across the action (mean absolute difference above VIS_THRESH, set from untouched
+        cells) must move at least VIS_MARGIN (whole-vector distance); unchanged tiles are not pushed."""
+        hinge, n = 0.0, 0
+        for zb, ia in ((zf, 3), (zh, 4)):
+            ib = 0 if ia == 3 else 1
+            ch = [i for i, t in enumerate(tr) if pix_change(t[ib], t[ia]) > VIS_THRESH]
+            if ch:
+                za = self.pieces(self.x([tr[i][ia] for i in ch]))
+                d = (za - zb[ch]).reshape(len(ch), -1).norm(dim=1)
+                hinge = hinge + torch.relu(VIS_MARGIN - d).sum()
+                n += len(ch)
+        self.last_vis = (float(hinge) / max(n, 1), n)
+        return hinge / max(n, 1)
 
     @torch.no_grad()
     def balance(self, tries, draws=8):
@@ -399,6 +420,10 @@ class Encoder(DR.Encoder):
         return ll.cpu().numpy().tolist(), loo(X, Rs, lam).cpu().numpy().tolist()
 
 
+def pix_change(a, b):
+    return float(np.abs(np.asarray(a, np.float64) - np.asarray(b, np.float64)).mean() / 255)
+
+
 @torch.no_grad()
 def book_health(enc, probe):
     """Card 053: per part, pairs of used entries whose regions overlap (card 035's radius: the farthest of the
@@ -455,8 +480,11 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         views.extend(getattr(stream, "views", []))
         steps += 1
 
-    while len(tiles) < 2000 or min(len(buf[a][0]) for a in ACTS) < PER:
+    while len(tiles) < 2000 or min(len(buf[a][0]) for a in ACTS) < PER or (VIS_W > 0 and len(views) < 1000):
         play()
+    global VIS_THRESH
+    if VIS_W > 0:                                      # card 053: the noise ceiling, from untouched cells a step apart
+        VIS_THRESH = 1.25 * max(pix_change(a, b) for a, b in list(views)[:1000])
     for ck in range(checkpoints):
         for g in enc.opt.param_groups:
             g["lr"] = 1e-3 * DR.DECAY ** ck
@@ -505,6 +533,7 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
                "diff_errors_pushes_held_per_update": None if not diffs else [round(float(v), 2) for v in np.mean(diffs, 0)],
                "align_uniform_last": [round(v, 4) for v in getattr(enc, "last_au", ())] or None,
                "transition_loss_per_action": [round(v, 4) for v in getattr(enc, "last_trans", ())] or None,
+               "visibility_last": None if VIS_W == 0 else [round(v, 4) for v in getattr(enc, "last_vis", (0, 0))],
                "gates": None if INTERACTION != "transition" else [[round(float(v), 3) for v in r] for r in enc.gate_values()],
                "relation": None if not rels else round(float(np.mean([r for r, _ in rels if r is not None] or [np.nan])), 4),
                "relation_tries_used": None if not rels else round(float(np.mean([u for _, u in rels])), 1),
@@ -530,12 +559,12 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
                        str(out).replace(".json", ".pt"))
         Path(out).write_text(json.dumps({"note": "Card 052 step 2b, tools/card052/effect.py", "seed": seed, "mu": MU,
                                          "ema": DR.Encoder.EMA, "start_share": START_SHARE, "relation_weight": REL_W,
-                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "drift": DRIFT, "gates_on": GATES, "sp_w": SP_W, "calibration": calib, "mask_tau": MASK_TAU, "var_w": VAR_W, "buffer": buffer, "update_every_steps": every,
+                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "drift": DRIFT, "gates_on": GATES, "sp_w": SP_W, "vis_w": VIS_W, "vis_margin": VIS_MARGIN, "vis_thresh": VIS_THRESH, "calibration": calib, "mask_tau": MASK_TAU, "var_w": VAR_W, "buffer": buffer, "update_every_steps": every,
                                          "updates_per_checkpoint": upd_per_ck, "rows": rows}, indent=1) + "\n")
 
 
 def main():
-    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT, VIEW_N, GATES, SP_W
+    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT, VIEW_N, GATES, SP_W, VIS_W
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     Path(get("--out", "runs/052/effect.json")).parent.mkdir(parents=True, exist_ok=True)
@@ -553,6 +582,7 @@ def main():
     VIEWS = DR.Encoder.ANCHOR != "pixels" or INTERACTION == "diff"
     DRIFT = float(get("--drift", "0"))
     GATES = get("--gates", "1") == "1"
+    VIS_W = float(get("--vis-w", "0"))
     SP_W = None if get("--sp-w", "0.01") == "auto" else float(get("--sp-w", "0.01"))
     VIEW_N = 256 if DR.Encoder.ANCHOR in ("align_uniform", "transition") else 64
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),
