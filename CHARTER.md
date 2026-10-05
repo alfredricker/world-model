@@ -18,8 +18,10 @@ same environment seeds each time.
 |---|---|---|---|---|
 | 1 | `MiniGrid-DoorKey-8x8-v0` | 8 × 8 | key → door → goal square | **≥ 99% success** (pass/fail) |
 | 2 | `MiniGrid-BlockedUnlockPickup-v0` | 11 × 6 | move the ball blocking the door → key → door → pick up the box | against the best version so far |
-| 3 | `MiniGrid-ObstructedMaze-Full-v0` | 16 × 16 | keys hidden in boxes, balls blocking doors, locked doors across rooms; 3,600 steps | against the best version so far |
+| 3 | `MiniGrid-ObstructedMaze-Full-v1` | 16 × 16 | keys hidden in boxes, balls blocking doors, locked doors across rooms; 3,600 steps | against the best version so far |
 
+- **Tier 3 is v1** (the user, 2026-10-05): MiniGrid's fix of v0, whose
+  layouts can have a ball covering a key and so be unsolvable.
 - **Against the best version:** success on the same seeds, compared pair
   by pair: better or worse when the paired difference is beyond chance
   (McNemar's test, p < 0.05), otherwise no different; steps to success
