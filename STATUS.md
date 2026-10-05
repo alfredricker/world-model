@@ -30,11 +30,15 @@ Overwritten each session. At most 40 lines.
     (v13): the move model learned from the 7 × 7 view.
   - [062](experiments/062-tries-stored-as-believed/card.md) keep (v14):
     stored tries record the believed view; conditions still discovered.
+  - [063](experiments/063-replay-what-the-transition-model-misses/card.md)
+    stop: prioritized replay did not teach "other key"; the comparison is.
+  - [064](experiments/064-small-view-on-the-harder-worlds/card.md) keep:
+    v14 on two doors 30/30 and the cluttered world 100/100.
 - **Next decisions for the user:** confirm versions 11–14; whether card
-  054's encoder replaces version 10's; rung 1's open pieces: walking
-  that keeps its choice of clearing the way, and goal examples where
-  random play is too thin (the both world's door).
-- **Open:** recall's colour separation on noisy tries (054); maps much
-  larger than the view (routes are precomputed for a fixed lattice);
-  card 055 (the network as recall's prior), draft.
-- **papi:** GLM-5.3 via OpenRouter; needs credit for summaries.
+  054's encoder replaces version 10's, and the next encoder step (card
+  063: compare key and door by a learned comparison, not per part);
+  rung 1: walking that keeps its choice of clearing the way, and goal
+  examples where random play is too thin (the both world's door).
+- **Open:** maps much larger than the view (routes are precomputed for a
+  fixed lattice); card 055 (the network as recall's prior), draft.
+- **papi:** needs OpenRouter credit for summaries. 9 of 10 cards used.

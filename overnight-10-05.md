@@ -189,4 +189,27 @@ to the transition model's own recent error (prioritized replay), so the
 rare tries it gets wrong come back more often. No labels.
 
 - **Smoke test:** 200 updates, priorities written for every drawn try.
-  Main run (four seeds, training then card 054's evaluation) going.
+- **Result:** worse on average. The transition model's "other key" 63%
+  (card 054: 77%), recall's 59% (73%); matching keys and the planner
+  unchanged (100%). It learned the rare case sooner but kept swinging by
+  up to 35 points between checkpoints.
+- **What it showed:** colour is readable from the whole vector (90–100%)
+  but from any one part only 44–81%. Recall compares the key and the
+  door by a distance per part, which mixes colour with kind; the
+  transition model sees both vectors but learns "same colour" slowly.
+  More frequent rare tries did not fix either.
+- **Decision: stop.** The next encoder step is the comparison itself (a
+  learned comparison of the two vectors, as your relations direction
+  asks): a direction for you.
+
+## Card 064: the small view on the harder worlds
+
+Retention check for version 14: the chained rooms with two locked doors
+(the goal unseen at the start, the second door found only after the
+first opens) and the key world cluttered with extra keys, switches and
+vases.
+
+- **Result:** two doors 30/30 at 1.37× the shortest route; cluttered
+  100/100 at 1.27×; no wrong remembered tile. The extra steps are the
+  looking (the shortest route knows the map).
+- **Decision: keep** (version 14 confirmed on these worlds).

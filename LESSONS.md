@@ -205,8 +205,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   never-seen places matches perfectly, and after a pick up the true one
   shows the changed tile and hand: 0% success and wrong memories in every
   episode. Placing the view only among the placements the action could
-  lead to gave 100% and no wrong remembered tile in 220 episodes.
-  *Evidence:* card 057. *Confirmed* for this world.
+  lead to gave 100% and no wrong remembered tile in 220 episodes. The
+  motion itself can be learned from the small view: count correspondences
+  only where both places were observed and vary (far places are seen
+  almost only as wall and "predict" anything), then trim to one rigid
+  transformation; 16–35 shared places give every move exactly (card 061).
+  *Evidence:* cards 057, 061. *Confirmed* for this world.
 
 ## Process
 

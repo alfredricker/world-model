@@ -12,7 +12,9 @@ the full window
 overnight on 2026-10-05; for the user to confirm). With it the planner's
 whole starting memory is learned from the view the agent has. The same
 conditions are discovered (the switch now as "a yellow, on, switch in
-view"), and acting is unchanged.
+view"), and acting is unchanged. Card 064: chained rooms with two doors
+30/30 at 1.37 times the shortest route, the cluttered key world 100/100
+at 1.27 times (full view: 1.00 and 1.06).
 
 Version 13 is version 12 with the move model and undraw learned from the
 7 × 7 occluded view instead of the whole map
