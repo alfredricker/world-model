@@ -4,7 +4,7 @@ Overwritten each session. At most 40 lines.
 
 - **Date:** 2026-10-05 (overnight), on `master` (not pushed). **Rung:**
   rung 1 begun (cards 056, 059), not passed. **Architecture:** version
-  14 (cards 057, 060–062, kept overnight: for the user to confirm).
+  14 with card 054's encoder (confirmed by the user 2026-10-05).
 - **Direction:** CHARTER.md's "Current direction", with rule 8 and one
   latent space. User, 2026-10-05: no learned codebook (identity up to
   noise); perception keeps every visible difference; gates on behaviour.
@@ -31,10 +31,11 @@ Overwritten each session. At most 40 lines.
     [064](experiments/064-small-view-on-the-harder-worlds/card.md) (two
     doors 30/30, cluttered 100/100).
   - [058](experiments/058-route-or-clear-the-way/card.md) stop (dithering).
-- **Next decisions for the user:** confirm versions 11–14; whether card
-  054's encoder replaces version 10's, and the next encoder step (compare
-  key and door by a learned comparison, not per part); rung 1: walking
-  that keeps its choice of clearing the way; goal examples where random
-  play is too thin (the both world's door).
+- **Next (the user, 2026-10-05):** CHARTER's three MiniGrid tiers
+  (DoorKey-8x8 ≥ 99%; BlockedUnlockPickup, ObstructedMaze-Full against
+  the best version). Card 066: the adapter and version 14's baselines;
+  card 067: closeness by local propagation (value iteration on the
+  believed map) in place of route and chain tables.
+- **Later:** the key–door comparison (063); rung 1's clearing commitment.
 - **Open:** maps much larger than the view; the both world's random steps
   under the small view (065); card 055 (draft).

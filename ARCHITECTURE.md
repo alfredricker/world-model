@@ -8,8 +8,9 @@ Version 14 is version 13 with each stored pick up, toggle and drop
 recording what the agent believed was around it (its tiles seen so far
 through the 7 × 7 occluded view, placed by its own motion) instead of
 the full window
-([card 062](experiments/062-tries-stored-as-believed/card.md), kept
-overnight on 2026-10-05; for the user to confirm). With it the planner's
+([card 062](experiments/062-tries-stored-as-believed/card.md); versions
+11–14 kept overnight on 2026-10-05 and confirmed by the user the same day,
+with card 054's encoder). With it the planner's
 whole starting memory is learned from the view the agent has. The same
 conditions are discovered (the switch now as "a yellow, on, switch in
 view"), and acting is unchanged. Card 064: chained rooms with two doors
@@ -19,7 +20,7 @@ at 1.27 times (full view: 1.00 and 1.06).
 Version 13 is version 12 with the move model and undraw learned from the
 7 × 7 occluded view instead of the whole map
 ([card 061](experiments/061-moves-learned-from-the-small-view/card.md),
-kept overnight on 2026-10-05; for the user to confirm): correspondences
+kept overnight on 2026-10-05, confirmed by the user): correspondences
 are counted only where both places were observed, and one rigid
 transformation per move is fitted to them by trimmed least squares;
 undraw reads the tile ahead before a forward step. The same
@@ -29,7 +30,7 @@ toggle and drop still store what was in the full window.
 Version 12 is version 11 with MiniGrid's occlusion: walls and closed
 doors hide what lies behind them
 ([card 060](experiments/060-walls-hide-what-is-behind/card.md), kept
-overnight on 2026-10-05; for the user to confirm). With no chain of
+overnight on 2026-10-05, confirmed by the user). With no chain of
 conditions it looks only at never-seen places next to places it knows
 it can walk on; when there are none, it opens a door next to never-seen
 places, as a condition ("walk", j) planned like any other, and keeps
@@ -124,11 +125,16 @@ Version 5, the counted model over exact tile IDs, is in git (commit
 
 ## In brief
 
-- **Encoder.** A small convolutional network maps each 8 × 8 × 3 tile to
-  32 numbers, in 4 pieces of 8. Each piece has a codebook of 8 learned
-  codes. A code is a region of its piece's space (the cells around one
-  entry), so codes and vectors are one latent space read at two
-  resolutions. It is trained once, offline, and fixed while acting.
+- **Encoder** (card 054, adopted by the user 2026-10-05). A small
+  convolutional network maps each 8 × 8 × 3 tile to 32 numbers, in 4
+  pieces of 8, trained without a learned codebook: a transition model of
+  pick up, toggle and drop on its vectors (against an EMA target), a
+  margin between what an action visibly changed, and a margin of 0.5
+  between tiles whose pixels differ beyond noise. Identity is "the same up
+  to noise": tiles whose pieces lie within 1.25 × the largest distance
+  between two noisy renders of one cell share an identity code per piece,
+  so codes and vectors are one latent space read at two resolutions. It
+  is trained once, offline, and fixed while acting.
 - **Memory** keeps every stored try per action, keyed by the vectors of
   the thing in front, the held thing and the set of things in view, with
   its outcomes.
@@ -194,9 +200,9 @@ Since card 044 the state is a set of tokens:
   card 049 the view enters only through admitted conditions, each "a
   token with this code tuple is in view", so tokens no condition reads
   cost nothing.
-- **Codes** are discrete per tile (4 codebook indices, as in a VQ-VAE).
-  Recall uses them for "the same thing". They name appearances, not
-  things.
+- **Codes** are discrete per tile (4 identity indices, one per piece,
+  from identity up to noise). Recall uses them for "the same thing". They
+  name appearances, not things.
 
 Card 040's tokens (each thing its vector plus its role, with attention
 over pairs) were stopped and are not used.
@@ -222,8 +228,8 @@ flowchart TD
 
 | Name | Type and size | What it holds | How it is obtained |
 |---|---|---|---|
-| Tile vector | float[32], 4 pieces of 8 | One tile's appearance; each distinct vector is stored once (a handle) | The encoder (card 037's recipe) |
-| Code tuple | 4 ints, or "new" per piece | Which codebook region each piece falls in | Nearest used code within 6 × its radius, else "new" (card 035), with fresh codes for new pieces (card 036) |
+| Tile vector | float[32], 4 pieces of 8 | One tile's appearance; each distinct vector is stored once (a handle) | The encoder (card 054's recipe, margin 0.5) |
+| Code tuple | 4 ints | Which identity class each piece falls in | Leader clustering within 1.25 × the per-piece noise scale (card 054) |
 | View | 182 handles: 169 wheres within 6 tiles, plus the held row | What the agent sees now | Encoder on the renderer's tiles |
 | Key of a try | (front handle, held handle, view set) | Pick up, toggle, drop. Moves, draw and undraw are keyed by one handle | From the stored views |
 | Outcome class | (which places changed, the codes they became) | What a try did | From the try's next view |
@@ -245,15 +251,19 @@ flowchart TD
 ## Learning
 
 Per world:
-1. **Encoder** (once, offline). The objective has:
-   - rebuilding the tile's pixels through a decoder;
-   - codebook and commitment terms;
-   - a pair term, so that an action changing a tile in place changes few
-     codebooks;
-   - μ = 0.01 times a recall term: the leave-one-out likelihood of stored
-     outcomes.
+1. **Encoder** (once, offline; card 054, on card 052's generator of
+   MiniGrid's objects in six colours plus three more, about 200,000 steps
+   of play). The objective has:
+   - a transition model predicting the vectors of the tile in front and
+     the held tile after pick up, toggle and drop, against an EMA target
+     encoder;
+   - a margin between the vectors before and after an action that
+     visibly changed a tile;
+   - a margin of 0.5 between tiles whose pixels differ beyond noise;
+   - recall's leave-one-out likelihood of stored outcomes.
 
-   Nothing names what a code means.
+   Nothing names what a code means; identity codes are read afterwards,
+   up to noise.
 2. **Move transformations**: card 028's counted correspondences, then a
    least-squares fit per move (card 044).
 3. **Memory**: the stored tries, grouped by key, with outcome counts.
@@ -336,7 +346,7 @@ At every step:
 
 | Component | What it does | Input → output | Source (see LITERATURE.md) | Borrowed vs changed |
 |---|---|---|---|---|
-| Encoder and codes | Tiles to vectors and their codebook regions | Pixels → 32 numbers, 4 codes | `1711_00937`, `1803_03382`, cards 031–036 | Pair and recall terms added; "new" by radius; fresh codes |
+| Encoder and codes | Tiles to vectors and their identity codes | Pixels → 32 numbers, 4 identity codes | `1711_00937`, `1803_03382`, C-SWM (Kipf et al. 2020), cards 031–036, 052–054 | No codebook: transition model, EMA target, visibility margin and a margin between visibly different tiles; identity up to noise |
 | Recall | An action's outcome from stored tries | Key → outcome class and result | MacKay and Peto 1995; Nosofsky's GCM; `1604_02354`; Cheng 1997; Griffiths and Tenenbaum 2005; `1110_2211`; cards 042, 049, 050 | Only admitted conditions read (contrast with a cost per condition); own situation first, neighbours as prior |
 | Tokens and placements | What the agent has seen and where it is now | View → (tokens, placement) | Card 016; `1905_12006`; transformer patch tokens (Dosovitskiy et al. 2020); `1812_02230`; card 044; least trimmed squares (Rousseeuw 1984, not in papi); cards 057, 061 | Moves as fitted transformations of where, learned from the 7 × 7 view by a trimmed fit; matching by L1 over observed places, among the placements the action could lead to |
 | Looking | Where to go when no chain of conditions exists | Tokens → move or ("walk", j) | Frontier exploration (Yamauchi 1997, not in papi); card 060 | Frontier = never-seen places next to known walkable tokens; a door next to never-seen places becomes a condition, kept between steps |
@@ -356,7 +366,8 @@ At every step:
     (the token at (0, 1), the hand's, the tokens within 6 tiles);
   - wheres lie on the view's grid; tokens are kept within 12 tiles of the
     first view's centre;
-  - a tile is 4 pieces of 8 numbers, with codebooks of 8;
+  - a tile is 4 pieces of 8 numbers; identity is within 1.25 × the noise
+    scale per piece;
   - "new" is 6 × a code's radius;
   - recall's candidate conditions: per part of the front and held tiles,
     a front–held distance per part, a code tuple present in view; a
@@ -411,9 +422,9 @@ At every step:
   occlusion and its starting memory is learned from that view (cards
   061–062). The encoder's training (card 054) was not re-audited for the
   view, and the rooms are small next to the view; maps much larger need
-  routes on demand (below). It needs exact pixel
-  repeats with version 10's encoder; card 054's encoder with identity up
-  to noise is tested on noisy renders but not yet kept.
+  routes on demand (below). Recall's "a key of another colour does not
+  fit" is weak on noisy renders (card 054: 62.5–70% on three of four
+  seeds; card 063 did not fix it).
 - **A small fixed world.** Routes are worked out for every pair of the
   676 placements, and tokens live on a fixed grid of 638 places. A larger
   or partly seen world needs routes on demand and a map.
@@ -444,7 +455,8 @@ At every step:
 | 8 | 2026-10-01 | 045–047 | Walking through conditions (045): a how-soon network fitted on the move transformations (System 1), the route's tokens walkable as its conditions, waypoint chains and doors as conditions (System 2), no imagined step. Situations for an action on a thing from both of recall's levels, each judged by recall (047, after 046 used the levels as a switch). Kept by the user with card 047: the same results in the familiar worlds, 100% in unseen rooms at 1.01–1.11 times the shortest route; new-colour switch tests 40% (version 7: 31%); 31–77% slower than card 046 |
 | 9 | 2026-10-04 | 049–050 | Recall through the conditions that matter: for pick up, toggle and drop, only conditions admitted by their leave-one-out gain (front and held parts, front–held relations, code tuples in view) are compared, so tokens that never changed an outcome cannot veto a memory (049); a query's own situation first, neighbours as its prior, so one failed try corrects recall (050). Kept by the user with card 050: familiar worlds 100% in 5 of 5 seeds, chained rooms with one door 98% (version 8: 46% in seed 401), cluttered key world 98–100%; new-colour switch door 76% with card 049 (version 8: 40%) |
 | 10 | 2026-10-04 | 051 | Memory indexed by situation (exact: the same decisions as version 9, per-step time flat from base memory to +20,000 stored keys, 5.7–9.9 ms against version 9's 43–4,640 ms); threats between the needs of one achiever; the chain's choices kept between steps; routes through two tokens made walkable; the hand kept when only the view is asked for. Two doors 30/30 in 5 of 5 seeds (version 9: 0/30), one door 100% (98%), cluttered 99–100%, familiar worlds 100% with card 029's steps. Kept by the user on Claude's overnight runs |
-| 11 | 2026-10-05 | 057 | A view smaller than the map: MiniGrid's 7 × 7 view; views placed among the placements the action could lead to (only observed places count); online tries stored with the believed view; frontier exploration when there is no chain. Familiar worlds 100% at 1.10–1.17 times the full view's steps (random when stuck: about 1.7 times), chained rooms with one door 100% at 1.16 times the shortest route, no wrong remembered tile; four encoders of card 054. Kept overnight by Claude under the user's overnight rules, for the user to confirm |
-| 12 | 2026-10-05 | 060 | Occlusion (MiniGrid's walls and closed doors hide what is behind them): exploration looks only at never-seen places next to known walkable tokens; when there are none, a door next to never-seen places becomes the condition ("walk", j), kept between steps. Familiar worlds 100% at 1.12–1.19 times the full view's steps (version 11 under occlusion: 0–3%), chained rooms with one door 100% at 1.61 times the shortest route (after the declared revision; 71% without keeping the door), no wrong remembered tile; seed 399. Kept overnight by Claude under the user's overnight rules, for the user to confirm |
-| 13 | 2026-10-05 | 061 | The move model and undraw learned from play seen through the 7 × 7 occluded view: card 028's correspondences counted only where both places were observed and the place varies there, card 044's transformation fitted by least squares trimmed to the correspondences that agree (16 for turns, 35 for forward; residual 0); undraw from the agent on X after a forward step and X ahead before. The same transformations as the full window on four encoders; undraw the same on every tile stepped off, and exact on the goal where the full window had imagined it; acting unchanged (familiar worlds 100%, card 060's steps; chained rooms 100%). Kept overnight by Claude under the user's overnight rules, for the user to confirm |
-| 14 | 2026-10-05 | 062 | Stored tries of pick up, toggle and drop record what was in view in the agent's belief at that step (tiles seen so far in the episode through the 7 × 7 occluded view, placed by its own motion, never-seen places as the unseen appearance), from a replay of the stored play checked row by row against it. 92–96% of stored tries changed their in-view set; conditions discovered on four encoders (key world: relation or hand; switch world: a yellow switch in view, formerly a grey one); familiar worlds 100% at card 061's steps, chained rooms 100%. Kept overnight by Claude under the user's overnight rules, for the user to confirm |
+| 11 | 2026-10-05 | 057 | A view smaller than the map: MiniGrid's 7 × 7 view; views placed among the placements the action could lead to (only observed places count); online tries stored with the believed view; frontier exploration when there is no chain. Familiar worlds 100% at 1.10–1.17 times the full view's steps (random when stuck: about 1.7 times), chained rooms with one door 100% at 1.16 times the shortest route, no wrong remembered tile; four encoders of card 054. Kept overnight by Claude under the user's overnight rules; confirmed by the user 2026-10-05 |
+| 12 | 2026-10-05 | 060 | Occlusion (MiniGrid's walls and closed doors hide what is behind them): exploration looks only at never-seen places next to known walkable tokens; when there are none, a door next to never-seen places becomes the condition ("walk", j), kept between steps. Familiar worlds 100% at 1.12–1.19 times the full view's steps (version 11 under occlusion: 0–3%), chained rooms with one door 100% at 1.61 times the shortest route (after the declared revision; 71% without keeping the door), no wrong remembered tile; seed 399. Kept overnight by Claude under the user's overnight rules; confirmed by the user 2026-10-05 |
+| 13 | 2026-10-05 | 061 | The move model and undraw learned from play seen through the 7 × 7 occluded view: card 028's correspondences counted only where both places were observed and the place varies there, card 044's transformation fitted by least squares trimmed to the correspondences that agree (16 for turns, 35 for forward; residual 0); undraw from the agent on X after a forward step and X ahead before. The same transformations as the full window on four encoders; undraw the same on every tile stepped off, and exact on the goal where the full window had imagined it; acting unchanged (familiar worlds 100%, card 060's steps; chained rooms 100%). Kept overnight by Claude under the user's overnight rules; confirmed by the user 2026-10-05 |
+| 14 | 2026-10-05 | 062 | Stored tries of pick up, toggle and drop record what was in view in the agent's belief at that step (tiles seen so far in the episode through the 7 × 7 occluded view, placed by its own motion, never-seen places as the unseen appearance), from a replay of the stored play checked row by row against it. 92–96% of stored tries changed their in-view set; conditions discovered on four encoders (key world: relation or hand; switch world: a yellow switch in view, formerly a grey one); familiar worlds 100% at card 061's steps, chained rooms 100%. Kept overnight by Claude under the user's overnight rules; confirmed by the user 2026-10-05 |
+| 14 | 2026-10-05 | 054 | The user adopts card 054's encoder (no learned codebook; identity up to noise; margin 0.5), on which versions 11–14 ran; behaviour unchanged |
