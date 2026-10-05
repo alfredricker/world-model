@@ -1,0 +1,16 @@
+{
+ "episodes": 888,
+ "steps": 3130903,
+ "changed_by_toggle": 21950,
+ "changed_by_pickup": 59041,
+ "changed_by_drop": 58764,
+ "pickups": 59041,
+ "doors_opened": 10571,
+ "keys_out_of_boxes": 2889,
+ "successes": 52,
+ "rows": 514034,
+ "tries": 318328,
+ "tries_with_stale_belief": 0,
+ "seconds": 47.5,
+ "env": "MiniGrid-ObstructedMaze-Full-v1"
+}

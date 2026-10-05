@@ -207,7 +207,7 @@ def world_init(self, S, parts, D, dev, log):
     F.build_poses(m)
     uf, nf = np.unique(np.concatenate([np.asarray(m_full.ent[a])[:NV][np.asarray(m_full.src[a])[:NV] < 0]
                                        for a in MOVES]), return_counts=True)
-    unseen_full = int(uf[nf.argmax()])
+    unseen_full = int(uf[nf.argmax()]) if len(uf) else None          # report only (none on maps wider than the window)
     rep["unseen_appearance"] = {"partial": unseen, "full_view": unseen_full, "same": unseen == unseen_full}
     assert all(h == HELD for h in m.hidx), "the held place moves with the pose"
     self.M = m

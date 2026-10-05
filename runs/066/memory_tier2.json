@@ -1,0 +1,15 @@
+{
+ "episodes": 5555,
+ "steps": 3196379,
+ "successes": 25,
+ "changed_by_pickup": 52511,
+ "changed_by_drop": 51467,
+ "pickups": 52511,
+ "changed_by_toggle": 687,
+ "doors_opened": 416,
+ "rows": 490153,
+ "tries": 291128,
+ "tries_with_stale_belief": 0,
+ "seconds": 28.9,
+ "env": "MiniGrid-BlockedUnlockPickup-v0"
+}

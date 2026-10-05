@@ -1,0 +1,15 @@
+{
+ "episodes": 5000,
+ "steps": 3164788,
+ "successes": 167,
+ "changed_by_pickup": 31621,
+ "changed_by_drop": 30994,
+ "pickups": 31621,
+ "changed_by_toggle": 2495,
+ "doors_opened": 1565,
+ "rows": 451658,
+ "tries": 254165,
+ "tries_with_stale_belief": 0,
+ "seconds": 27.9,
+ "env": "MiniGrid-DoorKey-8x8-v0"
+}

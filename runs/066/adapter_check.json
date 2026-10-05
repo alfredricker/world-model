@@ -1,0 +1,52 @@
+{
+ "MiniGrid-DoorKey-8x8-v0": {
+  "states": 300,
+  "tiles_differing": 0,
+  "visibility_differing": 0,
+  "colours": [
+   "green",
+   "yellow"
+  ],
+  "size": [
+   8,
+   8
+  ],
+  "max_steps": 640
+ },
+ "MiniGrid-BlockedUnlockPickup-v0": {
+  "states": 300,
+  "tiles_differing": 0,
+  "visibility_differing": 0,
+  "colours": [
+   "blue",
+   "green",
+   "grey",
+   "purple",
+   "red",
+   "yellow"
+  ],
+  "size": [
+   11,
+   6
+  ],
+  "max_steps": 576
+ },
+ "MiniGrid-ObstructedMaze-Full-v1": {
+  "states": 300,
+  "tiles_differing": 0,
+  "visibility_differing": 0,
+  "colours": [
+   "blue",
+   "green",
+   "grey",
+   "purple",
+   "red",
+   "yellow"
+  ],
+  "size": [
+   16,
+   16
+  ],
+  "max_steps": 3600
+ }
+}

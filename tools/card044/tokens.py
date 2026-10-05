@@ -27,6 +27,7 @@ agent never stands farther than 6 tiles from it here).
   bin/prun python tools/card044/tokens.py --arm A --seeds 400-404 --layouts-b 100 --out runs/044_armA.json
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -40,7 +41,7 @@ F, G = VP.F, VP.G
 NV, NPL, W13, CENTRE, FRONT, HELD = VP.NV, VP.NPL, VP.W13, VP.CENTRE, VP.FRONT, VP.HELD
 MOVES = VP.MOVES
 R = (W13 - 1) // 2
-LR = 2 * R
+LR = int(os.environ.get("WM_LATTICE", 2 * R))           # card 066: set per map (the agent stands within LR - R)
 ABSENT = -1                                            # no token: never seen
 DIRS = list(F.DIRS)                                    # (column, row) steps in turning order
 
