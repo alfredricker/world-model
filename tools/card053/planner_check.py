@@ -47,8 +47,8 @@ def catalogue():
 
 def main():
     args = sys.argv[1:]
-X
-    args = args[:args.index("--")] if "--" in args else args
+    rest = args[args.index("@@") + 1:] if "@@" in args else None     # walk2's own arguments (card 054, step D;
+    args = args[:args.index("@@")] if "@@" in args else args          # not "--", which poetry takes)
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     path, out = args[0], get("--out", "runs/053/s2b.json")
     enc = RP.load(path, get("--interaction", "transition"), get("--gates", "0") == "1")
