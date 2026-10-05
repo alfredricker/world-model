@@ -36,6 +36,5 @@ Overwritten each session. At most 40 lines.
   the best version). Card 066: the adapter and version 14's baselines;
   card 067: closeness by local propagation (value iteration on the
   believed map) in place of route and chain tables.
-- **Later:** the key–door comparison (063); rung 1's clearing commitment.
-- **Open:** maps much larger than the view; the both world's random steps
-  under the small view (065); card 055 (draft).
+- **Later:** the key–door comparison (063); rung 1's clearing commitment;
+  the both world's random steps under the small view (065); card 055.
