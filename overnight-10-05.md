@@ -86,4 +86,35 @@ exploration).
   right at the end of all 220 episodes. Criterion 3 was mis-specified
   (its measure counts the tile an action changes, nonzero for the full
   view too); corrected once, openly, to what it was meant to check.
-  Seeds 400–402 running.
+- **Seeds 400–402:** the same results (every encoder gives each tile its
+  own identity).
+- **Decision: keep → architecture version 11** (for you to confirm). Open:
+  the starting memory is still learned from full views; walls do not
+  hide what is behind them yet.
+
+## Card 058: walking compares a route with clearing the way
+
+Card 056's lost forks were detours where picking up a key in the way is
+faster. Here walking also priced the chain that clears one token and took
+the cheaper.
+
+- **Result:** familiar worlds fell to 90%, 100%, 96.7%, 73.3% (version
+  10: 100%). Traced: the agent turned left, then right, for whole
+  episodes, because the cheaper chain flipped with every turn; the
+  choice was remade every step and never kept.
+- **Decision: stop.** Comparing chains by cost is right (P21), but the
+  choice needs to be kept until it fails, as achievers already are.
+
+## Card 059: how soon a goal is, from the chain of conditions
+
+Rung 1's second criterion. The agent predicts the steps to a goal by
+following its chain one condition at a time in imagination (walking
+cost to face the next tile, plus one step for the act), never step by
+step.
+
+- **Result:** predicted against true fewest steps, rank correlation
+  0.977–0.990 in all four worlds (bar 0.8), mean error about 0.3 steps,
+  3–15 ms per estimate; goal-swapped control −0.28 to −0.05. Coverage
+  with goals from frames 93.8–96.4% (bar 95%; with the goal written in,
+  98.4–99.8%): the gap is five-frame goals with an unreachable companion
+  feature. Declared revision: ten frames (running).

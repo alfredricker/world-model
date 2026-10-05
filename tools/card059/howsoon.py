@@ -171,6 +171,10 @@ def soon_act_arm(pool, test, online=True):
 
 
 def main():
+    if "--k" in sys.argv:                              # card 059's declared revision: ten goal frames
+        i = sys.argv.index("--k")
+        GL.K = int(sys.argv[i + 1])
+        del sys.argv[i:i + 2]
     GL.goal_act_arm = soon_act_arm
     GL.main()
     GL.OUT["note"] = "Card 059, tools/card059/howsoon.py (card 056's setup)"

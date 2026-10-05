@@ -1,8 +1,21 @@
 ---
-arch_version: 10
+arch_version: 11
 ---
 
 # Architecture
+
+Version 11 is version 10 seeing only MiniGrid's 7 × 7 view (six rows
+ahead, three columns to each side, nothing behind) instead of a window
+that always holds the map
+([card 057](experiments/057-view-smaller-than-the-map/card.md), kept
+overnight on 2026-10-05 under the user's overnight rules; for the user
+to confirm). It places each view among the placements its own action
+could lead to, keeps what it has seen as tokens, stores its tries with
+the believed view, and, when it has no chain of conditions, walks to the
+nearest placement from which never-seen places come into view. Familiar
+worlds 100% at 1.10–1.17 times the full view's steps, chained rooms with
+one door 100%, no wrong remembered tile in any episode (four encoders of
+card 054). Its starting memory is still learned from full views.
 
 Version 10 is version 9 with memory indexed by situation, so the cost
 per step no longer grows with memory, and a planner that keeps its
@@ -53,7 +66,8 @@ stored keys (version 9: 43–4,640 ms). It is not a passed
 rung: the world is fully visible, repeats pixels exactly, and every
 familiar appearance has been seen.
 
-The code is `tools/card051/walk2.py` (routes through two tokens), on
+The code is `tools/card057/partial.py` (version 11's partial view), on
+`tools/card051/walk2.py` (routes through two tokens), on
 `commit.py` (the chain's choices kept between steps), `threats.py`
 (threats between needs; the hand kept) and `index.py` (memory indexed by
 situation) in the same folder, on `tools/card050/own.py` (own tries first), on
@@ -225,7 +239,10 @@ Per world:
 At every step:
 1. **Place the view.** Take the placement whose predicted view is nearest
    the real one (L1 over vectors, the centre aside). The tokens in view
-   take the view's whats.
+   take the view's whats. (Version 11) The view is MiniGrid's 7 × 7; only
+   observed places count, a never-seen token is no evidence, and the
+   candidates are the placements the action could lead to (the same one,
+   or the move's). Online tries are stored with the believed view.
 2. **Predict effects by recall.**
    - Where the query's own situation has tries, the category and the
      result are what it did then.
@@ -262,7 +279,10 @@ At every step:
      make walkable (card 047) are counted walkable; those a least chain
      crosses become conditions ("walk", j), pursued like any other;
    - alternatives (the key or the switch) are chosen by the chains'
-     predicted steps.
+     predicted steps;
+   - (version 11) when there is no chain at all, walk to the nearest
+     placement standing on a known walkable token from which a
+     never-seen place would be in view (frontier exploration).
 5. **Revise** as in version 5.
 
 ## Present but not used by the agent
@@ -337,9 +357,12 @@ At every step:
   the chosen achiever's needs alternate in form from step to step, so
   commitment does not hold it. Walking considers pairs of blocked
   tokens, not more.
-- **Exact views.** It needs the whole room in view and exact pixel
-  repeats. Codes absorb small differences, but this is untested with
-  noise, and vectors near a region's edge could flip codes between views.
+- **Exact views, and partial views without occlusion.** Since version
+  11 it sees a 7 × 7 view, but walls do not hide what lies behind them
+  (MiniGrid's default does), and the memory it starts with was learned
+  from full views (card 057's declared exception). It needs exact pixel
+  repeats with version 10's encoder; card 054's encoder with identity up
+  to noise is tested on noisy renders but not yet kept.
 - **A small fixed world.** Routes are worked out for every pair of the
   676 placements, and tokens live on a fixed grid of 638 places. A larger
   or partly seen world needs routes on demand and a map.
@@ -370,3 +393,4 @@ At every step:
 | 8 | 2026-10-01 | 045–047 | Walking through conditions (045): a how-soon network fitted on the move transformations (System 1), the route's tokens walkable as its conditions, waypoint chains and doors as conditions (System 2), no imagined step. Situations for an action on a thing from both of recall's levels, each judged by recall (047, after 046 used the levels as a switch). Kept by the user with card 047: the same results in the familiar worlds, 100% in unseen rooms at 1.01–1.11 times the shortest route; new-colour switch tests 40% (version 7: 31%); 31–77% slower than card 046 |
 | 9 | 2026-10-04 | 049–050 | Recall through the conditions that matter: for pick up, toggle and drop, only conditions admitted by their leave-one-out gain (front and held parts, front–held relations, code tuples in view) are compared, so tokens that never changed an outcome cannot veto a memory (049); a query's own situation first, neighbours as its prior, so one failed try corrects recall (050). Kept by the user with card 050: familiar worlds 100% in 5 of 5 seeds, chained rooms with one door 98% (version 8: 46% in seed 401), cluttered key world 98–100%; new-colour switch door 76% with card 049 (version 8: 40%) |
 | 10 | 2026-10-04 | 051 | Memory indexed by situation (exact: the same decisions as version 9, per-step time flat from base memory to +20,000 stored keys, 5.7–9.9 ms against version 9's 43–4,640 ms); threats between the needs of one achiever; the chain's choices kept between steps; routes through two tokens made walkable; the hand kept when only the view is asked for. Two doors 30/30 in 5 of 5 seeds (version 9: 0/30), one door 100% (98%), cluttered 99–100%, familiar worlds 100% with card 029's steps. Kept by the user on Claude's overnight runs |
+| 11 | 2026-10-05 | 057 | A view smaller than the map: MiniGrid's 7 × 7 view; views placed among the placements the action could lead to (only observed places count); online tries stored with the believed view; frontier exploration when there is no chain. Familiar worlds 100% at 1.10–1.17 times the full view's steps (random when stuck: about 1.7 times), chained rooms with one door 100% at 1.16 times the shortest route, no wrong remembered tile; four encoders of card 054. Kept overnight by Claude under the user's overnight rules, for the user to confirm |

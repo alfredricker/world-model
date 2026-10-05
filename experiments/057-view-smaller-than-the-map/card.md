@@ -3,8 +3,8 @@ id: "057"
 title: a view smaller than the map
 rung: 1
 serves: [P2, P15, P12, P17, C5]
-status: approved
-verdict:
+status: done
+verdict: pass
 arch_version: 10
 date: 2026-10-05
 ---
@@ -116,11 +116,29 @@ prior. With it the smoke test passed (100%).
 Criteria 1 and 2 hold. Criterion 3 as written ("placing every view
 needs no mismatch, largest distance 0") was mis-specified: the measure
 counts the tile the action itself changed (a key picked up, a door
-opened), so version 10 with the full view scores 4.6–7.6 on it too;
-here 4.3. Changed once (CHARTER rule 6), with this reason, to what it
-was meant to check: every remembered tile matches the simulator at the
-end of every episode, and the placing distance is no larger than the
+opened), so version 10 with the full view scores 4.1–8.7 on it too;
+here 4.1–4.3. Changed once (CHARTER rule 6), with this reason, to what
+it was meant to check: every remembered tile matches the simulator at
+the end of every episode, and the placing distance is no larger than the
 full view's. Under that reading it holds (0 wrong tiles in 220
-episodes; 4.3 against 4.6–7.6), and arm B beats arm A on both tests.
+episodes), and arm B beats arm A on both tests.
+
+**Seeds 400–402, arm B** (`runs/057/{fam,chain}_B_40*.json`): the same
+as seed 399, since every encoder gives each catalogue tile its own
+identity: 100% in all four familiar worlds at 1.10–1.17× the full view's
+steps (seed 400's key world 18.4 steps, 1.15×), chained rooms 100% at
+1.16–1.17× the shortest route, no wrong remembered tile in any episode,
+and placing distances 4.0–6.8 against the full view's 4.0–13.6 on the
+same seed. All three criteria hold on all four seeds.
 
 ## 8. Decision
+
+**Keep** (version 11: a partial view). With MiniGrid's 7 × 7 view the
+agent keeps its goals in reach: it remembers what it has seen as tokens,
+places each view by its own motion, and walks to see what it has not
+seen when it has no chain, at 10–17% more steps than with the whole map
+in view. Declared exception, still open: the memory it starts with was
+learned from full views; the next card re-collects play under the 7 × 7
+view and stores each try with the believed view. Not yet tested:
+occlusion by walls (MiniGrid's default), and rooms much larger than
+the view.

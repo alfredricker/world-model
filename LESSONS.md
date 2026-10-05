@@ -29,6 +29,14 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   so "nothing happens" scored 40 of 40 and effects 99%. Against the
   simulator: 0 of 40. *Evidence:* card 052 step T correction.
   *Confirmed.*
+- **Examples of a goal are evidence only if drawn independently and the
+  way the agent's own experience was.** Inferring a goal from five frames
+  by contrast with experience (the size principle) admitted an intact
+  vase when the frames came from shorter play than the agent's, and a
+  key of another colour when they came from a few long episodes (door
+  green, 77.5%); one frame per episode of play like the agent's raised
+  every goal with enough episodes to 95–97%. *Evidence:* card 056.
+  *Confirmed* (four encoders, identical).
 - **A hand-built mechanism that passes is not a result, and offline gains
   need checking in live behaviour.** A hand-chosen lattice fit the Crafter
   renderer exactly and failed on lighting changes; gains on count worlds
@@ -54,14 +62,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   weights carried. *Evidence:* phwm record §5.4–5.5;
   old:phwm/docs/06-achievements-and-limitations.md §6.1.1; card 040
   appendix A. *Confirmed.*
-- **Verify that held-out cases are really held out.** PHWM's first held
-  run left about 98% of query pairs in the support set; corrected, held
-  cells scored .917 (6/6 seeds above .90). *Evidence:* phwm record §5.6.
+- **Verify that held-out cases are really held out, and keep new
+  combinations apart from new members.** PHWM's first held run left about
+  98% of query pairs in the support set (corrected: .917). Combination
+  split .943±.004 against a .976 ceiling; member split (a colour never
+  seen in the role) .808±.053. *Evidence:* phwm record §5.3, §5.6.
   *Confirmed.*
-- **New combinations and new members are different claims.** Combination
-  split (every colour seen, one pairing withheld) .943±.004 against a .976
-  ceiling; member split (a colour never seen in the role) .808±.053, 3/6
-  seeds above .75. *Evidence:* phwm record §5.3. *Confirmed.*
 - **A property that can be read out is not one that is used; report every
   case separately.** PHWM decoded colour at .982 while the held matching
   cell scored 0.0 in 3 seeds, and later the wrong-key cell stayed at 0, an
@@ -73,18 +79,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   *Confirmed* (the last *suggestive*).
 - **Codes that rebuild pixels keep every distinction but do not factor a
   thing's shape from its colour; nothing in the objective prefers it.**
-  Four codebooks of 8 kept all 20 tiles apart and the counted model lost
-  nothing (10 of 10 seeds). But a key or door in a new colour came out
-  "new" or as a blue one, never as its shape: 0 of 10 seeds, the same
-  without the change penalty or with one codebook of 64. The model over
-  ideal label codes carried to it fully. Key entries per group, not one
-  set per action: one set made "drop" name each key colour, which gives a
-  new colour nothing. A penalty on the number of codes merged tiles
-  before it made a shorter code. Where it left fewer codes, a new colour
-  fell on the nearest known one (the purple key took the blue key's codes
-  in 8 of 10 seeds). That carried the shared effects (pick up and drop
-  right in 9 of 10) and wrongly the colour rules too. *Evidence:* cards
-  031, 032. *Confirmed* (label arm as control).
+  Four codebooks of 8 kept all 20 tiles apart (10 of 10 seeds), but a key
+  or door in a new colour came out "new" or as a blue one, never as its
+  shape (0 of 10; label codes carried fully). A penalty on the number of
+  codes put a new colour on the nearest known one (8 of 10), which
+  carried the shared effects and wrongly the colour rules too.
+  *Evidence:* cards 031, 032. *Confirmed* (label arm as control).
 - **An exact lookup over codes cannot use "like a key but not a known
   key"; novelty depends on the action.** One radius per code, the same for
   every action, either lets a new appearance share familiar codes (it
@@ -185,15 +185,11 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   *Confirmed* (drift *suggestive*).
 - **Recall by a similarity-weighted vote needs a space where shared
   properties are near and new things are far.** On label codes the vote
-  found "same colour" and opened a new-coloured door at the first try.
-  On card 031's encoder nothing carried (the yellow key's pick-up was
-  wrong in 10 of 10 seeds). Replay into that encoder carried pick-up and
-  drop (10 of 10) and found "same colour" in 2 of 10. It also pushed
-  familiar tiles off their codebook codes in 9 of 10 seeds, which broke
-  acting. A new door's vote then weighed as much as a familiar door's
-  (1.3–13 against 2.6–11.1; labels 0.15 against 2.0), so one success
-  could not correct it. *Evidence:* card 033. *Confirmed* (label arm as
-  control).
+  opened a new-coloured door at the first try; on card 031's encoder
+  nothing carried (10 of 10 seeds wrong). Replay into that encoder
+  carried pick-up and drop but pushed familiar tiles off their codes (9
+  of 10), which broke acting. *Evidence:* card 033. *Confirmed* (label
+  arm as control).
 
 - **A planner needs crisp identity; one learned weighting of vectors per
   action cannot supply it.** Colour had to count at doors and nowhere
@@ -207,6 +203,14 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   situation by the mixed prediction gave 40%, with the switch turned on by
   plan (cards 046–047). A failed try rules out its situation, not the
   thing. *Confirmed.*
+
+- **Place a partial view with the agent's own motion, not by matching
+  alone.** With a 7 × 7 view, a wrong placement that sees only
+  never-seen places matches perfectly, and after a pick up the true one
+  shows the changed tile and hand: 0% success and wrong memories in every
+  episode. Placing the view only among the placements the action could
+  lead to gave 100% and no wrong remembered tile in 220 episodes.
+  *Evidence:* card 057. *Confirmed* for this world.
 
 ## Process
 

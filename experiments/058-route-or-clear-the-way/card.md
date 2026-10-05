@@ -3,8 +3,8 @@ id: "058"
 title: walking compares a route with clearing the way
 rung: 1
 serves: [P21, P12, P17]
-status: approved
-verdict:
+status: done
+verdict: fail
 arch_version: 10
 date: 2026-10-05
 ---
@@ -77,4 +77,31 @@ if criterion 2 fails.
 
 ## 7. Result
 
+Seed 399's encoder (`runs/058/planner_399.out`; version 10 on the same
+encoder: 100% in every familiar world, card 054).
+
+| | Key | Switch | Either | Both |
+|---|---|---|---|---|
+| 2. Success, episode's end | 90% | 100% | 96.7% | 73.3% |
+| 2. Mean steps (version 10) | 15.4 (15.9) | 16.2 (16.7) | 14.2 (14.4) | 21.4 (21.0) |
+
+Criterion 2 fails in three of four worlds. Traced on the both world
+(`tools/card058/trace.py`): in all eight failed layouts the agent turns
+left, then right, for all 200 steps. Each step the clearing chain is
+priced again; a turn changes the route's cost and the clearing chain's
+by different amounts, so the cheaper chain flips every step (for
+example ("walk", 123) through the hand one step, through facing the
+door the next). Card 051's commitment keeps the achiever chosen for a
+condition, but not walking's choice between a route and a clearing
+chain. Criteria 1 and 3 were not measured: those runs ran out of GPU
+memory while ten jobs shared it, and were not rerun once criterion 2
+had decided the card.
+
 ## 8. Decision
+
+**Stop.** As declared, criterion 2 failed. Comparing candidate chains by
+cost is still the right principle (P21), but a comparison remade every
+step needs the choice kept until it fails, as card 051 keeps achievers;
+otherwise near-equal chains alternate. A later card can price clearing
+inside the committed chain, with the clearing act's own needs (an empty
+hand) in its cost.

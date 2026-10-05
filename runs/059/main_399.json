@@ -1,0 +1,248 @@
+{
+ "note": "Card 059, tools/card059/howsoon.py (card 056's setup)",
+ "weights": "runs/054/b_m0.5_399.pt",
+ "path": "runs/059/main_399.json",
+ "K": 5,
+ "one_frame_per_episode": true,
+ "identity": {
+  "tau": [
+   0.058,
+   0.1439,
+   0.0547,
+   0.3739
+  ],
+  "classes_per_part": [
+   59,
+   34,
+   44,
+   76
+  ]
+ },
+ "worlds": {
+  "key": {
+   "goal_frame_pools": {
+    "hold green": 334,
+    "switch None": 531,
+    "hold red": 340,
+    "hold blue": 339,
+    "door green": 18,
+    "door blue": 19,
+    "door red": 14
+   },
+   "howsoon": {
+    "states": 150,
+    "items": 600,
+    "reachable_not_yet_met": 497,
+    "frames": {
+     "rank_correlation": 0.9771,
+     "coverage": 0.9638,
+     "mean_abs_error": 0.288,
+     "mean_ratio": 1.04,
+     "per_goal": {
+      "key_match": 0.9842,
+      "key_other": 0.9835,
+      "door": 0.9819,
+      "switch": 0.8804
+     },
+     "seconds_per_estimate": 0.015
+    },
+    "supplied": {
+     "rank_correlation": 0.9776,
+     "coverage": 0.992,
+     "mean_abs_error": 0.282,
+     "mean_ratio": 1.039,
+     "per_goal": {
+      "key_match": 0.9842,
+      "key_other": 0.9854,
+      "door": 0.9841,
+      "switch": 0.8804
+     },
+     "seconds_per_estimate": 0.006
+    },
+    "swapped": {
+     "rank_correlation": -0.2754,
+     "coverage": 0.9658,
+     "mean_abs_error": 5.317,
+     "mean_ratio": 1.313,
+     "per_goal": {
+      "key_match": -0.2164,
+      "key_other": -0.1549,
+      "door": 0.1089,
+      "switch": -0.0153
+     },
+     "seconds_per_estimate": 0.009
+    }
+   },
+   "seconds": 10.9
+  },
+  "switch": {
+   "goal_frame_pools": {
+    "switch None": 524,
+    "hold red": 332,
+    "hold green": 317,
+    "hold blue": 335,
+    "door green": 50,
+    "door red": 50,
+    "door blue": 46
+   },
+   "howsoon": {
+    "states": 150,
+    "items": 600,
+    "reachable_not_yet_met": 512,
+    "frames": {
+     "rank_correlation": 0.9902,
+     "coverage": 0.959,
+     "mean_abs_error": 0.324,
+     "mean_ratio": 1.034,
+     "per_goal": {
+      "key_match": 0.9933,
+      "key_other": 0.9908,
+      "door": 0.9539,
+      "switch": 0.9854
+     },
+     "seconds_per_estimate": 0.012
+    },
+    "supplied": {
+     "rank_correlation": 0.99,
+     "coverage": 0.998,
+     "mean_abs_error": 0.327,
+     "mean_ratio": 1.035,
+     "per_goal": {
+      "key_match": 0.9934,
+      "key_other": 0.9901,
+      "door": 0.9516,
+      "switch": 0.9849
+     },
+     "seconds_per_estimate": 0.003
+    },
+    "swapped": {
+     "rank_correlation": -0.0454,
+     "coverage": 0.9648,
+     "mean_abs_error": 4.806,
+     "mean_ratio": 1.388,
+     "per_goal": {
+      "key_match": -0.0725,
+      "key_other": 0.0025,
+      "door": 0.7853,
+      "switch": 0.4435
+     },
+     "seconds_per_estimate": 0.005
+    }
+   },
+   "seconds": 9.7
+  },
+  "either": {
+   "goal_frame_pools": {
+    "hold red": 320,
+    "hold green": 340,
+    "hold blue": 335,
+    "switch None": 528,
+    "door blue": 57,
+    "door red": 69,
+    "door green": 54
+   },
+   "howsoon": {
+    "states": 150,
+    "items": 600,
+    "reachable_not_yet_met": 510,
+    "frames": {
+     "rank_correlation": 0.9884,
+     "coverage": 0.949,
+     "mean_abs_error": 0.285,
+     "mean_ratio": 1.033,
+     "per_goal": {
+      "key_match": 0.9932,
+      "key_other": 0.9899,
+      "door": 0.9652,
+      "switch": 0.987
+     },
+     "seconds_per_estimate": 0.015
+    },
+    "supplied": {
+     "rank_correlation": 0.9885,
+     "coverage": 0.9843,
+     "mean_abs_error": 0.275,
+     "mean_ratio": 1.032,
+     "per_goal": {
+      "key_match": 0.9933,
+      "key_other": 0.9904,
+      "door": 0.9667,
+      "switch": 0.987
+     },
+     "seconds_per_estimate": 0.008
+    },
+    "swapped": {
+     "rank_correlation": -0.0952,
+     "coverage": 0.9431,
+     "mean_abs_error": 4.085,
+     "mean_ratio": 1.319,
+     "per_goal": {
+      "key_match": 0.0081,
+      "key_other": -0.035,
+      "door": 0.369,
+      "switch": -0.0333
+     },
+     "seconds_per_estimate": 0.009
+    }
+   },
+   "seconds": 9.6
+  },
+  "both": {
+   "goal_frame_pools": {
+    "hold red": 353,
+    "hold blue": 347,
+    "switch None": 529,
+    "hold green": 312,
+    "door blue": 8,
+    "door red": 4,
+    "door green": 1
+   },
+   "howsoon": {
+    "states": 150,
+    "items": 600,
+    "reachable_not_yet_met": 499,
+    "frames": {
+     "rank_correlation": 0.9809,
+     "coverage": 0.9379,
+     "mean_abs_error": 0.434,
+     "mean_ratio": 1.048,
+     "per_goal": {
+      "key_match": 0.9825,
+      "key_other": 0.9897,
+      "door": 0.9678,
+      "switch": 0.8772
+     },
+     "seconds_per_estimate": 0.013
+    },
+    "supplied": {
+     "rank_correlation": 0.9806,
+     "coverage": 0.992,
+     "mean_abs_error": 0.432,
+     "mean_ratio": 1.048,
+     "per_goal": {
+      "key_match": 0.9836,
+      "key_other": 0.9857,
+      "door": 0.9688,
+      "switch": 0.881
+     },
+     "seconds_per_estimate": 0.003
+    },
+    "swapped": {
+     "rank_correlation": -0.2341,
+     "coverage": 0.9699,
+     "mean_abs_error": 6.539,
+     "mean_ratio": 1.467,
+     "per_goal": {
+      "key_match": -0.1789,
+      "key_other": -0.1558,
+      "door": 0.5841,
+      "switch": 0.1288
+     },
+     "seconds_per_estimate": 0.007
+    }
+   },
+   "seconds": 8.5
+  }
+ },
+ "seconds": 546.9
+}
