@@ -160,8 +160,13 @@ changes:
   checkpoint: "changes visible" (the real after-tiles' codes differ from
   the before-tiles' exactly where the simulator says), and the
   transition model's two colour cases.
-- Arms: **V** (gates as amended) and **V0** (no gates), seed 399, 40
-  checkpoints. Criteria 1 and 2 unchanged.
+- Arms: **V** (gates as amended) and **V0** (no gates), seed 399.
+  **Shortened** at the user's request (2026-10-05: "ideally one ≤ 20
+  mins"): 12 checkpoints of 2,000 updates and 100,000 steps of probe
+  collection (about 18 minutes); criteria 1–3 over the last 5
+  checkpoints. Criteria 1 and 2 unchanged; the user does not weigh
+  criterion 1 heavily for now. The first step-1 run was stopped at
+  checkpoint 27 of 40 (its rows are kept as the "before" arm).
 - Smoke (3 checkpoints, 6,000 updates): the margin met by 2,000 updates
   (hinge 0.0); changes visible in 96–100% of changed probe tries
   (step T: a door's opening in 0 of 36); V0's transition model, against
