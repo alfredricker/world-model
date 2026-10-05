@@ -44,6 +44,10 @@ There are no other documents. Do not create notes, reviews or summaries.
   The one exception is the architecture-selection screen in CHARTER.md, run
   once at arch_version 0.
 - A card ends with exactly one decision: keep, revise or stop.
+- A card that changes the agent reports CHARTER's three MiniGrid tiers:
+  tier 1 against its threshold (≥ 99%), tiers 2 and 3 against the best
+  version so far (better, no different or worse). Keep requires tier 1 to
+  pass and no tier to be worse (the user, 2026-10-05).
 - Do not edit `src/` while a run is using it.
 
 ## Writing

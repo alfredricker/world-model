@@ -9,26 +9,38 @@ finished system must satisfy. This file governs how we move toward them.
 
 ## Current world
 
-**Chained rooms** (decided 2026-09-24), ported from the old repo's Gamma
-trajectory: a MiniGrid world of 3–4 connected rooms with keys, locked doors
-(opened by the same-coloured key), switch doors (opened by a grey switch that
-may be out of view), timed doors, boxes with hidden contents, and lava.
+**MiniGrid's own environments, as three evaluation tiers** (decided with the
+user 2026-10-05, replacing the chained rooms of 2026-09-24 as the standing
+evaluation). Every card that changes the agent reports all three, on the
+same environment seeds each time.
 
-- **The learner receives:** an egocentric RGB frame (7×7 tiles at 6 pixels,
-  42×42×3) and its own previous action, one of 5 opaque IDs (turn left, turn
-  right, forward, pickup, toggle). No drop action.
+| Tier | Environment | Size | Task | How it is judged |
+|---|---|---|---|---|
+| 1 | `MiniGrid-DoorKey-8x8-v0` | 8 × 8 | key → door → goal square | **≥ 99% success** (pass/fail) |
+| 2 | `MiniGrid-BlockedUnlockPickup-v0` | 11 × 6 | move the ball blocking the door → key → door → pick up the box | against the best version so far |
+| 3 | `MiniGrid-ObstructedMaze-Full-v0` | 16 × 16 | keys hidden in boxes, balls blocking doors, locked doors across rooms; 3,600 steps | against the best version so far |
+
+- **Against the best version:** success on the same seeds, compared pair
+  by pair: better or worse when the paired difference is beyond chance
+  (McNemar's test, p < 0.05), otherwise no different; steps to success
+  reported alongside. A change is kept only if tier 1 passes and neither
+  tier 2 nor tier 3 is worse; the card's own question decides the rest.
+  STATUS names the best version and its three scores.
+- **The learner receives:** MiniGrid's 7 × 7 egocentric view with
+  occlusion, as tile images, and its own previous action: turn left, turn
+  right, forward, pick up, drop, toggle (MiniGrid's "done" is not used).
+  The goal is the environment's success signal (episode end), or its
+  mission given as a goal condition or example frames (GOAL C1).
 - **The learner never receives:** simulator state, object positions or
   identities, event labels, rewards as supervision unless a card declares
   it, or the evaluator's probe labels.
-- **Splits:** train and development use red/green/blue; `transfer_combo`
-  holds out colour/door-row combinations; `transfer_colour` uses purple and
-  yellow, never seen in training.
-- **Declared curriculum:** half of collected episodes are "play starts" (any
-  room, some doors open, half holding a locked door's key). Screens report
-  ordinary and play starts separately.
+- **Experience:** random play in each environment, collected as card 034's
+  (declared per card); the encoder is shared across environments (C2).
+- **Development worlds:** the key, switch, either and both worlds and the
+  chained rooms stay for the ladder's tests and for diagnosis.
 
-The next world (Crafter) is entered only when the ladder rungs that chained
-rooms can test have passed.
+The next world (Crafter) is entered only when the ladder rungs that these
+worlds can test have passed.
 
 ## Capability ladder
 
