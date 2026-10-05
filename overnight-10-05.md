@@ -18,3 +18,12 @@ difference apart by a margin.
   encoder leaves no clean gap between noise and real differences (boxes
   of every colour within noise; doors 7× noisier than keys), so noisy
   copies split. As declared, on to step B.
+- **Step B (the encoder keeps visibly different tiles at least m apart;
+  three arms):** m = 0.5 is strongest: recall's colour cases 100% /
+  100% (codebook: 45% / 85%), noise changes 1.8% of predictions (bar
+  1%), the planner 100% in the familiar worlds, chained rooms 100%,
+  cluttered 100% (version 10: 100%, 98%, 98–100%), and the right
+  conditions admitted. m = 1.0 and m = 1.0 with noisy copies pulled
+  together were weaker on recall (other key 52–58%). Picking up while
+  holding fails under every encoder (rare in random play; a limit of
+  recall's data). Next: seeds 400–402.

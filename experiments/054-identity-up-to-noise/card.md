@@ -200,6 +200,11 @@ kind), and recall follows the many empty-handed pick-ups, where the
 front tile does change. Reported as a limit of recall's data, not of
 this card's change.
 
+**Step D on seed 399** (m = 0.5, identity up to noise;
+`runs/054/d_*_m05_399.json`): chained rooms with one door 100% of 100
+layouts at 1.00 × the shortest route; cluttered 100% at 1.06 ×
+(version 10 with its codebook encoder: 98%, 98–100%).
+
 **B's choice: m = 0.5** (the declared order: criterion 1 equal at 100%
 in every arm; criterion 2 best, 100% / 100% and 98.2%; criterion 3 equal).
 
