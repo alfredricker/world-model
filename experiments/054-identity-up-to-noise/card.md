@@ -163,4 +163,31 @@ starts a class; the class mean follows its members.
 
 A goes on to B, as declared: B's margin is what should open the gap.
 
+**Step B, seed 399** (12 checkpoints each, 18 minutes; `runs/054/b_*`,
+evaluated by `runs/054/eval.sh`). A third arm was added before any B
+result was read (overnight rule 2: run the options and keep the
+strongest): m = 1.0 with noisy copies pulled together (batch tiles
+within pixel noise; squared distance, weight 1), because step A's
+failures were noisy copies splitting, which the margin alone does not
+address.
+
+| | V0 + codebook | V0 + A | m = 0.5 | m = 1.0 |
+|---|---|---|---|---|
+| Recall: matching / other key | 45% / 85% | 100% / 60% | **100% / 100%** | 100% / 57.5% |
+| Same prediction, two noise draws | 97.0% | 95.8% | 98.2% | 94.4% |
+| All probe tries | 85.9% | 76.7% | 82.6% | 77.9% |
+| Planner, four familiar worlds | 100% | 100% | 100% | 100% |
+| Card 049's conditions | – | ✓ | ✓ | ✓ |
+| Identity pairs within τ in every part | – | 34 | 30 | 7 |
+
+Training (last 5 checkpoints): effects known 96.7–98.1%, changes
+visible 94.5–100%, both margins met (hinges near 0). Under m = 0.5
+recall fails on picking up while holding (0% on those kinds): the held
+tile's renders before and after sometimes take different identities,
+which records a change that did not happen. Part 3 carries most
+separations and most noise (noisy copies spread up to 0.51 there; τ_3
+0.49), so boxes of every colour and a closed and a locked door share
+every part's class although the pixel rule calls them different (mean
+absolute differences 0.09–0.12 against a noise ceiling of 0.021).
+
 ## 8. Decision
