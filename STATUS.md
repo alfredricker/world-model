@@ -13,13 +13,12 @@ Overwritten each session. At most 40 lines.
   work, not by adding terms; tint set aside (the agent never acts on
   it); the encoder learns latent transitions together with conditions.
 - **Active card:** [053](experiments/053-recall-on-transition-encoder/card.md),
-  draft: version 10's recall and planner on an encoder trained by
-  transitions. Step 1 (the R1 checks): gates and code restarts
-  calibrated, the encoder under noise. Step 2 (R2): does recall's
-  front–held relation read the key–door match, and does the planner
-  still work.
-- **Next decision (the user):** how to stop the encoder erasing what
-  actions change (card 053's step 1 gate cannot pass as built).
+  done, fail, revise proposed. The visibility margin (C-SWM's hinge on
+  the agent's observed changes) fixed the encoder erasing what actions
+  change; version 10's planner on it: 100% in all four familiar worlds.
+  Recall's colour cases 45% / 85% (bar 90%): codes merge key colours.
+- **Next decision (the user):** accept "revise"; next, codes split
+  where a situation's own tries disagree, then card 054.
 - **Recent cards:**
   - [052](experiments/052-staged-encoder/card.md): done, fail, revise.
     Kept: the generator with play starts, recall's predictions as the

@@ -3,8 +3,8 @@ id: "053"
 title: version 10's recall and planner on an encoder trained by transitions
 rung: 0
 serves: [P4, P7, P12]
-status: approved
-verdict:
+status: done
+verdict: fail
 arch_version: 10
 date: 2026-10-04
 ---
@@ -226,5 +226,59 @@ passes: clean familiar worlds were never the hard case.
 T). Step 2a: about 10 minutes. Step 2b: about 30 minutes for five seeds.
 
 ## 7. Result
+
+**Step 1, first run (step T's objective, stopped at checkpoint 27):**
+its codes do not see what actions change (card 052's correction); kept
+as the "before" arm (`runs/053/s1_T*_399.json`).
+
+**Step 1, revised (visibility margin), seed 399, 12 checkpoints, 17
+minutes** (`runs/053/s1v_*_399.json`, weights in `.pt`); last 5
+checkpoints:
+
+| | Bar | V0 (no gates) | V (gates) |
+|---|---|---|---|
+| 1. Identities split / tuples shared | ≤ 8 / ≤ 8 | 1–9 / 14–19 ✗ | 19–31 / 20–26 ✗ |
+| 2. Probe tiles changing code per checkpoint | ≤ 5% | 11–42% ✗ | 17–62% ✗ |
+| 3. Effects known (against the simulator) | ≥ 95% | 96.7–97.8% ✓ | 17–43% ✗ |
+| Changes visible in the codes (reported) | | 97.5–99.5% | 61–92% |
+| Transition model: matching / other key | | 85–97.5% / 55–80% | 0–50% / 0–5% |
+
+The gates fail: with effects visible, each action's masks collapsed to
+one or two inputs (toggle reads two front parts and nothing of the
+key). Neither arm passes the gate; step 2 was run on V0 as a diagnostic
+(five minutes), since criteria 1 and 2 concern codes during learning
+and step 2 freezes the encoder. The user decides whether it counts.
+
+**Step 2 on V0** (`runs/053/s2a_V0_399.json`, `s2b_V0_399.json`):
+
+| | Bar | V0 | Pixel recipe (baseline) |
+|---|---|---|---|
+| 1. Recall: matching key / other key | ≥ 90% each | 45% / 85% ✗ | 25% / 72.5% |
+| 2. Same prediction, two noise draws | ≥ 99% | 97.0% ✗ | 96.1% |
+| 3. Planner, familiar worlds (key, switch, either, both) | ≥ 99% | **100% in all four ✓**, steps within 5% of card 029's, held-out effects ≥ 99.99% exact | not run |
+| All probe tries, recall | | 85.9% | 82.9% |
+
+**Why criteria 1 and 2 fail: the codes, not the vectors.** Under V0,
+keys of five colours (yellow, grey, orange, cyan, white) share one code
+tuple and blue and purple another; locked doors of purple, cyan and
+white share one. Every matching-key probe try had its own situation in
+memory, but that situation mixes matching and other keys, and own tries
+decide (α 0.22–0.41). The transition model, reading the vectors, gets
+the matching key in 97.5%. The red locked door splits into two tuples
+under noise (2732 and 2736), which flips 3% of predictions. The
+familiar worlds' red, green and blue keys have distinct tuples (1171,
+1177, 1172), so the planner is unaffected.
+
+## 8. Decision
+
+**Proposed: revise** (the user decides). The visibility margin is kept:
+it turned an encoder that erased what actions change into one on which
+version 10's planner reaches 100% in the familiar worlds, with recall
+above the pixel recipe. The gates are removed (they collapse). What
+remains is the codes' resolution: recall's own-situation level merges
+key colours, and noise splits a few tiles. Next: codes split where a
+situation's own tries disagree (appendix A of card 052: errors say when
+a new distinction is needed; McCallum's utile distinctions), then card
+054.
 
 ## 8. Decision
