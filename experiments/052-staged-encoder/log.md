@@ -127,3 +127,11 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   alone 22 (copies close, but fixed cell boundaries cut them), clean
   merges 84 identities into 28 tuples. Next needs the user: colour
   constancy, and codes placed at the data.
+- Step T (the user: tint aside; transitions plus conditions): three
+  arms. T0's transition model knows the colour cases (40/40, 40/40) and
+  99.3% of probe effects under noise, but the stand-in recall cannot
+  read the match (27% / 84%). T's gates all closed (L1 0.01 outweighed
+  the small mean transition loss; the balance was not measured first,
+  as with R1's invariance term). Codes relabel with restarts every 250.
+  Next: R2 (the agent's recall on T0-style vectors), after calibrating
+  the gates and restarts.

@@ -1107,6 +1107,48 @@ Reported: each action's open gates (its conditions), against what the
 evaluator knows (toggle should read the held tile and the front–held
 relation for locked doors).
 
+### Step T result: the transition model knows the colour cases; the gates closed; recall cannot read the match
+
+Seed 399, no tint, 40 checkpoints, three arms in parallel, 44–51
+minutes (`runs/052/sT_*_399.json`, weights in `.pt`). Over the last 10
+checkpoints:
+
+| | Baseline (uniformity + effect) | T0 (transitions, no gates) | T (transitions, gates) |
+|---|---|---|---|
+| 1. Identities split (≤ 8) | 3–7 | 2–19 | 1–15 |
+| 1. Tuples shared (≤ 8) | 11–13 | 17–24 | 17–21 |
+| Distinct tuples | 67–69 | 29–39 | 23–34 |
+| 2. Matching / other key, codes then vectors | 15% / 88% | 27% / 84% | 0% / 100% |
+| 3. Prediction flips | 0.5–1.9% | 0.2–2.5% | 0.1–2.8% |
+| 4. Effects known (online codes) | – | 17–99%, 98–100% per action at the end | 1–80% |
+| Probe tiles changing code | 1–3% | 12–47% | 16–59% |
+
+No arm meets the criteria. Three findings:
+- **T0's transition model predicts the colour cases.** On the probe's
+  locked-door tries (`tools/card052/diag/transition_colour.py`): with
+  the door's key it predicts the door opens, 40 of 40; with another
+  key, that it stays locked, 40 of 40; 99.3% of all 3,564 probe tries'
+  effects are right. The encoder carries the key–door match under
+  noise, and a learned predictor reads it. The stand-in recall (codes
+  then vectors, step 2c) does not: neither an exact code key nor a
+  kernel over distances says "the colours match".
+- **The gates closed.** With the L1 weight at 0.01 every gate fell below
+  0.035: the mean transition loss is small (most tries change nothing,
+  and the residual form makes "nothing" free), so reading any input
+  cost more than it gained. The model then ignores colour entirely. The
+  balance was not measured before the run, as it was not for R1's
+  invariance term; it should have been.
+- **Codes relabel.** With the moving-average codebook restarted every
+  250 updates, 12–59% of probe tiles change code per checkpoint, which
+  is also why "effects known" by online codes swings (17–99%).
+
+**Decision proposed: revise.** The encoder question has moved: the
+representation from transitions carries what the colour cases need; the
+open question is whether the agent's own recall (card 049's admitted
+conditions, which include the front–held relation per part) reads it,
+which is R2. Before R2: the gates' L1 set from a measured balance, and
+restarts only for entries unused over a long window.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.
