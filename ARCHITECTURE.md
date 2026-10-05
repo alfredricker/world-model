@@ -1,8 +1,26 @@
 ---
-arch_version: 14
+arch_version: 15
 ---
 
 # Architecture
+
+Version 15 is version 14 with walking that keeps nothing per pair of
+placements ([card 067](experiments/067-closeness-by-propagation/card.md),
+kept 2026-10-05). For one situation and one need, every placement the
+agent could stand at takes its closeness to the need from its
+neighbours only (the need's placements are 0; any other is one more than
+the least of the placements its three moves lead to, forward only onto a
+walkable token), iterated to a fixed point; the agent takes a move that
+brings it closer. When no placement of the need can be reached, tokens
+memory has seen made walkable can be crossed at one step more, and the
+first a least route crosses becomes the condition ("walk", j). Version
+14's how-soon network and its tables over every pair of the 676
+placements are gone, so the token lattice is sized to the map. On
+CHARTER's MiniGrid tiers ([card 066](experiments/066-minigrid-tiers/card.md)):
+DoorKey-8x8 100% (200 episodes, the same steps as version 14 in 199,
+2.1 ms per step against 2.9), BlockedUnlockPickup 0% as version 14 (memory
+and recall stop it, not walking), ObstructedMaze-Full: memory cannot yet
+be built.
 
 Version 14 is version 13 with each stored pick up, toggle and drop
 recording what the agent believed was around it (its tiles seen so far
@@ -167,12 +185,14 @@ Version 5, the counted model over exact tile IDs, is in git (commit
   on a thing come from tries on the same thing and on similar things, and
   recall judges each (card 047): a failed try rules out its own
   situation, not the thing.
-- **Walking** (card 045): a small network predicts how soon the agent can
-  stand at a placement (System 1); the approach works when the tokens on
-  its route are walkable, and chains of approaches through waypoints, or
-  a door as a condition, cover the rest (System 2). When no route needs
-  only one blocked token cleared, pairs of tokens are tried (version 10).
-  No step is imagined while walking.
+- **Walking** (card 067, version 15): per situation and need, a closeness
+  propagated over the placements the agent could stand at, each from its
+  neighbours (value iteration on the believed map); a move that brings
+  the agent closer is taken. A blocked way: tokens memory has seen made
+  walkable are crossable at one step more, and the first one a least
+  route crosses becomes a condition. Nothing is kept per pair of
+  placements; each move is relaxed about once per field. No recall is
+  called on an imagined step while walking.
 - Time per step 5.7–9.9 ms from base memory to +20,000 stored keys
   (version 9: 43–4,640 ms); 0.24 s per layout in the key world (version
   9: 2.7 s), 0.20–0.64 s in the familiar worlds with five runs sharing
@@ -217,7 +237,7 @@ flowchart TD
     O --> FA["Tokens: a what per token, one transformation giving every where"]
     FA --> S["Means-ends search over conditions, checked in produced situations"]
     R --> S
-    Q["How soon: a network over placements, fitted on the move transformations"] --> WK["Walking: routes' tokens walkable, waypoint chains, doors as conditions"]
+    Q["Closeness per need: propagated over standing placements, forward onto walkable tokens"] --> WK["Walking: a move that brings the agent closer; crossable tokens become conditions"]
     FA --> WK
     R --> WK
     WK --> S
@@ -242,11 +262,10 @@ flowchart TD
 | Own-situation prior | α per action | How much the neighbours count against a situation's own tries | Leave-one-try-out likelihood (card 050) |
 | Version 8's recall weights | λ1, λ2, β | Still fitted: the planner's situations (card 047) read them | As version 8 (card 042) |
 | Move transformation | Per move: M (2 × 2), b (2) | How a move changes every where | Least squares on the counted correspondences of places before and after moves (cards 028, 044) |
-| Placement | One transformation, of 676 reachable by composing the moves' | Where every token is relative to the agent | Composed from the move transformations |
-| Tokens, situation | A handle per token id (638 ids: the first view's places, the held row, the rest within 12 tiles), "absent" where none seen; (tokens, placement, ended) | Belief, real or imagined | Placed views, written in by where |
+| Placement | One transformation, of those reachable by composing the moves' with the agent within the lattice (676 at 12 tiles; 3,364 at 20) | Where every token is relative to the agent | Composed from the move transformations |
+| Tokens, situation | A handle per token id (the first view's places, the held row, the rest within the lattice: 638 ids at 12 tiles, set per map since card 066), "absent" where none seen; (tokens, placement, ended) | Belief, real or imagined | Placed views, written in by where |
 | Condition | ("end"), ("walk", j), ("face", a, u, j), ("part", hand or view, a, u, j, c, …) | What must hold for an action to have an effect | Worked out from memory (card 038) |
-| How-soon network | 4 inputs (the placement's offset from the agent and its relative heading), 3 outputs (one per move) | Steps until the agent stands at a placement, after each move | Fitted Q-iteration on the move transformations, every place within 6 tiles and heading a target (card 045) |
-| Routes | Per pair of the 676 placements: steps V, first move, the tokens stepped onto | The approach between two placements | Worked out once from the network's moves and the transformations |
+| Closeness field | Per standing placement of one situation: steps to the need's placements | How close each placement is to a need | Propagated from the need's placements over the reverse moves (card 067); memoised for the step |
 
 ## Learning
 
@@ -312,20 +331,18 @@ At every step:
      present, and one whose act breaks what another's plan relies on is
      not pursued first; when card 043 asks only for the view, the
      present hand is a protected link.
-4. **Walk** through conditions (card 045):
-   - System 1: the how-soon network gives the steps and first move to any
-     placement facing the target, and the route's tokens;
-   - System 2: the route works when its tokens are walkable (recall's
-     forward kind). Otherwise a chain of clear approaches through up to 6
-     waypoints is taken (least total steps);
-   - when no single blocked token gives a route, pairs are tried, and the
-     token the cheapest route steps onto first becomes the condition
-     (version 10);
-   - when no chain exists, tokens recall predicts a pick up or toggle can
-     make walkable (card 047) are counted walkable; those a least chain
-     crosses become conditions ("walk", j), pursued like any other;
-   - alternatives (the key or the switch) are chosen by the chains'
-     predicted steps;
+4. **Walk** through conditions (card 067):
+   - the closeness field of the need's placements (those facing the
+     target, standing on a walkable token): forward counts only onto a
+     token recall's forward kind says moves the agent; the agent takes a
+     move that brings it closer (forward, left, right among equals);
+   - when no placement of the need can be reached, tokens recall predicts
+     a pick up or toggle can make walkable (card 047) are crossable at one
+     step more; the first one a least route crosses becomes the condition
+     ("walk", j), pursued like any other; if it cannot be met it is left
+     out and the next least route is taken;
+   - alternatives (the key or the switch) are chosen by their predicted
+     steps;
    - (version 11) when there is no chain at all, walk to the nearest
      placement standing on a known walkable token from which a
      never-seen place would be in view (frontier exploration);
@@ -351,7 +368,7 @@ At every step:
 | Tokens and placements | What the agent has seen and where it is now | View → (tokens, placement) | Card 016; `1905_12006`; transformer patch tokens (Dosovitskiy et al. 2020); `1812_02230`; card 044; least trimmed squares (Rousseeuw 1984, not in papi); cards 057, 061 | Moves as fitted transformations of where, learned from the 7 × 7 view by a trimmed fit; matching by L1 over observed places, among the placements the action could lead to |
 | Looking | Where to go when no chain of conditions exists | Tokens → move or ("walk", j) | Frontier exploration (Yamauchi 1997, not in papi); card 060 | Frontier = never-seen places next to known walkable tokens; a door next to never-seen places becomes a condition, kept between steps |
 | Subgoals | Which condition to pursue next, down to an action | Facts, recall → action | `strips`, `cs_9401101`; cards 029, 038, 043 | Conditions from memory, checked in produced situations |
-| Walking | Reach a placement facing a target | Tokens, placements, recall → move | `universal-value-function-approximators`, `1707_01495`, `1906_05253`; skill chaining (Konidaris and Barto 2009); card 045 | One how-soon network over the learned move transformations; the route's tokens as its conditions; waypoint chains; doors as conditions |
+| Walking | Reach a placement facing a target | Tokens, placements, recall → move | Value iteration (Bellman 1957); `1602_02867` (VIN); cards 045, 067 | Propagated on the agent's own believed map, not learned end to end; walkability from recall, neighbours from the learned moves; crossable tokens become conditions; nothing per pair of placements |
 
 ## Built-in priors and supplied information
 
@@ -382,11 +399,15 @@ At every step:
     were observed in at least 50 rows and vary, and the fit is trimmed
     until every correspondence lies within half a place.
 - **The procedures are designed, not learned:** the order of needs, the
-  search depth (6), the route procedure (card 045's declared exception),
+  search depth (6), walking's propagation (card 067's declared
+  exception: computed, not a trained System 1),
   and the order of moves among equals (forward, left, right).
 - **Goal and experience.** The episode's end is observed, and reaching the
   goal square is the only goal. Experience is 5,000 random episodes per
-  world, stored as in version 5.
+  world, stored as in version 5. On the MiniGrid tiers (card 066): random
+  play of about 3.2 million steps per tier; tiers 2 and 3's goal (holding
+  the mission's object) is written in as its tile; the token lattice
+  covers the map from any start (12, 14 and 20 tiles).
 - **The evaluator** reads the simulator for checks only.
 
 ## Known limits
@@ -416,18 +437,23 @@ At every step:
 - **An achiever whose needs change form.** One failure is left in
   card 051's 1,950 test episodes: cluttered seed 403 layout 93, where
   the chosen achiever's needs alternate in form from step to step, so
-  commitment does not hold it. Walking considers pairs of blocked
-  tokens, not more.
+  commitment does not hold it.
 - **Partial views.** Since version 14 it sees MiniGrid's 7 × 7 view with
   occlusion and its starting memory is learned from that view (cards
   061–062). The encoder's training (card 054) was not re-audited for the
-  view, and the rooms are small next to the view; maps much larger need
-  routes on demand (below). Recall's "a key of another colour does not
+  view. Recall's "a key of another colour does not
   fit" is weak on noisy renders (card 054: 62.5–70% on three of four
   seeds; card 063 did not fix it).
-- **A small fixed world.** Routes are worked out for every pair of the
-  676 placements, and tokens live on a fixed grid of 638 places. A larger
-  or partly seen world needs routes on demand and a map.
+- **A lattice sized in advance.** Tokens live on a fixed grid set per
+  map (card 066's prior); walking no longer limits it (version 15), but a
+  map whose size is not known in advance needs the lattice to grow.
+- **MiniGrid tier 2 (card 066):** 0%. Random play leaves memory without
+  an open door walked through in some colours, so those doors are not
+  openable; recall lets other keys open some doors; and the agent does
+  not learn to free its hand before picking up the box.
+- **MiniGrid tier 3:** memory cannot be built: recall's fit of its view
+  weights compares every pair of distinct stored views at once (698 GB
+  here).
 - **Slower than version 5:** 0.20–0.64 s per layout in the familiar
   worlds (version 5: 0.015–0.024); the switch world with a new-colour
   door was 4–19 s in version 8 and is not retimed.
@@ -460,3 +486,4 @@ At every step:
 | 13 | 2026-10-05 | 061 | The move model and undraw learned from play seen through the 7 × 7 occluded view: card 028's correspondences counted only where both places were observed and the place varies there, card 044's transformation fitted by least squares trimmed to the correspondences that agree (16 for turns, 35 for forward; residual 0); undraw from the agent on X after a forward step and X ahead before. The same transformations as the full window on four encoders; undraw the same on every tile stepped off, and exact on the goal where the full window had imagined it; acting unchanged (familiar worlds 100%, card 060's steps; chained rooms 100%). Kept overnight by Claude under the user's overnight rules; confirmed by the user 2026-10-05 |
 | 14 | 2026-10-05 | 062 | Stored tries of pick up, toggle and drop record what was in view in the agent's belief at that step (tiles seen so far in the episode through the 7 × 7 occluded view, placed by its own motion, never-seen places as the unseen appearance), from a replay of the stored play checked row by row against it. 92–96% of stored tries changed their in-view set; conditions discovered on four encoders (key world: relation or hand; switch world: a yellow switch in view, formerly a grey one); familiar worlds 100% at card 061's steps, chained rooms 100%. Kept overnight by Claude under the user's overnight rules; confirmed by the user 2026-10-05 |
 | 14 | 2026-10-05 | 054 | The user adopts card 054's encoder (no learned codebook; identity up to noise; margin 0.5), on which versions 11–14 ran; behaviour unchanged |
+| 15 | 2026-10-05 | 067 | Walking by a closeness propagated over the believed map per situation and need, in place of the how-soon network and the tables over every pair of placements; crossable tokens become conditions in one field, in place of single and paired token searches. MiniGrid tier 1 200/200 (as version 14), tier 2 0/100 (as version 14); setup 21 s against 47 |

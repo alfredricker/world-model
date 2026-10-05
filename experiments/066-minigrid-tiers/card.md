@@ -3,8 +3,8 @@ id: "066"
 title: CHARTER's three MiniGrid tiers, and version 14 on them
 rung: 1
 serves: [P18, P17, C1, C3]
-status: draft
-verdict:
+status: done
+verdict: pass
 arch_version: 14
 date: 2026-10-05
 ---
@@ -77,6 +77,10 @@ Random play per tier (`runs/066/memory_tier*.json`):
 2. **Tier 1:** version 14 reaches ≥ 99% over 200 episodes (CHARTER).
 3. **Tiers 2 and 3:** reported on fixed seeds with success, steps, the
    share of random and exploring steps and time per step; no threshold.
+   Tier 2: 100 episodes, each stopped after 5 minutes of wall-clock and
+   counted as a failure (reported). Tier 3: the memory cannot be built
+   (recall's weight fit, 698 GB); recorded as such, and left to a later
+   card (the user, 2026-10-05).
 
 **Prediction.** Tier 1 passes (DoorKey is our key world with an
 unseen goal square). Tier 2 low: the ball in front of the door needs
@@ -90,5 +94,53 @@ reference) if criteria 1 and 2 hold; revise the adapter if criterion 1
 fails; if tier 1 fails, keep the harness and record version 14 as not
 passing tier 1.
 
-**Budget.** Tier 1, 200 episodes: about a minute. Tiers 2 and 3: set from
-the smoke runs (section 7).
+**Budget.** Tier 1, 200 episodes: about a minute. Tier 2: at most about
+25 minutes. Approved by the user on 2026-10-05.
+
+## 7. Result
+
+Version 14, card 054's encoder (seed 399); `runs/066/v14_tier1.json`,
+`runs/066/v14_tier2.json`.
+
+| Tier | Episodes | Success | Steps when successful | Random steps | Exploring steps | Time per step | Setup |
+|---|---|---|---|---|---|---|---|
+| 1, DoorKey-8x8 | 200 | **100%** | 20.8 | 0% | 61% | 2.9 ms | 47 s |
+| 2, BlockedUnlockPickup | 100 | **0%** | – | 45% | 54% | 65 ms | 171 s |
+| 3, ObstructedMaze-Full-v1 | – | memory cannot be built | – | – | – | – | – |
+
+- **Criterion 1 (adapter): pass.** 0 differing tiles and 0 visibility
+  differences in 900 states.
+- **Criterion 2 (tier 1): pass,** 200 of 200.
+- **Criterion 3 (tiers 2 and 3): reported.** Tier 2: no success; one
+  episode stopped at 5 minutes. Tier 3: building memory fails in recall's
+  fit of its view weights, which compares every pair of distinct stored
+  views at once (a 698 GB tensor here).
+
+**Why tier 2 fails** (traces of seeds 1002000 and 1002003, card 067's
+walking, which acts alike here). Three causes, in the order an episode
+meets them:
+1. *A locked door is not openable for some colours.* Recall predicts
+   that toggling with the matching key opens the door in all six colours,
+   but random play walked onto an open door only 0–8 times per colour
+   among the stored rows; the open green door is not known to be
+   walkable, so the green and blue doors never become a condition and the
+   agent explores, then acts at random, in the first room.
+2. *Other keys.* Recall lets a key of another colour open the purple and
+   yellow doors (0 of 5 other keys predicted to fail), card 054's
+   weakness, exposed by six colours. Toggle's admitted conditions are the
+   held tile's fourth part and four "a key of colour X in view"; the
+   relation between door and held key (`rel:3`), admitted in tier 1,
+   is not.
+3. *The hand.* Where the door was opened (seed 1002000), the agent walked
+   to the box holding the key; the pick up failed, and recall offered
+   "pick up the open door" or "hold the ball" as ways to free the hand;
+   one search over such conditions took 10 seconds.
+
+## 8. Decision
+
+**Keep.** The harness and these scores are the reference that later
+cards are compared against: tier 1 100%, tier 2 0%, tier 3 not buildable.
+Tier 2's three causes are in memory and recall, not in walking: play
+starts for memory (card 068), the relation between key and door, and the
+hand's conditions. Tier 3 needs recall's weight fit to scale (a later
+card, the user, 2026-10-05).

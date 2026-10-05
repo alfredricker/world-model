@@ -28,6 +28,7 @@ walking swapped in by a later card (--walking).
 """
 import json
 import os
+import signal
 import sys
 import time
 from collections import Counter
@@ -385,6 +386,17 @@ PLANNER = {"cls": None}
 
 # ---------------------------------------------------------------- one episode
 
+CAP_SECONDS = float(_arg("--cap", "300"))               # an episode's wall-clock budget; past it, a failure (reported)
+
+
+class OutOfTime(Exception):
+    pass
+
+
+def _out_of_time(*_):
+    raise OutOfTime
+
+
 def episode(job):
     tier, seed = job
     W = VP.WORLD
@@ -406,29 +418,39 @@ def episode(job):
     rew = 0.0
     c0 = [dict(c) for c in COUNTS]
     t0 = time.monotonic()
-    for t in range(env.max_steps):
-        res = pl.choose(st)
-        a = res.action if res is not None else PV.fallback(pl, st, rng, rec)
-        if TRACE:
-            fr = env.grid.get(*env.front_pos)
-            print(f"t {t:3d} a {VP.KNAME.get(a, a) if hasattr(VP.KNAME, 'get') else a} at {tuple(env.agent_pos)} d "
-                  f"{env.agent_dir} holds {getattr(env.carrying, 'type', None)} {getattr(env.carrying, 'color', '')} "
-                  f"front {getattr(fr, 'type', None)} {getattr(fr, 'color', '')} | "
-                  + ("fallback" if res is None else " <- ".join(name(c) for c in res.trace[:6])), flush=True)
-        Vb = pl.view(st)
-        pred = pl.step(st, a)
-        _, rew, te, tr, _ = env.step(a)
-        codes = now_codes(env)
-        V2 = PV.crop(Kd.APP[codes], codes)
-        facts, st2, miss, _ = pl.observe(facts, V2, te, prefer=pred[1], cands=PV.moved_to(st, a))
-        rec["pred_wrong"] += bool(miss)
-        x, y = env.agent_pos
-        rec["beyond_lattice"] += max(abs(x - x0), abs(y - y0)) > TK.LR - R
-        W.learn_try(Vb, a, pl.view(st2), te)
-        pl.forget()
-        st, V = st2, V2
-        if te or tr:
-            break
+    rec["timed_out"] = False
+    signal.signal(signal.SIGALRM, _out_of_time)
+    signal.setitimer(signal.ITIMER_REAL, CAP_SECONDS)
+    t = 0
+    try:
+        for t in range(env.max_steps):
+            ts = time.monotonic()
+            res = pl.choose(st)
+            a = res.action if res is not None else PV.fallback(pl, st, rng, rec)
+            if TRACE:
+                fr = env.grid.get(*env.front_pos)
+                print(f"t {t:3d} {time.monotonic() - ts:6.2f}s a {VP.KNAME.get(a, a)} at {tuple(env.agent_pos)} d "
+                      f"{env.agent_dir} holds {getattr(env.carrying, 'type', None)} {getattr(env.carrying, 'color', '')} "
+                      f"front {getattr(fr, 'type', None)} {getattr(fr, 'color', '')} | "
+                      + ("fallback" if res is None else " <- ".join(name(c) for c in res.trace[:6])), flush=True)
+            Vb = pl.view(st)
+            pred = pl.step(st, a)
+            _, rew, te, tr, _ = env.step(a)
+            codes = now_codes(env)
+            V2 = PV.crop(Kd.APP[codes], codes)
+            facts, st2, miss, _ = pl.observe(facts, V2, te, prefer=pred[1], cands=PV.moved_to(st, a))
+            rec["pred_wrong"] += bool(miss)
+            x, y = env.agent_pos
+            rec["beyond_lattice"] += max(abs(x - x0), abs(y - y0)) > TK.LR - R
+            W.learn_try(Vb, a, pl.view(st2), te)
+            pl.forget()
+            st, V = st2, V2
+            if te or tr:
+                break
+    except OutOfTime:
+        rec["timed_out"], te = True, False
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
     rec.update({"success": bool(te and rew > 0), "steps": t + 1, "seconds": round(time.monotonic() - t0, 2),
                 "walk_seconds": round(getattr(pl, "walk_seconds", 0.0), 2),
                 "plan_seconds": round(getattr(pl, "plan_seconds", 0.0), 2)})
@@ -457,6 +479,7 @@ def run(tier, n, out, log, workers=20):
            "random_share": round(sum(r["random"] for r in recs) / steps, 4),
            "explore_share": round(sum(r["explore"] for r in recs) / steps, 4),
            "episodes_beyond_lattice": int(sum(r["beyond_lattice"] > 0 for r in recs)),
+           "episodes_out_of_time": int(sum(r["timed_out"] for r in recs)), "cap_seconds": CAP_SECONDS,
            "seconds_per_step": round(sum(r["seconds"] for r in recs) / steps, 4),
            "counts": {k: round(sum(r.get(k, 0) for r in recs), 4) for c in COUNTS for k in c},
            "wall_seconds": round(time.monotonic() - t0, 1), "setup": info, "per_episode": recs}

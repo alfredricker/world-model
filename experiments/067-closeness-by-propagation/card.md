@@ -3,8 +3,8 @@ id: "067"
 title: closeness by propagation over the believed map
 rung: 1
 serves: [P17, P12, P21, P18]
-status: draft
-verdict:
+status: done
+verdict: pass
 arch_version: 14
 date: 2026-10-05
 ---
@@ -86,14 +86,19 @@ boxes 2,889 (tier 3).
 
 ## 6. Success criteria and prediction
 
-Card 066's seeds and episode counts; version 14's scores from card 066.
+Approved by the user on 2026-10-05, to be decided on tiers 1 and 2: tier
+3's memory cannot be built yet (recall's weight fit compares every pair of
+stored views at once, 698 GB there; a later card), so tier 3 counts as no
+different. Card 066's seeds: 200 episodes of tier 1, 100 of tier 2; an
+episode still running after 5 minutes of wall-clock is stopped and counted
+as a failure, for both versions alike (reported).
 
 1. **Tier 1:** success ≥ 99% (CHARTER).
-2. **Tiers 2 and 3:** not worse than version 14 (paired over the same
-   seeds, McNemar's test, p < 0.05).
+2. **Tier 2:** not worse than version 14 (paired over the same seeds,
+   McNemar's test, p < 0.05).
 3. **Cost:** nothing is kept per pair of placements, and the work per
    field is linear in the map: on average at most 4 relaxations per move
-   edge of the field, over every field of the three tiers. Reported:
+   edge of the field, over every field of tiers 1 and 2. Reported:
    time per step, fields per step, placements per field.
 
 **Prediction.** Tier 1 as version 14. Tier 2 no different: both meet card
@@ -106,4 +111,40 @@ pair tables grow with the square of the lattice.
 fails on one tier with a diagnosis in walking. Stop if tier 1 falls below
 99%.
 
-**Budget.** Set from card 066's timings (section 7 of that card).
+**Budget.** Tier 1 about a minute; tier 2 at most about 25 minutes (100
+episodes on 20 workers, 5 minutes at most each).
+
+## 7. Result
+
+`runs/067/tier1.json`, `runs/067/tier2.json`; version 14's from card 066,
+on the same seeds.
+
+| | Tier 1: version 14 | Tier 1: this card | Tier 2: version 14 | Tier 2: this card |
+|---|---|---|---|---|
+| Success | 100% (200) | **100%** (200) | 0% (100) | **0%** (100) |
+| Episodes one solved and the other did not | – | 0 | – | 0 |
+| Steps when successful | 20.8 | 20.8 (199 of 200 the same; one 2 shorter) | – | – |
+| Time per step | 2.9 ms | 2.1 ms | 65 ms | 55 ms |
+| Setup (memory, recall, walking) | 47 s | 21 s | 171 s | 143 s |
+| Relaxations per move edge | – | 1.00 | – | 0.93 |
+| Fields per step; placements per field | – | 1.1; 80 | – | 1.6; 63 |
+| Time per field | – | 0.27 ms | – | 0.28 ms |
+
+- **Criterion 1: pass,** 200 of 200.
+- **Criterion 2: pass.** Tier 2: no episode solved by one version and
+  not the other (McNemar's test, p = 1); both stop in the first room for
+  card 066's reasons, none of them walking's. Tier 3: no different (its
+  memory cannot be built for either).
+- **Criterion 3: pass.** Nothing is kept per pair of placements; each
+  move edge is relaxed 0.93–1.00 times per field, against the bound of 4.
+  Walking is 14% of the agent's time in tier 1 and under 1% in tier 2,
+  where recall and the condition search take the rest.
+
+## 8. Decision
+
+**Keep: version 15.** Walking takes each step from a closeness worked out
+over the agent's own believed map, with the same decisions as version 14
+where both can be compared and nothing stored per pair of placements; the
+token lattice can now be sized to the map (card 066's declared prior).
+What this card could not show: walking on a large map, since tier 3's
+memory cannot be built yet.
