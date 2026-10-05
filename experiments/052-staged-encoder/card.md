@@ -994,6 +994,44 @@ the published recipe, before the colour-constancy fallback.
   so diagnostics no longer need a rerun.
 - Gate R1 as declared.
 
+### Step R1b result (the short diagnostic): not met; tint is the main splitter, the fixed cells the second
+
+Arm A, 10 checkpoints (`runs/052/r1b_diag_A_399.json`, weights in
+`.pt`). Identities split per checkpoint: 43, 66, 62, 66, 59, 43, 43, 49,
+50, 45 (R1 A at checkpoint 10: 60; the bar was below 30), so the full run
+does not follow. Alignment stayed at 0.8–0.9 (two views of one cell far
+apart on the unit sphere) while uniformity held near −3.5: at equal
+weight, uniformity spreads a tile's copies, because a batch of 256 holds
+about 84 identities and spreading them evenly means splitting copies.
+
+The saved encoder on the probe tiles rendered four ways
+(`tools/card052/diag/nuisance_split.py`):
+
+| Rendering | Identities split | Tuples shared | Tuples | Spread within an identity | Nearest other identity |
+|---|---|---|---|---|---|
+| Clean | 0 of 84 | 10 | 28 | 0 | 0.262 |
+| Noise only | 22 | 19 | 86 | 0.048 | 0.253 |
+| Tint only | 34 | 38 | 86 | 0.229 | 0.333 |
+| Both | 45 | 67 | 170 | 0.257 | 0.320 |
+
+- **Tint is the main splitter.** It moves a tile's vector almost as far
+  as the nearest other identity lies (0.229 against 0.333): the floor is
+  most of a tile's pixels, so a tint change is, in pixels, as large as a
+  small object's colour change. The drift's small steps did not teach
+  the encoder to discount it.
+- **The fixed cells are the second.** Under noise alone the copies stay
+  close (0.048, a fifth of the nearest other identity), yet 22
+  identities split: the cells' boundaries, fixed in advance, cut
+  through them. Clean, the same cells merge 84 identities into 28
+  tuples. ARCHITECTURE's codes are regions around entries placed at the
+  data, with fresh codes for pieces no entry explains (cards 035 and
+  036); the fixed codebook was taken in step 2g only to stop dead codes.
+- **Proposed (the user decides):** (1) the declared colour-constancy
+  prior, the view's floor colour discounted before encoding; (2) codes
+  placed at the data again (entries that follow the vectors, fresh codes
+  for unexplained pieces), with uniformity weakened or replaced by a
+  variance floor that stops collapse without spreading copies.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.

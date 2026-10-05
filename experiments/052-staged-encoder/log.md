@@ -119,3 +119,11 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   (same tint). The user raised that card 052's main idea, the needs of
   acting and planning shaping the encoder, has not entered yet (step 4,
   the agent's recall, gate 2's acting test); a revised plan follows.
+- R1 (approved plan): the drifting tint changed nothing; measured
+  afterwards, the invariance term was ~600x weaker than uniformity (built
+  as a mean, on a separate batch). R1b, the published alignment and
+  uniformity on one batch: diagnostic arm A, 10 checkpoints, 43-66
+  identities split (bar 30). Saved encoder: tint alone splits 34, noise
+  alone 22 (copies close, but fixed cell boundaries cut them), clean
+  merges 84 identities into 28 tuples. Next needs the user: colour
+  constancy, and codes placed at the data.
