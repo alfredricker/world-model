@@ -160,5 +160,20 @@ whole map. Here it is learned from the same 7 × 7 occluded view.
   every tile, and now exact on the goal, where the full view had to
   imagine it; acting identical to card 060 in every test.
 - **Decision: keep → architecture version 13** (for you to confirm).
-  Left: what pick up, toggle and drop store as "in view" (card 062,
-  running).
+  Left: what pick up, toggle and drop store as "in view" (card 062).
+
+## Card 062: stored tries with the believed view
+
+The last full-view piece: each stored pick up, toggle and drop recorded
+everything in the 13 × 13 window. Here the stored play was replayed
+through the 7 × 7 occluded view (checked row by row: the same actions and
+views), and each try records what the agent believed was around it.
+
+- **Result:** 92–96% of stored tries changed what they record as in
+  view. The agent still discovers its conditions on all four encoders
+  (key world: the key's relation to the door, or the hand; switch world:
+  now "a yellow, on, switch in view" instead of "a grey switch in view",
+  the positive cause, since under belief the switch may be unseen), and
+  acts exactly as before (familiar 100%, chained rooms 100%).
+- **Decision: keep → architecture version 14** (for you to confirm):
+  the planner's whole starting memory is learned from the view it has.

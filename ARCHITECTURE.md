@@ -1,8 +1,18 @@
 ---
-arch_version: 13
+arch_version: 14
 ---
 
 # Architecture
+
+Version 14 is version 13 with each stored pick up, toggle and drop
+recording what the agent believed was around it (its tiles seen so far
+through the 7 × 7 occluded view, placed by its own motion) instead of
+the full window
+([card 062](experiments/062-tries-stored-as-believed/card.md), kept
+overnight on 2026-10-05; for the user to confirm). With it the planner's
+whole starting memory is learned from the view the agent has. The same
+conditions are discovered (the switch now as "a yellow, on, switch in
+view"), and acting is unchanged.
 
 Version 13 is version 12 with the move model and undraw learned from the
 7 × 7 occluded view instead of the whole map
@@ -87,7 +97,8 @@ stored keys (version 9: 43–4,640 ms). It is not a passed
 rung: the world is fully visible, repeats pixels exactly, and every
 familiar appearance has been seen.
 
-The code is `tools/card061/moves.py` (version 13's memory) running
+The code is `tools/card062/believed.py` (version 14: card 061's memory with the
+believed views, `runs/062/believed_*.npz`) running
 `tools/card057/partial.py` (version 11's partial view; version 12 with
 `--occlude --frontier --keep-look`), on
 `tools/card051/walk2.py` (routes through two tokens), on
@@ -384,11 +395,11 @@ At every step:
   the chosen achiever's needs alternate in form from step to step, so
   commitment does not hold it. Walking considers pairs of blocked
   tokens, not more.
-- **Partial views.** Since version 12 it sees MiniGrid's 7 × 7 view
-  with occlusion; since version 13 its move model is learned from that
-  view too, but pick up, toggle and drop still store what was in the
-  full window (card 057's declared exception, card 062), and the rooms
-  are small next to the view. It needs exact pixel
+- **Partial views.** Since version 14 it sees MiniGrid's 7 × 7 view with
+  occlusion and its starting memory is learned from that view (cards
+  061–062). The encoder's training (card 054) was not re-audited for the
+  view, and the rooms are small next to the view; maps much larger need
+  routes on demand (below). It needs exact pixel
   repeats with version 10's encoder; card 054's encoder with identity up
   to noise is tested on noisy renders but not yet kept.
 - **A small fixed world.** Routes are worked out for every pair of the
@@ -424,3 +435,4 @@ At every step:
 | 11 | 2026-10-05 | 057 | A view smaller than the map: MiniGrid's 7 × 7 view; views placed among the placements the action could lead to (only observed places count); online tries stored with the believed view; frontier exploration when there is no chain. Familiar worlds 100% at 1.10–1.17 times the full view's steps (random when stuck: about 1.7 times), chained rooms with one door 100% at 1.16 times the shortest route, no wrong remembered tile; four encoders of card 054. Kept overnight by Claude under the user's overnight rules, for the user to confirm |
 | 12 | 2026-10-05 | 060 | Occlusion (MiniGrid's walls and closed doors hide what is behind them): exploration looks only at never-seen places next to known walkable tokens; when there are none, a door next to never-seen places becomes the condition ("walk", j), kept between steps. Familiar worlds 100% at 1.12–1.19 times the full view's steps (version 11 under occlusion: 0–3%), chained rooms with one door 100% at 1.61 times the shortest route (after the declared revision; 71% without keeping the door), no wrong remembered tile; seed 399. Kept overnight by Claude under the user's overnight rules, for the user to confirm |
 | 13 | 2026-10-05 | 061 | The move model and undraw learned from play seen through the 7 × 7 occluded view: card 028's correspondences counted only where both places were observed and the place varies there, card 044's transformation fitted by least squares trimmed to the correspondences that agree (16 for turns, 35 for forward; residual 0); undraw from the agent on X after a forward step and X ahead before. The same transformations as the full window on four encoders; undraw the same on every tile stepped off, and exact on the goal where the full window had imagined it; acting unchanged (familiar worlds 100%, card 060's steps; chained rooms 100%). Kept overnight by Claude under the user's overnight rules, for the user to confirm |
+| 14 | 2026-10-05 | 062 | Stored tries of pick up, toggle and drop record what was in view in the agent's belief at that step (tiles seen so far in the episode through the 7 × 7 occluded view, placed by its own motion, never-seen places as the unseen appearance), from a replay of the stored play checked row by row against it. 92–96% of stored tries changed their in-view set; conditions discovered on four encoders (key world: relation or hand; switch world: a yellow switch in view, formerly a grey one); familiar worlds 100% at card 061's steps, chained rooms 100%. Kept overnight by Claude under the user's overnight rules, for the user to confirm |

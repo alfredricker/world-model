@@ -44,6 +44,7 @@ KR = PC.KR
 SENT = 255                                             # a hidden place (never an appearance's handle)
 MIN_ROWS = 50
 REPORT = {}
+CTX = None                                             # card 062: (D, rows) -> codes in the believed view per stored try
 
 
 def _blocks():
@@ -214,6 +215,16 @@ def world_init(self, S, parts, D, dev, log):
     sel = np.flatnonzero(np.isin(act, INTER))
     pres = np.zeros((len(sel), S.nobs), bool)
     pres[np.arange(len(sel))[:, None], V0[sel, :NV][:, self.keep]] = True
+    if CTX is not None:                                # card 062: what was in view as the agent believed it
+        pb = CTX(D, sel)
+        full = pres
+        pres = np.zeros((len(sel), S.nobs), bool)
+        for c in np.flatnonzero(pb.any(0)):
+            pres[:, lut[c]] |= pb[:, c]
+        REPORT["believed_ctx"] = {"tries": int(len(sel)),
+                                  "tries_whose_view_set_differs": int((pres != full).any(1).sum()),
+                                  "appearances_in_view_mean": [round(float(full.sum(1).mean()), 2),
+                                                               round(float(pres.sum(1).mean()), 2)]}
     up, pinv = np.unique(pres, axis=0, return_inverse=True)
     pc = np.array([self.ctx_of(np.flatnonzero(r)) for r in up], np.int64)
     cid = np.zeros(len(act), np.int64)
@@ -263,6 +274,8 @@ def world_init(self, S, parts, D, dev, log):
                    "pose_route_conflicts": m.pose_conflicts, "views_in_memory": int(len(up)),
                    "view_vectors_in_memory": int(len(set(pc.tolist()))), "seconds": self.seconds,
                    "partial_memory": rep}
+    if "believed_ctx" in REPORT:
+        rep["believed_ctx"] = REPORT["believed_ctx"]
     log(f"  card 061: same transformations {rep['same_transformations_as_full_view']}, unseen "
         f"{rep['unseen_appearance']}, undraw same {rep['undraw_same_as_full_view']}, outcomes differing "
         f"{rep['move_outcome_differs_from_full_view']}")

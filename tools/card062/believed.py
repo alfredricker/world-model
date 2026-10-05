@@ -11,6 +11,7 @@ The replay regenerates card 033's collection (the same seeds, chunks and samplin
 every stored try's view, is checked against the stored play before it is used.
 
   bin/prun python tools/card062/believed.py --collect            # writes runs/062/believed_<world>.npz
+  bin/prun python tools/card062/believed.py tools/card057/partial.py runs/054/b_m0.5_399.pt --arm B --occlude ...
 """
 import json
 import sys
@@ -149,6 +150,34 @@ def main():
     (OUT / "believed.json").write_text(json.dumps(rep, indent=1))
 
 
+_CACHE = {}
+
+
+def ctx(D, sel):
+    """Card 061's hook: the codes in the believed view of each stored try, from the replay whose actions are
+    D's."""
+    for world in WORLDS:
+        z = _CACHE.get(world)
+        if z is None:
+            z = _CACHE[world] = dict(np.load(OUT / f"believed_{world}.npz"))
+        if len(z["act"]) == len(D["act"]) and (z["act"] == D["act"]).all():
+            assert len(z["pres"]) == len(sel)
+            return z["pres"]
+    raise ValueError("no replay matches this stored play")
+
+
+def run():
+    """Version 13's runner (card 061) with the believed view for the stored tries."""
+    import runpy
+    M61.CTX = ctx
+    M61.TK._world_init = M61.world_init
+    target = sys.argv[1]
+    sys.argv = sys.argv[1:]
+    runpy.run_path(target, run_name="__main__")
+
+
 if __name__ == "__main__":
     if "--collect" in sys.argv:
         main()
+    else:
+        run()

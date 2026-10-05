@@ -1,0 +1,38 @@
+{
+ "key": {
+  "rows": 505537,
+  "tries": 306096,
+  "same_actions": true,
+  "same_views": true,
+  "tries_with_stale_belief": 0,
+  "codes_in_view_mean_believed": 6.17,
+  "seconds": 4.0
+ },
+ "switch": {
+  "rows": 497223,
+  "tries": 301182,
+  "same_actions": true,
+  "same_views": true,
+  "tries_with_stale_belief": 0,
+  "codes_in_view_mean_believed": 6.24,
+  "seconds": 3.8
+ },
+ "either": {
+  "rows": 494936,
+  "tries": 299910,
+  "same_actions": true,
+  "same_views": true,
+  "tries_with_stale_belief": 0,
+  "codes_in_view_mean_believed": 6.26,
+  "seconds": 4.0
+ },
+ "both": {
+  "rows": 507950,
+  "tries": 307612,
+  "same_actions": true,
+  "same_views": true,
+  "tries_with_stale_belief": 0,
+  "codes_in_view_mean_believed": 6.15,
+  "seconds": 3.9
+ }
+}
