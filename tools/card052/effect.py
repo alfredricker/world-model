@@ -42,6 +42,7 @@ SP_W = 0.01                                            # step T: L1 weight on th
 MASK_TAU = 0.5                                         # card 053: the gates are random on/off masks (Gumbel-sigmoid)
 VIS_W = 0.0                                            # card 053 (fix 1): weight of the visibility margin; 0 = off
 VIS_MARGIN = 1.0                                       # card 053: a visibly changed tile's vector moves at least this
+PULL_W = 0.0                                           # card 054 (step B, third arm): pull together batch tiles within pixel noise
 PAIR_M = 0.0                                           # card 054 (step B): margin between visibly different batch tiles; 0 = off
 VIS_THRESH = None                                      # card 053: pixel change beyond noise (set from untouched cells)
 CALIBRATE_AT = 2000                                    # card 053: updates with the gates at 0.5 before the measurement
@@ -256,6 +257,10 @@ class Encoder(DR.Encoder):
             diff = torch.triu(px > VIS_THRESH, diagonal=1)
             d = torch.cdist(zf, zf)
             floor = torch.relu(PAIR_M - d[diff]).mean() if diff.any() else 0.0
+            if PULL_W > 0:                             # noisy copies of one appearance: one point
+                same = torch.triu(px <= VIS_THRESH, diagonal=1)
+                if same.any():
+                    floor = floor + PULL_W * d[same].pow(2).mean()
             self.last_pair = (float(floor), int(diff.sum()))
         else:
             floor = VAR_W * torch.relu(DIM ** -0.5 - zf.std(0)).mean()
@@ -571,12 +576,12 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
                        str(out).replace(".json", ".pt"))
         Path(out).write_text(json.dumps({"note": "Card 052 step 2b, tools/card052/effect.py", "seed": seed, "mu": MU,
                                          "ema": DR.Encoder.EMA, "start_share": START_SHARE, "relation_weight": REL_W,
-                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "drift": DRIFT, "gates_on": GATES, "sp_w": SP_W, "vis_w": VIS_W, "pair_m": PAIR_M, "vis_margin": VIS_MARGIN, "vis_thresh": VIS_THRESH, "calibration": calib, "mask_tau": MASK_TAU, "var_w": VAR_W, "buffer": buffer, "update_every_steps": every,
+                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "drift": DRIFT, "gates_on": GATES, "sp_w": SP_W, "vis_w": VIS_W, "pair_m": PAIR_M, "pull_w": PULL_W, "vis_margin": VIS_MARGIN, "vis_thresh": VIS_THRESH, "calibration": calib, "mask_tau": MASK_TAU, "var_w": VAR_W, "buffer": buffer, "update_every_steps": every,
                                          "updates_per_checkpoint": upd_per_ck, "rows": rows}, indent=1) + "\n")
 
 
 def main():
-    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT, VIEW_N, GATES, SP_W, VIS_W, PAIR_M
+    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT, VIEW_N, GATES, SP_W, VIS_W, PAIR_M, PULL_W
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     Path(get("--out", "runs/052/effect.json")).parent.mkdir(parents=True, exist_ok=True)
@@ -596,6 +601,7 @@ def main():
     GATES = get("--gates", "1") == "1"
     VIS_W = float(get("--vis-w", "0"))
     PAIR_M = float(get("--pair-m", "0"))
+    PULL_W = float(get("--pull-w", "0"))
     SP_W = None if get("--sp-w", "0.01") == "auto" else float(get("--sp-w", "0.01"))
     VIEW_N = 256 if DR.Encoder.ANCHOR in ("align_uniform", "transition") else 64
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),
