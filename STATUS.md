@@ -37,5 +37,5 @@ Overwritten each session. At most 40 lines.
   key and door by a learned comparison, not per part); rung 1: walking
   that keeps its choice of clearing the way; goal examples where random
   play is too thin (the both world's door).
-- **Open:** maps much larger than the view (routes precomputed for a
-  fixed lattice); card 055 (the network as recall's prior), draft.
+- **Open:** maps much larger than the view; the both world's random steps
+  under the small view (065); card 055 (draft).
