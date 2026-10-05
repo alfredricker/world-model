@@ -136,6 +136,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   blocked, a switch turned off again). Refusing moves that end a condition
   met higher up, and marking actions that do not make the parent true,
   gave 100%. *Evidence:* card 027 runs 1–2, card 029.
+- **Keep a choice between steps while it still gives a plan.** Choices
+  priced afresh every step flip when a turn changes which is cheaper:
+  clearing the way or walking round (card 058: both world 73%), which
+  door to open and look past (card 060: chained rooms 71%). Keeping the
+  last step's choice: 100% (card 060; achievers since card 051).
+  *Confirmed* for looking; card 058's clearing chain still flips inside.
 - **Values can define conditions ("the achieving action works within
   walking reach": 99.2% of new layouts, card 007), but only values trained
   through the encoder see deep ones** ("door open" found in 27% of frames

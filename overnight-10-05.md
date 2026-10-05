@@ -177,3 +177,16 @@ views), and each try records what the agent believed was around it.
   acts exactly as before (familiar 100%, chained rooms 100%).
 - **Decision: keep → architecture version 14** (for you to confirm):
   the planner's whole starting memory is learned from the view it has.
+
+## Card 063: replay what the transition model misses
+
+Back to the night's first objective. Card 054's encoder keeps the planner
+and its conditions, but on three of four seeds it does not reliably
+learn that a key of another colour leaves a locked door shut (its
+transition model right 70–85%, recall 62.5–70%): such tries are a sliver
+of the training batches. Here half of each batch is drawn in proportion
+to the transition model's own recent error (prioritized replay), so the
+rare tries it gets wrong come back more often. No labels.
+
+- **Smoke test:** 200 updates, priorities written for every drawn try.
+  Main run (four seeds, training then card 054's evaluation) going.
