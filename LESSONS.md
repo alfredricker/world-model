@@ -23,6 +23,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   steps-to-condition, and the best action per view matched the truth on
   movement forks 0.30–0.33 of the time (chance 0.27): no memoryless model
   could pass a 0.8 bar. *Evidence:* card 001 gate (exact). *Confirmed.*
+- **Score a model's effects against the simulator, never against its own
+  codes.** Card 052's step T scored "the door opens" by the predicted
+  code tuple equalling the real one; its codes did not see doors open,
+  so "nothing happens" scored 40 of 40 and effects 99%. Against the
+  simulator: 0 of 40. *Evidence:* card 052 step T correction.
+  *Confirmed.*
 - **A hand-built mechanism that passes is not a result, and offline gains
   need checking in live behaviour.** A hand-chosen lattice fit the Crafter
   renderer exactly and failed on lighting changes; gains on count worlds
@@ -154,8 +160,14 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   ratio 1.00–1.04) where reconstruction did not (GRL-106); a latent
   transition learned nothing on an allocentric grid (ratio 1.0) and did on
   egocentric frames (50–200; card 001). An off-by-one pairing hid death
-  anticipation (GRL-105). *Evidence:* old:grl/records/GRL-105.json,
-  GRL-106.json; card 001 gate. *Suggestive.*
+  anticipation (GRL-105). A target network is not enough: predicting its
+  own next vectors against a moving-average target, with a variance
+  floor, an encoder erased what actions change (a door's opening moved
+  its vector 0.03 against noise 0.019; keys of three colours one code),
+  so every transition was trivially predictable; a planner on it
+  succeeded in 0–3% (card 052 step T, card 053). *Evidence:*
+  old:grl/records/GRL-105.json, GRL-106.json; card 001 gate; card 052
+  step T correction. *Confirmed* for latent self-prediction.
 - **Some objectives carry too little or the wrong signal.** Distance to
   a goal state is not distance to a condition (rank correlation 0.01–0.05
   from example frames, 0.57–0.78 from the exact state; card 001, 7 runs).

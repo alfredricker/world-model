@@ -103,9 +103,12 @@ Reported: the share of questions answered by own tries, the network and
 the neighbours; time per question against memory size (P17); the
 network's answers that own tries later contradicted.
 
-**Prediction.** The gate passes: step T's model predicted both colour
-cases 40 of 40 on pairs it had seen, and the match is one relation
-across colours. Criterion 1 passes with the neighbour prior near 0–40%
+**Prediction.** (2026-10-05: the premise below is withdrawn. Step T's
+"40 of 40" was scored by its own codes; against the simulator its model
+predicts the matching key in 0 of 40. This card waits for an encoder
+that sees what actions change.) The gate passes: step T's model
+predicted both colour cases 40 of 40 on pairs it had seen, and the
+match is one relation across colours. Criterion 1 passes with the neighbour prior near 0–40%
 on the matching case. Criterion 2 passes by construction (α ≈ 0.0001),
 and checks the code path. Criterion 3: the familiar worlds pass; the
 switch world is unchanged, since the network is not consulted there.

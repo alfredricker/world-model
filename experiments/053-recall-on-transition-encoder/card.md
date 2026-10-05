@@ -20,11 +20,11 @@ card 054 to follow (the transition model as recall's prior).
 ## 1. Question
 
 Card 052's step T trained the encoder to predict each action's effect
-on the tile in front and the held tile (latent transitions). Its
-transition model predicts the colour cases at a locked door (the
-matching key opens it in 40 of 40 test tries, another colour's key
-leaves it locked in 40 of 40), so the vectors carry the key–door match.
-Card 052's stand-in recall did not read it (27% and 84%). This card
+on the tile in front and the held tile (latent transitions). (Corrected
+2026-10-05: it was first reported that its transition model predicts
+both colour cases 40 of 40; that was scored by its own codes, which do
+not see a door open. Against the simulator it predicts the matching
+key opening the door in 0 of 40; see card 052's step T correction.) This card
 asks whether **version 10's own recall**, which can admit a front–held
 relation per part as a condition, reads the match from these vectors,
 and whether the planner still works on them. Rung 0; P4 (keep the
@@ -169,11 +169,19 @@ Step 2, on the frozen encoder from step 1:
   fails, a control (version 10's own encoder trained on the re-drawn
   tiles) separates the drawing from the encoder.
 - **Dry run on step T's T0 encoder** (not a result of this card; it
-  checks the code): 2a gave both colour cases 40 of 40 (card 052's
-  stand-in: 27% and 84%), toggle admitting the front's 4 parts and the
-  front–held relation in part 3; the same prediction under two noise
-  draws in 99.94%; all probe tries 91.1% (pick up 86%, drop 89%, toggle
-  98%); 29 code tuples among the memory tiles.
+  checks the code). First scored by code tuples, it gave both colour
+  cases 40 of 40; **corrected 2026-10-05**, scored against the
+  simulator's outcome: matching key **0%**, other key 100%, all probe
+  tries 83.9% (pick up 87%, drop 89%, toggle 76%); the same prediction
+  under two noise draws in 99.94%. The memory's own toggle outcomes,
+  read by codes, agree with the simulator in 84%: the codes do not see
+  doors open. Version 10's planner on this encoder (2b's dry run): 0%,
+  3%, 3% and 0% in the key, switch, either and both worlds; recall
+  predicts a picked-up blue or green key as red (one code tuple for the
+  three key colours). Both adapters now score against the simulator.
+- **Step 1's criterion 3 ("effects known") is scored by code tuples**
+  in the running harness, so it cannot fail on a change the codes do not
+  see; step 1's encoder is checked against the simulator when it ends.
 
 **Prediction.** Step 1: T0 passes 1 and 3; the calibrated gates leave
 toggle reading the held tile and the relation. Code stability (2) is

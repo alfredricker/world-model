@@ -135,3 +135,9 @@ Running record of the overnight work (2026-10-04), in order, newest last (clock 
   as with R1's invariance term). Codes relabel with restarts every 250.
   Next: R2 (the agent's recall on T0-style vectors), after calibrating
   the gates and restarts.
+- 2026-10-05, correction to step T: its "40/40" and "effects known" were
+  scored by code tuples, which do not see a door open (code tuple
+  unchanged in 0 of 36 openings; vector change 0.03 against noise
+  0.019). Against the simulator: matching key 0 of 40, by the transition
+  model and by version 10's recall. Keys of three colours share one
+  code; version 10's planner on the encoder: 0-3%.

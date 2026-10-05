@@ -1107,7 +1107,25 @@ Reported: each action's open gates (its conditions), against what the
 evaluator knows (toggle should read the held tile and the front–held
 relation for locked doors).
 
-### Step T result: the transition model knows the colour cases; the gates closed; recall cannot read the match
+### Step T result (corrected 2026-10-05): the encoder erases what actions change; the gates closed
+
+**Correction (2026-10-05): the encoder erases what actions change.**
+The "known" effects above were scored by comparing code tuples, and
+this encoder's codes do not see a door open: on the probe's locked
+doors opened by their key, the front tile's code tuple changed in 0 of
+36 tries, and its vector moved 0.03 (two noise draws of an unchanged
+door: 0.019). The 40-of-40 results and "effects known" were therefore
+vacuous: "nothing happens" scored as right. Scored against the
+simulator's outcome, the transition model predicts the matching key
+opening the door in **0 of 40**, and other keys 40 of 40; version 10's
+recall on the same encoder (card 053's adapter) also 0% and 100%.
+Keys of three colours (red, green, blue) take one code tuple, and a red
+door's three states (locked, closed, open) another; version 10's
+planner on this encoder succeeded in 0–3% of familiar-world layouts.
+Self-prediction with a target network and a variance floor let the
+encoder make every transition trivially predictable by erasing door
+state and key colour (LESSONS, "Networks and objectives").
+
 
 Seed 399, no tint, 40 checkpoints, three arms in parallel, 44–51
 minutes (`runs/052/sT_*_399.json`, weights in `.pt`). Over the last 10
@@ -1254,9 +1272,11 @@ Per step above (steps 2a–2h, R1, R1b, T). Gate 1 passed; gate 2 (an
 online encoder whose codes and predictions settle, with the colour tries
 right) was not met by any recipe: the pixel anchor loses colour;
 uniformity with a fixed codebook keeps colour on clean tiles but splits
-noisy and tinted copies; transitions (step T) carry the key–door match
-(the transition model predicts both colour cases 40 of 40) but the
-stand-in recall cannot read it.
+noisy and tinted copies; transitions (step T) gave an encoder that
+erases what actions change (a door's opening, key colour): scored
+against the simulator, the matching key opening its door is predicted
+in 0 of 40 (corrected 2026-10-05; first reported as 40 of 40, scored by
+the encoder's own codes).
 
 ## 8. Decision
 

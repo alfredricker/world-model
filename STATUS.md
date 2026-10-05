@@ -22,8 +22,9 @@ Overwritten each session. At most 40 lines.
 - **Recent cards:**
   - [052](experiments/052-staged-encoder/card.md): done, fail, revise.
     Kept: the generator with play starts, recall's predictions as the
-    drift measure, the transition objective (its model predicts both
-    colour cases 40 of 40; the stand-in recall cannot read the match);
+    drift measure. Corrected 2026-10-05: step T's encoder erases what
+    actions change (doors' opening, key colour); its "40 of 40" was
+    scored by its own codes, 0 of 40 against the simulator;
   - [051](experiments/051-planner-chains-and-rules/card.md): pass, keep
     (version 10);
   - [050](experiments/050-own-tries-first/card.md): pass, keep (version 9).

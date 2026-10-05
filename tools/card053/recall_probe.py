@@ -115,11 +115,13 @@ class Keys:
 
 
 def tries_of(store):
-    """(action, kind, front, held, front after, held after) per try."""
+    """(action, kind, front, held, front after, held after, the evaluator's outcome) per try. The outcome is the
+    simulator's: bit 0 the front object changed, bit 1 the held object changed (2026-10-05: scoring by code
+    tuples counted a change the codes cannot see as "unchanged", and so as right)."""
     out = []
     for a, lst in store.items():
         for f, h, o, ids, f1, h1 in lst:
-            out.append((a, PF.kind_of(a, ids), f, h, f1, h1))
+            out.append((a, PF.kind_of(a, ids), f, h, f1, h1, int(o)))
     return out
 
 
@@ -162,7 +164,9 @@ def main():
         qs = [(hp[2][i], hp[3][i], keys.view) for i in ip]
         qs2 = [(hp2[2][i], hp2[3][i], keys.view) for i in ip]
         pred, pred2 = kd.cat_of(qs), kd.cat_of(qs2)
-        truth = [int(hp[4][i] != hp[2][i]) + 2 * int(hp[5][i] != hp[3][i]) for i in ip]
+        truth = [P[i][6] for i in ip]                  # the simulator's outcome, not the codes'
+        res.setdefault("memory_categories_agree_with_simulator", {})[NAMES[a]] = round(
+            float(np.mean([c == M[i][6] for c, i in zip(cat.tolist(), im)])), 4)
         seen = set(zip(kd.fid.tolist(), kd.hid.tolist()))
         for i, p, p2, tr, q in zip(ip, pred, pred2, truth, qs):
             per_kind[P[i][1]].append(p == tr)
@@ -190,8 +194,9 @@ def main():
                 zf = enc.pieces(enc.x(np.stack([P[i][2] for i in ip])))
                 zh = enc.pieces(enc.x(np.stack([P[i][3] for i in ip])))
                 pf, ph = enc.predict_after(ai, zf, zh)
-                ok = ((enc.quant(pf)[1] == enc.quant(enc.pieces(enc.x(np.stack([P[i][4] for i in ip]))))[1]).all(1)
-                      & (enc.quant(ph)[1] == enc.quant(enc.pieces(enc.x(np.stack([P[i][5] for i in ip]))))[1]).all(1))
+                chf = (enc.quant(pf)[1] != enc.quant(zf)[1]).any(1).long()
+                chh = (enc.quant(ph)[1] != enc.quant(zh)[1]).any(1).long()
+                ok = (chf + 2 * chh).cpu() == torch.as_tensor([P[i][6] for i in ip])
                 for i, o in zip(ip, ok.cpu().numpy()):
                     tm.setdefault(P[i][1], []).append(bool(o))
         res["transition_model"] = {name: round(float(np.mean(tm.get(q, [np.nan]))), 4) for name, q in PF.COLOUR.items()}
