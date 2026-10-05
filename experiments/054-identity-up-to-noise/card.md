@@ -190,4 +190,17 @@ separations and most noise (noisy copies spread up to 0.51 there; τ_3
 every part's class although the pixel rule calls them different (mean
 absolute differences 0.09–0.12 against a noise ceiling of 0.021).
 
+The third arm (m = 1.0, noisy copies pulled together): recall 100% /
+52.5%, noise agreement 97.8%, all probe tries 81.0%, planner 100% in
+all four worlds, card 049's conditions right. Picking up while holding
+stays at 0%: it does under every arm and under card 053's codebook too
+(0–8%), so it is not the codes. The simulator says nothing changes
+there; such tries are rare (about 14 per 30,000 steps for the commonest
+kind), and recall follows the many empty-handed pick-ups, where the
+front tile does change. Reported as a limit of recall's data, not of
+this card's change.
+
+**B's choice: m = 0.5** (the declared order: criterion 1 equal at 100%
+in every arm; criterion 2 best, 100% / 100% and 98.2%; criterion 3 equal).
+
 ## 8. Decision

@@ -1,0 +1,1628 @@
+{
+ "handles_of_tiles": 130,
+ "key": {
+  "model": {
+   "kinds": {
+    "left": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 1,
+     "loo_start": -0.1077,
+     "loo_fitted": -0.0458,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -2e-05
+    },
+    "right": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 1,
+     "loo_start": -0.1077,
+     "loo_fitted": -0.0458,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -2e-05
+    },
+    "forward": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 3,
+     "loo_start": -0.9308,
+     "loo_fitted": -0.8329,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -7e-05
+    },
+    "draw": {
+     "keys": 5,
+     "lambda": "forward's"
+    },
+    "undraw": {
+     "keys": 4,
+     "lambda": "forward's"
+    },
+    "pickup": {
+     "keys": 725,
+     "pairs": 50,
+     "sets": 141,
+     "categories": 2,
+     "loo_start": -0.4724,
+     "loo_fitted": -0.1028,
+     "lambda_sums": {
+      "front": 12.36,
+      "held": 6.88,
+      "view": 0.0
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.00129,
+     "code_level": {
+      "loo": -8e-05,
+      "loo_start": -0.4072,
+      "door_keys": 67,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0277,
+      "outcome_classes": 4,
+      "code_tuples_front": 15,
+      "lambda_same_view": 7.88,
+      "lambda_similar": {
+       "front": 28.41,
+       "held": 7.52,
+       "view": 0.06
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "trace": [
+       {
+        "cond": "rel:3",
+        "gain": 16330.01
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -16380.23,
+      "ll_greedy": -50.23,
+      "ll_refit": -1.31,
+      "a": 0.0104,
+      "keys": 725,
+      "groups_while_admitting": [
+       50,
+       50
+      ],
+      "seconds": 0.3,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -0.0,
+       "ll_neighbours_only": -1.31,
+       "situations": 50
+      }
+     }
+    },
+    "toggle": {
+     "keys": 771,
+     "pairs": 52,
+     "sets": 144,
+     "categories": 2,
+     "loo_start": -0.6507,
+     "loo_fitted": -0.1586,
+     "lambda_sums": {
+      "front": 25.72,
+      "held": 1.53,
+      "view": 0.01
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.00141,
+     "code_level": {
+      "loo": -0.0005,
+      "loo_start": -1.0034,
+      "door_keys": 71,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0228,
+      "outcome_classes": 10,
+      "code_tuples_front": 15,
+      "lambda_same_view": 7.63,
+      "lambda_similar": {
+       "front": 51.37,
+       "held": 0.22,
+       "view": 1.08
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "trace": [
+       {
+        "cond": "rel:3",
+        "gain": 2269.99
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -2353.72,
+      "ll_greedy": -83.73,
+      "ll_refit": -23.25,
+      "a": 0.0096,
+      "keys": 771,
+      "groups_while_admitting": [
+       52,
+       52
+      ],
+      "seconds": 0.3,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -2.3,
+       "ll_neighbours_only": -23.24,
+       "situations": 52
+      }
+     }
+    },
+    "drop": {
+     "keys": 734,
+     "pairs": 51,
+     "sets": 143,
+     "categories": 2,
+     "loo_start": -0.4787,
+     "loo_fitted": -0.0946,
+     "lambda_sums": {
+      "front": 20.66,
+      "held": 7.6,
+      "view": 0.0
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.00118,
+     "code_level": {
+      "loo": -0.00014,
+      "loo_start": -0.4092,
+      "door_keys": 69,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0315,
+      "outcome_classes": 4,
+      "code_tuples_front": 15,
+      "lambda_same_view": 6.41,
+      "lambda_similar": {
+       "front": 10.78,
+       "held": 3.08,
+       "view": 0.04
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "trace": [
+       {
+        "cond": "rel:3",
+        "gain": 172188.62
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -172257.43,
+      "ll_greedy": -68.82,
+      "ll_refit": -23.01,
+      "a": 0.0154,
+      "keys": 734,
+      "groups_while_admitting": [
+       51,
+       51
+      ],
+      "seconds": 0.3,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -0.0,
+       "ll_neighbours_only": -23.01,
+       "situations": 51
+      }
+     }
+    }
+   },
+   "poses": 676,
+   "pose_route_conflicts": 0,
+   "views_in_memory": 144,
+   "view_vectors_in_memory": 144,
+   "seconds": 53.0,
+   "tokens": {
+    "moves": {
+     "left": {
+      "M": [
+       [
+        0,
+        1
+       ],
+       [
+        -1,
+        0
+       ]
+      ],
+      "b": [
+       0,
+       0
+      ],
+      "residual": 0.0,
+      "correspondences": 121
+     },
+     "right": {
+      "M": [
+       [
+        0,
+        -1
+       ],
+       [
+        1,
+        0
+       ]
+      ],
+      "b": [
+       0,
+       0
+      ],
+      "residual": 0.0,
+      "correspondences": 121
+     },
+     "forward": {
+      "M": [
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "b": [
+       0,
+       -1
+      ],
+      "residual": 0.0,
+      "correspondences": 110
+     }
+    },
+    "placements": 676,
+    "token_ids": 638,
+    "unseen_where_shows": 5,
+    "walking": {
+     "q_seconds": 26.3,
+     "q_final_loss": 0.000594,
+     "V_exact_share_view": 1.0,
+     "V_largest_error_view": 0,
+     "Q_min_largest_error_view": 0.483,
+     "V_exact_share_trained": 1.0,
+     "V_largest_error_trained": 0,
+     "Q_min_largest_error_trained": 0.483,
+     "placement_pairs": 456976,
+     "routes_reaching_their_target": 1.0,
+     "longest_route_forward_steps": 24,
+     "largest_V": 28
+    }
+   }
+  },
+  "heldout_effects": {
+   "per_action": {
+    "left": {
+     "rows": 13281,
+     "exact_share": 1.0
+    },
+    "right": {
+     "rows": 13303,
+     "exact_share": 1.0
+    },
+    "forward": {
+     "rows": 13212,
+     "exact_share": 1.0
+    },
+    "pickup": {
+     "rows": 21150,
+     "exact_share": 1.0
+    },
+    "drop": {
+     "rows": 20971,
+     "exact_share": 1.0
+    },
+    "toggle": {
+     "rows": 19074,
+     "exact_share": 1.0
+    }
+   },
+   "all": 1.0,
+   "lowest": 1.0,
+   "errors_top": []
+  },
+  "acting": {
+   "success": 1.0,
+   "mean_steps_when_successful": 15.93,
+   "random_share": 0.0,
+   "moves": 478,
+   "predictions_wrong": 0,
+   "failed_acts": 0,
+   "actions_refused": 0,
+   "steps_by_kind": {
+    "approach": 365,
+    "act": 90,
+    "waypoint": 23
+   },
+   "largest_view_distance_placing_the_agent": 7.8342,
+   "conditions_computed_per_move": 12.3,
+   "seconds_per_layout_mean": 0.169,
+   "seconds_per_layout_max": 0.28,
+   "tries_curve": {
+    "0": {
+     "layouts": 30,
+     "success": 1.0,
+     "wrong_predictions_per_layout": 0.0
+    }
+   },
+   "walking": {
+    "imagined_moves_per_move": 0.0,
+    "share_of_planning_time": 0.7305,
+    "steps_through_door_conditions": 326,
+    "howsoon_pairs": 0,
+    "howsoon_rank_correlation": null,
+    "howsoon": [],
+    "switch_toggles_by_plan": 0,
+    "layouts_with_switch_by_plan": 0
+   },
+   "steps_ratio_to_shortest": 1.001,
+   "steps_ratio_to_card029": 0.973
+  },
+  "criterion_1": {
+   "effects_right": true,
+   "success_99": true,
+   "steps_within_5pct": true,
+   "pass": true
+  },
+  "ways": {
+   "draw 0": {
+    "result": "sskc"
+   },
+   "undraw 0": {
+    "result": "ksks"
+   },
+   "pickup 3": {
+    "front": "cccc",
+    "held": "cccc"
+   },
+   "toggle 1": {
+    "front": "ssss"
+   },
+   "drop 3": {
+    "front": "cccc",
+    "held": "cccc"
+   }
+  },
+  "seconds": 54.3
+ },
+ "switch": {
+  "model": {
+   "kinds": {
+    "left": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 1,
+     "loo_start": -0.1077,
+     "loo_fitted": -0.0458,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -2e-05
+    },
+    "right": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 1,
+     "loo_start": -0.1077,
+     "loo_fitted": -0.0458,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -2e-05
+    },
+    "forward": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 3,
+     "loo_start": -0.9308,
+     "loo_fitted": -0.8329,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -7e-05
+    },
+    "draw": {
+     "keys": 5,
+     "lambda": "forward's"
+    },
+    "undraw": {
+     "keys": 4,
+     "lambda": "forward's"
+    },
+    "pickup": {
+     "keys": 764,
+     "pairs": 55,
+     "sets": 138,
+     "categories": 2,
+     "loo_start": -0.4464,
+     "loo_fitted": -0.1007,
+     "lambda_sums": {
+      "front": 13.43,
+      "held": 6.85,
+      "view": 0.0
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.00141,
+     "code_level": {
+      "loo": -0.00011,
+      "loo_start": -0.3866,
+      "door_keys": 62,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0344,
+      "outcome_classes": 4,
+      "code_tuples_front": 15,
+      "lambda_same_view": 5.57,
+      "lambda_similar": {
+       "front": 1.9,
+       "held": 14.22,
+       "view": 0.04
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "trace": [
+       {
+        "cond": "rel:3",
+        "gain": 16024.39
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -16087.47,
+      "ll_greedy": -63.08,
+      "ll_refit": -3.14,
+      "a": 0.0042,
+      "keys": 764,
+      "groups_while_admitting": [
+       55,
+       55
+      ],
+      "seconds": 0.3,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -0.0,
+       "ll_neighbours_only": -3.12,
+       "situations": 55
+      }
+     }
+    },
+    "toggle": {
+     "keys": 824,
+     "pairs": 55,
+     "sets": 140,
+     "categories": 2,
+     "loo_start": -0.668,
+     "loo_fitted": -0.0811,
+     "lambda_sums": {
+      "front": 74.25,
+      "held": 0.01,
+      "view": 0.77
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.0014,
+     "code_level": {
+      "loo": -0.00096,
+      "loo_start": -1.0747,
+      "door_keys": 72,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0051,
+      "outcome_classes": 10,
+      "code_tuples_front": 15,
+      "lambda_same_view": 15.1,
+      "lambda_similar": {
+       "front": 52.21,
+       "held": 0.05,
+       "view": 0.68
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'grey')"
+      ],
+      "trace": [
+       {
+        "cond": "view:('ball', 'grey')",
+        "gain": 5390.09
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -5420.01,
+      "ll_greedy": -29.92,
+      "ll_refit": -0.5,
+      "a": 0.0166,
+      "keys": 824,
+      "groups_while_admitting": [
+       55,
+       97
+      ],
+      "seconds": 0.3,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -0.0,
+       "ll_neighbours_only": -0.5,
+       "situations": 97
+      }
+     }
+    },
+    "drop": {
+     "keys": 757,
+     "pairs": 52,
+     "sets": 142,
+     "categories": 2,
+     "loo_start": -0.4561,
+     "loo_fitted": -0.0892,
+     "lambda_sums": {
+      "front": 21.37,
+      "held": 7.46,
+      "view": 0.0
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.00126,
+     "code_level": {
+      "loo": -0.00024,
+      "loo_start": -0.3936,
+      "door_keys": 69,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0356,
+      "outcome_classes": 4,
+      "code_tuples_front": 15,
+      "lambda_same_view": 6.22,
+      "lambda_similar": {
+       "front": 19.93,
+       "held": 1.25,
+       "view": 0.03
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "trace": [
+       {
+        "cond": "rel:3",
+        "gain": 168034.08
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -168100.14,
+      "ll_greedy": -66.07,
+      "ll_refit": -10.7,
+      "a": 0.0042,
+      "keys": 757,
+      "groups_while_admitting": [
+       52,
+       52
+      ],
+      "seconds": 0.3,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -0.0,
+       "ll_neighbours_only": -10.65,
+       "situations": 52
+      }
+     }
+    }
+   },
+   "poses": 676,
+   "pose_route_conflicts": 0,
+   "views_in_memory": 142,
+   "view_vectors_in_memory": 142,
+   "seconds": 27.1,
+   "tokens": {
+    "moves": {
+     "left": {
+      "M": [
+       [
+        0,
+        1
+       ],
+       [
+        -1,
+        0
+       ]
+      ],
+      "b": [
+       0,
+       0
+      ],
+      "residual": 0.0,
+      "correspondences": 121
+     },
+     "right": {
+      "M": [
+       [
+        0,
+        -1
+       ],
+       [
+        1,
+        0
+       ]
+      ],
+      "b": [
+       0,
+       0
+      ],
+      "residual": 0.0,
+      "correspondences": 121
+     },
+     "forward": {
+      "M": [
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "b": [
+       0,
+       -1
+      ],
+      "residual": 0.0,
+      "correspondences": 110
+     }
+    },
+    "placements": 676,
+    "token_ids": 638,
+    "unseen_where_shows": 5,
+    "walking": {
+     "q_seconds": 0.0,
+     "q_final_loss": 0.000594,
+     "V_exact_share_view": 1.0,
+     "V_largest_error_view": 0,
+     "Q_min_largest_error_view": 0.483,
+     "V_exact_share_trained": 1.0,
+     "V_largest_error_trained": 0,
+     "Q_min_largest_error_trained": 0.483,
+     "placement_pairs": 456976,
+     "routes_reaching_their_target": 1.0,
+     "longest_route_forward_steps": 24,
+     "largest_V": 28
+    }
+   }
+  },
+  "heldout_effects": {
+   "per_action": {
+    "left": {
+     "rows": 13041,
+     "exact_share": 1.0
+    },
+    "right": {
+     "rows": 13234,
+     "exact_share": 1.0
+    },
+    "forward": {
+     "rows": 13163,
+     "exact_share": 1.0
+    },
+    "pickup": {
+     "rows": 20773,
+     "exact_share": 1.0
+    },
+    "drop": {
+     "rows": 20458,
+     "exact_share": 0.999902
+    },
+    "toggle": {
+     "rows": 19131,
+     "exact_share": 1.0
+    }
+   },
+   "all": 0.99998,
+   "lowest": 0.999902,
+   "errors_top": [
+    [
+     [
+      "drop",
+      "goal",
+      "key blue",
+      "((71, 'key blue', 'goal'), (169, 'goal', 'key blue'))",
+      "False",
+      "False"
+     ],
+     2
+    ]
+   ]
+  },
+  "acting": {
+   "success": 1.0,
+   "mean_steps_when_successful": 16.67,
+   "random_share": 0.0,
+   "moves": 500,
+   "predictions_wrong": 0,
+   "failed_acts": 0,
+   "actions_refused": 0,
+   "steps_by_kind": {
+    "approach": 367,
+    "act": 90,
+    "waypoint": 43
+   },
+   "largest_view_distance_placing_the_agent": 3.7914,
+   "conditions_computed_per_move": 16.0,
+   "seconds_per_layout_mean": 0.177,
+   "seconds_per_layout_max": 0.27,
+   "tries_curve": {
+    "0": {
+     "layouts": 30,
+     "success": 1.0,
+     "wrong_predictions_per_layout": 0.0
+    }
+   },
+   "walking": {
+    "imagined_moves_per_move": 0.0,
+    "share_of_planning_time": 0.7373,
+    "steps_through_door_conditions": 348,
+    "howsoon_pairs": 0,
+    "howsoon_rank_correlation": null,
+    "howsoon": [],
+    "switch_toggles_by_plan": 30,
+    "layouts_with_switch_by_plan": 30
+   },
+   "steps_ratio_to_shortest": 1.037,
+   "steps_ratio_to_card029": 0.965
+  },
+  "criterion_1": {
+   "effects_right": true,
+   "success_99": true,
+   "steps_within_5pct": true,
+   "pass": true
+  },
+  "seconds": 28.3
+ },
+ "either": {
+  "model": {
+   "kinds": {
+    "left": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 1,
+     "loo_start": -0.1077,
+     "loo_fitted": -0.0458,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -2e-05
+    },
+    "right": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 1,
+     "loo_start": -0.1077,
+     "loo_fitted": -0.0458,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -2e-05
+    },
+    "forward": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 3,
+     "loo_start": -0.9308,
+     "loo_fitted": -0.8329,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -7e-05
+    },
+    "draw": {
+     "keys": 5,
+     "lambda": "forward's"
+    },
+    "undraw": {
+     "keys": 4,
+     "lambda": "forward's"
+    },
+    "pickup": {
+     "keys": 825,
+     "pairs": 54,
+     "sets": 144,
+     "categories": 2,
+     "loo_start": -0.4461,
+     "loo_fitted": -0.1003,
+     "lambda_sums": {
+      "front": 13.29,
+      "held": 7.08,
+      "view": 0.0
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.00155,
+     "code_level": {
+      "loo": -9e-05,
+      "loo_start": -0.3808,
+      "door_keys": 65,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0342,
+      "outcome_classes": 4,
+      "code_tuples_front": 15,
+      "lambda_same_view": 5.37,
+      "lambda_similar": {
+       "front": 3.41,
+       "held": 11.83,
+       "view": 0.05
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "trace": [
+       {
+        "cond": "rel:3",
+        "gain": 16111.24
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -16165.86,
+      "ll_greedy": -54.62,
+      "ll_refit": -1.43,
+      "a": 0.0106,
+      "keys": 825,
+      "groups_while_admitting": [
+       54,
+       54
+      ],
+      "seconds": 0.3,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -0.0,
+       "ll_neighbours_only": -1.43,
+       "situations": 54
+      }
+     }
+    },
+    "toggle": {
+     "keys": 890,
+     "pairs": 57,
+     "sets": 144,
+     "categories": 2,
+     "loo_start": -0.6687,
+     "loo_fitted": -0.0832,
+     "lambda_sums": {
+      "front": 74.33,
+      "held": 0.01,
+      "view": 0.04
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.0017,
+     "code_level": {
+      "loo": -0.00102,
+      "loo_start": -1.0983,
+      "door_keys": 72,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0077,
+      "outcome_classes": 10,
+      "code_tuples_front": 15,
+      "lambda_same_view": 14.46,
+      "lambda_similar": {
+       "front": 53.18,
+       "held": 0.05,
+       "view": 0.58
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "view:('ball', 'grey')",
+       "held:1"
+      ],
+      "trace": [
+       {
+        "cond": "view:('ball', 'grey')",
+        "gain": 4069.79
+       },
+       {
+        "cond": "held:1",
+        "gain": 1393.85
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -5658.12,
+      "ll_greedy": -194.47,
+      "ll_refit": -8.89,
+      "a": 0.0052,
+      "keys": 890,
+      "groups_while_admitting": [
+       57,
+       103,
+       103
+      ],
+      "seconds": 0.4,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -0.43,
+       "ll_neighbours_only": -8.85,
+       "situations": 103
+      }
+     }
+    },
+    "drop": {
+     "keys": 816,
+     "pairs": 56,
+     "sets": 144,
+     "categories": 2,
+     "loo_start": -0.4538,
+     "loo_fitted": -0.0842,
+     "lambda_sums": {
+      "front": 23.43,
+      "held": 7.5,
+      "view": 0.0
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.00133,
+     "code_level": {
+      "loo": -0.00037,
+      "loo_start": -0.3862,
+      "door_keys": 68,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0368,
+      "outcome_classes": 4,
+      "code_tuples_front": 15,
+      "lambda_same_view": 6.2,
+      "lambda_similar": {
+       "front": 20.28,
+       "held": 0.69,
+       "view": 0.04
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "trace": [
+       {
+        "cond": "rel:3",
+        "gain": 166287.05
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -166370.9,
+      "ll_greedy": -83.85,
+      "ll_refit": -20.05,
+      "a": 0.005,
+      "keys": 816,
+      "groups_while_admitting": [
+       56,
+       56
+      ],
+      "seconds": 0.3,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -0.0,
+       "ll_neighbours_only": -19.92,
+       "situations": 56
+      }
+     }
+    }
+   },
+   "poses": 676,
+   "pose_route_conflicts": 0,
+   "views_in_memory": 144,
+   "view_vectors_in_memory": 144,
+   "seconds": 28.6,
+   "tokens": {
+    "moves": {
+     "left": {
+      "M": [
+       [
+        0,
+        1
+       ],
+       [
+        -1,
+        0
+       ]
+      ],
+      "b": [
+       0,
+       0
+      ],
+      "residual": 0.0,
+      "correspondences": 121
+     },
+     "right": {
+      "M": [
+       [
+        0,
+        -1
+       ],
+       [
+        1,
+        0
+       ]
+      ],
+      "b": [
+       0,
+       0
+      ],
+      "residual": 0.0,
+      "correspondences": 121
+     },
+     "forward": {
+      "M": [
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "b": [
+       0,
+       -1
+      ],
+      "residual": 0.0,
+      "correspondences": 110
+     }
+    },
+    "placements": 676,
+    "token_ids": 638,
+    "unseen_where_shows": 5,
+    "walking": {
+     "q_seconds": 0.0,
+     "q_final_loss": 0.000594,
+     "V_exact_share_view": 1.0,
+     "V_largest_error_view": 0,
+     "Q_min_largest_error_view": 0.483,
+     "V_exact_share_trained": 1.0,
+     "V_largest_error_trained": 0,
+     "Q_min_largest_error_trained": 0.483,
+     "placement_pairs": 456976,
+     "routes_reaching_their_target": 1.0,
+     "longest_route_forward_steps": 24,
+     "largest_V": 28
+    }
+   }
+  },
+  "heldout_effects": {
+   "per_action": {
+    "left": {
+     "rows": 13018,
+     "exact_share": 1.0
+    },
+    "right": {
+     "rows": 13122,
+     "exact_share": 1.0
+    },
+    "forward": {
+     "rows": 13019,
+     "exact_share": 1.0
+    },
+    "pickup": {
+     "rows": 20717,
+     "exact_share": 1.0
+    },
+    "drop": {
+     "rows": 20359,
+     "exact_share": 1.0
+    },
+    "toggle": {
+     "rows": 19035,
+     "exact_share": 1.0
+    }
+   },
+   "all": 1.0,
+   "lowest": 1.0,
+   "errors_top": []
+  },
+  "acting": {
+   "success": 1.0,
+   "mean_steps_when_successful": 14.4,
+   "random_share": 0.0,
+   "moves": 432,
+   "predictions_wrong": 0,
+   "failed_acts": 0,
+   "actions_refused": 4,
+   "steps_by_kind": {
+    "approach": 315,
+    "act": 90,
+    "waypoint": 27
+   },
+   "largest_view_distance_placing_the_agent": 7.8342,
+   "conditions_computed_per_move": 18.5,
+   "seconds_per_layout_mean": 0.157,
+   "seconds_per_layout_max": 0.27,
+   "tries_curve": {
+    "0": {
+     "layouts": 30,
+     "success": 1.0,
+     "wrong_predictions_per_layout": 0.0
+    }
+   },
+   "walking": {
+    "imagined_moves_per_move": 0.0,
+    "share_of_planning_time": 0.7209,
+    "steps_through_door_conditions": 280,
+    "howsoon_pairs": 0,
+    "howsoon_rank_correlation": null,
+    "howsoon": [],
+    "switch_toggles_by_plan": 13,
+    "layouts_with_switch_by_plan": 13
+   },
+   "steps_ratio_to_shortest": 0.997,
+   "steps_ratio_to_card029": 0.931
+  },
+  "criterion_1": {
+   "effects_right": true,
+   "success_99": true,
+   "steps_within_5pct": true,
+   "pass": true
+  },
+  "seconds": 29.8
+ },
+ "both": {
+  "model": {
+   "kinds": {
+    "left": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 1,
+     "loo_start": -0.1077,
+     "loo_fitted": -0.0458,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -2e-05
+    },
+    "right": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 1,
+     "loo_start": -0.1077,
+     "loo_fitted": -0.0458,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -2e-05
+    },
+    "forward": {
+     "keys": 15,
+     "pairs": 15,
+     "categories": 3,
+     "loo_start": -0.9308,
+     "loo_fitted": -0.8329,
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -7e-05
+    },
+    "draw": {
+     "keys": 5,
+     "lambda": "forward's"
+    },
+    "undraw": {
+     "keys": 4,
+     "lambda": "forward's"
+    },
+    "pickup": {
+     "keys": 575,
+     "pairs": 49,
+     "sets": 115,
+     "categories": 2,
+     "loo_start": -0.4794,
+     "loo_fitted": -0.0973,
+     "lambda_sums": {
+      "front": 9.74,
+      "held": 7.19,
+      "view": 0.0
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.0013,
+     "code_level": {
+      "loo": -0.00036,
+      "loo_start": -0.3974,
+      "door_keys": 71,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0293,
+      "outcome_classes": 4,
+      "code_tuples_front": 15,
+      "lambda_same_view": 5.25,
+      "lambda_similar": {
+       "front": 40.73,
+       "held": 7.17,
+       "view": 0.05
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "trace": [
+       {
+        "cond": "rel:3",
+        "gain": 16533.93
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -16627.81,
+      "ll_greedy": -93.88,
+      "ll_refit": -36.37,
+      "a": 0.0012,
+      "keys": 575,
+      "groups_while_admitting": [
+       49,
+       49
+      ],
+      "seconds": 0.3,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -0.0,
+       "ll_neighbours_only": -36.21,
+       "situations": 49
+      }
+     }
+    },
+    "toggle": {
+     "keys": 612,
+     "pairs": 50,
+     "sets": 121,
+     "categories": 2,
+     "loo_start": -0.6392,
+     "loo_fitted": -0.1249,
+     "lambda_sums": {
+      "front": 30.06,
+      "held": 0.05,
+      "view": 0.01
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.00115,
+     "code_level": {
+      "loo": -0.00126,
+      "loo_start": -0.9317,
+      "door_keys": 71,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0036,
+      "outcome_classes": 10,
+      "code_tuples_front": 15,
+      "lambda_same_view": 12.34,
+      "lambda_similar": {
+       "front": 55.8,
+       "held": 0.09,
+       "view": 0.38
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "held:1",
+       "view:('ball', 'grey')",
+       "held:0"
+      ],
+      "trace": [
+       {
+        "cond": "held:1",
+        "gain": 580.85
+       },
+       {
+        "cond": "view:('ball', 'grey')",
+        "gain": 455.84
+       },
+       {
+        "cond": "held:0",
+        "gain": 19.06
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -1201.23,
+      "ll_greedy": -145.48,
+      "ll_refit": -10.64,
+      "a": 0.0069,
+      "keys": 612,
+      "groups_while_admitting": [
+       50,
+       50,
+       87,
+       87
+      ],
+      "seconds": 0.4,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -3.82,
+       "ll_neighbours_only": -10.61,
+       "situations": 87
+      }
+     }
+    },
+    "drop": {
+     "keys": 585,
+     "pairs": 50,
+     "sets": 123,
+     "categories": 2,
+     "loo_start": -0.4909,
+     "loo_fitted": -0.1067,
+     "lambda_sums": {
+      "front": 16.64,
+      "held": 7.34,
+      "view": 0.0
+     },
+     "alpha": 0.00012,
+     "loo_per_try_alpha": -0.0,
+     "loo_per_try_card037": -0.00107,
+     "code_level": {
+      "loo": -0.00047,
+      "loo_start": -0.4082,
+      "door_keys": 71,
+      "right_door": 1.0,
+      "right_other": 1.0,
+      "beta": 0.0272,
+      "outcome_classes": 4,
+      "code_tuples_front": 15,
+      "lambda_same_view": 5.7,
+      "lambda_similar": {
+       "front": 28.51,
+       "held": 1.92,
+       "view": 0.07
+      }
+     },
+     "conditions": {
+      "admitted": [
+       "front:0",
+       "front:1",
+       "front:2",
+       "front:3",
+       "rel:3"
+      ],
+      "trace": [
+       {
+        "cond": "rel:3",
+        "gain": 173782.08
+       }
+      ],
+      "candidates": 27,
+      "cost_nats": 3.3,
+      "ll_front_only": -173886.27,
+      "ll_greedy": -104.19,
+      "ll_refit": -25.16,
+      "a": 0.0059,
+      "keys": 585,
+      "groups_while_admitting": [
+       50,
+       50
+      ],
+      "seconds": 0.3,
+      "own": {
+       "alpha": 0.000123,
+       "ll": -0.0,
+       "ll_neighbours_only": -25.14,
+       "situations": 50
+      }
+     }
+    }
+   },
+   "poses": 676,
+   "pose_route_conflicts": 0,
+   "views_in_memory": 130,
+   "view_vectors_in_memory": 130,
+   "seconds": 22.1,
+   "tokens": {
+    "moves": {
+     "left": {
+      "M": [
+       [
+        0,
+        1
+       ],
+       [
+        -1,
+        0
+       ]
+      ],
+      "b": [
+       0,
+       0
+      ],
+      "residual": 0.0,
+      "correspondences": 121
+     },
+     "right": {
+      "M": [
+       [
+        0,
+        -1
+       ],
+       [
+        1,
+        0
+       ]
+      ],
+      "b": [
+       0,
+       0
+      ],
+      "residual": 0.0,
+      "correspondences": 121
+     },
+     "forward": {
+      "M": [
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "b": [
+       0,
+       -1
+      ],
+      "residual": 0.0,
+      "correspondences": 110
+     }
+    },
+    "placements": 676,
+    "token_ids": 638,
+    "unseen_where_shows": 5,
+    "walking": {
+     "q_seconds": 0.0,
+     "q_final_loss": 0.000594,
+     "V_exact_share_view": 1.0,
+     "V_largest_error_view": 0,
+     "Q_min_largest_error_view": 0.483,
+     "V_exact_share_trained": 1.0,
+     "V_largest_error_trained": 0,
+     "Q_min_largest_error_trained": 0.483,
+     "placement_pairs": 456976,
+     "routes_reaching_their_target": 1.0,
+     "longest_route_forward_steps": 24,
+     "largest_V": 28
+    }
+   }
+  },
+  "heldout_effects": {
+   "per_action": {
+    "left": {
+     "rows": 13355,
+     "exact_share": 1.0
+    },
+    "right": {
+     "rows": 13178,
+     "exact_share": 1.0
+    },
+    "forward": {
+     "rows": 13300,
+     "exact_share": 1.0
+    },
+    "pickup": {
+     "rows": 21434,
+     "exact_share": 1.0
+    },
+    "drop": {
+     "rows": 21208,
+     "exact_share": 1.0
+    },
+    "toggle": {
+     "rows": 19018,
+     "exact_share": 1.0
+    }
+   },
+   "all": 1.0,
+   "lowest": 1.0,
+   "errors_top": []
+  },
+  "acting": {
+   "success": 1.0,
+   "mean_steps_when_successful": 21.0,
+   "random_share": 0.0,
+   "moves": 630,
+   "predictions_wrong": 0,
+   "failed_acts": 0,
+   "actions_refused": 0,
+   "steps_by_kind": {
+    "approach": 479,
+    "act": 120,
+    "waypoint": 31
+   },
+   "largest_view_distance_placing_the_agent": 7.8342,
+   "conditions_computed_per_move": 26.3,
+   "seconds_per_layout_mean": 0.218,
+   "seconds_per_layout_max": 0.3,
+   "tries_curve": {
+    "0": {
+     "layouts": 30,
+     "success": 1.0,
+     "wrong_predictions_per_layout": 0.0
+    }
+   },
+   "walking": {
+    "imagined_moves_per_move": 0.0,
+    "share_of_planning_time": 0.718,
+    "steps_through_door_conditions": 478,
+    "howsoon_pairs": 0,
+    "howsoon_rank_correlation": null,
+    "howsoon": [],
+    "switch_toggles_by_plan": 30,
+    "layouts_with_switch_by_plan": 30
+   },
+   "steps_ratio_to_shortest": 1.068,
+   "steps_ratio_to_card029": 0.965
+  },
+  "criterion_1": {
+   "effects_right": true,
+   "success_99": true,
+   "steps_within_5pct": true,
+   "pass": true
+  },
+  "seconds": 23.6
+ }
+}
