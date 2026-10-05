@@ -113,23 +113,13 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   got a base-rate guess and the either world fell to 87.8–90.6% (card
   042). Checked in the imagined result of the achieving action instead:
   100% in 5 of 5 seeds (card 043). *Confirmed.*
-- **Chains of prerequisites are the hard part, and one smooth distance
-  cannot mark conditions.** PHWM: one-step held combinations 0.54–0.71,
-  furnace → iron pickaxe 0.11; card 001: one-step conditions 0.66–0.88,
-  two-step chains at the goal-swapped level. In a deterministic world each
-  shortest-path step lowers the distance by exactly 1, so a key pickup
-  looks like a move (card 003). Contrasting an action's successes with its
-  failures recovered exact conditions from 10 successes, and "walk to X"
-  as an action with conditions gave the key → door → goal chain (card
-  004). *Evidence:* phwm record §5.12; cards 001, 003, 004. *Confirmed*
-  for the pattern.
-- **Admit conditions by evidence, and require every rule to be a route to
-  success.** A Bayesian rule list (Beta-Bernoulli rules, a cost per
-  condition) recovered exact rules for 19/19 goals in five worlds and
-  excluded an irrelevant vase, with no thresholds; without the route
-  constraint the greedy search stuck on an equivalent list of failure
-  rules. *Evidence:* card 010 (exact variables; pixel networks gave the
-  same 19/19).
+- **One smooth distance cannot mark conditions; contrast successes with
+  failures.** Two-step chains scored at the goal-swapped level (PHWM;
+  card 001), and a key pickup looks like any step (card 003). Contrasting
+  an action's successes with its failures gave exact conditions from 10
+  successes and the key → door → goal chain (card 004); a Bayesian rule
+  list in which every rule is a route to success gave 19/19 goals with no
+  thresholds (card 010). *Confirmed* for the pattern.
 - **Choose what to act on by the action's effect on its parent condition,
   not by whether the route depends on the thing.** Dependence-chosen
   targets looped in 41 of 1,000 layouts (a key dropped back where it
