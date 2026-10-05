@@ -3,7 +3,7 @@ id: "053"
 title: version 10's recall and planner on an encoder trained by transitions
 rung: 0
 serves: [P4, P7, P12]
-status: draft
+status: approved
 verdict:
 arch_version: 10
 date: 2026-10-04
@@ -14,7 +14,8 @@ date: 2026-10-04
 Drafted on 2026-10-04 at the user's request, when card 052 had grown too
 large. It carries card 052's R1 checks (the encoder under noise) and R2
 (the agent's own recall reading that encoder). Not approved; the numbers
-are proposals.
+are proposals. Approved by the user on 2026-10-04, together with
+card 054 to follow (the transition model as recall's prior).
 
 ## 1. Question
 
@@ -98,7 +99,32 @@ the card stops here and reports.
 - **Trivial baseline:** "always stays locked" gets 0% and 100% on the
   colour cases.
 
-Result of the gate: (not yet run)
+**Amendments before the run** (2026-10-04, from measurements on step
+T's saved weights and three short checks; criteria unchanged):
+- **Gates become random on/off masks** (Gumbel-sigmoid, straight-through,
+  temperature 0.5), as in CDL and Lachapelle et al. 2022. In step T the
+  first layer after the gates grew 4–6× (norm 82 against T0's 15) as the
+  gates shrank: a scaled gate can be rescaled by the next layer, so its
+  penalty did not measure usefulness. Acting uses p > 0.5.
+- **The penalty is per action**, half the median of that action's
+  single-input gains (loss with the input off minus on), measured at
+  2,000 updates with the gates held at 0.5. Measured at 500 updates with
+  one penalty for all actions (0.0013), toggle's gates closed (0.11 by
+  3,000 updates): a door's change is small in latent distance. At 2,000
+  updates toggle's gains are about 0 (inputs redundant under random
+  masks), so its penalty is 0 and its gates stay near 0.5: toggle's
+  conditions are not found this way (reported, not a criterion).
+- **Code restarts are removed**, not spaced out. Step T's T0 restarted
+  25 entries by checkpoint 1 and 4 in the remaining 39, so restarts did
+  not cause its code changes. Every probe piece within 0.05 of a
+  boundary (28%) sat between two entries 0.02–0.06 apart, inside one
+  cluster whose noisy copies spread 0.001–0.003: two codes sharing a
+  cluster, which a restart at a random batch piece creates. Without
+  restarts, 4–6 codes are used per part.
+- Reported per checkpoint: entry pairs whose regions overlap (card 035's
+  radius), and the share of probe pieces within 0.05 of a boundary.
+
+Result of the gate: (running)
 
 ## 6. Success criteria and prediction
 
