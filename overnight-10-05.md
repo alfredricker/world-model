@@ -144,3 +144,21 @@ places (key first) to see beyond.
   achievers already are). Chained rooms 100% at 1.61× the shortest
   route; familiar worlds unchanged; no wrong remembered tile.
 - **Decision: keep → architecture version 12** (for you to confirm).
+
+## Card 061: moves learned from the small view
+
+The agent acted on the 7 × 7 view, but its model of how moves change
+where things are was learned from play seen through a window holding the
+whole map. Here it is learned from the same 7 × 7 occluded view.
+
+- **Smoke tests:** plain counting made the turns singular (far places are
+  seen almost only as wall, so they "predict" anything); requiring the
+  place to vary fixed the turns; one rigid transformation per move,
+  fitted by trimmed least squares, made all three exact.
+- **Result:** the same transformations as before on all four encoders;
+  "undraw" (how a tile looks after the agent steps off) the same on
+  every tile, and now exact on the goal, where the full view had to
+  imagine it; acting identical to card 060 in every test.
+- **Decision: keep → architecture version 13** (for you to confirm).
+  Left: what pick up, toggle and drop store as "in view" (card 062,
+  running).

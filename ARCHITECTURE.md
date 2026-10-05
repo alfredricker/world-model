@@ -1,8 +1,18 @@
 ---
-arch_version: 12
+arch_version: 13
 ---
 
 # Architecture
+
+Version 13 is version 12 with the move model and undraw learned from the
+7 × 7 occluded view instead of the whole map
+([card 061](experiments/061-moves-learned-from-the-small-view/card.md),
+kept overnight on 2026-10-05; for the user to confirm): correspondences
+are counted only where both places were observed, and one rigid
+transformation per move is fitted to them by trimmed least squares;
+undraw reads the tile ahead before a forward step. The same
+transformations on four encoders, the same steps in every test. Pick up,
+toggle and drop still store what was in the full window.
 
 Version 12 is version 11 with MiniGrid's occlusion: walls and closed
 doors hide what lies behind them
@@ -77,7 +87,8 @@ stored keys (version 9: 43–4,640 ms). It is not a passed
 rung: the world is fully visible, repeats pixels exactly, and every
 familiar appearance has been seen.
 
-The code is `tools/card057/partial.py` (version 11's partial view; version 12 with
+The code is `tools/card061/moves.py` (version 13's memory) running
+`tools/card057/partial.py` (version 11's partial view; version 12 with
 `--occlude --frontier --keep-look`), on
 `tools/card051/walk2.py` (routes through two tokens), on
 `commit.py` (the chain's choices kept between steps), `threats.py`
@@ -374,9 +385,10 @@ At every step:
   commitment does not hold it. Walking considers pairs of blocked
   tokens, not more.
 - **Partial views.** Since version 12 it sees MiniGrid's 7 × 7 view
-  with occlusion, but the memory it starts with was learned from full
-  views (card 057's declared exception), and the rooms are small next
-  to the view. It needs exact pixel
+  with occlusion; since version 13 its move model is learned from that
+  view too, but pick up, toggle and drop still store what was in the
+  full window (card 057's declared exception, card 062), and the rooms
+  are small next to the view. It needs exact pixel
   repeats with version 10's encoder; card 054's encoder with identity up
   to noise is tested on noisy renders but not yet kept.
 - **A small fixed world.** Routes are worked out for every pair of the
@@ -411,3 +423,4 @@ At every step:
 | 10 | 2026-10-04 | 051 | Memory indexed by situation (exact: the same decisions as version 9, per-step time flat from base memory to +20,000 stored keys, 5.7–9.9 ms against version 9's 43–4,640 ms); threats between the needs of one achiever; the chain's choices kept between steps; routes through two tokens made walkable; the hand kept when only the view is asked for. Two doors 30/30 in 5 of 5 seeds (version 9: 0/30), one door 100% (98%), cluttered 99–100%, familiar worlds 100% with card 029's steps. Kept by the user on Claude's overnight runs |
 | 11 | 2026-10-05 | 057 | A view smaller than the map: MiniGrid's 7 × 7 view; views placed among the placements the action could lead to (only observed places count); online tries stored with the believed view; frontier exploration when there is no chain. Familiar worlds 100% at 1.10–1.17 times the full view's steps (random when stuck: about 1.7 times), chained rooms with one door 100% at 1.16 times the shortest route, no wrong remembered tile; four encoders of card 054. Kept overnight by Claude under the user's overnight rules, for the user to confirm |
 | 12 | 2026-10-05 | 060 | Occlusion (MiniGrid's walls and closed doors hide what is behind them): exploration looks only at never-seen places next to known walkable tokens; when there are none, a door next to never-seen places becomes the condition ("walk", j), kept between steps. Familiar worlds 100% at 1.12–1.19 times the full view's steps (version 11 under occlusion: 0–3%), chained rooms with one door 100% at 1.61 times the shortest route (after the declared revision; 71% without keeping the door), no wrong remembered tile; seed 399. Kept overnight by Claude under the user's overnight rules, for the user to confirm |
+| 13 | 2026-10-05 | 061 | The move model and undraw learned from play seen through the 7 × 7 occluded view: card 028's correspondences counted only where both places were observed and the place varies there, card 044's transformation fitted by least squares trimmed to the correspondences that agree (16 for turns, 35 for forward; residual 0); undraw from the agent on X after a forward step and X ahead before. The same transformations as the full window on four encoders; undraw the same on every tile stepped off, and exact on the goal where the full window had imagined it; acting unchanged (familiar worlds 100%, card 060's steps; chained rooms 100%). Kept overnight by Claude under the user's overnight rules, for the user to confirm |
