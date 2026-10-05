@@ -124,13 +124,11 @@ def fit_codes(S, Xfh, kpos, ulist, counts, same, group, steps=2000, lr=0.03, sha
         E[i, :len(SP.SETS[s])] = S.arr[SP.SETS[s]]
         mk[i, :len(SP.SETS[s])] = True
     Et, mt = torch.as_tensor(E, **f32), torch.as_tensor(mk, device=dev)
-    diff = torch.abs(Et[:, None, :, None, :] - Et[None, :, None, :, :])
     kp = torch.as_tensor(np.asarray(kpos), device=dev)
     D2 = Xfh.shape[1]
 
     def setdist(lamv):
-        Wd = (diff @ lamv).masked_fill(~mt[None, :, None, :], float("inf"))
-        a2b = Wd.min(-1).values.masked_fill(~mt[:, None, :], 0.0).sum(-1)
+        a2b = SP.chamfer_a2b(Et, mt, lamv)
         return (a2b + a2b.T)[kp][:, kp]
 
     with torch.no_grad():

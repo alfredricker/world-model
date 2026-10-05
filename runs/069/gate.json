@@ -1,0 +1,13 @@
+{
+ "encoder": "/home/fred/Projects/world-model/runs/054/b_m0.5_399.pt",
+ "whole vector": {
+  "left_out_colour_pairs_right": "47/66",
+  "unseen_hue_pairs_right": "4/9",
+  "weights_carrying_half_the_mass": 2
+ },
+ "one quarter (card 049)": {
+  "left_out_colour_pairs_right": "44/66",
+  "unseen_hue_pairs_right": "4/9",
+  "weights_carrying_half_the_mass": 2
+ }
+}

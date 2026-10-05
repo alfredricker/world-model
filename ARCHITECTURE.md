@@ -447,13 +447,22 @@ At every step:
 - **A lattice sized in advance.** Tokens live on a fixed grid set per
   map (card 066's prior); walking no longer limits it (version 15), but a
   map whose size is not known in advance needs the lattice to grow.
-- **MiniGrid tier 2 (card 066):** 0%. Random play leaves memory without
-  an open door walked through in some colours, so those doors are not
-  openable; recall lets other keys open some doors; and the agent does
-  not learn to free its hand before picking up the box.
+- **MiniGrid tier 2 (cards 066, 068):** 0%. The agent does not learn to
+  free its hand before picking up the box (recall even predicts that a
+  locked door opens while a ball is held). With play starts in memory,
+  5 of 6 locked door colours are openable; blue is not, because the tile
+  recall predicts a toggled blue door becomes (card 038's ways) is no
+  catalogue tile and is judged not walkable (card 068).
+- **"Same colour" across kinds.** The encoder's vectors do not carry
+  colour alike in a key and a door: no weighting tells a matching pair
+  from another for a colour left out (47 of 66; card 069), and a relation
+  term trained beside one-tile terms learned a threshold per colour
+  instead (card 069, stopped).
 - **MiniGrid tier 3:** memory cannot be built: recall's fit of its view
-  weights compares every pair of distinct stored views at once (698 GB
-  here).
+  weights compares every pair of distinct stored views. Card 068 removed
+  the per-number differences (698 GB there), but the token-pair distances
+  alone would still need about 22 GB, and the work grows with the square
+  of memory. Tier 2's setup with play-start memory already takes 746 s.
 - **Slower than version 5:** 0.20–0.64 s per layout in the familiar
   worlds (version 5: 0.015–0.024); the switch world with a new-colour
   door was 4–19 s in version 8 and is not retimed.

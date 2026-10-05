@@ -46,6 +46,61 @@ def chamfer_to(S, q, sids, lamv):
     return np.minimum.reduceat(Wd, starts, axis=1).sum(0) + np.add.reduceat(Wd.min(0), starts)
 
 
+_WL1 = {}
+
+
+def _wl1():
+    """Weighted L1 between every row of A and every row of B as one fused kernel (torch.compile): the (|A|, |B|, D)
+    differences are never made (card 068)."""
+    if not _WL1:
+        import torch
+
+        def wl1(A, B, lam):
+            return ((A[:, None, :] - B[None, :, :]).abs() * lam).sum(-1)
+
+        _WL1["f"] = torch.compile(wl1, dynamic=True)
+    return _WL1["f"]
+
+
+def chamfer_a2b(Et, mt, lamv, budget=2 ** 28):
+    """For every pair of sets (A, B): the sum over A's things of the weighted L1 to B's nearest thing, (ns, ns),
+    for Et (ns, m, Dv) with mask mt (ns, m). The same numbers and gradient as
+      Wd = (|Et[:, None, :, None] - Et[None, :, None]| @ lamv).masked_fill(~mt[None, :, None, :], inf)
+      Wd.min(-1).values.masked_fill(~mt[:, None, :], 0).sum(-1)
+    (card 068), up to ties for the nearest thing: the minimum passes its gradient to the nearest thing only, so the
+    backward pass needs the differences to the nearest things alone, made a slice of sets at a time."""
+    import torch
+    global _ChamferA2B
+    if "_ChamferA2B" not in globals():
+        class _ChamferA2B(torch.autograd.Function):
+            @staticmethod
+            def forward(ctx, E, M, lam):
+                ns, m, Dv = E.shape
+                X = E.reshape(ns * m, Dv)
+                C = _wl1()(X, X, lam).reshape(ns, m, ns, m).permute(0, 2, 1, 3)        # (A, B, a, b)
+                C = C.masked_fill(~M[None, :, None, :], float("inf"))
+                v, j = C.min(-1)                                                          # (A, B, a)
+                del C
+                v = v.masked_fill(~M[:, None, :], 0.0)
+                ctx.save_for_backward(E, M, j)
+                ctx.r = max(1, budget // max(1, ns * m * Dv))
+                return v.sum(-1)
+
+            @staticmethod
+            def backward(ctx, g):
+                E, M, j = ctx.saved_tensors
+                ns, m, Dv = E.shape
+                gl = torch.zeros(Dv, dtype=E.dtype, device=E.device)
+                B = torch.arange(ns, device=E.device)[None, :, None]
+                for i in range(0, ns, ctx.r):
+                    near = E[B, j[i:i + ctx.r]]                                           # (r, B, a, Dv)
+                    d = (E[i:i + ctx.r, None, :, :] - near).abs_()
+                    w = g[i:i + ctx.r, :, None] * M[i:i + ctx.r, None, :]
+                    gl += w.reshape(-1) @ d.reshape(-1, Dv)
+                return None, None, gl
+    return _ChamferA2B.apply(Et, mt, lamv)
+
+
 def fit_lambda_sets(S, Xfh, kpos, ulist, Rk, group, steps=1500, lr=0.02):
     """Card 037's fit (fit_lambda in card 038) with the view part's distance the chamfer matching between the
     keys' sets. Every lambda equal at the start, with the median distance between keys 1."""
@@ -64,12 +119,10 @@ def fit_lambda_sets(S, Xfh, kpos, ulist, Rk, group, steps=1500, lr=0.02):
         E[i, :len(SETS[s])] = S.arr[SETS[s]]
         mk[i, :len(SETS[s])] = True
     Et, mt = torch.as_tensor(E, **f32), torch.as_tensor(mk, device=dev)
-    diff = torch.abs(Et[:, None, :, None, :] - Et[None, :, None, :, :])       # (ns, ns, m, m, Dv)
     kp = torch.as_tensor(np.asarray(kpos), device=dev)
 
     def setdist(lamv):
-        Wd = (diff @ lamv).masked_fill(~mt[None, :, None, :], float("inf"))
-        a2b = Wd.min(-1).values.masked_fill(~mt[:, None, :], 0.0).sum(-1)    # (ns, ns): A's things to B
+        a2b = chamfer_a2b(Et, mt, lamv)                                         # (ns, ns): A's things to B
         return a2b + a2b.T
 
     def dist(lam):

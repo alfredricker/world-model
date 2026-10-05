@@ -125,12 +125,14 @@ meets them:
    among the stored rows; the open green door is not known to be
    walkable, so the green and blue doors never become a condition and the
    agent explores, then acts at random, in the first room.
-2. *Other keys.* Recall lets a key of another colour open the purple and
-   yellow doors (0 of 5 other keys predicted to fail), card 054's
-   weakness, exposed by six colours. Toggle's admitted conditions are the
-   held tile's fourth part and four "a key of colour X in view"; the
-   relation between door and held key (`rel:3`), admitted in tier 1,
-   is not.
+2. *Other keys* (not a cause here; corrected the same day). Recall lets a
+   key of another colour open the purple and yellow doors (0 of 5 other
+   keys predicted to fail), card 054's weakness. But a tier 2 episode has
+   one key, of its door's colour, so this never arises in tier 2 and
+   memory holds no such try (card 069's data check); it matters in tier
+   3. Toggle's admitted conditions are the held tile's fourth part and
+   four "a key of colour X in view"; the relation `rel:3`, admitted in
+   tier 1, is not.
 3. *The hand.* Where the door was opened (seed 1002000), the agent walked
    to the box holding the key; the pick up failed, and recall offered
    "pick up the open door" or "hold the ball" as ways to free the hand;
@@ -140,7 +142,7 @@ meets them:
 
 **Keep.** The harness and these scores are the reference that later
 cards are compared against: tier 1 100%, tier 2 0%, tier 3 not buildable.
-Tier 2's three causes are in memory and recall, not in walking: play
-starts for memory (card 068), the relation between key and door, and the
-hand's conditions. Tier 3 needs recall's weight fit to scale (a later
+Tier 2's causes are in memory and recall, not in walking: play starts
+for memory (card 068) and the hand's conditions; the relation between key
+and door matters from tier 3 on. Tier 3 needs recall's weight fit to scale (a later
 card, the user, 2026-10-05).

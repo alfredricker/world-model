@@ -1,0 +1,15 @@
+{
+ "episodes": 5000,
+ "steps": 2690393,
+ "successes": 1247,
+ "walked_onto_open_door_yellow": 1463,
+ "doors_opened": 1596,
+ "play_starts": 2507,
+ "play_starts_holding_a_key": 640,
+ "stored_onto_open_door_yellow": 175,
+ "rows": 381517,
+ "tries": 212378,
+ "tries_with_stale_belief": 0,
+ "seconds": 24.3,
+ "env": "MiniGrid-DoorKey-8x8-v0"
+}

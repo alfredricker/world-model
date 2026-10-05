@@ -59,9 +59,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   new colours per episode is the stronger test. A learned dot-product score
   between two things, (Wq a)·(Wk b), is such a table: on one-hot vectors
   it fit three colours and carried to none, while a distance along learned
-  weights carried. *Evidence:* phwm record §5.4–5.5;
+  weights carried. A distance is not enough when terms reading each tile
+  alone sit beside it: card 069's relation, trained on nine fixed colours
+  next to such terms, became a threshold per door colour (45 of 66 pairs
+  right for a colour left out). *Evidence:* phwm record §5.4–5.5;
   old:phwm/docs/06-achievements-and-limitations.md §6.1.1; card 040
-  appendix A. *Confirmed.*
+  appendix A; card 069. *Confirmed.*
 - **Verify that held-out cases are really held out, and keep new
   combinations apart from new members.** PHWM's first held run left about
   98% of query pairs in the support set (corrected: .917). Combination

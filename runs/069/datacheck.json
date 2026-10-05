@@ -1,0 +1,13 @@
+{
+ "steps": 100000,
+ "seconds": 126.3,
+ "closed door, opened": 153,
+ "locked door, ball held, not opened": 6,
+ "locked door, box held, not opened": 2,
+ "locked door, box held, opened": 1,
+ "locked door, matching key, opened": 58,
+ "locked door, nothing held, not opened": 198,
+ "locked door, nothing held, opened": 60,
+ "locked door, other key, not opened": 70,
+ "toggles": 16632
+}

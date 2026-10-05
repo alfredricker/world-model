@@ -2,39 +2,35 @@
 
 Overwritten each session. At most 40 lines.
 
-- **Date:** 2026-10-05 (overnight), on `master` (not pushed). **Rung:**
-  rung 1 begun (cards 056, 059), not passed. **Architecture:** version
-  14 with card 054's encoder (confirmed by the user 2026-10-05).
-- **Direction:** CHARTER.md's "Current direction", with rule 8 and one
-  latent space. User, 2026-10-05: no learned codebook (identity up to
-  noise); perception keeps every visible difference; gates on behaviour.
-- **Overnight objective (the user):** a principled, scalable encoder
-  that keeps the goal/condition hierarchy, then goals from example
-  frames, then a view smaller than the map. Card by card in
-  [overnight-10-05.md](overnight-10-05.md); all 10 cards used.
-- **Where it stands:**
-  - Encoder: [054](experiments/054-identity-up-to-noise/card.md) revise
-    (planner and conditions kept on 4 seeds; recall's "other key" weak);
-    [063](experiments/063-replay-what-the-transition-model-misses/card.md)
-    stop (prioritized replay did not help; the per-part comparison is
-    the limit).
-  - Goals: [056](experiments/056-goals-from-example-frames/card.md) revise
-    (frames reached as well as written-in goals);
-    [059](experiments/059-how-soon-from-the-chain/card.md) revise (how
-    soon, rank 0.97–0.99); [065](experiments/065-goals-from-small-frames/card.md)
-    keep (goals from small frames, 98–100%).
-  - Small view, all keep: [057](experiments/057-view-smaller-than-the-map/card.md)
-    v11, [060](experiments/060-walls-hide-what-is-behind/card.md) v12
-    (occlusion), [061](experiments/061-moves-learned-from-the-small-view/card.md)
-    v13 and [062](experiments/062-tries-stored-as-believed/card.md) v14
-    (memory learned from the small view),
-    [064](experiments/064-small-view-on-the-harder-worlds/card.md) (two
-    doors 30/30, cluttered 100/100).
-  - [058](experiments/058-route-or-clear-the-way/card.md) stop (dithering).
-- **Next (the user, 2026-10-05):** CHARTER's three MiniGrid tiers
-  (DoorKey-8x8 ≥ 99%; BlockedUnlockPickup, ObstructedMaze-Full against
-  the best version). Card 066: the adapter and version 14's baselines;
-  card 067: closeness by local propagation (value iteration on the
-  believed map) in place of route and chain tables.
-- **Later:** the key–door comparison (063); rung 1's clearing commitment;
-  the both world's random steps under the small view (065); card 055.
+- **Date:** 2026-10-05, on `master` (not pushed). **Rung:** 1, not
+  passed. **Architecture:** version 15 (card 067's walking by
+  propagation), card 054's encoder.
+- **Direction:** CHARTER.md's "Current direction", with rule 8. User,
+  2026-10-05: the standing evaluation is CHARTER's three MiniGrid tiers;
+  walking knows only its next step and whether it brings it closer.
+- **Best version and its scores** (CHARTER's tiers, card 066's seeds):
+  version 15. Tier 1 DoorKey-8x8 **100%** (200; threshold 99%); tier 2
+  BlockedUnlockPickup **0%** (100); tier 3 ObstructedMaze-Full-v1: memory
+  cannot be built yet (counted as no different).
+- **Today's cards:**
+  - [066](experiments/066-minigrid-tiers/card.md) keep: the harness and
+    why tier 2 fails.
+  - [067](experiments/067-closeness-by-propagation/card.md) keep, version
+    15: walking by propagation; the same decisions, setup 21 s against 47.
+  - [068](experiments/068-play-starts/card.md) revise: play starts give
+    every colour its open door walked through; 5 of 6 locked doors
+    openable (4 before); tiers unchanged. Blue fails in recall's
+    predicted tile for a toggled door (card 038's ways), not in memory.
+    Recall's view-set fit no longer builds its 7 GB tensor (same numbers).
+  - [069](experiments/069-relations-as-learned-weights/card.md) stop: a
+    learned relation over whole vectors, trained into the encoder, failed
+    its gate (45 of 66 for a left-out colour, against 47 before); it
+    learned a threshold per door colour.
+- **Next, for the user to choose:** card 068's revision (the tile a door
+  becomes when toggled); the hand's conditions (put down before picking
+  up), which tier 2 needs; a second relation attempt (the relation as the
+  only path for what depends on both tiles, fresh colours per update);
+  later, recall's view-set fit at tier 3's scale.
+- **The user's demo** is on 2026-10-06: version 15 on tier 1.
+- **Later:** rung 1's clearing commitment (card 058); the both world's
+  random steps (065); card 055 (draft).
