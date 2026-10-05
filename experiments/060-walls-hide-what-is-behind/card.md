@@ -3,8 +3,8 @@ id: "060"
 title: walls hide what is behind them
 rung: 1
 serves: [P15, P2, P12, C5]
-status: approved
-verdict:
+status: done
+verdict: pass
 arch_version: 11
 date: 2026-10-05
 ---
@@ -76,4 +76,55 @@ revision if one fails; stop if arm B is below 80%.
 
 ## 7. Result
 
+**Smoke test first** (5 key-world and 5 both-world layouts, arm B as
+first written: frontier only): 0%. Traced: at the start the only
+never-seen places lie behind the locked door, none next to a known
+walkable place, so arm B had nowhere to look and took random actions.
+Before the main run, arm B got its second half (section 2: open a door
+next to never-seen places, as the condition ("walk", j)); then 100% in
+those 10 layouts.
+
+**Main run, seed 399** (`runs/060/{fam,chain}_{A,B}_399.json`; full view
+without occlusion: card 054's version 10 on the same encoder).
+
+| | Full view | Arm A: version 11's exploration | Arm B |
+|---|---|---|---|
+| Key world: success, steps | 100%, 15.9 | 0% | 100%, 18.1 (1.14×) |
+| Switch world | 100%, 16.7 | 3.3% | 100%, 19.1 (1.15×) |
+| Either world | 100%, 14.4 | 3.3% | 100%, 17.1 (1.19×) |
+| Both world | 100%, 21.0 | 0% | 100%, 23.5 (1.12×) |
+| Chained rooms, one door (× shortest) | 100% (1.00) | 4% (8.4) | **71%** (1.66) |
+| Episodes ending with a wrong remembered tile | – | 0 | 0 |
+
+Arm A fails as predicted: it keeps walking toward places behind the
+outer walls, which it can never see. Criteria 1 and 3 hold; criterion 2
+fails. All 29 failed chained-room episodes explored for their whole 200
+steps. Traced (layout 0): two doors next to never-seen places were
+equally near, and turning toward one made the other the nearer, so the
+agent turned left, then right, for the whole episode (card 058's
+dithering, here in where to look).
+
+**Declared revision:** the door chosen to look past is kept between
+steps while it still gives a plan and still has never-seen places next
+to it (`--keep-look`; version 10 already keeps an achiever between
+steps). Layout 0 then succeeds in 17 steps (shortest 15).
+
+**Revision** (`runs/060/{fam,chain}_Bk_399.json`): chained rooms 100%
+(100 of 100) at 1.61 × the shortest route (median 1.27, worst 3.6; the
+agent must find the key and the door before it knows where the goal is,
+while the shortest route knows the map). Familiar worlds unchanged:
+100% at 1.12–1.19 × the full view's steps. No random step, and no wrong
+remembered tile in any episode. All three criteria hold.
+
 ## 8. Decision
+
+**Keep** (version 12: walls and closed doors hide what is behind them).
+When walls and closed doors hide what lies behind them, the agent looks
+only where looking can succeed: at never-seen places next to places it
+knows it can walk on. When there are none, it opens a door next to
+never-seen places, as the condition ("walk", j) planned like any other
+(its key first), and keeps that choice between steps. Seeing is then a
+condition the agent works toward (P12, P15), not a separate routine.
+Open: the starting memory is still learned from full views (card 057's
+exception), and the rooms are small next to the view; only seed 399 was
+run, since the four encoders gave identical results in card 057.

@@ -27,7 +27,12 @@ CM = walk2.CM
 MV = CM.S7.MV
 G, F = MV.G, MV.F
 INF = MV.INF
-STATS = {"priced": 0, "cleared": 0}
+STATS = {"priced": 0, "cleared": 0, "kept": 0}
+
+
+COMMIT = "--commit-walk" in sys.argv                  # card 061: walking's choice kept between steps
+if COMMIT:
+    sys.argv.remove("--commit-walk")
 
 
 def install():
@@ -36,6 +41,21 @@ def install():
     def walk(self, need, st, depth, chain, protect, faces):
         pid = self.face_pid(st[0], need)
         r, _ = self.reach(st, pid)
+        now = self.__dict__.setdefault("walk_now", {})
+        prev = getattr(self, "walk_prev", {}).get(need) if COMMIT else None
+        if prev is not None:                           # card 061: the last step's choice first, while it gives a plan
+            if prev == "route" and r is not None and r != G.HERE:
+                STATS["kept"] += 1
+                now[need] = "route"
+                return route_walk(self, need, st, depth, chain, protect, faces)
+            c = ("walk", prev)
+            if prev != "route" and c not in chain and not self.hold(c, st) and depth + 1 <= G.MAXD:
+                res = self.solve(c, st, depth + 1, chain + [need], protect, faces + [need])
+                if res is not None:
+                    STATS["kept"] += 1
+                    now[need] = prev
+                    res.trace = [need, ("walk", "cleared")] + res.trace
+                    return res
         if r is not None and r != G.HERE and depth + 1 <= G.MAXD:
             fid = st[0]
             w, op = self.walkable(fid), self.openable(fid)
@@ -58,11 +78,24 @@ def install():
                     res = self.solve(c, st, depth + 1, chain + [need], protect, faces + [need])
                     if res is not None:
                         STATS["cleared"] += 1
+                        now[need] = j
                         res.trace = [need, ("walk", "cleared")] + res.trace
                         return res
+        if r is not None and r != G.HERE:
+            now[need] = "route"
         return route_walk(self, need, st, depth, chain, protect, faces)
 
     MV.Walk.walk = walk
+    if COMMIT:
+        choose0 = CM.S7.Plan047.choose
+
+        def choose(self, st):
+            self.walk_now = {}
+            res = choose0(self, st)
+            self.walk_prev = self.walk_now if res is not None else {}
+            return res
+
+        CM.S7.Plan047.choose = choose
 
 
 def main():

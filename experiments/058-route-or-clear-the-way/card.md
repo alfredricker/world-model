@@ -99,6 +99,13 @@ had decided the card.
 
 ## 8. Decision
 
+A follow-up check, not a revision (the card had already stopped):
+keeping walking's choice between steps (`--commit-walk`) left the both
+world at 76.7%. The flip is inside the clearing chain: the door's needs
+alternate in form as the agent turns (a hand-and-view condition one
+step, none the next), version 10's known limit "an achiever whose needs
+change form"; its exact cause was not traced.
+
 **Stop.** As declared, criterion 2 failed. Comparing candidate chains by
 cost is still the right principle (P21), but a comparison remade every
 step needs the choice kept until it fails, as card 051 keeps achievers;

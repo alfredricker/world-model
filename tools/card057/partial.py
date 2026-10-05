@@ -45,6 +45,7 @@ ARM = {"arm": "B"}
 DEBUG = "--debug" in sys.argv
 OCCLUDE = "--occlude" in sys.argv                     # card 060: walls and closed doors hide what lies behind
 FRONTIER = "--frontier" in sys.argv                   # card 060, arm B: frontier = unseen next to known walkable
+KEEP_LOOK = "--keep-look" in sys.argv                 # card 060's declared revision: the door to look past kept
 STATS = Counter()
 
 
@@ -192,11 +193,17 @@ def open_to_see(pl, st):
     op = pl.openable(st[0])
     unseen_next = ((nb >= 0) & (f[np.maximum(nb, 0)] == ABSENT)).any(1)
     js = np.flatnonzero(op[:len(unseen_next)] & unseen_next[:len(op)]).tolist()
-    cands = sorted((pl.closeness(st, M.facing[j]) or (99, 9), j) for j in js)
-    for _, j in cands:
+    cands = [j for _, j in sorted((pl.closeness(st, M.facing[j]) or (99, 9), j) for j in js)]
+    prev = getattr(pl, "look_j", None) if KEEP_LOOK else None
+    if prev in cands:                                   # the last step's choice first, while it still gives a plan
+        cands = [prev] + [j for j in cands if j != prev]
+    for j in cands:
         res = pl.solve(("walk", j), st, 1, [], [], [])
         if res is not None:
+            pl.look_j = j
             STATS["open_to_see"] += 1
+            if DEBUG:
+                print("   open_to_see j", j, "trace", [str(c)[:40] for c in res.trace[:4]], flush=True)
             return int(res.action)
     return None
 
@@ -328,6 +335,8 @@ def wd_act(W, lay, i, M):
         s2, end = M.step(lay, s, a)
         Vt = M.see(lay, s2)
         V2 = crop(Vt, codes_wd(M, lay, s2))
+        if DEBUG and i in (0, 3):
+            print("dbg", i, t, "a", a, "state", s2[:9], "explore", rec["explore"], "via", rec.get("via"), flush=True)
         facts, st, miss, _ = pl.observe(facts, V2, end, prefer=pred[1], cands=moved_to(st, a))
         wrong += bool(miss)
         mism = max(mism, miss)

@@ -134,4 +134,13 @@ places (key first) to see beyond.
 
 - **Smoke test:** arm B at first had nowhere to look (the only unseen
   space was behind the locked door); with opening a door to see beyond,
-  100% in 5 key-world and 5 both-world layouts. Main run going.
+  100% in 5 key-world and 5 both-world layouts.
+- **Main run:** arm A 0–3% everywhere (it walks toward places behind the
+  outer walls, which it can never see). Arm B: familiar worlds 100% at
+  1.12–1.19× the full view's steps; chained rooms 71%: two doors took
+  turns as the nearest to open, and the agent turned left and right
+  for whole episodes.
+- **Declared revision:** keep the chosen door between steps (as
+  achievers already are). Chained rooms 100% at 1.61× the shortest
+  route; familiar worlds unchanged; no wrong remembered tile.
+- **Decision: keep → architecture version 12** (for you to confirm).

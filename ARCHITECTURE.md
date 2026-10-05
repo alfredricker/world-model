@@ -1,8 +1,19 @@
 ---
-arch_version: 11
+arch_version: 12
 ---
 
 # Architecture
+
+Version 12 is version 11 with MiniGrid's occlusion: walls and closed
+doors hide what lies behind them
+([card 060](experiments/060-walls-hide-what-is-behind/card.md), kept
+overnight on 2026-10-05; for the user to confirm). With no chain of
+conditions it looks only at never-seen places next to places it knows
+it can walk on; when there are none, it opens a door next to never-seen
+places, as a condition ("walk", j) planned like any other, and keeps
+that choice between steps. Familiar worlds 100% at 1.12–1.19 times the
+full view's steps (version 11 with occlusion: 0–3%), chained rooms with
+one door 100% at 1.61 times the shortest route.
 
 Version 11 is version 10 seeing only MiniGrid's 7 × 7 view (six rows
 ahead, three columns to each side, nothing behind) instead of a window
@@ -66,7 +77,8 @@ stored keys (version 9: 43–4,640 ms). It is not a passed
 rung: the world is fully visible, repeats pixels exactly, and every
 familiar appearance has been seen.
 
-The code is `tools/card057/partial.py` (version 11's partial view), on
+The code is `tools/card057/partial.py` (version 11's partial view; version 12 with
+`--occlude --frontier --keep-look`), on
 `tools/card051/walk2.py` (routes through two tokens), on
 `commit.py` (the chain's choices kept between steps), `threats.py`
 (threats between needs; the hand kept) and `index.py` (memory indexed by
@@ -282,7 +294,11 @@ At every step:
      predicted steps;
    - (version 11) when there is no chain at all, walk to the nearest
      placement standing on a known walkable token from which a
-     never-seen place would be in view (frontier exploration).
+     never-seen place would be in view (frontier exploration);
+   - (version 12) only never-seen places next to a known walkable token
+     count; when there are none, a known token next to never-seen places
+     that recall says can be made walkable (a door) becomes the condition
+     ("walk", j), kept between steps while it still gives a plan.
 5. **Revise** as in version 5.
 
 ## Present but not used by the agent
@@ -357,10 +373,10 @@ At every step:
   the chosen achiever's needs alternate in form from step to step, so
   commitment does not hold it. Walking considers pairs of blocked
   tokens, not more.
-- **Exact views, and partial views without occlusion.** Since version
-  11 it sees a 7 × 7 view, but walls do not hide what lies behind them
-  (MiniGrid's default does), and the memory it starts with was learned
-  from full views (card 057's declared exception). It needs exact pixel
+- **Partial views.** Since version 12 it sees MiniGrid's 7 × 7 view
+  with occlusion, but the memory it starts with was learned from full
+  views (card 057's declared exception), and the rooms are small next
+  to the view. It needs exact pixel
   repeats with version 10's encoder; card 054's encoder with identity up
   to noise is tested on noisy renders but not yet kept.
 - **A small fixed world.** Routes are worked out for every pair of the
@@ -394,3 +410,4 @@ At every step:
 | 9 | 2026-10-04 | 049–050 | Recall through the conditions that matter: for pick up, toggle and drop, only conditions admitted by their leave-one-out gain (front and held parts, front–held relations, code tuples in view) are compared, so tokens that never changed an outcome cannot veto a memory (049); a query's own situation first, neighbours as its prior, so one failed try corrects recall (050). Kept by the user with card 050: familiar worlds 100% in 5 of 5 seeds, chained rooms with one door 98% (version 8: 46% in seed 401), cluttered key world 98–100%; new-colour switch door 76% with card 049 (version 8: 40%) |
 | 10 | 2026-10-04 | 051 | Memory indexed by situation (exact: the same decisions as version 9, per-step time flat from base memory to +20,000 stored keys, 5.7–9.9 ms against version 9's 43–4,640 ms); threats between the needs of one achiever; the chain's choices kept between steps; routes through two tokens made walkable; the hand kept when only the view is asked for. Two doors 30/30 in 5 of 5 seeds (version 9: 0/30), one door 100% (98%), cluttered 99–100%, familiar worlds 100% with card 029's steps. Kept by the user on Claude's overnight runs |
 | 11 | 2026-10-05 | 057 | A view smaller than the map: MiniGrid's 7 × 7 view; views placed among the placements the action could lead to (only observed places count); online tries stored with the believed view; frontier exploration when there is no chain. Familiar worlds 100% at 1.10–1.17 times the full view's steps (random when stuck: about 1.7 times), chained rooms with one door 100% at 1.16 times the shortest route, no wrong remembered tile; four encoders of card 054. Kept overnight by Claude under the user's overnight rules, for the user to confirm |
+| 12 | 2026-10-05 | 060 | Occlusion (MiniGrid's walls and closed doors hide what is behind them): exploration looks only at never-seen places next to known walkable tokens; when there are none, a door next to never-seen places becomes the condition ("walk", j), kept between steps. Familiar worlds 100% at 1.12–1.19 times the full view's steps (version 11 under occlusion: 0–3%), chained rooms with one door 100% at 1.61 times the shortest route (after the declared revision; 71% without keeping the door), no wrong remembered tile; seed 399. Kept overnight by Claude under the user's overnight rules, for the user to confirm |

@@ -2,38 +2,38 @@
 
 Overwritten each session. At most 40 lines.
 
-- **Date:** 2026-10-05, on `master` (not pushed). **Rung:** before
-  rung 1. **Architecture:** version 10 (card 051).
+- **Date:** 2026-10-05 (overnight), on `master` (not pushed). **Rung:**
+  rung 1 begun (cards 056, 059), not passed. **Architecture:** version
+  11 (card 057, kept overnight: for the user to confirm).
 - **Direction:** CHARTER.md's "Current direction", with rule 8 and one
-  latent space. User, 2026-09-30: work backward over conditions (P21).
-  User, 2026-10-04: change the encoder by replacing pieces, not adding
-  terms; tint set aside. User, 2026-10-05: no learned codebook (identity
-  up to noise); perception keeps every visible difference, relevance is
-  recall's and the planner's; gates on the agent's behaviour.
-- **Overnight objective (the user, 2026-10-05):** an encoder that is
-  well principled and scalable and keeps the goal/condition hierarchy;
-  the agent still discovers conditions. Then goals from example frames
-  (rung 1), then an egocentric view smaller than the map. Rules in
-  AGENTS.md ("Overnight sessions"); record in `overnight-10-05.md`.
-- **Active card:** [054](experiments/054-identity-up-to-noise/card.md),
-  approved: identity up to noise, and an encoder that keeps every
-  visible difference. Then
-  [055](experiments/055-network-as-recall-prior/card.md) (the network
-  as recall's prior), draft.
-- **Recent cards:**
-  - [053](experiments/053-recall-on-transition-encoder/card.md): fail,
-    revise. The visibility margin made the encoder see what actions
-    change (planner 100% in the familiar worlds); its codebook merges
-    key colours (recall 45% / 85%);
-  - [052](experiments/052-staged-encoder/card.md): fail, revise. Kept
-    the generator with play starts. Corrected 2026-10-05: step T's
-    encoder erased what actions change ("40 of 40" was scored by its own
-    codes; 0 of 40 against the simulator);
-  - [051](experiments/051-planner-chains-and-rules/card.md): pass, keep
-    (version 10).
-- **Open:** colour spread over parts; codes drifting once the encoder
-  learns while acting (R4); cluttered seed 403 layout 93; "unknown" read
-  as "fails"; conjunctions spliced.
+  latent space. User, 2026-10-05: no learned codebook (identity up to
+  noise); perception keeps every visible difference; gates on behaviour.
+- **Overnight objective (the user):** a principled, scalable encoder
+  that keeps the goal/condition hierarchy, then goals from example
+  frames, then a view smaller than the map. Card by card in
+  [overnight-10-05.md](overnight-10-05.md).
+- **Where it stands:**
+  - [054](experiments/054-identity-up-to-noise/card.md) revise: the
+    transition-trained encoder with identity up to noise keeps the
+    planner at 100% (familiar, chained, cluttered; 4 seeds) and the
+    conditions; recall's colour cases on noisy tries fall short.
+  - [056](experiments/056-goals-from-example-frames/card.md) revise:
+    goals inferred from frames are reached as well as written-in ones.
+  - [057](experiments/057-view-smaller-than-the-map/card.md) keep: a
+    7 × 7 view, 100% at 1.10–1.17× the full view's steps.
+  - [058](experiments/058-route-or-clear-the-way/card.md) stop: pricing
+    clearing every step made the agent dither.
+  - [059](experiments/059-how-soon-from-the-chain/card.md) revise: how
+    soon from the chain, rank 0.97–0.99 against true steps.
+  - [060](experiments/060-walls-hide-what-is-behind/card.md): occlusion,
+    running.
+- **Next decisions for the user:** confirm version 11; whether card
+  054's encoder replaces version 10's; rung 1's open pieces: walking
+  that keeps its choice of clearing the way, and goal examples where
+  random play is too thin (the both world's door).
+- **Open:** recall's colour separation on noisy tries (054); the
+  starting memory learned from full views (057's exception); card 055
+  (the network as recall's prior), draft.
 - **papi:** GLM-5.3 via OpenRouter; needs credit for summaries.
-- **Pinned:** card 029's arm 3 in the both world; demonstrations once
-  random play is too thin; GOAL.md hypotheses draft.
+- **Pinned:** demonstrations once random play is too thin; GOAL.md
+  hypotheses draft.
