@@ -12,14 +12,20 @@ Overwritten each session. At most 40 lines.
   User, 2026-10-04: change the encoder by replacing pieces that do not
   work, not by adding terms; tint set aside (the agent never acts on
   it); the encoder learns latent transitions together with conditions.
-- **Active card:** [053](experiments/053-recall-on-transition-encoder/card.md),
-  done, fail, revise proposed. The visibility margin (C-SWM's hinge on
-  the agent's observed changes) fixed the encoder erasing what actions
-  change; version 10's planner on it: 100% in all four familiar worlds.
-  Recall's colour cases 45% / 85% (bar 90%): codes merge key colours.
-- **Next decision (the user):** accept "revise"; next, codes split
-  where a situation's own tries disagree, then card 054.
+- **Overnight objective (the user, 2026-10-05):** an encoder that is
+  well principled and scalable and keeps the goal/condition hierarchy;
+  the agent still discovers conditions. Then goals from example frames
+  (rung 1), then an egocentric view smaller than the map.
+- **Active card:** [054](experiments/054-identity-up-to-noise/card.md),
+  approved: identity up to noise (no learned codebook), and an encoder
+  that keeps every visible difference. Then
+  [055](experiments/055-network-as-recall-prior/card.md) (the network as
+  recall's prior), draft.
 - **Recent cards:**
+  - [053](experiments/053-recall-on-transition-encoder/card.md): done,
+    fail, revise: the visibility margin made the encoder see what actions
+    change (planner 100% in the familiar worlds); its codebook merges key
+    colours (recall 45% / 85%);
   - [052](experiments/052-staged-encoder/card.md): done, fail, revise.
     Kept: the generator with play starts, recall's predictions as the
     drift measure. Corrected 2026-10-05: step T's encoder erases what

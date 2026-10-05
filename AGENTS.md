@@ -31,6 +31,7 @@ There are no other documents. Do not create notes, reviews or summaries.
 | The current model | `ARCHITECTURE.md`; bump `arch_version` and add a change-log line when it changes |
 | A durable lesson with evidence | `LESSONS.md`; prune or merge, never let it exceed three pages (the user, 2026-10-01) |
 | Which paper shaped which component; the current paper focus | `LITERATURE.md` |
+| What one overnight session did, card by card | `overnight-MM-DD.md`, temporary; the user deletes it once read |
 
 ## Rules
 
@@ -51,3 +52,19 @@ Write for a smart reader who has not seen this project. Plain English, full
 sentences, terms defined on first use. Give every number with what it is
 compared against. Put caveats once, where they matter, not on every line.
 Use relative Markdown links, not `[[wikilinks]]`.
+
+## Overnight sessions
+
+The user's rules (2026-10-05):
+
+1. At most 10 new cards in one overnight session.
+2. Do not stop to wait for the user's choice of direction. Where the
+   direction splits, take the most sensible option or, when the options
+   are few, run them all and keep the strongest.
+3. Return to [GOAL.md](GOAL.md) as often as needed to keep choices
+   aligned without the user's guidance.
+4. Keep `overnight-MM-DD.md`: for each card, a concise explanation and
+   the decision taken.
+5. Work toward the objective the user sets in STATUS.md, until the user
+   wakes. The objective may be a stretch goal; most or all of the night
+   goes to it.

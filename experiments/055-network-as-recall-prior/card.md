@@ -1,5 +1,5 @@
 ---
-id: "054"
+id: "055"
 title: the transition model as recall's prior
 rung: 0
 serves: [P8, P11, P17, P21]
@@ -9,11 +9,13 @@ arch_version: 10
 date: 2026-10-04
 ---
 
-# 054: the transition model as recall's prior
+# 055: the transition model as recall's prior
 
 Drafted on 2026-10-04 at the user's request ("the network as recall's
-prior sounds like a good idea"). It starts after card 053, whose encoder
-and transition model it uses. Not approved; the numbers are proposals.
+prior sounds like a good idea"). Renumbered from 054 to 055 on
+2026-10-05 (the user), so that card 054 (identity up to noise, and
+perception that keeps what is visible) comes first. It uses that
+card's encoder and transition model. Not approved; the numbers are proposals.
 
 ## 1. Question
 

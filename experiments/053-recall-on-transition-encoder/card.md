@@ -15,7 +15,7 @@ Drafted on 2026-10-04 at the user's request, when card 052 had grown too
 large. It carries card 052's R1 checks (the encoder under noise) and R2
 (the agent's own recall reading that encoder). Not approved; the numbers
 are proposals. Approved by the user on 2026-10-04, together with
-card 054 to follow (the transition model as recall's prior).
+card 055 to follow (the transition model as recall's prior; numbered 054 when drafted).
 
 ## 1. Question
 
@@ -187,7 +187,7 @@ changes:
   the probe's noise again from the same objects. Reported: the share of
   probe tries whose own situation (front and held code tuples) is in
   memory. Every colour's matching pair is in memory here, so criterion 1
-  does not tell own tries from the relation; card 054 does.
+  does not tell own tries from the relation; card 055 does.
 - **2b** (`tools/card053/planner_check.py`): the frozen encoder replaces
   version 10's at its one loading point (`novelty.encoder`). The
   agent's 130 catalogue tiles are drawn as the generator draws them
@@ -279,6 +279,7 @@ remains is the codes' resolution: recall's own-situation level merges
 key colours, and noise splits a few tiles. Next: codes split where a
 situation's own tries disagree (appendix A of card 052: errors say when
 a new distinction is needed; McCallum's utile distinctions), then card
-054.
+055. (2026-10-05, after discussion with the user: replaced by card
+054, identity up to noise with no learned codebook.)
 
 ## 8. Decision
