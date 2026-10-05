@@ -165,6 +165,8 @@ class Encoder:
             loss = fn.mse_loss(self.dec(st.reshape(len(x), -1)), x)
         elif self.ANCHOR == "visreg":                  # step 2g, dropped: its shape term collapsed the network here
             loss = visreg(z.reshape(len(x), -1), target=DIM ** -0.5) + self.invariance()
+        elif self.ANCHOR == "align_uniform":           # step R1b: alignment and uniformity on one batch of view pairs
+            loss = self.align_uniform()
         else:                                          # step 2g: uniformity (Wang and Isola 2020), no decoder
             loss = uniformity(z) + self.invariance()
         book = 0.0 if (self.EMA or self.CODEBOOK == "fixed") else fn.mse_loss(zq, z.detach())
@@ -210,6 +212,9 @@ class Encoder:
         return 0.0
 
     def invariance(self):
+        return 0.0
+
+    def align_uniform(self):
         return 0.0
 
     @torch.no_grad()

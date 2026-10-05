@@ -36,6 +36,7 @@ CHECK = None
 INTERACTION = "effect"                                 # step 2g: "diff" replaces the effect term
 DIFF_W = 1.0
 INV_W = 1.0
+VIEW_N = 64                                            # view pairs per update (step R1b: 256)
 DRIFT = 0.0                                            # step R1: the tint's random-walk step, as a share of TINT
 VIEWS = False                                          # step 2g: the stream also returns natural views
 REL_W = 0.0                                            # step 2e: the relation term's weight (rho)
@@ -168,6 +169,19 @@ class Encoder(DR.Encoder):
         if not v:
             return 0.0
         return INV_W * fn.mse_loss(self.pieces(self.x([p[0] for p in v])), self.pieces(self.x([p[1] for p in v])))
+
+    def align_uniform(self):
+        """Step R1b, Wang and Isola (2020) as published, on one batch of natural view pairs: alignment, the mean
+        squared distance between the two views' normalised whole vectors; uniformity over each view's vectors."""
+        v = getattr(self, "_inv", None)
+        if not v:
+            return 0.0
+        a = fn.normalize(self.pieces(self.x([p[0] for p in v])).reshape(len(v), -1), dim=-1)
+        b = fn.normalize(self.pieces(self.x([p[1] for p in v])).reshape(len(v), -1), dim=-1)
+        align = (a - b).pow(2).sum(-1).mean()
+        unif = (DR.uniformity(a) + DR.uniformity(b)) / 2
+        self.last_au = (float(align.detach()), float(unif.detach()))
+        return INV_W * align + unif
 
     @torch.no_grad()
     def noise_tau(self):
@@ -320,7 +334,7 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
             pi = rng.integers(len(pairs), size=min(64, len(pairs))) if pairs else []
             enc._tries = draw(buf, rng)
             if views:
-                enc._inv = [views[i] for i in rng.integers(len(views), size=min(64, len(views)))]
+                enc._inv = [views[i] for i in rng.integers(len(views), size=min(VIEW_N, len(views)))]
             if REL_W > 0:                              # step 2e: toggle tries for the relation term, half changed
                 ch, no = buf[5][1], buf[5][0]
                 nc = min(REL_N // 2, len(ch))
@@ -349,6 +363,7 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         row = {"checkpoint": ck + 1, "updates": (ck + 1) * upd_per_ck, "play_steps": steps, "loss": round(loss, 5),
                "effect": round(float(np.mean(effs)), 4),
                "diff_errors_pushes_held_per_update": None if not diffs else [round(float(v), 2) for v in np.mean(diffs, 0)],
+               "align_uniform_last": [round(v, 4) for v in getattr(enc, "last_au", ())] or None,
                "relation": None if not rels else round(float(np.mean([r for r, _ in rels if r is not None] or [np.nan])), 4),
                "relation_tries_used": None if not rels else round(float(np.mean([u for _, u in rels])), 1),
                "loo_loglik_per_action": [round(v, 4) for v in ll.tolist()],
@@ -365,6 +380,9 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
             row.update(CHECK(enc))
         rows.append(row)
         print(row, flush=True)
+        if ck == checkpoints - 1:                      # from step R1b: the encoder is kept for diagnostics
+            torch.save({"enc": enc.enc.state_dict(), "dec": enc.dec.state_dict(), "books": enc.books.detach().cpu(),
+                        "theta": None if enc.theta is None else enc.theta.detach().cpu()}, str(out).replace(".json", ".pt"))
         Path(out).write_text(json.dumps({"note": "Card 052 step 2b, tools/card052/effect.py", "seed": seed, "mu": MU,
                                          "ema": DR.Encoder.EMA, "start_share": START_SHARE, "relation_weight": REL_W,
                                          "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "drift": DRIFT, "buffer": buffer, "update_every_steps": every,
@@ -372,7 +390,7 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
 
 
 def main():
-    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT
+    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT, VIEW_N
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     Path(get("--out", "runs/052/effect.json")).parent.mkdir(parents=True, exist_ok=True)
@@ -389,6 +407,7 @@ def main():
     INV_W = float(get("--inv-w", "1"))
     VIEWS = DR.Encoder.ANCHOR != "pixels" or INTERACTION == "diff"
     DRIFT = float(get("--drift", "0"))
+    VIEW_N = 256 if DR.Encoder.ANCHOR == "align_uniform" else 64
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),
         int(get("--every", "10")), int(get("--updates", "2000")), get("--out", "runs/052/effect.json"))
 

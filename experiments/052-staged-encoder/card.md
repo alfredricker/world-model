@@ -953,6 +953,47 @@ colour tries, prediction flips, test tries with no memory under their
 code key. If neither arm meets it, the next proposal is the declared
 colour-constancy prior, with the user's agreement.
 
+### Step R1 result: gate not met, but the invariance term was too weak to test the drift
+
+Seed 399, 40 checkpoints, two arms (`runs/052/r1_*_399.json`). Over the
+last 10 checkpoints, against step 2h:
+
+| | 2h A | R1 A (effect) | 2h B | R1 B (differentiation) |
+|---|---|---|---|---|
+| Identities split (≤ 8) | 55–61 | 61–69 | 49–58 | 52–59 |
+| Tuples shared (≤ 8) | 76–89 | 89–106 | 82–110 | 73–106 |
+| Matching / other key | 79% / 29% | 86% / 16% | 44% / 84% | 14% / 93% |
+| Prediction flips | 3.4% | 3.3% | 3.3% | 2.2% |
+
+The drift changed nothing. Measured afterwards on a batch at the start
+of training: the gradient of the uniformity term on the encoder is 7.0,
+that of the invariance term as built 0.011, about 600 times weaker. The
+card declared Wang and Isola's alignment; as built it averaged over the
+32 numbers instead of summing, on differently normalised vectors, and
+on 64 pairs while uniformity acted on 256 other tiles. Wang and Isola
+apply both terms to the same batch of positive pairs, so every vector
+pushed apart is also pulled to its other view. **Revise:** R1b below,
+the published recipe, before the colour-constancy fallback.
+
+### Step R1b (alignment and uniformity as published): declared before the run
+
+- **Alignment and uniformity on one batch** (Wang and Isola 2020): per
+  update, 256 natural view pairs (one cell a step apart, the tint
+  drifting as in R1). Alignment: the mean over pairs of the squared
+  distance between the two views' normalised whole vectors (summed over
+  the numbers). Uniformity: over the same batch's vectors (both views),
+  as before. Weights 1 and 1, t = 2, as in their paper. The stream's
+  tiles still feed the commitment, pair and interaction terms.
+- Measured at the start of training before the run: both terms' pull on
+  the encoder, reported.
+- **A short diagnostic first:** arm A (effect term), 10 checkpoints of
+  2,000 updates, compared with R1 A at checkpoint 10 (60 identities
+  split). The full two-arm run follows only if identities split falls
+  clearly (below 30 at checkpoint 10).
+- The encoder's weights are saved at the end of every run from here on,
+  so diagnostics no longer need a rerun.
+- Gate R1 as declared.
+
 ## 3. Dependencies
 
 - Version 9's recall (cards 049 and 050), planner and tokens.
