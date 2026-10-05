@@ -213,3 +213,29 @@ vases.
   100/100 at 1.27×; no wrong remembered tile. The extra steps are the
   looking (the shortest route knows the map).
 - **Decision: keep** (version 14 confirmed on these worlds).
+
+## Card 065: goals from frames seen through the small view
+
+The last card joins the night's second and third parts: the example
+frames, the agent's own experience frames and its acting all go through
+the 7 × 7 occluded view. Each example is the frame in which the goal
+became true (a small view shows a goal only where it is).
+
+- **Result:** goals from five small frames reached in 100%, 100%, 100%
+  and 98.3% of episodes (key, switch, either, both), within 0.9 points
+  of the goal written in. Door goals sometimes carry a companion seen in
+  every example ("holds the key", "shows the goal square"), which costs
+  some extra steps but is reachable.
+- **Decision: keep.** Open: the both world takes 11–14% random steps
+  under the small view (both arms), and random play gives few
+  door-opening frames.
+
+## Where the night ended
+
+All ten cards used. Encoder (the main objective): card 054's encoder
+without a codebook keeps the planner and the conditions; its weak spot
+(a key of another colour) did not yield to prioritized replay (063) and
+points at how key and door are compared, a direction for you. Goals from
+frames (056, 059, 065) work, under the full and the small view. The
+small view (057, 060–062, 064) is now the agent's only view, memory
+included: architecture version 14, for you to confirm.

@@ -11,7 +11,7 @@ Overwritten each session. At most 40 lines.
 - **Overnight objective (the user):** a principled, scalable encoder
   that keeps the goal/condition hierarchy, then goals from example
   frames, then a view smaller than the map. Card by card in
-  [overnight-10-05.md](overnight-10-05.md); 9 of 10 cards used.
+  [overnight-10-05.md](overnight-10-05.md); all 10 cards used.
 - **Where it stands:**
   - Encoder: [054](experiments/054-identity-up-to-noise/card.md) revise
     (planner and conditions kept on 4 seeds; recall's "other key" weak);
@@ -21,7 +21,8 @@ Overwritten each session. At most 40 lines.
   - Goals: [056](experiments/056-goals-from-example-frames/card.md) revise
     (frames reached as well as written-in goals);
     [059](experiments/059-how-soon-from-the-chain/card.md) revise (how
-    soon from the chain, rank 0.97–0.99).
+    soon, rank 0.97–0.99); [065](experiments/065-goals-from-small-frames/card.md)
+    keep (goals from small frames, 98–100%).
   - Small view, all keep: [057](experiments/057-view-smaller-than-the-map/card.md)
     v11, [060](experiments/060-walls-hide-what-is-behind/card.md) v12
     (occlusion), [061](experiments/061-moves-learned-from-the-small-view/card.md)

@@ -1,0 +1,400 @@
+{
+ "note": "Card 065, tools/card065/goals_small.py (card 056's goals through version 14's small view)",
+ "weights": "runs/054/b_m0.5_399.pt",
+ "path": "runs/065/main_399.json",
+ "K": 5,
+ "one_frame_per_episode": false,
+ "identity": {
+  "tau": [
+   0.058,
+   0.1439,
+   0.0547,
+   0.3739
+  ],
+  "classes_per_part": [
+   59,
+   34,
+   44,
+   76
+  ]
+ },
+ "worlds": {
+  "key": {
+   "vocabulary": 19,
+   "goal_frame_pools": {
+    "hold green": 315,
+    "switch None": 514,
+    "hold blue": 361,
+    "hold red": 317,
+    "door red": 13,
+    "door blue": 17,
+    "door green": 19
+   },
+   "acting": {
+    "frames": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.095,
+     "random_share": 0.0,
+     "explore_share": 0.1669,
+     "ended_on_goal_square": 0,
+     "seconds_per_episode": 0.026
+    },
+    "supplied": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.102,
+     "random_share": 0.0,
+     "explore_share": 0.1204,
+     "ended_on_goal_square": 0,
+     "seconds_per_episode": 0.024
+    }
+   },
+   "goals_inferred": [
+    [
+     "switch: shows switch on",
+     30
+    ],
+    [
+     "door: holds key green and shows open door green",
+     13
+    ],
+    [
+     "key_match: holds key blue",
+     13
+    ],
+    [
+     "key_match: holds key green",
+     12
+    ],
+    [
+     "key_other: holds key red",
+     12
+    ],
+    [
+     "key_other: holds key green",
+     10
+    ],
+    [
+     "key_other: holds key blue",
+     7
+    ],
+    [
+     "door: holds key blue and shows open door blue",
+     7
+    ],
+    [
+     "door: holds key blue and shows goal and shows open door blue",
+     6
+    ],
+    [
+     "key_match: holds key red",
+     4
+    ],
+    [
+     "door: holds key red and shows goal and shows open door red",
+     2
+    ],
+    [
+     "door: holds key red and shows open door red",
+     2
+    ]
+   ],
+   "frames_equal_supplied": 0.7333,
+   "seconds": 1.9
+  },
+  "switch": {
+   "vocabulary": 19,
+   "goal_frame_pools": {
+    "switch None": 530,
+    "hold red": 332,
+    "hold green": 340,
+    "hold blue": 318,
+    "door red": 52,
+    "door green": 54,
+    "door blue": 49
+   },
+   "acting": {
+    "frames": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.147,
+     "random_share": 0.0,
+     "explore_share": 0.2122,
+     "ended_on_goal_square": 0,
+     "seconds_per_episode": 0.032
+    },
+    "supplied": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.136,
+     "random_share": 0.0,
+     "explore_share": 0.1071,
+     "ended_on_goal_square": 0,
+     "seconds_per_episode": 0.029
+    }
+   },
+   "goals_inferred": [
+    [
+     "switch: shows switch on",
+     30
+    ],
+    [
+     "key_match: holds key green",
+     13
+    ],
+    [
+     "door: shows open door green",
+     13
+    ],
+    [
+     "key_match: holds key blue",
+     13
+    ],
+    [
+     "key_other: holds key red",
+     12
+    ],
+    [
+     "key_other: holds key green",
+     11
+    ],
+    [
+     "key_other: holds key blue",
+     7
+    ],
+    [
+     "door: shows open door blue",
+     7
+    ],
+    [
+     "door: shows goal and shows open door blue",
+     6
+    ],
+    [
+     "key_match: holds key red",
+     4
+    ],
+    [
+     "door: shows open door red",
+     3
+    ],
+    [
+     "door: shows goal and shows open door red",
+     1
+    ]
+   ],
+   "frames_equal_supplied": 0.9417,
+   "seconds": 1.9
+  },
+  "either": {
+   "vocabulary": 19,
+   "goal_frame_pools": {
+    "hold red": 338,
+    "hold green": 325,
+    "switch None": 529,
+    "door red": 67,
+    "hold blue": 329,
+    "door green": 48,
+    "door blue": 52
+   },
+   "acting": {
+    "frames": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.278,
+     "random_share": 0.0,
+     "explore_share": 0.3467,
+     "ended_on_goal_square": 0,
+     "seconds_per_episode": 0.04
+    },
+    "supplied": {
+     "success": 1.0,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 1.0,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.144,
+     "random_share": 0.0,
+     "explore_share": 0.1096,
+     "ended_on_goal_square": 0,
+     "seconds_per_episode": 0.029
+    }
+   },
+   "goals_inferred": [
+    [
+     "switch: shows switch on",
+     30
+    ],
+    [
+     "key_match: holds key green",
+     13
+    ],
+    [
+     "key_match: holds key blue",
+     13
+    ],
+    [
+     "key_other: holds key green",
+     11
+    ],
+    [
+     "key_other: holds key red",
+     11
+    ],
+    [
+     "key_other: holds key blue",
+     7
+    ],
+    [
+     "door: shows goal and shows open door blue",
+     7
+    ],
+    [
+     "door: shows open door green",
+     7
+    ],
+    [
+     "door: shows goal and shows open door green",
+     6
+    ],
+    [
+     "door: shows open door blue",
+     6
+    ],
+    [
+     "key_match: holds key red",
+     4
+    ],
+    [
+     "door: shows goal and shows open door red",
+     2
+    ]
+   ],
+   "frames_equal_supplied": 0.8667,
+   "seconds": 1.9
+  },
+  "both": {
+   "vocabulary": 19,
+   "goal_frame_pools": {
+    "hold red": 345,
+    "hold blue": 335,
+    "switch None": 529,
+    "hold green": 341,
+    "door green": 5,
+    "door red": 4,
+    "door blue": 6
+   },
+   "acting": {
+    "frames": {
+     "success": 0.9833,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 0.9667,
+      "door": 0.9667,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.151,
+     "random_share": 0.1149,
+     "explore_share": 0.2633,
+     "ended_on_goal_square": 0,
+     "seconds_per_episode": 0.049
+    },
+    "supplied": {
+     "success": 0.9917,
+     "per_goal": {
+      "key_match": 1.0,
+      "key_other": 1.0,
+      "door": 0.9667,
+      "switch": 1.0
+     },
+     "steps_ratio_to_shortest": 1.152,
+     "random_share": 0.1403,
+     "explore_share": 0.0862,
+     "ended_on_goal_square": 0,
+     "seconds_per_episode": 0.036
+    }
+   },
+   "goals_inferred": [
+    [
+     "switch: shows switch on",
+     29
+    ],
+    [
+     "door: holds key green and shows open door green",
+     13
+    ],
+    [
+     "key_match: holds key blue",
+     13
+    ],
+    [
+     "door: holds key blue and shows goal and shows open door blue",
+     13
+    ],
+    [
+     "key_match: holds key green",
+     12
+    ],
+    [
+     "key_other: holds key green",
+     11
+    ],
+    [
+     "key_other: holds key red",
+     11
+    ],
+    [
+     "key_other: holds key blue",
+     7
+    ],
+    [
+     "key_match: holds key red",
+     4
+    ],
+    [
+     "door: holds key red and shows open door red",
+     4
+    ],
+    [
+     "key_other: holds key red and shows vase",
+     1
+    ],
+    [
+     "key_match: holds key green and shows switch off",
+     1
+    ]
+   ],
+   "frames_equal_supplied": 0.725,
+   "seconds": 3.0
+  }
+ },
+ "seconds": 313.0
+}
