@@ -18,7 +18,8 @@ Overwritten each session. At most 40 lines.
   calibrated, the encoder under noise. Step 2 (R2): does recall's
   front–held relation read the key–door match, and does the planner
   still work.
-- **Next decision (the user):** approve card 053.
+- **Next decision (the user):** how to stop the encoder erasing what
+  actions change (card 053's step 1 gate cannot pass as built).
 - **Recent cards:**
   - [052](experiments/052-staged-encoder/card.md): done, fail, revise.
     Kept: the generator with play starts, recall's predictions as the
