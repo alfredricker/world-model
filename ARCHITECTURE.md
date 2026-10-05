@@ -347,7 +347,9 @@ At every step:
 - **The observation** is card 016's egocentric view: the whole room
   (radius 6, 8 × 8 rooms), 8-pixel tiles on a grid, the agent at the
   centre facing up, and the held tile in a fixed place. The agent receives
-  pixels only.
+  pixels only. Since version 12 only MiniGrid's 7 × 7 window ahead of the
+  agent is observed, with MiniGrid's occlusion (walls and closed doors
+  hide what lies behind them); the rest of the window is unobserved.
 - **Declared forms:**
   - "in front", "held" and "in view" are where-values recall's key reads
     (the token at (0, 1), the hand's, the tokens within 6 tiles);
@@ -359,7 +361,14 @@ At every step:
     a front–held distance per part, a code tuple present in view; a
     condition costs log(number of candidates) to admit;
   - an outcome is predicted when its probability is at least one half;
-  - a vector-level neighbour counts at k ≥ 0.01.
+  - a vector-level neighbour counts at k ≥ 0.01;
+  - (versions 11–14) a view is placed only among the placements its
+    action could lead to; a never-seen place shows the unseen appearance;
+    exploration targets never-seen places next to known walkable tokens,
+    then a door next to never-seen places, nearest first, the choice
+    kept between steps; a move correspondence counts where both places
+    were observed in at least 50 rows and vary, and the fit is trimmed
+    until every correspondence lies within half a place.
 - **The procedures are designed, not learned:** the order of needs, the
   search depth (6), the route procedure (card 045's declared exception),
   and the order of moves among equals (forward, left, right).
