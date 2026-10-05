@@ -3,8 +3,8 @@ id: "052"
 title: an encoder learned from interaction, in stages, over diverse worlds
 rung: 0
 serves: [P4, P7, P1, P3, P12, P10, P19, P17]
-status: approved
-verdict:
+status: done
+verdict: fail
 arch_version: 9
 date: 2026-10-02
 ---
@@ -1133,9 +1133,10 @@ No arm meets the criteria. Three findings:
   then vectors, step 2c) does not: neither an exact code key nor a
   kernel over distances says "the colours match".
 - **The gates closed.** With the L1 weight at 0.01 every gate fell below
-  0.035: the mean transition loss is small (most tries change nothing,
-  and the residual form makes "nothing" free), so reading any input
-  cost more than it gained. The model then ignores colour entirely. The
+  0.035: at the start the penalty was 0.06 per action (12 gates at 0.5)
+  against a transition loss of about 0.02 (batches are half changed,
+  half unchanged), so reading any input cost more than it gained.
+  (Corrected on 2026-10-04: the first write-up blamed unchanged tries.) The model then ignores colour entirely. The
   balance was not measured before the run, as it was not for R1's
   invariance term; it should have been.
 - **Codes relabel.** With the moving-average codebook restarted every
@@ -1249,7 +1250,23 @@ many episodes, so the main runs will go to the user as commands.
 
 ## 7. Result
 
+Per step above (steps 2a–2h, R1, R1b, T). Gate 1 passed; gate 2 (an
+online encoder whose codes and predictions settle, with the colour tries
+right) was not met by any recipe: the pixel anchor loses colour;
+uniformity with a fixed codebook keeps colour on clean tiles but splits
+noisy and tinted copies; transitions (step T) carry the key–door match
+(the transition model predicts both colour cases 40 of 40) but the
+stand-in recall cannot read it.
+
 ## 8. Decision
+
+**Revise** (the user, 2026-10-04: "card 052 has gotten far too large").
+Kept from this card: the generator with play starts (step 1), recall's
+predictions as the drift measure (step 2c), tint set aside, and the
+transition objective (step T). The R1 checks (the encoder under noise,
+calibrated) and R2 (version 10's recall and planner on that encoder)
+continue in [card 053](../053-recall-on-transition-encoder/card.md);
+R3–R5 follow from it.
 
 ## Appendix A: the theory (2026-10-02)
 
