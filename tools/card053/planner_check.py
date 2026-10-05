@@ -47,6 +47,8 @@ def catalogue():
 
 def main():
     args = sys.argv[1:]
+    rest = args[args.index("--") + 1:] if "--" in args else None     # walk2's own arguments (card 054, step D)
+    args = args[:args.index("--")] if "--" in args else args
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     path, out = args[0], get("--out", "runs/053/s2b.json")
     enc = RP.load(path, get("--interaction", "transition"), get("--gates", "0") == "1")
@@ -58,8 +60,22 @@ def main():
         return {"z": z, "books": books, "rep": {"encoder": "card 053, frozen", "weights": str(path)}}
 
     NV.encoder = encoder
-    sys.argv = ["walk2.py", "--dev", "--arm", "A", "--seeds", "399-399", "--layouts", get("--layouts", "30"),
-                "--out", out]
+    if get("--codes", "book") == "noise":              # card 054: identity up to noise in place of the codebook
+        sys.path.insert(0, str(TOOLS / "card054"))
+        import identity as IDN                         # noqa: E402
+        CR = RP.CR
+        tau, _ = IDN.noise_scale(enc)
+        idn = IDN.Identity(tau).learn(z.reshape(len(z), 4, 8).astype(np.float64))
+
+        def vectors_of(arm, seed, tr_tiles, pairs, groups, dev, log):
+            idn.install(z.astype(np.float64))
+            return (np.asarray(z, np.float64), [slice(8 * k, 8 * k + 8) for k in range(4)],
+                    {"encoder": "card 054, identity up to noise", "weights": str(path), "identity": idn.report()})
+
+        CR.vectors_of = vectors_of
+        RP.VP.vectors_of = vectors_of
+    sys.argv = (["walk2.py"] + rest) if rest else ["walk2.py", "--dev", "--arm", "A", "--seeds", "399-399",
+                                                   "--layouts", get("--layouts", "30"), "--out", out]
     walk2.main()
 
 

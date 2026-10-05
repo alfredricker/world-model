@@ -138,4 +138,29 @@ learned-by-interaction encoder.
 
 ## 7. Result
 
+**Step A on V0** (card 053's encoder; `runs/054_gap_V0.txt`,
+`runs/054/a_*_V0.json`). Codes are read online (`tools/card054/
+identity.py`): a piece takes the nearest class mean within τ_k, else
+starts a class; the class mean follows its members.
+- **No clean gap on V0.** Noise moves parts by at most 0.072, 0.098,
+  0.046, 0.298 (τ = 0.090, 0.122, 0.057, 0.372); 34 pairs of probe
+  identities lie within τ in every part, so they would share an
+  identity: boxes of every colour, a closed and a locked door of one
+  colour, two key colours. Noisy probe copies spread up to 0.164 in
+  part 1 and 0.388 in part 3, beyond τ: the 1,000 untouched pairs are
+  mostly floor and walls, and V0's doors are about 7× noisier than its
+  keys.
+- **The planner and the conditions pass:** 100% in all four familiar
+  worlds, steps as card 029's, held-out effects ≥ 99.99% exact; toggle
+  admits the held tile in the key world and the switch in the switch
+  world (card 049's criterion 3).
+- **Recall:** matching key 100% (codebook 45%), other key 60% (85%),
+  all probe tries 76.7% (85.9%), the same prediction under two noise
+  draws 95.8% (97.0%). Noisy copies split into several identities
+  (128 tuples among the memory tiles), which makes false "changes": the
+  memory's own categories agree with the simulator in 93–95% (codebook
+  99%).
+
+A goes on to B, as declared: B's margin is what should open the gap.
+
 ## 8. Decision

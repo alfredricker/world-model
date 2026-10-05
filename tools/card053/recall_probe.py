@@ -78,21 +78,29 @@ class Keys:
     """Handles for tiles: one per code tuple seen in memory (its memory tiles' mean vector); otherwise the tile's
     own vector."""
 
-    def __init__(self, enc, mem_tiles):
+    def __init__(self, enc, mem_tiles, codes="book"):
         self.enc = enc
         self.S = VP.Store(np.zeros((1, EF.K * EF.DIM)))   # handle 0: the constant view token
-        books = fn.normalize(enc.books.detach(), dim=-1).cpu().numpy().astype(np.float64)
         z = vectors(enc, mem_tiles)
         zz = z.reshape(len(z), EF.K, -1)
-        used, rad = [], []
-        for k in range(EF.K):
-            u, r = NV.code_radii(zz[:, k], books[k])
-            used.append(np.asarray(u))
-            rad.append(np.asarray(r))
-        CR.CC.clear()
-        CR.CC.update({"z": np.zeros((1, EF.K * EF.DIM)), "books": books, "ca": np.full((1, EF.K), NV.NEW),
-                      "fresh": {}, "used": used, "rad": rad, "cut": {k: 0.0 for k in range(EF.K)}, "hcodes": {},
-                      "ids": {}})
+        self.identity = None
+        if codes == "noise":                           # card 054: identity up to noise, no codebook
+            sys.path.insert(0, str(TOOLS / "card054"))
+            import identity as IDN                     # noqa: E402
+            tau, _ = IDN.noise_scale(enc)
+            self.identity = IDN.Identity(tau).learn(zz)
+            self.identity.install(np.zeros((1, EF.K * EF.DIM)))
+        else:
+            books = fn.normalize(enc.books.detach(), dim=-1).cpu().numpy().astype(np.float64)
+            used, rad = [], []
+            for k in range(EF.K):
+                u, r = NV.code_radii(zz[:, k], books[k])
+                used.append(np.asarray(u))
+                rad.append(np.asarray(r))
+            CR.CC.clear()
+            CR.CC.update({"z": np.zeros((1, EF.K * EF.DIM)), "books": books, "ca": np.full((1, EF.K), NV.NEW),
+                          "fresh": {}, "used": used, "rad": rad, "cut": {k: 0.0 for k in range(EF.K)}, "hcodes": {},
+                          "ids": {}})
         tups = [CR.code_of_vec(v) for v in z]
         groups = defaultdict(list)
         for v, t in zip(z, tups):
@@ -139,7 +147,7 @@ def main():
     mem, probe = PF.collect_strat(399 + 555)
     M, P = tries_of(mem), tries_of(probe)
     enc = load(path, get("--interaction", "transition"), get("--gates", "0") == "1")
-    keys = Keys(enc, [t[i] for t in M for i in (2, 3, 4, 5)])
+    keys = Keys(enc, [t[i] for t in M for i in (2, 3, 4, 5)], get("--codes", "book"))
     hm = {i: keys.handles([t[i] for t in M]) for i in (2, 3, 4, 5)}
     hp = {i: keys.handles([t[i] for t in P]) for i in (2, 3, 4, 5)}
     rng = np.random.default_rng(7)
@@ -147,7 +155,8 @@ def main():
     hp2 = {i: keys.handles(redraw([t[i] for t in P])) for i in (2, 3)}
     print({"memory_tries": len(M), "probe_tries": len(P), "handles": keys.S.n, "memory_tuples": len(keys.mean),
            "memory_pieces_new": keys.new_pieces, "seconds": round(time.monotonic() - t0, 1)}, flush=True)
-    res = {"weights": str(path), "memory_tries": len(M), "probe_tries": len(P), "memory_tuples": len(keys.mean),
+    res = {"weights": str(path), "codes": get("--codes", "book"),
+           "identity": keys.identity.report() if keys.identity else None, "memory_tries": len(M), "probe_tries": len(P), "memory_tuples": len(keys.mean),
            "memory_tiles_with_a_new_piece": keys.new_pieces, "actions": {}, "kinds": {}}
     per_kind, own_seen = defaultdict(list), defaultdict(list)
     same = []
