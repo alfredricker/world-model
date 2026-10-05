@@ -42,6 +42,7 @@ SP_W = 0.01                                            # step T: L1 weight on th
 MASK_TAU = 0.5                                         # card 053: the gates are random on/off masks (Gumbel-sigmoid)
 VIS_W = 0.0                                            # card 053 (fix 1): weight of the visibility margin; 0 = off
 VIS_MARGIN = 1.0                                       # card 053: a visibly changed tile's vector moves at least this
+PAIR_M = 0.0                                           # card 054 (step B): margin between visibly different batch tiles; 0 = off
 VIS_THRESH = None                                      # card 053: pixel change beyond noise (set from untouched cells)
 CALIBRATE_AT = 2000                                    # card 053: updates with the gates at 0.5 before the measurement
 VAR_W = 10.0                                           # step T: the variance floor's weight
@@ -243,11 +244,21 @@ class Encoder(DR.Encoder):
                         gain[ai, i] += sgn * (((pf - tf) ** 2).sum((-1, -2)).mean() + ((ph - th) ** 2).sum((-1, -2)).mean())
         return (gain / draws).cpu()
 
-    def anchor_transition(self, z):
+    def anchor_transition(self, z, x=None):
         """Step T's anchor: a variance floor (VICReg's hinge, each number's spread at least 1/sqrt(DIM) over the
-        batch) and the identity transition of one cell a step apart, against the target encoder."""
+        batch) and the identity transition of one cell a step apart, against the target encoder. Card 054 (step B,
+        PAIR_M > 0): the floor is replaced by C-SWM's margin between every two batch tiles whose pixels differ beyond
+        noise (mean absolute difference above VIS_THRESH): their whole vectors at least PAIR_M apart. Noisy copies
+        (pixels within noise) are not pushed."""
         zf = z.reshape(len(z), -1)
-        floor = VAR_W * torch.relu(DIM ** -0.5 - zf.std(0)).mean()
+        if PAIR_M > 0 and x is not None:
+            px = torch.cdist(x.reshape(len(x), -1), x.reshape(len(x), -1), p=1) / x[0].numel()
+            diff = torch.triu(px > VIS_THRESH, diagonal=1)
+            d = torch.cdist(zf, zf)
+            floor = torch.relu(PAIR_M - d[diff]).mean() if diff.any() else 0.0
+            self.last_pair = (float(floor), int(diff.sum()))
+        else:
+            floor = VAR_W * torch.relu(DIM ** -0.5 - zf.std(0)).mean()
         v = getattr(self, "_inv", None)
         if not v:
             return floor
@@ -480,10 +491,10 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
         views.extend(getattr(stream, "views", []))
         steps += 1
 
-    while len(tiles) < 2000 or min(len(buf[a][0]) for a in ACTS) < PER or (VIS_W > 0 and len(views) < 1000):
+    while len(tiles) < 2000 or min(len(buf[a][0]) for a in ACTS) < PER or ((VIS_W > 0 or PAIR_M > 0) and len(views) < 1000):
         play()
     global VIS_THRESH
-    if VIS_W > 0:                                      # card 053: the noise ceiling, from untouched cells a step apart
+    if VIS_W > 0 or PAIR_M > 0:                        # card 053: the noise ceiling, from untouched cells a step apart
         VIS_THRESH = 1.25 * max(pix_change(a, b) for a, b in list(views)[:1000])
     for ck in range(checkpoints):
         for g in enc.opt.param_groups:
@@ -534,6 +545,7 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
                "align_uniform_last": [round(v, 4) for v in getattr(enc, "last_au", ())] or None,
                "transition_loss_per_action": [round(v, 4) for v in getattr(enc, "last_trans", ())] or None,
                "visibility_last": None if VIS_W == 0 else [round(v, 4) for v in getattr(enc, "last_vis", (0, 0))],
+               "pair_margin_last": None if PAIR_M == 0 else [round(v, 4) for v in getattr(enc, "last_pair", (0, 0))],
                "gates": None if INTERACTION != "transition" else [[round(float(v), 3) for v in r] for r in enc.gate_values()],
                "relation": None if not rels else round(float(np.mean([r for r, _ in rels if r is not None] or [np.nan])), 4),
                "relation_tries_used": None if not rels else round(float(np.mean([u for _, u in rels])), 1),
@@ -559,12 +571,12 @@ def run(seed, checkpoints, buffer, every, upd_per_ck, out):
                        str(out).replace(".json", ".pt"))
         Path(out).write_text(json.dumps({"note": "Card 052 step 2b, tools/card052/effect.py", "seed": seed, "mu": MU,
                                          "ema": DR.Encoder.EMA, "start_share": START_SHARE, "relation_weight": REL_W,
-                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "drift": DRIFT, "gates_on": GATES, "sp_w": SP_W, "vis_w": VIS_W, "vis_margin": VIS_MARGIN, "vis_thresh": VIS_THRESH, "calibration": calib, "mask_tau": MASK_TAU, "var_w": VAR_W, "buffer": buffer, "update_every_steps": every,
+                                         "anchor": DR.Encoder.ANCHOR, "codebook": DR.Encoder.CODEBOOK, "interaction": INTERACTION, "diff_w": DIFF_W, "inv_w": INV_W, "drift": DRIFT, "gates_on": GATES, "sp_w": SP_W, "vis_w": VIS_W, "pair_m": PAIR_M, "vis_margin": VIS_MARGIN, "vis_thresh": VIS_THRESH, "calibration": calib, "mask_tau": MASK_TAU, "var_w": VAR_W, "buffer": buffer, "update_every_steps": every,
                                          "updates_per_checkpoint": upd_per_ck, "rows": rows}, indent=1) + "\n")
 
 
 def main():
-    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT, VIEW_N, GATES, SP_W, VIS_W
+    global MU, START_SHARE, REL_W, INTERACTION, DIFF_W, INV_W, VIEWS, DRIFT, VIEW_N, GATES, SP_W, VIS_W, PAIR_M
     args = sys.argv[1:]
     get = lambda k, d: next((args[i + 1] for i in range(len(args) - 1) if args[i] == k), d)
     Path(get("--out", "runs/052/effect.json")).parent.mkdir(parents=True, exist_ok=True)
@@ -583,6 +595,7 @@ def main():
     DRIFT = float(get("--drift", "0"))
     GATES = get("--gates", "1") == "1"
     VIS_W = float(get("--vis-w", "0"))
+    PAIR_M = float(get("--pair-m", "0"))
     SP_W = None if get("--sp-w", "0.01") == "auto" else float(get("--sp-w", "0.01"))
     VIEW_N = 256 if DR.Encoder.ANCHOR in ("align_uniform", "transition") else 64
     run(int(get("--seed", "399")), int(get("--checkpoints", "40")), int(get("--buffer", "20000")),

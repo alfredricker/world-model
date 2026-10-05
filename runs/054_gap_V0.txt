@@ -1,0 +1,19 @@
+untouched pairs: part noise max [0.0719 0.0975 0.0456 0.2977], tau [0.0899 0.1219 0.0569 0.3721]
+probe copies: largest distance from their identity's mean, per part [0.0903 0.1637 0.0926 0.3875]
+part 0: identity pairs within tau 981 of 3486; smallest nonzero gap [0.0899 0.0906 0.0907]
+part 1: identity pairs within tau 345 of 3486; smallest nonzero gap [0.1266 0.1319 0.133 ]
+part 2: identity pairs within tau 575 of 3486; smallest nonzero gap [0.057  0.0573 0.0583]
+part 3: identity pairs within tau 212 of 3486; smallest nonzero gap [0.3733 0.3738 0.3743]
+identity pairs within tau in every part (one code tuple): 34
+    (2, 5, 0) (3, 10, 0)
+    (4, 2, 1) (4, 2, 2)
+    (4, 6, 1) (4, 6, 2)
+    (5, 4, 0) (5, 6, 0)
+    (7, 0, 0) (7, 1, 0)
+    (7, 0, 0) (7, 10, 0)
+    (7, 0, 0) (7, 2, 0)
+    (7, 0, 0) (7, 3, 0)
+    (7, 0, 0) (7, 4, 0)
+    (7, 0, 0) (7, 5, 0)
+    (7, 0, 0) (7, 6, 0)
+    (7, 0, 0) (7, 7, 0)

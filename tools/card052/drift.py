@@ -168,7 +168,7 @@ class Encoder:
         elif self.ANCHOR == "align_uniform":           # step R1b: alignment and uniformity on one batch of view pairs
             loss = self.align_uniform()
         elif self.ANCHOR == "transition":              # step T: a variance floor and the identity transition of views
-            loss = self.anchor_transition(z)
+            loss = self.anchor_transition(z, x)
         else:                                          # step 2g: uniformity (Wang and Isola 2020), no decoder
             loss = uniformity(z) + self.invariance()
         book = 0.0 if (self.EMA or self.CODEBOOK == "fixed") else fn.mse_loss(zq, z.detach())
@@ -220,7 +220,7 @@ class Encoder:
     def align_uniform(self):
         return 0.0
 
-    def anchor_transition(self, z):
+    def anchor_transition(self, z, x=None):
         return 0.0
 
     def after_step(self):
