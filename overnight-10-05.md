@@ -117,4 +117,21 @@ step.
   3–15 ms per estimate; goal-swapped control −0.28 to −0.05. Coverage
   with goals from frames 93.8–96.4% (bar 95%; with the goal written in,
   98.4–99.8%): the gap is five-frame goals with an unreachable companion
-  feature. Declared revision: ten frames (running).
+  feature. Declared revision: ten frames: coverage 98.2–99.4% in three
+  worlds, 89.0% in the both world, where random play opened the door in
+  only 1–8 of 600 episodes (too few independent examples).
+- **Decision: revise.** The how-soon reading itself passes everything
+  with the goal written in; rung 1 is still short on its forks (card
+  056) and on goal examples where random play is thin.
+
+## Card 060: walls hide what is behind them
+
+MiniGrid's default occlusion on top of the 7 × 7 view. The goal square is
+behind the locked door, so it is unseen until the door opens. Arm A:
+version 11's exploration; arm B: look only at unseen places next to
+known walkable ones, and if there are none, open a door next to unseen
+places (key first) to see beyond.
+
+- **Smoke test:** arm B at first had nowhere to look (the only unseen
+  space was behind the locked door); with opening a door to see beyond,
+  100% in 5 key-world and 5 both-world layouts. Main run going.

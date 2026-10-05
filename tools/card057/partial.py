@@ -43,13 +43,60 @@ HIDE = np.setdiff1d(np.arange(NV), WIN)
 assert len(WIN) == 49 and CENTRE in WIN and FRONT in WIN
 ARM = {"arm": "B"}
 DEBUG = "--debug" in sys.argv
+OCCLUDE = "--occlude" in sys.argv                     # card 060: walls and closed doors hide what lies behind
+FRONTIER = "--frontier" in sys.argv                   # card 060, arm B: frontier = unseen next to known walkable
 STATS = Counter()
 
 
-def crop(V):
+def crop(V, codes=None):
     V = np.array(V, np.int32)
     V[HIDE] = -1
+    if OCCLUDE and codes is not None:
+        V[:NV][~visible(codes)] = -1
     return V
+
+
+R = TK.R
+W13 = VP.W13
+
+
+def blocks(c):
+    o = PC.KR.OBJECTS[int(c) // 5]
+    return o == "wall" or (isinstance(o, tuple) and o[0] == "door" and o[2] != 2)
+
+
+def visible(codes):
+    """MiniGrid's process_vis on the 7 x 7 view (agent at the bottom centre): walls and closed doors hide what
+    lies behind them. codes: the egocentric renderer codes (13 x 13 + the held row)."""
+    E = np.asarray(codes)[:NV].reshape(W13, W13)[R - 6:R + 1, R - 3:R + 4]        # [j, i], j = 6 at the agent
+    blk = np.vectorize(blocks)(E)
+    mask = np.zeros((7, 7), bool)                                                # [i, j]
+    mask[3, 6] = True
+    for j in reversed(range(7)):
+        for i in range(6):
+            if mask[i, j] and not blk[j, i]:
+                mask[i + 1, j] = True
+                if j > 0:
+                    mask[i + 1, j - 1] = mask[i, j - 1] = True
+        for i in reversed(range(1, 7)):
+            if mask[i, j] and not blk[j, i]:
+                mask[i - 1, j] = True
+                if j > 0:
+                    mask[i - 1, j - 1] = mask[i, j - 1] = True
+    vis = np.zeros(NV, bool)
+    jj, ii = np.nonzero(mask.T)
+    vis[(R - 6 + jj) * W13 + (R - 3 + ii)] = True
+    return vis
+
+
+def codes_fam(lay, s):
+    return VP.Kd.ego(PC.KR.encode_logic_states(lay, [s]), np.array([s[:3]]))[0].reshape(-1)
+
+
+def codes_wd(M, lay, s):
+    if M is WD.CHAIN:
+        return WD.C.ego(WD.C.encode(lay, s), s).reshape(-1)
+    return WD.ego(WD.encode(lay, s), s).reshape(-1)
 
 
 # ---------------------------------------------------------------- placing a partial view
@@ -114,14 +161,50 @@ def explore(pl, st):
     f = pl.facts[st[0]]
     k = ("explore", st[0])
     pid = pl.canmemo.get(k)
+    if pid is None and FRONTIER:
+        if not hasattr(M, "nb_tokens"):
+            at = TK.ID_AT
+            M.nb_tokens = np.full((TK.NT, 4), -1, np.int64)
+            for (x, y), i in at.items():
+                for q, (dx, dy) in enumerate(((1, 0), (-1, 0), (0, 1), (0, -1))):
+                    M.nb_tokens[i, q] = at.get((x + dx, y + dy), -1)
+        nb = M.nb_tokens
+        ok = (nb >= 0) & np.vectorize(lambda h: TK.free_of(int(h)))(np.where(nb >= 0, f[np.maximum(nb, 0)], ABSENT))
+        front = (f == ABSENT) & ok.any(1)                 # unseen tokens next to a known walkable one
+        P = [p for p in pl.standing(st[0]) if front[M.win_tokens[p]].any()]
+        pid = pl.canmemo[k] = pl.intern_p(P)
     if pid is None:
         P = [p for p in pl.standing(st[0]) if (f[M.win_tokens[p]] == ABSENT).any()]
         pid = pl.canmemo[k] = pl.intern_p(P)
     r, _ = pl.reach(st, pid)
+    if (r is None or r == G.HERE) and FRONTIER:
+        return open_to_see(pl, st)
     return None if r is None or r == G.HERE else int(r)
 
 
+def open_to_see(pl, st):
+    """No unseen place lies next to a known walkable one: a known token that recall says can be made walkable
+    (a door) next to unseen places becomes the condition ("walk", j), pursued like any other (its key first);
+    opening it lets the agent see beyond. Nearest first."""
+    M = F.M
+    f = pl.facts[st[0]]
+    nb = M.nb_tokens
+    op = pl.openable(st[0])
+    unseen_next = ((nb >= 0) & (f[np.maximum(nb, 0)] == ABSENT)).any(1)
+    js = np.flatnonzero(op[:len(unseen_next)] & unseen_next[:len(op)]).tolist()
+    cands = sorted((pl.closeness(st, M.facing[j]) or (99, 9), j) for j in js)
+    for _, j in cands:
+        res = pl.solve(("walk", j), st, 1, [], [], [])
+        if res is not None:
+            STATS["open_to_see"] += 1
+            return int(res.action)
+    return None
+
+
 def fallback(pl, st, rng, rec):
+    if DEBUG:
+        f = pl.facts[st[0]]
+        print("   fallback: unseen tokens", int((f == ABSENT).sum()), "standing", len(pl.standing(st[0])), flush=True)
     if ARM["arm"] == "B":
         a = explore(pl, st)
         if a is not None:
@@ -155,7 +238,7 @@ def act_job(job):
         pl = VP.VPlan(W)
         s = ld.start_state(lay)
         Vt = VP.see(lay, s)
-        V = crop(Vt)
+        V = crop(Vt, codes_fam(lay, s))
         facts, st, _, _ = pl.observe(None, V)
         rec = {"position": pos, "done": False, "steps": VP.BUDGET, "random": 0, "explore": 0, "pred_wrong": 0,
                "failed_acts": 0, "max_mismatch": 0.0, "walk": Counter(), "door_steps": 0, "howsoon": [],
@@ -174,7 +257,7 @@ def act_job(job):
             pcat = M.move_out[a][u] if a in MOVES else W.outcome(a, u, held, pl.ctx_id(st[0], st[1]))[0]
             s2, end = ld.step(lay, s, a)
             Vt2 = VP.see(lay, s2)
-            V2 = crop(Vt2)
+            V2 = crop(Vt2, codes_fam(lay, s2))
             facts, st2, miss, ties = pl.observe(facts, V2, end, prefer=pred[1], cands=moved_to(st, a))
             rec["max_mismatch"] = max(rec["max_mismatch"], miss)
             Vb2 = pl.view(st2)
@@ -231,7 +314,7 @@ def wd_act(W, lay, i, M):
     rng = np.random.default_rng(1000 + i)
     s = M.start_state(lay)
     Vt = M.see(lay, s)
-    V = crop(Vt)
+    V = crop(Vt, codes_wd(M, lay, s))
     facts, st, _, _ = pl.observe(None, V)
     rec = {"random": 0, "explore": 0}
     wrong, mism = 0, 0.0
@@ -244,7 +327,7 @@ def wd_act(W, lay, i, M):
         pred = pl.step(st, a)
         s2, end = M.step(lay, s, a)
         Vt = M.see(lay, s2)
-        V2 = crop(Vt)
+        V2 = crop(Vt, codes_wd(M, lay, s2))
         facts, st, miss, _ = pl.observe(facts, V2, end, prefer=pred[1], cands=moved_to(st, a))
         wrong += bool(miss)
         mism = max(mism, miss)

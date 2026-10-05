@@ -3,8 +3,8 @@ id: "059"
 title: how soon a goal is, from the chain of conditions
 rung: 1
 serves: [P12, P21, P6, P17]
-status: approved
-verdict:
+status: done
+verdict: fail
 arch_version: 10
 date: 2026-10-05
 ---
@@ -79,4 +79,43 @@ correlation is below the control's.
 
 ## 7. Result
 
+Seed 399's encoder (`runs/059/main_399.json`; revision
+`rev_k10_399.json`). Pairs are states × goals where the goal can be
+reached and does not yet hold: 497–512 per world.
+
+| | Key | Switch | Either | Both |
+|---|---|---|---|---|
+| 1. Rank correlation, goals from five frames | 0.977 | 0.990 | 0.988 | 0.981 |
+| 1. The same, goal written in | 0.978 | 0.990 | 0.989 | 0.981 |
+| 2. Goal-swapped control | −0.28 | −0.05 | −0.10 | −0.23 |
+| 3. Coverage, five frames | 96.4% | 95.9% | 94.9% | 93.8% |
+| 3. Coverage, goal written in | 99.2% | 99.8% | 98.4% | 99.2% |
+| Mean absolute error (steps), five frames | 0.29 | 0.32 | 0.29 | 0.43 |
+| Predicted / true | 1.04 | 1.03 | 1.03 | 1.05 |
+| Revision, ten frames: rank / coverage | 0.973 / 98.8% | 0.984 / 99.4% | 0.982 / 98.2% | 0.971 / 89.0% |
+
+Seconds per estimate: 0.003–0.015. Per goal, the rank correlation is
+0.95–0.99 except the switch goal in the key and both worlds (0.88),
+where the chain walks round a key it could pick up (card 058's case),
+so predictions run a few steps long.
+
+Criteria 1 and 2 hold everywhere. Criterion 3 failed in two worlds with
+five frames: some inferred goals carried a companion feature that cannot
+be reached, so no chain exists (card 056). **The declared revision**,
+ten frames, fixed three worlds and made the both world worse: random
+play opened that world's door in only 1–8 of 600 episodes, so ten frames
+from different episodes cannot be drawn and the inferred door goals are
+mostly companions.
+
 ## 8. Decision
+
+**Revise.** How soon a goal is, read from the chain of conditions, ranks
+states almost exactly as the evaluator's fewest steps do (0.97–0.99,
+about 0.3 steps off, a few milliseconds per estimate), with goals from
+frames and written in alike, and without imagining a single primitive
+step. It is not kept only because criterion 3 depends on goal examples
+that random play cannot supply in the both world. With rung 1's first
+criterion (card 056's forks, 82–89%) still short, rung 1 is not passed;
+the two open pieces are walking that keeps its choice of clearing the
+way (after card 058) and goal examples from demonstrations where random
+play is too thin (pinned in STATUS).
