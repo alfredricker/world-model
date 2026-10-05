@@ -27,3 +27,36 @@ difference apart by a margin.
   together were weaker on recall (other key 52–58%). Picking up while
   holding fails under every encoder (rare in random play; a limit of
   recall's data). Next: seeds 400–402.
+- **Steps C and D (seeds 400–402):** the planner holds on every seed:
+  familiar worlds 100%, chained rooms 100%, cluttered 100% (version 10
+  with its codebook: 100%, 98%, 98–100%); the right conditions are
+  admitted on every seed. Recall's colour cases do not: other key
+  62.5–70% on three seeds, noise agreement 96.8–98.2% (bars 90%, 99%).
+- **Declared revision (each identity class gets its own noise scale,
+  since doors are noisier than floor):** better on 3 of 4 seeds (noise
+  agreement up to 99.0%, other key 70–92.5%), passes on seed 399 only.
+- **Decision: revise.** The encoder keeps the goal/condition hierarchy
+  and the agent still discovers conditions (the night's objective, on
+  the planner's side); recall on noisy generator tries needs better
+  colour separation where outcomes depend on it. Cards 056 and 057 use
+  this encoder.
+
+## Card 056: goals from example frames
+
+The agent is shown five frames in which a goal holds (holding a given
+key, a door open, the switch on) and infers the goal as the features
+every frame shares that are rare in its own experience (Bayesian concept
+learning, the size principle), then plans to it with version 10's chain
+of conditions.
+
+- **Main run (four encoders; results identical, since every encoder
+  gives each catalogue tile its own identity):** the agent reaches the
+  goal from frames in 99.2–100% per world, as with the goal written in
+  (100%); shown another goal's frames, 2.5–27%. In the key world, the
+  door goal always went through the key. Inference matches the
+  simulator ≥ 95% except hold red in the key world (93.6%) and door
+  green in the both world (77.5%), where five frames from a few long
+  episodes share an incidental key. Rung 1's forks: 82–89% (bar 90%),
+  the same with the goal written in; the misses are version 10's
+  walking taking a detour where picking up a key in the way is faster.
+- **Declared revision:** one goal frame per episode (running).

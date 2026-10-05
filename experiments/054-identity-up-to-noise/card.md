@@ -3,8 +3,8 @@ id: "054"
 title: identity up to noise, and perception that keeps what is visible
 rung: 0
 serves: [P7, P4, P12, P3, P17]
-status: approved
-verdict:
+status: done
+verdict: fail
 arch_version: 10
 date: 2026-10-05
 ---
@@ -208,4 +208,60 @@ layouts at 1.00 × the shortest route; cluttered 100% at 1.06 ×
 **B's choice: m = 0.5** (the declared order: criterion 1 equal at 100%
 in every arm; criterion 2 best, 100% / 100% and 98.2%; criterion 3 equal).
 
+**Steps C and D: m = 0.5 on four seeds** (`runs/054/{recall,planner,
+d_one,d_clutter}_m05_*`). Version 10 with its codebook encoder, for
+comparison: familiar worlds 100%, chained rooms 98%, cluttered 98–100%.
+
+| Seed | 399 | 400 | 401 | 402 |
+|---|---|---|---|---|
+| 1. Familiar worlds (steps as card 029's) | 100% | 100% | 100% | 100% |
+| 1. Chained rooms, one door (× shortest) | 100% (1.00) | 100% (1.00) | 100% (1.00) | 100% (1.00) |
+| 1. Cluttered (× shortest) | 100% (1.06) | 100% (1.09) | 100% (1.00) | 100% (1.03) |
+| 2. Recall: matching / other key | 100 / 100 | 100 / 62.5 | 100 / 70 | 100 / 62.5 |
+| 2. Same prediction, two noise draws | 98.2% | 97.0% | 98.0% | 96.8% |
+| 3. Conditions (key world: hand or relation; switch world: switch) | ✓ | ✓ | ✓ | ✓ |
+| 3. Generator tries: toggle admits hand or relation | ✓ | ✓ | – | ✓ |
+| Identity pairs within τ in every part | 30 | 9 | 16 | 25 |
+
+Criterion 1 holds on all four seeds, at or above version 10 with its
+codebook. Criterion 3 holds on all four in the planner's worlds; the
+second key and the vase are never admitted. Criterion 2 fails on all
+four: noise agreement is below 99% everywhere, and the other-key case
+is below 90% on three seeds. On those seeds the transition model itself
+gets the other key right only 70–85%, so part of the failure is in how
+far the encoder separates colours, not in the codes. The rest is noisy
+copies splitting: up to 100 classes in one part (seed 402), and the
+memory's own categories agree with the simulator in only 92–97%.
+
+**The declared revision** (criterion 2 failed): noise differs by
+appearance (doors are several times noisier than floor in the encoder's
+space), so each class takes its own scale: 1.25 × the largest noise
+distance among the 20 untouched pairs (of 20,000) nearest the piece that
+starts the class, never below τ_k (`IDENTITY=local`, `tools/card054/
+identity.py`; `runs/054/r_recall_m05_*`).
+
+| Seed | 399 | 400 | 401 | 402 |
+|---|---|---|---|---|
+| Recall: matching / other key | 100 / 92.5 | 100 / 75 | 100 / 85 | 100 / 70 |
+| Same prediction, two noise draws | 99.0% | 97.0% | 98.7% | 98.2% |
+| Memory's categories agree with the simulator | 98.7–99.1% | 96.3–97.2% | 98.0–98.5% | 96.6–98.0% |
+
+The revision helps on every seed but seed 399's other key (100 →
+92.5%), and passes criterion 2 on seed 399 only. Its effect on the
+planner was not measured.
+
 ## 8. Decision
+
+**Revise.** Criteria 1 and 3 hold on all four seeds; criterion 2 fails
+after its one revision (1 of 4 seeds). What the night established: with
+no learned codebook, an encoder trained only by its own transitions,
+the visibility margin and the margin between visibly different tiles
+keeps the whole planner working: 100% in the familiar worlds, chained
+rooms and cluttered world on four seeds, and the conditions the user
+asked about are still discovered. What remains is recall on the
+generator's noisy tries: colour pairs the encoder separates only weakly
+(the transition model's other key 70–85%), and noisy copies that still
+split. The next encoder card should target colour separation where the
+outcome depends on it (the relation part), not the codes. The encoder
+(m = 0.5) and identity up to noise are what cards 056 and 057 build on;
+the per-appearance scale is kept as an option until its planner check.
