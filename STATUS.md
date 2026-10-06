@@ -16,17 +16,16 @@ Overwritten each session. At most 40 lines.
   orders read from plans, found orders followed, ties kept, two-part
   needs split, caches with the same actions. Tier 2 out of time 4 (6).
 - **Known cost of version 18:** tier 1 routes 17% longer (ties by acts).
-- [076](experiments/076-router-for-remembered-orders/card.md) stop: a
-  router over the situation's tokens; tier 2 97.7% against "no order"
-  96.2%, but worse than "no order" in the decoy world.
-- [077](experiments/077-relational-router/card.md) stop: the router
-  reading what tokens do and card 070's relations, not appearance.
-  Inputs keep orders (99.8%), tier 2 unchanged, but tier 2 to decoy
-  world transfer 16% caught at 3% precision (appearance: 17%, 3%).
-- [078](experiments/078-route-relation/card.md) stop: "on the way" per
-  token, from the agent's belief: in 93% of decoy orders, 9.5% of
-  non-orders; transfer 41% caught (077: ≤18%) at 18% precision.
-- **Next:** card 079, the relational router for effect recall. CHARTER
+- **Routers over the situation's tokens** (076–078, stop): orders from
+  tokens learned in tier 2 (97.7% against "no order" 96.2%) but did not
+  carry to the decoy world; "on the way" (078) is what orders turn on
+  (93% of decoy orders) and gave the first transfer (41% caught, 18%).
+- [079](experiments/079-relational-effect-recall/card.md) stop: router
+  as toggle recall's metric (roles + card 070's relation, no identity):
+  a key never seen opening its door predicted right in 4 of 6 folds
+  (version 18: 0); fails where the pair's relation is outside the
+  remembered range (a vote does not extrapolate).
+- **Next, for the user:** the relation as an ordered quantity. CHARTER
   wording on networks (proposed in chat). Later: tie cost by steps; 075;
   068's revision; trying's retry; tier 3's memory.
 
