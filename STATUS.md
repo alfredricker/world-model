@@ -18,16 +18,16 @@ Overwritten each session. At most 40 lines.
 - **Known cost of version 18:** ties ranked by acts before steps make
   tier 1 routes 17% longer (walks to the door before the key in front).
 - [076](experiments/076-router-for-remembered-orders/card.md) stop: a
-  learned router over the situation's tokens as recall's metric, on
-  remembered orders. Gate 98.6% (needs 99%); identical token situations
-  agree on 99.8% of orders. Tier 2: 97.7% against "no order" 96.2%, 69%
-  of orders caught at 71% precision (card 074's recall: 2%); decoy world
-  worse than "no order" (12 training orders from it).
-- **Next, for the user:** a new router card? (training orders from every
-  world in proportion; gate on the inputs' consistency; a fit that keeps
-  agreement.) CHARTER wording on networks inside components (proposed in
-  chat). Later: tie cost by steps; [075](experiments/075-motion-as-learned-system-1/card.md);
-  068's revision; trying's retry; tier 3's memory; 058, 065, 055.
+  router over the situation's tokens; tier 2 97.7% against "no order"
+  96.2%, but worse than "no order" in the decoy world.
+- [077](experiments/077-relational-router/card.md) stop: the router
+  reading what tokens do and card 070's relations, not appearance.
+  Inputs keep orders (99.8%), tier 2 unchanged, but tier 2 to decoy
+  world transfer 16% caught at 3% precision (appearance: 17%, 3%).
+- **Next, for the user:** a route relation from walking ("this tile
+  stands on the way to that target") as the router's input? CHARTER
+  wording on networks inside components (proposed in chat). Later: tie
+  cost by steps; 075; 068's revision; trying's retry; tier 3's memory.
 
 ### Fred note
 Delete when this gets its set of cards.

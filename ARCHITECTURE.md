@@ -522,7 +522,10 @@ At every step:
   074). A learned router over the situation's tokens (card 076, stopped)
   beat it in tier 2 (97.7% against 96.2% for "no order"; 69% of orders
   caught) but not in the decoy world, whose orders training rarely
-  showed; identical token situations agree on 99.8% of orders.
+  showed; identical token situations agree on 99.8% of orders. Reading
+  what tokens do and card 070's relations instead of appearance (card
+  077, stopped) did not carry orders from tier 2 to the decoy world
+  either (16% caught at 3% precision).
 - **An achiever whose needs change form.** One failure is left in
   card 051's 1,950 test episodes: cluttered seed 403 layout 93, where
   the chosen achiever's needs alternate in form from step to step, so
