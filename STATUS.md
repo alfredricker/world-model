@@ -15,8 +15,7 @@ Overwritten each session. At most 40 lines.
   [074.2](experiments/074.2-orders-within-time/card.md) keep, version 18:
   orders read from plans, found orders followed, ties kept, two-part
   needs split, caches with the same actions. Tier 2 out of time 4 (6).
-- **Known cost of version 18:** ties ranked by acts before steps make
-  tier 1 routes 17% longer (walks to the door before the key in front).
+- **Known cost of version 18:** tier 1 routes 17% longer (ties by acts).
 - [076](experiments/076-router-for-remembered-orders/card.md) stop: a
   router over the situation's tokens; tier 2 97.7% against "no order"
   96.2%, but worse than "no order" in the decoy world.
@@ -24,10 +23,12 @@ Overwritten each session. At most 40 lines.
   reading what tokens do and card 070's relations, not appearance.
   Inputs keep orders (99.8%), tier 2 unchanged, but tier 2 to decoy
   world transfer 16% caught at 3% precision (appearance: 17%, 3%).
-- **Next, for the user:** a route relation from walking ("this tile
-  stands on the way to that target") as the router's input? CHARTER
-  wording on networks inside components (proposed in chat). Later: tie
-  cost by steps; 075; 068's revision; trying's retry; tier 3's memory.
+- [078](experiments/078-route-relation/card.md) stop: "on the way" per
+  token, from the agent's belief: in 93% of decoy orders, 9.5% of
+  non-orders; transfer 41% caught (077: ≤18%) at 18% precision.
+- **Next:** card 079, the relational router for effect recall. CHARTER
+  wording on networks (proposed in chat). Later: tie cost by steps; 075;
+  068's revision; trying's retry; tier 3's memory.
 
 ### Fred note
 Delete when this gets its set of cards.
