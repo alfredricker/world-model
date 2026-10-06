@@ -1,0 +1,15 @@
+{
+ "tries": 5120,
+ "opened_share": 0.5098,
+ "pixels_agree_with_simulator": "5120/5120",
+ "door_hue_nearest_test_hue": 60.0,
+ "other_key_hue_nearest_test_hue": 60.0,
+ "held": {
+  "key": 2610,
+  "other": 1236,
+  "ball": 322,
+  "box": 325,
+  "nothing": 627
+ },
+ "minigrid_toggle_rule_agrees": "200/200"
+}

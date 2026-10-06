@@ -1,0 +1,35 @@
+{
+ "note": "Card 070 step A",
+ "log": [
+  {
+   "update": 500,
+   "loss": 0.2248,
+   "batch_accuracy": 0.9336
+  },
+  {
+   "update": 1000,
+   "loss": 0.1226,
+   "batch_accuracy": 0.9551
+  },
+  {
+   "update": 1500,
+   "loss": 0.1152,
+   "batch_accuracy": 0.9648
+  },
+  {
+   "update": 2000,
+   "loss": 0.1478,
+   "batch_accuracy": 0.9473
+  },
+  {
+   "update": 2500,
+   "loss": 0.0925,
+   "batch_accuracy": 0.9727
+  },
+  {
+   "update": 3000,
+   "loss": 0.0855,
+   "batch_accuracy": 0.9707
+  }
+ ]
+}

@@ -453,11 +453,13 @@ At every step:
   5 of 6 locked door colours are openable; blue is not, because the tile
   recall predicts a toggled blue door becomes (card 038's ways) is no
   catalogue tile and is judged not walkable (card 068).
-- **"Same colour" across kinds.** The encoder's vectors do not carry
-  colour alike in a key and a door: no weighting tells a matching pair
-  from another for a colour left out (47 of 66; card 069), and a relation
-  term trained beside one-tile terms learned a threshold per colour
-  instead (card 069, stopped).
+- **"Same colour" across kinds.** Version 15's encoder (card 054's) does
+  not let a weighting tell a matching key and door from another for a
+  colour left out (47 of 66, card 069). Card 070's encoder, trained with
+  the relation as the only path on fresh hues, does (66 of 66; 9 of 9 for
+  hues it never saw), but recall's fit weighs the door's identity 40
+  times the relation, so a key never seen opening its door is predicted
+  not to (card 070, revise). Neither is in version 15 yet.
 - **MiniGrid tier 3:** memory cannot be built: recall's fit of its view
   weights compares every pair of distinct stored views. Card 068 removed
   the per-number differences (698 GB there), but the token-pair distances

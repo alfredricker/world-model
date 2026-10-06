@@ -1,0 +1,20 @@
+{
+ "encoder": "runs/070/encoder.pt",
+ "learned relation (card 069)": {
+  "left_out_colour_pairs_right": "66/66",
+  "unseen_hue_pairs_right": "9/9",
+  "pairs_with_an_unseen_hue_right": "45/45",
+  "same_colour_relation_max_six": 1.796,
+  "different_colour_relation_min_six": 2.936
+ },
+ "whole vector": {
+  "left_out_colour_pairs_right": "50/66",
+  "unseen_hue_pairs_right": "2/9",
+  "weights_carrying_half_the_mass": 3
+ },
+ "one quarter (card 049)": {
+  "left_out_colour_pairs_right": "43/66",
+  "unseen_hue_pairs_right": "4/9",
+  "weights_carrying_half_the_mass": 2
+ }
+}

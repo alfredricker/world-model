@@ -62,9 +62,14 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   weights carried. A distance is not enough when terms reading each tile
   alone sit beside it: card 069's relation, trained on nine fixed colours
   next to such terms, became a threshold per door colour (45 of 66 pairs
-  right for a colour left out). *Evidence:* phwm record §5.4–5.5;
+  right for a colour left out). With the relation as the only path and a
+  fresh hue for every try, the same encoder learned it (card 070: 66 of
+  66, and 9 of 9 for hues never seen). The same holds for recall's
+  weights: fitted by predicting each stored try from the others, they
+  favour the door's identity, since every try has twins at the same door
+  (card 070). *Evidence:* phwm record §5.4–5.5;
   old:phwm/docs/06-achievements-and-limitations.md §6.1.1; card 040
-  appendix A; card 069. *Confirmed.*
+  appendix A; cards 069, 070. *Confirmed.*
 - **Verify that held-out cases are really held out, and keep new
   combinations apart from new members.** PHWM's first held run left about
   98% of query pairs in the support set (corrected: .917). Combination

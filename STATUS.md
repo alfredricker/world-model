@@ -17,20 +17,23 @@ Overwritten each session. At most 40 lines.
     why tier 2 fails.
   - [067](experiments/067-closeness-by-propagation/card.md) keep, version
     15: walking by propagation; the same decisions, setup 21 s against 47.
-  - [068](experiments/068-play-starts/card.md) revise: play starts give
-    every colour its open door walked through; 5 of 6 locked doors
-    openable (4 before); tiers unchanged. Blue fails in recall's
-    predicted tile for a toggled door (card 038's ways), not in memory.
-    Recall's view-set fit no longer builds its 7 GB tensor (same numbers).
+  - [068](experiments/068-play-starts/card.md) revise: play starts make
+    5 of 6 locked doors openable (4 before); tiers unchanged; blue fails
+    in recall's predicted tile for a toggled door (card 038's ways).
   - [069](experiments/069-relations-as-learned-weights/card.md) stop: a
-    learned relation over whole vectors, trained into the encoder, failed
-    its gate (45 of 66 for a left-out colour, against 47 before); it
-    learned a threshold per door colour.
-- **Next, for the user to choose:** card 068's revision (the tile a door
-  becomes when toggled); the hand's conditions (put down before picking
-  up), which tier 2 needs; a second relation attempt (the relation as the
-  only path for what depends on both tiles, fresh colours per update);
-  later, recall's view-set fit at tier 3's scale.
+    learned relation beside one-tile terms, on nine fixed colours, learned
+    a threshold per door colour (45 of 66 for a left-out colour).
+  - [070](experiments/070-relation-only-fresh-hues/card.md) revise: with
+    the relation as the only path and fresh hues, the encoder learns
+    "this key fits this door" (66 of 66; 9 of 9 for unseen hues; tier 1
+    still 100%). But recall weighs the door's identity 40 times the
+    relation, so a key never seen opening its door is predicted not to:
+    the decoy folds 7%.
+- **Next, for the user to choose:** card 070's revision (recall's weights
+  fitted by leaving out whole door and key combinations); the hand's
+  conditions (put down before picking up), which tier 2 needs; card
+  068's revision (the tile a toggled door becomes); later, recall's
+  view-set fit at tier 3's scale.
 - **The user's demo** is on 2026-10-06: version 15 on tier 1.
 - **Later:** rung 1's clearing commitment (card 058); the both world's
   random steps (065); card 055 (draft).

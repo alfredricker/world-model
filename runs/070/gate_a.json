@@ -1,0 +1,20 @@
+{
+ "encoder": "runs/070/a_frozen.pt",
+ "learned relation (card 069)": {
+  "left_out_colour_pairs_right": "63/66",
+  "unseen_hue_pairs_right": "8/9",
+  "pairs_with_an_unseen_hue_right": "40/45",
+  "same_colour_relation_max_six": 2.888,
+  "different_colour_relation_min_six": 2.386
+ },
+ "whole vector": {
+  "left_out_colour_pairs_right": "47/66",
+  "unseen_hue_pairs_right": "4/9",
+  "weights_carrying_half_the_mass": 2
+ },
+ "one quarter (card 049)": {
+  "left_out_colour_pairs_right": "44/66",
+  "unseen_hue_pairs_right": "4/9",
+  "weights_carrying_half_the_mass": 2
+ }
+}
