@@ -1,8 +1,35 @@
 ---
-arch_version: 15
+arch_version: 16
 ---
 
 # Architecture
+
+Version 16 is version 15 with three parts of one change
+([card 072](experiments/072-try-the-likeliest-way/card.md), kept by the
+user 2026-10-05):
+- **Card 070's encoder**: card 054's recipe plus a term in which a
+  key and door are judged "fits" through their relation only, on tiles
+  of fresh hues ([card 070](experiments/070-relation-only-fresh-hues/card.md)).
+  It separates every matching pair from every other (66 of 66; 9 of 9
+  for hues it never saw).
+- **The relation `rel:P`**, ‖P(z_front − z_held)‖₁ with P (8 × 32) from that
+  training, frozen, in place of recall's per-part relations.
+- **Trying the likeliest untried way.** When no plan is found and
+  exploration finds nothing, the ways recall does not predict to work
+  are ranked by its probability that the action changes the tile, and
+  the planner plans under the likeliest untried one as a hypothesis (its
+  effect assumed until the try is made). Memory stores the outcome, so a
+  failed pair predicts failure from then on.
+
+In card 070's decoy world (a second key of another colour; the right
+pair's openings removed from memory) it succeeds in 95–98% of episodes
+in all six colour folds (version 15's configuration: 7%), with 0.06–0.09
+wrong-key tries per episode; a version that knows the key reaches 94%
+there, failing on the same layouts (the hand's conditions, below). Tier 1
+100% in 20.8 steps; tier 2 2 of 100 (no different from 0%; both successes
+after 16 failed tries and about 90 random steps). Memory still starts
+from setup in every episode (the user, 2026-10-05: keeping it across
+episodes is not worth its costs for now).
 
 Version 15 is version 14 with walking that keeps nothing per pair of
 placements ([card 067](experiments/067-closeness-by-propagation/card.md),
@@ -118,7 +145,10 @@ stored keys (version 9: 43–4,640 ms). It is not a passed
 rung: the world is fully visible, repeats pixels exactly, and every
 familiar appearance has been seen.
 
-The code is `tools/card062/believed.py` (version 14: card 061's memory with the
+Version 16 runs as `WM_TRYING=1 WM_REL_ENCODER=runs/070/encoder.pt bin/prun
+python tools/card069/run.py tiers --tier N --online 0 --memory 066`:
+`tools/card072/trying.py` and `tools/card069/relation.py` on card 067's
+`propagate.py` and card 066's `tiers.py`. The code is `tools/card062/believed.py` (version 14: card 061's memory with the
 believed views, `runs/062/believed_*.npz`) running
 `tools/card057/partial.py` (version 11's partial view; version 12 with
 `--occlude --frontier --keep-look`), on
@@ -143,7 +173,8 @@ Version 5, the counted model over exact tile IDs, is in git (commit
 
 ## In brief
 
-- **Encoder** (card 054, adopted by the user 2026-10-05). A small
+- **Encoder** (card 054, adopted by the user 2026-10-05; version 16 uses
+  card 070's, the same recipe plus the relation-only term). A small
   convolutional network maps each 8 × 8 × 3 tile to 32 numbers, in 4
   pieces of 8, trained without a learned codebook: a transition model of
   pick up, toggle and drop on its vectors (against an EMA target), a
@@ -158,9 +189,9 @@ Version 5, the counted model over exact tile IDs, is in git (commit
   its outcomes.
 - **Recall** (version 9) predicts a pick up, toggle or drop from the
   **conditions admitted** for that action, and nothing else in view:
-  - candidates are the front and held tiles' four parts, a front–held
-    relation per part (a distance), and "a token with this code tuple is
-    in view";
+  - candidates are the front and held tiles' four parts, the front–held
+    relation `rel:P` (version 16; before, a distance per part), and "a
+    token with this code tuple is in view";
   - a candidate is admitted while it raises the leave-one-out likelihood
     of the stored outcomes by more than log(number of candidates), so a
     token present in every try (a key always on the floor) never enters;
@@ -184,7 +215,8 @@ Version 5, the counted model over exact tile IDs, is in git (commit
   produce from the present. The situations in which an action could work
   on a thing come from tries on the same thing and on similar things, and
   recall judges each (card 047): a failed try rules out its own
-  situation, not the thing.
+  situation, not the thing. When no plan and no exploration is found, the
+  likeliest untried way is tried (card 072, version 16).
 - **Walking** (card 067, version 15): per situation and need, a closeness
   propagated over the placements the agent could stand at, each from its
   neighbours (value iteration on the believed map); a move that brings
@@ -447,7 +479,15 @@ At every step:
 - **A lattice sized in advance.** Tokens live on a fixed grid set per
   map (card 066's prior); walking no longer limits it (version 15), but a
   map whose size is not known in advance needs the lattice to grow.
-- **MiniGrid tier 2 (cards 066, 068):** 0%. The agent does not learn to
+- **The hand's conditions** (card 072's trace, decoy seed 1001029). Card
+  051's threat check compares only the first action of each need's plan,
+  and the conflict over the hand comes at the last (the pick up that
+  fills it), so the key is fetched before the blocker is cleared. A
+  condition that already holds is not protected (the toggle works with
+  the key in hand, so no hand need is recorded), so the key is dropped to
+  clear the blocker; and where a drop lands is not a condition. The agent
+  loops between the two. Version 16's decoy failures and tier 2 meet it.
+- **MiniGrid tier 2 (cards 066, 068, 072):** 0% (version 16: 2%). The agent does not learn to
   free its hand before picking up the box (recall even predicts that a
   locked door opens while a ball is held). With play starts in memory,
   5 of 6 locked door colours are openable; blue is not, because the tile
@@ -462,7 +502,11 @@ At every step:
   not to (card 070). Fitting recall by leaving whole combinations out
   lowers that weight but not enough: each quarter of the vector carries
   the tile's kind and colour alike, and toggling needs the kind (card
-  071). Neither is in version 15.
+  071). Version 16 has card 070's encoder and `rel:P`; recall still
+  ranks a never-seen pair only weakly (0.014 for the right key), and
+  trying finds it (1.5 tries per episode). Refitting P after each try
+  moved it by Adam's fixed step, not by the evidence, and sometimes
+  broke the relation (card 072); it is off.
 - **MiniGrid tier 3:** memory cannot be built: recall's fit of its view
   weights compares every pair of distinct stored views. Card 068 removed
   the per-number differences (698 GB there), but the token-pair distances
@@ -501,3 +545,4 @@ At every step:
 | 14 | 2026-10-05 | 062 | Stored tries of pick up, toggle and drop record what was in view in the agent's belief at that step (tiles seen so far in the episode through the 7 × 7 occluded view, placed by its own motion, never-seen places as the unseen appearance), from a replay of the stored play checked row by row against it. 92–96% of stored tries changed their in-view set; conditions discovered on four encoders (key world: relation or hand; switch world: a yellow switch in view, formerly a grey one); familiar worlds 100% at card 061's steps, chained rooms 100%. Kept overnight by Claude under the user's overnight rules; confirmed by the user 2026-10-05 |
 | 14 | 2026-10-05 | 054 | The user adopts card 054's encoder (no learned codebook; identity up to noise; margin 0.5), on which versions 11–14 ran; behaviour unchanged |
 | 15 | 2026-10-05 | 067 | Walking by a closeness propagated over the believed map per situation and need, in place of the how-soon network and the tables over every pair of placements; crossable tokens become conditions in one field, in place of single and paired token searches. MiniGrid tier 1 200/200 (as version 14), tier 2 0/100 (as version 14); setup 21 s against 47 |
+| 16 | 2026-10-05 | 072 | Card 070's encoder, the relation `rel:P` (P frozen) and trying the likeliest untried way when no plan is found. Decoy folds 95–98% (version 15's configuration 7%; a known key 94%); tier 1 200/200, 20.8 steps; tier 2 2/100 (no different from 0/100) |

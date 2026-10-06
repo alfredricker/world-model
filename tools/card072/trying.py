@@ -250,7 +250,7 @@ def install():
             STATE["log"].append({"tried": [VP.KNAME.get(a, a), name(V[VP.FRONT]), name(V[VP.HELD])], "changed": ok})
             STATE["tried"].add((a, hyp["cu"], hyp["ch"]))
             STATE["hyp"] = None
-            if R.STATS["refits"] == refits:            # card 069's refit did not run (recall's prediction was right)
+            if R.ONLINE["on"] and R.STATS["refits"] == refits:   # card 069's refit did not run (prediction right)
                 R.refit(self, self.kinds[a])
                 STATS["try_refits"] += 1
             R._clear(self)

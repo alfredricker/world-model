@@ -1,0 +1,14 @@
+{
+ "note": "card 072 control: fold grey episodes, every opening in memory, no trying (card 070's configuration)",
+ "success": 0.94,
+ "failed_seeds": [
+  1001012,
+  1001029,
+  1001061,
+  1001078,
+  1001080,
+  1001096
+ ],
+ "mean_steps_when_successful": 21.4,
+ "random_share": 0.0
+}

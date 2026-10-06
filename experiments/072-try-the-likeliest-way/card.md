@@ -3,8 +3,8 @@ id: "072"
 title: try the likeliest untried way, and learn the relation from each try
 rung: 6
 serves: [P19, P11, P12, P3, C5]
-status: approved
-verdict:
+status: done
+verdict: pass
 arch_version: 15
 date: 2026-10-05
 ---
@@ -173,9 +173,29 @@ Card 070's configuration on the same folds: 7% (random actions).
 
 ## 8. Decision
 
-Not taken: the declared rules do not cover this outcome (criterion 1 fails
-for neither declared reason). For the user: amend criterion 1 to the
-measured bound (no fold worse than the known-key control; met) and keep
-(version 16: version 15 with card 070's encoder, `rel:P` and trying; the
-refits after a try kept, or dropped as noise); or revise behind a card on
-the hand's conditions.
+**Amended by the user after the run (2026-10-05):** criterion 1 is
+judged against the known-key control (no fold worse), and the refits
+after each try are dropped ("let's drop the relation weight updates for
+now ... and lets mark the likelihood ranking a keep"). Rerun as amended
+(`runs/072/norefit/`, `--online 0`; the known-key control per fold,
+`tools/card072/control.py`, also without refits):
+
+| Fold | Trying | Decoy tries / episode | Steps when successful | Known key | Solved only with trying / only with the known key | McNemar p |
+|---|---|---|---|---|---|---|
+| red | 97% | 0.09 | 30.5 | 94% | 3 / 0 | 0.25 |
+| green | 96% | 0.08 | 27.7 | 94% | 2 / 0 | 0.5 |
+| blue | 98% | 0.09 | 31.4 | 94% | 4 / 0 | 0.13 |
+| purple | 97% | 0.08 | 29.4 | 94% | 3 / 0 | 0.25 |
+| yellow | 97% | 0.08 | 27.7 | 94% | 3 / 0 | 0.25 |
+| grey | 95% | 0.06 | 22.5 | 94% | 1 / 0 | 1 |
+
+- Criterion 1 (amended): met; no fold worse than the known key.
+- Criterion 2: met; tier 1 100% (200), 20.8 steps, no random action.
+- Criterion 3: met; tier 2 2% (2 of 100) against 0%, no different
+  (McNemar p = 0.5). Both successes came after 16 tries that changed
+  nothing and about 90 random steps; trying replaced random actions
+  (10% of tier 2's steps, against 18% in version 15). Tier 3 cannot be
+  built.
+
+**Keep:** version 16 (version 15 with card 070's encoder, `rel:P` with P
+frozen, and trying). The user's demo stays on version 15 (tier 1 alike).
