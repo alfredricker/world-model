@@ -33,7 +33,7 @@ MODE = os.environ.get("WM_TIES", "1")                  # "1": this card's choice
 SPLIT = os.environ.get("WM_SPLIT") == "1"
 DEBUG = os.environ.get("WM_TIES_DEBUG") == "1"
 STATS = {"weighed": 0, "found": 0, "followed": 0, "overridden": 0, "tie_kept": 0, "tie_cost": 0, "tie_order": 0, "single": 0,
-         "cycles": 0, "flips": 0, "steps": 0, "steps_spliced": 0, "split_hand_met": 0, "split_view_held": 0}
+         "cycles": 0, "flips": 0, "chain_steps": 0, "steps_spliced": 0, "split_hand_met": 0, "split_view_held": 0}
 _conditions0 = None
 
 
@@ -269,7 +269,7 @@ def install():
         """A step begins: the last step's found orders become `prev`; the chain it acted on is counted."""
         acted = self.__dict__.pop("_c0741_acted", None)
         if acted is not None:
-            STATS["steps"] += 1
+            STATS["chain_steps"] += 1
             STATS["steps_spliced"] += any(spliced(n) for n in getattr(acted, "trace", []))
         self._c0741_prev = getattr(self, "_c0741_cur", {})
         self._c0741_cur = {}
@@ -281,5 +281,6 @@ def install():
             self._c0741_acted = res                    # a top-level chain (the goal's, or exploration's)
         return res
 
-    S7.Plan047.choose = choose
-    S7.Plan047.solve = solve
+    if os.environ.get("WM_TIES_NOWRAP") != "1":
+        S7.Plan047.choose = choose
+        S7.Plan047.solve = solve

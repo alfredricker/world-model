@@ -3,28 +3,27 @@
 Overwritten each session. At most 40 lines.
 
 - **Date:** 2026-10-06, `master`. **Rung:** 1, not passed.
-  **Architecture:** version 17 (card 073). **Direction:** CHARTER's
+  **Architecture:** version 18 (cards 074–074.2). **Direction:** CHARTER's
   "Current direction", rule 8; the standing evaluation is its three
   MiniGrid tiers.
-- **Best version:** 17. Tier 1 DoorKey-8x8 **100%** (threshold 99%);
-  tier 2 BlockedUnlockPickup **25%**; tier 3 ObstructedMaze-Full-v1:
-  memory cannot be built yet.
-- **Cards of 2026-10-05/06:** 066–067 keep (the tiers; walking by
-  propagation); 068 revise; 069, 071 stop; 070 revise; 072 keep
-  (version 16, trying); 073 keep (version 17, orders); 074 revise (a
-  kept order overrode found ones).
-  - [074.1](experiments/074.1-orders-with-ties-and-split-needs/card.md)
-    revise, for cost: found orders followed, ties kept, two-part needs
-    split. Decoy with the key known 100%; all 47 tier 2 loops gone; tier
-    1 100%; tier 2 **51%** (better than 25%, p = 0.0003); but 15 tier 2
-    episodes out of time (limit 6): order tests rebuild card 043's
-    conditions in every imagined situation.
+- **Best version:** 18. Tier 1 DoorKey-8x8 **100%** in 24.4 steps
+  (threshold 99%; version 17: 20.8 steps); tier 2 BlockedUnlockPickup
+  **59%** (version 17: 25%); tier 3 ObstructedMaze-Full-v1: memory cannot
+  be built yet.
+- **Cards of 2026-10-06:** 073 keep (version 17); 074 revise; 074.1
+  revise for cost (its step counts were wrong, a counter clash; marked);
+  [074.2](experiments/074.2-orders-within-time/card.md) keep, version 18:
+  orders read from plans, found orders followed, ties kept, two-part
+  needs split, caches with the same actions. Tier 2 out of time 4 (6).
+- **Known cost of version 18:** ties ranked by acts before steps make
+  tier 1 routes 17% longer (walks to the door before the key in front).
 - **Next, for the user:** approve
-  [076](experiments/076-remembered-orders-with-where/card.md)
-  (remembered orders that record where things are; report only; to
-  square with the note below). Then 074.2 (to draft): cache conditions
-  so 074.1's arm B decides the same within time, as version 18. Later:
-  [075](experiments/075-motion-as-learned-system-1/card.md); 068's
+  [076](experiments/076-router-for-remembered-orders/card.md), the first
+  card of the note below: a learned router over the situation's tokens
+  (what and where) as recall's metric, tested on remembered orders,
+  report only. It reads CHARTER's "recall is a learned metric" to cover
+  a network; say if that needs an amendment. Later: the tie cost by
+  steps; [075](experiments/075-motion-as-learned-system-1/card.md); 068's
   revision; trying's retry; tier 3's memory; 058, 065, 055 (draft).
 
 ### Fred note

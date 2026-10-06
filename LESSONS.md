@@ -233,6 +233,11 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
 
 - **Change pass/fail criteria at most once; then open a new experiment.**
   *Evidence:* old:grl/notes/2026-09-10-reset.md.
+- **A report counter must not share a name with the record it is merged
+  into.** Card 074.1's counter `steps` overwrote each episode's step
+  count, so its steps and time per step were wrong (0.337 s per step
+  reported, 0.262 measured); found when a run "differed" from card 074's
+  with identical actions. *Evidence:* card 074.2.
 - **Log every loss term separately;** a combined value hid a scale failure
   (old:legacy/mgrid/README.md). **Check cheap-model extraction;** of 61
   lessons Haiku drew from the old repo, about 10 survived unchanged.

@@ -1,8 +1,35 @@
 ---
-arch_version: 17
+arch_version: 18
 ---
 
 # Architecture
+
+Version 18 is version 17 with orders read from plans and two-part needs
+split ([card 074](experiments/074-conflicts-read-from-plans/card.md),
+[074.1](experiments/074.1-orders-with-ties-and-split-needs/card.md),
+[074.2](experiments/074.2-orders-within-time/card.md), kept 2026-10-06):
+- **Orders by planning** (Koehler and Hoffmann's Definition 8, answered
+  by the agent's own planner): need B comes before need A when, in the
+  situation A's chain produces, the planner finds no plan for B that
+  keeps A but finds one that undoes it. No list of parts is used. What a
+  pending need relies on is protected the same way: an act is refused
+  when, in the situation it produces, a later sibling could then be
+  planned only by undoing the need just pursued.
+- **Found orders are always followed.** Ties (no order found) go to the
+  last step's choice, which is the need it pursued (even alone), while
+  that need is unmet and still gives a plan; else to the need whose plan
+  has fewer pick ups, toggles and drops, then fewer steps.
+- **Two-part needs split.** A stored success that needs both the hand
+  and the view changed gives two conditions: "the hand holds h" (card
+  056's `has`; h the stored try's held tile) and card 043's one-part view
+  need, checked with the situation's own hand and view. Card 043's
+  splice is gone.
+- **Caches** of recall's pair distance and of part conditions, dropped
+  when what they read changes (the same actions at every step).
+
+Decoy world with the key known 100% in every fold (version 17: 99%);
+tier 1 100% in 24.4 steps (version 17: 20.8); tier 2 59% (version 17:
+25%, better), 4 episodes out of time (6), 0.124 s per step.
 
 Version 17 is version 16 with needs ordered by the states they conflict
 over ([card 073](experiments/073-order-needs-by-conflicting-states/card.md),
@@ -157,8 +184,12 @@ stored keys (version 9: 43–4,640 ms). It is not a passed
 rung: the world is fully visible, repeats pixels exactly, and every
 familiar appearance has been seen.
 
-Version 16 runs as `WM_TRYING=1 WM_REL_ENCODER=runs/070/encoder.pt bin/prun
-python tools/card069/run.py tiers --tier N --online 0 --memory 066`:
+Version 18 runs as `WM_TRYING=1 WM_CONFLICTS=1 WM_TIES=1 WM_SPLIT=1
+WM_CACHE=1 WM_REL_ENCODER=runs/070/encoder.pt bin/prun python
+tools/card069/run.py tiers --tier N --online 0 --memory 066`:
+`tools/card074.2/cache.py` and `tools/card074.1/ties.py` on
+`tools/card074/conflicts.py`, on version 16's code below. Version 16 ran
+without the four card 074 flags:
 `tools/card072/trying.py` and `tools/card069/relation.py` on card 067's
 `propagate.py` and card 066's `tiers.py`. The code is `tools/card062/believed.py` (version 14: card 061's memory with the
 believed views, `runs/062/believed_*.npz`) running
@@ -222,7 +253,9 @@ Version 5, the counted model over exact tile IDs, is in git (commit
   last step for a condition is tried first; when an achiever has two
   unmet needs, one whose plan would break what the other relies on is
   not pursued first (threats); and when only the view is asked for, the
-  present hand is protected. Since version 17 the order between needs is
+  present hand is protected (version 18: not when the hand is itself a
+  need). Since version 18 the order between needs is card 074's (orders
+  by planning, found orders followed, ties kept; above); version 17's was
   card 073's reasonable order (above), in place of card 051's threats. A
   condition is checked only in situations that recall's predicted effects
   produce from the present. The situations in which an action could work
@@ -476,9 +509,18 @@ At every step:
 - **Chance.** An outcome is acted on only when its probability is at least
   one half, so an action that works some of the time in the same
   situation reads as not working (the user, 2026-10-01: later).
-- **Conjunctions.** A success that needs both the hand and the view
-  changed is still checked in a spliced situation (card 043's declared
-  exception).
+- **Conjunctions** (version 18). A success needing both the hand and the
+  view changed is two conditions, the view's checked where the hand's
+  achiever leaves it (card 074.1); in tier 2 the view need already held
+  there in about half the cases.
+- **Ties ranked by acts before steps** (version 18). A far need with no
+  pick up, toggle or drop beats a near one with one: tier 1 routes 17%
+  longer (24.4 steps against 20.8; seed 1001004 walks to the door before
+  picking up the key in front of it).
+- **Orders are not remembered.** Recall over stored weighings, keyed by
+  the two needs' tiles only, did worse than answering "no order" (card
+  074); card 076 (draft) tries a learned router over the situation's
+  tokens.
 - **An achiever whose needs change form.** One failure is left in
   card 051's 1,950 test episodes: cluttered seed 403 layout 93, where
   the chosen achiever's needs alternate in form from step to step, so
@@ -492,14 +534,13 @@ At every step:
 - **A lattice sized in advance.** Tokens live on a fixed grid set per
   map (card 066's prior); walking no longer limits it (version 15), but a
   map whose size is not known in advance needs the lattice to grow.
-- **The hand's conditions** (version 17 orders them; card 073). Left:
-  the tiles a planned route crosses are not protected, so a blocker can
-  be put back on a tile just cleared when the way is not yet open for
-  another reason (decoy seed 1001002); and a need on the view that names
-  a held tile is read as fixing the view only, so tier 2's door need
-  ("the view changed with the key held") is not seen to conflict with
-  clearing the ball (47 of tier 2's 69 failures within time).
-- **MiniGrid tier 2 (cards 066, 068, 072, 073):** version 17 25%. The agent does not learn to
+- **The hand's conditions** (versions 17–18; cards 073–074.2). Version
+  18 reads orders from plans, so a blocker is no longer put back on a
+  route just cleared (decoy seed 1001002) and tier 2's door need is seen
+  to conflict with clearing the ball. Left: with a full hand beside the
+  key it needs, the agent can turn between facing the key and turning
+  away to drop, never dropping (tier 2 seeds 1002033, 1002008).
+- **MiniGrid tier 2 (cards 066, 068, 072–074.2):** version 18 59% (version 17 25%). The agent does not learn to
   free its hand before picking up the box (recall even predicts that a
   locked door opens while a ball is held). With play starts in memory,
   5 of 6 locked door colours are openable; blue is not, because the tile
@@ -558,4 +599,5 @@ At every step:
 | 14 | 2026-10-05 | 054 | The user adopts card 054's encoder (no learned codebook; identity up to noise; margin 0.5), on which versions 11–14 ran; behaviour unchanged |
 | 15 | 2026-10-05 | 067 | Walking by a closeness propagated over the believed map per situation and need, in place of the how-soon network and the tables over every pair of placements; crossable tokens become conditions in one field, in place of single and paired token searches. MiniGrid tier 1 200/200 (as version 14), tier 2 0/100 (as version 14); setup 21 s against 47 |
 | 16 | 2026-10-05 | 072 | Card 070's encoder, the relation `rel:P` (P frozen) and trying the likeliest untried way when no plan is found. Decoy folds 95–98% (version 15's configuration 7%; a known key 94%); tier 1 200/200, 20.8 steps; tier 2 2/100 (no different from 0/100) |
+| 18 | 2026-10-06 | 074–074.2 | Orders read from plans (Definition 8 answered by the planner; no list of parts), found orders always followed and ties kept as the last step's pursued need, else fewer acts then steps; two-part needs split into "hold h" and the view need, card 043's splice removed; recall's pair distance and part conditions cached (the same actions). Decoy world with the key known 100/100 per fold; tier 1 200/200, 24.4 steps (17: 20.8); tier 2 59/100 (17: 25/100, better), 4 out of time; decoy folds with trying no different |
 | 17 | 2026-10-06 | 073 | Needs ordered by the states they conflict over (reasonable goal orderings on recall's conditions, at any depth of the chain), and the states an achiever relies on protected unless so ordered, in place of card 051's threats. Decoy world with the key known 99/100 per fold (version 16 94); tier 1 200/200, 20.8 steps; tier 2 25/100 (version 16 2/100, better); decoy folds with trying no different |

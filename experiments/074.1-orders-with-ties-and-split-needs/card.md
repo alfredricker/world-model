@@ -102,16 +102,16 @@ the decision rests on arm A.
   3 × version 17's (0.12 s), stop here and report.
 
 **Data check** (card 074's choice, counted; `WM_TIES=074`). Tier 2, 10
-episodes: 898 of 4,257 steps (21%) act on a chain holding a spliced
-need, so arm B counts in the decision. Decoy red fold: 94 of 100, card
+episodes: of the 4,257 steps that act on a planned chain, 898 (21%)
+hold a spliced need in it, so arm B counts in the decision. Decoy red fold: 94 of 100, card
 074's six failures; the test found an order 1,287 times and the kept
 order overrode it 1,281 times. Opposite orders on consecutive steps: 0 in
 both, so keeping a tie cannot turn with the agent.
 
 **Gate result.** Smoke tests: decoy seeds 1001029 and 1001002 solved
-(26 steps on average), tier 2 seeds 1002000 (118 steps; card 074: 261)
-and 1002010 (34 steps) solved in arm B. Cost, 10 tier 2 episodes: A
-0.127 s per step, B 0.337 s (limit 0.36): passed. Found on the way and
+(26 steps on average†), tier 2 seeds 1002000 (118 steps†; card 074: 261)
+and 1002010 (34 steps†) solved in arm B. Cost, 10 tier 2 episodes: A
+0.127 s per step†, B 0.337 s† (limit 0.36): passed†. Found on the way and
 built in: the last step's choice must be the need it pursued, even when
 that need was the only one unmet. Recorded only at weighings, a choice
 already met went stale, and decoy seed 1001029 turned between facing the
@@ -167,12 +167,18 @@ folds 12 × ~70 s, tier 1 a minute, tier 2 ~8 minutes).
 `WM_TIES=1`, arm B with `WM_SPLIT=1`; `tools/card074.1/summary.py` →
 `summary.json`).
 
+**Correction (found in card 074.2).** A counter of this card's module
+named `steps` overwrote each episode's step count in the records. Numbers
+marked † (steps, time per step, and the loop and random shares behind the
+failure causes) are wrong; successes, timeouts, the paired tests and the
+order counts are not affected. Card 074.2 re-measures them.
+
 | | Version 17 | Card 074 | Arm A | Arm B |
 |---|---|---|---|---|
 | Decoy world, key known (crit. 1) | 99 per fold | 94 | **100 of 100 every fold** | **100 of 100 every fold** |
-| Version 17's 47 tier 2 loops (crit. 1) | — | 28 no longer loop | 46 (29 solved) | **47 (38 solved)** |
-| Tier 1 (crit. 2) | 100%, 20.8 steps | 100% | not run | **100%, 20.1 steps** |
-| Tier 2 (crit. 2) | 25%, 61 steps | 21% | 43%, 53 steps; better (30 vs 12, p = 0.008) | **51%**, 88 steps; better (38 vs 12, p = 0.0003) |
+| Version 17's 47 tier 2 loops (crit. 1) | — | 28 no longer loop | 46† (29 solved) | **47† (38 solved)** |
+| Tier 1 (crit. 2) | 100%, 20.8 steps | 100% | not run | **100%**, 20.1 steps† |
+| Tier 2 (crit. 2) | 25%, 61 steps | 21% | 43%, 53 steps†; better (30 vs 12, p = 0.008) | **51%**, 88 steps†; better (38 vs 12, p = 0.0003) |
 | Tier 2 out of time (crit. 3) | 6 | 1 | **21** | **15** |
 | Decoy folds with trying (crit. 3) | 94–96% | 96–98% | not run | 93–96%; no fold worse (every p = 1.0) |
 
@@ -192,10 +198,10 @@ folds 12 × ~70 s, tier 1 a minute, tier 2 ~8 minutes).
   card 074's order tests, nearly all in recomputing card 043's conditions
   in each imagined situation (432,000 calls: recall's distance between a
   stored try's view and the situation's, 59 s; checking acts there,
-  42 s). Episodes not out of time cost 0.106 s per step (version 17:
+  42 s). Episodes not out of time cost 0.106 s per step† (version 17:
   0.12). Of B's 15, version 17 solved 5 and timed out in 1.
-- **Remaining tier 2 failures** (B, 49): 15 out of time; 17 mostly
-  random after trying; 11 other; 6 still loop. Traced: loop seed 1002033
+- **Remaining tier 2 failures** (B, 49): 15 out of time; by the †
+  shares, 17 mostly random after trying, 11 other, 6 still loop. Traced: loop seed 1002033
   holds the ball beside the key and turns between facing the key and
   turning away to drop the ball, never dropping it; random seed 1002008
   holds the ball facing the key for 188 steps, then tries other ways at

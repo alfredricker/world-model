@@ -62,6 +62,12 @@ if os.environ.get("WM_TIES"):                          # card 074.1: found order
     import ties as TIES                                # noqa: E402
     T.INSTALL.append(TIES.install)
     T.COUNTS.append(TIES.STATS)
+CACHE = None
+if os.environ.get("WM_CACHE") in ("0", "1"):          # card 074.2: caches (1), or actions recorded only (0)
+    sys.path.insert(0, str(ROOT / "tools" / "card074.2"))
+    import cache as CACHE                              # noqa: E402
+    T.INSTALL.append(CACHE.install)
+    T.COUNTS.append(CACHE.STATS)
 LAST = {}
 _make = T.make
 
@@ -108,6 +114,8 @@ def episode(job):
     r["decoy_tries"] = int(getattr(LAST["env"].unwrapped, "decoy_tries", 0))
     if CONFLICTS is not None:
         r["weighings"] = weighings()
+    if CACHE is not None:
+        r["actions"] = list(CACHE.ACTIONS)
     if TRY is not None:
         W = T.VP.WORLD
         r["tried"] = list(TRY.STATE["log"])
