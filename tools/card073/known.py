@@ -34,8 +34,9 @@ else:
     recs = sorted(pool.imap_unordered(RUN.episode, [(1, int(s)) for s in seeds]), key=lambda r: r["seed"])
     pool.close()
 ok = [r for r in recs if r["success"]]
-keys = [k for k in (RUN.ORDER.STATS if RUN.ORDER else {})]
+keys = [k for k in (RUN.ORDER.STATS if RUN.ORDER else {})] + [k for k in (RUN.CONFLICTS.STATS if RUN.CONFLICTS else {})]
 out = {"note": f"card 073: fold {hue}'s door hue, every opening in memory (key known)", "order": RUN.ORDER is not None,
+       "conflicts": RUN.CONFLICTS is not None,
        "trying": RUN.TRY is not None, "episodes": len(recs), "success": round(len(ok) / len(recs), 4),
        "failed_seeds": [r["seed"] for r in recs if not r["success"]],
        "mean_steps_when_successful": round(float(np.mean([r["steps"] for r in ok])), 1) if ok else None,

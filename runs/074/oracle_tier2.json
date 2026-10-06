@@ -1,0 +1,7 @@
+{
+ "note": "Card 074 gate: breadth-first oracle on tier 2's test layouts (BlockedUnlockPickup)",
+ "solvable": 100,
+ "unsolvable_seeds": [],
+ "shortest_mean": 22.23,
+ "shortest_max": 29
+}

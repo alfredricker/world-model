@@ -2,7 +2,7 @@
 
 Overwritten each session. At most 40 lines.
 
-- **Date:** 2026-10-05, on `master` (not pushed). **Rung:** 1, not
+- **Date:** 2026-10-06, on `master` (not pushed). **Rung:** 1, not
   passed. **Architecture:** version 17 (card 073: needs ordered by the
   states they conflict over, on version 16).
 - **Direction:** CHARTER.md's "Current direction", with rule 8. User,
@@ -22,15 +22,18 @@ Overwritten each session. At most 40 lines.
   - [070](experiments/070-relation-only-fresh-hues/card.md) revise: the
     encoder learns "this key fits this door" (66 of 66; 9 of 9 for unseen
     hues), but recall weighs the door's identity 40 times the relation.
-  - [071](experiments/071-recall-fit-by-combination/card.md) stop: each
-    quarter of the vector mixes a tile's kind and colour.
+  - [071](experiments/071-recall-fit-by-combination/card.md) stop.
   - [072](experiments/072-try-the-likeliest-way/card.md) keep, version
     16: trying the likeliest untried way; decoy folds 7% to 95–98% (a
     known key: 94%); refits after a try dropped (the user).
   - [073](experiments/073-order-needs-by-conflicting-states/card.md)
     keep, version 17: reasonable goal orderings; tier 2 2% to 25%.
-- **Next, for the user:** card 073's two gaps (route tiles protected; a
-  view need that names the hand); card 068's revision (the door's
-  prediction); trying's retry after a refusal; tier 3's memory.
-- **The user's demo** is on 2026-10-06: version 15 on tier 1. **Later:**
-  card 058 (rung 1's clearing commitment); 065; 055 (draft).
+  - [074](experiments/074-conflicts-read-from-plans/card.md) revise:
+    orders read from plans, no list of parts; seed 1001002 and 28 of 47
+    tier 2 loops fixed, but a kept order overrode found ones (decoy 94%).
+- **Next, for the user:** approve
+  [074.1](experiments/074.1-orders-with-ties-and-split-needs/card.md)
+  (found orders followed; ties kept; card 043's two-part needs split);
+  prioritise [075](experiments/075-motion-as-learned-system-1/card.md)
+  (walking as a learned System 1). Later: card 068's revision; trying's
+  retry after a refusal; tier 3's memory; cards 058, 065, 055 (draft).

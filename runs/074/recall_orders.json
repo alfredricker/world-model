@@ -1,0 +1,2000 @@
+{
+ "note": "Card 074: recall over stored weighings scored beside the derivation (report only)",
+ "memory_weighings": 3398,
+ "memory_distinct": 2654,
+ "lambda": 0.01,
+ "summary": {
+  "all": {
+   "weighings": 17190,
+   "answered": 0.9768,
+   "agree": 0.9513,
+   "always_none_baseline": 0.9771,
+   "orders_in_truth": 394,
+   "orders_predicted": 0.1497
+  },
+  "src=decoy key known": {
+   "weighings": 4020,
+   "answered": 1.0,
+   "agree": 0.9811,
+   "always_none_baseline": 0.9836,
+   "orders_in_truth": 66,
+   "orders_predicted": 0.0
+  },
+  "src=decoy trying": {
+   "weighings": 6268,
+   "answered": 0.9687,
+   "agree": 0.9469,
+   "always_none_baseline": 0.9828,
+   "orders_in_truth": 108,
+   "orders_predicted": 0.0
+  },
+  "src=tier 1": {
+   "weighings": 1246,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "src=tier 2": {
+   "weighings": 5656,
+   "answered": 0.9643,
+   "agree": 0.9242,
+   "always_none_baseline": 0.9611,
+   "orders_in_truth": 220,
+   "orders_predicted": 0.2682
+  },
+  "group=does:0/face:0": {
+   "weighings": 318,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:0/part-held:4": {
+   "weighings": 73,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:105/face:105": {
+   "weighings": 19,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:105/part-held:3": {
+   "weighings": 19,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:105/part-held:4": {
+   "weighings": 16,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:105/part-view:3": {
+   "weighings": 9,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:110/face:110": {
+   "weighings": 509,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:110/part-held:3": {
+   "weighings": 31,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:110/part-view:3": {
+   "weighings": 15,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:115/face:115": {
+   "weighings": 378,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:115/part-held:3": {
+   "weighings": 43,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:115/part-view:3": {
+   "weighings": 14,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:120/face:120": {
+   "weighings": 900,
+   "answered": 1.0,
+   "agree": 0.9822,
+   "always_none_baseline": 0.9867,
+   "orders_in_truth": 12,
+   "orders_predicted": 0.0
+  },
+  "group=does:120/part-held:3": {
+   "weighings": 49,
+   "answered": 0.2653,
+   "agree": 0.2653,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:120/part-held:5": {
+   "weighings": 460,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:120/part-view:5": {
+   "weighings": 29,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:130/face:130": {
+   "weighings": 11,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:130/part-held:3": {
+   "weighings": 10,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:130/part-held:4": {
+   "weighings": 11,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:135/face:135": {
+   "weighings": 478,
+   "answered": 1.0,
+   "agree": 0.9749,
+   "always_none_baseline": 0.9728,
+   "orders_in_truth": 13,
+   "orders_predicted": 0.3846
+  },
+  "group=does:135/part-held:3": {
+   "weighings": 22,
+   "answered": 0.5,
+   "agree": 0.5,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:135/part-held:5": {
+   "weighings": 255,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:15/face:15": {
+   "weighings": 476,
+   "answered": 1.0,
+   "agree": 0.979,
+   "always_none_baseline": 0.979,
+   "orders_in_truth": 10,
+   "orders_predicted": 0.2
+  },
+  "group=does:15/part-held:3": {
+   "weighings": 53,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:15/part-held:5": {
+   "weighings": 259,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:150/face:150": {
+   "weighings": 30,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:150/part-held:3": {
+   "weighings": 9,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:150/part-view:3": {
+   "weighings": 2,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:155/face:155": {
+   "weighings": 16,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:155/part-held:3": {
+   "weighings": 4,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:160/face:160": {
+   "weighings": 62,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:160/part-held:3": {
+   "weighings": 23,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:160/part-held:5": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:160/part-view:3": {
+   "weighings": 14,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:165/face:165": {
+   "weighings": 16,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:165/part-held:3": {
+   "weighings": 4,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:170/face:170": {
+   "weighings": 27,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:170/part-held:3": {
+   "weighings": 10,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:175/face:175": {
+   "weighings": 27,
+   "answered": 1.0,
+   "agree": 0.9259,
+   "always_none_baseline": 0.9259,
+   "orders_in_truth": 2,
+   "orders_predicted": 0.0
+  },
+  "group=does:175/part-held:3": {
+   "weighings": 7,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:175/part-held:4": {
+   "weighings": 7,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:175/part-held:5": {
+   "weighings": 1,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:175/part-view:3": {
+   "weighings": 6,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:180/face:180": {
+   "weighings": 38,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:180/part-held:3": {
+   "weighings": 30,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:180/part-held:5": {
+   "weighings": 2,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:180/part-view:3": {
+   "weighings": 22,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:185/face:185": {
+   "weighings": 41,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:185/part-held:3": {
+   "weighings": 25,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:185/part-view:3": {
+   "weighings": 15,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:190/face:190": {
+   "weighings": 13,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:190/part-held:3": {
+   "weighings": 7,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:30/face:30": {
+   "weighings": 532,
+   "answered": 1.0,
+   "agree": 0.9718,
+   "always_none_baseline": 0.9793,
+   "orders_in_truth": 11,
+   "orders_predicted": 0.0
+  },
+  "group=does:30/part-held:3": {
+   "weighings": 95,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:30/part-held:5": {
+   "weighings": 261,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:35/face:35": {
+   "weighings": 25,
+   "answered": 0.48,
+   "agree": 0.48,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:35/part-held:3": {
+   "weighings": 25,
+   "answered": 0.48,
+   "agree": 0.48,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:35/part-held:4": {
+   "weighings": 13,
+   "answered": 0.3077,
+   "agree": 0.3077,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:35/part-view:3": {
+   "weighings": 25,
+   "answered": 0.48,
+   "agree": 0.48,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:40/face:40": {
+   "weighings": 34,
+   "answered": 0.6765,
+   "agree": 0.6765,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:40/part-held:3": {
+   "weighings": 22,
+   "answered": 0.3182,
+   "agree": 0.3182,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:40/part-view:3": {
+   "weighings": 25,
+   "answered": 0.4,
+   "agree": 0.4,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:45/face:45": {
+   "weighings": 505,
+   "answered": 1.0,
+   "agree": 0.9624,
+   "always_none_baseline": 0.9703,
+   "orders_in_truth": 15,
+   "orders_predicted": 0.0
+  },
+  "group=does:45/part-held:3": {
+   "weighings": 21,
+   "answered": 0.5238,
+   "agree": 0.5238,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:45/part-held:5": {
+   "weighings": 268,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:45/part-view:5": {
+   "weighings": 47,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:5/face:5": {
+   "weighings": 320,
+   "answered": 1.0,
+   "agree": 0.9938,
+   "always_none_baseline": 0.9938,
+   "orders_in_truth": 2,
+   "orders_predicted": 0.0
+  },
+  "group=does:5/part-held:3": {
+   "weighings": 229,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:5/part-held:5": {
+   "weighings": 204,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:55/face:55": {
+   "weighings": 21,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:55/part-held:3": {
+   "weighings": 21,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:55/part-view:3": {
+   "weighings": 20,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:60/face:60": {
+   "weighings": 330,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:60/part-held:3": {
+   "weighings": 40,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:65/face:65": {
+   "weighings": 381,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:65/part-held:3": {
+   "weighings": 49,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:65/part-held:5": {
+   "weighings": 5,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:65/part-view:3": {
+   "weighings": 24,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:70/face:70": {
+   "weighings": 330,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:70/part-held:3": {
+   "weighings": 40,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:70/part-view:3": {
+   "weighings": 12,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:75/face:75": {
+   "weighings": 60,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:75/part-held:3": {
+   "weighings": 18,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:75/part-held:5": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:75/part-view:5": {
+   "weighings": 1,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:80/face:80": {
+   "weighings": 48,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:80/part-held:3": {
+   "weighings": 12,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:80/part-view:3": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:85/face:85": {
+   "weighings": 30,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:85/part-held:3": {
+   "weighings": 12,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:85/part-view:3": {
+   "weighings": 8,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:90/face:90": {
+   "weighings": 384,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:90/part-held:3": {
+   "weighings": 50,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:90/part-held:5": {
+   "weighings": 4,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:90/part-view:3": {
+   "weighings": 20,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:90/part-view:5": {
+   "weighings": 4,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:95/face:95": {
+   "weighings": 509,
+   "answered": 1.0,
+   "agree": 0.9764,
+   "always_none_baseline": 0.9764,
+   "orders_in_truth": 12,
+   "orders_predicted": 0.0
+  },
+  "group=does:95/part-held:3": {
+   "weighings": 21,
+   "answered": 0.5238,
+   "agree": 0.5238,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:95/part-held:5": {
+   "weighings": 273,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=does:95/part-view:5": {
+   "weighings": 55,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:0/part-held:4": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:105/part-held:3": {
+   "weighings": 8,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:105/part-held:4": {
+   "weighings": 13,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:105/part-view:3": {
+   "weighings": 2,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:110/part-held:3": {
+   "weighings": 28,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:110/part-view:3": {
+   "weighings": 4,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:115/part-held:3": {
+   "weighings": 43,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:115/part-view:3": {
+   "weighings": 10,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:120/part-held:3": {
+   "weighings": 45,
+   "answered": 0.2222,
+   "agree": 0.2222,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:120/part-held:5": {
+   "weighings": 457,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:120/part-view:5": {
+   "weighings": 29,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:130/part-held:3": {
+   "weighings": 1,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:130/part-held:4": {
+   "weighings": 11,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:135/part-held:3": {
+   "weighings": 20,
+   "answered": 0.45,
+   "agree": 0.45,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:135/part-held:5": {
+   "weighings": 253,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:15/part-held:3": {
+   "weighings": 53,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:15/part-held:5": {
+   "weighings": 256,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:150/part-held:3": {
+   "weighings": 8,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:155/part-held:3": {
+   "weighings": 4,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:160/part-held:3": {
+   "weighings": 21,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:160/part-held:5": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:160/part-view:3": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:165/part-held:3": {
+   "weighings": 2,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:170/part-held:3": {
+   "weighings": 7,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:175/part-held:3": {
+   "weighings": 6,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:175/part-held:4": {
+   "weighings": 1,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:175/part-view:3": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:180/part-held:3": {
+   "weighings": 28,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:180/part-held:5": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:180/part-view:3": {
+   "weighings": 9,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:185/part-held:3": {
+   "weighings": 20,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:185/part-view:3": {
+   "weighings": 6,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:190/part-held:3": {
+   "weighings": 5,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:30/part-held:3": {
+   "weighings": 93,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:30/part-held:5": {
+   "weighings": 256,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:35/part-held:3": {
+   "weighings": 20,
+   "answered": 0.4,
+   "agree": 0.4,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:35/part-view:3": {
+   "weighings": 5,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:40/part-held:3": {
+   "weighings": 18,
+   "answered": 0.3889,
+   "agree": 0.3889,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:40/part-view:3": {
+   "weighings": 4,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:45/part-held:3": {
+   "weighings": 19,
+   "answered": 0.4737,
+   "agree": 0.4737,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:45/part-held:5": {
+   "weighings": 264,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:45/part-view:5": {
+   "weighings": 47,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:5/part-held:3": {
+   "weighings": 180,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:5/part-held:5": {
+   "weighings": 176,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:55/part-held:3": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:60/part-held:3": {
+   "weighings": 40,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:65/part-held:3": {
+   "weighings": 48,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:65/part-view:3": {
+   "weighings": 14,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:70/part-held:3": {
+   "weighings": 39,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:70/part-view:3": {
+   "weighings": 7,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:75/part-held:3": {
+   "weighings": 16,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:75/part-held:5": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:80/part-held:3": {
+   "weighings": 12,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:80/part-view:3": {
+   "weighings": 2,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:85/part-held:3": {
+   "weighings": 9,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:85/part-view:3": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:90/part-held:3": {
+   "weighings": 43,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:90/part-view:3": {
+   "weighings": 8,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:95/part-held:3": {
+   "weighings": 19,
+   "answered": 0.5263,
+   "agree": 0.5263,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:95/part-held:5": {
+   "weighings": 267,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=face:95/part-view:5": {
+   "weighings": 55,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:115": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:120": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:175": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:180": {
+   "weighings": 13,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:185": {
+   "weighings": 9,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:35": {
+   "weighings": 9,
+   "answered": 0.1111,
+   "agree": 0.1111,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:40": {
+   "weighings": 13,
+   "answered": 0.3846,
+   "agree": 0.3846,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:55": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:65": {
+   "weighings": 14,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:85": {
+   "weighings": 4,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/face:95": {
+   "weighings": 4,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=hand:-1/part-view:3": {
+   "weighings": 111,
+   "answered": 1.0,
+   "agree": 0.7658,
+   "always_none_baseline": 0.8198,
+   "orders_in_truth": 20,
+   "orders_predicted": 0.0
+  },
+  "group=hand:-1/part-view:5": {
+   "weighings": 9,
+   "answered": 1.0,
+   "agree": 0.7778,
+   "always_none_baseline": 0.7778,
+   "orders_in_truth": 2,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:105": {
+   "weighings": 8,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:110": {
+   "weighings": 29,
+   "answered": 1.0,
+   "agree": 0.9655,
+   "always_none_baseline": 0.9655,
+   "orders_in_truth": 1,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:115": {
+   "weighings": 43,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:120": {
+   "weighings": 49,
+   "answered": 0.2857,
+   "agree": 0.2041,
+   "always_none_baseline": 0.898,
+   "orders_in_truth": 5,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:130": {
+   "weighings": 1,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:135": {
+   "weighings": 24,
+   "answered": 0.5417,
+   "agree": 0.375,
+   "always_none_baseline": 0.8333,
+   "orders_in_truth": 4,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:15": {
+   "weighings": 56,
+   "answered": 1.0,
+   "agree": 0.875,
+   "always_none_baseline": 0.9107,
+   "orders_in_truth": 5,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:150": {
+   "weighings": 8,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:155": {
+   "weighings": 4,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:160": {
+   "weighings": 22,
+   "answered": 1.0,
+   "agree": 0.9545,
+   "always_none_baseline": 0.9545,
+   "orders_in_truth": 1,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:165": {
+   "weighings": 2,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:170": {
+   "weighings": 7,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:175": {
+   "weighings": 6,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:180": {
+   "weighings": 30,
+   "answered": 1.0,
+   "agree": 0.9,
+   "always_none_baseline": 0.9333,
+   "orders_in_truth": 2,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:185": {
+   "weighings": 22,
+   "answered": 1.0,
+   "agree": 0.8636,
+   "always_none_baseline": 0.9091,
+   "orders_in_truth": 2,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:190": {
+   "weighings": 5,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:30": {
+   "weighings": 115,
+   "answered": 1.0,
+   "agree": 0.7739,
+   "always_none_baseline": 0.8087,
+   "orders_in_truth": 22,
+   "orders_predicted": 0.7273
+  },
+  "group=part-held:3/face:35": {
+   "weighings": 20,
+   "answered": 0.4,
+   "agree": 0.4,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:40": {
+   "weighings": 18,
+   "answered": 0.3889,
+   "agree": 0.3889,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:45": {
+   "weighings": 20,
+   "answered": 0.5,
+   "agree": 0.45,
+   "always_none_baseline": 0.95,
+   "orders_in_truth": 1,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:5": {
+   "weighings": 181,
+   "answered": 1.0,
+   "agree": 0.989,
+   "always_none_baseline": 0.989,
+   "orders_in_truth": 2,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:55": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:60": {
+   "weighings": 40,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:65": {
+   "weighings": 48,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:70": {
+   "weighings": 39,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:75": {
+   "weighings": 16,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:80": {
+   "weighings": 12,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:85": {
+   "weighings": 9,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:3/face:90": {
+   "weighings": 43,
+   "answered": 1.0,
+   "agree": 0.9767,
+   "always_none_baseline": 0.9767,
+   "orders_in_truth": 1,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/face:95": {
+   "weighings": 20,
+   "answered": 0.55,
+   "agree": 0.5,
+   "always_none_baseline": 0.95,
+   "orders_in_truth": 1,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:3/part-view:3": {
+   "weighings": 43,
+   "answered": 1.0,
+   "agree": 0.9302,
+   "always_none_baseline": 0.9302,
+   "orders_in_truth": 3,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:4/face:0": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:4/face:105": {
+   "weighings": 13,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:4/face:130": {
+   "weighings": 11,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:4/face:175": {
+   "weighings": 1,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:5/face:120": {
+   "weighings": 484,
+   "answered": 1.0,
+   "agree": 0.9298,
+   "always_none_baseline": 0.938,
+   "orders_in_truth": 30,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:5/face:135": {
+   "weighings": 285,
+   "answered": 1.0,
+   "agree": 0.8561,
+   "always_none_baseline": 0.8702,
+   "orders_in_truth": 37,
+   "orders_predicted": 0.4595
+  },
+  "group=part-held:5/face:15": {
+   "weighings": 287,
+   "answered": 1.0,
+   "agree": 0.8641,
+   "always_none_baseline": 0.885,
+   "orders_in_truth": 33,
+   "orders_predicted": 0.5758
+  },
+  "group=part-held:5/face:160": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:5/face:180": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:5/face:30": {
+   "weighings": 270,
+   "answered": 1.0,
+   "agree": 0.9222,
+   "always_none_baseline": 0.937,
+   "orders_in_truth": 17,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:5/face:45": {
+   "weighings": 300,
+   "answered": 1.0,
+   "agree": 0.8533,
+   "always_none_baseline": 0.8667,
+   "orders_in_truth": 40,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:5/face:5": {
+   "weighings": 176,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:5/face:75": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-held:5/face:95": {
+   "weighings": 297,
+   "answered": 1.0,
+   "agree": 0.8889,
+   "always_none_baseline": 0.8889,
+   "orders_in_truth": 33,
+   "orders_predicted": 0.0
+  },
+  "group=part-held:5/part-view:5": {
+   "weighings": 125,
+   "answered": 1.0,
+   "agree": 0.992,
+   "always_none_baseline": 0.992,
+   "orders_in_truth": 1,
+   "orders_predicted": 0.0
+  },
+  "group=part-view:3/face:105": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 0.6667,
+   "always_none_baseline": 0.6667,
+   "orders_in_truth": 1,
+   "orders_predicted": 0.0
+  },
+  "group=part-view:3/face:110": {
+   "weighings": 4,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:115": {
+   "weighings": 10,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:160": {
+   "weighings": 1,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:175": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:180": {
+   "weighings": 9,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:185": {
+   "weighings": 7,
+   "answered": 1.0,
+   "agree": 0.8571,
+   "always_none_baseline": 0.8571,
+   "orders_in_truth": 1,
+   "orders_predicted": 0.0
+  },
+  "group=part-view:3/face:35": {
+   "weighings": 5,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:40": {
+   "weighings": 4,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:65": {
+   "weighings": 14,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:70": {
+   "weighings": 7,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:80": {
+   "weighings": 2,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:85": {
+   "weighings": 3,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "group=part-view:3/face:90": {
+   "weighings": 8,
+   "answered": 1.0,
+   "agree": 0.875,
+   "always_none_baseline": 0.875,
+   "orders_in_truth": 1,
+   "orders_predicted": 0.0
+  },
+  "group=part-view:3/part-held:3": {
+   "weighings": 42,
+   "answered": 1.0,
+   "agree": 0.9524,
+   "always_none_baseline": 0.9524,
+   "orders_in_truth": 2,
+   "orders_predicted": 0.0
+  },
+  "group=part-view:5/face:120": {
+   "weighings": 41,
+   "answered": 1.0,
+   "agree": 0.6829,
+   "always_none_baseline": 0.6829,
+   "orders_in_truth": 13,
+   "orders_predicted": 0.0
+  },
+  "group=part-view:5/face:45": {
+   "weighings": 64,
+   "answered": 1.0,
+   "agree": 0.6875,
+   "always_none_baseline": 0.6875,
+   "orders_in_truth": 20,
+   "orders_predicted": 0.0
+  },
+  "group=part-view:5/face:95": {
+   "weighings": 69,
+   "answered": 1.0,
+   "agree": 0.7681,
+   "always_none_baseline": 0.7681,
+   "orders_in_truth": 16,
+   "orders_predicted": 0.0
+  },
+  "group=part-view:5/part-held:5": {
+   "weighings": 124,
+   "answered": 1.0,
+   "agree": 1.0,
+   "always_none_baseline": 1.0,
+   "orders_in_truth": 0,
+   "orders_predicted": null
+  },
+  "level=none": {
+   "weighings": 398,
+   "answered": 0.0,
+   "agree": 0.0,
+   "always_none_baseline": 0.9975,
+   "orders_in_truth": 1,
+   "orders_predicted": 0.0
+  },
+  "level=own": {
+   "weighings": 8811,
+   "answered": 1.0,
+   "agree": 0.9579,
+   "always_none_baseline": 0.9632,
+   "orders_in_truth": 324,
+   "orders_predicted": 0.1821
+  },
+  "level=similar": {
+   "weighings": 7981,
+   "answered": 1.0,
+   "agree": 0.9914,
+   "always_none_baseline": 0.9914,
+   "orders_in_truth": 69,
+   "orders_predicted": 0.0
+  },
+  "seen=False": {
+   "weighings": 8512,
+   "answered": 0.9532,
+   "agree": 0.9295,
+   "always_none_baseline": 0.9811,
+   "orders_in_truth": 161,
+   "orders_predicted": 0.0
+  },
+  "seen=True": {
+   "weighings": 8678,
+   "answered": 1.0,
+   "agree": 0.9726,
+   "always_none_baseline": 0.9732,
+   "orders_in_truth": 233,
+   "orders_predicted": 0.2532
+  }
+ }
+}

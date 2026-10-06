@@ -37,6 +37,7 @@ T.INSTALL += [WALK.install, R.install]
 sys.modules["index"].HOLD["by"] = os.environ.get("WM_HOLD_BY", "try")   # card 071 sets "combination"
 T.COUNTS += [WALK.STATS, R.STATS]
 R.ONLINE["on"] = arg("--online", "1") == "1"
+T.SEED_TEST = int(os.environ.get("WM_SEED_TEST", T.SEED_TEST))   # card 074: training layouts on other seeds
 TRY = None
 if os.environ.get("WM_TRYING") == "1":                 # card 072: try the likeliest untried way
     sys.path.insert(0, str(ROOT / "tools" / "card072"))
@@ -49,6 +50,12 @@ if os.environ.get("WM_ORDER") == "1":                  # card 073: needs ordered
     import order as ORDER                              # noqa: E402
     T.INSTALL.append(ORDER.install)
     T.COUNTS.append(ORDER.STATS)
+CONFLICTS = None
+if os.environ.get("WM_CONFLICTS") == "1":              # card 074: conflicts and orders read from plans
+    sys.path.insert(0, str(ROOT / "tools" / "card074"))
+    import conflicts as CONFLICTS                      # noqa: E402
+    T.INSTALL.append(CONFLICTS.install)
+    T.COUNTS.append(CONFLICTS.STATS)
 LAST = {}
 _make = T.make
 
@@ -75,9 +82,26 @@ def rel_weights(W):
             for kd in R._kinds(W) if R.CAND in kd.cand and kd.cand.index(R.CAND) in kd.adm}
 
 
+def weighings():
+    """Card 074: the episode's stored weighings, one entry per distinct key with its count."""
+    out = {}
+    for w in CONFLICTS.WEIGHINGS:
+        k = json.dumps([w["A"], w["n"], w["uA"] and w["uA"][0], w["un"] and w["un"][0], w["held"][0], w["outcome"]])
+        if k in out:
+            out[k]["count"] += 1
+        else:
+            out[k] = {**w, "count": 1}
+    return list(out.values())
+
+
+_episode0 = T.episode
+
+
 def episode(job):
-    r = T.episode(job)
+    r = _episode0(job)
     r["decoy_tries"] = int(getattr(LAST["env"].unwrapped, "decoy_tries", 0))
+    if CONFLICTS is not None:
+        r["weighings"] = weighings()
     if TRY is not None:
         W = T.VP.WORLD
         r["tried"] = list(TRY.STATE["log"])
@@ -126,6 +150,7 @@ def main():
     out = Path(arg("--out"))
     n = int(arg("--n", "100"))
     if MODE == "tiers":
+        T.episode = episode                            # the pool's episodes keep the per-episode reports
         T.run(T.TIER, n, out, log)
         return
     hue = arg("--fold")
