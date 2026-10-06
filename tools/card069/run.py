@@ -37,6 +37,12 @@ T.INSTALL += [WALK.install, R.install]
 sys.modules["index"].HOLD["by"] = os.environ.get("WM_HOLD_BY", "try")   # card 071 sets "combination"
 T.COUNTS += [WALK.STATS, R.STATS]
 R.ONLINE["on"] = arg("--online", "1") == "1"
+TRY = None
+if os.environ.get("WM_TRYING") == "1":                 # card 072: try the likeliest untried way
+    sys.path.insert(0, str(ROOT / "tools" / "card072"))
+    import trying as TRY                               # noqa: E402
+    T.INSTALL.append(TRY.install)
+    T.COUNTS.append(TRY.STATS)
 LAST = {}
 _make = T.make
 
@@ -47,9 +53,31 @@ def make(tier):
     return env
 
 
+def relation_gap(W):
+    """Card 072: on MiniGrid's six hues, the smallest relation between a locked door and a key of another colour
+    less the largest between a locked door and its own key, under the current P (positive: every own key closer)."""
+    h = lambda o: int(T.Kd.APP[T.KR.code(o)])
+    D = np.stack([W.S.arr[h(("door", c, 0))] for c in T.HUES])
+    K = np.stack([W.S.arr[h(("key", c))] for c in T.HUES])
+    Rm = np.abs((D[:, None] - K[None]).reshape(len(T.HUES), len(T.HUES), -1) @ R.REL["P"].T).sum(-1)
+    eye = np.eye(len(T.HUES), dtype=bool)
+    return round(float(Rm[~eye].min() - Rm[eye].max()), 4)
+
+
+def rel_weights(W):
+    return {kd.name: round(float(kd.lamc[kd.adm.index(kd.cand.index(R.CAND))]), 4)
+            for kd in R._kinds(W) if R.CAND in kd.cand and kd.cand.index(R.CAND) in kd.adm}
+
+
 def episode(job):
     r = T.episode(job)
     r["decoy_tries"] = int(getattr(LAST["env"].unwrapped, "decoy_tries", 0))
+    if TRY is not None:
+        W = T.VP.WORLD
+        r["tried"] = list(TRY.STATE["log"])
+        r["relation_gap_end"] = relation_gap(W)
+        r["P_moved"] = round(float(np.abs(R.REL["P"] - R.REL["P0"]).sum()), 4)
+        r["rel_weight_end"] = rel_weights(W)
     return r
 
 
@@ -118,6 +146,10 @@ def main():
         T.memory = memory
     W, info = T.setup(1, log)
     table = recall_table(W, log)
+    if TRY is not None:
+        table["relation_gap_setup"] = relation_gap(W)
+        table["rel_weight_setup"] = rel_weights(W)
+        log(f"relation gap at setup {table['relation_gap_setup']}; weight on rel:P {table['rel_weight_setup']}")
     R.DECOY.update(door=[hue], decoy=others)
     seeds = T.SEED_TEST + 1000 + np.arange(n)
     pool = T.F.pool20()
@@ -139,6 +171,13 @@ def main():
            "refits": int(sum(r.get("refits", 0) for r in recs)),
            "episodes_out_of_time": int(sum(r["timed_out"] for r in recs)),
            "wall_seconds": round(time.monotonic() - t0, 1), "recall": table, "setup": info, "per_episode": recs}
+    if TRY is not None:                                # card 072's reports
+        steps = sum(r["steps"] for r in recs)
+        res.update({k: round(sum(r.get(k, 0) for r in recs) / n, 3) for k in TRY.STATS})
+        res.update({"random_share": round(sum(r["random"] for r in recs) / steps, 4),
+                    "explore_share": round(sum(r["explore"] for r in recs) / steps, 4),
+                    "relation_gap_end_mean": round(float(np.mean([r["relation_gap_end"] for r in recs])), 4),
+                    "P_moved_mean": round(float(np.mean([r["P_moved"] for r in recs])), 4)})
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(res, indent=1, default=str) + "\n")
     log(json.dumps({k: v for k, v in res.items() if k not in ("per_episode", "setup", "recall")}

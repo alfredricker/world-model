@@ -41,11 +41,12 @@ def _clear(W):
     for kd in _kinds(W):
         kd.ix["feats"] = None
         kd._fk = None
+        kd.forget()                                    # card 072: P is shared, so every kind's predictions change
     W.openc.clear()
     W.openedc.clear()
 
 
-def loo_grad(P, Dz, Df, lam, gt, Ct, Cg, L, other=None):
+def loo_grad(P, Dz, Df, lam, gt, Ct, Cg, L, other=None, want_lam=False):
     """Card 049's leave-one-out log likelihood (a = 1) over card 051's groups as a function of P, and its gradient,
     in numpy (episodes run in forked workers, where autograd cannot run once the parent has used it).
     r_g = ||P Dz_g||_1; w_gh = exp(-(Df_gh + lam |r_g - r_h|)); key i in group g: P_i = (w_g. Cg - C_i + 1/L) /
@@ -72,6 +73,8 @@ def loo_grad(P, Dz, Df, lam, gt, Ct, Cg, L, other=None):
     dE = -dW * w                                       # d ll / d E, E the distance
     dr = lam * ((dE + dE.T) * sg).sum(1)
     dP = (dr[:, None] * np.sign(s)).T @ Dz
+    if want_lam:                                       # card 072: d ll / d lam as well
+        return ll, dP, float((dE * np.abs(r[:, None] - r[None])).sum())
     return ll, dP
 
 
@@ -90,6 +93,7 @@ def refit(W, kd):
         if c != ci:
             Df += lam * kd.cand_dist(c, Fg, Fg)
     lam_p = float(kd.lamc[kd.adm.index(ci)])
+    REL.setdefault("lam0", {}).setdefault(kd, lam_p)   # card 072: the weight as fitted at setup, for World.reset
     Dz = (Fg[0] - Fg[1]).reshape(len(reps), -1)
     gt = np.asarray(ix["gof"][:n])
     Ct = kd.lc[:n]
@@ -101,15 +105,26 @@ def refit(W, kd):
         hc = np.asarray(kd.hid)[reps]
         other = ((fc[:, None] != fc[None]) | (hc[:, None] != hc[None])).astype(np.float64)
     P = REL["P"].copy()
+    th = np.log(lam_p)                                 # card 072: the weight on rel:P too (ONLINE["lam"])
     m, v = np.zeros_like(P), np.zeros_like(P)
+    mt = vt = 0.0
     b1, b2, lr = 0.9, 0.999, ONLINE["lr"]
     for k in range(1, ONLINE["steps"] + 1):
-        _, g = loo_grad(P, Dz, Df, lam_p, gt, Ct, Cg, Ct.shape[1], other)
+        if ONLINE.get("lam"):
+            _, g, gl = loo_grad(P, Dz, Df, np.exp(th), gt, Ct, Cg, Ct.shape[1], other, want_lam=True)
+            gl = -gl * np.exp(th)
+            mt = b1 * mt + (1 - b1) * gl
+            vt = b2 * vt + (1 - b2) * gl * gl
+            th -= lr * (mt / (1 - b1 ** k)) / (np.sqrt(vt / (1 - b2 ** k)) + 1e-8)
+        else:
+            _, g = loo_grad(P, Dz, Df, lam_p, gt, Ct, Cg, Ct.shape[1], other)
         g = -g                                          # minimise the negative log likelihood
         m = b1 * m + (1 - b1) * g
         v = b2 * v + (1 - b2) * g * g
         P -= lr * (m / (1 - b1 ** k)) / (np.sqrt(v / (1 - b2 ** k)) + 1e-8)
     REL["P"] = P
+    if ONLINE.get("lam"):
+        kd.lamc[kd.adm.index(ci)] = float(np.exp(th))
     _clear(W)
     STATS["refits"] += 1
     STATS["refit_seconds"] += time.monotonic() - t0
@@ -164,8 +179,13 @@ def install():
 
     def reset(self):
         _reset(self)
-        if not np.array_equal(REL["P"], REL["P0"]):
-            REL["P"] = REL["P0"].copy()
+        changed = not np.array_equal(REL["P"], REL["P0"])
+        REL["P"] = REL["P0"].copy()
+        for kd, lam in REL.get("lam0", {}).items():     # card 072: the weight on rel:P as fitted at setup
+            i = kd.adm.index(kd.cand.index(CAND))
+            changed |= kd.lamc[i] != lam
+            kd.lamc[i] = lam
+        if changed:
             _clear(self)
 
     World.learn_try, World.reset = learn_try, reset

@@ -17,9 +17,8 @@ Overwritten each session. At most 40 lines.
     why tier 2 fails.
   - [067](experiments/067-closeness-by-propagation/card.md) keep, version
     15: walking by propagation; the same decisions, setup 21 s against 47.
-  - [068](experiments/068-play-starts/card.md) revise: play starts make
-    5 of 6 locked doors openable (4 before); tiers unchanged; blue fails
-    in recall's predicted tile for a toggled door (card 038's ways).
+  - [068](experiments/068-play-starts/card.md) revise: blue's door is not
+    openable through recall's predicted tile for a toggled door.
   - [069](experiments/069-relations-as-learned-weights/card.md) stop: a
     learned relation beside one-tile terms, on nine fixed colours, learned
     a threshold per door colour (45 of 66 for a left-out colour).
@@ -29,12 +28,13 @@ Overwritten each session. At most 40 lines.
     still 100%). But recall weighs the door's identity 40 times the
     relation, so a key never seen opening its door is predicted not to:
     the decoy folds 7%.
-  - [071](experiments/071-recall-fit-by-combination/card.md) stop:
-    fitting recall by leaving whole combinations out cut the door's weight
-    but not enough; each quarter of the vector mixes kind and colour.
-- **Next, for the user to choose:** the tiles' own conditions read
-  through learned projections, as the relation is (card 071's pointer);
-  the hand's conditions (tier 2); card 068's revision; later, recall's
-  view-set fit at tier 3's scale.
-- **The user's demo** is on 2026-10-06: version 15 on tier 1.
-- **Later:** card 058 (rung 1's clearing commitment); 065; 055 (draft).
+  - [071](experiments/071-recall-fit-by-combination/card.md) stop: each
+    quarter of the vector mixes a tile's kind and colour.
+  - [072](experiments/072-try-the-likeliest-way/card.md) decision
+    pending: trying the likeliest untried way takes the decoy folds from
+    7% to 96–98% (99% asked; a known key gives 94% there); tiers same.
+- **Next, for the user:** card 072's decision; the hand's conditions
+  (tier 2 and the decoy failures); learned projections for the tiles'
+  conditions (card 071); card 068's revision.
+- **The user's demo** is on 2026-10-06: version 15 on tier 1. **Later:**
+  card 058 (rung 1's clearing commitment); 065; 055 (draft).

@@ -62,3 +62,12 @@ for key_hue in (hue, others[0]):
               f"{np.round(Gc[g], 1).tolist()}  " + ", ".join(f"{n} {float(v[g]):.2f}" for n, v in parts.items()))
     opened = Gc[:, 1:].sum(1) > 0
     print(f"  total weight on groups with an opening: {w[opened].sum():.3g}; on groups without: {w[~opened].sum():.3g}")
+
+print("\nshare of recall's neighbour weight on stored openings, per key held at the locked " + hue + " door:")
+for key_hue in T.HUES:
+    q = (hd(("door", hue, 0)), hd(("key", key_hue)), int(ctx))
+    Fq, Fg = kd.feats([q]), kd.group_feats()
+    d = sum(l * kd.cand_dist(c, Fq, Fg)[0] for c, l in zip(kd.adm, kd.lamc))
+    w = np.exp(-d)
+    opened = kd.ix["Gc"][:, 1:].sum(1) > 0
+    print(f"  {key_hue:7s} {w[opened].sum() / w.sum():.3g}")

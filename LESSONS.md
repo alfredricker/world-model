@@ -23,6 +23,10 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   steps-to-condition, and the best action per view matched the truth on
   movement forks 0.30–0.33 of the time (chance 0.27): no memoryless model
   could pass a 0.8 bar. *Evidence:* card 001 gate (exact). *Confirmed.*
+- **Measure the upper bound in the test world itself.** Card 072 took
+  tier 1's 100% (one key) as the bound for the decoy world (two keys);
+  there a version that knows the key reaches 94%, so its 99% criterion
+  could not be met. *Evidence:* `runs/072/control_red_known.json`.
 - **Score a model's effects against the simulator, never against its own
   codes.** Card 052's step T scored "the door opens" by the predicted
   code tuple equalling the real one; its codes did not see doors open,

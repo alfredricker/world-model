@@ -1,0 +1,6846 @@
+{
+ "note": "Card 069, tools/card069/run.py decoy",
+ "fold": "blue",
+ "hold": "opening",
+ "encoder": "runs/070/encoder.pt",
+ "online": true,
+ "memory": "066",
+ "episodes": 100,
+ "success": 0.98,
+ "decoy_tries_per_episode": 0.09,
+ "mean_steps_when_successful": 31.4,
+ "wrong_predictions_pick_toggle": 61,
+ "refits": 155,
+ "episodes_out_of_time": 0,
+ "wall_seconds": 3.1,
+ "recall": {
+  "toggle_combinations": 129,
+  "fold_pair_keys": 0,
+  "toggle_weights": {
+   "front:0": 101.88,
+   "front:1": 72.135,
+   "front:2": 124.27,
+   "front:3": 38.567,
+   "rel:P": 1.324
+  },
+  "toggle_admitted": [
+   "front:0",
+   "front:1",
+   "front:2",
+   "front:3",
+   "rel:P"
+  ],
+  "pick_up_admitted": [
+   "front:0",
+   "front:1",
+   "front:2",
+   "front:3",
+   "held:3",
+   "rel:P"
+  ],
+  "right": 35,
+  "pairs": [
+   {
+    "door": "red",
+    "key": "red",
+    "category": 1,
+    "right": true
+   },
+   {
+    "door": "red",
+    "key": "green",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "red",
+    "key": "blue",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "red",
+    "key": "purple",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "red",
+    "key": "yellow",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "red",
+    "key": "grey",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "red",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "green",
+    "category": 1,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "blue",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "purple",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "yellow",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "grey",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "red",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "green",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "blue",
+    "category": 0,
+    "right": false
+   },
+   {
+    "door": "blue",
+    "key": "purple",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "yellow",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "grey",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "red",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "green",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "blue",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "purple",
+    "category": 1,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "yellow",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "grey",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "red",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "green",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "blue",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "purple",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "yellow",
+    "category": 1,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "grey",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "red",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "green",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "blue",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "purple",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "yellow",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "grey",
+    "category": 1,
+    "right": true
+   }
+  ],
+  "relation_gap_setup": 1.1413,
+  "rel_weight_setup": {
+   "pickup": 0.0115,
+   "toggle": 1.3238,
+   "drop": 1.7465
+  }
+ },
+ "setup": {
+  "memory": {
+   "episodes": 5000,
+   "steps": 3176657,
+   "changed_by_pickup": 49554,
+   "changed_by_drop": 48634,
+   "pickups": 49554,
+   "changed_by_toggle": 1213,
+   "doors_opened": 757,
+   "successes": 101,
+   "rows": 483863,
+   "tries": 284984,
+   "tries_with_stale_belief": 0,
+   "seconds": 28.8,
+   "env": "WM-DoorKeyDecoy-8x8-v0",
+   "opening_tries_removed": 88
+  },
+  "identity": {
+   "tau": [
+    0.0458,
+    0.1369,
+    0.0541,
+    0.2729
+   ],
+   "classes_per_part": [
+    73,
+    34,
+    54,
+    142
+   ]
+  },
+  "model_seconds": 62.7,
+  "placements": 676,
+  "token_ids": 638,
+  "lattice": 12,
+  "moves_same_as_card_061": true
+ },
+ "per_episode": [
+  {
+   "seed": 1001000,
+   "random": 0,
+   "explore": 7,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 34,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 39,
+   "rounds": 500,
+   "relaxed": 7952,
+   "edges": 7952,
+   "placements": 2996,
+   "crossings_tried": 0,
+   "field_seconds": 0.009,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0183,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001001,
+   "random": 0,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 28,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 33,
+   "rounds": 412,
+   "relaxed": 7420,
+   "edges": 7420,
+   "placements": 2780,
+   "crossings_tried": 10,
+   "field_seconds": 0.0103,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0291,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001002,
+   "random": 0,
+   "explore": 10,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 32,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 47,
+   "rounds": 508,
+   "relaxed": 8580,
+   "edges": 8580,
+   "placements": 3236,
+   "crossings_tried": 24,
+   "field_seconds": 0.0117,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0192,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 9.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001003,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 23,
+   "rounds": 237,
+   "relaxed": 4240,
+   "edges": 4240,
+   "placements": 1580,
+   "crossings_tried": 0,
+   "field_seconds": 0.0072,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.029,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001004,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 26,
+   "rounds": 238,
+   "relaxed": 6468,
+   "edges": 6468,
+   "placements": 2364,
+   "crossings_tried": 16,
+   "field_seconds": 0.0076,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0274,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001005,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 22,
+   "rounds": 228,
+   "relaxed": 5744,
+   "edges": 5744,
+   "placements": 2088,
+   "crossings_tried": 0,
+   "field_seconds": 0.0071,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.028,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001006,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 25,
+   "seconds": 0.16,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 35,
+   "rounds": 359,
+   "relaxed": 8926,
+   "edges": 8926,
+   "placements": 3252,
+   "crossings_tried": 0,
+   "field_seconds": 0.0111,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0278,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 7.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001007,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 226,
+   "relaxed": 3420,
+   "edges": 3420,
+   "placements": 1300,
+   "crossings_tried": 0,
+   "field_seconds": 0.0046,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0184,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001008,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.17,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 262,
+   "relaxed": 4086,
+   "edges": 4086,
+   "placements": 1552,
+   "crossings_tried": 0,
+   "field_seconds": 0.01,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0272,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001009,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 25,
+   "seconds": 0.16,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 34,
+   "rounds": 360,
+   "relaxed": 8672,
+   "edges": 8672,
+   "placements": 3160,
+   "crossings_tried": 0,
+   "field_seconds": 0.0112,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0277,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001010,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.17,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 195,
+   "relaxed": 5288,
+   "edges": 5288,
+   "placements": 1928,
+   "crossings_tried": 0,
+   "field_seconds": 0.0102,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0291,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001011,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 281,
+   "relaxed": 3728,
+   "edges": 3808,
+   "placements": 1464,
+   "crossings_tried": 0,
+   "field_seconds": 0.0085,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0284,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 7.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001012,
+   "random": 52,
+   "explore": 4,
+   "beyond_lattice": "0",
+   "pred_wrong": 110,
+   "timed_out": false,
+   "success": true,
+   "steps": 319,
+   "seconds": 1.74,
+   "walk_seconds": 0.14,
+   "plan_seconds": 0.02,
+   "fields": 591,
+   "rounds": 5340,
+   "relaxed": 156377,
+   "edges": 156632,
+   "placements": 56516,
+   "crossings_tried": 238,
+   "field_seconds": 0.1281,
+   "wrong_predictions_pick_toggle": 11,
+   "refits": 11,
+   "refit_seconds": 0.1581,
+   "tries_planned": 12,
+   "tries_made": 10,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 69,
+   "tries_abandoned": 2,
+   "try_refits": 0,
+   "decoy_tries": 2,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": -3.6162,
+   "P_moved": 110.6051,
+   "rel_weight_end": {
+    "pickup": 0.0153,
+    "toggle": 3.0776,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001013,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 19,
+   "rounds": 189,
+   "relaxed": 3946,
+   "edges": 3946,
+   "placements": 1460,
+   "crossings_tried": 0,
+   "field_seconds": 0.0059,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.028,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001014,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 15,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 193,
+   "relaxed": 4220,
+   "edges": 4220,
+   "placements": 1580,
+   "crossings_tried": 0,
+   "field_seconds": 0.0062,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0322,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001015,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 22,
+   "rounds": 229,
+   "relaxed": 4238,
+   "edges": 4238,
+   "placements": 1584,
+   "crossings_tried": 0,
+   "field_seconds": 0.007,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0293,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001016,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 351,
+   "relaxed": 6176,
+   "edges": 6176,
+   "placements": 2296,
+   "crossings_tried": 0,
+   "field_seconds": 0.0064,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0181,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001017,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 21,
+   "rounds": 199,
+   "relaxed": 3446,
+   "edges": 3446,
+   "placements": 1300,
+   "crossings_tried": 0,
+   "field_seconds": 0.0061,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0298,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001018,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 32,
+   "rounds": 356,
+   "relaxed": 5692,
+   "edges": 6028,
+   "placements": 2276,
+   "crossings_tried": 8,
+   "field_seconds": 0.0103,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0319,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001019,
+   "random": 0,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 32,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 35,
+   "rounds": 426,
+   "relaxed": 7492,
+   "edges": 7564,
+   "placements": 2844,
+   "crossings_tried": 0,
+   "field_seconds": 0.0075,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0186,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001020,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 24,
+   "rounds": 225,
+   "relaxed": 3716,
+   "edges": 3716,
+   "placements": 1408,
+   "crossings_tried": 0,
+   "field_seconds": 0.0045,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0183,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001021,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 27,
+   "rounds": 244,
+   "relaxed": 5216,
+   "edges": 5216,
+   "placements": 1932,
+   "crossings_tried": 0,
+   "field_seconds": 0.0052,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0189,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001022,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 28,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 36,
+   "rounds": 436,
+   "relaxed": 9152,
+   "edges": 9152,
+   "placements": 3368,
+   "crossings_tried": 0,
+   "field_seconds": 0.008,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0209,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001023,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 25,
+   "rounds": 248,
+   "relaxed": 6380,
+   "edges": 6380,
+   "placements": 2336,
+   "crossings_tried": 0,
+   "field_seconds": 0.0053,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0179,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001024,
+   "random": 0,
+   "explore": 1,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 31,
+   "rounds": 343,
+   "relaxed": 4108,
+   "edges": 4108,
+   "placements": 1580,
+   "crossings_tried": 0,
+   "field_seconds": 0.0098,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0277,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001025,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 27,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 34,
+   "rounds": 395,
+   "relaxed": 8740,
+   "edges": 8740,
+   "placements": 3228,
+   "crossings_tried": 0,
+   "field_seconds": 0.0112,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0265,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001026,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 345,
+   "relaxed": 6268,
+   "edges": 6268,
+   "placements": 2316,
+   "crossings_tried": 0,
+   "field_seconds": 0.0101,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0284,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001027,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 22,
+   "rounds": 237,
+   "relaxed": 3110,
+   "edges": 3110,
+   "placements": 1200,
+   "crossings_tried": 0,
+   "field_seconds": 0.0068,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0279,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001028,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 15,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 21,
+   "rounds": 207,
+   "relaxed": 3336,
+   "edges": 3336,
+   "placements": 1280,
+   "crossings_tried": 0,
+   "field_seconds": 0.0063,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0275,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001029,
+   "random": 493,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 134,
+   "timed_out": false,
+   "success": false,
+   "steps": 640,
+   "seconds": 2.76,
+   "walk_seconds": 0.08,
+   "plan_seconds": 0.02,
+   "fields": 361,
+   "rounds": 2507,
+   "relaxed": 41878,
+   "edges": 41878,
+   "placements": 16200,
+   "crossings_tried": 212,
+   "field_seconds": 0.0676,
+   "wrong_predictions_pick_toggle": 11,
+   "refits": 11,
+   "refit_seconds": 0.1546,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 158,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key purple"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key purple"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key purple"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key purple"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key purple"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key purple"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key purple"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key purple"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": -1.3587,
+   "P_moved": 112.6799,
+   "rel_weight_end": {
+    "pickup": 0.0188,
+    "toggle": 2.6288,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001030,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 19,
+   "rounds": 182,
+   "relaxed": 3982,
+   "edges": 3982,
+   "placements": 1492,
+   "crossings_tried": 0,
+   "field_seconds": 0.0061,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0292,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001031,
+   "random": 0,
+   "explore": 7,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 27,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 32,
+   "rounds": 397,
+   "relaxed": 8142,
+   "edges": 8142,
+   "placements": 2988,
+   "crossings_tried": 0,
+   "field_seconds": 0.0112,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0265,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001032,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 299,
+   "relaxed": 4434,
+   "edges": 4434,
+   "placements": 1692,
+   "crossings_tried": 0,
+   "field_seconds": 0.0091,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0283,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001033,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 23,
+   "rounds": 300,
+   "relaxed": 5294,
+   "edges": 5294,
+   "placements": 1992,
+   "crossings_tried": 0,
+   "field_seconds": 0.0089,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0295,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001034,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 25,
+   "rounds": 256,
+   "relaxed": 6232,
+   "edges": 6272,
+   "placements": 2300,
+   "crossings_tried": 0,
+   "field_seconds": 0.0077,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.028,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001035,
+   "random": 0,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 33,
+   "seconds": 0.16,
+   "walk_seconds": 0.02,
+   "plan_seconds": 0.01,
+   "fields": 53,
+   "rounds": 534,
+   "relaxed": 8844,
+   "edges": 9596,
+   "placements": 3608,
+   "crossings_tried": 16,
+   "field_seconds": 0.0157,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0268,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001036,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 364,
+   "relaxed": 6310,
+   "edges": 6310,
+   "placements": 2340,
+   "crossings_tried": 14,
+   "field_seconds": 0.0103,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0278,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001037,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 13,
+   "seconds": 0.07,
+   "walk_seconds": 0.0,
+   "plan_seconds": 0.0,
+   "fields": 18,
+   "rounds": 170,
+   "relaxed": 3532,
+   "edges": 3532,
+   "placements": 1308,
+   "crossings_tried": 10,
+   "field_seconds": 0.0035,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0176,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001038,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 27,
+   "rounds": 289,
+   "relaxed": 7032,
+   "edges": 7032,
+   "placements": 2572,
+   "crossings_tried": 0,
+   "field_seconds": 0.0059,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0189,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001039,
+   "random": 0,
+   "explore": 7,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.15,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 31,
+   "rounds": 295,
+   "relaxed": 7482,
+   "edges": 7482,
+   "placements": 2740,
+   "crossings_tried": 0,
+   "field_seconds": 0.0106,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0271,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001040,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 33,
+   "rounds": 350,
+   "relaxed": 6178,
+   "edges": 6178,
+   "placements": 2296,
+   "crossings_tried": 0,
+   "field_seconds": 0.0101,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0265,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 7.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001041,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.07,
+   "walk_seconds": 0.0,
+   "plan_seconds": 0.0,
+   "fields": 19,
+   "rounds": 215,
+   "relaxed": 3250,
+   "edges": 3250,
+   "placements": 1232,
+   "crossings_tried": 0,
+   "field_seconds": 0.0039,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.018,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001042,
+   "random": 0,
+   "explore": 4,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 358,
+   "relaxed": 6194,
+   "edges": 6194,
+   "placements": 2332,
+   "crossings_tried": 0,
+   "field_seconds": 0.0065,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0208,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001043,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 28,
+   "rounds": 261,
+   "relaxed": 4370,
+   "edges": 4370,
+   "placements": 1656,
+   "crossings_tried": 0,
+   "field_seconds": 0.0055,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0231,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001044,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 28,
+   "rounds": 262,
+   "relaxed": 7092,
+   "edges": 7092,
+   "placements": 2584,
+   "crossings_tried": 0,
+   "field_seconds": 0.0084,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0267,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001045,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 26,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 33,
+   "rounds": 360,
+   "relaxed": 6334,
+   "edges": 6334,
+   "placements": 2380,
+   "crossings_tried": 0,
+   "field_seconds": 0.0107,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0273,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001046,
+   "random": 0,
+   "explore": 4,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 23,
+   "rounds": 228,
+   "relaxed": 5718,
+   "edges": 5718,
+   "placements": 2112,
+   "crossings_tried": 0,
+   "field_seconds": 0.0075,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0278,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001047,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 30,
+   "rounds": 371,
+   "relaxed": 7884,
+   "edges": 7884,
+   "placements": 2900,
+   "crossings_tried": 0,
+   "field_seconds": 0.0077,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0191,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001048,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 26,
+   "rounds": 266,
+   "relaxed": 3962,
+   "edges": 4130,
+   "placements": 1580,
+   "crossings_tried": 0,
+   "field_seconds": 0.0052,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0202,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001049,
+   "random": 0,
+   "explore": 1,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 294,
+   "relaxed": 4440,
+   "edges": 4440,
+   "placements": 1708,
+   "crossings_tried": 0,
+   "field_seconds": 0.0085,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0272,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001050,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 26,
+   "rounds": 275,
+   "relaxed": 6510,
+   "edges": 6510,
+   "placements": 2364,
+   "crossings_tried": 0,
+   "field_seconds": 0.0082,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0264,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001051,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 25,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 30,
+   "rounds": 360,
+   "relaxed": 6390,
+   "edges": 6390,
+   "placements": 2384,
+   "crossings_tried": 0,
+   "field_seconds": 0.0109,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0283,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001052,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 22,
+   "rounds": 236,
+   "relaxed": 4372,
+   "edges": 4372,
+   "placements": 1648,
+   "crossings_tried": 0,
+   "field_seconds": 0.0071,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0274,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001053,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 26,
+   "rounds": 267,
+   "relaxed": 6612,
+   "edges": 6612,
+   "placements": 2412,
+   "crossings_tried": 0,
+   "field_seconds": 0.006,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.019,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001054,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 26,
+   "rounds": 327,
+   "relaxed": 6744,
+   "edges": 6744,
+   "placements": 2492,
+   "crossings_tried": 0,
+   "field_seconds": 0.0095,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0272,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001055,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 23,
+   "rounds": 227,
+   "relaxed": 5690,
+   "edges": 5690,
+   "placements": 2068,
+   "crossings_tried": 0,
+   "field_seconds": 0.0069,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0267,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001056,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 309,
+   "relaxed": 3784,
+   "edges": 3784,
+   "placements": 1456,
+   "crossings_tried": 0,
+   "field_seconds": 0.009,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.027,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001057,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 26,
+   "rounds": 310,
+   "relaxed": 5626,
+   "edges": 5626,
+   "placements": 2100,
+   "crossings_tried": 0,
+   "field_seconds": 0.0087,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0271,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001058,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 370,
+   "relaxed": 5992,
+   "edges": 5992,
+   "placements": 2236,
+   "crossings_tried": 0,
+   "field_seconds": 0.0103,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0275,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001059,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.08,
+   "walk_seconds": 0.0,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 208,
+   "relaxed": 3336,
+   "edges": 3336,
+   "placements": 1268,
+   "crossings_tried": 0,
+   "field_seconds": 0.004,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0197,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001060,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 322,
+   "relaxed": 5798,
+   "edges": 5798,
+   "placements": 2184,
+   "crossings_tried": 0,
+   "field_seconds": 0.0091,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0261,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001061,
+   "random": 131,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 114,
+   "timed_out": false,
+   "success": true,
+   "steps": 289,
+   "seconds": 1.6,
+   "walk_seconds": 0.08,
+   "plan_seconds": 0.01,
+   "fields": 371,
+   "rounds": 3276,
+   "relaxed": 95466,
+   "edges": 95466,
+   "placements": 34576,
+   "crossings_tried": 214,
+   "field_seconds": 0.0754,
+   "wrong_predictions_pick_toggle": 12,
+   "refits": 12,
+   "refit_seconds": 0.168,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 106,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "decoy_tries": 2,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 7.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key red"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key red"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key red"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key red"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key red"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key red"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key red"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key red"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": -2.6549,
+   "P_moved": 123.6586,
+   "rel_weight_end": {
+    "pickup": 0.0227,
+    "toggle": 3.6771,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001062,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.07,
+   "walk_seconds": 0.0,
+   "plan_seconds": 0.0,
+   "fields": 20,
+   "rounds": 189,
+   "relaxed": 3002,
+   "edges": 3002,
+   "placements": 1128,
+   "crossings_tried": 0,
+   "field_seconds": 0.0036,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0179,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001063,
+   "random": 0,
+   "explore": 9,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 34,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 39,
+   "rounds": 490,
+   "relaxed": 7816,
+   "edges": 7816,
+   "placements": 2952,
+   "crossings_tried": 0,
+   "field_seconds": 0.0085,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0182,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001064,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 22,
+   "rounds": 210,
+   "relaxed": 5430,
+   "edges": 5430,
+   "placements": 2000,
+   "crossings_tried": 0,
+   "field_seconds": 0.0046,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0188,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001065,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 27,
+   "rounds": 260,
+   "relaxed": 6708,
+   "edges": 6708,
+   "placements": 2436,
+   "crossings_tried": 0,
+   "field_seconds": 0.0084,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0282,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001066,
+   "random": 0,
+   "explore": 1,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.15,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 35,
+   "rounds": 386,
+   "relaxed": 4546,
+   "edges": 4546,
+   "placements": 1752,
+   "crossings_tried": 0,
+   "field_seconds": 0.0108,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0275,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 8.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001067,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 26,
+   "rounds": 278,
+   "relaxed": 6888,
+   "edges": 6888,
+   "placements": 2548,
+   "crossings_tried": 0,
+   "field_seconds": 0.0087,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0274,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001068,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 273,
+   "relaxed": 4142,
+   "edges": 4142,
+   "placements": 1584,
+   "crossings_tried": 0,
+   "field_seconds": 0.008,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0262,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001069,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 22,
+   "rounds": 269,
+   "relaxed": 4926,
+   "edges": 4926,
+   "placements": 1832,
+   "crossings_tried": 0,
+   "field_seconds": 0.0078,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0262,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001070,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 24,
+   "rounds": 248,
+   "relaxed": 4866,
+   "edges": 4866,
+   "placements": 1808,
+   "crossings_tried": 0,
+   "field_seconds": 0.0077,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0283,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001071,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 29,
+   "rounds": 284,
+   "relaxed": 4474,
+   "edges": 4474,
+   "placements": 1696,
+   "crossings_tried": 0,
+   "field_seconds": 0.0056,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.018,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001072,
+   "random": 0,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 29,
+   "seconds": 0.15,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 34,
+   "rounds": 393,
+   "relaxed": 8666,
+   "edges": 8666,
+   "placements": 3180,
+   "crossings_tried": 0,
+   "field_seconds": 0.0115,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0292,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001073,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 30,
+   "seconds": 0.15,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 38,
+   "rounds": 418,
+   "relaxed": 6734,
+   "edges": 6878,
+   "placements": 2604,
+   "crossings_tried": 0,
+   "field_seconds": 0.0126,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0281,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001074,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 25,
+   "rounds": 266,
+   "relaxed": 5116,
+   "edges": 5116,
+   "placements": 1912,
+   "crossings_tried": 0,
+   "field_seconds": 0.0081,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0281,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001075,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 25,
+   "rounds": 254,
+   "relaxed": 6468,
+   "edges": 6468,
+   "placements": 2376,
+   "crossings_tried": 0,
+   "field_seconds": 0.0076,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0294,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001076,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 31,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 36,
+   "rounds": 404,
+   "relaxed": 6548,
+   "edges": 6656,
+   "placements": 2516,
+   "crossings_tried": 0,
+   "field_seconds": 0.0073,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0177,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001077,
+   "random": 0,
+   "explore": 4,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 27,
+   "rounds": 349,
+   "relaxed": 5864,
+   "edges": 5864,
+   "placements": 2196,
+   "crossings_tried": 0,
+   "field_seconds": 0.01,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0278,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001078,
+   "random": 2,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 98,
+   "timed_out": false,
+   "success": true,
+   "steps": 128,
+   "seconds": 0.66,
+   "walk_seconds": 0.06,
+   "plan_seconds": 0.01,
+   "fields": 308,
+   "rounds": 2440,
+   "relaxed": 58410,
+   "edges": 58410,
+   "placements": 21620,
+   "crossings_tried": 214,
+   "field_seconds": 0.0501,
+   "wrong_predictions_pick_toggle": 4,
+   "refits": 4,
+   "refit_seconds": 0.0576,
+   "tries_planned": 4,
+   "tries_made": 3,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 24,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 7.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key purple"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key purple"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key purple"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key purple"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": -1.3784,
+   "P_moved": 62.3835,
+   "rel_weight_end": {
+    "pickup": 0.0077,
+    "toggle": 1.7081,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001079,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 24,
+   "rounds": 286,
+   "relaxed": 6306,
+   "edges": 6306,
+   "placements": 2332,
+   "crossings_tried": 0,
+   "field_seconds": 0.0086,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0274,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001080,
+   "random": 493,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 137,
+   "timed_out": false,
+   "success": false,
+   "steps": 640,
+   "seconds": 2.59,
+   "walk_seconds": 0.07,
+   "plan_seconds": 0.02,
+   "fields": 372,
+   "rounds": 3019,
+   "relaxed": 43306,
+   "edges": 43306,
+   "placements": 16716,
+   "crossings_tried": 214,
+   "field_seconds": 0.0622,
+   "wrong_predictions_pick_toggle": 11,
+   "refits": 11,
+   "refit_seconds": 0.1532,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 145,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "decoy_tries": 2,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": -0.9137,
+   "P_moved": 128.8687,
+   "rel_weight_end": {
+    "pickup": 0.0233,
+    "toggle": 3.0059,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001081,
+   "random": 0,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 35,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 40,
+   "rounds": 505,
+   "relaxed": 8022,
+   "edges": 8022,
+   "placements": 3024,
+   "crossings_tried": 0,
+   "field_seconds": 0.0093,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0182,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001082,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 25,
+   "rounds": 276,
+   "relaxed": 3438,
+   "edges": 3438,
+   "placements": 1328,
+   "crossings_tried": 0,
+   "field_seconds": 0.0056,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0192,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001083,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 15,
+   "seconds": 0.07,
+   "walk_seconds": 0.0,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 217,
+   "relaxed": 5376,
+   "edges": 5376,
+   "placements": 1960,
+   "crossings_tried": 0,
+   "field_seconds": 0.0041,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.018,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001084,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 23,
+   "rounds": 221,
+   "relaxed": 3570,
+   "edges": 3570,
+   "placements": 1368,
+   "crossings_tried": 0,
+   "field_seconds": 0.0066,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0267,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001085,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 20,
+   "rounds": 217,
+   "relaxed": 3554,
+   "edges": 3554,
+   "placements": 1352,
+   "crossings_tried": 0,
+   "field_seconds": 0.0069,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0279,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001086,
+   "random": 0,
+   "explore": 7,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 27,
+   "rounds": 328,
+   "relaxed": 7228,
+   "edges": 7228,
+   "placements": 2656,
+   "crossings_tried": 0,
+   "field_seconds": 0.0093,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0269,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001087,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 270,
+   "relaxed": 4284,
+   "edges": 4284,
+   "placements": 1624,
+   "crossings_tried": 0,
+   "field_seconds": 0.0081,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0279,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001088,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 27,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 32,
+   "rounds": 371,
+   "relaxed": 6026,
+   "edges": 6166,
+   "placements": 2336,
+   "crossings_tried": 0,
+   "field_seconds": 0.0107,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0279,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001089,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 22,
+   "rounds": 254,
+   "relaxed": 4972,
+   "edges": 4972,
+   "placements": 1840,
+   "crossings_tried": 0,
+   "field_seconds": 0.0074,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0287,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001090,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 21,
+   "rounds": 196,
+   "relaxed": 4410,
+   "edges": 4410,
+   "placements": 1652,
+   "crossings_tried": 10,
+   "field_seconds": 0.0061,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0279,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001091,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 23,
+   "rounds": 232,
+   "relaxed": 3264,
+   "edges": 3264,
+   "placements": 1252,
+   "crossings_tried": 0,
+   "field_seconds": 0.0066,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0264,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001092,
+   "random": 0,
+   "explore": 4,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.13,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 29,
+   "rounds": 282,
+   "relaxed": 7102,
+   "edges": 7102,
+   "placements": 2616,
+   "crossings_tried": 0,
+   "field_seconds": 0.0079,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0196,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001093,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 35,
+   "rounds": 308,
+   "relaxed": 4530,
+   "edges": 4726,
+   "placements": 1824,
+   "crossings_tried": 14,
+   "field_seconds": 0.0057,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0182,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001094,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 204,
+   "relaxed": 5068,
+   "edges": 5068,
+   "placements": 1872,
+   "crossings_tried": 0,
+   "field_seconds": 0.0061,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0269,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001095,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 25,
+   "rounds": 230,
+   "relaxed": 3476,
+   "edges": 3476,
+   "placements": 1328,
+   "crossings_tried": 0,
+   "field_seconds": 0.006,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0185,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001096,
+   "random": 173,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 126,
+   "timed_out": false,
+   "success": true,
+   "steps": 336,
+   "seconds": 1.67,
+   "walk_seconds": 0.08,
+   "plan_seconds": 0.01,
+   "fields": 387,
+   "rounds": 3545,
+   "relaxed": 101904,
+   "edges": 101584,
+   "placements": 36796,
+   "crossings_tried": 236,
+   "field_seconds": 0.069,
+   "wrong_predictions_pick_toggle": 12,
+   "refits": 12,
+   "refit_seconds": 0.1727,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 97,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door blue 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door blue 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": -3.4918,
+   "P_moved": 127.056,
+   "rel_weight_end": {
+    "pickup": 0.0272,
+    "toggle": 3.4059,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001097,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 22,
+   "rounds": 244,
+   "relaxed": 5394,
+   "edges": 5394,
+   "placements": 1992,
+   "crossings_tried": 0,
+   "field_seconds": 0.0051,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.019,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001098,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 32,
+   "rounds": 400,
+   "relaxed": 6864,
+   "edges": 6864,
+   "placements": 2576,
+   "crossings_tried": 0,
+   "field_seconds": 0.0071,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0179,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001099,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.08,
+   "walk_seconds": 0.0,
+   "plan_seconds": 0.0,
+   "fields": 22,
+   "rounds": 206,
+   "relaxed": 4374,
+   "edges": 4374,
+   "placements": 1652,
+   "crossings_tried": 0,
+   "field_seconds": 0.0038,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 1,
+   "refit_seconds": 0.0166,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "p": 0.0029,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door blue 0",
+      "key blue"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.9401,
+   "P_moved": 29.9778,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.3664,
+    "drop": 1.7465
+   }
+  }
+ ],
+ "tries_planned": 1.58,
+ "tries_made": 1.51,
+ "tries_succeeded": 0.94,
+ "hypotheses_without_plan": 9.92,
+ "tries_abandoned": 0.07,
+ "try_refits": 0.94,
+ "random_share": 0.3081,
+ "explore_share": 0.0807,
+ "relation_gap_end_mean": 1.6896,
+ "P_moved_mean": 34.8316
+}
