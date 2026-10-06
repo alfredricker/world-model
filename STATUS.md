@@ -29,11 +29,12 @@ Overwritten each session. At most 40 lines.
     still 100%). But recall weighs the door's identity 40 times the
     relation, so a key never seen opening its door is predicted not to:
     the decoy folds 7%.
-- **Next, for the user to choose:** card 070's revision (recall's weights
-  fitted by leaving out whole door and key combinations); the hand's
-  conditions (put down before picking up), which tier 2 needs; card
-  068's revision (the tile a toggled door becomes); later, recall's
+  - [071](experiments/071-recall-fit-by-combination/card.md) stop:
+    fitting recall by leaving whole combinations out cut the door's weight
+    but not enough; each quarter of the vector mixes kind and colour.
+- **Next, for the user to choose:** the tiles' own conditions read
+  through learned projections, as the relation is (card 071's pointer);
+  the hand's conditions (tier 2); card 068's revision; later, recall's
   view-set fit at tier 3's scale.
 - **The user's demo** is on 2026-10-06: version 15 on tier 1.
-- **Later:** rung 1's clearing commitment (card 058); the both world's
-  random steps (065); card 055 (draft).
+- **Later:** card 058 (rung 1's clearing commitment); 065; 055 (draft).

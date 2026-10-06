@@ -32,6 +32,7 @@ CR, SP, VP = CD.CR, CD.SP, CD.VP
 S7 = CD.S7
 SIT = S7                                               # card 047's module
 GRID, MAX_ADMIT = CD.GRID, CD.MAX_ADMIT
+HOLD = {"by": "try"}       # card 071: "combination" predicts each stored try from other (front, held) combinations only
 WAYS_MAX = 1000                                        # keys per outcome class for fitting card 038's ways
 
 
@@ -90,13 +91,22 @@ class IndexKind(OWN.OwnKind):
             _, fi, gi = np.unique(M, axis=0, return_index=True, return_inverse=True)
             gt = torch.as_tensor(gi.ravel(), device=dev)
             Cg = torch.zeros((len(fi), L), **f64).index_add_(0, gt, Ct)
-            return tuple(x[fi] for x in Fk), gt, Cg, Cg.sum(1)
+            if HOLD["by"] == "combination":                        # card 071: groups of one (front, held) by codes
+                _, cg = np.unique(np.stack([self.fid[fi], self.hid[fi]], 1), axis=0, return_inverse=True)
+                cg = torch.as_tensor(cg.ravel(), device=dev)
+                other = (cg[:, None] != cg[None]).to(Ct.dtype)
+            else:
+                other = None
+            return tuple(x[fi] for x in Fk), gt, Cg, Cg.sum(1), other
 
         def Dist(ci, Fg):
             return torch.as_tensor(self.cand_dist(ci, Fg, Fg) / self.scale[ci], **f64)
 
-        def P_of(dist, a, gt, Cg, Tg):
+        def P_of(dist, a, gt, Cg, Tg, other=None):
             w = torch.exp(-dist)                                   # group to group; a group's own entry is 1
+            if other is not None:                                  # card 071: a combination's own tries left out
+                w = w * other
+                return ((w @ Cg)[gt] + a / L) / ((w @ Tg)[gt] + a)[:, None]
             return ((w @ Cg)[gt] - Ct + a / L) / ((w @ Tg)[gt] - tot + a)[:, None]
 
         def ll(dist, a, pg):

@@ -34,6 +34,7 @@ import propagate as WALK                               # noqa: E402  (card 067)
 import relation as R                                   # noqa: E402
 
 T.INSTALL += [WALK.install, R.install]
+sys.modules["index"].HOLD["by"] = os.environ.get("WM_HOLD_BY", "try")   # card 071 sets "combination"
 T.COUNTS += [WALK.STATS, R.STATS]
 R.ONLINE["on"] = arg("--online", "1") == "1"
 LAST = {}
@@ -71,9 +72,17 @@ def recall_table(W, log):
         for k in T.HUES:
             cat = int(W.outcome(VP.TOG, h(("door", d, 0)), h(("key", k)), ctx)[0])
             rows.append({"door": d, "key": k, "category": cat, "right": (cat == 1) == (d == k)})
+    kd = W.kinds[VP.TOG]
+    combos = len(set(zip(np.asarray(kd.fid).tolist(), np.asarray(kd.hid).tolist())))
+    fold = arg("--fold")
+    pair_keys = 0 if fold is None else sum(1 for k in kd.keys if int(k[0]) == h(("door", fold, 0))
+                                           and int(k[1]) == h(("key", fold)))
+    lam = {kd.cname(c): round(float(l), 3) for c, l in zip(kd.adm, kd.lamc)}
+    log(f"toggle: {combos} (front, held) combinations stored; the fold's opening pair has {pair_keys} stored keys; "
+        f"weights per unit of distance {lam}")
     adm = W.kinds[VP.TOG].report.get("conditions", {}).get("admitted")
     log(f"toggle admitted {adm}; recall right on {sum(r['right'] for r in rows)} of 36 door and key hue pairs")
-    return {"toggle_admitted": adm, "pick_up_admitted": W.kinds[VP.PICK].report.get("conditions", {}).get("admitted"),
+    return {"toggle_combinations": combos, "fold_pair_keys": pair_keys, "toggle_weights": lam, "toggle_admitted": adm, "pick_up_admitted": W.kinds[VP.PICK].report.get("conditions", {}).get("admitted"),
             "right": sum(r["right"] for r in rows), "pairs": rows}
 
 

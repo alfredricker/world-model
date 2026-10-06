@@ -45,18 +45,24 @@ def _clear(W):
     W.openedc.clear()
 
 
-def loo_grad(P, Dz, Df, lam, gt, Ct, Cg, L):
+def loo_grad(P, Dz, Df, lam, gt, Ct, Cg, L, other=None):
     """Card 049's leave-one-out log likelihood (a = 1) over card 051's groups as a function of P, and its gradient,
     in numpy (episodes run in forked workers, where autograd cannot run once the parent has used it).
     r_g = ||P Dz_g||_1; w_gh = exp(-(Df_gh + lam |r_g - r_h|)); key i in group g: P_i = (w_g. Cg - C_i + 1/L) /
-    (w_g. Tg - |C_i| + 1)."""
+    (w_g. Tg - |C_i| + 1). With `other` (card 071), w is masked to other (front, held) combinations and nothing
+    is subtracted."""
     s = Dz @ P.T
     r = np.abs(s).sum(1)
     sg = np.sign(r[:, None] - r[None])
     w = np.exp(-(Df + lam * np.abs(r[:, None] - r[None])))
     tot, Tg = Ct.sum(1), Cg.sum(1)
-    num = (w @ Cg)[gt] - Ct + 1.0 / L
-    den = (w @ Tg)[gt] - tot + 1.0
+    if other is not None:
+        w = w * other
+        num = (w @ Cg)[gt] + 1.0 / L
+        den = (w @ Tg)[gt] + 1.0
+    else:
+        num = (w @ Cg)[gt] - Ct + 1.0 / L
+        den = (w @ Tg)[gt] - tot + 1.0
     ll = float((Ct * np.log(np.maximum(num / den[:, None], 1e-300))).sum())
     Qg = np.zeros_like(Cg)
     np.add.at(Qg, gt, Ct / num)
@@ -89,11 +95,16 @@ def refit(W, kd):
     Ct = kd.lc[:n]
     Cg = np.zeros((len(reps), Ct.shape[1]))
     np.add.at(Cg, gt, Ct)
+    other = None
+    if sys.modules["index"].HOLD["by"] == "combination":       # card 071: the admission's own likelihood
+        fc = np.asarray(kd.fid)[reps]
+        hc = np.asarray(kd.hid)[reps]
+        other = ((fc[:, None] != fc[None]) | (hc[:, None] != hc[None])).astype(np.float64)
     P = REL["P"].copy()
     m, v = np.zeros_like(P), np.zeros_like(P)
     b1, b2, lr = 0.9, 0.999, ONLINE["lr"]
     for k in range(1, ONLINE["steps"] + 1):
-        _, g = loo_grad(P, Dz, Df, lam_p, gt, Ct, Cg, Ct.shape[1])
+        _, g = loo_grad(P, Dz, Df, lam_p, gt, Ct, Cg, Ct.shape[1], other)
         g = -g                                          # minimise the negative log likelihood
         m = b1 * m + (1 - b1) * g
         v = b2 * v + (1 - b2) * g * g

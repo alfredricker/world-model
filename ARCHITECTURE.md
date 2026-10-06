@@ -459,7 +459,10 @@ At every step:
   the relation as the only path on fresh hues, does (66 of 66; 9 of 9 for
   hues it never saw), but recall's fit weighs the door's identity 40
   times the relation, so a key never seen opening its door is predicted
-  not to (card 070, revise). Neither is in version 15 yet.
+  not to (card 070). Fitting recall by leaving whole combinations out
+  lowers that weight but not enough: each quarter of the vector carries
+  the tile's kind and colour alike, and toggling needs the kind (card
+  071). Neither is in version 15.
 - **MiniGrid tier 3:** memory cannot be built: recall's fit of its view
   weights compares every pair of distinct stored views. Card 068 removed
   the per-number differences (698 GB there), but the token-pair distances
