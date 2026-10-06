@@ -1,8 +1,20 @@
 ---
-arch_version: 16
+arch_version: 17
 ---
 
 # Architecture
+
+Version 17 is version 16 with needs ordered by the states they conflict
+over ([card 073](experiments/073-order-needs-by-conflicting-states/card.md),
+kept 2026-10-06), Koehler and Hoffmann's reasonable goal orderings tested
+on recall's conditions: a condition B comes before a state A when, where
+A holds, B does not and every way to B needs a part A fixes (the held
+tile, the view or a tile on the map). B is looked for anywhere in a
+sibling need's chain, so a blocker inside "face the door" is cleared
+before the key is fetched. The states an achiever relies on that hold
+now, including "this works with the hand as it is", are protected unless
+so ordered. Decoy world with the key known 99% (version 16: 94%); tier 1
+100% in 20.8 steps; tier 2 25% (version 16: 2%, better), 0.12 s per step.
 
 Version 16 is version 15 with three parts of one change
 ([card 072](experiments/072-try-the-likeliest-way/card.md), kept by the
@@ -210,7 +222,8 @@ Version 5, the counted model over exact tile IDs, is in git (commit
   last step for a condition is tried first; when an achiever has two
   unmet needs, one whose plan would break what the other relies on is
   not pursued first (threats); and when only the view is asked for, the
-  present hand is protected. A
+  present hand is protected. Since version 17 the order between needs is
+  card 073's reasonable order (above), in place of card 051's threats. A
   condition is checked only in situations that recall's predicted effects
   produce from the present. The situations in which an action could work
   on a thing come from tries on the same thing and on similar things, and
@@ -479,15 +492,14 @@ At every step:
 - **A lattice sized in advance.** Tokens live on a fixed grid set per
   map (card 066's prior); walking no longer limits it (version 15), but a
   map whose size is not known in advance needs the lattice to grow.
-- **The hand's conditions** (card 072's trace, decoy seed 1001029). Card
-  051's threat check compares only the first action of each need's plan,
-  and the conflict over the hand comes at the last (the pick up that
-  fills it), so the key is fetched before the blocker is cleared. A
-  condition that already holds is not protected (the toggle works with
-  the key in hand, so no hand need is recorded), so the key is dropped to
-  clear the blocker; and where a drop lands is not a condition. The agent
-  loops between the two. Version 16's decoy failures and tier 2 meet it.
-- **MiniGrid tier 2 (cards 066, 068, 072):** 0% (version 16: 2%). The agent does not learn to
+- **The hand's conditions** (version 17 orders them; card 073). Left:
+  the tiles a planned route crosses are not protected, so a blocker can
+  be put back on a tile just cleared when the way is not yet open for
+  another reason (decoy seed 1001002); and a need on the view that names
+  a held tile is read as fixing the view only, so tier 2's door need
+  ("the view changed with the key held") is not seen to conflict with
+  clearing the ball (47 of tier 2's 69 failures within time).
+- **MiniGrid tier 2 (cards 066, 068, 072, 073):** version 17 25%. The agent does not learn to
   free its hand before picking up the box (recall even predicts that a
   locked door opens while a ball is held). With play starts in memory,
   5 of 6 locked door colours are openable; blue is not, because the tile
@@ -546,3 +558,4 @@ At every step:
 | 14 | 2026-10-05 | 054 | The user adopts card 054's encoder (no learned codebook; identity up to noise; margin 0.5), on which versions 11–14 ran; behaviour unchanged |
 | 15 | 2026-10-05 | 067 | Walking by a closeness propagated over the believed map per situation and need, in place of the how-soon network and the tables over every pair of placements; crossable tokens become conditions in one field, in place of single and paired token searches. MiniGrid tier 1 200/200 (as version 14), tier 2 0/100 (as version 14); setup 21 s against 47 |
 | 16 | 2026-10-05 | 072 | Card 070's encoder, the relation `rel:P` (P frozen) and trying the likeliest untried way when no plan is found. Decoy folds 95–98% (version 15's configuration 7%; a known key 94%); tier 1 200/200, 20.8 steps; tier 2 2/100 (no different from 0/100) |
+| 17 | 2026-10-06 | 073 | Needs ordered by the states they conflict over (reasonable goal orderings on recall's conditions, at any depth of the chain), and the states an achiever relies on protected unless so ordered, in place of card 051's threats. Decoy world with the key known 99/100 per fold (version 16 94); tier 1 200/200, 20.8 steps; tier 2 25/100 (version 16 2/100, better); decoy folds with trying no different |

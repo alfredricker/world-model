@@ -1,0 +1,8128 @@
+{
+ "note": "Card 069, tools/card069/run.py decoy",
+ "fold": "grey",
+ "hold": "opening",
+ "encoder": "runs/070/encoder.pt",
+ "online": false,
+ "memory": "066",
+ "episodes": 100,
+ "success": 0.94,
+ "decoy_tries_per_episode": 0.09,
+ "mean_steps_when_successful": 33.7,
+ "wrong_predictions_pick_toggle": 103,
+ "refits": 0,
+ "episodes_out_of_time": 0,
+ "wall_seconds": 2.8,
+ "recall": {
+  "toggle_combinations": 129,
+  "fold_pair_keys": 0,
+  "toggle_weights": {
+   "front:0": 101.624,
+   "front:1": 72.027,
+   "front:2": 123.965,
+   "front:3": 38.4,
+   "rel:P": 1.578
+  },
+  "toggle_admitted": [
+   "front:0",
+   "front:1",
+   "front:2",
+   "front:3",
+   "rel:P"
+  ],
+  "pick_up_admitted": [
+   "front:0",
+   "front:1",
+   "front:2",
+   "front:3",
+   "held:3",
+   "rel:P"
+  ],
+  "right": 35,
+  "pairs": [
+   {
+    "door": "red",
+    "key": "red",
+    "category": 1,
+    "right": true
+   },
+   {
+    "door": "red",
+    "key": "green",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "red",
+    "key": "blue",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "red",
+    "key": "purple",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "red",
+    "key": "yellow",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "red",
+    "key": "grey",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "red",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "green",
+    "category": 1,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "blue",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "purple",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "yellow",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "green",
+    "key": "grey",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "red",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "green",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "blue",
+    "category": 1,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "purple",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "yellow",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "blue",
+    "key": "grey",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "red",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "green",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "blue",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "purple",
+    "category": 1,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "yellow",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "purple",
+    "key": "grey",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "red",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "green",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "blue",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "purple",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "yellow",
+    "category": 1,
+    "right": true
+   },
+   {
+    "door": "yellow",
+    "key": "grey",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "red",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "green",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "blue",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "purple",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "yellow",
+    "category": 0,
+    "right": true
+   },
+   {
+    "door": "grey",
+    "key": "grey",
+    "category": 0,
+    "right": false
+   }
+  ],
+  "relation_gap_setup": 1.1413,
+  "rel_weight_setup": {
+   "pickup": 0.0115,
+   "toggle": 1.5782,
+   "drop": 1.7465
+  }
+ },
+ "setup": {
+  "memory": {
+   "episodes": 5000,
+   "steps": 3176657,
+   "changed_by_pickup": 49554,
+   "changed_by_drop": 48634,
+   "pickups": 49554,
+   "changed_by_toggle": 1213,
+   "doors_opened": 757,
+   "successes": 101,
+   "rows": 483870,
+   "tries": 284984,
+   "tries_with_stale_belief": 0,
+   "seconds": 28.8,
+   "env": "WM-DoorKeyDecoy-8x8-v0",
+   "opening_tries_removed": 81
+  },
+  "identity": {
+   "tau": [
+    0.0458,
+    0.1369,
+    0.0541,
+    0.2729
+   ],
+   "classes_per_part": [
+    73,
+    34,
+    54,
+    142
+   ]
+  },
+  "model_seconds": 62.6,
+  "placements": 676,
+  "token_ids": 638,
+  "lattice": 12,
+  "moves_same_as_card_061": true
+ },
+ "per_episode": [
+  {
+   "seed": 1001000,
+   "random": 0,
+   "explore": 7,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 34,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 39,
+   "rounds": 500,
+   "relaxed": 7952,
+   "edges": 7952,
+   "placements": 2996,
+   "crossings_tried": 0,
+   "field_seconds": 0.0087,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001001,
+   "random": 0,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 28,
+   "seconds": 0.11,
+   "walk_seconds": 0.02,
+   "plan_seconds": 0.01,
+   "fields": 30,
+   "rounds": 387,
+   "relaxed": 7078,
+   "edges": 7078,
+   "placements": 2648,
+   "crossings_tried": 16,
+   "field_seconds": 0.0133,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001002,
+   "random": 476,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 125,
+   "timed_out": false,
+   "success": false,
+   "steps": 640,
+   "seconds": 2.58,
+   "walk_seconds": 0.1,
+   "plan_seconds": 0.02,
+   "fields": 408,
+   "rounds": 3704,
+   "relaxed": 46212,
+   "edges": 47734,
+   "placements": 18296,
+   "crossings_tried": 334,
+   "field_seconds": 0.0866,
+   "wrong_predictions_pick_toggle": 10,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 12,
+   "tries_made": 10,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 90,
+   "tries_abandoned": 2,
+   "try_refits": 0,
+   "weighed": 524,
+   "ordered": 114,
+   "reordered": 114,
+   "cycles": 0,
+   "released": 664,
+   "drop_refused": 1,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001003,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 218,
+   "relaxed": 3896,
+   "edges": 3896,
+   "placements": 1452,
+   "crossings_tried": 0,
+   "field_seconds": 0.0064,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001004,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 26,
+   "rounds": 238,
+   "relaxed": 6468,
+   "edges": 6468,
+   "placements": 2364,
+   "crossings_tried": 32,
+   "field_seconds": 0.008,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 16,
+   "ordered": 2,
+   "reordered": 2,
+   "cycles": 0,
+   "released": 16,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001005,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.07,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 22,
+   "rounds": 228,
+   "relaxed": 5744,
+   "edges": 5744,
+   "placements": 2088,
+   "crossings_tried": 0,
+   "field_seconds": 0.0049,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001006,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 25,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 33,
+   "rounds": 340,
+   "relaxed": 8442,
+   "edges": 8442,
+   "placements": 3076,
+   "crossings_tried": 0,
+   "field_seconds": 0.0105,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 18,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 18,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 7.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001007,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.05,
+   "walk_seconds": 0.0,
+   "plan_seconds": 0.0,
+   "fields": 19,
+   "rounds": 210,
+   "relaxed": 3216,
+   "edges": 3216,
+   "placements": 1220,
+   "crossings_tried": 0,
+   "field_seconds": 0.0038,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001008,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 26,
+   "rounds": 248,
+   "relaxed": 3878,
+   "edges": 3878,
+   "placements": 1472,
+   "crossings_tried": 0,
+   "field_seconds": 0.0075,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001009,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 25,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 32,
+   "rounds": 339,
+   "relaxed": 8188,
+   "edges": 8188,
+   "placements": 2984,
+   "crossings_tried": 0,
+   "field_seconds": 0.0104,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 16,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 16,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001010,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.05,
+   "walk_seconds": 0.0,
+   "plan_seconds": 0.0,
+   "fields": 19,
+   "rounds": 174,
+   "relaxed": 4808,
+   "edges": 4808,
+   "placements": 1752,
+   "crossings_tried": 0,
+   "field_seconds": 0.0036,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001011,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.16,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 281,
+   "relaxed": 3728,
+   "edges": 3808,
+   "placements": 1464,
+   "crossings_tried": 0,
+   "field_seconds": 0.0083,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 20,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 20,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 7.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001012,
+   "random": 578,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 32,
+   "timed_out": false,
+   "success": false,
+   "steps": 640,
+   "seconds": 2.51,
+   "walk_seconds": 0.04,
+   "plan_seconds": 0.03,
+   "fields": 149,
+   "rounds": 1306,
+   "relaxed": 39759,
+   "edges": 40014,
+   "placements": 14440,
+   "crossings_tried": 52,
+   "field_seconds": 0.0349,
+   "wrong_predictions_pick_toggle": 11,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 145,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "weighed": 116,
+   "ordered": 20,
+   "reordered": 20,
+   "cycles": 0,
+   "released": 152,
+   "drop_refused": 2,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001013,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.15,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 17,
+   "rounds": 169,
+   "relaxed": 3606,
+   "edges": 3606,
+   "placements": 1332,
+   "crossings_tried": 0,
+   "field_seconds": 0.0084,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 4,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 4,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001014,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 15,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 19,
+   "rounds": 174,
+   "relaxed": 3880,
+   "edges": 3880,
+   "placements": 1452,
+   "crossings_tried": 0,
+   "field_seconds": 0.0056,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001015,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 20,
+   "rounds": 210,
+   "relaxed": 3898,
+   "edges": 3898,
+   "placements": 1456,
+   "crossings_tried": 0,
+   "field_seconds": 0.0042,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001016,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 351,
+   "relaxed": 6176,
+   "edges": 6176,
+   "placements": 2296,
+   "crossings_tried": 0,
+   "field_seconds": 0.0099,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001017,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.14,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 21,
+   "rounds": 199,
+   "relaxed": 3446,
+   "edges": 3446,
+   "placements": 1300,
+   "crossings_tried": 0,
+   "field_seconds": 0.006,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001018,
+   "random": 47,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 10,
+   "timed_out": false,
+   "success": true,
+   "steps": 111,
+   "seconds": 0.8,
+   "walk_seconds": 0.03,
+   "plan_seconds": 0.01,
+   "fields": 130,
+   "rounds": 1039,
+   "relaxed": 16494,
+   "edges": 18418,
+   "placements": 6984,
+   "crossings_tried": 16,
+   "field_seconds": 0.0285,
+   "wrong_predictions_pick_toggle": 12,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 45,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "weighed": 90,
+   "ordered": 8,
+   "reordered": 8,
+   "cycles": 0,
+   "released": 128,
+   "drop_refused": 1,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001019,
+   "random": 0,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 32,
+   "seconds": 0.18,
+   "walk_seconds": 0.02,
+   "plan_seconds": 0.01,
+   "fields": 35,
+   "rounds": 426,
+   "relaxed": 7492,
+   "edges": 7564,
+   "placements": 2844,
+   "crossings_tried": 0,
+   "field_seconds": 0.015,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001020,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.05,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 22,
+   "rounds": 205,
+   "relaxed": 3512,
+   "edges": 3512,
+   "placements": 1328,
+   "crossings_tried": 0,
+   "field_seconds": 0.0041,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001021,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 27,
+   "rounds": 244,
+   "relaxed": 5216,
+   "edges": 5216,
+   "placements": 1932,
+   "crossings_tried": 0,
+   "field_seconds": 0.0048,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 16,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 16,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001022,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 28,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 34,
+   "rounds": 418,
+   "relaxed": 8672,
+   "edges": 8672,
+   "placements": 3192,
+   "crossings_tried": 0,
+   "field_seconds": 0.0082,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001023,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 23,
+   "rounds": 229,
+   "relaxed": 5900,
+   "edges": 5900,
+   "placements": 2160,
+   "crossings_tried": 0,
+   "field_seconds": 0.0049,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001024,
+   "random": 0,
+   "explore": 1,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 327,
+   "relaxed": 3904,
+   "edges": 3904,
+   "placements": 1500,
+   "crossings_tried": 0,
+   "field_seconds": 0.0082,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 16,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 16,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001025,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 27,
+   "seconds": 0.12,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 34,
+   "rounds": 395,
+   "relaxed": 8740,
+   "edges": 8740,
+   "placements": 3228,
+   "crossings_tried": 0,
+   "field_seconds": 0.0116,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 16,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 16,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001026,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 345,
+   "relaxed": 6268,
+   "edges": 6268,
+   "placements": 2316,
+   "crossings_tried": 0,
+   "field_seconds": 0.0096,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001027,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 22,
+   "rounds": 237,
+   "relaxed": 3110,
+   "edges": 3110,
+   "placements": 1200,
+   "crossings_tried": 0,
+   "field_seconds": 0.0067,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001028,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 15,
+   "seconds": 0.07,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 19,
+   "rounds": 191,
+   "relaxed": 3136,
+   "edges": 3136,
+   "placements": 1200,
+   "crossings_tried": 0,
+   "field_seconds": 0.0055,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001029,
+   "random": 598,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 40,
+   "timed_out": false,
+   "success": false,
+   "steps": 640,
+   "seconds": 2.4,
+   "walk_seconds": 0.02,
+   "plan_seconds": 0.02,
+   "fields": 98,
+   "rounds": 710,
+   "relaxed": 10814,
+   "edges": 10814,
+   "placements": 4200,
+   "crossings_tried": 8,
+   "field_seconds": 0.0198,
+   "wrong_predictions_pick_toggle": 11,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 125,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "weighed": 84,
+   "ordered": 4,
+   "reordered": 4,
+   "cycles": 0,
+   "released": 120,
+   "drop_refused": 1,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001030,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.05,
+   "walk_seconds": 0.0,
+   "plan_seconds": 0.0,
+   "fields": 17,
+   "rounds": 166,
+   "relaxed": 3642,
+   "edges": 3642,
+   "placements": 1364,
+   "crossings_tried": 0,
+   "field_seconds": 0.0034,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 4,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 4,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001031,
+   "random": 0,
+   "explore": 7,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 27,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 30,
+   "rounds": 374,
+   "relaxed": 7662,
+   "edges": 7662,
+   "placements": 2812,
+   "crossings_tried": 0,
+   "field_seconds": 0.0106,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001032,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 27,
+   "rounds": 282,
+   "relaxed": 4230,
+   "edges": 4230,
+   "placements": 1612,
+   "crossings_tried": 0,
+   "field_seconds": 0.0081,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001033,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 23,
+   "rounds": 300,
+   "relaxed": 5294,
+   "edges": 5294,
+   "placements": 1992,
+   "crossings_tried": 0,
+   "field_seconds": 0.0057,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001034,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 25,
+   "rounds": 256,
+   "relaxed": 6232,
+   "edges": 6272,
+   "placements": 2300,
+   "crossings_tried": 0,
+   "field_seconds": 0.0078,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001035,
+   "random": 2,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 4,
+   "timed_out": false,
+   "success": true,
+   "steps": 38,
+   "seconds": 0.16,
+   "walk_seconds": 0.02,
+   "plan_seconds": 0.01,
+   "fields": 67,
+   "rounds": 675,
+   "relaxed": 10548,
+   "edges": 11206,
+   "placements": 4240,
+   "crossings_tried": 24,
+   "field_seconds": 0.013,
+   "wrong_predictions_pick_toggle": 2,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 2,
+   "tries_made": 1,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 19,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "weighed": 28,
+   "ordered": 12,
+   "reordered": 12,
+   "cycles": 0,
+   "released": 30,
+   "drop_refused": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001036,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 25,
+   "rounds": 334,
+   "relaxed": 5758,
+   "edges": 5758,
+   "placements": 2136,
+   "crossings_tried": 24,
+   "field_seconds": 0.0062,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001037,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 13,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 18,
+   "rounds": 170,
+   "relaxed": 3532,
+   "edges": 3532,
+   "placements": 1308,
+   "crossings_tried": 20,
+   "field_seconds": 0.0052,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 2,
+   "reordered": 2,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001038,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 25,
+   "rounds": 271,
+   "relaxed": 6548,
+   "edges": 6548,
+   "placements": 2396,
+   "crossings_tried": 0,
+   "field_seconds": 0.008,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001039,
+   "random": 0,
+   "explore": 7,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 29,
+   "rounds": 274,
+   "relaxed": 7002,
+   "edges": 7002,
+   "placements": 2564,
+   "crossings_tried": 0,
+   "field_seconds": 0.0085,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001040,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 33,
+   "rounds": 350,
+   "relaxed": 6178,
+   "edges": 6178,
+   "placements": 2296,
+   "crossings_tried": 0,
+   "field_seconds": 0.0099,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 20,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 20,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 7.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001041,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.05,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 19,
+   "rounds": 215,
+   "relaxed": 3250,
+   "edges": 3250,
+   "placements": 1232,
+   "crossings_tried": 0,
+   "field_seconds": 0.0041,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001042,
+   "random": 0,
+   "explore": 4,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.07,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 27,
+   "rounds": 336,
+   "relaxed": 5858,
+   "edges": 5858,
+   "placements": 2204,
+   "crossings_tried": 0,
+   "field_seconds": 0.007,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001043,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 26,
+   "rounds": 243,
+   "relaxed": 4166,
+   "edges": 4166,
+   "placements": 1576,
+   "crossings_tried": 0,
+   "field_seconds": 0.0073,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001044,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 26,
+   "rounds": 245,
+   "relaxed": 6608,
+   "edges": 6608,
+   "placements": 2408,
+   "crossings_tried": 0,
+   "field_seconds": 0.0076,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001045,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 26,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 31,
+   "rounds": 340,
+   "relaxed": 6130,
+   "edges": 6130,
+   "placements": 2300,
+   "crossings_tried": 0,
+   "field_seconds": 0.0095,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001046,
+   "random": 0,
+   "explore": 4,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 209,
+   "relaxed": 5242,
+   "edges": 5242,
+   "placements": 1936,
+   "crossings_tried": 0,
+   "field_seconds": 0.0064,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001047,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 351,
+   "relaxed": 7408,
+   "edges": 7408,
+   "placements": 2724,
+   "crossings_tried": 0,
+   "field_seconds": 0.0099,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001048,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 26,
+   "rounds": 266,
+   "relaxed": 3962,
+   "edges": 4130,
+   "placements": 1580,
+   "crossings_tried": 0,
+   "field_seconds": 0.0054,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001049,
+   "random": 0,
+   "explore": 1,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 27,
+   "rounds": 275,
+   "relaxed": 4240,
+   "edges": 4240,
+   "placements": 1628,
+   "crossings_tried": 0,
+   "field_seconds": 0.0053,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 16,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 16,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001050,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 26,
+   "rounds": 275,
+   "relaxed": 6510,
+   "edges": 6510,
+   "placements": 2364,
+   "crossings_tried": 0,
+   "field_seconds": 0.0082,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 16,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 16,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001051,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 25,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 30,
+   "rounds": 360,
+   "relaxed": 6390,
+   "edges": 6390,
+   "placements": 2384,
+   "crossings_tried": 0,
+   "field_seconds": 0.0102,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001052,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 20,
+   "rounds": 220,
+   "relaxed": 4036,
+   "edges": 4036,
+   "placements": 1520,
+   "crossings_tried": 0,
+   "field_seconds": 0.0063,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001053,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 24,
+   "rounds": 246,
+   "relaxed": 6128,
+   "edges": 6128,
+   "placements": 2236,
+   "crossings_tried": 0,
+   "field_seconds": 0.0073,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001054,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 24,
+   "rounds": 301,
+   "relaxed": 6252,
+   "edges": 6252,
+   "placements": 2312,
+   "crossings_tried": 0,
+   "field_seconds": 0.0058,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001055,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 23,
+   "rounds": 227,
+   "relaxed": 5690,
+   "edges": 5690,
+   "placements": 2068,
+   "crossings_tried": 0,
+   "field_seconds": 0.0069,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001056,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 309,
+   "relaxed": 3784,
+   "edges": 3784,
+   "placements": 1456,
+   "crossings_tried": 0,
+   "field_seconds": 0.0087,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001057,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 24,
+   "rounds": 290,
+   "relaxed": 5286,
+   "edges": 5286,
+   "placements": 1972,
+   "crossings_tried": 0,
+   "field_seconds": 0.0058,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001058,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 370,
+   "relaxed": 5992,
+   "edges": 5992,
+   "placements": 2236,
+   "crossings_tried": 0,
+   "field_seconds": 0.0099,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001059,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 19,
+   "rounds": 194,
+   "relaxed": 3132,
+   "edges": 3132,
+   "placements": 1188,
+   "crossings_tried": 0,
+   "field_seconds": 0.0057,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001060,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 26,
+   "rounds": 307,
+   "relaxed": 5594,
+   "edges": 5594,
+   "placements": 2104,
+   "crossings_tried": 0,
+   "field_seconds": 0.0058,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001061,
+   "random": 590,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 24,
+   "timed_out": false,
+   "success": false,
+   "steps": 640,
+   "seconds": 2.44,
+   "walk_seconds": 0.03,
+   "plan_seconds": 0.02,
+   "fields": 124,
+   "rounds": 1037,
+   "relaxed": 31508,
+   "edges": 31508,
+   "placements": 11420,
+   "crossings_tried": 12,
+   "field_seconds": 0.0237,
+   "wrong_predictions_pick_toggle": 11,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 101,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "weighed": 104,
+   "ordered": 6,
+   "reordered": 6,
+   "cycles": 0,
+   "released": 142,
+   "drop_refused": 1,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key red"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key red"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key red"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key red"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key red"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key red"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key red"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key red"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001062,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 20,
+   "rounds": 189,
+   "relaxed": 3002,
+   "edges": 3002,
+   "placements": 1128,
+   "crossings_tried": 0,
+   "field_seconds": 0.0057,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001063,
+   "random": 0,
+   "explore": 9,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 34,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 39,
+   "rounds": 490,
+   "relaxed": 7816,
+   "edges": 7816,
+   "placements": 2952,
+   "crossings_tried": 0,
+   "field_seconds": 0.0092,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001064,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 22,
+   "rounds": 210,
+   "relaxed": 5430,
+   "edges": 5430,
+   "placements": 2000,
+   "crossings_tried": 0,
+   "field_seconds": 0.0064,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001065,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 25,
+   "rounds": 237,
+   "relaxed": 6224,
+   "edges": 6224,
+   "placements": 2260,
+   "crossings_tried": 0,
+   "field_seconds": 0.0074,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001066,
+   "random": 0,
+   "explore": 1,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 33,
+   "rounds": 370,
+   "relaxed": 4342,
+   "edges": 4342,
+   "placements": 1672,
+   "crossings_tried": 0,
+   "field_seconds": 0.0102,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 20,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 20,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 8.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001067,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.07,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 24,
+   "rounds": 260,
+   "relaxed": 6416,
+   "edges": 6416,
+   "placements": 2372,
+   "crossings_tried": 0,
+   "field_seconds": 0.0056,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 4,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 4,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001068,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 28,
+   "rounds": 273,
+   "relaxed": 4142,
+   "edges": 4142,
+   "placements": 1584,
+   "crossings_tried": 0,
+   "field_seconds": 0.0079,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 16,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 16,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001069,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 20,
+   "rounds": 251,
+   "relaxed": 4582,
+   "edges": 4582,
+   "placements": 1704,
+   "crossings_tried": 0,
+   "field_seconds": 0.0071,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001070,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 22,
+   "rounds": 231,
+   "relaxed": 4522,
+   "edges": 4522,
+   "placements": 1680,
+   "crossings_tried": 0,
+   "field_seconds": 0.0067,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001071,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.07,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 29,
+   "rounds": 284,
+   "relaxed": 4474,
+   "edges": 4474,
+   "placements": 1696,
+   "crossings_tried": 0,
+   "field_seconds": 0.0063,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001072,
+   "random": 0,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 29,
+   "seconds": 0.07,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 32,
+   "rounds": 372,
+   "relaxed": 8186,
+   "edges": 8186,
+   "placements": 3004,
+   "crossings_tried": 0,
+   "field_seconds": 0.0071,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001073,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 30,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 36,
+   "rounds": 403,
+   "relaxed": 6548,
+   "edges": 6674,
+   "placements": 2524,
+   "crossings_tried": 0,
+   "field_seconds": 0.0116,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001074,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 25,
+   "rounds": 266,
+   "relaxed": 5116,
+   "edges": 5116,
+   "placements": 1912,
+   "crossings_tried": 0,
+   "field_seconds": 0.0079,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001075,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 20,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 23,
+   "rounds": 237,
+   "relaxed": 5988,
+   "edges": 5988,
+   "placements": 2200,
+   "crossings_tried": 0,
+   "field_seconds": 0.0072,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001076,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 31,
+   "seconds": 0.11,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 36,
+   "rounds": 404,
+   "relaxed": 6548,
+   "edges": 6656,
+   "placements": 2516,
+   "crossings_tried": 0,
+   "field_seconds": 0.0112,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 16,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 6.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001077,
+   "random": 0,
+   "explore": 4,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 23,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 25,
+   "rounds": 328,
+   "relaxed": 5528,
+   "edges": 5528,
+   "placements": 2068,
+   "crossings_tried": 0,
+   "field_seconds": 0.009,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001078,
+   "random": 584,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 24,
+   "timed_out": false,
+   "success": false,
+   "steps": 640,
+   "seconds": 2.34,
+   "walk_seconds": 0.03,
+   "plan_seconds": 0.03,
+   "fields": 129,
+   "rounds": 1081,
+   "relaxed": 25820,
+   "edges": 25548,
+   "placements": 9404,
+   "crossings_tried": 56,
+   "field_seconds": 0.0219,
+   "wrong_predictions_pick_toggle": 11,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 105,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "weighed": 98,
+   "ordered": 16,
+   "reordered": 16,
+   "cycles": 0,
+   "released": 138,
+   "drop_refused": 1,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001079,
+   "random": 0,
+   "explore": 6,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 22,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 24,
+   "rounds": 286,
+   "relaxed": 6306,
+   "edges": 6306,
+   "placements": 2332,
+   "crossings_tried": 0,
+   "field_seconds": 0.0056,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001080,
+   "random": 519,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 12,
+   "timed_out": false,
+   "success": true,
+   "steps": 582,
+   "seconds": 2.09,
+   "walk_seconds": 0.03,
+   "plan_seconds": 0.02,
+   "fields": 142,
+   "rounds": 1064,
+   "relaxed": 15958,
+   "edges": 17032,
+   "placements": 6556,
+   "crossings_tried": 20,
+   "field_seconds": 0.0228,
+   "wrong_predictions_pick_toggle": 12,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 75,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "weighed": 112,
+   "ordered": 10,
+   "reordered": 10,
+   "cycles": 0,
+   "released": 150,
+   "drop_refused": 1,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001081,
+   "random": 0,
+   "explore": 8,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 35,
+   "seconds": 0.12,
+   "walk_seconds": 0.02,
+   "plan_seconds": 0.01,
+   "fields": 40,
+   "rounds": 505,
+   "relaxed": 8022,
+   "edges": 8022,
+   "placements": 3024,
+   "crossings_tried": 0,
+   "field_seconds": 0.014,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001082,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 23,
+   "rounds": 256,
+   "relaxed": 3238,
+   "edges": 3238,
+   "placements": 1248,
+   "crossings_tried": 0,
+   "field_seconds": 0.0046,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001083,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 15,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 217,
+   "relaxed": 5376,
+   "edges": 5376,
+   "placements": 1960,
+   "crossings_tried": 0,
+   "field_seconds": 0.0066,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001084,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.06,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 202,
+   "relaxed": 3370,
+   "edges": 3370,
+   "placements": 1288,
+   "crossings_tried": 0,
+   "field_seconds": 0.005,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001085,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 19,
+   "rounds": 210,
+   "relaxed": 3454,
+   "edges": 3454,
+   "placements": 1312,
+   "crossings_tried": 0,
+   "field_seconds": 0.0058,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 4,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001086,
+   "random": 0,
+   "explore": 7,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 25,
+   "rounds": 306,
+   "relaxed": 6752,
+   "edges": 6752,
+   "placements": 2480,
+   "crossings_tried": 0,
+   "field_seconds": 0.0083,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 4,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 4,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001087,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 26,
+   "rounds": 255,
+   "relaxed": 4076,
+   "edges": 4076,
+   "placements": 1544,
+   "crossings_tried": 0,
+   "field_seconds": 0.0074,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001088,
+   "random": 0,
+   "explore": 5,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 27,
+   "seconds": 0.1,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 30,
+   "rounds": 358,
+   "relaxed": 5854,
+   "edges": 5966,
+   "placements": 2256,
+   "crossings_tried": 0,
+   "field_seconds": 0.0099,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001089,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 19,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 22,
+   "rounds": 254,
+   "relaxed": 4972,
+   "edges": 4972,
+   "placements": 1840,
+   "crossings_tried": 0,
+   "field_seconds": 0.0071,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 6,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 6,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001090,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 18,
+   "rounds": 172,
+   "relaxed": 3866,
+   "edges": 3866,
+   "placements": 1448,
+   "crossings_tried": 16,
+   "field_seconds": 0.0054,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 8,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 8,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001091,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 17,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 23,
+   "rounds": 232,
+   "relaxed": 3264,
+   "edges": 3264,
+   "placements": 1252,
+   "crossings_tried": 0,
+   "field_seconds": 0.0057,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 12,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 12,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001092,
+   "random": 0,
+   "explore": 4,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.07,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 27,
+   "rounds": 263,
+   "relaxed": 6626,
+   "edges": 6626,
+   "placements": 2440,
+   "crossings_tried": 0,
+   "field_seconds": 0.0055,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001093,
+   "random": 584,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 18,
+   "timed_out": false,
+   "success": false,
+   "steps": 640,
+   "seconds": 2.29,
+   "walk_seconds": 0.02,
+   "plan_seconds": 0.02,
+   "fields": 127,
+   "rounds": 909,
+   "relaxed": 13016,
+   "edges": 14230,
+   "placements": 5508,
+   "crossings_tried": 16,
+   "field_seconds": 0.0188,
+   "wrong_predictions_pick_toggle": 11,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 135,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "weighed": 96,
+   "ordered": 8,
+   "reordered": 8,
+   "cycles": 0,
+   "released": 130,
+   "drop_refused": 1,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key blue"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001094,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 21,
+   "rounds": 204,
+   "relaxed": 5068,
+   "edges": 5068,
+   "placements": 1872,
+   "crossings_tried": 0,
+   "field_seconds": 0.005,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 2.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001095,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 18,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 25,
+   "rounds": 230,
+   "relaxed": 3476,
+   "edges": 3476,
+   "placements": 1328,
+   "crossings_tried": 0,
+   "field_seconds": 0.0065,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 4,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 4.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001096,
+   "random": 466,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 44,
+   "timed_out": false,
+   "success": true,
+   "steps": 534,
+   "seconds": 2.06,
+   "walk_seconds": 0.03,
+   "plan_seconds": 0.02,
+   "fields": 148,
+   "rounds": 1362,
+   "relaxed": 42062,
+   "edges": 41502,
+   "placements": 14972,
+   "crossings_tried": 80,
+   "field_seconds": 0.0266,
+   "wrong_predictions_pick_toggle": 12,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 12,
+   "tries_made": 11,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 108,
+   "tries_abandoned": 1,
+   "try_refits": 0,
+   "weighed": 122,
+   "ordered": 22,
+   "reordered": 22,
+   "cycles": 0,
+   "released": 162,
+   "drop_refused": 2,
+   "decoy_tries": 1,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "door grey 0",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key grey"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "key yellow"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "key yellow"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 1.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    },
+    {
+     "planned": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "p": 0.0,
+     "steps_to_first_need": 0.0
+    },
+    {
+     "tried": [
+      "pickup",
+      "wall",
+      "empty"
+     ],
+     "changed": false
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001097,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 20,
+   "rounds": 220,
+   "relaxed": 4918,
+   "edges": 4918,
+   "placements": 1816,
+   "crossings_tried": 0,
+   "field_seconds": 0.0061,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001098,
+   "random": 0,
+   "explore": 3,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 24,
+   "seconds": 0.08,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.01,
+   "fields": 30,
+   "rounds": 381,
+   "relaxed": 6528,
+   "edges": 6528,
+   "placements": 2448,
+   "crossings_tried": 0,
+   "field_seconds": 0.0078,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 14,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 14,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 5.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  },
+  {
+   "seed": 1001099,
+   "random": 0,
+   "explore": 2,
+   "beyond_lattice": "0",
+   "pred_wrong": 2,
+   "timed_out": false,
+   "success": true,
+   "steps": 16,
+   "seconds": 0.05,
+   "walk_seconds": 0.0,
+   "plan_seconds": 0.0,
+   "fields": 20,
+   "rounds": 188,
+   "relaxed": 4038,
+   "edges": 4038,
+   "placements": 1524,
+   "crossings_tried": 0,
+   "field_seconds": 0.0036,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 1,
+   "tries_succeeded": 1,
+   "hypotheses_without_plan": 5,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 10,
+   "ordered": 0,
+   "reordered": 0,
+   "cycles": 0,
+   "released": 10,
+   "drop_refused": 0,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "p": 0.016,
+     "steps_to_first_need": 3.0
+    },
+    {
+     "tried": [
+      "toggle",
+      "door grey 0",
+      "key grey"
+     ],
+     "changed": true
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.5782,
+    "drop": 1.7465
+   }
+  }
+ ],
+ "tries_planned": 2.0,
+ "tries_made": 1.89,
+ "tries_succeeded": 0.9,
+ "hypotheses_without_plan": 13.79,
+ "tries_abandoned": 0.11,
+ "try_refits": 0.0,
+ "random_share": 0.6341,
+ "explore_share": 0.0492,
+ "relation_gap_end_mean": 1.1413,
+ "P_moved_mean": 0.0
+}

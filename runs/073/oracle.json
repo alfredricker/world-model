@@ -1,0 +1,41 @@
+{
+ "note": "Card 073 gate: breadth-first oracle on the decoy world's test layouts",
+ "folds": {
+  "red": {
+   "solvable": 100,
+   "unsolvable_seeds": [],
+   "shortest_mean": 17.48,
+   "shortest_max": 26
+  },
+  "green": {
+   "solvable": 100,
+   "unsolvable_seeds": [],
+   "shortest_mean": 17.48,
+   "shortest_max": 26
+  },
+  "blue": {
+   "solvable": 100,
+   "unsolvable_seeds": [],
+   "shortest_mean": 17.48,
+   "shortest_max": 26
+  },
+  "purple": {
+   "solvable": 100,
+   "unsolvable_seeds": [],
+   "shortest_mean": 17.48,
+   "shortest_max": 26
+  },
+  "yellow": {
+   "solvable": 100,
+   "unsolvable_seeds": [],
+   "shortest_mean": 17.48,
+   "shortest_max": 26
+  },
+  "grey": {
+   "solvable": 100,
+   "unsolvable_seeds": [],
+   "shortest_mean": 17.48,
+   "shortest_max": 26
+  }
+ }
+}

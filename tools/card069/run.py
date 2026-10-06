@@ -43,6 +43,12 @@ if os.environ.get("WM_TRYING") == "1":                 # card 072: try the likel
     import trying as TRY                               # noqa: E402
     T.INSTALL.append(TRY.install)
     T.COUNTS.append(TRY.STATS)
+ORDER = None
+if os.environ.get("WM_ORDER") == "1":                  # card 073: needs ordered by the states they conflict over
+    sys.path.insert(0, str(ROOT / "tools" / "card073"))
+    import order as ORDER                              # noqa: E402
+    T.INSTALL.append(ORDER.install)
+    T.COUNTS.append(ORDER.STATS)
 LAST = {}
 _make = T.make
 

@@ -1,0 +1,75 @@
+{
+ "note": "card 073: fold red's door hue, every opening in memory (key known)",
+ "order": true,
+ "trying": true,
+ "episodes": 1,
+ "success": 1.0,
+ "failed_seeds": [],
+ "mean_steps_when_successful": 21.0,
+ "random_share": 0.0,
+ "seconds_per_step": 0.0043,
+ "order_counts": {
+  "weighed": 41,
+  "ordered": 1,
+  "reordered": 1,
+  "cycles": 0,
+  "released": 39,
+  "drop_refused": 1
+ },
+ "per_episode": [
+  {
+   "seed": 1001029,
+   "random": 0,
+   "explore": 4,
+   "beyond_lattice": "0",
+   "pred_wrong": 4,
+   "timed_out": false,
+   "success": true,
+   "steps": 21,
+   "seconds": 0.09,
+   "walk_seconds": 0.01,
+   "plan_seconds": 0.0,
+   "fields": 48,
+   "rounds": 407,
+   "relaxed": 6840,
+   "edges": 6840,
+   "placements": 2600,
+   "crossings_tried": 2,
+   "field_seconds": 0.0071,
+   "wrong_predictions_pick_toggle": 0,
+   "refits": 0,
+   "refit_seconds": 0.0,
+   "tries_planned": 1,
+   "tries_made": 0,
+   "tries_succeeded": 0,
+   "hypotheses_without_plan": 0,
+   "tries_abandoned": 0,
+   "try_refits": 0,
+   "weighed": 41,
+   "ordered": 1,
+   "reordered": 1,
+   "cycles": 0,
+   "released": 39,
+   "drop_refused": 1,
+   "decoy_tries": 0,
+   "tried": [
+    {
+     "planned": [
+      "pickup",
+      "key red",
+      "key red"
+     ],
+     "p": 0.1898,
+     "steps_to_first_need": 1.0
+    }
+   ],
+   "relation_gap_end": 1.1413,
+   "P_moved": 0.0,
+   "rel_weight_end": {
+    "pickup": 0.0115,
+    "toggle": 1.7046,
+    "drop": 1.7465
+   }
+  }
+ ]
+}
