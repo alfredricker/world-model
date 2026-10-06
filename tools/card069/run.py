@@ -68,6 +68,12 @@ if os.environ.get("WM_CACHE") in ("0", "1"):          # card 074.2: caches (1), 
     import cache as CACHE                              # noqa: E402
     T.INSTALL.append(CACHE.install)
     T.COUNTS.append(CACHE.STATS)
+COLLECT = None
+if os.environ.get("WM_COLLECT") == "1":                # card 076: each stored weighing with its situation as tokens
+    sys.path.insert(0, str(ROOT / "tools" / "card076"))
+    import collect as COLLECT                          # noqa: E402
+    T.INSTALL.append(COLLECT.install)
+    T.COUNTS.append(COLLECT.STATS)
 LAST = {}
 _make = T.make
 
@@ -116,6 +122,8 @@ def episode(job):
         r["weighings"] = weighings()
     if CACHE is not None:
         r["actions"] = list(CACHE.ACTIONS)
+    if COLLECT is not None:
+        r["situations"], r["handles"] = list(COLLECT.SITS), dict(COLLECT.HANDLES)
     if TRY is not None:
         W = T.VP.WORLD
         r["tried"] = list(TRY.STATE["log"])

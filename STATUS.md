@@ -17,14 +17,17 @@ Overwritten each session. At most 40 lines.
   needs split, caches with the same actions. Tier 2 out of time 4 (6).
 - **Known cost of version 18:** ties ranked by acts before steps make
   tier 1 routes 17% longer (walks to the door before the key in front).
-- **Next, for the user:** approve
-  [076](experiments/076-router-for-remembered-orders/card.md), the first
-  card of the note below: a learned router over the situation's tokens
-  (what and where) as recall's metric, tested on remembered orders,
-  report only. It reads CHARTER's "recall is a learned metric" to cover
-  a network; say if that needs an amendment. Later: the tie cost by
-  steps; [075](experiments/075-motion-as-learned-system-1/card.md); 068's
-  revision; trying's retry; tier 3's memory; 058, 065, 055 (draft).
+- [076](experiments/076-router-for-remembered-orders/card.md) stop: a
+  learned router over the situation's tokens as recall's metric, on
+  remembered orders. Gate 98.6% (needs 99%); identical token situations
+  agree on 99.8% of orders. Tier 2: 97.7% against "no order" 96.2%, 69%
+  of orders caught at 71% precision (card 074's recall: 2%); decoy world
+  worse than "no order" (12 training orders from it).
+- **Next, for the user:** a new router card? (training orders from every
+  world in proportion; gate on the inputs' consistency; a fit that keeps
+  agreement.) CHARTER wording on networks inside components (proposed in
+  chat). Later: tie cost by steps; [075](experiments/075-motion-as-learned-system-1/card.md);
+  068's revision; trying's retry; tier 3's memory; 058, 065, 055.
 
 ### Fred note
 Delete when this gets its set of cards.

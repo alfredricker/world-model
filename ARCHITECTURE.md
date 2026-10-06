@@ -519,8 +519,10 @@ At every step:
   picking up the key in front of it).
 - **Orders are not remembered.** Recall over stored weighings, keyed by
   the two needs' tiles only, did worse than answering "no order" (card
-  074); card 076 (draft) tries a learned router over the situation's
-  tokens.
+  074). A learned router over the situation's tokens (card 076, stopped)
+  beat it in tier 2 (97.7% against 96.2% for "no order"; 69% of orders
+  caught) but not in the decoy world, whose orders training rarely
+  showed; identical token situations agree on 99.8% of orders.
 - **An achiever whose needs change form.** One failure is left in
   card 051's 1,950 test episodes: cluttered seed 403 layout 93, where
   the chosen achiever's needs alternate in form from step to step, so

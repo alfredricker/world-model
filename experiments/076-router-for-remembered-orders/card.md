@@ -3,8 +3,8 @@ id: "076"
 title: a learned router from the situation's tokens to remembered orders
 rung: 6
 serves: [P10, P21, P12, P17]
-status: draft
-verdict:
+status: done
+verdict: fail
 arch_version: 18
 date: 2026-10-06
 ---
@@ -100,6 +100,24 @@ If the real orders number under 300, more training layouts first.
 - **Cost:** time per prediction against a plan test (card 074.1: about
   0.05 s per test in tier 2).
 
+**Data check.** The first training layouts held 136 real orders (tier 2
+124, decoy world 12, tier 1 none), under 300; 80 more tier 2 layouts
+(seeds 502100–502179) brought training to 11,535 weighings and 401
+orders (tier 2 389, decoy world 12) in 280 layouts. Test: 21,363
+weighings, 402 orders. Collecting changed no decision: every test
+episode took card 074.2's actions (two tier 2 episodes were cut by the
+time limit at different steps, with the same actions before).
+
+**Gate result.**
+- Identical inputs (the same query and the same code at every offset)
+  give the same outcome for 99.79% of training weighings: the tokens
+  nearly determine the planner's order.
+- The router fitted and scored on the training weighings, no layout
+  left out: **98.63%** (always "no order": 96.52%; 93% of orders caught
+  at 74% precision). **Below the 99% gate.**
+- Cost: 0.07 ms per prediction (a plan test: about 0.26 s in card
+  074.1's slowest episode).
+
 ## 6. Success criteria and prediction
 
 On the test layouts (the seeds of cards 073–074.2), report only:
@@ -136,3 +154,54 @@ reaches; actions straight from the router (System 1).
 **Budget.** Collection about 15 minutes; fitting a few minutes on the
 GPU per arm; scoring a few minutes. No tier runs: the agent does not
 change.
+
+## 7. Result
+
+`runs/076/` (`run.sh`; `tools/card076/collect.py` with `WM_COLLECT=1`;
+`tools/card076/router.py` → `router.json`). Agreement with the planner
+on the test layouts; orders caught and the precision of predicted
+orders.
+
+| | Always "no order" | Card 074's recall | Hand-built recall | Router |
+|---|---|---|---|---|
+| All (21,363; 402 orders) | 98.12% | 97.89%; 1% caught | 97.74%; 16% caught at 31% | **97.45%**; 57% caught at 38% |
+| Tier 2 (8,525; 326) | 96.18% | 95.74%; 2% | 95.51%; 19% at 34% | **97.72%** (better, p < 0.001); 69% at 71% |
+| Decoy, key known (4,828; 26) | 99.46% | 99.40%; 0% | 99.30%; 0% | 96.71%; 12% at 2% |
+| Decoy, trying (6,717; 50) | 99.26% | 99.14%; 0% | 99.03%; 0% | 97.14%; 6% at 2% |
+| Tier 1 (1,293; 0) | 100% | 100% | 100% | 100% |
+| Unseen arrangement (211; 17) | 91.94% | 91.94%; 0% | 91.94%; 0% | 96.21% (p = 0.049); 76% at 76% |
+
+- **Criterion 1** (better than "no order" overall and in each source):
+  **not met**. Better in tier 2; worse overall and in both decoy sources
+  (it predicts orders there that the planner does not find).
+- **Criterion 2** (80% caught at 80% precision): **not met**: 57% at
+  38% overall; 69% at 71% in tier 2.
+- **Criterion 3:** colour transfer could not be measured (every code
+  the test needs named also appears in training); on arrangements
+  training never showed, 76% caught at 76% (17 orders). Not at least as
+  good as the hand-built recall in every source: worse in the decoy
+  world. **Not met.**
+- **Why the decoy world fails.** Its orders are the same kind as tier
+  2's ("hold the key for the toggle" waits on "face the door": 25 of 26
+  with the key known), a kind training saw 63 times, at least 51 of them
+  in tier 2 (the decoy world gave 12 orders in all), where a ball blocks the door. With a second key blocking
+  instead, the router did not carry it, and it predicts orders on decoy
+  situations the planner leaves unordered (136 false orders with the key
+  known).
+- **P19's curve** (training layouts added until it holds 10, 30, 100,
+  300 orders): 15%, 19%, 33%, 59% of the test's orders caught, at
+  18–37% precision; agreement 97.1–97.7%, below "no order" throughout.
+
+## 8. Decision
+
+**Stop** (the decision rule: the upper bound failed, 98.63% against
+99%). The two gate measures disagree, which matters for what comes
+next: identical token situations agree with each other on 99.79% of
+weighings, so the situation as tokens does carry the order (card 074's
+key did not); what fell short is the router's fit, trained mostly on
+tier 2 (389 of 401 orders) and weighted toward catching orders at the
+cost of agreement. In tier 2 it already beats "no order" (97.7% against
+96.2%), and the hand-built and card 074 recalls do not. A new card, for
+the user to decide, would need training orders from every world in
+proportion, a gate on the inputs' own consistency, and a fit that does
+not trade agreement for recall of orders.
