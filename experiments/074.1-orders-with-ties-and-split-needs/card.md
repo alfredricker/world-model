@@ -3,7 +3,7 @@ id: "074.1"
 title: found orders always followed, ties kept, and two-part needs split
 rung: 6
 serves: [P21, P12, P14, P17]
-status: draft
+status: approved
 verdict:
 arch_version: 17
 date: 2026-10-06

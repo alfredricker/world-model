@@ -56,6 +56,12 @@ if os.environ.get("WM_CONFLICTS") == "1":              # card 074: conflicts and
     import conflicts as CONFLICTS                      # noqa: E402
     T.INSTALL.append(CONFLICTS.install)
     T.COUNTS.append(CONFLICTS.STATS)
+TIES = None
+if os.environ.get("WM_TIES"):                          # card 074.1: found orders followed, ties kept (WM_SPLIT=1: split)
+    sys.path.insert(0, str(ROOT / "tools" / "card074.1"))
+    import ties as TIES                                # noqa: E402
+    T.INSTALL.append(TIES.install)
+    T.COUNTS.append(TIES.STATS)
 LAST = {}
 _make = T.make
 
