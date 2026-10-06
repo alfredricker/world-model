@@ -3,6 +3,7 @@ the decoy world's folds.
 
   tiers:  bin/prun python tools/card069/run.py tiers --tier 1 --online 1 --n 200 --memory 066 --out runs/069/tier1.json
   decoy:  bin/prun python tools/card069/run.py decoy --fold red --online 1 --n 100 --memory 066 --out runs/069/decoy_red_on.json
+          (card 070: --hold opening keeps every hue in memory and drops only the fold hue's opening tries)
 
 --memory 066 uses card 066's random play for memory, 068 card 068's play starts (whichever the best version uses).
 A decoy fold leaves one hue out of memory: memory's doors and keys (the decoy too) take the other five hues; then
@@ -87,8 +88,25 @@ def main():
     hue = arg("--fold")
     others = [c for c in T.HUES if c != hue]
     T.ENVS[1] = R.register()
-    T.OUT = ROOT / "runs" / "069" / f"decoy_{hue}_memory{arg('--memory', '066')}"
-    R.DECOY.update(door=others, decoy=others)
+    if arg("--hold", "hue") == "hue":                  # card 069: the hue left out of memory
+        T.OUT = ROOT / "runs" / "069" / f"decoy_{hue}_memory{arg('--memory', '066')}"   # memory only (codes, no vectors)
+        R.DECOY.update(door=others, decoy=others)
+    else:                                              # card 070 (the user, 2026-10-05): every hue in memory, less
+        T.OUT = ROOT / "runs" / "070" / f"decoy_memory{arg('--memory', '066')}"        # the hue's opening tries
+        R.DECOY.update(door=list(T.HUES), decoy=list(T.HUES))
+        _memory = T.memory
+
+        def memory(tier, pool=None):
+            D, stats = _memory(tier, pool)
+            f = D["ego0"][:, T.FRONT].astype(np.int64) // 5 * 5
+            h = D["ego0"][:, T.HELD].astype(np.int64) // 5 * 5
+            drop = (D["act"] == T.VP.TOG) & (f == T.KR.code(("door", hue, 0))) & (h == T.KR.code(("key", hue)))
+            inter = np.isin(D["act"], T.INTER)
+            keep_t = ~drop[inter]
+            D = {k: (v[keep_t] if k in ("pres", "stale") else v[~drop]) for k, v in D.items()}
+            return D, {**stats, "opening_tries_removed": int(drop.sum()), "rows": int(len(D["act"]))}
+
+        T.memory = memory
     W, info = T.setup(1, log)
     table = recall_table(W, log)
     R.DECOY.update(door=[hue], decoy=others)
@@ -103,7 +121,8 @@ def main():
     pool.close()
     recs.sort(key=lambda r: r["seed"])
     ok = [r for r in recs if r["success"]]
-    res = {"note": "Card 069, tools/card069/run.py decoy", "fold": hue, "online": R.ONLINE["on"],
+    res = {"note": "Card 069, tools/card069/run.py decoy", "fold": hue, "hold": arg("--hold", "hue"),
+           "encoder": str(R.ENCODER), "online": R.ONLINE["on"],
            "memory": arg("--memory", "066"), "episodes": n, "success": round(len(ok) / n, 4),
            "decoy_tries_per_episode": round(float(np.mean([r["decoy_tries"] for r in recs])), 3),
            "mean_steps_when_successful": round(float(np.mean([r["steps"] for r in ok])), 1) if ok else None,
