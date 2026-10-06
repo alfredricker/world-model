@@ -69,6 +69,8 @@ Nothing names a hand, a ball or a door. The hand condition is the
 stored success's own held tile, which every world with something to
 carry has; the view need is card 043's, unchanged.
 
+In card 074, Recall matched the planner's orders 95% of the time. That is worse than always answering "no order" (98%), and it caught only 15% of the real orders. The reason is that an order depends on where things are, and the stored memory records only the two tiles involved. I've left this out of 074.1; it needs that location information added first, in a later card.
+
 ## 3. Dependencies
 
 Card 074 (the order test, protection of what comes after); card 043's
