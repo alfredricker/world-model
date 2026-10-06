@@ -31,6 +31,7 @@ G = S7.MV.G
 HELDP, VIEWP, HELD = VP.HELDP, VP.VIEWP, VP.HELD
 MODE = os.environ.get("WM_TIES", "1")                  # "1": this card's choice; "074": card 074's, counted
 SPLIT = os.environ.get("WM_SPLIT") == "1"
+DEBUG = os.environ.get("WM_TIES_DEBUG") == "1"
 STATS = {"weighed": 0, "found": 0, "followed": 0, "overridden": 0, "tie_kept": 0, "tie_cost": 0, "tie_order": 0, "single": 0,
          "cycles": 0, "flips": 0, "steps": 0, "steps_spliced": 0, "split_hand_met": 0, "split_view_held": 0}
 _conditions0 = None
@@ -134,14 +135,16 @@ def pursue(self, c, op, needs, st, depth, chain, protect, faces):
             else:
                 keep.append(A)
         plans[n] = TH._one(self, c, n, st, depth, chain, protect + keep, faces, mine)
+    key = (c, (getattr(op, "a", None), getattr(op, "u", None), getattr(op, "j", None)))
     if len(unmet) == 1:
         r = plans[unmet[0]]
+        if MODE != "074" and r is not None:            # the last step's choice is the need it pursued, even alone
+            self.__dict__.setdefault("_order_keep", {})[key] = unmet[0]
         return None if r is None else TH._uses(r, links, op)
     STATS["weighed"] += 1
     C74.STATS["weighed"] += 1
     if plans[unmet[0]] is None:                        # card 029's order: the first unmet need decides
         return None
-    key = (c, (getattr(op, "a", None), getattr(op, "u", None), getattr(op, "j", None)))
     waits = {n: False for n in unmet}
     states = {A: C74.produced(self, A, plans[A], st) for A in unmet if plans[A] is not None}
     for A in unmet:
@@ -192,11 +195,20 @@ def pursue(self, c, op, needs, st, depth, chain, protect, faces):
         if first is not unmet[0]:
             C74.STATS["reordered"] += 1
     kept[key] = first
+    if DEBUG:
+        nm = T.name
+        print(f"   weigh {nm(c)} | unmet {[nm(n) for n in unmet]} | plans {[plans[n] is not None for n in unmet]} | "
+              f"waits {[waits[n] for n in unmet]} | costs {[cost(plans[n]) if plans[n] is not None else None for n in unmet]}"
+              f" | prev {prev and nm(prev)} | first {nm(first)} | actions {[plans[n].action if plans[n] is not None else None for n in unmet]}",
+              flush=True)
     opN = C74.own_op(first, plans[first])
     after = [("after", first, opN, b) for b in viable if b is not first] if opN else []
     if after:                                          # card 074: what comes after is kept while `first` is pursued
         keep = [A for A in held_now if not before(self, first, A, st)]
         r = TH._one(self, c, first, st, depth, chain, protect + keep + after, faces, mine)
+        if DEBUG:
+            print(f"     after-protected plan: {None if r is None else (r.action, [T.name(x) for x in r.trace[:5]])}",
+                  flush=True)
         if r is not None:
             return TH._uses(r, links, op)
     return TH._uses(plans[first], links, op)
@@ -250,15 +262,23 @@ def install():
         for cls in S7.Plan047.__mro__:                 # a subclass that copied card 043's conditions takes this one
             if "conditions" in cls.__dict__ and cls is not VP.VPlan:
                 cls.conditions = conditions
-    choose0 = S7.Plan047.choose
+    choose0, solve0 = S7.Plan047.choose, S7.Plan047.solve
 
     def choose(self, st):
+        """A step begins: the last step's found orders become `prev`; the chain it acted on is counted."""
+        acted = self.__dict__.pop("_c0741_acted", None)
+        if acted is not None:
+            STATS["steps"] += 1
+            STATS["steps_spliced"] += any(spliced(n) for n in getattr(acted, "trace", []))
         self._c0741_prev = getattr(self, "_c0741_cur", {})
         self._c0741_cur = {}
-        res = choose0(self, st)
-        STATS["steps"] += 1
-        if res is not None and any(spliced(n) for n in getattr(res, "trace", [])):
-            STATS["steps_spliced"] += 1
+        return choose0(self, st)
+
+    def solve(self, c, st, depth, chain, protect, faces):
+        res = solve0(self, c, st, depth, chain, protect, faces)
+        if res is not None and not chain and C74._DEPTH[0] == 0:
+            self._c0741_acted = res                    # a top-level chain (the goal's, or exploration's)
         return res
 
     S7.Plan047.choose = choose
+    S7.Plan047.solve = solve
