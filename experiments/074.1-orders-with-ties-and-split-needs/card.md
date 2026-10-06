@@ -3,8 +3,8 @@ id: "074.1"
 title: found orders always followed, ties kept, and two-part needs split
 rung: 6
 serves: [P21, P12, P14, P17]
-status: approved
-verdict:
+status: done
+verdict: fail
 arch_version: 17
 date: 2026-10-06
 ---
@@ -101,6 +101,22 @@ the decision rests on arm A.
 - **Cost check:** time per step on 10 tier 2 episodes. If it is above
   3 × version 17's (0.12 s), stop here and report.
 
+**Data check** (card 074's choice, counted; `WM_TIES=074`). Tier 2, 10
+episodes: 898 of 4,257 steps (21%) act on a chain holding a spliced
+need, so arm B counts in the decision. Decoy red fold: 94 of 100, card
+074's six failures; the test found an order 1,287 times and the kept
+order overrode it 1,281 times. Opposite orders on consecutive steps: 0 in
+both, so keeping a tie cannot turn with the agent.
+
+**Gate result.** Smoke tests: decoy seeds 1001029 and 1001002 solved
+(26 steps on average), tier 2 seeds 1002000 (118 steps; card 074: 261)
+and 1002010 (34 steps) solved in arm B. Cost, 10 tier 2 episodes: A
+0.127 s per step, B 0.337 s (limit 0.36): passed. Found on the way and
+built in: the last step's choice must be the need it pursued, even when
+that need was the only one unmet. Recorded only at weighings, a choice
+already met went stale, and decoy seed 1001029 turned between facing the
+door and fetching the key (both seeds failed until this was fixed).
+
 ## 6. Success criteria and prediction
 
 Card 074's criteria, unchanged:
@@ -144,3 +160,57 @@ Reported per arm:
 **Budget.** Gate about 10 minutes. Arm A about 15 minutes (decoy world
 6 × ~70 s, tier 2 ~8 minutes). Arm B about 25 minutes (decoy world and
 folds 12 × ~70 s, tier 1 a minute, tier 2 ~8 minutes).
+
+## 7. Result
+
+`runs/074.1/` (`run.sh`; `tools/card074.1/ties.py` on card 074,
+`WM_TIES=1`, arm B with `WM_SPLIT=1`; `tools/card074.1/summary.py` →
+`summary.json`).
+
+| | Version 17 | Card 074 | Arm A | Arm B |
+|---|---|---|---|---|
+| Decoy world, key known (crit. 1) | 99 per fold | 94 | **100 of 100 every fold** | **100 of 100 every fold** |
+| Version 17's 47 tier 2 loops (crit. 1) | — | 28 no longer loop | 46 (29 solved) | **47 (38 solved)** |
+| Tier 1 (crit. 2) | 100%, 20.8 steps | 100% | not run | **100%, 20.1 steps** |
+| Tier 2 (crit. 2) | 25%, 61 steps | 21% | 43%, 53 steps; better (30 vs 12, p = 0.008) | **51%**, 88 steps; better (38 vs 12, p = 0.0003) |
+| Tier 2 out of time (crit. 3) | 6 | 1 | **21** | **15** |
+| Decoy folds with trying (crit. 3) | 94–96% | 96–98% | not run | 93–96%; no fold worse (every p = 1.0) |
+
+- **Criteria 1 and 2: met in B** (and 1 in A). **Criterion 3: not met
+  in either arm.** Tier 3 cannot be built.
+- **Orders** (B, tier 2): the test found an order 5,093 times and it was
+  followed every time but 2 (a third need also free); ties went to the
+  kept choice 164,481 times, to cost 4,528 times; 0 cycles, 0 flips. The
+  decoy cases were decided by ties, not found orders: at seed 1001029's
+  first weighing the test finds none, and cost puts "clear the decoy"
+  first (it is nearer). The card's predicted trace was a found order.
+- **The split** (B): no spliced need is left (0 steps). In 205
+  situations where a hand condition's plan was imagined, the view need
+  already held there in 104 (51%): half of tier 2's view needs came only
+  from the splice. B solves 8 more tier 2 episodes than A.
+- **Why criterion 3 fails** (B seed 1002078, profiled): 118 of 120 s in
+  card 074's order tests, nearly all in recomputing card 043's conditions
+  in each imagined situation (432,000 calls: recall's distance between a
+  stored try's view and the situation's, 59 s; checking acts there,
+  42 s). Episodes not out of time cost 0.106 s per step (version 17:
+  0.12). Of B's 15, version 17 solved 5 and timed out in 1.
+- **Remaining tier 2 failures** (B, 49): 15 out of time; 17 mostly
+  random after trying; 11 other; 6 still loop. Traced: loop seed 1002033
+  holds the ball beside the key and turns between facing the key and
+  turning away to drop the ball, never dropping it; random seed 1002008
+  holds the ball facing the key for 188 steps, then tries other ways at
+  random. Both: a full hand beside the key it needs.
+
+## 8. Decision
+
+**Revise, for cost only.** B meets the card's question: found orders
+are followed, ties kept and two-part needs split, with no splice left,
+and tier 2 doubles (25% to 51%). It fails criterion 3 because order
+tests rebuild conditions in every imagined situation; card 074's rules
+called this "revise for cost if only 3 fails". The revision (074.2, to
+draft with the user) caches card 043's conditions by what they read (the
+situation's tiles and the stored try), which makes the same decisions,
+and reruns tier 2 and the time check. Version 17 stays the best version
+until then. The user's next card is
+[076](../076-remembered-orders-with-where/card.md): remembered orders
+that record where things are.

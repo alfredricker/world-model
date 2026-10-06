@@ -144,6 +144,11 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   door to open and look past (card 060: chained rooms 71%). Keeping the
   last step's choice: 100% (card 060; achievers since card 051).
   *Confirmed* for looking; card 058's clearing chain still flips inside.
+  The kept choice is the need last pursued, even when it was the only
+  one unmet; kept only from weighings, a met choice goes stale and the
+  agent turns back and forth (card 074.1's decoy seeds, 0 of 2 to 2 of
+  2). A kept choice must never override an order the test finds (card
+  074: 1,281 of 1,287 overridden, decoy 94%; card 074.1: 100%).
 - **Values can define conditions ("the achieving action works within
   walking reach": 99.2% of new layouts, card 007), but only values trained
   through the encoder see deep ones** ("door open" found in 27% of frames

@@ -75,11 +75,12 @@ def _note_order(self, key, n, A):
         STATS["flips"] += 1
 
 
-def _note_split(self, needs, st):
-    """B's report: where the hand condition holds, does the view need hold already (once per situation and need)?"""
-    hs = [n for n in needs if n[0] == "has"]
+def _note_split(self, needs, st, states):
+    """B's report: in the situation the hand condition's plan produces, does the view need hold already (once per
+    situation and need)? Needs are recomputed each step, so the pair is never seen with the hand already met."""
+    hs = [n for n in needs if n[0] == "has" and n in states and states[n] is not None]
     vs = [n for n in needs if n[0] == "part" and n[1] == VIEWP and n[-1] is None]
-    if not hs or not vs or not all(self.hold(h, st) for h in hs):
+    if not hs or not vs:
         return
     seen = self.__dict__.setdefault("_c0741_split", set())
     for v in vs:
@@ -87,14 +88,12 @@ def _note_split(self, needs, st):
             continue
         seen.add((st[0], v))
         STATS["split_hand_met"] += 1
-        STATS["split_view_held"] += bool(self.hold(v, st))
+        STATS["split_view_held"] += all(self.hold(v, states[h]) for h in hs)
 
 
 def pursue(self, c, op, needs, st, depth, chain, protect, faces):
     if C74._DEPTH[0] > 0:
         return _test_pursue(self, c, op, needs, st, depth, chain, protect, faces)
-    if SPLIT:
-        _note_split(self, needs, st)
     before, store = C74.before, C74.store
     met = [n for n in needs if n[0] != "face" and self.hold(n, st)]
     links = met + ([("does", op.a, op.u, op.j, c)] if getattr(op, "a", None) in TH.ACTS else [])
@@ -147,6 +146,8 @@ def pursue(self, c, op, needs, st, depth, chain, protect, faces):
         return None
     waits = {n: False for n in unmet}
     states = {A: C74.produced(self, A, plans[A], st) for A in unmet if plans[A] is not None}
+    if SPLIT:
+        _note_split(self, needs, st, states)
     for A in unmet:
         for n in unmet:
             if n is A or plans.get(n) is None or A not in states:
