@@ -2,7 +2,7 @@
 
 Overwritten each session. At most 40 lines.
 
-- **Date:** 2026-10-06, `master`. **Rung:** 1, not passed.
+- **Date:** 2026-10-07, `master`. **Rung:** 1, not passed.
   **Architecture:** version 18 (cards 074–074.2). **Direction:** CHARTER's
   "Current direction", rule 8; the standing evaluation is its three
   MiniGrid tiers.
@@ -10,25 +10,23 @@ Overwritten each session. At most 40 lines.
   (threshold 99%; version 17: 20.8 steps); tier 2 BlockedUnlockPickup
   **59%** (version 17: 25%); tier 3 ObstructedMaze-Full-v1: memory cannot
   be built yet.
-- **Cards of 2026-10-06:** 073 keep (version 17); 074 revise; 074.1
-  revise for cost (its step counts were wrong, a counter clash; marked);
-  [074.2](experiments/074.2-orders-within-time/card.md) keep, version 18:
-  orders read from plans, found orders followed, ties kept, two-part
-  needs split, caches with the same actions. Tier 2 out of time 4 (6).
-- **Known cost of version 18:** tier 1 routes 17% longer (ties by acts).
-- **Routers over the situation's tokens** (076–078, stop): orders from
-  tokens learned in tier 2 (97.7% against "no order" 96.2%) but did not
-  carry to the decoy world; "on the way" (078) is what orders turn on
-  (93% of decoy orders) and gave the first transfer (41% caught, 18%).
-- [079](experiments/079-relational-effect-recall/card.md) /
-  [080](experiments/080-relation-as-ordered-quantity/card.md) stop:
-  toggle recall reading roles and card 070's relation, no identity. A
-  readout linear in the relation opens a key never seen opening its door
-  in 6 of 6 colour folds (version 18: 0 of 6), but unstably over seeds.
-- **CHARTER** (2026-10-06): recall and networks, each where it predicts
-  better. Reasoning over recalled tries
-  ([082.1](experiments/082.1-reasoning-with-both-queries/card.md), [083](experiments/083-reasoning-with-a-learned-relation/card.md)) stop:
-  gates fail (≤ 49; ≤ 54 of 56 with card 070's relation).
+- **Version 18** ([074.2](experiments/074.2-orders-within-time/card.md),
+  2026-10-06): orders read from plans, ties kept, two-part needs split,
+  caches. Tier 2 out of time 4 (6); tier 1 routes 17% longer.
+- **Learned routing (076–083, stop):** orders from tokens learned in tier
+  2, carried to the decoy world only with "on the way" (078: 41% at 18%);
+  a readout linear in card 070's relation opened a never-seen pair in 6
+  of 6 folds, unstably (080); reasoners over recalled tries failed gates.
+- **Conditions over roles and relations**, all stop, left-out pair 0 of
+  6. [084](experiments/084-conditions-over-roles-and-relations/card.md)–[084.2](experiments/084.2-back-off-most-specific-first/card.md):
+  identity admitted first made every general condition redundant.
+  [084.3](experiments/084.3-conditions-without-constants-first/card.md),
+  [084.4](experiments/084.4-gamma-by-combinations-left-out/card.md)
+  stop: roles and cuts first; the pair's cell holds only openings in
+  every fold, tier 2's hand table right (9/9, 3/3); diagnosis 6 of 6,
+  declared 0 of 6: γ at its grid's top, fitted on outcome classes that
+  name the result tile, which no other combination has. Next: γ on
+  the category, combinations left out.
 
 ### Fred note
 Delete when this gets its set of cards.

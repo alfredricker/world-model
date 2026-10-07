@@ -71,7 +71,13 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   66, and 9 of 9 for hues never seen). The same holds for recall's
   weights: fitted by predicting each stored try from the others, they
   favour the door's identity, since every try has twins at the same door
-  (card 070). *Evidence:* phwm record §5.4–5.5;
+  (card 070). Bayesian evidence does not rescue it on raw try counts:
+  over about 528,000 stored toggles the door's identity, which tells
+  locked doors, closed doors and walls apart in one condition, was
+  admitted first, so the relation's correct cut became a rule per door
+  (card 084: 0 of 6 folds). Admitting conditions that name no tile
+  first (roles, cuts) gave a cell holding only openings in every fold
+  (card 084.3). *Evidence:* phwm record §5.4–5.5; cards 084–084.3;
   old:phwm/docs/06-achievements-and-limitations.md §6.1.1; card 040
   appendix A; cards 069, 070. *Confirmed.*
 - **Verify that held-out cases are really held out, and keep new
