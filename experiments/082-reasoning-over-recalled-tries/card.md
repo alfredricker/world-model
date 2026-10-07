@@ -3,8 +3,8 @@ id: "082"
 title: a network that reasons over recalled tries, with a learned router
 rung: 6
 serves: [P3, P10, P21, P6]
-status: draft
-verdict:
+status: done
+verdict: fail
 arch_version: 18
 date: 2026-10-06
 ---
@@ -169,3 +169,66 @@ weights and ignore its memory.
 **Budget.** The gate, about 10 minutes, measures one fit. The folds are
 7 memory setups of about 70 s each, plus 21 fits and the seed-79 arms.
 That is an estimate of 20–40 minutes, to be confirmed by the gate.
+
+## 7. Result
+
+`runs/082/` (`tools/card082/reason.py`; `fold_none*.json` and logs).
+Only the gate ran; the folds did not, as the rules require.
+
+**Data check** (nothing removed): pick up 1,315 rows in 117
+combinations, drop 1,321 in 123, toggle 1,285 in 130. Memory holds each
+mismatched door and key pair as **one** failed try and each matching
+pair as five openings. Version 18 gets every cell of all three tables
+right (28, 42 and 56), which confirms the tables' truth.
+
+**Gate: not passed.** Toggle cells right out of 56, nothing removed:
+
+| Training | Seed 79 | Seed 80 | Seed 81 | Pick up (of 28) / drop (of 42) |
+|---|---|---|---|---|
+| As declared (combinations hidden, 3,000 steps) | 33 | 37 | 42 | 26–28 / 34–42 |
+| Same, 10,000 steps (seed 79) | 35 | | | 26 / 35 |
+| Half the steps hiding single rows (diagnosis) | 38 | 43 | 38 | 27–28 / 40–42 |
+| No router, every row in context (seed 79) | 44 | | | 28 / 42 |
+| No memory, the query alone (seed 79) | 48 | | | 21 / 36 |
+
+- **The errors:** mismatched door and key pairs predicted to open (the
+  red door with the blue key, …), and some keys on the floor predicted
+  to open. This holds even though memory holds that exact pair's failure
+  (with another view). With the view left empty, the same number of
+  errors remain (33), so the view is not the cause.
+- **Not undertrained.** At 10,000 steps the training loss falls to 0.02
+  and the stored combinations are predicted right with their own
+  combination hidden (97.9% of toggle rows), yet the table stays at 35.
+- **Memory made it worse, not better.** The network without memory got
+  more cells right than either network with it.
+- **Two causes found:**
+  - **Training never showed a query whose own combination was in
+    context,** while the gate always does. Hiding single rows on half
+    the steps fixes pick up and drop, not toggle. A mismatched pair has
+    only one row, so hiding it removes the whole combination again.
+  - **Very little of the data carries the relation.** Thirty-six door
+    and key combinations, about 70 rows of some 3,900, against a loss
+    weighted per row.
+  
+  Card 080's tiny readout, given card 070's projection, fitted all 56
+  cells; here the projection has to be learned from those 70 rows.
+
+## 8. Decision
+
+**Revise.** The gate shows the network as built cannot fit what memory
+already holds, so the transfer question was not asked. Before a revised
+card, two changes in the training, not the architecture, follow from the
+diagnosis:
+
+- **Queries of both kinds:** single rows hidden as well as whole
+  combinations, since the agent meets both.
+- **Equal weight per combination in the loss:** card 071's unit, so
+  1,300 easy "nothing happens" rows do not drown the 36 door and key
+  combinations.
+
+Whether that is enough is open. The relation has to be learned from
+very few combinations in one world, the regime in which Chan et al. find
+networks memorise. If a revision still fails its gate, the evidence
+points to giving the reasoner an already-learned relation (card 070's
+projection, trained with the encoder) rather than learning one inside
+it.
