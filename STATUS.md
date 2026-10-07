@@ -24,8 +24,7 @@ Overwritten each session. At most 40 lines.
   [080](experiments/080-relation-as-ordered-quantity/card.md) stop:
   toggle recall reading roles and card 070's relation, no identity. A
   readout linear in the relation opens a key never seen opening its door
-  in 6 of 6 colour folds (seed 80: no other error; version 18: 0 of 6);
-  its fit is unstable over seeds, and as the vote's prior it is overruled.
+  in 6 of 6 colour folds (version 18: 0 of 6), but unstably over seeds.
 - **CHARTER** (2026-10-06): recall and networks, each where it predicts
   better. Reasoning over recalled tries
   ([082.1](experiments/082.1-reasoning-with-both-queries/card.md), [083](experiments/083-reasoning-with-a-learned-relation/card.md)) stop:
