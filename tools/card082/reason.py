@@ -13,7 +13,7 @@ action label. Trained by hiding 32 (front, held) combinations per step and predi
 Arms at seed 79 (WM_ARMS=1): "no router" (every row in context) and "no memory" (the query row alone).
 Diagnostics of the gate: WM_STEPS (training steps), WM_MIX=1 (half the steps hide single rows, not combinations),
 WM_QVIEW=empty (the table's queries with no tiles in view), WM_TAG (suffix of the output file).
-Card 082.1: WM_MIX=1 WM_COMBO_WEIGHT=1, WM_TAG=_082.1.
+Card 082.1: WM_MIX=1 WM_COMBO_WEIGHT=1, WM_TAG=_082.1. Card 083: also WM_REL=P, WM_TAG=_083.
 """
 import json
 import os
@@ -91,6 +91,8 @@ EXTRA_ARMS = os.environ.get("WM_ARMS", "1") == "1"
 STEPS = int(os.environ.get("WM_STEPS", "3000"))
 K, H, DH, WIDTH, LAYERS, HEADS = 64, 8, 16, 64, 3, 4
 ACTS = [("pick up", VP.PICK), ("drop", VP.DROP), ("toggle", VP.TOG)]
+RELP = os.environ.get("WM_REL") == "P"                  # card 083: tiles compared by card 070's |P (z_a - z_b)|
+PT = torch.tensor(P, dtype=torch.float32, device=DEV)
 
 # ---------------------------------------------------------------- the tables (evaluator's truth) and version 18
 names = {**{f"door {c}": doors[c] for c in T.HUES}, **{f"key {c}": keys[c] for c in T.HUES},
@@ -150,13 +152,15 @@ class Net(nn.Module):
         self.out = nn.Linear(WIDTH, ncat)
 
     def proj(self, R):
-        """Per row: projected front, held, view tiles (rows, slots, H, DH) and the view mask."""
-        P = self.phi((torch.tensor(Z, dtype=torch.float32, device=DEV) - R.mu) / R.sd).view(-1, H, DH)
-        return P[R.front], P[R.held], P[R.view], R.vmask
+        """Per row: projected front, held, view tiles (rows, slots, H, DH) and the view mask. With card 083's
+        relation the projection is card 070's P on the raw encoder vectors (H = 8, DH = 1)."""
+        Zt = torch.tensor(Z, dtype=torch.float32, device=DEV)
+        P_ = (Zt @ PT.T)[..., None] if RELP else self.phi((Zt - R.mu) / R.sd).view(-1, H, DH)
+        return P_[R.front], P_[R.held], P_[R.view], R.vmask
 
     @staticmethod
     def within(Pf, Ph, Pv, vm):
-        s = lambda a, b: (a * b).sum(-1) / DH ** 0.5
+        s = (lambda a, b: (a - b).abs().sum(-1)) if RELP else (lambda a, b: (a * b).sum(-1) / DH ** 0.5)
         fh = s(Pf, Ph)
         vf, vh = s(Pv, Pf[:, None]), s(Pv, Ph[:, None])
         cnt = vm.sum(1, keepdim=True).clamp(min=1)[..., None]
@@ -169,7 +173,8 @@ class Net(nn.Module):
         """Relations between every row of A (Bt, Ta) and every row of B (Bt, Tb), as (Bt, Ta, Tb, 5H): front-front,
         held-held, front-held, held-front, view-view (mean of the view's projections)."""
         (fa, ha, va), (fb, hb, vb) = A, B
-        s = lambda a, b: torch.einsum("bihd,bjhd->bijh", a, b) / DH ** 0.5
+        s = (lambda a, b: (a[:, :, None] - b[:, None]).abs().sum(-1)) if RELP else \
+            (lambda a, b: torch.einsum("bihd,bjhd->bijh", a, b) / DH ** 0.5)
         return torch.cat([s(fa, fb), s(ha, hb), s(fa, hb), s(ha, fb), s(va, vb)], -1)
 
     def reason(self, tok, rel, logw, allow, attn_out=False):
