@@ -98,8 +98,11 @@ these; rule 8 guards against sliding back.
   too; walking is move effects in the same learner. Nothing is read from
   the simulator.
 - **One encoder.** A new comparison or readout reads, and if needed
-  trains, the existing encoder that feeds the codebooks. It does not add a
-  side network (C2).
+  trains, the existing encoder that feeds the codebooks. Networks inside
+  a component (an MLP as recall's metric, for example) are used where
+  they improve on the current mechanism in a test; what is ruled out is a
+  second representation beside the encoder's, such as a separate encoder
+  or output head (C2; the user, 2026-10-06).
 - **One latent space** (agreed 2026-09-29, after card 034). Codes,
   recall, planner conditions, relations and later fast weights all read
   the same encoder vectors. Codes quantise them. Recall is a learned

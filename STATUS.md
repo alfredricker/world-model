@@ -20,14 +20,15 @@ Overwritten each session. At most 40 lines.
   tokens learned in tier 2 (97.7% against "no order" 96.2%) but did not
   carry to the decoy world; "on the way" (078) is what orders turn on
   (93% of decoy orders) and gave the first transfer (41% caught, 18%).
-- [079](experiments/079-relational-effect-recall/card.md) stop: router
-  as toggle recall's metric (roles + card 070's relation, no identity):
-  a key never seen opening its door predicted right in 4 of 6 folds
-  (version 18: 0); fails where the pair's relation is outside the
-  remembered range (a vote does not extrapolate).
-- **Next, for the user:** the relation as an ordered quantity. CHARTER
-  wording on networks (proposed in chat). Later: tie cost by steps; 075;
-  068's revision; trying's retry; tier 3's memory.
+- [079](experiments/079-relational-effect-recall/card.md) /
+  [080](experiments/080-relation-as-ordered-quantity/card.md) stop:
+  toggle recall reading roles and card 070's relation, no identity. A
+  readout linear in the relation opens a key never seen opening its door
+  in 6 of 6 colour folds (seed 80: no other error; version 18: 0 of 6);
+  its fit is unstable over seeds, and as the vote's prior it is overruled.
+- **Next, for the user:** the readout as System 1 for toggle, taking
+  over where it agrees with memory (CHARTER). Later: tie cost; 075; 068's
+  revision; trying's retry; tier 3's memory.
 
 ### Fred note
 Delete when this gets its set of cards.

@@ -121,6 +121,10 @@ so does version 18).
   The new errors in the green and blue folds are probably the same vote
   drawing a boundary between remembered values in the wrong place (not
   traced; one fit per fold).
+- † Correction (card 080): refitted with three seeds, the vote opens
+  purple's pair in 3 of 3 and grey's in 1 of 3, with 1–13 other errors
+  per fold; only red fails in every seed. The single fit here was noise
+  in two folds, and "outside the range" explains red, not purple.
 - Version 18's recall fails all six for another reason, the door's
   identity outweighing the relation (card 070); the router, with no
   identity to read, fixes that in the four interior folds.
