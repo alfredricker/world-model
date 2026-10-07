@@ -27,8 +27,9 @@ Overwritten each session. At most 40 lines.
   in 6 of 6 colour folds (seed 80: no other error; version 18: 0 of 6);
   its fit is unstable over seeds, and as the vote's prior it is overruled.
 - **CHARTER** (2026-10-06): recall and networks, each where it predicts
-  better; 081 retired. [082.1](experiments/082.1-reasoning-with-both-queries/card.md)
-  stop: reasoning over recalled tries fails its gate (≤ 49 of 56).
+  better. Reasoning over recalled tries
+  ([082.1](experiments/082.1-reasoning-with-both-queries/card.md), [083](experiments/083-reasoning-with-a-learned-relation/card.md)) stop:
+  gates fail (≤ 49; ≤ 54 of 56 with card 070's relation).
 
 ### Fred note
 Delete when this gets its set of cards.

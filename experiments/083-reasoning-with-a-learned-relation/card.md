@@ -3,8 +3,8 @@ id: "083"
 title: reasoning over recalled tries, comparing tiles through card 070's learned relation
 rung: 6
 serves: [P3, P10, P21, P6]
-status: draft
-verdict:
+status: done
+verdict: fail
 arch_version: 18
 date: 2026-10-06
 ---
@@ -95,3 +95,41 @@ Card 082's three criteria, each holding at each of seeds 79, 80 and 81:
 - **Stop** if the gate or criterion 1 fails.
 
 **Budget.** Gate about 5 minutes; folds 6 × about 3.5 minutes.
+
+## 7. Result
+
+`runs/082/fold_none_083.{json,log}` (`tools/card082/reason.py` with
+`WM_REL=P WM_MIX=1 WM_COMBO_WEIGHT=1`). Only the gate ran.
+
+**Gate: not passed.** Cells right with nothing removed:
+
+| Arm | Toggle (of 56) | Pick up (of 28) | Drop (of 42) | Card 082.1's toggle |
+|---|---|---|---|---|
+| Router, seed 79 | 48 | 26 | 42 | 44 |
+| Router, seed 80 | 52 | 28 | 42 | 49 |
+| Router, seed 81 | 52 | 24 | 41 | 49 |
+| No router, every row in context (seed 79) | 54 | 27 | 42 | 49 |
+| No memory, the query alone (seed 79) | 50 | 24 | 40 | 48 |
+
+- **Closer, and memory now helps a little.** Toggle gains 3–5 cells per
+  arm over card 082.1. With every row in context the network gets 54,
+  against 50 with no memory.
+- **The errors sit where the relation is least clear.** Card 070's
+  relation (summed over its eight values) is 0.76–1.80 for matching
+  pairs. The closest mismatches are the blue door with the purple key
+  (2.94) and the purple door with the blue key (3.04). These two are
+  the only errors with every row in context, and appear at every seed.
+  The other errors are scattered: mismatches predicted to open, and two
+  own pairs missed at seed 81.
+- **Pick up loses cells at two seeds** (24 and 26 of 28). Card 070's
+  relation, trained for toggle, does not obviously serve pick up.
+
+## 8. Decision
+
+**Stop** (gate). Given card 070's relation, the reasoner comes within
+two cells of fitting memory, and its remaining errors trace to the
+relation's own small margin between blue and purple. Over cards 082–083
+the bottleneck has moved from the reasoner to the relation: learning
+"same colour" well enough, and for more than one action, is the open
+problem. Card 080's readout, with no reasoning at all, confused the same
+blue and purple pair at one of its seeds.
