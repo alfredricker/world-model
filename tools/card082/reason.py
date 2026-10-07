@@ -13,6 +13,7 @@ action label. Trained by hiding 32 (front, held) combinations per step and predi
 Arms at seed 79 (WM_ARMS=1): "no router" (every row in context) and "no memory" (the query row alone).
 Diagnostics of the gate: WM_STEPS (training steps), WM_MIX=1 (half the steps hide single rows, not combinations),
 WM_QVIEW=empty (the table's queries with no tiles in view), WM_TAG (suffix of the output file).
+Card 082.1: WM_MIX=1 WM_COMBO_WEIGHT=1, WM_TAG=_082.1.
 """
 import json
 import os
@@ -260,7 +261,12 @@ def train(mode, seed, RS):
             hidden = torch.zeros(R.n, dtype=torch.bool, device=DEV)
             hidden[qi] = True
         logp = torch.log_softmax(forward(net, R, qi, hidden, mode), -1)
-        loss = -(R.dist[qi] * logp).sum(-1).mean()
+        ce = -(R.dist[qi] * logp).sum(-1)
+        if os.environ.get("WM_COMBO_WEIGHT") == "1":                # each query combination weighs the same (card 082.1)
+            _, inv, cnt = torch.unique(R.combo[qi], return_inverse=True, return_counts=True)
+            loss = (ce / cnt[inv]).sum() / len(cnt)
+        else:
+            loss = ce.mean()
         opt.zero_grad()
         loss.backward()
         opt.step()
