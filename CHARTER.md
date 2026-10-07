@@ -123,9 +123,17 @@ these; rule 8 guards against sliding back.
   tallies or merged into hard kinds, so that old experience can be re-read
   when new structure appears. Similarity is graded, specific to the action,
   and learned. Trying confirms or corrects what recall infers.
-- **Weights take over from recall** (System 1, P21) only for rules where
-  they agree with recall on every case, rare ones included. Recall stays
-  the fallback, and novelty is judged outside the network as well as by it.
+- **Recall and networks, each where it predicts better** (the user,
+  2026-10-06; replaces "weights take over from recall"). Recall over
+  stored experience and trained networks, including networks that reason
+  over recalled experience, are judged by one general rule. In a given
+  situation, the answer comes from whichever has better predicted the
+  agent's own held-out experience in situations like it, measured the
+  same way for every action and world. Where neither has, the agent
+  tries. No feature, grouping or arbiter is designed for one
+  environment: inputs come from the encoder's vectors and the agent's
+  own predictions, and a mechanism must work for every action without
+  changes made for one.
 - **Similarity and relations come from what things do.** Relations such
   as "this key fits this door" sit on top of the codes, as codes or in
   weights, rather than being forced into the encoder's numbers (card 033).
