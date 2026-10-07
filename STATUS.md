@@ -28,8 +28,7 @@ Overwritten each session. At most 40 lines.
   its fit is unstable over seeds, and as the vote's prior it is overruled.
 - **CHARTER** (2026-10-06): recall and networks each answer where they
   better predict held-out experience; 081 retired. [082](experiments/082-reasoning-over-recalled-tries/card.md)
-  revise: a network reasoning over recalled tries failed its gate (33–44
-  of 56 toggle cells with nothing removed); training gaps found.
+  revise: reasoning over recalled tries failed its gate (33–44 of 56).
 
 ### Fred note
 Delete when this gets its set of cards.
