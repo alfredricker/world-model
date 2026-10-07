@@ -26,9 +26,10 @@ Overwritten each session. At most 40 lines.
   readout linear in the relation opens a key never seen opening its door
   in 6 of 6 colour folds (seed 80: no other error; version 18: 0 of 6);
   its fit is unstable over seeds, and as the vote's prior it is overruled.
-- **Next, for the user:** the readout as System 1 for toggle, taking
-  over where it agrees with memory (CHARTER). Later: tie cost; 075; 068's
-  revision; trying's retry; tier 3's memory.
+- **CHARTER** (2026-10-06): recall and networks each answer where they
+  better predict held-out experience; 081 retired. **Next, for the
+  user:** approve [082](experiments/082-reasoning-over-recalled-tries/card.md),
+  a network reasoning over recalled tries. Later: tie cost; 075; 068.
 
 ### Fred note
 Delete when this gets its set of cards.

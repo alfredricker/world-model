@@ -6,6 +6,34 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
+- **Card / rung:** [card 082](experiments/082-reasoning-over-recalled-tries/card.md),
+  a network that reasons over recalled tries. Rung 6 (P3), with P10 and
+  P21. Set with the user on 2026-10-06, after cards 076–081: recall
+  compares the query with each stored try separately and votes, so it
+  cannot induce "in every opening the door and key were alike in
+  colour" from its memory; hand-built inputs (roles, "on the way", card
+  070's projection) each passed one test only. CHARTER now judges recall
+  and networks by held-out prediction of the agent's own experience.
+- **Why these:** networks that read a set of stored examples and predict
+  a new one (in-context), relations as comparisons that keep identity
+  out, retrieval trained with the reasoning stage, and what training
+  data makes a network reason over its context rather than memorise.
+- **Until:** card 082 has a decision.
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| `2106_02584` (Kossen et al. 2021, Non-Parametric Transformers) | The whole dataset is the input; attention alternates between rows (datapoints) and within a row (attributes). Trained on one dataset by masking targets and predicting them from other rows: our setting. Lookup task: correct on 99.9% where k-NN and deep kernels are at chance (RMSE 5.2–6.4 against NPT's 0.24–0.75); predictions follow labels changed at test time. Shuffling the other rows at test time shows whether a dataset's predictions use them. Never tested on a held-out attribute value. O(n²) in rows |
+| `1901_05761` (Kim et al. 2019, Attentive Neural Processes); `1807_01622` (Garnelo et al. 2018, Neural Processes) | Reading a context set of (input, outcome) pairs: averaging the set into one vector underfits; self-attention among context pairs and cross-attention from the query fix it. Dot-product attention can collapse to nearest neighbour. Both meta-train on many separate functions, which we do not have |
+| `2112_10510` (Müller et al. 2021, Prior-Data Fitted Networks) | A transformer trained on millions of synthetic datasets from a hand-written prior does Bayesian inference in context (matches the exact GP posterior; transfers to 20 real tabular sets). Its quality is the prior's; a hand-written prior is the engineering CHARTER rules out |
+| `2304_00195` (Altabaa et al. 2023, Abstractor) | Relational cross-attention: attention scores from inner products of the objects' projections, values from symbols (positions or roles), so object features never reach the output. Several heads, separate query and key projections for asymmetric relations; all pairs. The diagonal leaks single-object information |
+| `2012_14601` (Webb et al. 2021, ESBN) | A memory that passes only similarities and a confidence to its controller, never the vectors: 95–100% on four relational tasks with 95 of 100 images withheld (Transformer 67–80%). Needs normalisation over the context (50% without it). Tested on sameness of whole images only |
+| `2206_05056` (Kerg et al. 2022, CoRelNet); `1706_01427` (Santoro et al. 2017, Relation Networks) | All-pairs similarity matrices as the only input carry to unseen relations (83–100%), but fail (≈58%) when training lacks the base patterns, drop to ≈55% when raw features are added beside the relations, and are fooled by a spurious shared feature without regularisation. A relation network on raw object pairs learns shortcuts and does not carry (26.5% on held-out images) |
+| `2202_08417` (Goyal et al. 2022, retrieval-augmented RL) | A learned retrieval (keys and queries from the agent's own encoder, top-k) followed by attention over the retrieved items, trained end to end with the agent; retrieved items re-encoded each update, so no stale keys. Querying with the plain state was no better than no retrieval; a learned query was (+11% Atari; BabyAI 45% to 74%). The router-then-reasoner design |
+| `2203_08913` (Wu et al. 2022, Memorizing Transformers) | k-nearest-neighbour retrieval from a large memory into one attention layer, top 32; approximate retrieval is tolerated, normalised keys handle staleness; gains come from rare items |
+| `2205_05055` (Chan et al. 2022) | When a network reasons in context and when it memorises in its weights: few classes, no variation within a class and fixed meanings give memorisation (100 classes: in-context at chance); many rare classes, variation and meanings that change between contexts give in-context learning. One world with one fixed relation is the memorising regime unless the outcome cannot be read from the query alone |
+
+Previous focus (cards 049–050, set 2026-10-03):
+
 - **Card / rung:** [card 049](experiments/049-recall-through-conditions/card.md),
   recall through the conditions that matter, and
   [card 050](experiments/050-own-tries-first/card.md), own tries first
