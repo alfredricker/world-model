@@ -6,6 +6,31 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
+- **Card / rung:** [card 087](experiments/087-properties-as-learned-action-effects/card.md)
+  and [card 088](experiments/088-relation-from-ignored-directions/card.md):
+  properties as learned action effects, and the relation from the
+  directions they ignore. Set with the user on 2026-10-08 (CHARTER,
+  "Properties are learned action effects", "Patterns are discovered").
+- **Why these:** properties as the actions a thing affords, learned from
+  one's own interaction; uncertainty that rises off the training range;
+  invariance to what does not change outcomes, and the leftover as the
+  attribute a relation compares.
+- **Until:** card 089 has a decision.
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| Gibson 1979, affordances (not in papi) | What a thing offers an agent to do (walk on, grasp) is perceived as such; our properties are learned affordances |
+| Montesano et al. 2008, learning object affordances (not in papi) | A robot learns, from its own actions, which object features predict which effects, and uses it to predict and to plan; features there are given, ours are the encoder's |
+| `1612_01474` (Lakshminarayanan, Pritzel and Blundell 2017, deep ensembles; not yet in papi) | Several networks from different initialisations: the mean predicts, the spread is the uncertainty, which grows off the training data. Card 087's "unknown" |
+| `1706_01350` (Achille and Soatto 2018; not yet in papi) | A representation sufficient for a task and minimal becomes invariant to nuisances: what a task-trained readout ignores is what does not matter for that task. Card 088 uses the ignored part as the relation's attribute |
+| Fisher 1936, linear discriminant analysis (not in papi) | Directions from a generalised eigenproblem of two covariances; card 088 asks the opposite question: most variance within a kind, least read by any property |
+| `1501_01332` (Peters, Bühlmann and Meinshausen 2016, invariant causal prediction) | A true condition predicts the outcome alike in every setting; a distractor does not |
+| `the-relational-bottleneck-as-an-inductive-bias-for-efficient` (Webb et al.) | A relation is a comparison of two things in one part, never their attributes |
+| Gatys, Ecker and Bethge 2016, style transfer (not in papi) | Style is the feature statistics pooled over an image, content the arrangement; card 089's material part is such a pooled statistic |
+| Tenenbaum and Freeman 2000, separating style and content with bilinear models (not in papi) | One factor that acts the same way on every value of the other lets a style learned on some contents apply to new ones |
+
+Previous focus (card 082, set 2026-10-06):
+
 - **Card / rung:** [card 082](experiments/082-reasoning-over-recalled-tries/card.md),
   a network that reasons over recalled tries. Rung 6 (P3), with P10 and
   P21. Set with the user on 2026-10-06, after cards 076–081: recall

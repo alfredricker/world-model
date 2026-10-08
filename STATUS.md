@@ -2,7 +2,7 @@
 
 Overwritten each session. At most 40 lines.
 
-- **Date:** 2026-10-07, `master`. **Rung:** 1, not passed.
+- **Date:** 2026-10-08, `master`. **Rung:** 1, not passed.
   **Architecture:** version 18 (cards 074–074.2). **Direction:** CHARTER's
   "Current direction", rule 8; the standing evaluation is its three
   MiniGrid tiers.
@@ -10,23 +10,24 @@ Overwritten each session. At most 40 lines.
   (threshold 99%; version 17: 20.8 steps); tier 2 BlockedUnlockPickup
   **59%** (version 17: 25%); tier 3 ObstructedMaze-Full-v1: memory cannot
   be built yet.
-- **Version 18** ([074.2](experiments/074.2-orders-within-time/card.md),
-  2026-10-06): orders read from plans, ties kept, two-part needs split,
-  caches. Tier 2 out of time 4 (6); tier 1 routes 17% longer.
-- **Learned routing (076–083, stop):** orders from tokens learned in tier
-  2, carried to the decoy world only with "on the way" (078: 41% at 18%);
-  a readout linear in card 070's relation opened a never-seen pair in 6
-  of 6 folds, unstably (080); reasoners over recalled tries failed gates.
-- **Conditions over roles and relations**, all stop, left-out pair 0 of
-  6. [084](experiments/084-conditions-over-roles-and-relations/card.md)–[084.2](experiments/084.2-back-off-most-specific-first/card.md):
-  identity admitted first made every general condition redundant.
-  [084.3](experiments/084.3-conditions-without-constants-first/card.md),
-  [084.4](experiments/084.4-gamma-by-combinations-left-out/card.md)
-  stop: roles and cuts first; the pair's cell holds only openings in
-  every fold, tier 2's hand table right (9/9, 3/3); diagnosis 6 of 6,
-  declared 0 of 6: γ at its grid's top, fitted on outcome classes that
-  name the result tile, which no other combination has. Next: γ on
-  the category, combinations left out.
+- **Version 18** ([074.2](experiments/074.2-orders-within-time/card.md)): orders read from plans.
+- **Conditions over roles and relations** (084–084.4, stop): admitted
+  before identity ([084.3](experiments/084.3-conditions-without-constants-first/card.md)) they get every table right.
+- **Tier 3's memory** ([085.3](experiments/085.3-sampled-queries-constant-rate/card.md)):
+  linear, about 68 minutes in full; fits now stored per memory
+  (`WM_STORED_FITS=1`, bit-identical); tier 3's built and stored (about 85 minutes once).
+- **Version 19** ([086](experiments/086-version-19-general-conditions/card.md),
+  approved 2026-10-08): 084.3's conditions in the agent's recall; judged
+  by the tiers and "right key within 2 tries" in every colour fold.
+  Gate passed. Main runs wait (now after 087–089).
+- **Properties** ([087](experiments/087-properties-as-learned-action-effects/card.md), revise):
+  a network on the encoder's vector reads walkable, pick up and toggle
+  for every tile, new hues included; a hue never in memory goes from
+  0–16% to 96–100% in five folds, green 75% (untraced). Tiers 1–2 no worse.
+- **Relation from ignored directions** ([088](experiments/088-relation-from-ignored-directions/card.md),
+  revise): the leftover is hue, but coded per kind (70–88° apart); next,
+  [089](experiments/089-encoder-with-a-made-of-part/card.md) (stop): a "made of" path lost colour in training;
+  nine fixed colours code colour as a table. Drafted: [090](experiments/090-encoder-on-fresh-hues/card.md), fresh hues in the encoder's stream.
 
 ### Fred note
 Delete when this gets its set of cards.

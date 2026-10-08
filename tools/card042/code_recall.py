@@ -190,8 +190,12 @@ class CodeKind(SP.SlotKind):
         self.prior = 1.0 / len(self.lab)
         D = self.D
         if len(self.keys) > 2:
-            same = (self.fid[:, None] == self.fid[None]) & (self.hid[:, None] == self.hid[None])
-            fit = fit_codes(S, self.X, self.kpos, self.ulist, self.lc, same, list(range(len(self.keys))))
+            SF = globals().get("SAMPLED_FIT")                 # card 085 (WM_SAMPLED=1): sampled pairs above its size
+            if SF is not None and len(self.keys) > SF.M_EXACT:
+                fit = SF.fit_codes_sampled(S, self.X, self.kpos, self.ulist, self.lc, self.fid, self.hid)
+            else:
+                same = (self.fid[:, None] == self.fid[None]) & (self.hid[:, None] == self.hid[None])
+                fit = fit_codes(S, self.X, self.kpos, self.ulist, self.lc, same, list(range(len(self.keys))))
             self.lam2, self.beta = fit["lam2"], fit["beta"]
             self.lam1 = self.lam2.copy()
             self.lam1[2 * D:] = fit["lam1v"]

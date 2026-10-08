@@ -74,13 +74,52 @@ if os.environ.get("WM_COLLECT") == "1":                # card 076: each stored w
     import collect as COLLECT                          # noqa: E402
     T.INSTALL.append(COLLECT.install)
     T.COUNTS.append(COLLECT.STATS)
+if os.environ.get("WM_SAMPLED") == "1":              # card 085: recall's fits on sampled pairs above 2,048 keys
+    sys.path.insert(0, str(ROOT / "tools" / "card085"))
+    import sampled as SAMPLED                          # noqa: E402
+    T.INSTALL.append(SAMPLED.install)
+    T.COUNTS.append(SAMPLED.STATS)
+if os.environ.get("WM_STORED_FITS") == "1":          # card 085.3 (a): recall's fitted weights stored per memory
+    sys.path.insert(0, str(ROOT / "tools" / "card085"))
+    import stored as STORED                            # noqa: E402
+    T.INSTALL.append(STORED.install)
+    T.COUNTS.append(STORED.STATS)
+PROPS = None
+if os.environ.get("WM_PROPS") == "1":                # card 087: walkability from its own tries, the properties as prior
+    sys.path.insert(0, str(ROOT / "tools" / "card087"))
+    import walk as PROPS                               # noqa: E402
+    PROPS.hook(T)
+    T.COUNTS.append(PROPS.STATS)
+GEN = None
+if os.environ.get("WM_GENERAL") == "1":              # card 086: version 19's recall, conditions over roles and relations
+    sys.path.insert(0, str(ROOT / "tools" / "card086"))
+    import general as GEN                              # noqa: E402
+    GEN.hook(T)
+    T.COUNTS.append(GEN.STATS)
 LAST = {}
 _make = T.make
+
+
+def _count_locked(u):
+    """Card 086 (report only): toggles at a locked door, and whether a locked door was opened. Changes nothing."""
+    step0 = u.step
+    u.locked_toggles, u.door_opened = 0, False
+
+    def step(action):
+        fr = u.grid.get(*u.front_pos)
+        locked = action == u.actions.toggle and fr is not None and fr.type == "door" and fr.is_locked
+        u.locked_toggles += int(locked)
+        out = step0(action)
+        u.door_opened |= bool(locked and fr.is_open)
+        return out
+
+    u.step = step
 
 
 def make(tier):
     env = _make(tier)
     LAST["env"] = env
+    _count_locked(env.unwrapped)
     return env
 
 
@@ -118,6 +157,8 @@ _episode0 = T.episode
 def episode(job):
     r = _episode0(job)
     r["decoy_tries"] = int(getattr(LAST["env"].unwrapped, "decoy_tries", 0))
+    r["locked_toggles"] = int(getattr(LAST["env"].unwrapped, "locked_toggles", 0))     # card 086
+    r["door_opened"] = bool(getattr(LAST["env"].unwrapped, "door_opened", False))
     if CONFLICTS is not None:
         r["weighings"] = weighings()
     if CACHE is not None:

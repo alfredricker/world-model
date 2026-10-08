@@ -102,7 +102,16 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   shape (0 of 10; label codes carried fully). A penalty on the number of
   codes put a new colour on the nearest known one (8 of 10), which
   carried the shared effects and wrongly the colour rules too.
-  *Evidence:* cards 031, 032. *Confirmed* (label arm as control).
+  The same holds for vectors: on card 070's encoder, the directions that
+  networks reading a tile's effects ignore are mostly hue (78–85% of
+  their variance), but keys' and doors' point 70–88° apart, so "equal
+  along them" told matching pairs apart only 53 of 66 times (card 088).
+  Comparing an attribute across kinds needs it coded alike in every kind.
+  A path that sees only pixel values does not keep colour when another
+  path can carry it too (0.96 readable early, 0.22–0.54 after training),
+  and nine fixed colours are coded as nine categories, with no direction
+  a new hue falls on (6–8% of fresh hues' variance; card 089).
+  *Evidence:* cards 031, 032, 088, 089. *Confirmed* (label arm as control).
 - **An exact lookup over codes cannot use "like a key but not a known
   key"; novelty depends on the action.** One radius per code, the same for
   every action, either lets a new appearance share familiar codes (it

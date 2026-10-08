@@ -137,6 +137,31 @@ these; rule 8 guards against sliding back.
 - **Similarity and relations come from what things do.** Relations such
   as "this key fits this door" sit on top of the codes, as codes or in
   weights, rather than being forced into the encoder's numbers (card 033).
+- **Properties are learned action effects** (the user, 2026-10-08). A
+  tile's property is what an action does to it: walkable (moving forward
+  steps onto it without being blocked), pickupable (pick up takes it),
+  unlockable (toggle changes it). Each is learned from the agent's own
+  tries, improves with experience (P19), carries over to tiles that look
+  different but are the same kind (not a table of exact tiles), and says
+  "unknown" where no experience is like the tile, which leads to trying.
+  A property says what a tile can do in some situation; conditions say
+  when it holds now (a locked door becomes unlockable once the matching
+  key is held). A network on the encoder's vectors may learn them where
+  it predicts better than recall (bullet above); its training data then
+  varies appearance, so a property cannot be learned as per-colour facts.
+- **Patterns are discovered** (the user, 2026-10-08). The agent finds by
+  reflecting on its experience which attribute governs a relation, as a
+  person sees from the table "red key opens red door, blue key opens blue
+  door" that the rule is about colour: the attribute is the one that
+  explains stored tries most simply, chosen from candidates the agent
+  forms itself, not named in advance. Card 070's relation, trained to
+  match colours, is the current exception until a card replaces it.
+  Discovery needs experience in which the pattern varies (the user,
+  2026-10-08): an attribute becomes a dimension the agent can compare
+  across kinds only if its values are many and never repeat (else a
+  table fits as well) and vary independently of kind (the same values
+  on many kinds, many values on each). Where the world does not supply
+  this, a declared curriculum does (C3); cards 069, 070, 088 and 089.
 - **Transfer is judged by tries.** How quickly a new thing is mapped onto
   known ones matters more than getting it right at first sight.
 - **Goals are any condition** over codes, positions and relations.
