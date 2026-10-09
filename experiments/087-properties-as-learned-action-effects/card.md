@@ -245,3 +245,9 @@ folds and 75% in the sixth, with no tier worse. The green failure is a
 planner that finds no plan with every input it needs predicted right; it
 is traced after card 089, with tier 3 once its memory builds.
 
+
+**Later (2026-10-09, card 091.1).** The forward prior is part of version
+20: with card 091's router and its identity level, tier 2 rose from 79%
+to 95–96% and tier 3 to 14/30. The green door that failed here was the
+case card 092 traced: "green door, open" had no forward tries in tier 2's
+memory, and only this network called it walkable.

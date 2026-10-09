@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools" / "card091"))
 import krouter as KR                                   # noqa: E402
 
-STATS = {"router_queries": 0, "router_keys_embedded": 0}    # counters (the runner diffs them per episode)
+STATS = {"router_queries": 0, "router_keys_embedded": 0, "router_identity": 0}    # counters (the runner diffs them per episode)
 INFO = {}
 STATE = {}
 
@@ -75,27 +75,107 @@ def query(W, a, q):
     return r
 
 
+def _et(kd, E):
+    """E as a float32 tensor, kept while the stored keys do not change."""
+    c = STATE["ET"].get(id(kd))
+    if c is None or c[0] is not E:
+        c = STATE["ET"][id(kd)] = (E, torch.as_tensor(E, dtype=torch.float32))
+    return c[1]
+
+
+def ident(W, a, kd):
+    """Per stored key its identity: the front and held codes (card 042's code_id); forward: the front code."""
+    n = len(kd.keys)
+    c = STATE["ID"].get(id(kd))
+    if c is None or len(c) < n:
+        CR = sys.modules["code_recall"]
+        part = 1 if a == STATE["fwd"] else 2
+        c = STATE["ID"][id(kd)] = np.array([[CR.code_id(W.S, int(h)) for h in k[:part]] for k in kd.keys],
+                                           np.int64).reshape(n, part)
+    return c[:n]
+
+
+def groups(W, a, kd):
+    """Stored keys by identity (front and held codes; forward: front code) → their indices; rebuilt as keys grow."""
+    n = len(kd.keys)
+    c = STATE["GR"].get(id(kd))
+    if c is None or c[0] != n:
+        ids = ident(W, a, kd)
+        g = {}
+        for i, row in enumerate(map(tuple, ids.tolist())):
+            g.setdefault(row, []).append(i)
+        c = STATE["GR"][id(kd)] = (n, {k: np.asarray(v, np.int64) for k, v in g.items()})
+    return c[1]
+
+
+def _vote(eq, Et, C, exclude_cols=None):
+    d = torch.cdist(torch.as_tensor(eq, dtype=torch.float32), Et, p=1).double().numpy()
+    k = np.exp(-d / STATE["tau"])                      # (queries, keys): no (queries, keys, 32) temporary
+    if exclude_cols is not None:
+        r = np.flatnonzero(exclude_cols >= 0)
+        k[r, exclude_cols[r]] = 0.0
+    return k @ C
+
+
+DEBUG = os.environ.get("WM_ROUTER_DEBUG") is not None
+DEBUG_ACT = int(os.environ.get("WM_ROUTER_DEBUG", "-1"))
+
+
+def _nm(W, h):
+    inv = STATE.setdefault("inv", {int(hh): t for t, hh in reversed(list(enumerate(W.S.hof.tolist())))})
+    t = inv.get(int(h))
+    return STATE["VP"].CO.name_of_code(t) if t is not None else int(h)
+
+
 def route(W, a, kd, qs, C, exclude=None):
-    """P_route for queries qs over the stored keys (counts C, by category)."""
+    """P_route for queries qs over the stored keys (counts C, by category). Card 091.1 (WM_ROUTER_ID=1): only over
+    the stored keys with the query's front and held codes when there are any (computed over that group alone)."""
     E = stored(W, a, kd)
     eq = np.stack([query(W, a, q) for q in qs])
-    d = np.abs(eq[:, None] - E[None]).sum(-1)
-    k = np.exp(-d / STATE["tau"])
-    if exclude is not None:
-        r = np.flatnonzero(exclude >= 0)
-        k[r, exclude[r]] = 0.0
-    N = k @ C
     f = C.sum(0) + 1.0
     f = f / f.sum()
+    N = np.zeros((len(qs), C.shape[1]))
+    rest = np.arange(len(qs))
+    if STATE.get("identity"):
+        CR = sys.modules["code_recall"]
+        part = 1 if a == STATE["fwd"] else 2
+        G = groups(W, a, kd)
+        todo = []
+        for i, q in enumerate(qs):
+            idx = G.get(tuple(CR.code_id(W.S, int(h)) for h in q[:part]))
+            if idx is not None and exclude is not None and exclude[i] >= 0:
+                idx = idx[idx != exclude[i]]
+            if idx is not None and len(idx):
+                N[i] = _vote(eq[i:i + 1], torch.as_tensor(E[idx], dtype=torch.float32), C[idx])[0]
+                STATS["router_identity"] += 1
+                if DEBUG and a == DEBUG_ACT:
+                    k = np.exp(-torch.cdist(torch.as_tensor(eq[i:i + 1], dtype=torch.float32),
+                                            torch.as_tensor(E[idx], dtype=torch.float32), p=1).double().numpy()[0] / STATE["tau"])
+                    top = np.argsort(-k)[:5]
+                    print(f"   route: act {a} q {[_nm(W, h) for h in q]} group {len(idx)} counts {C[idx].sum(0).round(1).tolist()} "
+                          f"vote {N[i].round(3).tolist()} top {[(round(float(k[t]), 3), C[idx][t].round(1).tolist(), [_nm(W, h) for h in kd.keys[idx[t]][2:]]) for t in top]}",
+                          flush=True)
+            else:
+                todo.append(i)
+        rest = np.asarray(todo, np.int64)
+    if len(rest):
+        ex = None if exclude is None else np.asarray(exclude)[rest]
+        N[rest] = _vote(eq[rest], STATE["Et"](kd, E), C, ex)
     STATS["router_queries"] += len(qs)
-    return (N + STATE["alpha"] * f) / (N.sum(1, keepdims=True) + STATE["alpha"])
+    P = (N + STATE["alpha"] * f) / (N.sum(1, keepdims=True) + STATE["alpha"])
+    if DEBUG and a == DEBUG_ACT:
+        for i, q in enumerate(qs):
+            if str(_nm(W, q[0])).startswith("box"):
+                print(f"   routeP: q {[_nm(W, h) for h in q]} prior {f.round(3).tolist()} P {P[i].round(3).tolist()}", flush=True)
+    return P
 
 
 def install(W, T):
     VP = T.VP
     torch.set_num_threads(1)
     net = KR.load(os.environ["WM_ROUTER"], dev="cpu")
-    STATE.update(net=net, tau=float(net.log_tau.exp()), alpha=float(net.log_alpha.exp()), E={}, Q={}, tail={},
+    STATE["VP"] = VP
+    STATE.update(net=net, tau=float(net.log_tau.exp().detach()), alpha=float(net.log_alpha.exp().detach()), E={}, Q={}, tail={}, ET={}, Et=_et, ID={}, GR={}, identity=os.environ.get("WM_ROUTER_ID") == "1",
                  fwd=VP.FWD, role={VP.FWD: torch.tensor([0]), **{a: torch.tensor([0, 1] + [2] * 6) for a in VP.INTER}})
     acts = {id(W.kinds[a]): a for a in VP.INTER}
     STATE["acts"] = acts
@@ -139,7 +219,7 @@ def install(W, T):
         STATE["E"][id(k)] = _embed(a, *key_tokens(W, a, k.keys))
         STATS["router_keys_embedded"] += len(k.keys)
     W.clear_lazy()
-    INFO.update(router=os.environ["WM_ROUTER"], tau=round(STATE["tau"], 4), alpha=round(STATE["alpha"], 4),
+    INFO.update(router=os.environ["WM_ROUTER"], identity_first=STATE["identity"], tau=round(STATE["tau"], 4), alpha=round(STATE["alpha"], 4),
                 stored_keys={str(a): len(W.kinds[a].keys) for a in (VP.FWD,) + tuple(VP.INTER)})
     return dict(INFO)
 

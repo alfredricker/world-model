@@ -3,8 +3,8 @@ id: "091"
 title: a router to stored tries, trained on diverse worlds, as recall's prior
 rung: 1
 serves: [P10, P17, P6, P19, C2]
-status: approved
-verdict:
+status: done
+verdict: pass
 arch_version: 18
 date: 2026-10-08
 ---
@@ -222,7 +222,7 @@ Smoke: 8 tier 1 episodes, all solved, about 120 router queries each.
 |---|---|---|---|---|
 | 1 DoorKey-8x8 (200) | **200/200**, 24.4 steps | 200/200, 24.4 | – | passes (≥ 99%) |
 | 2 BlockedUnlockPickup (100) | **79/100**, 72.5 steps when solved | 59/100, 95.2 | 64/100, 101.0 | **better** |
-| 3 ObstructedMaze-Full (30) | `runs/091/tier3.sh`, handed to the user | 5/30 (an hour per episode) | – | pending |
+| 3 ObstructedMaze-Full (30) | **0/30**; 28 turn in place for most of the 3,600 steps | 5/30 (an hour per episode) | – | **worse** |
 
 - **Tier 2 on the same seeds:** 21 episodes solved only with the router,
   1 only by version 18 (sign test on the 22 that differ, p < 0.0001).
@@ -244,3 +244,31 @@ Smoke: 8 tier 1 episodes, all solved, about 120 router queries each.
   or more blocked forwards into a key or ball. After the door opens, the
   router's gain is in the plan to the box (1002006: version 18 planned
   326 steps and failed; the router solved it in 130).
+
+- **Tier 3's first attempt** (the user, 2026-10-08) was stopped by the
+  memory cap 2.5 minutes in (44 GB): `routed.py` built a (queries ×
+  keys × 32) array of differences against tier 3's 54,000 keys in each
+  of 20 workers. Now `torch.cdist` (queries × keys only); a 2-episode
+  smoke peaked at 5 GB. One smoke episode (seed 1003001) spent 3,600
+  steps exploring with 6 wrong predictions, unlike version 18's run of
+  the same seed (26 explore steps): read in the full run.
+
+## Decision
+
+**Keep** (the user, 2026-10-08, before tier 3's score: "I want to mark
+091 a keep regardless"). The gate passed (it reads memory; tier 3's
+held-out tries, a world it never trained on, predicted far better than
+version 18's vote on every action); tier 1 100%; tier 2 79% against
+59% (21 seeds won, 1 lost). Version 19.
+
+**Tier 3 (overnight, after the decision): 0/30, worse than version
+18's 5/30.** In 28 episodes the agent spends 3,000 or more of its 3,600
+steps exploring (95% of all steps; version 18: about 1%), and a trace of
+seed 1003001 shows it turning in place before a blue door for over
+3,000 steps: the step chosen points it away and the next step's plan
+points it back. The same 2-seed smoke with version 18's flags explores
+25 and 26 steps; with card 087's forward prior added to the router it
+still loops, so the router's predictions for pick up, drop or toggle
+cause it. Seconds per step 0.12 (version 18: 1.68), since turning costs
+little. Under CHARTER's keep rule (no tier worse) this would be revise;
+the user's keep stands, and the loop is traced in card 092's night.

@@ -6,28 +6,30 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Card / rung:** [card 087](experiments/087-properties-as-learned-action-effects/card.md)
-  and [card 088](experiments/088-relation-from-ignored-directions/card.md):
-  properties as learned action effects, and the relation from the
-  directions they ignore. Set with the user on 2026-10-08 (CHARTER,
-  "Properties are learned action effects", "Patterns are discovered").
-- **Why these:** properties as the actions a thing affords, learned from
-  one's own interaction; uncertainty that rises off the training range;
-  invariance to what does not change outcomes, and the leftover as the
-  attribute a relation compares.
-- **Until:** card 089 has a decision.
+- **Card / rung:** [card 091](experiments/091-router-trained-on-diverse-worlds/card.md)
+  (kept, version 19) and [card 092](experiments/092-view-effects-in-recall/card.md):
+  recall's prior through a learned router, and recall queried by the
+  effect a goal needs, including tiles that come into view. Set
+  2026-10-08 (the user: goal hierarchies from recall, not a separate
+  store).
+- **Why these:** retrieval through a learned embedding over every stored
+  experience; regression from a goal through actions' effects; reusing
+  what reached a goal before; goals relabelled from what an episode
+  achieved.
+- **Until:** card 092 has a decision.
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |
-| Gibson 1979, affordances (not in papi) | What a thing offers an agent to do (walk on, grasp) is perceived as such; our properties are learned affordances |
-| Montesano et al. 2008, learning object affordances (not in papi) | A robot learns, from its own actions, which object features predict which effects, and uses it to predict and to plan; features there are given, ours are the encoder's |
-| `1612_01474` (Lakshminarayanan, Pritzel and Blundell 2017, deep ensembles; not yet in papi) | Several networks from different initialisations: the mean predicts, the spread is the uncertainty, which grows off the training data. Card 087's "unknown" |
-| `1706_01350` (Achille and Soatto 2018; not yet in papi) | A representation sufficient for a task and minimal becomes invariant to nuisances: what a task-trained readout ignores is what does not matter for that task. Card 088 uses the ignored part as the relation's attribute |
-| Fisher 1936, linear discriminant analysis (not in papi) | Directions from a generalised eigenproblem of two covariances; card 088 asks the opposite question: most variance within a kind, least read by any property |
-| `1501_01332` (Peters, Bühlmann and Meinshausen 2016, invariant causal prediction) | A true condition predicts the outcome alike in every setting; a distractor does not |
-| `the-relational-bottleneck-as-an-inductive-bias-for-efficient` (Webb et al.) | A relation is a comparison of two things in one part, never their attributes |
-| Gatys, Ecker and Bethge 2016, style transfer (not in papi) | Style is the feature statistics pooled over an image, content the arrangement; card 089's material part is such a pooled statistic |
-| Tenenbaum and Freeman 2000, separating style and content with bilinear models (not in papi) | One factor that acts the same way on every value of the other lets a style learned on some contents apply to new ones |
+| `1703_01988` (Pritzel et al. 2017, neural episodic control) | A kernel-weighted vote over stored experiences nearest in a learned embedding; card 091's router |
+| `2203_08913` (Wu et al. 2022, memorizing transformers) | Attention over retrieved memories by nearest neighbours, memory growing without retraining |
+| `strips` (Fikes and Nilsson 1971) | An action is preconditions and effects; a goal is reached by regressing it through actions whose effects add it. Card 092 adds "a tile of kind u comes into view" as an effect to regress through |
+| `1707_01495` (Andrychowicz et al. 2017, hindsight experience replay) | What an episode did achieve is a goal it can learn from; card 092's view effects are the effects an episode achieved, kept as recallable tries |
+| Hammond 1989, case-based planning (not in papi) | Plans retrieved by similarity of situation and goal, then repaired where they fail; card 092 retrieves single effects and chains them, whole cases are the note's later card |
+
+Previous focus (cards 087–089, set 2026-10-08): properties as learned
+action effects (Gibson; Montesano et al.; deep ensembles; Achille and
+Soatto; Fisher's discriminant; invariant causal prediction; Webb et
+al.; Gatys et al.; Tenenbaum and Freeman), until card 089's decision.
 
 Previous focus (card 082, set 2026-10-06):
 

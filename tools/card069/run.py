@@ -92,9 +92,15 @@ if os.environ.get("WM_PROPS") == "1":                # card 087: walkability fro
 ROUTER = None
 if os.environ.get("WM_ROUTER"):                      # card 091: the key-form router as recall's prior
     sys.path.insert(0, str(ROOT / "tools" / "card091"))
-    import routed as ROUTER                            # noqa: E402
+    import routed as ROUTER                            # noqa: E402  (WM_ROUTER_ID=1: card 091.1)
     ROUTER.hook(T)
     T.COUNTS.append(ROUTER.STATS)
+REVEAL = None
+if os.environ.get("WM_REVEAL"):                      # card 092: an unseen goal tile brought into view first
+    sys.path.insert(0, str(ROOT / "tools" / "card092"))
+    import reveal as REVEAL                            # noqa: E402
+    REVEAL.hook(T)
+    T.COUNTS.append(REVEAL.STATS)
 GEN = None
 if os.environ.get("WM_GENERAL") == "1":              # card 086: version 19's recall, conditions over roles and relations
     sys.path.insert(0, str(ROOT / "tools" / "card086"))

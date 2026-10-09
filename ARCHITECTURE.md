@@ -1,8 +1,59 @@
 ---
-arch_version: 18
+arch_version: 20
 ---
 
 # Architecture
+
+Version 20 is version 19 with two changes found while running card 092
+overnight ([card 091.1](experiments/091.1-router-within-identity/card.md),
+kept 2026-10-09 under the user's overnight authority; the user may
+revert):
+- **Identity before the router.** Where stored keys share the query's
+  front and held codes (forward: front code), the router's vote runs over
+  those keys alone, ranked by its view similarity; over every key only
+  when there are none (card 042's two levels: codes for identity,
+  vectors for similarity). Version 19's vote over all 54,000 tier 3
+  keys called a locked door "opens with an empty hand" at 0.27–0.53 after
+  1,544 failed tries, and the agent turned in place before it.
+- **Forward's prior is card 087's property network** (`WM_PROPS=1`):
+  P = (N_own + β f(z)) / (|N_own| + β), f the ensemble's walkability from
+  the tile's encoder vector, in place of the router's forward vote (66
+  training keys; it did not separate open doors from closed ones). By
+  card 091's own rule, per action whichever predicts held-out tries
+  better: card 087 calls every open door walkable (0.68–1.0), every
+  locked or closed door, key, ball and box blocked.
+
+Tier 1 100% in 24.4 steps; tier 2 95% (19: 79%, better), 119 steps when
+solved; tier 3 **14/30** (18: 5/30, 10 seeds won and 1 lost; 19: 0/30),
+1.45 s per step.
+
+Version 19 is version 18 with recall's prior read through a router
+([card 091](experiments/091-router-trained-on-diverse-worlds/card.md),
+kept by the user 2026-10-08). Where a query has no tries of its own
+(own tries first is unchanged, card 050), version 18's neighbour vote
+over fitted weights per number is replaced by a vote over the stored
+keys nearest in a learned embedding:
+- **The router** reads recall's key as tokens: the front tile, the held
+  tile and the believed view's tiles (at most 6), each its encoder
+  vector with a role (front, hand, view), the action as an input; two
+  attention layers and a mean give 32 numbers. Forward's key is the
+  front tile alone.
+- **The vote** is P_route = (Σ_k exp(−‖e_q − e_k‖₁/τ) C_k + α f) /
+  (Σ_k exp(−‖e_q − e_k‖₁/τ) |C_k| + α) over the same action's stored keys
+  in this world's memory (C_k their outcome counts, f the action's
+  outcome frequencies; τ 0.85, α 0.31 learned), and P = (N_own + β P_route)
+  / (|N_own| + β) with version 18's β.
+- **Trained once, offline,** on the stored keys of tiers 1, 2 and the
+  decoy world (never tier 3), each key predicted from the rest of its own
+  world with single keys and whole (front, held) combinations hidden.
+  Stored keys are embedded once per memory; an episode's new keys and
+  the queries as they come (CPU).
+
+Tier 1 100% in 24.4 steps (as version 18); tier 2 79% (version 18:
+59%, better; 21 seeds won, 1 lost), 72.5 steps when solved (95.2);
+tier 3 0/30 (version 18: 5/30, worse): the agent turns in place before a
+door in 28 of 30 episodes, from the router's interaction predictions
+(being traced). Random actions on tier 2 rose from 21% to 36% of steps.
 
 Version 18 is version 17 with orders read from plans and two-part needs
 split ([card 074](experiments/074-conflicts-read-from-plans/card.md),
@@ -213,6 +264,39 @@ on `tools/card047/situations.py`, which builds on:
 
 Version 5, the counted model over exact tile IDs, is in git (commit
 `33f9949`).
+
+## Memory systems (the frame, agreed with the user 2026-10-09)
+
+The architecture is organised as three kinds of memory, as in the
+complementary learning systems account of human memory (McClelland,
+McNaughton and O'Reilly 1995): a fast store of single events, a slow
+store of structure drawn out of them, and a small working memory for the
+task at hand. Each component below belongs to one of them. This section
+is the frame for the next cards; the model itself is unchanged.
+
+| Memory | What it holds | Components now | Gap |
+|---|---|---|---|
+| **Working** (this episode, this task) | The believed scene; the goal; what the agent is doing toward it | Tokens and placement (the believed map); the goal; the chain of needs; kept choices (condition → achiever); card 060's door to look behind; card 072's current guess; the episode's own tries | Most of it is rebuilt at every step instead of held and revised only when something relevant changes: tier 3 spends about 85% of each step in the guess-trying fallback (1.45 s per step) |
+| **Events** (long-term, fast) | Every stored try: action, the tokens it read (front, held, view) → what changed | Memory; recall (own tries first, admitted conditions); the router's similarity over tokens | Answers questions of structure by lookup: tier 2's last failures ask "does pick up work on this box with an empty hand?" and find 19 successes with views too unlike the present to count |
+| **Structure** (long-term, slow) | What tokens do, how they relate, which conditions lead to which in a goal tree | The encoder; card 070's key–door relation; card 087's property network (walkable, pick up, toggle from a token's vector); recall's admitted conditions | Pieces added one at a time; not used as recall's prior except for forward (version 20); no goal trees kept from solved episodes |
+
+**How they work together:**
+- Working memory asks the other two only when its contents stop
+  answering.
+- Structure is the prior for event lookup. Recall backs off from the
+  most specific evidence to the most general: same tokens, then similar
+  tokens, then structure.
+- Events are consolidated into structure over time. Card 052's staging
+  (long-term memory written only once the encoder settles) is the
+  timing of that step.
+
+**Planned order** (cards not yet drafted):
+1. Working memory: what is held between steps, and what makes the agent
+   reconsider (tier 3's speed).
+2. Structure as recall's prior (tier 2's last failures; replaces the
+   router's prior over all tries).
+3. Goal trees consolidated from solved episodes and recalled by
+   situation (card 092's closing note).
 
 ## In brief
 
@@ -605,4 +689,6 @@ At every step:
 | 15 | 2026-10-05 | 067 | Walking by a closeness propagated over the believed map per situation and need, in place of the how-soon network and the tables over every pair of placements; crossable tokens become conditions in one field, in place of single and paired token searches. MiniGrid tier 1 200/200 (as version 14), tier 2 0/100 (as version 14); setup 21 s against 47 |
 | 16 | 2026-10-05 | 072 | Card 070's encoder, the relation `rel:P` (P frozen) and trying the likeliest untried way when no plan is found. Decoy folds 95–98% (version 15's configuration 7%; a known key 94%); tier 1 200/200, 20.8 steps; tier 2 2/100 (no different from 0/100) |
 | 18 | 2026-10-06 | 074–074.2 | Orders read from plans (Definition 8 answered by the planner; no list of parts), found orders always followed and ties kept as the last step's pursued need, else fewer acts then steps; two-part needs split into "hold h" and the view need, card 043's splice removed; recall's pair distance and part conditions cached (the same actions). Decoy world with the key known 100/100 per fold; tier 1 200/200, 24.4 steps (17: 20.8); tier 2 59/100 (17: 25/100, better), 4 out of time; decoy folds with trying no different |
+| 20 | 2026-10-09 | 091.1, 087 | The router's vote within the same front and held codes first (identity before similarity); forward's prior from card 087's property network. Tier 1 200/200, 24.4 steps; tier 2 95/100 (19: 79/100, better); tier 3 14/30 (18: 5/30, better; 10 won, 1 lost), 1.45 s per step |
+| 19 | 2026-10-08 | 091 | Recall's prior read through a router: an attention network over recall's key as tokens (front, hand, believed view; encoder vectors with roles) embeds each key, and the prior is a kernel vote over the same action's stored keys nearest in that embedding, with the action's frequencies at a learned weight, in place of the neighbour vote over fitted weights per number; trained offline on tiers 1, 2 and the decoy world's keys. Tier 1 200/200, 24.4 steps; tier 2 79/100 (18: 59/100, better); tier 3 0/30 (18: 5/30, worse; turning in place before a door), kept by the user before tier 3 |
 | 17 | 2026-10-06 | 073 | Needs ordered by the states they conflict over (reasonable goal orderings on recall's conditions, at any depth of the chain), and the states an achiever relies on protected unless so ordered, in place of card 051's threats. Decoy world with the key known 99/100 per fold (version 16 94); tier 1 200/200, 20.8 steps; tier 2 25/100 (version 16 2/100, better); decoy folds with trying no different |

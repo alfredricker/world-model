@@ -234,7 +234,11 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   new-colour switch tests fell from 30% to 17%. Judging every remembered
   situation by the mixed prediction gave 40%, with the switch turned on by
   plan (cards 046–047). A failed try rules out its situation, not the
-  thing. *Confirmed.*
+  thing. A learned router is no exception: voting over every stored key,
+  it gave a locked door 0.27–0.53 "opens with an empty hand" across views
+  although 1,544 such tries had all failed, and the agent turned in place
+  before the door in 28 of 30 tier 3 episodes; voting among keys of the
+  same tiles first ended the loop (cards 091, 091.1). *Confirmed.*
 
 - **Place a partial view with the agent's own motion, not by matching
   alone.** With a 7 × 7 view, a wrong placement that sees only
@@ -257,6 +261,13 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   count, so its steps and time per step were wrong (0.337 s per step
   reported, 0.262 measured); found when a run "differed" from card 074's
   with identical actions. *Evidence:* card 074.2.
+- **Time a change under the run's own parallel load before the full
+  run.** Single processes hid two tier 3 slowdowns: 24 math threads per
+  forked worker (load 137 on 24 cores), and a step that searched the
+  map every step, 3.6 times slower with 20 episodes in parallel; the
+  first full runs reached about 85 steps per hour. *Evidence:* card 092,
+  `runs/092/speed_*`.
+
 - **Log every loss term separately;** a combined value hid a scale failure
   (old:legacy/mgrid/README.md). **Check cheap-model extraction;** of 61
   lessons Haiku drew from the old repo, about 10 survived unchanged.
