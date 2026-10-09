@@ -7,27 +7,28 @@ Overwritten each session. At most 40 lines.
   "Current direction", rule 8; the standing evaluation is its three
   MiniGrid tiers.
 - **Best version:** 18. Tier 1 DoorKey-8x8 **100%** in 24.4 steps
-  (threshold 99%; version 17: 20.8 steps); tier 2 BlockedUnlockPickup
-  **59%** (version 17: 25%); tier 3 ObstructedMaze-Full-v1: memory cannot
-  be built yet.
-- **Version 18** ([074.2](experiments/074.2-orders-within-time/card.md)): orders read from plans.
-- **Conditions over roles and relations** (084–084.4, stop): admitted
-  before identity ([084.3](experiments/084.3-conditions-without-constants-first/card.md)) they get every table right.
+  (threshold 99%); tier 2 BlockedUnlockPickup **59%**; tier 3 ObstructedMaze-Full-v1 **5/30** within an
+  hour per episode (1.7 s per step; 23 of 30 stopped by the hour).
 - **Tier 3's memory** ([085.3](experiments/085.3-sampled-queries-constant-rate/card.md)):
-  linear, about 68 minutes in full; fits now stored per memory
-  (`WM_STORED_FITS=1`, bit-identical); tier 3's built and stored (about 85 minutes once).
-- **Version 19** ([086](experiments/086-version-19-general-conditions/card.md),
-  approved 2026-10-08): 084.3's conditions in the agent's recall; judged
-  by the tiers and "right key within 2 tries" in every colour fold.
-  Gate passed. Main runs wait (now after 087–089).
+  fits stored per memory (`WM_STORED_FITS=1`); tier 3's built once (85 minutes).
+- **Version 19** ([086](experiments/086-version-19-general-conditions/card.md)): approved, gate passed; runs wait.
 - **Properties** ([087](experiments/087-properties-as-learned-action-effects/card.md), revise):
   a network on the encoder's vector reads walkable, pick up and toggle
   for every tile, new hues included; a hue never in memory goes from
   0–16% to 96–100% in five folds, green 75% (untraced). Tiers 1–2 no worse.
-- **Relation from ignored directions** ([088](experiments/088-relation-from-ignored-directions/card.md),
-  revise): the leftover is hue, but coded per kind (70–88° apart); next,
-  [089](experiments/089-encoder-with-a-made-of-part/card.md) (stop): a "made of" path lost colour in training;
-  nine fixed colours code colour as a table. Drafted: [090](experiments/090-encoder-on-fresh-hues/card.md), fresh hues in the encoder's stream.
+- **Relation from ignored directions** (088–090, revise/stop/revise): what
+  properties ignore is hue, a quantity within every kind (R² 0.99), but
+  keys' and doors' hue directions never line up (31–88°), not with a
+  made-of path (089) nor fresh hues (090); MiniGrid draws a locked door's
+  panel darker than its key. Card 070's relation, learned from whether the
+  door opens, does line them up (66 of 66). Colour transfer paused; focus
+  is tiers 2 and 3 (the user, 2026-10-08).
+- **Router** ([091](experiments/091-router-trained-on-diverse-worlds/card.md), running):
+  a network over recall's keys as tokens, trained on tiers 1–2 and the
+  decoy world, votes over stored keys as recall's prior. Tier 1 100%,
+  tier 2 **79%** (version 18: 59%; 21 seeds won, 1 lost). Tier 3:
+  `runs/091/tier3.sh`, for the user to run (about 2 hours).
+- **Next** ([092](experiments/092-view-effects-in-recall/card.md), draft): view effects in recall, queried by goal condition.
 
 ### Fred note
 Delete when this gets its set of cards.

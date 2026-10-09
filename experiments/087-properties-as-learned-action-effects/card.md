@@ -211,12 +211,21 @@ has not tried.
 |---|---|---|
 | Tier 1 (200) | **100%**, 24.4 steps | 100%, 24.4 steps (card 074.2) |
 | Tier 2 (100) | **64%** | 59%; 9 gained, 4 lost, McNemar p = 0.27 |
-| Tier 3 | not run: the stored-fits build stopped on a GPU fault after the first action's fits (Xid 13, 31 minutes); rerunning | – |
+| Tier 3 (30, 1 hour per episode) | not run yet | **5 of 30**; 23 stopped by the hour, 2 at the 3,600-step limit |
 | Hue never in memory, red / green / blue | **100 / 75 / 98%** | 5 / 11 / 1% |
 | purple / yellow / grey | **97 / 100 / 96%** | 0 / 16 / 5% |
 
 - **Criterion 1: met** (the gate's (i) and (ii), section 5).
-- **Criterion 2: met** for tiers 1 and 2; tier 3 pending.
+- **Criterion 2: met** for tiers 1 and 2; tier 3 pending for the
+  properties. Version 18's tier 3 baseline (`runs/087/tier3_v18.json`,
+  run by Claude at the user's request, 44 GB cap, peak 25.5 GB): 5 of 30
+  within one hour of wall-clock time per episode, 1.68 s per step with 20
+  episodes sharing 24 cores. In the first 20 (run together) 1 succeeded
+  and 19 hit the hour at 1,340–2,062 steps; in the last 10 (less
+  sharing) 4 succeeded (1,415–2,362 steps), 2 failed at the 3,600-step
+  limit and 4 hit the hour, with 629–1,106 random steps each. A first
+  attempt crashed after an hour on a per-episode counter that held a
+  list (card 085's setup statistics), fixed in `run.py`.
 - **Criterion 3: met in five folds, not in green** (75% against the
   93–96% bar). Version 18 falls to random actions (29–62% of steps)
   when the hue was never in memory, as card 070's smoke test found; with

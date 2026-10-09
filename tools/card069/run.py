@@ -77,8 +77,7 @@ if os.environ.get("WM_COLLECT") == "1":                # card 076: each stored w
 if os.environ.get("WM_SAMPLED") == "1":              # card 085: recall's fits on sampled pairs above 2,048 keys
     sys.path.insert(0, str(ROOT / "tools" / "card085"))
     import sampled as SAMPLED                          # noqa: E402
-    T.INSTALL.append(SAMPLED.install)
-    T.COUNTS.append(SAMPLED.STATS)
+    T.INSTALL.append(SAMPLED.install)                  # its STATS are setup's (lists), not per-episode counts
 if os.environ.get("WM_STORED_FITS") == "1":          # card 085.3 (a): recall's fitted weights stored per memory
     sys.path.insert(0, str(ROOT / "tools" / "card085"))
     import stored as STORED                            # noqa: E402
@@ -90,6 +89,12 @@ if os.environ.get("WM_PROPS") == "1":                # card 087: walkability fro
     import walk as PROPS                               # noqa: E402
     PROPS.hook(T)
     T.COUNTS.append(PROPS.STATS)
+ROUTER = None
+if os.environ.get("WM_ROUTER"):                      # card 091: the key-form router as recall's prior
+    sys.path.insert(0, str(ROOT / "tools" / "card091"))
+    import routed as ROUTER                            # noqa: E402
+    ROUTER.hook(T)
+    T.COUNTS.append(ROUTER.STATS)
 GEN = None
 if os.environ.get("WM_GENERAL") == "1":              # card 086: version 19's recall, conditions over roles and relations
     sys.path.insert(0, str(ROOT / "tools" / "card086"))

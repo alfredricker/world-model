@@ -3,8 +3,8 @@ id: "090"
 title: the encoder trained on fresh hues, so colour is a dimension shared by every kind
 rung: 6
 serves: [P3, P4, C5, C2]
-status: approved
-verdict:
+status: done
+verdict: fail
 arch_version: 18
 date: 2026-10-08
 ---
@@ -78,6 +78,29 @@ toggles).
   threshold fitted). Reported: hue's share of the leftover's variance
   and the angle between keys' and doors' leftovers (card 088: 70°, 88°).
 
+**Data check** (`runs/090/datacheck.json`; 1,000 episodes): all 36
+kinds × slots seen, each at least 104 times; 8,994 distinct hues, none
+within 60.0 of a test hue; the rule by slot 200 of 200.
+
+**Gate result: failed** (`tools/card090/train.py`, `gate.py`;
+`runs/090/`; training 12 checkpoints, about 20 minutes).
+
+| | This card | Card 070's encoder | Card 089 (mean+max, max) |
+|---|---|---|---|
+| Pair margin, visibility margin (violations) | 0, 0 | – | 0, 0 |
+| Card 087's (i): forward, pick up, toggle (of 57) | 57, 57, 57 | 57, 57, 57 | 56–57 |
+| Leftover, rank 1, 2, 4, 8: left-out colour pairs (≥ 64) | 21, **45**, 43, 43 | 35, 41, 53, 42 | best 42, 44 |
+| Unseen-hue pairs (≥ 8) | 4, 4, 4, 3 | 5, 6, 7, 6 | best 4 |
+| Hue's share within a kind, linear: key, locked door, ball, open door | 0.79, 0.76, 0.62, 0.74 | 0.74, 0.71, 0.54, 0.67 | 0.43–0.72 |
+| Hue from the nearest vectors (R², the same kinds) | 0.99 | 0.98–0.99 | 0.96–0.99 |
+| Keys' and doors' leftovers, angles | 31°, 87° | 70°, 88° | 34–46°, 70–80° |
+
+Hue is a quantity within each kind here, a little more linearly than in
+card 070's encoder, but not one shared by keys and doors (87°). Fresh
+hues on every kind did not line the kinds up: nothing in card 054's
+recipe rewards it, and a key and its locked door are not drawn in the
+same pixel values (the door's panel is a darker shade).
+
 ## 6. Success criteria and prediction
 
 1. **The relation from ignored directions** (the gate's last part), with
@@ -104,3 +127,20 @@ coded as categories.
 
 **Budget.** Training about 20 minutes; data check, ensemble and probe
 about 5; tiers 1–2 about an hour.
+
+## 7. Result
+
+The gate failed (section 5); the criteria were not run.
+
+## 8. Decision
+
+**Revise**, by the card's rule: the hue is a quantity (within every kind)
+but keys' and doors' directions stay far apart (31°, 87°). Variety gives
+the dimension within a kind; it does not by itself say that a key's hue
+and a door's hue are the same thing, which in MiniGrid's drawing they are
+not, pixel for pixel. What says it is the outcome: the door opens. Card
+070's relation was learned exactly that way, predicting whether a toggle
+opens the door from a distance between the two tiles and nothing else,
+on fresh hues; it names no colour, only the outcome. The user decides
+whether that counts as discovery (CHARTER lists it as the exception).
+

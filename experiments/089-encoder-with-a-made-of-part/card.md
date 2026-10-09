@@ -101,17 +101,24 @@ nothing; `runs/089/partial/`); 12 checkpoints, about 21 minutes.
 | Share of what the properties read, made-of parts | 16% | 13% | – |
 | Leftover, rank 1, 2, 4, 8: left-out colour pairs (≥ 64) | 34, 42, 28, 35 | 35, 36, 44, 40 | card 088: 53 |
 | Unseen-hue pairs (≥ 8) | 3, 4, 4, 4 | 4, 3, 1, 2 | card 088: 7 |
-| Hue's share of the variance on fresh hues: arrangement, made-of | 8%, 6% | 8%, 6% | – |
+| Hue's share of the variance on fresh hues, pooled over kinds (†: the wrong measure) | 8%, 6% | 8%, 6% | – |
 | Keys' and doors' leftovers, angles | 34°, 80° | 46°, 70° | 70°, 88° |
 
 **Why.** The made-of parts carried colour early (0.96 and 0.98 after 20
 updates in the smoke test) and lost it with training: the arrangement
 path sees colour too, nothing in card 054's recipe asks for colour in one
-place rather than the other, and it ended there. And neither part codes a
-fresh hue as a quantity (6–8% of the variance on property play's hues):
-trained on nine fixed colours, the encoder learned colours as nine
-categories, a table, not a dimension a new hue falls on (LESSONS: a
-lookup table and a general rule fit one fixed world equally).
+place rather than the other, and it ended there.
+
+† **Correction** (after card 090's gate). The second half of this
+diagnosis was wrong: the 6–8% pooled keys, doors and balls, so the
+differences between kinds swamped hue. Measured within each kind, as card
+088 did, hue is a quantity in both arms: linearly 0.43–0.72 of a kind's
+variance, and recovered almost exactly from the nearest vectors (R²
+0.96–0.99), as in card 070's encoder (0.98–0.99). What fails is alignment
+across kinds: the made-of parts alone, as the relation, get 33 (mean and
+max) and 42 (max) of 66 pairs. A key and its locked door are not drawn in
+the same pixel values (the door's panel is a darker shade of its colour),
+so not even what a tile is made of is the same for the two.
 
 ## 6. Success criteria and prediction
 
@@ -151,13 +158,9 @@ not run.
 ## 8. Decision
 
 **Stop**, by the card's rule (the relation fails with mean and with max
-pooling). An architecture that can see only material does not keep
-colour there when the other path can carry it too, and an encoder
-trained on nine fixed colours codes colour as a table of nine, so no
-direction of its space is "hue" for a colour it never saw. Card 070's
-encoder had the relation as its only path and a fresh hue on every try;
-that is what made its colour a dimension (9 of 9 unseen hues). The next
-question, for the user: train the encoder on a stream where every object
-takes a fresh hue each episode (no relation term), so that colour must be
-coded as a quantity, and then ask card 088's question again.
-
+pooling). A path that sees only material does not keep colour there when
+the other path can carry it too, and even the material of a key and its
+door differs in MiniGrid's drawing (the door's panel is darker), so
+"equal along what properties ignore" does not line keys and doors up.
+Hue itself is a quantity within each kind in every encoder tried (†
+above). Card 090 tested fresh hues in the stream.

@@ -161,7 +161,13 @@ these; rule 8 guards against sliding back.
   across kinds only if its values are many and never repeat (else a
   table fits as well) and vary independently of kind (the same values
   on many kinds, many values on each). Where the world does not supply
-  this, a declared curriculum does (C3); cards 069, 070, 088 and 089.
+  this, a declared curriculum does (C3); cards 069 and 070. Variety
+  makes the dimension within each kind; lining it up across kinds took
+  the outcome that depends on it (cards 088–090): what properties
+  ignore finds the attribute, outcomes say which values correspond.
+  Colour transfer in MiniGrid is paused (the user, 2026-10-08): new
+  colours are learned within a few tries, and the principle is taken up
+  again in a richer world (Crafter), not tuned to MiniGrid's colours.
 - **Transfer is judged by tries.** How quickly a new thing is mapped onto
   known ones matters more than getting it right at first sight.
 - **Goals are any condition** over codes, positions and relations.
