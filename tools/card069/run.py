@@ -95,12 +95,30 @@ if os.environ.get("WM_ROUTER"):                      # card 091: the key-form ro
     import routed as ROUTER                            # noqa: E402  (WM_ROUTER_ID=1: card 091.1)
     ROUTER.hook(T)
     T.COUNTS.append(ROUTER.STATS)
+STATECHANGE = None
+if os.environ.get("WM_STATECHANGE"):                 # card 095.3: arm C for pick up, drop, toggle (time: version 20 timed)
+    sys.path.insert(0, str(ROOT / "tools" / "card095.3"))
+    import statechange as STATECHANGE                  # noqa: E402  (after the router: forward keeps the router)
+    STATECHANGE.hook(T)
+    T.COUNTS.append(STATECHANGE.STATS)
 REVEAL = None
 if os.environ.get("WM_REVEAL"):                      # card 092: an unseen goal tile brought into view first
     sys.path.insert(0, str(ROOT / "tools" / "card092"))
     import reveal as REVEAL                            # noqa: E402
     REVEAL.hook(T)
     T.COUNTS.append(REVEAL.STATS)
+PROUTER = None
+if os.environ.get("WM_PROUTER"):                     # card 094.1: recall's prior over object files with their places
+    sys.path.insert(0, str(ROOT / "tools" / "card094.1"))
+    import posrecall as PROUTER                        # noqa: E402  (needs WM_ROUTER: forward and the hook point)
+    PROUTER.hook(T)
+    T.COUNTS.append(PROUTER.STATS)
+FILES = None
+if os.environ.get("WM_FILES"):                       # card 094: belief as object files and a layout
+    sys.path.insert(0, str(ROOT / "tools" / "card094"))
+    import files as FILES                              # noqa: E402  (WM_FILES=oracle: files chosen by hand)
+    FILES.hook(T)
+    T.COUNTS.append(FILES.STATS)
 GEN = None
 if os.environ.get("WM_GENERAL") == "1":              # card 086: version 19's recall, conditions over roles and relations
     sys.path.insert(0, str(ROOT / "tools" / "card086"))

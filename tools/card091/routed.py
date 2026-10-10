@@ -22,6 +22,8 @@ import torch
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools" / "card091"))
 import krouter as KR                                   # noqa: E402
+sys.path.insert(0, str(ROOT / "tools" / "card094.2"))
+import admitted as ADM                                 # noqa: E402
 
 STATS = {"router_queries": 0, "router_keys_embedded": 0, "router_identity": 0}    # counters (the runner diffs them per episode)
 INFO = {}
@@ -45,7 +47,7 @@ def key_tokens(W, a, keys):
     Z = np.zeros((len(keys), 2 + V, A.shape[1]), np.float32)
     m = np.zeros((len(keys), 2 + V), bool)
     for i, k in enumerate(keys):
-        s = SP.SETS[int(k[2])][:V]
+        s = ADM.view_of(W, a, SP.SETS[int(k[2])])[:V]   # card 094.2: WM_ROUTER_VIEW cuts the view (unset: all)
         Z[i, 0], Z[i, 1] = A[int(k[0])], A[int(k[1])]
         Z[i, 2:2 + len(s)] = A[s]
         m[i, :2 + len(s)] = True
@@ -193,7 +195,13 @@ def install(W, T):
             C = self.lc[:n] @ M
             P = route(STATE["W"], a, self, qs, C)
             N = np.stack([self.own_counts(q) for q in qs]) @ M
-            return (N + self.beta * P) / (N.sum(1, keepdims=True) + self.beta)
+            out = (N + self.beta * P) / (N.sum(1, keepdims=True) + self.beta)
+            if DEBUG and a == DEBUG_ACT:
+                for i, q in enumerate(qs):
+                    if str(_nm(STATE["W"], q[0])).startswith("box"):
+                        print(f"   predict: q {[_nm(STATE['W'], h) for h in q[:2]]} ctx {q[2]} own {N[i].round(2).tolist()} "
+                              f"beta {round(float(self.beta), 3)} route {P[i].round(3).tolist()} -> {out[i].round(3).tolist()}", flush=True)
+            return out
 
         predict.base = cls.predict
         cls.predict = predict

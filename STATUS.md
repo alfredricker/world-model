@@ -14,19 +14,19 @@ Overwritten each session. At most 40 lines.
   [091.1](experiments/091.1-router-within-identity/card.md)): a router over recall's keys as
   tokens is recall's prior (19 alone looped on tier 3, 0/30); 20 votes within
   the same codes first, and forward's prior is card 087's property network.
-- **View effects** ([092](experiments/092-view-effects-in-recall/card.md), revise):
-  when the goal's tile is unseen, bring it into view first (explore, or
-  open a door ranked by recall's "what came into view"). Gate passed (17
-  of 091's 21 tier 2 failures with the true effect). Tier 2 no more
-  successes than version 20 but half the steps (64 against 119), nearly
-  no random actions; tier 3 too slow (searches the map every step;
-  0/20). Proposed revision: keep the target between steps, search
-  incrementally, gate on speed.
-- **Tier 2's remaining failures** (5 of 100, the same with and without
-  092): one traced (1002017) is a 6-step loop holding a key before the
-  box; recall's prediction is right, the cause is elsewhere in planning.
-- **Card 086** (general conditions): approved, gate passed; runs wait.
-- **Colour transfer** paused (cards 088–090); focus is tiers 2 and 3.
+- **View effects** ([092](experiments/092-view-effects-in-recall/card.md), revise): goal into
+  view first; tier 2 half the steps, same successes; tier 3 too slow (0/20).
+- **Object files** ([094](experiments/094-object-files-and-layout/card.md), revise): planner unchanged.
+  [094.1](experiments/094.1-relative-position-recall/card.md) **stop**. [094.2](experiments/094.2-router-on-admitted-conditions/card.md): tiers 1–2 met
+  (200, 95); tier 3 not run, superseded by 095 (decision with the user).
+- **State change** ([095](experiments/095-state-change-prediction/card.md), a series): recall predicts
+  every token's change by one rule. [095.1](experiments/095.1-which-tokens-change/card.md) (offline):
+  arm C (exemplar vote, network prior) learns the front and hand roles,
+  fixes the red box in every colour (100%), held-out within 0.01% of
+  version 20; **keep**. [095.2](experiments/095.2-recall-at-scale/card.md): index and forgetting keep every
+  prediction, vote 31× faster, 18× less RAM; gate dropped. [095.3](experiments/095.3-state-change-in-the-agent/card.md) draft.
+- **Then:** [096](experiments/096-structure-memory-by-consolidation/card.md) structure, [097](experiments/097-procedural-memory/card.md) procedural memory.
+- **Waiting:** card 086 (approved, gate passed); colour transfer (088–090) paused.
 - **Overnight 2026-10-08** ([overnight-10-08.md](overnight-10-08.md)): 091's
   tier 3, 092, 091.1; read it, then delete it.
 

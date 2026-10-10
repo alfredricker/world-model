@@ -267,36 +267,96 @@ Version 5, the counted model over exact tile IDs, is in git (commit
 
 ## Memory systems (the frame, agreed with the user 2026-10-09)
 
-The architecture is organised as three kinds of memory, as in the
+The architecture is organised as four kinds of memory, as in the
 complementary learning systems account of human memory (McClelland,
-McNaughton and O'Reilly 1995): a fast store of single events, a slow
-store of structure drawn out of them, and a small working memory for the
-task at hand. Each component below belongs to one of them. This section
+McNaughton and O'Reilly 1995) and Squire's division of long-term memory
+into declarative and procedural: a fast store of single events, a slow
+store of structure drawn out of them, a small working memory for the
+task at hand, and procedural memory for practised skills. Each component
+below belongs to one of them. This section
 is the frame for the next cards; the model itself is unchanged.
 
 | Memory | What it holds | Components now | Gap |
 |---|---|---|---|
 | **Working** (this episode, this task) | The believed scene; the goal; what the agent is doing toward it | Tokens and placement (the believed map); the goal; the chain of needs; kept choices (condition → achiever); card 060's door to look behind; card 072's current guess; the episode's own tries | Most of it is rebuilt at every step instead of held and revised only when something relevant changes: tier 3 spends about 85% of each step in the guess-trying fallback (1.45 s per step) |
 | **Events** (long-term, fast) | Every stored try: action, the tokens it read (front, held, view) → what changed | Memory; recall (own tries first, admitted conditions); the router's similarity over tokens | Answers questions of structure by lookup: tier 2's last failures ask "does pick up work on this box with an empty hand?" and find 19 successes with views too unlike the present to count |
+| **Procedural** (long-term, practised) | Skills: from a scene and a target condition to the next action, run without recall or search (System 1) | None learned: every step deliberates (System 2). Walking (card 067) is computed, not learned | No step runs without deliberation; card 075's learned walking never ran |
 | **Structure** (long-term, slow) | What tokens do, how they relate, which conditions lead to which in a goal tree | The encoder; card 070's key–door relation; card 087's property network (walkable, pick up, toggle from a token's vector); recall's admitted conditions | Pieces added one at a time; not used as recall's prior except for forward (version 20); no goal trees kept from solved episodes |
 
 **How they work together:**
-- Working memory asks the other two only when its contents stop
+- Working memory asks the others only when its contents stop
   answering.
+- A skill acts where it has predicted the agent's own experience better
+  than deliberation (CHARTER, "recall and networks, each where it
+  predicts better"), and hands back to deliberation when it ends, is
+  surprised or cannot continue.
 - Structure is the prior for event lookup. Recall backs off from the
   most specific evidence to the most general: same tokens, then similar
   tokens, then structure.
-- Events are consolidated into structure over time. Card 052's staging
-  (long-term memory written only once the encoder settles) is the
-  timing of that step.
+- Events are consolidated into structure, and practised goal trees into
+  skills, over time. Card 052's staging (long-term memory written only
+  once the encoder settles) is the timing of that step.
+- **One representation (GOAL C2).** All four read and write the same
+  tokens in the encoder's space; they differ in timescale and form, not
+  in representation. The encoder is not a fifth memory: it is the shared
+  space, and consolidation refines it.
 
-**Planned order** (cards not yet drafted):
-1. Working memory: what is held between steps, and what makes the agent
-   reconsider (tier 3's speed).
-2. Structure as recall's prior (tier 2's last failures; replaces the
-   router's prior over all tries).
-3. Goal trees consolidated from solved episodes and recalled by
-   situation (card 092's closing note).
+**Structure may need no separate component** (the user, 2026-10-09).
+Exemplar models of memory (Hintzman 1986, MINERVA 2) produce
+category-level knowledge from recall over stored instances alone: a
+query activates every trace by similarity, and what the traces share
+comes out as the generalisation. Recall over stored tries may yield
+structure the same way, given the right similarity and back-off; card
+096 tests that before adding any separate structure component, which
+would then be justified only where recall alone measurably fails.
+
+**Episodic memory as sequences of conditions** (the user, 2026-10-09).
+Event memory stores single tries; it has no order. Episodic memory
+should store, per episode, the sequence of condition changes that
+mattered (changes in the environment that affected the agent or that
+the agent caused), each with the situation it happened in, not
+sequences of frames. "Mattered" is GOAL P19's test, learned without
+labels: the change was surprising, it persisted, it changed later
+predictions, or it changed how likely or how soon a goal was (it met or
+broke a condition). Goal trees (P12) are read from these sequences, and
+so is P12's "how likely and how soon", from where each sequence started
+and how long it took (C6). This is the condition-level counterpart of
+models that store and imagine pixel trajectories, in line with
+"conditions, not rollouts" (GOAL P21).
+
+**Planned order** (2026-10-09). Card 094 first: 097.1's learned walking
+reads the believed map, which card 094 replaces with a layout and object
+files, and 097.2's "a newly seen token an action can change" is card
+094's opening of an object file, so both would be rebuilt after it (the
+user: no speed-up built first that later cards must adapt). It also
+follows GOAL's order (P2 before P9). Structure (096) comes before
+skills (097; the user, 2026-10-09). [Card 093](experiments/093-working-memory/card.md),
+the intention held between steps, is taken up as 097.2.
+1. [Card 094](experiments/094-object-files-and-layout/card.md): belief as
+   object files (a few attended tokens: what, where, when last seen,
+   expected where) and a layout (walkable, blocked, never seen);
+   deliberation reads only object files. Cost of reading belief, and the
+   form Crafter needs.
+2. [Card 095](experiments/095-state-change-prediction/card.md): recall
+   predicts the change in the whole state by one learned rule (a series;
+   the user, 2026-10-09): which tokens change, from each token, its place
+   and its relations, and what each becomes (keep, copy, shift or set),
+   in place of two engineered slots (front and hand) and literal results.
+   Moves join on a world-fixed state. [095.1](experiments/095.1-which-tokens-change/card.md)
+   (offline) first.
+3. [Card 096](experiments/096-structure-memory-by-consolidation/card.md)
+   (outline; literature review first): structure extracted from stored
+   events in an offline phase. Per kind of token, what actions do to it
+   and what it does on its own over time (one structure, two uses:
+   recall's prior, and an unseen token's expected where); goal trees from
+   solved episodes; the encoder refined. First tests whether recall
+   alone yields the structure (Hintzman); episodic memory as sequences
+   of conditions that mattered.
+4. [Card 097](experiments/097-procedural-memory/card.md): procedural
+   memory, a series, on card 094's belief and card 096's structure. [097.1](experiments/097.1-motion-as-learned-skill/card.md):
+   walking as a learned skill on the layout, with waypoint conditions
+   (card 075, adapted); 097.2: a running skill not re-planned, handed
+   back on card 093's triggers; 097.3: compiled chains, after card 096.
 
 ## In brief
 

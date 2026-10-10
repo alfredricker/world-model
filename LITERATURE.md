@@ -6,25 +6,37 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Card / rung:** [card 091](experiments/091-router-trained-on-diverse-worlds/card.md)
-  (kept, version 19) and [card 092](experiments/092-view-effects-in-recall/card.md):
-  recall's prior through a learned router, and recall queried by the
-  effect a goal needs, including tiles that come into view. Set
-  2026-10-08 (the user: goal hierarchies from recall, not a separate
-  store).
-- **Why these:** retrieval through a learned embedding over every stored
-  experience; regression from a goal through actions' effects; reusing
-  what reached a goal before; goals relabelled from what an episode
-  achieved.
-- **Until:** card 092 has a decision.
+- **Card / rung:** [card 094](experiments/094-object-files-and-layout/card.md),
+  belief as object files and a layout. Rung 1 (P2, P17). Set 2026-10-09
+  with the user, after framing the architecture as four memories
+  (ARCHITECTURE.md, "Memory systems").
+- **Why these:** how working memory holds a few objects with their
+  places, how the brain codes where (path integration, places, vectors
+  to objects and walls), and agents that keep a set of object vectors or
+  a spatial map as memory.
+- **Until:** card 094.2 has a decision (094: revise; 094.1: stop, 2026-10-09).
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |
-| `1703_01988` (Pritzel et al. 2017, neural episodic control) | A kernel-weighted vote over stored experiences nearest in a learned embedding; card 091's router |
-| `2203_08913` (Wu et al. 2022, memorizing transformers) | Attention over retrieved memories by nearest neighbours, memory growing without retraining |
-| `strips` (Fikes and Nilsson 1971) | An action is preconditions and effects; a goal is reached by regressing it through actions whose effects add it. Card 092 adds "a tile of kind u comes into view" as an effect to regress through |
-| `1707_01495` (Andrychowicz et al. 2017, hindsight experience replay) | What an episode did achieve is a goal it can learn from; card 092's view effects are the effects an episode achieved, kept as recallable tries |
-| Hammond 1989, case-based planning (not in papi) | Plans retrieved by similarity of situation and goal, then repaired where they fail; card 092 retrieves single effects and chains them, whole cases are the note's later card |
+| Kahneman, Treisman and Gibbs 1992, object files (not in papi) | An object file binds an object's features to a place-and-time index and persists as the object moves; a newly seen object is matched to a file by where it is expected, not only by how it looks. Card 094: a file is indexed by its token id (its where at first sight), so two doors of one colour are two files |
+| Pylyshyn and Storm 1988, tracking (not in papi); Cowan 2001, capacity (not in papi) | People track about 4–5 objects at once; working memory's focus holds about 4 chunks. Card 094 sets no limit yet and says so; a limit needs the layout or long-term memory to hold the rest |
+| Whittington et al. 2020, the Tolman–Eichenbaum machine (not in papi); `2112_04035` (Whittington, Warren and Behrens 2022) | Where is a code updated by an action-specific transformation (path integration; grid-cell-like), kept apart from what is sensed; memories bind what to where and are retrieved by attention on position (place-cell-like). Card 094's placement (one learned transformation per move) is this split; object files and the layout are memories indexed by it |
+| Høydal et al. 2019, object-vector cells; Lever et al. 2009, boundary-vector cells; O'Keefe and Dostrovsky 1971; Hafting et al. 2005 (none in papi) | The entorhinal cortex codes the vector from the animal to objects, whatever the object, and to boundaries. Card 094: an object file's where is its vector from the agent; the layout's blocked places are boundaries |
+| `1911_07141` (Loynd et al. 2020, working memory graphs) | An agent attending over a dynamic set of factored vectors (one "memo" replaced per step) learns faster on BabyAI levels and Sokoban than recurrent baselines: attention over a small set of object vectors works as working memory in worlds like ours. There attention is learned end to end by reward; card 094's is a rule over learned predictions |
+| `neural-map` (Parisotto and Salakhutdinov 2017) | A 2D memory written at the agent's place and read by attention and local convolution beats recurrent memories in mazes. The agent's position is given there; card 094's layout is indexed by the learned placement |
+| `1803_02155` (Shaw et al. 2018, relative position representations); `1706_01427` (relation networks) | Attention that reads each element's offset from another, learned per offset; objects given as features with their coordinates. Card 094.1: the router reads each object file's offset from the agent |
+| `object-centric-learning-with-slot-attention` (Locatello et al. 2020) | A fixed number of slots compete for the parts of a scene. Not needed while tokens are given per tile; for Crafter and beyond, where units must be found (P7) |
+
+Previous focus (card 093, set 2026-10-09; set aside by the user):
+working memory as an intention held between steps (Fikes, Hart and
+Nilsson 1972; Bratman 1987; `rao-georgeff-bdi`; `kinny-georgeff-commitment`;
+complementary learning systems). Taken up as card 097.2.
+
+Previous focus (cards 091–092, set 2026-10-08): recall's prior through a
+learned router and recall queried by the effect a goal needs (Pritzel et
+al. 2017, neural episodic control; Wu et al. 2022, memorizing
+transformers; STRIPS; hindsight experience replay; Hammond 1989), until
+card 092's decision (revise, 2026-10-09).
 
 Previous focus (cards 087–089, set 2026-10-08): properties as learned
 action effects (Gibson; Montesano et al.; deep ensembles; Achille and

@@ -12,6 +12,7 @@ candidate, and for half the queries no key of its combination is (card 082.1).
   bin/prun python tools/card091/krouter.py --train tier1,tier2,decoy --steps 4000 --out runs/091/krouter.pt
 """
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -21,7 +22,7 @@ import torch
 import torch.nn as nn
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "runs" / "091"
+OUT = Path(os.environ.get("WM_KR_DIR", ROOT / "runs" / "091"))   # card 094: object-file keys in runs/094
 ACTS = (2, 3, 4, 5)
 NOUT = {2: 3, 3: 4, 4: 4, 5: 4}
 fn = torch.nn.functional
