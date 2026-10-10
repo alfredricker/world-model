@@ -56,9 +56,9 @@ goal straight to an action), P9 (reusable skills), P17, P12.
 
 | Step | Skill | Source | Status |
 |---|---|---|---|
-| [097.1](../097.1-motion-as-learned-skill/card.md) | Walking: reach a placement facing a token, with waypoint conditions where it is out of reach | Card 075 (drafted 2026-10-06), adapted | Draft |
-| 097.2 | Running a skill without re-planning: card 093's held intention and triggers, applied to a skill in progress | Card 093 | Not drafted |
-| 097.3 | Compiled chains: a sequence of conditions that reached goals before (get the key, open the door) run as one skill | Card 096's goal trees | Not drafted; after 096's review |
+| [097.1](../097.1-motion-as-learned-skill/card.md) | Walking: reach a placement facing a token, with waypoint conditions where it is out of reach | Card 075 (drafted 2026-10-06), adapted | Stop: agrees with the field at 100% of tiers 1–2's walking decisions where it answers and leaves tiers 1–3 unchanged, but routes that leave its view fail (26 of 33 right), and it costs 2.6–7 times the time per step |
+| [097.2](../097.2-running-a-skill/card.md) | Running a skill without re-planning: card 093's held intention and triggers, applied to a skill in progress | Card 093 | Done: kept, version 23 (tier 3 30/30) |
+| [097.3](../097.3-compiled-chains/card.md) | Compiled chains: a sequence of conditions that reached goals before (get the key, open the door) run as one skill | Card 096's goal trees | Closed: in MiniGrid at most 7% of time to save; moved to Crafter |
 
 ## 4. Literature (reviewed before 097.1 is approved)
 
@@ -68,3 +68,10 @@ options (Sutton, Precup and Singh 1999); habits and goal-directed control
 075's papers (hindsight relabelling `1707_01495`, quasimetric distances
 `2211_15120` and `2509_20478`, `hiql`, waypoints from a learned distance
 `1906_05253`).
+
+**Series in MiniGrid (2026-10-10):** 097.2 kept (an intention held
+between steps, version 23); 097.1 stopped (learned walking matches the
+field where routes stay in view, not beyond, and costs more here);
+097.3 moved to Crafter. What carries to Crafter: the held intention,
+the walking network with a horizon and waypoints beyond it, and
+compiled chains where they repeat.

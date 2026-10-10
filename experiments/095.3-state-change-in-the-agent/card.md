@@ -3,8 +3,8 @@ id: "095.3"
 title: arm C in the agent — recall predicts pick up, toggle and drop by one rule over every token
 rung: 1
 serves: [P6, P10, P17, P3]
-status: approved
-verdict:
+status: done
+verdict: pass
 arch_version: 20
 date: 2026-10-10
 ---
@@ -131,3 +131,48 @@ the user as a command.
   token in the hand than the one in front (210 predictions).
 
 Gate passed.
+
+## Data check result
+
+Version 20 timed on 3 tier 3 episodes (10-minute cap): recall for pick
+up, drop and toggle takes about 90% of a step (185–201 s predicting
+categories and 347–360 s building results, of about 600 s), over 1.2–1.5
+million queries per episode. The count of query sources was dropped
+after the gate (every query uses the same rule).
+
+## 7. Result
+
+| | Tier 1 | Tier 2 | Tier 3 | s per step (tier 2, tier 3) |
+|---|---|---|---|---|
+| Version 20 | 200/200, 24.4 steps | 95/100, 120 steps | 14/30 | 0.020, 1.45 |
+| **Arm C** | **200/200**, 24.4 | **100/100**, 55 | **24/30** | **0.008, 0.038** |
+
+Tier 3 paired by seed: 11 won, 1 lost (1003027), sign test p = 0.006.
+The 30 episodes took 2.6 minutes of wall clock against 100; no episode
+ran out of time (version 20: 15). Tier 2's version 20 is rerun here with
+the same counters (`runs/095.3/v20_tier2.json`, 95/100 as before).
+
+1. **Tiers:** met without the margin: tier 1 200/200; tier 2 better
+   (100 against 95); tier 3 better (24 against 14, p = 0.006).
+2. **Speed:** met: tier 3 38× faster per step (0.038 against 1.45 s);
+   tier 2 2.4× (0.008 against 0.020).
+3. **Relations in the agent:** met: on tier 2, no pick up predicted
+   another real token in the hand than the one in front (0 of 187,264;
+   version 20: 90,339 of 740,586). The 1,066 left are averaged vectors
+   version 20's `opened` builds, which no real token matches.
+
+Real interaction tries predicted right (tries forced by card 072's
+guesses aside): tier 2 498/498 (version 20: 932/1,007).
+
+The 6 tier 3 failures all reach the environment's 3,600 steps: four
+spend 1,900–2,600 steps on random fallback actions with no plan (21–32
+guesses tried, none worked), two loop in exploration (2,100–2,800
+steps).
+
+## 8. Decision
+
+**Keep** (overnight authority, 2026-10-10). Arm C replaces version 20's
+recall for pick up, drop and toggle: architecture version 21. Tier 3
+goes from 14/30 to 24/30 and 38× faster, tier 2 to 100/100. The
+remaining tier 3 failures are planning failures (no plan found), not
+speed; they are the next work toward the user's 90%.

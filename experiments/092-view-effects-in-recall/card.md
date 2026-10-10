@@ -220,3 +220,30 @@ overnight rule for auto-approved revisions did not apply): keep the
 reveal step's target between steps while it still gives a plan, and
 search the frontier incrementally (only places whose belief changed),
 gated on tier 3 speed under 20 parallel episodes before the full run.
+
+## Re-run on version 24 (2026-10-10, overnight)
+
+Its revision was for speed: tier 3 ran out of time under version 20.
+Version 24's steps are about 40 times cheaper, so the reveal step was
+re-run as it stands, with one change of where it attaches: version 24
+also explores outside the fallback (card 095.7), so the ranking is set
+wherever exploration runs (`WM_REVEAL_AT=explore`; attached at the
+fallback only, it fired 0 times). `runs/092/v24/`.
+
+| | Tier 1 | Tier 2 | Tier 3 | Fresh 100 seeds |
+|---|---|---|---|---|
+| Version 24 | 200/200, 24.3 | 100/100, 30.2 | 30/30, 128.8 | 99/100, 144.5 |
+| With the reveal step | 200/200, 24.3 | 100/100, 30.2 | 30/30, 137.7 | 99/100 (1 won, 1 lost), 147.6 |
+| Episodes with fewer / more steps | 0 / 0 | 0 / 0 | 9 / 17 (p = 0.17) | 35 / 58 (p = 0.02) |
+
+The ranking fired on 541 tier 2 and 1,240 tier 3 steps (331 and 522
+doors chosen by it) and changed no tier 2 episode. On tier 3 it costs
+steps: the ball sits in a random corner, so how often a door like this
+one revealed a ball says little about this door, and it overrides
+closeness.
+
+**Decision: stop.** The question it asked (plan toward a condition not
+yet in view) is answered on version 24 by exploration and 095.7's
+informative step; the ranking adds steps. The idea of view effects as
+effects in recall stays in card 096.4's episodes (which condition
+changes reached the goal), not as a separate ranking.

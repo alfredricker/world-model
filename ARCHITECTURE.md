@@ -1,8 +1,122 @@
 ---
-arch_version: 20
+arch_version: 27
 ---
 
 # Architecture
+
+Version 27 ([card 101](experiments/101-one-rule-with-no-plan/card.md),
+2026-10-10) has one rule for acting when the planner finds no plan and
+nothing unseen is left to walk to. It replaces card 095.7's inform and
+card 072's trying:
+- The agent acts on the (action, token, hand) whose outcome arm C knows
+  least, counting this episode's own tries. The score is
+  U = 1 − max(P(no change), P(change) · c). P is arm C's prediction that
+  the token changes. c is how sure arm C's store is of what the token
+  becomes (card 095.7's measure).
+- The choice is ranked by U / (1 + walking steps), and becomes the
+  intention's condition. When the agent reconsiders, the held act comes
+  first while it is not made and still uncertain.
+- Once the hand and facing are right, the act is made whatever arm C
+  predicts. Being made is its success.
+- Results:
+  - tiers 1 and 2 identical to version 26;
+  - tier 3 30/30 in 118.8 steps (26: 128.9);
+  - fresh tier 3 seeds 100/100 (26: 98/100), with no fallback loop.
+    Seeds both versions win take 146.1 steps against 141.2.
+
+Version 26 ([card 100](experiments/100-one-held-intention/card.md),
+2026-10-10) keeps choices between steps in one place, the intention:
+- Card 051's kept achievers and card 060's kept door are gone; the
+  intention already holds both between triggers.
+- Where card 074.1 breaks a tie among an achiever's needs, the intention's
+  chain gives the need it pursued first. That is the chain held now, or
+  the one just dropped when the agent deliberates.
+- Results:
+  - tier 1 200/200 and tier 2 100/100, each episode with version 25's
+    steps;
+  - tier 3 30/30 in 128.9 steps;
+  - fresh tier 3 seeds 98/100 in 141.2 steps (version 25: 99/100 in
+    144.5; no different).
+- The seed it loses had been won through card 074.1's memory of a tie
+  resolved earlier in the episode, outside the last chain.
+
+Version 25 ([card 099](experiments/099-version-24-without-dead-parts/card.md),
+2026-10-10) is version 24 without the parts it no longer read:
+- Arm C alone predicts pick up, drop and toggle. It fits on its own store
+  how much this episode's tries count.
+- No longer built:
+  - version 20's recall for those actions (card 042's two levels, card
+    049's admitted conditions, card 050's α, card 051's index, card 047's
+    situations);
+  - card 091's router;
+  - card 085's fits;
+  - card 074.1's split.
+- Every episode of tiers 1–3 and of the 100 fresh tier 3 seeds is the same
+  as version 24's.
+- Tier 3's model setup takes 10 s (version 24: 118 s), and each step takes
+  0.012 s (0.034).
+- An audit of version 24's code (2026-10-10) found the MiniGrid-specific
+  assumptions now listed under "Built-in priors". The most important is
+  that the observation is a lookup of clean renders, not an encoding of
+  the frame.
+
+The sections from "In brief" on describe version 27. The version notes
+below are history.
+
+Version 23 is version 21 with two changes found while chasing tier 3's
+failures overnight (2026-10-10, under the user's overnight authority):
+- **Exploring uncertain results** (version 22, [card 095.7](experiments/095.7-exploring-uncertain-results/card.md)): when
+  there is no plan and nothing unseen to walk to, the agent acts on the
+  nearest token whose result arm C is unsure of: the winning value's
+  share of its way's neighbour weight below 0.8 (a grey box: about 1/6,
+  since its key can be any of six colours). Before, boxes were opened
+  only by random actions.
+- **An intention held between steps** (version 23, [card 097.2](experiments/097.2-running-a-skill/card.md), card
+  093's design): the chosen plan's chain of conditions is kept; each
+  step continues the deepest unmet condition, the met ones below it
+  protected, and deliberates from the top only on a trigger (the chain
+  done, a surprise, a newly seen token that can be acted on, or no plan
+  for the continued condition). It removes the loop of dropping a key on
+  the route to free the hand and picking it back up.
+
+Tier 1 200/200; tier 2 100/100 in 30 steps; tier 3 **30/30** in 129 steps
+(MiniGrid return 0.97); 100 fresh tier 3 seeds 99/100 (version 21:
+88/100; 12 won, 1 lost).
+
+Version 24 ([card 095.5](experiments/095.5-goals-over-the-predicted-state/card.md)): the planner's candidate hands, for an
+action's conditions and for "can this token be made walkable", come from
+arm C's store (the hands under which the action changed a token, this
+episode's own tries, card 072's guess), each judged by arm C, instead of
+version 20's stored situations. Same answers at every call; version 20's
+interaction stores are no longer read (still built at setup).
+
+Version 21 is version 20 with recall's prediction for pick up, drop and
+toggle replaced by card 095's state-change rule
+([card 095.3](experiments/095.3-state-change-in-the-agent/card.md), kept
+2026-10-10 under the user's overnight authority):
+- **One rule for every token** ([095.1](experiments/095.1-which-tokens-change/card.md)): whether a token
+  changes, and what it becomes, is arm C: a vote over stored token
+  instances (arm B, Hintzman's exemplar model, on conditions admitted by
+  leave-one-out gain) with arm A's network (attention over a state's
+  tokens) as its prior, P = (N_c + α P_A) / (N + α). Results are
+  relations per part of the vector (keep, copy from another token,
+  shift, set), so "the token in front comes into the hand" holds for a
+  colour of box never picked up; no literal stored result.
+- **Front and hand only.** The agent asks about the token in front and
+  the hand's; conditions on other places are marginalised (095.3's gate:
+  no loss on held-out tries), so every query, real or imagined, is keyed
+  on (action, front, hand) and cached for the run.
+- **At scale** ([095.2](experiments/095.2-recall-at-scale/card.md)): an exact radius index over the
+  vote's metric and forgetting of stored groups that change no
+  prediction.
+- **Unchanged:** own tries first (this episode's tries at the same
+  tokens count before the vote, version 20's β); moves (the router and
+  card 087's forward prior); `templates` and `opened` (version 20's
+  stored situations, which find conditions; 095.5 is to replace them).
+
+Tier 1 200/200, 24.4 steps; tier 2 **100/100** (20: 95/100, better), 55
+steps; tier 3 **24/30** (20: 14/30, better; 11 won, 1 lost, p = 0.006),
+0.038 s per step (20: 1.45).
 
 Version 20 is version 19 with two changes found while running card 092
 overnight ([card 091.1](experiments/091.1-router-within-identity/card.md),
@@ -235,32 +349,38 @@ stored keys (version 9: 43–4,640 ms). It is not a passed
 rung: the world is fully visible, repeats pixels exactly, and every
 familiar appearance has been seen.
 
-Version 18 runs as `WM_TRYING=1 WM_CONFLICTS=1 WM_TIES=1 WM_SPLIT=1
-WM_CACHE=1 WM_REL_ENCODER=runs/070/encoder.pt bin/prun python
-tools/card069/run.py tiers --tier N --online 0 --memory 066`:
-`tools/card074.2/cache.py` and `tools/card074.1/ties.py` on
-`tools/card074/conflicts.py`, on version 16's code below. Version 16 ran
-without the four card 074 flags:
-`tools/card072/trying.py` and `tools/card069/relation.py` on card 067's
-`propagate.py` and card 066's `tiers.py`. The code is `tools/card062/believed.py` (version 14: card 061's memory with the
-believed views, `runs/062/believed_*.npz`) running
-`tools/card057/partial.py` (version 11's partial view; version 12 with
-`--occlude --frontier --keep-look`), on
-`tools/card051/walk2.py` (routes through two tokens), on
-`commit.py` (the chain's choices kept between steps), `threats.py`
-(threats between needs; the hand kept) and `index.py` (memory indexed by
-situation) in the same folder, on `tools/card050/own.py` (own tries first), on
-`tools/card049/conditions.py` (recall through admitted conditions;
-`worlds.py` holds card 048's chained rooms and the cluttered key world),
-on `tools/card047/situations.py`, which builds on:
-- `tools/card045/movement.py`: walking through conditions;
-- `tools/card044/tokens.py`: the state as tokens;
-- `tools/card043/consistent.py`: conditions checked in produced situations;
-- `tools/card042/code_recall.py`: recall in two levels;
-- `tools/card039/slot_planner.py`: the view as a set;
-- `tools/card038/vector_planner.py`: the planner on vectors;
-- `tools/card028/effects.py`: the counted move correspondences the
-  transformations are fitted to, through card 037's chain.
+Version 27 runs as `runs/101/run.sh` with `NOPLAN=1`: version 26's
+command without `WM_TRYING` and `WM_INFORM`, plus `WM_NOPLAN=1`. Version
+26 runs as `runs/100/run.sh` with `HELD=B`: version 25's command plus
+`WM_HELD=B`. Version 25 runs as `runs/099/run.sh`:
+`WM_REL_ENCODER=runs/070/encoder.pt WM_TRYING=1 WM_CONFLICTS=1 WM_TIES=1
+WM_CACHE=1 WM_PROPS=1 WM_STATECHANGE=1 WM_INFORM=1 WM_INTENT=1 WM_COND=1
+WM_LEAN=1 bin/prun python tools/card069/run.py tiers --tier N --online 0
+--memory 066`. Each card's module patches the ones below it. From the top:
+- `tools/card101/act.py` (`WM_NOPLAN=1`): version 27, the act with no
+  plan;
+- `tools/card100/held.py` (`WM_HELD=B`): version 26;
+- `tools/card099/lean.py`: version 25;
+- `card095.5/conds.py`: conditions from arm C's store;
+- `card097.2/intent.py`: the intention;
+- `card095.7/inform.py`: since version 27 only its measure of how sure a
+  result is (`certainty`); its fallback is not installed;
+- `card095.3/statechange.py`: arm C, on `card095.1` and `card095.2`;
+- `card087/walk.py`: forward's prior;
+- `card074.2/cache.py`, `card074.1/ties.py` and `card074/conflicts.py`:
+  orders between needs;
+- `card072/trying.py`: not loaded since version 27;
+- `card069/relation.py`: it sets the encoder;
+- `card067/propagate.py`: walking;
+- `card066/tiers.py`: the MiniGrid tiers, memory and the adapter;
+- below these, version 14's stack:
+  - `card062/believed.py`, `card061/moves.py` and `card057/partial.py`;
+  - `card051/walk2.py`, which installs `commit.py` and `threats.py`;
+  - `card047/situations.py`, `card045/movement.py`, `card044/tokens.py`
+    and `card043/consistent.py`;
+  - `card042/code_recall.py`: draw and undraw;
+  - `card039/slot_planner.py` and `card038/vector_planner.py`: the planner;
+  - `card028/effects.py`.
 
 Version 5, the counted model over exact tile IDs, is in git (commit
 `33f9949`).
@@ -278,10 +398,10 @@ is the frame for the next cards; the model itself is unchanged.
 
 | Memory | What it holds | Components now | Gap |
 |---|---|---|---|
-| **Working** (this episode, this task) | The believed scene; the goal; what the agent is doing toward it | Tokens and placement (the believed map); the goal; the chain of needs; kept choices (condition → achiever); card 060's door to look behind; card 072's current guess; the episode's own tries | Most of it is rebuilt at every step instead of held and revised only when something relevant changes: tier 3 spends about 85% of each step in the guess-trying fallback (1.45 s per step) |
-| **Events** (long-term, fast) | Every stored try: action, the tokens it read (front, held, view) → what changed | Memory; recall (own tries first, admitted conditions); the router's similarity over tokens | Answers questions of structure by lookup: tier 2's last failures ask "does pick up work on this box with an empty hand?" and find 19 successes with views too unlike the present to count |
-| **Procedural** (long-term, practised) | Skills: from a scene and a target condition to the next action, run without recall or search (System 1) | None learned: every step deliberates (System 2). Walking (card 067) is computed, not learned | No step runs without deliberation; card 075's learned walking never ran |
-| **Structure** (long-term, slow) | What tokens do, how they relate, which conditions lead to which in a goal tree | The encoder; card 070's key–door relation; card 087's property network (walkable, pick up, toggle from a token's vector); recall's admitted conditions | Pieces added one at a time; not used as recall's prior except for forward (version 20); no goal trees kept from solved episodes |
+| **Working** (this episode, this task) | The believed scene; the goal; what the agent is doing toward it | Tokens and placement (the believed map); the goal; the held intention (card 097.2), which also breaks ties when the agent re-deliberates (card 100); the episode's own tries | The world is assumed to change only by the agent's actions; ties resolved outside the last chain are forgotten (card 100) |
+| **Events** (long-term, fast) | Every stored try: action, the tokens it read → what changed | Arm C: stored token instances voted by similarity on admitted conditions, own tries first (cards 095.1–095.3, 099); forward's counts | Moves, draw and undraw keep their own recall |
+| **Procedural** (long-term, practised) | Skills: from a scene and a target condition to the next action, run without recall or search (System 1) | The held intention runs a chain without re-deliberating (097.2); walking is computed (card 067) | No skill is learned: card 097.1's learned walking stopped, 097.3 moved to Crafter |
+| **Structure** (long-term, slow) | What tokens do, how they relate, which conditions lead to which in a goal tree | The encoder; arm A (what an action does to tokens, as arm C's prior); card 087's property network (forward's prior) | Recall alone gives the structure where examples are many (096.1); no goal trees are kept (096.5 stopped) |
 
 **How they work together:**
 - Working memory asks the others only when its contents stop
@@ -324,101 +444,127 @@ and how long it took (C6). This is the condition-level counterpart of
 models that store and imagine pixel trajectories, in line with
 "conditions, not rollouts" (GOAL P21).
 
-**Planned order** (2026-10-09). Card 094 first: 097.1's learned walking
-reads the believed map, which card 094 replaces with a layout and object
-files, and 097.2's "a newly seen token an action can change" is card
-094's opening of an object file, so both would be rebuilt after it (the
-user: no speed-up built first that later cards must adapt). It also
-follows GOAL's order (P2 before P9). Structure (096) comes before
-skills (097; the user, 2026-10-09). [Card 093](experiments/093-working-memory/card.md),
-the intention held between steps, is taken up as 097.2.
-1. [Card 094](experiments/094-object-files-and-layout/card.md): belief as
-   object files (a few attended tokens: what, where, when last seen,
-   expected where) and a layout (walkable, blocked, never seen);
-   deliberation reads only object files. Cost of reading belief, and the
-   form Crafter needs.
-2. [Card 095](experiments/095-state-change-prediction/card.md): recall
-   predicts the change in the whole state by one learned rule (a series;
-   the user, 2026-10-09): which tokens change, from each token, its place
-   and its relations, and what each becomes (keep, copy, shift or set),
-   in place of two engineered slots (front and hand) and literal results.
-   Moves join on a world-fixed state. [095.1](experiments/095.1-which-tokens-change/card.md)
-   (offline) first.
-3. [Card 096](experiments/096-structure-memory-by-consolidation/card.md)
-   (outline; literature review first): structure extracted from stored
-   events in an offline phase. Per kind of token, what actions do to it
-   and what it does on its own over time (one structure, two uses:
-   recall's prior, and an unseen token's expected where); goal trees from
-   solved episodes; the encoder refined. First tests whether recall
-   alone yields the structure (Hintzman); episodic memory as sequences
-   of conditions that mattered.
-4. [Card 097](experiments/097-procedural-memory/card.md): procedural
-   memory, a series, on card 094's belief and card 096's structure. [097.1](experiments/097.1-motion-as-learned-skill/card.md):
-   walking as a learned skill on the layout, with waypoint conditions
-   (card 075, adapted); 097.2: a running skill not re-planned, handed
-   back on card 093's triggers; 097.3: compiled chains, after card 096.
+**Planned order** (2026-10-09), now done:
+- card 094 (object files) failed;
+- the 095 series gave arm C (versions 21–24);
+- the 096 series found that recall alone gives the structure where examples are many (096.1); its other cards were not kept;
+- from the 097 series, the held intention (097.2) was kept, learned walking (097.1) stopped, and compiled chains (097.3) moved to Crafter.
 
 ## In brief
 
-- **Encoder** (card 054, adopted by the user 2026-10-05; version 16 uses
-  card 070's, the same recipe plus the relation-only term). A small
-  convolutional network maps each 8 × 8 × 3 tile to 32 numbers, in 4
-  pieces of 8, trained without a learned codebook: a transition model of
-  pick up, toggle and drop on its vectors (against an EMA target), a
-  margin between what an action visibly changed, and a margin of 0.5
-  between tiles whose pixels differ beyond noise. Identity is "the same up
-  to noise": tiles whose pieces lie within 1.25 × the largest distance
-  between two noisy renders of one cell share an identity code per piece,
-  so codes and vectors are one latent space read at two resolutions. It
-  is trained once, offline, and fixed while acting.
-- **Memory** keeps every stored try per action, keyed by the vectors of
-  the thing in front, the held thing and the set of things in view, with
-  its outcomes.
-- **Recall** (version 9) predicts a pick up, toggle or drop from the
-  **conditions admitted** for that action, and nothing else in view:
-  - candidates are the front and held tiles' four parts, the front–held
-    relation `rel:P` (version 16; before, a distance per part), and "a
-    token with this code tuple is in view";
-  - a candidate is admitted while it raises the leave-one-out likelihood
-    of the stored outcomes by more than log(number of candidates), so a
-    token present in every try (a key always on the floor) never enters;
-  - **own tries first:** the tries in the query's own situation (the
-    same front and held code tuples, the same admitted view values) are
-    the evidence, and the condition-weighted neighbours only their prior
-    (α fitted, 0.00012): one failed try overrules the neighbours there.
-  - **indexed by situation** (version 10): a query is compared with
-    groups of stored keys equal on what the admitted conditions read
-    (front tile, held tile, admitted view values), with summed counts,
-    not with every key; its own situation is a hash lookup. The same
-    predictions as comparing every key.
-  Moves, draw and undraw keep version 8's recall.
-- **Acting** is card 029's means-ends search, recomputed at every step,
-  with the chain kept between steps (version 10): the achiever chosen
-  last step for a condition is tried first; when an achiever has two
-  unmet needs, one whose plan would break what the other relies on is
-  not pursued first (threats); and when only the view is asked for, the
-  present hand is protected (version 18: not when the hand is itself a
-  need). Since version 18 the order between needs is card 074's (orders
-  by planning, found orders followed, ties kept; above); version 17's was
-  card 073's reasonable order (above), in place of card 051's threats. A
-  condition is checked only in situations that recall's predicted effects
-  produce from the present. The situations in which an action could work
-  on a thing come from tries on the same thing and on similar things, and
-  recall judges each (card 047): a failed try rules out its own
-  situation, not the thing. When no plan and no exploration is found, the
-  likeliest untried way is tried (card 072, version 16).
-- **Walking** (card 067, version 15): per situation and need, a closeness
-  propagated over the placements the agent could stand at, each from its
-  neighbours (value iteration on the believed map); a move that brings
-  the agent closer is taken. A blocked way: tokens memory has seen made
-  walkable are crossable at one step more, and the first one a least
-  route crosses becomes a condition. Nothing is kept per pair of
-  placements; each move is relaxed about once per field. No recall is
-  called on an imagined step while walking.
-- Time per step 5.7–9.9 ms from base memory to +20,000 stored keys
-  (version 9: 43–4,640 ms); 0.24 s per layout in the key world (version
-  9: 2.7 s), 0.20–0.64 s in the familiar worlds with five runs sharing
-  the machine (version 8: 0.42–0.72 s; version 5: 0.015–0.024 s).
+This section and the ones below it describe version 27 as it runs.
+
+- **What the agent observes.** MiniGrid's 13 × 13 tiles around the agent,
+  turned so that the agent faces up, plus the tile it holds. Only
+  MiniGrid's 7 × 7 window ahead is observed, and walls and closed doors
+  hide what lies behind them.
+  - Each step the adapter reads the simulator's grid. It gives each tile
+    the encoder's vector of a clean render of that tile, computed once at
+    setup for a catalogue of at most 255 appearances.
+  - For MiniGrid's noise-free tiles this equals encoding the frame, but
+    the agent never sees noise while acting.
+  - The adapter computes occlusion from the tiles' names.
+- **Encoder** (card 070, which is card 054's recipe plus a term that
+  judges "fits" through a key–door relation on fresh hues).
+  - A small convolutional network maps each 8 × 8 × 3 tile to 32 numbers
+    in 4 pieces of 8.
+  - It is trained once, offline, on card 052's generator of MiniGrid's
+    objects, with no learned codebook. The objective has a transition
+    model against an EMA target, a margin around what an action visibly
+    changed, and a margin of 0.5 between tiles whose pixels differ beyond
+    noise.
+  - Identity codes: tiles whose pieces lie within 1.25 × the noise scale
+    share a code per piece. Codes and vectors are one latent space read at
+    two resolutions.
+- **Belief** (cards 044, 057 and 061). The state is a set of tokens, each a
+  what (a tile's vector) and a where (its offset from the agent, or the
+  hand).
+  - Moves are rigid transformations of where. They are fitted by trimmed
+    least squares to correspondences counted in the 7 × 7 view.
+  - Each view is placed among the placements its action could lead to.
+  - A place keeps the last token seen there.
+- **Memory.** About 3.2 million steps of random play per tier: 5,000
+  episodes on tier 1, 5,555 on tier 2 and 888 on tier 3.
+  - Pick up, drop and toggle are stored as token instances, with the view
+    the agent believed (cards 062 and 095.1).
+  - Forward tries are counted per front token.
+  - The episode's own tries are added while acting. Nothing is refitted.
+- **Predicting pick up, drop and toggle: arm C** (cards 095.1–095.3 and
+  099). A query is an action, the token in front and the hand's token.
+  - It gives P(front changes) and P(hand changes), each equal to
+    (B + α·A) / (N_B + α):
+    - B is a vote over stored token instances, weighted by similarity on
+      the conditions admitted for that action, through an exact radius
+      index over a pruned store (card 095.2).
+    - A is a network that attends over the tokens (arm A). It is the
+      prior, with weight α.
+  - The four outcome categories are the product of the two.
+  - This episode's own tries at the same tokens come first:
+    P = (N_own + β P_C) / (N_own + β). Arm C fits β on its store (card 099),
+    and the fit says one try decides.
+  - What a changed token becomes is, in order of preference:
+    - the episode's own result;
+    - B's relation to the try's tokens (keep, copy from another token,
+      shift or set);
+    - A's result, snapped to a known token.
+- **Predicting moves.**
+  - Forward: the token's own stored tries, with card 087's property
+    network as a prior of weight 0.001. That network gives walkability
+    from the token's vector, so it decides only tokens never walked into.
+  - Turns: card 038's counts.
+  - What comes into view: card 042's code identity, with card 038's
+    transport as the fallback.
+- **Planning** (card 029's means-ends search, depth 6). It works backward
+  from the goal: on tier 1 "the episode ends", on tiers 2 and 3 "hold the
+  mission's object", which is read from the simulator.
+  - An action achieves a condition when arm C predicts that its effect
+    makes the condition true.
+  - An achiever's needs are facing its token and, where arm C says the
+    action works only with another hand, a condition on the hand. The
+    candidate hands are those under which arm C's store saw the action
+    work (card 095.5).
+  - Needs are checked in the situations that predicted effects produce
+    (card 043).
+  - Between needs:
+    - orders found by planning are followed (card 074);
+    - ties go to the need the intention's chain pursued (cards 074.1
+      and 100);
+    - otherwise to fewer pick ups, toggles and drops, then fewer steps.
+- **The intention** (card 097.2).
+  - The chosen chain of conditions is kept and continued at its deepest
+    unmet condition. The met conditions below it are protected.
+  - The agent deliberates from the top only on a trigger: the chain is
+    done, a surprise, a newly seen token it can act on, or no plan for the
+    continued condition.
+  - It is the only memory of choices between steps (card 100). When the
+    agent deliberates, ties among an achiever's needs go to the need the
+    intention's chain pursued after that condition.
+- **Walking** (card 067).
+  - For one situation and need, each placement takes its closeness from
+    its neighbours (value iteration on the believed map). The agent takes
+    a move that brings it closer, forward before left before right.
+  - Tokens that arm C predicts a pick up or toggle can make walkable are
+    crossable at one step more. The first one a least route crosses
+    becomes the condition ("walk", j).
+- **With no plan**, in this order:
+  1. walk to where never-seen places next to known walkable ones come
+     into view (card 057);
+  2. otherwise open a door next to never-seen places (card 060);
+  3. otherwise act where the outcome is least known (card 101):
+     - over pick up and toggle, the non-walkable tokens in the believed
+       13 × 13 window, and the empty hand, the present hand or a token a
+       pick up could give;
+     - U = 1 − max(P(no change), P(change) · c), with P from arm C and
+       this episode's own tries, and c the store's certainty of what the
+       token becomes;
+     - the highest U / (1 + walking steps) of the first six that can be
+       planned, the act held before coming first while it is not made
+       and still uncertain;
+     - the act becomes the intention's condition, and once its hand and
+       facing hold it is made whatever arm C predicts;
+  4. otherwise a random action.
+- **Cost.** On tier 3, 14 s of setup before the first episode and 0.012 s
+  per step. Tier 1 takes 0.0017 s per step and tier 2 0.0055 s.
 
 ## How the state is represented
 
@@ -430,152 +576,125 @@ Since card 044 the state is a set of tokens:
   where no token holds shows the learned appearance of places entering the
   view (wall here).
 - **A move** sends every where but the hand's to M_m where + b_m, fitted
-  by least squares to the counted move correspondences (exact: quarter
-  turns and a one-tile shift). Since a move moves every token alike, a
-  situation stores the whats by token id and one transformation; a
-  token's where is that transformation applied to its where at first
-  sight. There is no pose table.
+  by trimmed least squares to the counted move correspondences (exact:
+  quarter turns and a one-tile shift). Since a move moves every token
+  alike, a situation stores the whats by token id and one transformation.
+  There is no pose table.
 - **Readers address tokens by where:** ahead is the token at (0, 1), held
-  is the hand's, in view are the tokens within 6 tiles.
-- **Recall reads three roles** (declared exception, card 044): the
-  token ahead, the hand's, and what is in view, positions dropped. Since
-  card 049 the view enters only through admitted conditions, each "a
-  token with this code tuple is in view", so tokens no condition reads
-  cost nothing.
-- **Codes** are discrete per tile (4 identity indices, one per piece,
-  from identity up to noise). Recall uses them for "the same thing". They
-  name appearances, not things.
-
-Card 040's tokens (each thing its vector plus its role, with attention
-over pairs) were stopped and are not used.
+  is the hand's.
+- **Arm C reads two places** (card 095.3): the token ahead and the hand's.
+  The rest of the view is marginalised (095.3's gate found no loss on
+  held-out tries), so every query, real or imagined, is keyed on (action,
+  front, hand) and cached for the run.
+- **Codes** are discrete per tile (4 identity indices, one per piece).
+  They name appearances, not things.
 
 ```mermaid
 flowchart TD
-    P["Pixels: 13 × 13 tiles of 8 × 8 × 3 around the agent, plus the held tile"] --> E["Encoder: 32 numbers per tile (4 pieces of 8); codes read from them"]
-    E --> V["View: a token per tile (what) at its offset from the agent (where), plus the hand"]
-    X["Experience: ~500,000 stored tries per world"] --> M["Memory: tries per action, keyed by front, held and the set in view"]
-    M --> R["Recall: own situation's tries first, then neighbours over the admitted conditions only; admitted by leave-one-out gain"]
-    V --> O["Placing: the placement whose predicted view is nearest (L1)"]
+    G["Simulator's grid (MiniGrid adapter)"] --> P["13 × 13 tiles around the agent, plus the held tile; the 7 × 7 window ahead observed, with occlusion"]
+    P --> E["Encoder vectors of the catalogue's clean renders: 32 numbers per tile; codes read from them"]
+    E --> O["Placing: the placement whose predicted view is nearest (L1), among those the action could lead to"]
     O --> FA["Tokens: a what per token, one transformation giving every where"]
-    FA --> S["Means-ends search over conditions, checked in produced situations"]
-    R --> S
-    Q["Closeness per need: propagated over standing placements, forward onto walkable tokens"] --> WK["Walking: a move that brings the agent closer; crossable tokens become conditions"]
+    X["Random play: about 3.2 million steps per tier"] --> AC["Arm C: stored token instances voted by similarity, arm A as prior, own tries first"]
+    X --> FW["Forward: counts per front token, card 087's prior"]
+    AC --> S["Means-ends search over conditions, checked in produced situations"]
+    FA --> S
+    S --> I["Intention: the chain kept, continued until a trigger"]
+    I --> WK["Walking: closeness propagated over placements; crossable tokens become conditions"]
+    FW --> WK
     FA --> WK
-    R --> WK
-    WK --> S
-    S --> A["Action: 1 of 6"]
+    S -->|"no plan"| NP["No plan: unseen places, a door next to them, else the act whose outcome is least known"]
+    AC --> NP
+    NP --> I
+    WK --> A["Action: 1 of 6"]
+    I --> A
 ```
 
 ## Data structures
 
 | Name | Type and size | What it holds | How it is obtained |
 |---|---|---|---|
-| Tile vector | float[32], 4 pieces of 8 | One tile's appearance; each distinct vector is stored once (a handle) | The encoder (card 054's recipe, margin 0.5) |
+| Tile vector | float[32], 4 pieces of 8 | One tile's appearance; each distinct vector is stored once (a handle) | The encoder (card 070) |
 | Code tuple | 4 ints | Which identity class each piece falls in | Leader clustering within 1.25 × the per-piece noise scale (card 054) |
-| View | 182 handles: 169 wheres within 6 tiles, plus the held row | What the agent sees now | Encoder on the renderer's tiles |
-| Key of a try | (front handle, held handle, view set) | Pick up, toggle, drop. Moves, draw and undraw are keyed by one handle | From the stored views |
-| Outcome class | (which places changed, the codes they became) | What a try did | From the try's next view |
-| Memory | Per action: keys with outcome counts and result vectors | Every stored try, never merged | 5,000 random episodes per world; real tries are added while acting |
-| Admitted conditions | Per pick up, toggle and drop: the front tile's 4 parts plus up to about 4 more (held part, front–held relation per part, a code tuple in view), each with a weight λ | What recall reads | Greedy admission by leave-one-key-out likelihood, cost log(candidates) per condition; λ refitted jointly (card 049) |
-| Recall groups (version 10) | Per action: group key → summed outcome counts and a representative key | Stored keys equal on the front tile, the held tile and the admitted view values | Built with memory; per candidate condition while admission weighs it |
-| Own situations (version 10) | Hash → outcome counts | A query's own situation | Built with memory |
-| Situation classes (version 10) | Front tile → (held tile, admitted view values) → one stored situation | The planner's situations (card 047), one per class | Built with memory |
-| Kept choices (version 10) | Condition → achiever, per episode | The chain's choices from the last step | Recorded at each step |
-| Own-situation prior | α per action | How much the neighbours count against a situation's own tries | Leave-one-try-out likelihood (card 050) |
-| Version 8's recall weights | λ1, λ2, β | Still fitted: the planner's situations (card 047) read them | As version 8 (card 042) |
-| Move transformation | Per move: M (2 × 2), b (2) | How a move changes every where | Least squares on the counted correspondences of places before and after moves (cards 028, 044) |
-| Placement | One transformation, of those reachable by composing the moves' with the agent within the lattice (676 at 12 tiles; 3,364 at 20) | Where every token is relative to the agent | Composed from the move transformations |
-| Tokens, situation | A handle per token id (the first view's places, the held row, the rest within the lattice: 638 ids at 12 tiles, set per map since card 066), "absent" where none seen; (tokens, placement, ended) | Belief, real or imagined | Placed views, written in by where |
-| Condition | ("end"), ("walk", j), ("face", a, u, j), ("part", hand or view, a, u, j, c, …) | What must hold for an action to have an effect | Worked out from memory (card 038) |
+| Catalogue map | simulator code → handle, at most 255 (uint8) | The vector each tile gets | The encoder on clean renders of the catalogue, at setup (card 066's adapter) |
+| View | 182 handles: 169 wheres within 6 tiles, plus the held row | What the agent sees now | The catalogue map on the simulator's grid; unobserved places marked |
+| Move transformation | Per move: M (2 × 2), b (2) | How a move changes every where | Trimmed least squares on correspondences counted in the 7 × 7 view (card 061) |
+| Placement | One transformation, of those reachable by composing the moves' within the lattice (676 at 12 tiles; 3,364 at 20) | Where every token is relative to the agent | Composed from the move transformations |
+| Tokens, situation | A handle per token id ("absent" where none seen); (tokens, placement, ended) | Belief, real or imagined | Placed views, written in by where |
+| Arm C's store | Per action: stored token instances (place, handle, the admitted conditions' columns), whether each changed; changed instances merged with what they became | What pick up, drop and toggle did to tokens | Cards 095.1–095.2 from memory: admission by leave-one-out gain, forgetting of groups that change no prediction; one file per tier |
+| Arm A | A network over a state's tokens | P(token changes) and its vector after, per token | Card 095.1, trained offline on tiers 1 and 2 and the decoy world |
+| α, β | Per action and tier | Arm A's weight in the vote (α); this episode's own tries against arm C (β) | Leave-one-try-out likelihood: α in card 095.1, β in card 099 |
+| Own tries | (action, front, hand) → category counts and what the tokens became | This episode's pick ups, drops and toggles | Added after each try |
+| Forward memory | Per front token: counts of moved, blocked, ended | Walkability | Random play and this episode's tries |
+| Condition | ("end"), ("has", h), ("walk", j), ("face", a, u, j), ("part", hand, a, u, j, c) | What must hold for an action to have an effect | Means-ends search on arm C (card 095.5) |
+| Intention | The chain of conditions, the tokens it could act on when chosen, the expected pose, front and hand | What the agent is doing; on re-deliberation, which need goes first among tied ones | Card 097.2; ties read from the chain (card 100) |
 | Closeness field | Per standing placement of one situation: steps to the need's placements | How close each placement is to a need | Propagated from the need's placements over the reverse moves (card 067); memoised for the step |
 
 ## Learning
 
-Per world:
-1. **Encoder** (once, offline; card 054, on card 052's generator of
-   MiniGrid's objects in six colours plus three more, about 200,000 steps
-   of play). The objective has:
-   - a transition model predicting the vectors of the tile in front and
-     the held tile after pick up, toggle and drop, against an EMA target
-     encoder;
-   - a margin between the vectors before and after an action that
-     visibly changed a tile;
-   - a margin of 0.5 between tiles whose pixels differ beyond noise;
-   - recall's leave-one-out likelihood of stored outcomes.
+Once, offline:
+1. **The encoder** (card 070), on card 052's generator of MiniGrid's
+   objects in six colours plus fresh hues.
+2. **Arm A** (card 095.1), on stored tries of tiers 1 and 2 and the decoy
+   world (never tier 3).
+3. **Card 087's property network**, on property play: MiniGrid rooms
+   with card 068's play starts, nine kinds in fresh hues.
 
-   Nothing names what a code means; identity codes are read afterwards,
-   up to noise.
-2. **Move transformations**: card 028's counted correspondences, then a
-   least-squares fit per move (card 044).
-3. **Memory**: the stored tries, grouped by key, with outcome counts.
-4. **Recall weights**, fitted by leave-one-key-out likelihood of the
-   outcome classes, about 25 seconds per world:
-   - pick up, toggle and drop: card 042's two levels (kept for the
-     planner's situations), then card 049's admission of conditions
-     (1–5 s per action) and card 050's α;
-   - moves: card 038's single level on the thing in front;
-   - card 038's ways (keep, copy, shift, set) are fitted once on stored
-     memory (at most 1,000 keys per class) and refitted with admission,
-     not after every try (version 10).
-5. **How-soon network** (card 045): Q(g, m) = 1 + min Q(T_m g, ·), and 0
-   at the target, where T_m is move m's transformation; hindsight, so every
-   place and heading is a target. It is exact in open space.
+Per tier, at setup:
+1. **Memory:** random play, replayed with the views the agent believed
+   (card 062).
+2. **Move transformations:** card 061's counted correspondences, fitted
+   by trimmed least squares.
+3. **Arm C's store** (card 095.2): conditions admitted per action by
+   leave-one-out gain, then forgetting. It is built once per tier and kept
+   on disk.
+4. **β** for the own tries (card 099) and forward's prior weight (card
+   087), each by leave-one-try-out likelihood.
+
+While acting, the episode's tries are added to the own tries and to the
+forward counts. Nothing is refitted. Memory starts from setup in every
+episode (the user, 2026-10-05).
 
 ## Acting
 
 At every step:
-1. **Place the view.** Take the placement whose predicted view is nearest
-   the real one (L1 over vectors, the centre aside). The tokens in view
-   take the view's whats. (Version 11) The view is MiniGrid's 7 × 7; only
-   observed places count, a never-seen token is no evidence, and the
-   candidates are the placements the action could lead to (the same one,
-   or the move's). Online tries are stored with the believed view.
-2. **Predict effects by recall.**
-   - Where the query's own situation has tries, the category and the
-     result are what it did then.
-   - Otherwise the neighbours over the admitted conditions predict, and
-     the result is imagined by carrying the change over from them (card
-     038's ways: keep, copy, shift, set).
-3. **Work backward** from "episode ended", as in version 5:
+1. **Place the view.** Take the placement whose predicted view is
+   nearest the real one (L1 over vectors, only observed places), among
+   those the last action could lead to. The tokens in view take the
+   view's whats.
+2. **Store the last try.** For pick up, drop and toggle, it goes into the
+   own tries. For forward, it goes into the counts.
+3. **Continue or deliberate.** If an intention is held and no trigger
+   fired, plan only its deepest unmet condition (card 097.2). Otherwise
+   deliberate from the goal:
    - the achievers of a condition are the actions whose predicted effect
      makes it true;
-   - an achiever's needs are its conditions, then facing its thing;
-   - a condition on a pick up, toggle or drop comes from memory: which
-     part (the hand, or what is in view) must change. Its candidates are
-     the situations of the tries on the same thing and on similar things,
-     each judged by recall's prediction (card 047);
-   - such a need is met in a situation where the action works with that
-     situation's own hand and view. That situation comes from imagining
-     an achiever's effect on the present (card 043);
-   - (version 10) the achiever chosen for a condition at the last step is
-     tried first, and the search runs only when it no longer gives a
-     plan; of an achiever's unmet needs, each is planned from the
-     present, and one whose act breaks what another's plan relies on is
-     not pursued first; when card 043 asks only for the view, the
-     present hand is a protected link.
-4. **Walk** through conditions (card 067):
-   - the closeness field of the need's placements (those facing the
-     target, standing on a walkable token): forward counts only onto a
-     token recall's forward kind says moves the agent; the agent takes a
-     move that brings it closer (forward, left, right among equals);
-   - when no placement of the need can be reached, tokens recall predicts
-     a pick up or toggle can make walkable (card 047) are crossable at one
-     step more; the first one a least route crosses becomes the condition
-     ("walk", j), pursued like any other; if it cannot be met it is left
-     out and the next least route is taken;
-   - alternatives (the key or the switch) are chosen by their predicted
-     steps;
-   - (version 11) when there is no chain at all, walk to the nearest
-     placement standing on a known walkable token from which a
-     never-seen place would be in view (frontier exploration);
-   - (version 12) only never-seen places next to a known walkable token
-     count; when there are none, a known token next to never-seen places
-     that recall says can be made walkable (a door) becomes the condition
-     ("walk", j), kept between steps while it still gives a plan.
-5. **Revise** as in version 5.
+   - an achiever's needs are its conditions on the hand (card 095.5),
+     then facing its token;
+   - a need counts as met in the situation that imagining an achiever's
+     effect on the present produces (card 043);
+   - between needs, found orders, then the need the intention's chain
+     pursued, then fewer acts and steps (cards 074, 074.1 and 100).
+4. **Walk** to a placement facing the need's token, by the closeness
+   field (card 067), crossing tokens that can be made walkable as
+   conditions.
+5. **With no plan**, take the fallbacks in the order given in "In brief".
 
 ## Present but not used by the agent
 
+- **Card 072's trying and card 095.7's inform** (version 27): replaced by
+  card 101's rule. Trying is not loaded. Inform's module is imported for
+  its certainty measure only.
+- **Card 051's kept achievers and card 060's kept door** (version 26):
+  `commit` reads empty, and the kept door is no longer preferred.
+- **Version 20's recall for pick up, drop and toggle** is still in the
+  code but is not built since version 25: card 042's two levels, card
+  049's admitted conditions, card 050's α, card 051's index and card
+  047's situations. Moves, draw and undraw still go through card 042's
+  kind factory.
+- **Card 069's relation rel:P.** Its module still sets the encoder (card
+  070's) and counts wrong predictions; nothing reads the relation.
+- **Card 074.2's pair-distance cache** has no caller.
 - Card 040's relations by attention over things as tokens
   (`tools/card040/`, stopped).
 - Version 5's counted tables and rule lists (`tools/card028`, `card029`),
@@ -585,147 +704,116 @@ At every step:
 
 | Component | What it does | Input → output | Source (see LITERATURE.md) | Borrowed vs changed |
 |---|---|---|---|---|
-| Encoder and codes | Tiles to vectors and their identity codes | Pixels → 32 numbers, 4 identity codes | `1711_00937`, `1803_03382`, C-SWM (Kipf et al. 2020), cards 031–036, 052–054 | No codebook: transition model, EMA target, visibility margin and a margin between visibly different tiles; identity up to noise |
-| Recall | An action's outcome from stored tries | Key → outcome class and result | MacKay and Peto 1995; Nosofsky's GCM; `1604_02354`; Cheng 1997; Griffiths and Tenenbaum 2005; `1110_2211`; cards 042, 049, 050 | Only admitted conditions read (contrast with a cost per condition); own situation first, neighbours as prior |
-| Tokens and placements | What the agent has seen and where it is now | View → (tokens, placement) | Card 016; `1905_12006`; transformer patch tokens (Dosovitskiy et al. 2020); `1812_02230`; card 044; least trimmed squares (Rousseeuw 1984, not in papi); cards 057, 061 | Moves as fitted transformations of where, learned from the 7 × 7 view by a trimmed fit; matching by L1 over observed places, among the placements the action could lead to |
-| Looking | Where to go when no chain of conditions exists | Tokens → move or ("walk", j) | Frontier exploration (Yamauchi 1997, not in papi); card 060 | Frontier = never-seen places next to known walkable tokens; a door next to never-seen places becomes a condition, kept between steps |
-| Subgoals | Which condition to pursue next, down to an action | Facts, recall → action | `strips`, `cs_9401101`; cards 029, 038, 043 | Conditions from memory, checked in produced situations |
-| Walking | Reach a placement facing a target | Tokens, placements, recall → move | Value iteration (Bellman 1957); `1602_02867` (VIN); cards 045, 067 | Propagated on the agent's own believed map, not learned end to end; walkability from recall, neighbours from the learned moves; crossable tokens become conditions; nothing per pair of placements |
+| Encoder and codes | Tiles to vectors and their identity codes | Pixels → 32 numbers, 4 identity codes | `1711_00937`, `1803_03382`, C-SWM (Kipf et al. 2020), cards 031–036, 052–054, 070 | No codebook: transition model, EMA target, visibility margin and a margin between visibly different tiles; identity up to noise |
+| Arm C | What pick up, drop and toggle do to the front and the hand | (action, front, hand) → P(each changes), what each becomes | Hintzman 1986 (MINERVA 2), Nosofsky's GCM, cards 095.1–095.3, 099 | An exemplar vote over token instances on admitted conditions, with a network prior; results as relations; own tries first |
+| Forward recall | Whether forward moves the agent onto a token | Token → moved, blocked, ended | Card 087 | Own counts first, the property network as a weak prior |
+| Tokens and placements | What the agent has seen and where it is now | View → (tokens, placement) | Card 016; `1905_12006`; transformer patch tokens (Dosovitskiy et al. 2020); `1812_02230`; card 044; least trimmed squares (Rousseeuw 1984, not in papi); cards 057, 061 | Moves as fitted transformations of where, learned from the 7 × 7 view by a trimmed fit; matching by L1 over observed places |
+| Subgoals | Which condition to pursue next, down to an action | Facts, arm C → action | `strips`, `cs_9401101`; Koehler and Hoffmann's goal orderings; cards 029, 043, 074, 095.5 | Conditions from arm C's store, checked in produced situations; orders read from plans |
+| Intention | Keeps the chosen chain between steps; the default when reconsidering | Chain, triggers → continue or deliberate | Bratman 1987; cards 093, 097.2, 100 | Reconsidered only on four triggers; its chain breaks ties among needs |
+| Looking | What to do when no chain of conditions exists | Tokens, arm C → move, ("walk", j) or an act to make | Frontier exploration (Yamauchi 1997, not in papi); cards 060, 095.7, 101 | Frontier, then a door next to never-seen places, then the act whose outcome arm C knows least (own tries counted), held by the intention |
+| Walking | Reach a placement facing a target | Tokens, placements, forward recall → move | Value iteration (Bellman 1957); `1602_02867` (VIN); card 067 | Propagated on the agent's own believed map, not learned end to end; crossable tokens become conditions |
 
 ## Built-in priors and supplied information
 
-- **The observation** is card 016's egocentric view: the whole room
-  (radius 6, 8 × 8 rooms), 8-pixel tiles on a grid, the agent at the
-  centre facing up, and the held tile in a fixed place. The agent receives
-  pixels only. Since version 12 only MiniGrid's 7 × 7 window ahead of the
-  agent is observed, with MiniGrid's occlusion (walls and closed doors
-  hide what lies behind them); the rest of the window is unobserved.
+- **The adapter (MiniGrid).**
+  - The observation is a lookup: the simulator's tile codes go to the
+    encoder's vectors of clean renders, from a catalogue of at most 255
+    appearances. The agent does not encode frames while acting, so it
+    sees no noise.
+  - The view turns with the agent, the front is fixed at (0, 1), only
+    the 7 × 7 window ahead is observed, and occlusion is computed from
+    the tiles' names.
+  - Which random-play steps are stored is decided by changes in the
+    simulator's full grid, and arm C's "changed" labels come from the
+    true view.
+  - Six action ids are fixed: left, right, forward, pick up, drop,
+    toggle.
 - **Declared forms:**
-  - "in front", "held" and "in view" are where-values recall's key reads
-    (the token at (0, 1), the hand's, the tokens within 6 tiles);
-  - wheres lie on the view's grid; tokens are kept within 12 tiles of the
-    first view's centre;
-  - a tile is 4 pieces of 8 numbers; identity is within 1.25 × the noise
-    scale per piece;
-  - "new" is 6 × a code's radius;
-  - recall's candidate conditions: per part of the front and held tiles,
-    a front–held distance per part, a code tuple present in view; a
-    condition costs log(number of candidates) to admit;
-  - an outcome is predicted when its probability is at least one half;
-  - a vector-level neighbour counts at k ≥ 0.01;
-  - (versions 11–14) a view is placed only among the placements its
-    action could lead to; a never-seen place shows the unseen appearance;
-    exploration targets never-seen places next to known walkable tokens,
-    then a door next to never-seen places, nearest first, the choice
-    kept between steps; a move correspondence counts where both places
-    were observed in at least 50 rows and vary, and the fit is trimmed
-    until every correspondence lies within half a place.
-- **The procedures are designed, not learned:** the order of needs, the
-  search depth (6), walking's propagation (card 067's declared
-  exception: computed, not a trained System 1),
-  and the order of moves among equals (forward, left, right).
-- **Goal and experience.** The episode's end is observed, and reaching the
-  goal square is the only goal. Experience is 5,000 random episodes per
-  world, stored as in version 5. On the MiniGrid tiers (card 066): random
-  play of about 3.2 million steps per tier; tiers 2 and 3's goal (holding
-  the mission's object) is written in as its tile; the token lattice
-  covers the map from any start (12, 14 and 20 tiles).
+  - "in front" and "held" are the where-values that arm C's query reads;
+  - wheres lie on the view's grid, and the token lattice is sized per
+    tier in advance (12, 14 and 20 tiles);
+  - a tile is 4 pieces of 8 numbers, and identity is within 1.25 × the
+    noise scale per piece;
+  - interactions change only the front and the hand (four categories);
+  - arm C's results snap to tokens of the catalogue;
+  - an outcome is acted on when its probability is at least one half;
+  - the no-plan score U = 1 − max(P(no change), P(change) · c), divided
+    by 1 + walking steps, over at most six planned candidates;
+  - a view is placed only among the placements its action could lead to,
+    and a never-seen place shows the unseen appearance;
+  - a move correspondence counts where both places were observed in at
+    least 50 rows and vary, and the fit is trimmed until every
+    correspondence lies within half a place.
+- **The world is assumed static except for the agent.** A remembered
+  token stays as last seen. An imagined step changes only the agent's
+  pose, the front and the hand. Any change at the front or the hand is
+  credited to the action.
+- **The procedures are designed, not learned:**
+  - the means-ends search, its depth (6) and up to 12 re-plans per step;
+  - ties broken by fewer acts, then steps;
+  - walking's propagation (card 067's declared exception: computed, not
+    a trained System 1) and its order among equal moves (forward, left,
+    right);
+  - the intention's four triggers;
+  - an act chosen with no plan is made without checking its prediction;
+  - the order of the fallbacks.
+- **Offline networks trained in MiniGrid:** the encoder, arm A and card
+  087's property network.
+- **Goal and experience.**
+  - On tier 1 the goal is the episode's end. On tiers 2 and 3 it is
+    holding the mission's object, written in as its tile from the
+    simulator.
+  - Experience is about 3.2 million steps of random play per tier.
+  - Each episode has a time cap: 300 s on tiers 1 and 2, 3,600 s on tier 3.
 - **The evaluator** reads the simulator for checks only.
 
 ## Known limits
 
-- **Parts mix kind and colour.** Each action now reads only the parts
-  admitted for it, but which parts differs by seed (part 0, 2 or 3, held
-  or relation), because the encoder spreads colour and kind over all four.
-  In seed 403 this let a never-seen purple key read as fitting the red
-  door until one try said otherwise. Card 052 (the staged encoder) is
-  meant to give colour a part of its own.
-- **New colours.**
-  - First-sight effects were right in 2 of 5 seeds.
-  - The switch world with a new-colour door: mean 76% with card 049's
-    recall (above 90% in 7 of 10 runs; seed 401 14%, mostly random
-    steps), against 40% in version 8 (card 047). Not rerun with own
-    tries first beyond a 6-layout trial.
-  - Low support reads as "fails", not "unknown", so a new door may never
-    be tried (card 051, change 7).
-  - There are no relations ("this key fits this door"), and colour
-    transfer is paused by the user.
+- **The adapter is MiniGrid's.** Crafter needs tokens from real frames
+  every step (card 098's), a view that does not turn, facing read from
+  the agent's tile, 17 actions, an inventory of counts in place of one
+  hand, and goals other than "the episode ends". In Crafter, lava ends
+  the episode.
+- **A static world.** Belief and the crediting of changes assume that
+  only the agent changes the world. Crafter's creatures, saplings and
+  night break this (card 098.1: a cow walking into the front tile reads
+  as the action's effect).
+- **Moves are outside arm C.** Forward, turns and what comes into view
+  have their own recall (cards 028, 038, 042, 087), so arm C's one rule
+  covers only pick up, drop and toggle. Card 095.4, which was to move
+  them in, was abandoned.
+- **The intention has not been tested on being wrong.** The surprise
+  trigger fired 0 times on every tier. It compares only planned acts, on
+  which arm C was right. Tier 3's 59 wrong predictions fell, as far as
+  traced, on steps without a held intention.
+- **A drop that blocks the plan's own route.** The goal's plan chooses
+  where to drop without seeing that the dropped key blocks its route: the
+  walking field counts the key as crossable, but crossing needs the hand
+  the plan has just emptied. On fresh seed 1003160 this looped in
+  versions 25 and 26. Version 27 wins it only because the held act
+  carries the agent past the cell before the plan drops the key again.
+- **Long stretches with no plan.** Version 27 has no fallback loop, but
+  fresh seed 1003184 spends 1,735 of its 1,856 steps acting with no plan
+  (80 acts made, 82 random actions) before the goal's plan returns.
+- **Ties resolved outside the last chain are forgotten** (version 26). The
+  fresh seed version 26 lost this way, 1003184, is won by version 27's
+  no-plan rule, not by remembering the tie.
+- **The decoy world is not held out from arm C.** Arm C's store and arm A
+  are built from all of memory 066, so a decoy fold's held-out opening
+  tries are still known to them. A fair fold needs both rebuilt without
+  them (card 101).
+- **Ties ranked by acts before steps.** A far need with no pick up,
+  toggle or drop beats a near one with one, so tier 1 routes are 17%
+  longer than version 16's (24.3 steps against 20.8).
 - **Chance.** An outcome is acted on only when its probability is at least
   one half, so an action that works some of the time in the same
   situation reads as not working (the user, 2026-10-01: later).
-- **Conjunctions** (version 18). A success needing both the hand and the
-  view changed is two conditions, the view's checked where the hand's
-  achiever leaves it (card 074.1); in tier 2 the view need already held
-  there in about half the cases.
-- **Ties ranked by acts before steps** (version 18). A far need with no
-  pick up, toggle or drop beats a near one with one: tier 1 routes 17%
-  longer (24.4 steps against 20.8; seed 1001004 walks to the door before
-  picking up the key in front of it).
-- **Orders are not remembered.** Recall over stored weighings, keyed by
-  the two needs' tiles only, did worse than answering "no order" (card
-  074). A learned router over the situation's tokens (card 076, stopped)
-  beat it in tier 2 (97.7% against 96.2% for "no order"; 69% of orders
-  caught) but not in the decoy world, whose orders training rarely
-  showed; identical token situations agree on 99.8% of orders. Reading
-  what tokens do and card 070's relations instead of appearance (card
-  077, stopped) did not carry orders from tier 2 to the decoy world
-  either (16% caught at 3% precision).
-- **An achiever whose needs change form.** One failure is left in
-  card 051's 1,950 test episodes: cluttered seed 403 layout 93, where
-  the chosen achiever's needs alternate in form from step to step, so
-  commitment does not hold it.
-- **Partial views.** Since version 14 it sees MiniGrid's 7 × 7 view with
-  occlusion and its starting memory is learned from that view (cards
-  061–062). The encoder's training (card 054) was not re-audited for the
-  view. Recall's "a key of another colour does not
-  fit" is weak on noisy renders (card 054: 62.5–70% on three of four
-  seeds; card 063 did not fix it).
-- **A lattice sized in advance.** Tokens live on a fixed grid set per
-  map (card 066's prior); walking no longer limits it (version 15), but a
-  map whose size is not known in advance needs the lattice to grow.
-- **The hand's conditions** (versions 17–18; cards 073–074.2). Version
-  18 reads orders from plans, so a blocker is no longer put back on a
-  route just cleared (decoy seed 1001002) and tier 2's door need is seen
-  to conflict with clearing the ball. Left: with a full hand beside the
-  key it needs, the agent can turn between facing the key and turning
-  away to drop, never dropping (tier 2 seeds 1002033, 1002008).
-- **MiniGrid tier 2 (cards 066, 068, 072–074.2):** version 18 59% (version 17 25%). The agent does not learn to
-  free its hand before picking up the box (recall even predicts that a
-  locked door opens while a ball is held). With play starts in memory,
-  5 of 6 locked door colours are openable; blue is not, because the tile
-  recall predicts a toggled blue door becomes (card 038's ways) is no
-  catalogue tile and is judged not walkable (card 068).
-- **"Same colour" across kinds.** Version 15's encoder (card 054's) does
-  not let a weighting tell a matching key and door from another for a
-  colour left out (47 of 66, card 069). Card 070's encoder, trained with
-  the relation as the only path on fresh hues, does (66 of 66; 9 of 9 for
-  hues it never saw), but recall's fit weighs the door's identity 40
-  times the relation, so a key never seen opening its door is predicted
-  not to (card 070). Fitting recall by leaving whole combinations out
-  lowers that weight but not enough: each quarter of the vector carries
-  the tile's kind and colour alike, and toggling needs the kind (card
-  071). Version 16 has card 070's encoder and `rel:P`; recall still
-  ranks a never-seen pair only weakly (0.014 for the right key), and
-  trying finds it (1.5 tries per episode). Refitting P after each try
-  moved it by Adam's fixed step, not by the evidence, and sometimes
-  broke the relation (card 072); it is off.
-- **MiniGrid tier 3:** memory cannot be built: recall's fit of its view
-  weights compares every pair of distinct stored views. Card 068 removed
-  the per-number differences (698 GB there), but the token-pair distances
-  alone would still need about 22 GB, and the work grows with the square
-  of memory. Tier 2's setup with play-start memory already takes 746 s.
-- **Slower than version 5:** 0.20–0.64 s per layout in the familiar
-  worlds (version 5: 0.015–0.024); the switch world with a new-colour
-  door was 4–19 s in version 8 and is not retimed.
-- **Cost and memory size** (the user, 2026-10-03: near-linear before
-  BabyAI or Crafter). Per-step cost is flat in memory in the tests (5.7–
-  9.9 ms to +20,000 stored keys, card 051). Left: re-admission of
-  conditions on grown memory is slower (50 s at +20,000 keys), run only
-  on surprise; card 038's transport for a new situation reads every key
-  of an outcome class; +50,000 keys was not reached (the test harness,
-  not the agent, ran out of memory). Not built: rules compiled from
-  recall and a backward pass of cost estimates (card 051, changes 2 and
-  4).
+- **New colours.** Colour transfer is paused by the user until Crafter.
+  Each piece of the encoder's vector carries a tile's kind and colour
+  alike (cards 069–071), so "a key of an unseen colour fits its door" is
+  found by trying, not predicted.
+- **A lattice sized in advance.** Tokens live on a grid set per map; a map
+  whose size is not known in advance needs the lattice to grow.
 
 ## Change log
 
@@ -751,4 +839,11 @@ At every step:
 | 18 | 2026-10-06 | 074–074.2 | Orders read from plans (Definition 8 answered by the planner; no list of parts), found orders always followed and ties kept as the last step's pursued need, else fewer acts then steps; two-part needs split into "hold h" and the view need, card 043's splice removed; recall's pair distance and part conditions cached (the same actions). Decoy world with the key known 100/100 per fold; tier 1 200/200, 24.4 steps (17: 20.8); tier 2 59/100 (17: 25/100, better), 4 out of time; decoy folds with trying no different |
 | 20 | 2026-10-09 | 091.1, 087 | The router's vote within the same front and held codes first (identity before similarity); forward's prior from card 087's property network. Tier 1 200/200, 24.4 steps; tier 2 95/100 (19: 79/100, better); tier 3 14/30 (18: 5/30, better; 10 won, 1 lost), 1.45 s per step |
 | 19 | 2026-10-08 | 091 | Recall's prior read through a router: an attention network over recall's key as tokens (front, hand, believed view; encoder vectors with roles) embeds each key, and the prior is a kernel vote over the same action's stored keys nearest in that embedding, with the action's frequencies at a learned weight, in place of the neighbour vote over fitted weights per number; trained offline on tiers 1, 2 and the decoy world's keys. Tier 1 200/200, 24.4 steps; tier 2 79/100 (18: 59/100, better); tier 3 0/30 (18: 5/30, worse; turning in place before a door), kept by the user before tier 3 |
+| 24 | 2026-10-10 | 095.5 | Conditions and "can be made walkable" from arm C's store, not version 20's stored situations; every episode identical to version 23's (tiers 1–3, fresh seeds); version 20's interaction stores unread |
+| 23 | 2026-10-10 | 097.2 | An intention held between steps: the chosen chain of conditions continued at its deepest unmet condition (met ones below protected), deliberation from the top only on card 093's four triggers. Tier 1 200/200; tier 2 100/100, 30 steps; tier 3 30/30 (22: 24/30, 6 won, 0 lost), 129 steps; fresh seeds 99/100 (21: 88/100, p = 0.003) |
+| 22 | 2026-10-10 | 095.7 | With no plan and nothing unseen to walk to, act on the nearest token whose result recall is unsure of (P15). Tier 1 200/200; tier 2 100/100 in 30.7 steps (21: 55); tier 3 24/30 (5 won, 5 lost), 264 steps (21: 1,677) |
+| 21 | 2026-10-10 | 095.1–095.3 | Recall's prediction for pick up, drop and toggle by one rule over tokens (arm C: an exemplar vote over stored token instances with a network prior; results as relations), asked about the front and the hand only, through a radius index over a pruned store; the router's interaction prior retired. Tier 1 200/200; tier 2 100/100 (20: 95, better), 55 steps; tier 3 24/30 (20: 14/30, better; 11 won, 1 lost), 0.038 s per step (20: 1.45) |
 | 17 | 2026-10-06 | 073 | Needs ordered by the states they conflict over (reasonable goal orderings on recall's conditions, at any depth of the chain), and the states an achiever relies on protected unless so ordered, in place of card 051's threats. Decoy world with the key known 99/100 per fold (version 16 94); tier 1 200/200, 20.8 steps; tier 2 25/100 (version 16 2/100, better); decoy folds with trying no different |
+| 25 | 2026-10-10 | 099 | Version 24 without the parts it no longer read: arm C alone for pick up, drop and toggle, with its own fit of β; version 20's recall for them, card 091's router, card 085's fits and card 074.1's split not built. Every episode the same as version 24's (430 of 430); tier 3 setup 10 s (118), 0.012 s per step (0.034) |
+| 26 | 2026-10-10 | 100 | The intention the only memory of choices between steps: card 051's kept achievers and card 060's kept door removed, card 074.1's ties read from the intention's chain. Tiers 1–2 the same steps as version 25; tier 3 30/30 in 128.9; fresh seeds 98/100 in 141.2 (25: 99/100 in 144.5, no different). Arm A (no tie memory) took 25% more steps on tier 2 |
+| 27 | 2026-10-10 | 101 | One rule for acting with no plan and nothing unseen to walk to, in place of card 095.7's inform and card 072's trying: the (action, token, hand) whose outcome arm C knows least (own tries counted), ranked by uncertainty over walking steps, held by the intention and made whatever is predicted. Tiers 1–2 identical; tier 3 30/30 in 118.8 steps (26: 128.9); fresh seeds 100/100 (26: 98/100, no different), 146.1 steps on seeds both win (141.2); no fallback loop (26: two) |

@@ -462,6 +462,9 @@ def episode(job):
 def run(tier, n, out, log, workers=20):
     W, info = setup(tier, log)
     seeds = SEED_TEST + 1000 * tier + np.arange(n)
+    if _arg("--seeds"):                                # a chosen list of seeds (comma separated)
+        seeds = np.array([int(x) for x in _arg("--seeds").split(",")])
+        n = len(seeds)
     pool = F.pool20() if workers == 20 else __import__("multiprocessing").get_context("fork").Pool(workers)
     t0 = time.monotonic()
     recs = []

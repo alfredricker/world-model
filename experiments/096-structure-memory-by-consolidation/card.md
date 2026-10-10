@@ -5,7 +5,7 @@ rung: 1
 serves: [P3, P10, P12, P19, P17]
 status: draft
 verdict:
-arch_version: 20
+arch_version: 24
 date: 2026-10-09
 ---
 
@@ -134,7 +134,40 @@ Candidates, each to be read for what to take and what not:
   (STATUS's note on smart forgetting; the first form, pruning instances
   that change no vote, is [095.2](../095.2-recall-at-scale/card.md)).
 
-## 4–6. Data check, gate, criteria
+## 3a. Review done (2026-10-10, overnight)
+
+The review is in LITERATURE.md's current focus. In short: exemplar
+recall gives category knowledge only where an event has neighbours that
+share its outcome; it fails where the nearest neighbours are exceptions
+(rule-plus-exception); arm C is a Dirichlet-process predictive with arm
+A as its base, so the structure the outline asks for belongs in arm A
+and its weight α; a sleep replays into the slow learner with rare
+events marked; events are bounded by prediction error.
+
+## 4. Steps
+
+| Step | What | Status |
+|---|---|---|
+| [096.1](../096.1-few-occurrences/card.md) | Offline: how many occurrences arm C needs (GOAL P19's curve), and where recall alone falls short | Done: right from one occurrence (97–100%); never-seen events fail by kind, state and the key–door relation (arm C 58–99%); arm A, trained by try, is a weak prior there |
+| [096.2](../096.2-sleep-by-event/card.md) | Sleep: arm A replayed by event (each stored group equally) and over the agent's own world, α fitted on events memory lacks | Stop: in the agent tier 2 89/100; the offline gain was "nothing happens" winning the per-event score, and arm A is erratic on the two-token queries it was never trained on |
+| [096.3](../096.3-prior-on-the-queried-state/card.md) | Arm A trained on the state the agent asks it about (front and hand); stable across seeds; P19 on change events | Stop: tier 3 never-seen toggle changes 17% → 58%, still below the vote alone (63%), seeds disagree (42%); not needed in MiniGrid with full memory; back with Crafter |
+| 096.4 | Forgetting that keeps counts: merge redundant tries into their neighbours' counts instead of deleting (095.2's forgetting distorts N) | Closed by a check in 096.1: in version 24's store forgetting drops 0–2.4% of groups and changes no few-occurrence prediction; returns with whole-state stores (Crafter) |
+| [096.5](../096.5-episodes-as-condition-changes/card.md) | Episodes as condition changes; read for how soon a goal is (P12); do surprise boundaries mark them | Stop: on tier 3 the same change predicts how soon no better than counting (mean error 42 against 41 steps); surprise marks 0% of changes; changes recur (99.9% matched) |
+
+Own dynamics (what tokens do with no action) waits for Crafter: in
+MiniGrid every token stays where it is.
+
+**Series in MiniGrid (2026-10-10):** answered. With the full memory,
+recall alone is right on 85–100% of events that change something once
+it has seen them once; the structure the outline asked for is needed
+only for never-seen events (toggles above all), and the network prior
+tried for it (096.2, 096.3) is not yet more reliable than the vote's far
+neighbours. Forgetting distorts nothing in version 24's store (096.4).
+Episodes as condition changes recur but do not carry how soon a goal is
+(096.5). The series resumes with Crafter, where new combinations and own
+dynamics are common.
+
+## 4–6. Data check, gate, criteria (the outline's)
 
 To be written per step after the review. The likely first step: whether
 recall alone, with the four-level back-off (same tokens, similar views;

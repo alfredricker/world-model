@@ -101,6 +101,61 @@ if os.environ.get("WM_STATECHANGE"):                 # card 095.3: arm C for pic
     import statechange as STATECHANGE                  # noqa: E402  (after the router: forward keeps the router)
     STATECHANGE.hook(T)
     T.COUNTS.append(STATECHANGE.STATS)
+LEAN = None
+if os.environ.get("WM_LEAN") == "1":                 # card 099: version 24 without the parts it no longer reads
+    sys.path.insert(0, str(ROOT / "tools" / "card099"))
+    import lean as LEAN                                # noqa: E402  (needs WM_STATECHANGE=1; after it: beta from arm C)
+    T.INSTALL.append(LEAN.install)
+    LEAN.hook(T)
+INFORM = None
+if os.environ.get("WM_INFORM") == "1":               # card 095.7: act where recall is unsure of the result (no plan)
+    sys.path.insert(0, str(ROOT / "tools" / "card095.7"))
+    import inform as INFORM                            # noqa: E402  (needs WM_STATECHANGE=1)
+    INFORM.hook(T)
+    T.COUNTS.append(INFORM.STATS)
+INTENT = None
+if os.environ.get("WM_INTENT") == "1":               # card 097.2: an intention held between steps
+    sys.path.insert(0, str(ROOT / "tools" / "card097.2"))
+    import intent as INTENT                            # noqa: E402
+    INTENT.hook(T)
+    T.COUNTS.append(INTENT.STATS)
+COND = None
+if os.environ.get("WM_COND"):                        # card 095.5: conditions and openable from arm C's store
+    sys.path.insert(0, str(ROOT / "tools" / "card095.5"))
+    import conds as COND                               # noqa: E402  (needs WM_STATECHANGE=1, WM_SPLIT=1)
+    COND.hook(T)
+    T.COUNTS.append(COND.STATS)
+HELD = None
+if os.environ.get("WM_HELD"):                        # card 100: the intention the only memory of choices between steps
+    sys.path.insert(0, str(ROOT / "tools" / "card100"))
+    import held as HELD                                # noqa: E402
+    T.INSTALL.append(HELD.install)
+    HELD.hook(T)
+NOPLAN = None
+if os.environ.get("WM_NOPLAN"):                      # card 101: one rule for acting with no plan (measure: count only)
+    sys.path.insert(0, str(ROOT / "tools" / "card101"))
+    import act as NOPLAN                               # noqa: E402  (without WM_INFORM and WM_TRYING)
+    T.INSTALL.append(NOPLAN.install)
+    NOPLAN.hook(T)
+    T.COUNTS.append(NOPLAN.STATS)
+EPIS = None
+if os.environ.get("WM_EPISODES") == "1":            # card 096.5: episodes recorded as condition changes
+    sys.path.insert(0, str(ROOT / "tools" / "card096.5"))
+    import episodes as EPIS                            # noqa: E402
+    EPIS.hook(T)
+    T.COUNTS.append(EPIS.STATS)
+S1 = None
+if os.environ.get("WM_WALK_S1") == "1":             # card 097.1: walking toward needs by System 1
+    sys.path.insert(0, str(ROOT / "tools" / "card097.1"))
+    import system1 as S1                               # noqa: E402
+    S1.hook(T)
+    T.COUNTS.append(S1.STATS)
+WALKREC = None
+if os.environ.get("WM_WALKREC") == "1":             # card 097.1: the agent's moves recorded for learning to walk
+    sys.path.insert(0, str(ROOT / "tools" / "card097.1"))
+    import walkrec as WALKREC                          # noqa: E402
+    WALKREC.hook(T)
+    T.COUNTS.append(WALKREC.STATS)
 REVEAL = None
 if os.environ.get("WM_REVEAL"):                      # card 092: an unseen goal tile brought into view first
     sys.path.insert(0, str(ROOT / "tools" / "card092"))
@@ -243,6 +298,10 @@ def main():
     n = int(arg("--n", "100"))
     if MODE == "tiers":
         T.episode = episode                            # the pool's episodes keep the per-episode reports
+        if arg("--trace") is not None:                 # one episode, every step printed (tiers.py's TRACE)
+            T.setup(T.TIER, log)
+            log(json.dumps(episode((T.TIER, int(arg("--trace")))), default=str))
+            return
         T.run(T.TIER, n, out, log)
         return
     hue = arg("--fold")

@@ -168,6 +168,10 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   agent turns back and forth (card 074.1's decoy seeds, 0 of 2 to 2 of
   2). A kept choice must never override an order the test finds (card
   074: 1,281 of 1,287 overridden, decoy 94%; card 074.1: 100%).
+  The same holds for acts chosen to learn an outcome: re-ranked at each
+  trigger they alternate, and they must be made whatever the model
+  predicts, or the act it is unsure of is never taken (card 101: a fresh
+  seed lost to 3,400 steps of fallback, won once both were changed).
 - **Values can define conditions ("the achieving action works within
   walking reach": 99.2% of new layouts, card 007), but only values trained
   through the encoder see deep ones** ("door open" found in 27% of frames
@@ -175,6 +179,14 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   threshold on 0.95^steps flickered into a spurious condition (card 008).
   Learned walking reached 30% against 95% for exact walking, failing in a
   rarely seen doorway (card 012). *Evidence:* 1 seed each.
+- **Trust a learned walking distance only within the reach its input
+  shows; copies trained on the same data share its blind spots.** On
+  the believed 13 x 13 view, learned walking matched the exact field at
+  every answered decision of tiers 1–2 and on 7,430 of 7,431 short
+  routes of tier 3, but on 26 of 33 routes that left the view, with all
+  three copies agreeing on the wrong move; one such miss looped and lost
+  an episode. With thousands of doorways in the data, card 012's
+  failure did not recur. *Evidence:* card 097.1.
 
 ## Networks and objectives
 
@@ -187,6 +199,22 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   of cases at 10, 30, 100, 300), erring as "it will not work" (card 005).
   A network reading out every needed fact at 0.9995 still gave fragmented,
   unswitchable rules (card 006). *Evidence:* cards 005, 006, 027.
+- **Query a network only in the form it was trained on, check that
+  copies from other seeds agree, and score rare-event curves on events
+  that change something.** Arm A, trained on whole states and queried
+  on two tokens, was right only by luck: retrained copies gave 0% of
+  tier 2's pick up changes. Scored per event, most of which change
+  nothing, a prior leaning to "nothing happens" won, and its fitted
+  weight (10,000) overrode memory in the agent (tier 2 89/100).
+  *Evidence:* cards 096.1, 096.2.
+- **To learn invariance to a change shared by a whole frame, put both
+  conditions' candidates in one softmax.** Crafter tiles paired across
+  light through the agent's moves got the same code by day and night
+  for 12.8% of night tiles while all candidates came from the night
+  frame (a shared light shift cancels), 94.0% with the day frame's tiles
+  among them. At night no pixel threshold separates same from
+  different, so pixel judgments belong only between places that drew
+  identically when redrawn. *Evidence:* cards 098, 098.2.
 - **Test action sensitivity and frame–action pairing before training.**
   Latent prediction without a stop-gradient ignored actions (shuffled
   ratio 1.00–1.04) where reconstruction did not (GRL-106); a latent

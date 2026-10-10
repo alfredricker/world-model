@@ -3,13 +3,17 @@ id: "093"
 title: working memory, an intention held between steps and reconsidered on events
 rung: 1
 serves: [P17, P21, P12, P15]
-status: draft
+status: abandoned
 verdict:
 arch_version: 20
 date: 2026-10-09
 ---
 
 # 093: working memory, an intention held between steps
+
+**Superseded (2026-10-10):** its intention and triggers ran as card
+[097.2](../097.2-running-a-skill/card.md), kept as version 23 (tier 3 30/30).
+The "when last seen" part of working memory is left for Crafter.
 
 **Set aside by the user (2026-10-09):** its success or failure would not
 say much about the direction of the object-files and structure cards

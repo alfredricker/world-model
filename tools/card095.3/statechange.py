@@ -34,10 +34,12 @@ import scale as SC                                     # noqa: E402
 import gate as GT                                      # noqa: E402
 
 MODE = os.environ.get("WM_STATECHANGE", "1")
+DEBUG = os.environ.get("WM_SC_DEBUG") == "1"
 OUT = ROOT / "runs" / "095.3"
 FRONT, HAND = 71, 169
 STATS = {"sc_queries": 0, "sc_new": 0, "sc_seconds": 0.0, "sc_result_seconds": 0.0, "sc_tries": 0,
-         "sc_tries_right": 0, "pick_hand_predicted": 0, "pick_hand_not_front": 0}
+         "sc_tries_right": 0, "sc_tries_guessed": 0, "pick_hand_predicted": 0, "pick_hand_not_front": 0,
+         "pick_hand_not_front_real": 0}
 STATE = {"own": {}, "own_after": {}, "cache": {}, "res": {}}
 
 
@@ -159,8 +161,10 @@ def _install_c(W, T):
     arr0 = data["arr"]
     assert np.allclose(arr0, W.S.arr[:len(arr0)]), "095.1's token vectors are not this world's"
     net = AA.StateNet()
-    net.load_state_dict(torch.load(tok.RUNS / "arm_a.pt", map_location="cpu")["net"])
+    net.load_state_dict(torch.load(os.environ.get("WM_ARM_A") or tok.RUNS / "arm_a.pt", map_location="cpu")["net"])
     net.eval()
+    if os.environ.get("WM_ALPHA"):                     # card 096.2: alpha fitted on events memory lacks
+        data = dict(data, alpha=json.loads(Path(os.environ["WM_ALPHA"]).read_text())[f"tier{STATE['tier']}"])
     STATE.update(stores=data["stores"], alpha=data["alpha"], net=net, known=np.unique(np.asarray(T.Kd.APP, np.int64)),
                  acts={id(W.kinds[a]): a for a in VP.INTER}, W=W)
     cls = type(W.kinds[VP.PICK])
@@ -239,12 +243,24 @@ def _install_common(W, T):
     learn0, reset0, outcome0 = World.learn_try, World.reset, World.outcome
 
     def learn_try(self, V, a, V2, end):
+        TRY = sys.modules.get("trying")
+        guessed = TRY is not None and TRY.STATE["hyp"] is not None   # card 072's guess forces its own prediction
         if a in VP.INTER:
             f0, h0, f1, h1 = int(V[VP.FRONT]), int(V[VP.HELD]), int(V2[VP.FRONT]), int(V2[VP.HELD])
-            c_pred, after_pred = outcome0(self, a, f0, h0, self.ctx_of_view(V))
             cat = int(f1 != f0) + 2 * int(h1 != h0)
+        if a in VP.INTER and guessed:
+            STATS["sc_tries_guessed"] += 1
+        elif a in VP.INTER:
+            c_pred, after_pred = outcome0(self, a, f0, h0, self.ctx_of_view(V))
             STATS["sc_tries"] += 1
-            STATS["sc_tries_right"] += int((c_pred or 0) == cat and (cat == 0 or tuple(after_pred) == (f1, h1)))
+            right = (c_pred or 0) == cat and (cat == 0 or tuple(after_pred) == (f1, h1))
+            STATS["sc_tries_right"] += int(right)
+            if DEBUG and not right:
+                nm = lambda x: self.judge.name(int(x)) if x is not None else None
+                p = arm_c(self, a, f0, h0)[0] if MODE == "1" else None
+                print(f"   try wrong: {VP.KNAME.get(a, a)} front {nm(f0)} hand {nm(h0)} -> {nm(f1)} {nm(h1)} cat {cat}; "
+                      f"predicted {c_pred} {[nm(x) for x in after_pred] if after_pred[0] is not None else None} "
+                      f"p {None if p is None else p.round(3).tolist()} own {STATE['own'].get((a, f0, h0))}", flush=True)
         out = learn0(self, V, a, V2, end)
         if a in VP.INTER:
             k = (a, f0, h0)
@@ -263,8 +279,16 @@ def _install_common(W, T):
         if a == VP.PICK and c and c & 2:
             STATS["pick_hand_predicted"] += 1
             STATS["pick_hand_not_front"] += int(after[1] != int(u))
+            STATS["pick_hand_not_front_real"] += int(after[1] != int(u) and int(u) in STATE["known_set"])
+            if DEBUG and after[1] != int(u):
+                nm = lambda x: self.judge.name(int(x))
+                k = (nm(u), nm(h), nm(after[0]), nm(after[1]), c)
+                if k not in STATE.setdefault("seen", set()):
+                    STATE["seen"].add(k)
+                    print(f"   pick hand not front: front {k[0]} hand {k[1]} -> {k[2]} {k[3]} cat {c}", flush=True)
         return c, after
 
+    STATE["known_set"] = set(np.unique(np.asarray(T.Kd.APP, np.int64)).tolist())   # catalogue tokens, not averages
     World.learn_try, World.reset, World.outcome = learn_try, reset, outcome
 
 

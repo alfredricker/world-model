@@ -6,26 +6,30 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Card / rung:** [card 094](experiments/094-object-files-and-layout/card.md),
-  belief as object files and a layout. Rung 1 (P2, P17). Set 2026-10-09
-  with the user, after framing the architecture as four memories
-  (ARCHITECTURE.md, "Memory systems").
-- **Why these:** how working memory holds a few objects with their
-  places, how the brain codes where (path integration, places, vectors
-  to objects and walls), and agents that keep a set of object vectors or
-  a spatial map as memory.
-- **Until:** card 094.2 has a decision (094: revise; 094.1: stop, 2026-10-09).
+- **Card / rung:** [card 096](experiments/096-structure-memory-by-consolidation/card.md),
+  structure memory by consolidation (a sleep), steps 096.1–096.4. Rung 1
+  (P19, P10, P17). Set overnight on 2026-10-10 by the agent from a
+  literature review (the user may change it).
+- **Why these:** when abstraction emerges from stored instances and
+  when it does not; what a sleep should replay into the slow learner;
+  how to mark events; how solved chains become skills.
+- **Until:** card 096.2 has a decision.
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |
-| Kahneman, Treisman and Gibbs 1992, object files (not in papi) | An object file binds an object's features to a place-and-time index and persists as the object moves; a newly seen object is matched to a file by where it is expected, not only by how it looks. Card 094: a file is indexed by its token id (its where at first sight), so two doors of one colour are two files |
-| Pylyshyn and Storm 1988, tracking (not in papi); Cowan 2001, capacity (not in papi) | People track about 4–5 objects at once; working memory's focus holds about 4 chunks. Card 094 sets no limit yet and says so; a limit needs the layout or long-term memory to hold the rest |
-| Whittington et al. 2020, the Tolman–Eichenbaum machine (not in papi); `2112_04035` (Whittington, Warren and Behrens 2022) | Where is a code updated by an action-specific transformation (path integration; grid-cell-like), kept apart from what is sensed; memories bind what to where and are retrieved by attention on position (place-cell-like). Card 094's placement (one learned transformation per move) is this split; object files and the layout are memories indexed by it |
-| Høydal et al. 2019, object-vector cells; Lever et al. 2009, boundary-vector cells; O'Keefe and Dostrovsky 1971; Hafting et al. 2005 (none in papi) | The entorhinal cortex codes the vector from the animal to objects, whatever the object, and to boundaries. Card 094: an object file's where is its vector from the agent; the layout's blocked places are boundaries |
-| `1911_07141` (Loynd et al. 2020, working memory graphs) | An agent attending over a dynamic set of factored vectors (one "memo" replaced per step) learns faster on BabyAI levels and Sokoban than recurrent baselines: attention over a small set of object vectors works as working memory in worlds like ours. There attention is learned end to end by reward; card 094's is a rule over learned predictions |
-| `neural-map` (Parisotto and Salakhutdinov 2017) | A 2D memory written at the agent's place and read by attention and local convolution beats recurrent memories in mazes. The agent's position is given there; card 094's layout is indexed by the learned placement |
-| `1803_02155` (Shaw et al. 2018, relative position representations); `1706_01427` (relation networks) | Attention that reads each element's offset from another, learned per offset; objects given as features with their coordinates. Card 094.1: the router reads each object file's offset from the agent |
-| `object-centric-learning-with-slot-attention` (Locatello et al. 2020) | A fixed number of slots compete for the parts of a scene. Not needed while tokens are given per tile; for Crafter and beyond, where units must be found (P7) |
+| Hintzman 1986, MINERVA 2 (not in papi) | Category knowledge emerges from recall over traces where several traces overlap on the queried features; the prototype survives forgetting better than single traces. Recall alone is enough wherever an event has neighbours that share its outcome: card 096.1 finds this true from one occurrence, not at zero |
+| Erickson and Kruschke 1998 (ATRIUM); Nosofsky et al. 1994 (RULEX) (not in papi) | Exemplar models fail on items whose nearest neighbours are exceptions to a rule; card 096.1's locked door with its own key (nearest: the same door with other keys) is that case. Not taken: a separate rule module |
+| Griffiths et al. 2007 (not in papi) | Prototype and exemplar models are the ends of a Dirichlet-process mixture; arm C's (N_c + αP_A)/(N + α) is a Dirichlet-process posterior predictive with arm A as the base distribution, so α is the base's concentration and should be fitted where the base is used (events memory lacks) |
+| McClelland, McNaughton and O'Reilly 1995; Kumaran, Hassabis and McClelland 2016; McClelland 2013; Tse et al. 2007 (not in papi) | A sleep trains the slow learner by interleaved replay; rare events are marked so frequent ones do not swamp them; experience consistent with a schema is absorbed fast. Card 096.2: arm A replayed by event, not by try |
+| `1511_05952` (prioritised replay) | Prioritised replay changes the distribution learned and needs importance correction; replay by event changes arm A's frequencies, which is why α is refitted with it |
+| Kurby and Zacks 2008; Fountas et al. 2025, EM-LLM (arXiv 2407.09450) | An event boundary is where prediction error rises above its recent level; store condition changes, retrieve neighbouring events together. Card 096.4 |
+| `dreamcoder-2` (Ellis et al. 2021); Laird 2022, Soar (arXiv 2205.03854); Taatgen and Anderson 2002 | A compiled piece joins the library only if it shortens several solutions; a chunk's conditions are those the planner tested; a compiled rule starts below its parent and earns its use. Card 097.3 |
+| `1606_04460` (episodic control) | The episodic store wins early and the parametric learner later; which answers should follow how much uncertainty is left in the slow one (arm C's weights) |
+
+Previous focus (card 094, set 2026-10-09 with the user): object files
+and a layout (Kahneman, Treisman and Gibbs 1992; Pylyshyn and Storm
+1988; `2112_04035`; object-vector cells; `1911_07141`; `neural-map`;
+`1803_02155`; slot attention), until card 094.2's decision (stop).
 
 Previous focus (card 093, set 2026-10-09; set aside by the user):
 working memory as an intention held between steps (Fikes, Hart and

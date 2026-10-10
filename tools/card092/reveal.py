@@ -150,6 +150,23 @@ def install(T):
 
     PV.fallback = fallback
 
+    if os.environ.get("WM_REVEAL_AT") == "explore":    # version 24: exploration also runs outside the fallback
+        explore1 = PV.explore                          # (card 095.7), so the ranking is set wherever it runs
+
+        def explore(pl, st):
+            g = getattr(pl, "goal", None)
+            if g is None or g[0] != "has" or (pl.facts[st[0]][T.TK.LAT] == g[1]).any():
+                return explore1(pl, st)
+            STATS["reveal_unseen_goal_steps"] += 1
+            STATE["u"] = int(g[1])
+            try:
+                return explore1(pl, st)
+            finally:
+                STATE["u"] = None
+
+        PV.explore = explore
+        explore0_ref[0] = explore1
+
 
 def hook(T):
     setup0 = T.setup
