@@ -9,7 +9,8 @@ The papers agents should work from until the user changes or requests a change t
 - **Cards / rung:** [card 098.5](experiments/098.5-tokens-that-persist/card.md) (tokens that persist when they
   move: object files followed in the placing step) and
   [card 098.6](experiments/098.6-what-moves-by-itself/card.md) (what moves by itself, from evidence),
-  [card 098.7](experiments/098.7-how-wide-is-like-this/card.md) (how wide "tokens like this" is), then
+  [card 098.7](experiments/098.7-how-wide-is-like-this/card.md) (how wide "tokens like this" is),
+  [card 098.8](experiments/098.8-what-happens-next-shapes-tokens/card.md) (the encoder shaped by continuity, motion and change), then
   [card 098.4](experiments/098.4-what-the-action-causes/card.md) (what the action causes and what the world does
   by itself, each against doing nothing). Rung 1 (P7, P2, P6, P5). Set
   2026-10-10 when the user moved work to Crafter, asking that designs
@@ -26,7 +27,7 @@ The papers agents should work from until the user changes or requests a change t
 | `flowmo-wm` (Jiang et al. 2026) | Separates the motion an action drives from drift the world adds by itself, with a residual over a zero-context transition |
 | Cheng 1997, causal power; Pearl 1999, probabilities of causation (not in papi) | What a cause adds is the contrast with its absence; the share of an observed outcome the cause was necessary for is (P(y \| a) − P(y \| no a)) / P(y \| a) |
 | `2106_03443` (Seitzer et al. 2021) | An action influences a part where it changes that part's predicted distribution; they contrast with the average over actions, card 098.4 with doing nothing |
-| `2203_10159` (Bao et al. 2022); Jabri, Owens and Efros 2020, contrastive random walk (not in papi) | For the next encoder card: motion as the signal that groups an object, and cycle-consistent tracking as training pairs without labels |
+| `2203_10159` (Bao et al. 2022); Jabri, Owens and Efros 2020, contrastive random walk; Wang, Jabri and Efros 2019, cycle-consistency of time (not in papi) | Card 098.8's encoder: motion as the signal that groups an object, and a walk forward through frames and back as training pairs without labels |
 | `1203_2995` (Williams 2015); `1703_04264` (García-Fernández et al. 2018, PMBM); Mušicki, Evans and Stanković 1994, IPDA (not in papi) | Each track keeps a probability that its object exists, raised by hits and lowered by misses; objects not yet detected are a Poisson intensity (098.5's unseen-object density). A false event costs one tentative track, not a kind |
 | Wald 1945, SPRT; van Keuk 1998; Bar-Shalom, Campo and Luh 1990 (not in papi) | Confirm or delete by a running log-likelihood ratio, with thresholds from stated error rates. Confirming on one event over thousands of views makes a false confirmation certain (098.5's first rule) |
 | Mušicki and Evans 2004, clutter maps; Mahler, Vo and Vo 2011, CPHD with unknown clutter (not in papi) | Learn the false-event rate as its own population and test against it, not against a rate that includes real movers; a per-kind rate is a clutter map indexed by kind |

@@ -20,12 +20,9 @@ Overwritten each session. At most 40 lines.
   files; tokens 0.717, the best so far (day 72% of movers' frames on
   their own file, night 14%). [098.7](experiments/098.7-how-wide-is-like-this/card.md) **stop**: the width of
   "like this" is not the limit (day alike at every width, night none).
-- **Where we stopped (2026-10-11, session closed by the user):** the
-  user's choice is open between (1) why cows' files break by day
-  (18.7% of cow frames; offline, no card, recommended first) and (2)
-  night tokens (encoder card). Then [098.4](experiments/098.4-what-the-action-causes/card.md) (draft). Nothing running.
-  Uncommitted: card 098.7, `tools/card098.7`, 098.6's close-out,
-  CHARTER/AGENTS (MiniGrid only on keep), LITERATURE, LESSONS, run.py.
+- **Now (2026-10-11):** the user chose the encoder line: [098.8](experiments/098.8-what-happens-next-shapes-tokens/card.md) **gate failed**, decision with the user:
+  motion trained through the walk learns "nothing moves"; fitted to appearance's links it tracks 97.5% / 99.8%. Open: why cows' files break by day
+  (18.7% of cow frames; offline, no card). Then [098.4](experiments/098.4-what-the-action-causes/card.md) (draft). Nothing running.
 - **Crafter, offline:** [098](experiments/098-crafter-tokens/card.md), [098.2](experiments/098.2-tokens-across-light/card.md) and [098.3](experiments/098.3-still-by-the-view/card.md) revise (same code by
   day and night 95%); [098.1](experiments/098.1-crafter-interactions/card.md) uninterpretable, needs a no-action baseline.
   Backlog 091–097 done ([overnight-10-10.md](overnight-10-10.md)). Waiting: 086; card 102 set aside; colour paused.
