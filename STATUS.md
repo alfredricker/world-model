@@ -5,7 +5,8 @@ Overwritten each session. At most 40 lines.
 - **Date:** 2026-10-11, `master`. **Rung:** 1, not passed. **Architecture:**
   version 27 (cards 099–101, with the user's approval; versions 21–24 kept
   overnight, the user may revert). **Direction:** CHARTER's "Current
-  direction", rule 8; the standing evaluation is its three MiniGrid tiers.
+  direction", rule 8. Cards are judged on Crafter; MiniGrid's three tiers
+  run only before adopting a kept architecture change (the user, 10-11).
 - **Best version:** 27. Tier 1 **200/200** in 24.3 steps; tier 2 **100/100**
   in 30.2; tier 3 **30/30** in 118.8, 0.012 s per step; fresh tier 3 seeds
   **100/100** (version 26: 98/100, no different).
@@ -13,17 +14,18 @@ Overwritten each session. At most 40 lines.
   arm C alone for interactions), [100](experiments/100-one-held-intention/card.md) **keep** (v26, the intention
   the only memory of choices), [101](experiments/101-one-rule-with-no-plan/card.md) **keep** (v27, one rule with
   no plan: the act whose outcome is least known). Decoy check not run.
-- **Now: Crafter** (the user, 2026-10-10; CHARTER's "Current world"
-  amended). [098.5](experiments/098.5-tokens-that-persist/card.md) **revise**: the revised files level
-  holds identity on the true state (IDF1 0.949; first build 0.853) and
-  leaves MiniGrid unchanged, but on the encoder's tokens one false "moved
-  by itself" event made all grass a mover. [098.6](experiments/098.6-what-moves-by-itself/card.md) **revise**: a file
-  when tokens like it have needed memory of their own (the user's rule).
-  True state 0.934, static tokens 0.39% of files, MiniGrid identical;
-  tokens 0.717 (night 82% unfollowed): "like this" at the identity
-  radius mixes movers with scenery. Next, the user's choice: the width of
-  "like this" by held-out prediction, or night tokens (encoder). Then
-  the network card and [098.4](experiments/098.4-what-the-action-causes/card.md) (draft).
+- **Now: Crafter, object files** (the user, 2026-10-10). [098.5](experiments/098.5-tokens-that-persist/card.md) revise;
+  [098.6](experiments/098.6-what-moves-by-itself/card.md) **revise, closed**: a file when tokens like it have needed memory
+  of their own (the user's rule). True state 0.934, static 0.39% of
+  files; tokens 0.717, the best so far (day 72% of movers' frames on
+  their own file, night 14%). [098.7](experiments/098.7-how-wide-is-like-this/card.md) **stop**: the width of
+  "like this" is not the limit (day alike at every width, night none).
+- **Where we stopped (2026-10-11, session closed by the user):** the
+  user's choice is open between (1) why cows' files break by day
+  (18.7% of cow frames; offline, no card, recommended first) and (2)
+  night tokens (encoder card). Then [098.4](experiments/098.4-what-the-action-causes/card.md) (draft). Nothing running.
+  Uncommitted: card 098.7, `tools/card098.7`, 098.6's close-out,
+  CHARTER/AGENTS (MiniGrid only on keep), LITERATURE, LESSONS, run.py.
 - **Crafter, offline:** [098](experiments/098-crafter-tokens/card.md), [098.2](experiments/098.2-tokens-across-light/card.md) and [098.3](experiments/098.3-still-by-the-view/card.md) revise (same code by
   day and night 95%); [098.1](experiments/098.1-crafter-interactions/card.md) uninterpretable, needs a no-action baseline.
   Backlog 091–097 done ([overnight-10-10.md](overnight-10-10.md)). Waiting: 086; card 102 set aside; colour paused.

@@ -8,7 +8,8 @@ The papers agents should work from until the user changes or requests a change t
 
 - **Cards / rung:** [card 098.5](experiments/098.5-tokens-that-persist/card.md) (tokens that persist when they
   move: object files followed in the placing step) and
-  [card 098.6](experiments/098.6-what-moves-by-itself/card.md) (what moves by itself, from evidence), then
+  [card 098.6](experiments/098.6-what-moves-by-itself/card.md) (what moves by itself, from evidence),
+  [card 098.7](experiments/098.7-how-wide-is-like-this/card.md) (how wide "tokens like this" is), then
   [card 098.4](experiments/098.4-what-the-action-causes/card.md) (what the action causes and what the world does
   by itself, each against doing nothing). Rung 1 (P7, P2, P6, P5). Set
   2026-10-10 when the user moved work to Crafter, asking that designs
@@ -36,6 +37,8 @@ The papers agents should work from until the user changes or requests a change t
 | He, Neubig and Berg-Kirkpatrick 2021, efficient kNN-LM (not in papi) | A gate trained on held-out error skips half of recall's lookups at no loss in familiar text, 10% in unfamiliar: the closest published form of CHARTER's "each where it predicts better" |
 | Keane and Pylyshyn 2006; Iordanescu et al. 2009; Zago et al. 2004 (not in papi) | Ordinary tracking predicts little (last position wins after a blank); prediction pays where look-alikes crowd; strong priors persist rather than switch |
 | Yu and Dayan 2005; Zacks et al. 2007; Gershman, Blei and Niv 2010 (not in papi); `axiom` | Slow updates run on surprise measured against expected noise, not every step; a new latent cause (new dynamics) when the best existing one predicts worse than an empty one |
+| Kemp, Perfors and Tenenbaum 2007, overhypotheses (not in papi) | How much individuals of a kind differ is learned along with the kinds: 098.6's share of tokens needing memory of their own, with a beta prior of one episode's weight over each one's move rate |
+| Duin 1976; Habbema, Hermans and van den Broek 1974; Silverman 1986, ch. 3 (not in papi) | A kernel's width chosen by leave-one-out likelihood: each stored case predicted from the others, the width that predicts best wins. Card 098.7's "like this" in place of the identity radius |
 | Premack 1990; Markson and Spelke 2006; Luo, Kaufman and Baillargeon 2009; Saxe, Tenenbaum and Carey 2005; Rakison 2005; Uttal et al. 2000 (not in papi) | Infants learn "moves by itself" per kind from appearance–motion pairings and extend it to still members; standing still is no evidence against it. An inert thing that seems to move is put down to a hidden cause, not a new kind. The evidence is motion with no visible cause, coherent over time |
 
 Previous focus (card 096, set overnight 2026-10-10 by the agent):

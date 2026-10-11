@@ -11,8 +11,10 @@ finished system must satisfy. This file governs how we move toward them.
 
 **MiniGrid's own environments, as three evaluation tiers** (decided with the
 user 2026-10-05, replacing the chained rooms of 2026-09-24 as the standing
-evaluation). Every card that changes the agent reports all three, on the
-same environment seeds each time.
+evaluation). *Amended by the user, 2026-10-11:* cards are judged on
+Crafter. The three tiers are run only when a card has decided keep on a
+significant architecture change (a new architecture version), before
+that version is adopted, on the same environment seeds each time.
 
 | Tier | Environment | Size | Task | How it is judged |
 |---|---|---|---|---|
@@ -25,8 +27,9 @@ same environment seeds each time.
 - **Against the best version:** success on the same seeds, compared pair
   by pair: better or worse when the paired difference is beyond chance
   (McNemar's test, p < 0.05), otherwise no different; steps to success
-  reported alongside. A change is kept only if tier 1 passes and neither
-  tier 2 nor tier 3 is worse; the card's own question decides the rest.
+  reported alongside. A kept change is adopted only if tier 1 passes and
+  neither tier 2 nor tier 3 is worse; the card's own question decides
+  the rest.
   STATUS names the best version and its three scores.
 - **The learner receives:** MiniGrid's 7 × 7 egocentric view with
   occlusion, as tile images, and its own previous action: turn left, turn

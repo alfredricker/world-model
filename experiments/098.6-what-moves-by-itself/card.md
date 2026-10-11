@@ -364,6 +364,25 @@ What the revision needs is the user's choice:
   the dark: the encoder's line, cards 098.2 and 098.3.
 
 Version 27 stays. The files level is not added to the agent.
+
+**Closed 2026-10-11.** The user chose the first option, which was card
+[098.7](../098.7-how-wide-is-like-this/card.md): **stop**. It showed that
+the width of "like this" is not the limit:
+- By day, births are as good at the identity radius as at any narrower
+  width.
+- At night, no width works.
+
+So half of the diagnosis above was wrong: the day loss has another
+cause, still to be found. The worst day loss is cows' files breaking,
+on 18.7% of cow frames. Night remains the encoder's problem.
+
+098.7 also found a latent bug in this card's `files.py`. A file's
+prediction did not carry its own list of moves, which can grow within a
+step. It raised no error in this card's runs, and it is fixed in
+`tools/card098.7/`.
+
+This card's files level (`tools/card098.6/`, at the identity radius) is
+the best on tokens so far.
 ## Appendix A. Settled before building
 
 - **Stored episodes.** Three reservoirs of 50,000 each, uniform samples of
