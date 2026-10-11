@@ -215,6 +215,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   among them. At night no pixel threshold separates same from
   different, so pixel judgments belong only between places that drew
   identically when redrawn. *Evidence:* cards 098, 098.2.
+- **The identity radius is not a "like this" for recall.** At the
+  encoder's identity radius, 31% of Crafter mover tokens by day and
+  96.5% at night had more static neighbours than mover ones (none by day
+  at half the radius). Object files that track movers on the true state
+  (IDF1 0.934) reached 0.717 on tokens, with 82% of night frames
+  unfollowed. *Evidence:* card 098.6.
 - **Test action sensitivity and frame–action pairing before training.**
   Latent prediction without a stop-gradient ignored actions (shuffled
   ratio 1.00–1.04) where reconstruction did not (GRL-106); a latent
@@ -296,6 +302,10 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   first full runs reached about 85 steps per hour. *Evidence:* card 092,
   `runs/092/speed_*`.
 
+- **Label a diagnostic from each run's own record.** A per-class count
+  over workers 0–7 read worker 0's classes for all, and two patches
+  were made against it before the error was found. *Evidence:* card
+  098.6.
 - **Log every loss term separately;** a combined value hid a scale failure
   (old:legacy/mgrid/README.md). **Check cheap-model extraction;** of 61
   lessons Haiku drew from the old repo, about 10 survived unchanged.

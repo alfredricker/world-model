@@ -42,7 +42,8 @@ same environment seeds each time.
   chained rooms stay for the ladder's tests and for diagnosis.
 
 The next world (Crafter) is entered only when the ladder rungs that these
-worlds can test have passed.
+worlds can test have passed. *Amended by the user, 2026-10-10:* work moves
+to Crafter now, with rung 1 still open.
 
 ## Capability ladder
 

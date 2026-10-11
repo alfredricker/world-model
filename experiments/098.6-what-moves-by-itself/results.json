@@ -1,0 +1,244 @@
+{
+ "card": "098.6",
+ "decision": "revise",
+ "verdict": "fail",
+ "main run, tokens, workers 8-9": {
+  "IDF1 (cow, zombie, skeleton, arrow pooled)": 0.7169,
+  "ID recall / ID precision": [
+   0.6324,
+   0.8273
+  ],
+  "ID recall by kind": {
+   "cow": 0.684,
+   "zombie": 0.4771,
+   "skeleton": 0.5073,
+   "arrow": 0.7014
+  },
+  "share of file detections on static tokens": 0.0039,
+  "motion right (files on the same object two frames running)": [
+   0.9899,
+   37680
+  ],
+  "motion right at night (light < 0.3)": [
+   0.9914,
+   1397
+  ],
+  "level 1: the agent's own motion right": 0.9805,
+  "recall calls per step": {
+   "8": 0.1455,
+   "9": 0.1532
+  }
+ },
+ "upper bound, true state, workers 8-9": {
+  "IDF1 (cow, zombie, skeleton, arrow pooled)": 0.9344,
+  "ID recall / ID precision": [
+   0.9242,
+   0.9448
+  ],
+  "ID recall by kind": {
+   "cow": 0.9194,
+   "zombie": 0.997,
+   "skeleton": 0.7868,
+   "arrow": 0.9858
+  },
+  "share of file detections on static tokens": 0.0,
+  "motion right (files on the same object two frames running)": [
+   1.0,
+   49352
+  ],
+  "motion right at night (light < 0.3)": [
+   1.0,
+   7816
+  ],
+  "level 1: the agent's own motion right": 1.0,
+  "recall calls per step": {
+   "8": 0.086,
+   "9": 0.0957
+  }
+ },
+ "baseline, identity by place, tokens, workers 8-9": {
+  "IDF1 (cow, zombie, skeleton, arrow pooled)": 0.0089,
+  "ID recall / ID precision": [
+   0.2594,
+   0.0045
+  ],
+  "ID recall by kind": {
+   "cow": 0.2052,
+   "zombie": 0.4705,
+   "skeleton": 0.3216,
+   "arrow": 0.1882
+  },
+  "share of file detections on static tokens": 0.9829
+ },
+ "agent's own motion right without files (tokens, workers 8-9)": 0.9818,
+ "prediction check, tokens, worker 7": {
+  "day": {
+   "static pair events": 50,
+   "share that would start a file": 0.0,
+   "mover pair events": 251,
+   "share of movers' that would": 0.988,
+   "tokens first seen, no file or pair: static, share that start / confirm a file": [
+    25300,
+    0.0,
+    0.0
+   ],
+   "tokens first seen, no file or pair: movers, share that start / confirm a file": [
+    234,
+    0.9829,
+    0.7735
+   ],
+   "tokens changed, no file or pair: static, share that start / confirm a file": [
+    1583,
+    0.0,
+    0.0
+   ],
+   "tokens changed, no file or pair: movers, share that start / confirm a file": [
+    1914,
+    0.9728,
+    0.4796
+   ]
+  },
+  "night": {
+   "static pair events": 1296,
+   "share that would start a file": 0.0255,
+   "mover pair events": 146,
+   "share of movers' that would": 0.5753,
+   "tokens first seen, no file or pair: static, share that start / confirm a file": [
+    560,
+    0.0,
+    0.0
+   ],
+   "tokens first seen, no file or pair: movers, share that start / confirm a file": [
+    14,
+    0.3571,
+    0.0
+   ],
+   "tokens changed, no file or pair: static, share that start / confirm a file": [
+    20242,
+    0.016,
+    0.0
+   ],
+   "tokens changed, no file or pair: movers, share that start / confirm a file": [
+    593,
+    0.2074,
+    0.0
+   ]
+  },
+  "confirmed files' moves on movers": 20729,
+  "mean log-likelihood: recall, prior": [
+   -1.1291,
+   -2.804
+  ]
+ },
+ "check, true state, worker 7": {
+  "day": {
+   "static pair events": 0,
+   "share that would start a file": null,
+   "mover pair events": 34,
+   "share of movers' that would": 1.0,
+   "tokens first seen, no file or pair: static, share that start / confirm a file": [
+    25929,
+    0.0,
+    0.0
+   ],
+   "tokens first seen, no file or pair: movers, share that start / confirm a file": [
+    218,
+    1.0,
+    0.8899
+   ],
+   "tokens changed, no file or pair: static, share that start / confirm a file": [
+    185,
+    0.0,
+    0.0
+   ],
+   "tokens changed, no file or pair: movers, share that start / confirm a file": [
+    1181,
+    1.0,
+    0.9094
+   ]
+  },
+  "night": {
+   "static pair events": 0,
+   "share that would start a file": null,
+   "mover pair events": 1,
+   "share of movers' that would": 1.0,
+   "tokens first seen, no file or pair: static, share that start / confirm a file": [
+    897,
+    0.0,
+    0.0
+   ],
+   "tokens first seen, no file or pair: movers, share that start / confirm a file": [
+    12,
+    1.0,
+    0.6667
+   ],
+   "tokens changed, no file or pair: static, share that start / confirm a file": [
+    42,
+    0.0,
+    0.0
+   ],
+   "tokens changed, no file or pair: movers, share that start / confirm a file": [
+    230,
+    1.0,
+    0.9391
+   ]
+  },
+  "confirmed files' moves on movers": 27369,
+  "mean log-likelihood: recall, prior": [
+   -1.1114,
+   -2.6875
+  ]
+ },
+ "where identity is lost, share of movers' object frames (its file, another file, no file)": {
+  "tokens day": [
+   0.723,
+   0.145,
+   0.132
+  ],
+  "tokens night": [
+   0.136,
+   0.041,
+   0.824
+  ],
+  "truth day": [
+   0.919,
+   0.058,
+   0.023
+  ],
+  "truth night": [
+   0.953,
+   0.032,
+   0.014
+  ]
+ },
+ "movers with more static than mover neighbours (workers 0-1)": {
+  "radius 0.771 day/night": [
+   0.31,
+   0.965
+  ],
+  "radius 0.5": [
+   0.0,
+   0.43
+  ],
+  "radius 0.3": [
+   0.0,
+   0.155
+  ]
+ },
+ "MiniGrid vs version 27, identical episodes": {
+  "tier 1": "200/200",
+  "tier 2": "100/100",
+  "tier 3": "30/30",
+  "fresh tier 3": "100/100",
+  "files confirmed": 0
+ },
+ "first build (failed gate), first 1,500 steps of workers 0-7": {
+  "confirmed on static tokens (at least)": 15584,
+  "of them grass by day / night": [
+   10765,
+   3226
+  ],
+  "confirmed on movers": 1142,
+  "grass born at first-seen places and confirmed at once": 12995
+ }
+}

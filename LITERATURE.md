@@ -6,25 +6,43 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Card / rung:** [card 096](experiments/096-structure-memory-by-consolidation/card.md),
-  structure memory by consolidation (a sleep), steps 096.1–096.4. Rung 1
-  (P19, P10, P17). Set overnight on 2026-10-10 by the agent from a
-  literature review (the user may change it).
-- **Why these:** when abstraction emerges from stored instances and
-  when it does not; what a sleep should replay into the slow learner;
-  how to mark events; how solved chains become skills.
-- **Until:** card 096.2 has a decision.
+- **Cards / rung:** [card 098.5](experiments/098.5-tokens-that-persist/card.md) (tokens that persist when they
+  move: object files followed in the placing step) and
+  [card 098.6](experiments/098.6-what-moves-by-itself/card.md) (what moves by itself, from evidence), then
+  [card 098.4](experiments/098.4-what-the-action-causes/card.md) (what the action causes and what the world does
+  by itself, each against doing nothing). Rung 1 (P7, P2, P6, P5). Set
+  2026-10-10 when the user moved work to Crafter, asking that designs
+  carry to Minecraft and robotics.
+- **Why these:** following things that move without a grid; telling
+  what the agent caused from what would have happened anyway; chance
+  against hidden state.
+- **Until:** card 098.4 has a decision.
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |
-| Hintzman 1986, MINERVA 2 (not in papi) | Category knowledge emerges from recall over traces where several traces overlap on the queried features; the prototype survives forgetting better than single traces. Recall alone is enough wherever an event has neighbours that share its outcome: card 096.1 finds this true from one occurrence, not at zero |
-| Erickson and Kruschke 1998 (ATRIUM); Nosofsky et al. 1994 (RULEX) (not in papi) | Exemplar models fail on items whose nearest neighbours are exceptions to a rule; card 096.1's locked door with its own key (nearest: the same door with other keys) is that case. Not taken: a separate rule module |
-| Griffiths et al. 2007 (not in papi) | Prototype and exemplar models are the ends of a Dirichlet-process mixture; arm C's (N_c + αP_A)/(N + α) is a Dirichlet-process posterior predictive with arm A as the base distribution, so α is the base's concentration and should be fitted where the base is used (events memory lacks) |
-| McClelland, McNaughton and O'Reilly 1995; Kumaran, Hassabis and McClelland 2016; McClelland 2013; Tse et al. 2007 (not in papi) | A sleep trains the slow learner by interleaved replay; rare events are marked so frequent ones do not swamp them; experience consistent with a schema is absorbed fast. Card 096.2: arm A replayed by event, not by try |
-| `1511_05952` (prioritised replay) | Prioritised replay changes the distribution learned and needs importance correction; replay by event changes arm A's frequencies, which is why α is refitted with it |
-| Kurby and Zacks 2008; Fountas et al. 2025, EM-LLM (arXiv 2407.09450) | An event boundary is where prediction error rises above its recent level; store condition changes, retrieve neighbouring events together. Card 096.4 |
-| `dreamcoder-2` (Ellis et al. 2021); Laird 2022, Soar (arXiv 2205.03854); Taatgen and Anderson 2002 | A compiled piece joins the library only if it shortens several solutions; a chunk's conditions are those the planner tested; a compiled rule starts below its parent and earns its use. Card 097.3 |
-| `1606_04460` (episodic control) | The episodic store wins early and the parametric learner later; which answers should follow how much uncertainty is left in the slow one (arm C's weights) |
+| Kahneman, Treisman and Gibbs 1992; Pylyshyn and Storm 1988 (not in papi) | An object file keeps a thing's identity through motion; it is taken up again by where it is expected, its features second. Card 098.5's files |
+| Bewley et al. 2016, SORT (not in papi); Ristani et al. 2016, IDF1 (not in papi) | Predict each track's position, then assign what is seen by cost; tracks are born and die. IDF1 scores identity over each object's whole time in view |
+| `flowmo-wm` (Jiang et al. 2026) | Separates the motion an action drives from drift the world adds by itself, with a residual over a zero-context transition |
+| Cheng 1997, causal power; Pearl 1999, probabilities of causation (not in papi) | What a cause adds is the contrast with its absence; the share of an observed outcome the cause was necessary for is (P(y \| a) − P(y \| no a)) / P(y \| a) |
+| `2106_03443` (Seitzer et al. 2021) | An action influences a part where it changes that part's predicted distribution; they contrast with the average over actions, card 098.4 with doing nothing |
+| `2203_10159` (Bao et al. 2022); Jabri, Owens and Efros 2020, contrastive random walk (not in papi) | For the next encoder card: motion as the signal that groups an object, and cycle-consistent tracking as training pairs without labels |
+| `1203_2995` (Williams 2015); `1703_04264` (García-Fernández et al. 2018, PMBM); Mušicki, Evans and Stanković 1994, IPDA (not in papi) | Each track keeps a probability that its object exists, raised by hits and lowered by misses; objects not yet detected are a Poisson intensity (098.5's unseen-object density). A false event costs one tentative track, not a kind |
+| Wald 1945, SPRT; van Keuk 1998; Bar-Shalom, Campo and Luh 1990 (not in papi) | Confirm or delete by a running log-likelihood ratio, with thresholds from stated error rates. Confirming on one event over thousands of views makes a false confirmation certain (098.5's first rule) |
+| Mušicki and Evans 2004, clutter maps; Mahler, Vo and Vo 2011, CPHD with unknown clutter (not in papi) | Learn the false-event rate as its own population and test against it, not against a rate that includes real movers; a per-kind rate is a clutter map indexed by kind |
+| `2303_15555` (MoTok, Bao et al. 2023); `1612_06370` (Pathak et al. 2017); `guess-what-moves` (Choudhury et al. 2022) | Movability learned from sparse, noisy motion evidence as a function of appearance; it carries to still members and new objects. Motion-shaped codebooks separate categories a plain codebook mixes (098.5's iron and zombie code) |
+| `axiom` (Heins et al. 2025); `2006_16225` (SCOFF, Goyal et al. 2021) | Types from appearance share dynamics, state stays per object. One event creates provisional structure that a Bayesian evidence test keeps or merges |
+| Blom and Bar-Shalom 1988, IMM; Wolpert and Kawato 1998, MOSAIC; Heald, Lengyel and Wolpert 2021, COIN (not in papi) | Several predictors run per track, weighted by how well each just predicted: "which predicts better" per situation at no extra cost. A new model is inferred only when none fits |
+| Daw, Niv and Dayan 2005; Lengyel and Dayan 2007; `1606_04460`; Sprechmann et al. 2018, MbPA; McClelland et al. 1995 and Kumaran et al. 2016, complementary learning systems (not in papi) | Recall serves the unfamiliar and few-example cases; networks take over as data accumulate, trained by replay of stored episodes. Logan 1988: practised performance is itself retrieval, so recall's cost is indexing, not principle |
+| He, Neubig and Berg-Kirkpatrick 2021, efficient kNN-LM (not in papi) | A gate trained on held-out error skips half of recall's lookups at no loss in familiar text, 10% in unfamiliar: the closest published form of CHARTER's "each where it predicts better" |
+| Keane and Pylyshyn 2006; Iordanescu et al. 2009; Zago et al. 2004 (not in papi) | Ordinary tracking predicts little (last position wins after a blank); prediction pays where look-alikes crowd; strong priors persist rather than switch |
+| Yu and Dayan 2005; Zacks et al. 2007; Gershman, Blei and Niv 2010 (not in papi); `axiom` | Slow updates run on surprise measured against expected noise, not every step; a new latent cause (new dynamics) when the best existing one predicts worse than an empty one |
+| Premack 1990; Markson and Spelke 2006; Luo, Kaufman and Baillargeon 2009; Saxe, Tenenbaum and Carey 2005; Rakison 2005; Uttal et al. 2000 (not in papi) | Infants learn "moves by itself" per kind from appearance–motion pairings and extend it to still members; standing still is no evidence against it. An inert thing that seems to move is put down to a hidden cause, not a new kind. The evidence is motion with no visible cause, coherent over time |
+
+Previous focus (card 096, set overnight 2026-10-10 by the agent):
+structure memory by consolidation (Hintzman 1986; Erickson and Kruschke
+1998; Griffiths et al. 2007; McClelland, McNaughton and O'Reilly 1995;
+`1511_05952`; Kurby and Zacks 2008; `dreamcoder-2`; `1606_04460`), until
+card 096.2's decision (fail).
 
 Previous focus (card 094, set 2026-10-09 with the user): object files
 and a layout (Kahneman, Treisman and Gibbs 1992; Pylyshyn and Storm

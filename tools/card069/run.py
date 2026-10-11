@@ -138,6 +138,12 @@ if os.environ.get("WM_NOPLAN"):                      # card 101: one rule for ac
     T.INSTALL.append(NOPLAN.install)
     NOPLAN.hook(T)
     T.COUNTS.append(NOPLAN.STATS)
+TRACK = None
+if os.environ.get("WM_TRACK") in ("1", "6"):         # card 098.5 (1) / 098.6 (6): object files in the placing step
+    sys.path.insert(0, str(ROOT / "tools" / ("card098.6" if os.environ["WM_TRACK"] == "6" else "card098.5")))
+    import agent as TRACK                              # noqa: E402
+    TRACK.hook(T)
+    T.COUNTS.append(TRACK.STATS)
 EPIS = None
 if os.environ.get("WM_EPISODES") == "1":            # card 096.5: episodes recorded as condition changes
     sys.path.insert(0, str(ROOT / "tools" / "card096.5"))
