@@ -1,0 +1,209 @@
+{
+ "card": "103.5",
+ "date": "2026-10-12",
+ "test": "workers 8-9, memory learned on workers 0-1 of the same arm",
+ "arms": {
+  "evaluator's origins": {
+   "IDF1 pooled": 0.6405,
+   "ID recall / precision": [
+    0.5278,
+    0.8143
+   ],
+   "detections on no creature": 0.0044,
+   "per worker": {
+    "worker 8": {
+     "IDF1 (movers pooled)": 0.6331,
+     "ID recall / ID precision": [
+      0.5243,
+      0.799
+     ],
+     "ID recall by kind": {
+      "cow": 0.5493,
+      "zombie": 0.5009,
+      "skeleton": 0.5112,
+      "arrow": 0.402
+     },
+     "still since seen: share with a file": 0.0847,
+     "detections on no creature: share": 0.0064,
+     "night creature frames: share with a file": 0.4746,
+     "seconds": 319.5
+    },
+    "worker 9": {
+     "IDF1 (movers pooled)": 0.6476,
+     "ID recall / ID precision": [
+      0.5312,
+      0.8295
+     ],
+     "ID recall by kind": {
+      "cow": 0.5646,
+      "zombie": 0.5591,
+      "skeleton": 0.4944,
+      "arrow": 0.3842
+     },
+     "still since seen: share with a file": 0.0614,
+     "detections on no creature: share": 0.0023,
+     "night creature frames: share with a file": 0.4475,
+     "seconds": 304.5
+    }
+   }
+  },
+  "card 103.4's learned origins": {
+   "IDF1 pooled": 0.6234,
+   "ID recall / precision": [
+    0.5198,
+    0.7787
+   ],
+   "detections on no creature": 0.0432,
+   "per worker": {
+    "worker 8": {
+     "IDF1 (movers pooled)": 0.6151,
+     "ID recall / ID precision": [
+      0.5171,
+      0.7588
+     ],
+     "ID recall by kind": {
+      "cow": 0.5454,
+      "zombie": 0.4779,
+      "skeleton": 0.5058,
+      "arrow": 0.3981
+     },
+     "still since seen: share with a file": 0.086,
+     "detections on no creature: share": 0.0551,
+     "night creature frames: share with a file": 0.4579,
+     "seconds": 411.2
+    },
+    "worker 9": {
+     "IDF1 (movers pooled)": 0.6317,
+     "ID recall / ID precision": [
+      0.5224,
+      0.7988
+     ],
+     "ID recall by kind": {
+      "cow": 0.5572,
+      "zombie": 0.5413,
+      "skeleton": 0.4844,
+      "arrow": 0.3814
+     },
+     "still since seen: share with a file": 0.0622,
+     "detections on no creature: share": 0.0312,
+     "night creature frames: share with a file": 0.442,
+     "seconds": 372.6
+    }
+   }
+  }
+ },
+ "references": {
+  "098.6 tile tokens": 0.717,
+  "098.6 true state (upper bound)": 0.934,
+  "103.2 evaluator's origins": 0.531,
+  "103.2 on 103.4's origins (worker 8)": 0.411
+ },
+ "where lost, learned origins, worker 8": {
+  "origins": "1034",
+  "worker": 8,
+  "creature frames": 22844,
+  "by day or night, moved or still since seen, status": {
+   "day / moved / another file": [
+    2250,
+    0.0985
+   ],
+   "day / moved / confirmed, not found this step": [
+    24,
+    0.0011
+   ],
+   "day / moved / its own file": [
+    12046,
+    0.5273
+   ],
+   "day / moved / kept record only": [
+    34,
+    0.0015
+   ],
+   "day / moved / nothing": [
+    359,
+    0.0157
+   ],
+   "day / moved / tentative file": [
+    680,
+    0.0298
+   ],
+   "day / still since seen / another file": [
+    29,
+    0.0013
+   ],
+   "day / still since seen / confirmed, not found this step": [
+    29,
+    0.0013
+   ],
+   "day / still since seen / its own file": [
+    158,
+    0.0069
+   ],
+   "day / still since seen / kept record only": [
+    1,
+    0.0
+   ],
+   "day / still since seen / nothing": [
+    325,
+    0.0142
+   ],
+   "day / still since seen / tentative file": [
+    1107,
+    0.0485
+   ],
+   "night / moved / another file": [
+    528,
+    0.0231
+   ],
+   "night / moved / confirmed, not found this step": [
+    178,
+    0.0078
+   ],
+   "night / moved / its own file": [
+    2510,
+    0.1099
+   ],
+   "night / moved / kept record only": [
+    49,
+    0.0021
+   ],
+   "night / moved / nothing": [
+    1781,
+    0.078
+   ],
+   "night / moved / tentative file": [
+    330,
+    0.0144
+   ],
+   "night / still since seen / confirmed, not found this step": [
+    18,
+    0.0008
+   ],
+   "night / still since seen / its own file": [
+    23,
+    0.001
+   ],
+   "night / still since seen / nothing": [
+    225,
+    0.0098
+   ],
+   "night / still since seen / tentative file": [
+    160,
+    0.007
+   ]
+  },
+  "files per creature followed (median, mean)": [
+   1.0,
+   1.38
+  ],
+  "creatures followed / seen": [
+   982,
+   1195
+  ]
+ },
+ "criteria": {
+  "1 IDF1 learned >= 0.717": "fail (0.623)",
+  "2 within 0.05 of evaluator's": "pass (0.017)",
+  "3 detections on no creature <= 1%": "fail on the learned view (4.3%); evaluator's view 0.44%"
+ }
+}

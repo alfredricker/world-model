@@ -9,7 +9,7 @@ The papers agents should work from until the user changes or requests a change t
 - **Cards / rung:** series [103](experiments/103-tracking-with-general-priors/card.md), tracking with general
   priors: [103.1](experiments/103.1-world-and-camera-layers/card.md) the world and camera layers,
   [103.2](experiments/103.2-object-files-as-sprites/card.md) object files as sprites, [103.3](experiments/103.3-view-motion-with-files/card.md) the view's motion with files
-  explained away, [103.4](experiments/103.4-evidence-per-observation/card.md) evidence per independent observation. Rung 1. Set 2026-10-12 after a review of object-centric video models and tracking.
+  explained away, [103.4](experiments/103.4-evidence-per-observation/card.md) evidence per independent observation, [103.5](experiments/103.5-files-level-on-sprites/card.md) 098.6's files level on sprites. Rung 1. Set 2026-10-12 after a review of object-centric video models and tracking.
 - **Why these:** correspondence (the view's motion, which object is which)
   is where series 102 stuck; the review asked which mechanisms carry
   identity with few, general priors, a moving camera and small compute.
@@ -27,6 +27,7 @@ The papers agents should work from until the user changes or requests a change t
 | Bian et al. 2022, MS-CRW; Tokmakov and Jabri 2022, RAM; Sarlin et al. 2020, SuperGlue (not in papi) | A random walk has no way to place occluded content (EPE 17.4; 3.9 with a smoothness regressor); a "no match" bin or memory nodes give hidden content a continuation. Card 098.8's failure named |
 | Bewley et al. 2016, SORT; Zhang et al. 2022, ByteTrack; Cao et al. 2023, OC-SORT (not in papi) | Better detections matter most (+18.9% in SORT); low-confidence detections kept for existing tracks (IDF1 76.9 → 79.3); re-updating across a gap. Card 103.2's files lose most where detections are missing |
 | Varin, Reid and Firth 2011, composite likelihood; Grünwald 2012, Safe Bayes; Holmes and Walker 2017, calibrating the power of a likelihood (not in papi) | A likelihood that treats dependent observations as independent is overconfident; raising it to a power (a learning rate) corrects it, and the power can be chosen from the data. Card 103.4's τ, chosen by the agent's own self-consistency |
+| Bar-Shalom and Tse 1975, PDA; Mušicki, Evans and Stanković 1994, IPDA; Koch 2004, negative information (not in papi) | A track's evidence is its predicted detection against the density of false matches in its gate; a miss where the object could be seen lowers its existence by the detection probability and removes those places from where it may be. Card 103.5: clutter per gate replaced a world drift rate, and night's false files went from 1,083 to 18 detections |
 | Spelke 1995; Xu and Carey 1996; Scholl and Pylyshyn 1999 (not in papi) | Infants individuate objects by spatiotemporal continuity before features; tracking survives occlusion only at an occluding edge. The series' priors |
 
 Previous focus (series 102, set 2026-10-11 when the user started the series,
