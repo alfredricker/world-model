@@ -96,6 +96,7 @@ Places whose appearance changed, in the 13 × 13 window plus the hand
 | [095.5](../095.5-goals-over-the-predicted-state/card.md) | The planner's conditions read from arm C's store, the last reader of version 20's stored situations retired; goals over any change in the predicted state moved to Crafter | 095.3 | Approved |
 | [095.7](../095.7-exploring-uncertain-results/card.md) | With no plan, act on the token whose result recall is unsure of (P15) | 095.3 | Done: kept, version 22 |
 | [095.6](../095.6-one-transition-model/card.md) | One transition model: arm A becomes the encoder's transition head, trained jointly with the encoder on whole states (tokens with places), replacing the two-slot head (front and hand, card 054's recipe) that shaped the latent space and was then set aside; kept and used as recall's prior. Stored memory re-encoded and recall refitted after (card 052's staging) | 095.3, card 094's object files | Closed: moved to Crafter's encoder (card 098), where it can show something |
+| 095.8 | Conditions between any tokens: arm C asked about every token in place of the front and the hand | 095.1–095.3 | Moved by the user to [102.1](../102.1-conditions-between-any-tokens/card.md) (2026-10-11), with relations learned from raw positions in place of declared ones |
 
 ## 5. Risks
 

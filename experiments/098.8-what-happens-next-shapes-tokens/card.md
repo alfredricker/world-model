@@ -3,8 +3,8 @@ id: "098.8"
 title: what happens next shapes the tokens — one rule of continuity for every token, with its own motion and the action's change
 rung: 1
 serves: [P7, P1, P6, P2]
-status: gated
-verdict:
+status: done
+verdict: fail
 arch_version: 27
 date: 2026-10-11
 ---
@@ -85,6 +85,45 @@ this card:  a walk over tokens, forward through frames and back (contrastive ran
   no encoder recovers.
 
 Appendix A gives the walk in full.
+
+### Revision after the gate (the card's one; the user, 2026-10-11)
+
+The gate failed (section 5). Trained through the walk, the motion network
+settled on "nothing moves". A moving token covers one tile and uncovers
+another, and "they swapped" comes back as surely as the truth. The user
+chose two changes. The success criteria are unchanged.
+
+1. **Motion is learned from the links appearance makes.** At each step,
+   appearance alone (z_i · z_j / τ) gives each token's likely
+   continuations. The motion network learns to predict their offsets,
+   each link weighted by how surely appearance's one-step cycle comes
+   back. Its loss reaches the encoder through its input, so tokens that
+   move alike are still pulled together. In the walk, its prediction is a
+   fixed prior, so the walk cannot bend it toward "nothing moves". This
+   is the user's rule: one prior (a token continues as a token that looks
+   like it), corrected by experience (how tokens like it have been seen to
+   move).
+2. **Each tile is encoded with its neighbours** (from the ARC note,
+   Appendix B). The encoder reads the 3 × 3 tiles around a place
+   (21 × 21 pixels, with a channel marking places outside the view), as
+   Jabri's patches carry their surroundings. Same-looking tiles then
+   differ by what is around them: grass by a tree from grass in a field,
+   or in ARC a cell of one colour by the shape it belongs to. Appearance
+   links were weakest exactly there: with appearance alone, scenery was
+   linked to its own place 4% of the time. The risk is that a token's
+   vector also carries where it stands, so a kind may split by its
+   surroundings. Criterion 1 measures that.
+
+The change network is trained through the walk as before. Walks run 2 to
+40 steps as Appendix A says (the gate's runs used 32 by mistake).
+
+**Arms:** W, W+M and W+M+C, with motion learned this way, and N, which is
+W+M+C with neighbours. The gate (tracking check, day purity) is run again
+on all four before the main run. Criteria 1–2 are scored for all four.
+Criterion 3 (098.6's files level, about 40 minutes each) is scored for
+W+M+C and N. The decision follows the better of W+M+C and N by
+section 6's rules; where they do equally well, W+M+C (the simpler) is
+kept.
 
 ## 3. Dependencies
 
@@ -200,8 +239,34 @@ of a change was 0.99 for every token.
 - 17 codes (53), and one code for the agent's four headings (098.3:
   five). With no change network, a turn reads as the same token.
 
-By the card's rule, a failed tracking check means stop. Decision
-pending with the user (section 8).
+By the card's rule, a failed tracking check means stop. The user chose
+a revision instead (section 2).
+
+**The gate after the revision** (`runs/098.8/gate2.sh`; walks of 2 to
+40 steps, 12,000 steps per arm; the first gate's runs are kept as
+`runs/098.8/gate1_*`):
+
+| Arm | Creatures, after a quarter / at the end (bar 90%) | Scenery, after a quarter / at the end (bar 99%) | Codes |
+|---|---|---|---|
+| W | 78% / 78% | 4% / 4% | 331 |
+| W+M | 96% / 87% | 95% / 90% | 15 |
+| W+M+C | 97% / 99% | 94% / 81% | 16 |
+| N (W+M+C with neighbours) | 69% / 67% | 90% / 89% | 335 |
+
+- **Motion learned from appearance's links does not hold.** Early in
+  training it follows creatures and scenery at about 95%, and the first
+  gate's single run (walks up to 32 steps) reached 97.5% and 99.8%. As
+  training goes on, scenery falls. Appearance cannot say where a tile of
+  grass went when the tiles around it look the same, so motion fitted to
+  appearance's links grows unsure for grass, and the walk then picks
+  among identical tiles.
+- **Neighbours make it worse for movers.** A cow's vector now carries
+  the tiles around it, which change at every step it takes, so appearance
+  links lose it (67%). Kinds split by surroundings: 335 codes.
+- **The change network collapses in every arm.** It gives a change a
+  chance of 0.88–0.99 at every place, whatever the action.
+
+The gate fails in every arm. The main run was not made.
 
 ## 6. Success criteria and prediction
 
@@ -234,7 +299,8 @@ Judged on workers 8–9, whose worlds and creatures training never saw.
 
 **Reported:** three arms on the same data and seeds, to show what each
 part adds: walk alone (W), with motion (W+M), and with motion and change
-(W+M+C, the card's). Also reported:
+(W+M+C, the card's). After the revision there is also N, W+M+C with
+neighbours. Also reported:
 - night tokens by distance from the view's centre;
 - codes per class, and the share of walks crossing dusk;
 - motion and change predicted by the two networks, for comparison only.
@@ -266,10 +332,45 @@ part adds: walk alone (W), with motion (W+M), and with motion and change
   10 minutes per arm.
 - In all, about 75 minutes, in runs of 20 minutes or less. Runs over
   30 minutes go to the user as commands.
+- *After the revision (timed):*
+  - training takes 12,000 steps: about 4 minutes for each tile arm and
+    18 minutes for N;
+  - criteria 1–2 take about 5 minutes per arm;
+  - criterion 3 takes about 40 minutes per arm, in three runs of
+    20 minutes or less;
+  - in all, about 2 hours 15 minutes.
 
 ## 7. Result
 
+Not run; the gate failed before and after the revision (section 5).
+Card 098.3 was scored on workers 8–9 for the comparison and is kept in
+`runs/098.8/base_098.3/eval.json`. Night tokens in a code of their
+class's day tokens: cows 61.8%, zombies 98.0%, skeletons 19.7%, scenery
+96.1%. Purity 99.9% by day and 94.5% at night.
+
 ## 8. Decision
+
+**Stop.** The tracking check failed in every arm, as designed and after
+the card's one revision. What the gate showed:
+- **Following by appearance works for creatures, not for scenery.**
+  Appearance alone gives the same creature 78–83% of the time, but an
+  identical grass tile is as good as any other.
+- **A walk over places prefers "they swapped" to "it moved".** Each
+  token must continue as some token, so a token that is covered (the
+  grass under a cow) has no right continuation. "The cow became grass and
+  the grass became a cow" is one-to-one, and the cycle rewards it.
+  Trained through the walk, motion settles on "nothing moves". Fitted to
+  appearance's links, it drifts toward unsure for grass.
+- **Change trained through the walk explains everything.** In every arm
+  it took over.
+
+The missing piece is a way for a token to be hidden or revealed. The
+object files (098.5–098.6) have that: births, deaths and the pair test
+for a token that left one place and appeared at the next. On the true
+state they keep identity at IDF1 0.934. A next card could train the
+encoder on the links the files level makes, rather than on a walk over
+every place. That would be a new card for the user to approve.
+098.3's encoder remains the best Crafter tokens.
 
 ## Appendix A. The walk
 
@@ -282,7 +383,9 @@ part adds: walk alone (W), with motion (W+M), and with motion and change
 - **One step, i at t to j at t+1.** The transition probability is a
   softmax over j of the larger of two explanations:
   - stays: z_i · z_j / τ + log m(offset_ij | z_i). m is the motion
-    network, and offsets beyond two places get no weight;
+    network, and offsets beyond two places get no weight. *Since the
+    revision,* m is fitted to appearance's links and held fixed in the
+    walk;
   - changed: c(z_i, a, front_i) · z_j / τ + log π(z_i, a, front_i). c is
     the vector the change network predicts, and π the chance of a change,
     with a prior of 0.05.
@@ -293,16 +396,19 @@ part adds: walk alone (W), with motion (W+M), and with motion and change
 - **The return step's candidates** are the start frame's tokens together
   with the far frame's, so that a light shift shared by one frame does not
   cancel. A start-frame token drawn identically to the start token counts
-  as a return.
+  as a return in the tie, but not in the cycle (settled while building,
+  section 5).
 - **Loss:** minus the log-probability of returning, summed over start
-  tokens. Edge dropout (Jabri) keeps the walk from relying on one link.
+  tokens. There is no edge dropout (settled while building, section 5).
 - **Same and different matches for the code radius:** links taken with
   probability above 0.9 in both directions are "same". Tokens of one
   frame drawn differently are "different".
 
 ## Appendix B. Note for later: objects of many cells (ARC-AGI-3)
 
-Added 2026-10-11 at the user's request; not part of this card's test.
+Added 2026-10-11 at the user's request. Its first remedy, tiles read
+with their neighbours, became arm N of the revision (section 2); grouping
+by common fate is not part of this card's test.
 The question was whether this card, kept as version 28, would help with
 objects that span many cells, as in ARC-AGI-3's games (grids up to
 64 × 64 of 16 colours, a few move actions and a click at any cell).

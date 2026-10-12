@@ -1,0 +1,9 @@
+{
+  "card": "103.1",
+  "test": "Crafter worker 8, 24204 steps",
+  "view_motion_right": {"robust_none": 0.9467, "robust_camera_learned": 0.9057, "gate_1028_agent_tile_masked": 0.9142, "ref_1028": 0.949},
+  "moves_still": {"robust_none": [0.7775, 0.9944], "robust_camera_learned": [0.8982, 0.9078]},
+  "day_night": {"robust_none": [0.9474, 0.9401], "robust_camera_learned": [0.9258, 0.7236]},
+  "camera_pixels_in_agent_tile_elsewhere": [26, 0],
+  "outputs": "runs/103.1/place_crafter_world_{learned,none}.json"
+}

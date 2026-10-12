@@ -10,307 +10,276 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
 ## Designing a test
 
 - **Check that the events a test depends on are common in training, and
-  read a capability only once its prerequisite is learned.** In chained
-  rooms unlocks were 307 of 1.7M transitions (0.018%); after 40k updates
-  pickup and toggle effects scored 0.19 and 0.24 against 0.999 for turns,
-  which left the relation, memory and transfer screens unreadable. Half of
-  each batch at interactions reached 0.76–0.87 in 1,000 updates; replay
-  priority on windows, not transitions, left unlocks at the uniform share.
-  *Evidence:* old:gamma/notes/2026-09-21-chained-rooms-stage-a.md,
-  2026-09-22-chained-rooms-stage-a2.md. *Confirmed.*
-- **Check that the answer can be known from what the model sees.** One
-  egocentric view explained 48–66% of the variance of true
-  steps-to-condition, and the best action per view matched the truth on
-  movement forks 0.30–0.33 of the time (chance 0.27): no memoryless model
-  could pass a 0.8 bar. *Evidence:* card 001 gate (exact). *Confirmed.*
-- **Measure the upper bound in the test world itself.** Card 072 took
-  tier 1's 100% (one key) as the bound for the decoy world (two keys);
-  there a version that knows the key reaches 94%, so its 99% criterion
-  could not be met. *Evidence:* `runs/072/control_red_known.json`.
-- **Score a model's effects against the simulator, never against its own
-  codes.** Card 052's step T scored "the door opens" by the predicted
-  code tuple equalling the real one; its codes did not see doors open,
-  so "nothing happens" scored 40 of 40 and effects 99%. Against the
-  simulator: 0 of 40. *Evidence:* card 052 step T correction.
+  read a capability only once its prerequisite is learned.** Unlocks were
+  0.018% of chained-rooms transitions; after 40k updates pick up and toggle
+  scored 0.19 and 0.24 (turns 0.999), leaving later screens unreadable.
+  Half of each batch at interactions reached 0.76–0.87 in 1,000 updates.
+  *Evidence:* old:gamma/notes/2026-09-21/22 chained-rooms stage A.
   *Confirmed.*
-- **Examples of a goal are evidence only if drawn independently and the
-  way the agent's own experience was.** Inferring a goal from five frames
-  by contrast with experience (the size principle) admitted an intact
-  vase when the frames came from shorter play than the agent's, and a
-  key of another colour when they came from a few long episodes (door
-  green, 77.5%); one frame per episode of play like the agent's raised
-  every goal with enough episodes to 95–97%. *Evidence:* card 056.
-  *Confirmed* (four encoders, identical).
+- **Check that the answer can be known from what the model sees.** One
+  egocentric view explained 48–66% of the variance of steps-to-condition;
+  the best action per view matched the truth 0.30–0.33 of the time (chance
+  0.27), so no memoryless model could pass 0.8. *Evidence:* card 001 gate.
+  *Confirmed.*
+- **On a grid, a smallest 90% region holds more than 90%; count its
+  boundary place in proportion.** A calibrated belief read 96.8% inside
+  its region before, 91.2% after. *Evidence:* card 102.3.
+- **Measure the upper bound in the test world itself.** Card 072 took tier
+  1's 100% as the bound for the decoy world, where knowing the key gives
+  94%, so its 99% criterion could not be met. *Evidence:* card 072.
+- **Score effects against the simulator, never against the model's own
+  codes.** Codes that never saw doors open scored "nothing happens" 40 of
+  40 and effects 99%; against the simulator, 0 of 40. *Evidence:* card 052
+  step T correction. *Confirmed.*
+- **Examples of a goal are evidence only if drawn the way the agent's own
+  experience was.** Frames from shorter play admitted an intact vase,
+  from a few long episodes a key of another colour; one frame per episode
+  of play like the agent's gave 95–97%. *Evidence:* card 056. *Confirmed.*
 - **A hand-built mechanism that passes is not a result, and offline gains
-  need checking in live behaviour.** A hand-chosen lattice fit the Crafter
-  renderer exactly and failed on lighting changes; gains on count worlds
-  did not survive live play. *Evidence:*
-  old:grl/notes/2026-09-10-reset.md (RLM-133),
-  old:grl/INHERITED.md (RLM-057, -061, -062). *Confirmed.*
+  need checking in live behaviour.** A hand-chosen lattice fit Crafter's
+  renderer and failed on lighting; count-world gains did not survive live
+  play. *Evidence:* old:grl/notes/2026-09-10-reset.md, INHERITED.md.
+  *Confirmed.*
 
 ## Generalisation
 
 - **In one fixed world a lookup table and a general rule fit equally well;
-  only the task distribution or a prior can prefer the rule.** On PHWM's
-  crafting grid (a tool works when its tier ≥ the resource's) the
-  just-sufficient pair stayed at 0.16–0.23 through relational bottlenecks,
-  memory, sparsity and parameter sharing, as the pair table re-formed. New
-  random fillers in every task, with the query cell held out, made the rule
-  the only useful solution: 0.980 over 6 seeds, against 0.494 with outcomes
-  shuffled. With
-  three fixed colours, per-colour rules and "same colour" fit our data
-  equally; card 010's cost per condition is what can separate them, and
-  new colours per episode is the stronger test. A learned dot-product score
-  between two things, (Wq a)·(Wk b), is such a table: on one-hot vectors
-  it fit three colours and carried to none, while a distance along learned
-  weights carried. A distance is not enough when terms reading each tile
-  alone sit beside it: card 069's relation, trained on nine fixed colours
-  next to such terms, became a threshold per door colour (45 of 66 pairs
-  right for a colour left out). With the relation as the only path and a
-  fresh hue for every try, the same encoder learned it (card 070: 66 of
-  66, and 9 of 9 for hues never seen). The same holds for recall's
-  weights: fitted by predicting each stored try from the others, they
-  favour the door's identity, since every try has twins at the same door
-  (card 070). Bayesian evidence does not rescue it on raw try counts:
-  over about 528,000 stored toggles the door's identity, which tells
-  locked doors, closed doors and walls apart in one condition, was
-  admitted first, so the relation's correct cut became a rule per door
-  (card 084: 0 of 6 folds). Admitting conditions that name no tile
-  first (roles, cuts) gave a cell holding only openings in every fold
-  (card 084.3). *Evidence:* phwm record §5.4–5.5; cards 084–084.3;
-  old:phwm/docs/06-achievements-and-limitations.md §6.1.1; card 040
-  appendix A; cards 069, 070. *Confirmed.*
-- **Verify that held-out cases are really held out, and keep new
-  combinations apart from new members.** PHWM's first held run left about
-  98% of query pairs in the support set (corrected: .917). Combination
-  split .943±.004 against a .976 ceiling; member split (a colour never
-  seen in the role) .808±.053. *Evidence:* phwm record §5.3, §5.6.
-  *Confirmed.*
+  only the task distribution or a prior can prefer the rule.** PHWM's
+  "tool tier ≥ resource tier" stayed at 0.16–0.23 under many
+  architectures as the pair table re-formed; new random fillers per task
+  made the rule the only solution (0.980, shuffled 0.494). A dot-product
+  score (Wq a)·(Wk b) is such a table; a distance along learned weights
+  carried. A relation beside terms that read each tile alone became a
+  threshold per door colour (card 069: 45 of 66); as the only path, with
+  a fresh hue per try, it was learned (card 070: 66 of 66, 9 of 9 unseen
+  hues). Recall's fitted weights and Bayesian admission favour a door's
+  identity for the same reason (every try has twins at that door: card
+  084, 0 of 6 folds); admitting conditions that name no tile first fixed
+  it (card 084.3). Positions behave the same way: a pair network on raw
+  positions learned "a box beside the lamp" at the training columns (100%
+  in held-out episodes); at new columns two of four training runs passed
+  and two faded with distance (100%, 96%, 59% at columns 5–7). Feeding
+  only position differences did not fix it: walls and other fixed tokens
+  give the position back (43% of the lamp's attention on the agent, 42%
+  on walls and empty rows, 2% on the box), and a relation to the agent
+  became two steps that were not learned (made tools 96% → 6%; card
+  102.1 revision 1). *Evidence:* phwm record §5.4–5.5; cards
+  069, 070, 084–084.3, 102.1. *Confirmed.*
+- **Verify that held-out cases are held out; keep new combinations apart
+  from new members.** PHWM's first held run left 98% of queries in the
+  support set. Combinations .943 (ceiling .976), new members .808.
+  *Evidence:* phwm record §5.3, §5.6. *Confirmed.*
 - **A property that can be read out is not one that is used; report every
-  case separately.** PHWM decoded colour at .982 while the held matching
-  cell scored 0.0 in 3 seeds, and later the wrong-key cell stayed at 0, an
-  "any key opens" shortcut that average accuracy barely penalised. Mgrid
-  colour probes scored 99.81% against a 99.23% majority baseline. A pixel
-  network trained on 14 appearances' counted kinds placed withheld keys and
-  doors by colour and brightness, not shape (4 of 33 right). *Evidence:*
-  phwm record §5.2; old:legacy/mgrid/README.md (t1); card 027 run 4.
-  *Confirmed* (the last *suggestive*).
-- **Codes that rebuild pixels keep every distinction but do not factor a
-  thing's shape from its colour; nothing in the objective prefers it.**
-  Four codebooks of 8 kept all 20 tiles apart (10 of 10 seeds), but a key
-  or door in a new colour came out "new" or as a blue one, never as its
-  shape (0 of 10; label codes carried fully). A penalty on the number of
-  codes put a new colour on the nearest known one (8 of 10), which
-  carried the shared effects and wrongly the colour rules too.
-  The same holds for vectors: on card 070's encoder, the directions that
-  networks reading a tile's effects ignore are mostly hue (78–85% of
-  their variance), but keys' and doors' point 70–88° apart, so "equal
-  along them" told matching pairs apart only 53 of 66 times (card 088).
-  Comparing an attribute across kinds needs it coded alike in every kind.
-  Within a kind, hue is a quantity in every encoder tried (nine fixed
-  colours or fresh ones: R² 0.96–0.99 from the nearest vectors); across
-  kinds it is not lined up, neither by a path that sees only pixel values
-  nor by fresh hues on every kind (cards 089, 090: 33–45 of 66). In
-  MiniGrid a key and its locked door differ even in pixel values, so
-  "same colour" across kinds is a relation the outcome must teach (card
-  070: 66 of 66). Measure an attribute within each kind: pooled over
-  kinds, the kinds' differences swamp it (card 089's first reading).
-  *Evidence:* cards 031, 032, 070, 088–090. *Confirmed* (label arm as control).
-- **An exact lookup over codes cannot use "like a key but not a known
-  key"; novelty depends on the action.** One radius per code, the same for
-  every action, either lets a new appearance share familiar codes (it
-  carried picking up a new key in 9 of 10 seeds, but gave new open doors a
-  familiar door's codes in 5–7) or marks it "new" (every new tile told
-  apart, 10 and 8 of 10, and nothing predicted, 0 of 10). Recall's
-  per-action weights over the same vectors predicted all four new-key and
-  open-door cases in 10 of 10. *Evidence:* cards 034, 035 (both rules on
-  the same encoders). *Confirmed* (label arm as control).
-- **Recall-weighted entries carry what a new thing does, but a code tuple
-  cannot name a tile that mixes a familiar part with a new one.** Entries
-  built from recall-weighted tries lost nothing familiar and carried
-  picking up and dropping a new key (8 of 9 seeds per colour; counting on
-  the same codes, 0–2 of 10). Forward onto the new open door was exact in
-  3 of 9, although recall's vote was right in 9 of 9: the agent in a new
-  doorway usually has a code no familiar doorway has, and no familiar
-  statement produces it. State each tile's outcome from its own tries;
-  over a pooled group, statements pick up coincidences. *Evidence:* card
-  037. *Confirmed* (label arm as control).
+  case separately.** Colour decoded at .982 while the held matching cell
+  scored 0.0; an "any key opens" shortcut barely moved average accuracy.
+  *Evidence:* phwm record §5.2; card 027 run 4. *Confirmed.*
+- **Nothing in a reconstruction or effect objective factors an attribute
+  across kinds.** Codes kept all 20 tiles apart but put a key of a new
+  colour on "new" or on a blue one, never on its shape (0 of 10). On
+  card 070's encoder, hue is a quantity within each kind (R² 0.96–0.99)
+  but not lined up across kinds (card 088: 53 of 66 pairs; cards 089–090:
+  33–45 of 66); "same colour" across kinds is a relation the outcome must
+  teach.
+  Measure an attribute within each kind. *Evidence:* cards 031, 032,
+  070, 088–090. *Confirmed.*
+- **Novelty depends on the action; an exact lookup over codes cannot use
+  "like a key but not a known key".** One radius per code either shared
+  familiar codes (new open doors took a door's codes in 5–7 of 10) or
+  predicted nothing (0 of 10); recall's per-action weights got all four
+  cases in 10 of 10 (cards 034, 035). State each tile's outcome from its
+  own tries: a code tuple cannot name a tile that mixes a familiar part
+  with a new one (card 037). *Confirmed.*
 
 ## Conditions and acting
 
+- **Softmax attention must spend its weight, so it learns from tokens that
+  explain nothing.** A lamp put 42% of its weight on walls and empty rows,
+  which give its position back. Independent gates that can all close
+  gave 0%. Pruning such gates after a dense phase closed nearly all of
+  them in 1,000 steps, and closed gates do not reopen. A margin on the
+  average loss gives up rare relations (make, a lamp lighting). Gates
+  never pushed shut stayed open (23,000 of 26,000) and leaked again (56%).
+  *Evidence:* card 102.1 revisions 1–3, one seed each.
+
 - **Check a condition only in a situation the learned effects produce.**
-  Splicing the hand of one memory with the view of another assumes the
-  parts are independent; "holding the green key while it lies in view"
-  got a base-rate guess and the either world fell to 87.8–90.6% (card
-  042). Checked in the imagined result of the achieving action instead:
-  100% in 5 of 5 seeds (card 043). *Confirmed.*
+  Splicing the hand of one memory with the view of another gave a
+  base-rate guess (87.8–90.6%); checking in the imagined result of the
+  achieving action gave 100% in 5 of 5 seeds. *Evidence:* cards 042, 043.
+  *Confirmed.*
 - **One smooth distance cannot mark conditions; contrast successes with
-  failures.** Two-step chains scored at the goal-swapped level (PHWM;
-  card 001), and a key pickup looks like any step (card 003). Contrasting
-  an action's successes with its failures gave exact conditions from 10
-  successes and the key → door → goal chain (card 004); a Bayesian rule
-  list in which every rule is a route to success gave 19/19 goals with no
-  thresholds (card 010). *Confirmed* for the pattern.
-- **Choose what to act on by the action's effect on its parent condition,
-  not by whether the route depends on the thing.** Dependence-chosen
-  targets looped in 41 of 1,000 layouts (a key dropped back where it
-  blocked, a switch turned off again). Refusing moves that end a condition
-  met higher up, and marking actions that do not make the parent true,
-  gave 100%. *Evidence:* card 027 runs 1–2, card 029.
+  failures.** Distances scored at the goal-swapped level; contrast gave
+  exact conditions from 10 successes, and a rule list in which every rule
+  is a route to success gave 19/19 goals. *Evidence:* cards 001, 003,
+  004, 010. *Confirmed* for the pattern.
+- **Choose what to act on by the action's effect on its parent condition.**
+  Targets chosen by dependence looped in 41 of 1,000 layouts; refusing
+  moves that end a condition met higher up gave 100%. *Evidence:* cards
+  027, 029.
 - **Keep a choice between steps while it still gives a plan.** Choices
-  priced afresh every step flip when a turn changes which is cheaper:
-  clearing the way or walking round (card 058: both world 73%), which
-  door to open and look past (card 060: chained rooms 71%). Keeping the
-  last step's choice: 100% (card 060; achievers since card 051).
-  *Confirmed* for looking; card 058's clearing chain still flips inside.
-  The kept choice is the need last pursued, even when it was the only
-  one unmet; kept only from weighings, a met choice goes stale and the
-  agent turns back and forth (card 074.1's decoy seeds, 0 of 2 to 2 of
-  2). A kept choice must never override an order the test finds (card
-  074: 1,281 of 1,287 overridden, decoy 94%; card 074.1: 100%).
-  The same holds for acts chosen to learn an outcome: re-ranked at each
-  trigger they alternate, and they must be made whatever the model
-  predicts, or the act it is unsure of is never taken (card 101: a fresh
-  seed lost to 3,400 steps of fallback, won once both were changed).
-- **Values can define conditions ("the achieving action works within
-  walking reach": 99.2% of new layouts, card 007), but only values trained
-  through the encoder see deep ones** ("door open" found in 27% of frames
-  on frozen features, 98% trained through; cards 008, 012). A fixed
-  threshold on 0.95^steps flickered into a spurious condition (card 008).
-  Learned walking reached 30% against 95% for exact walking, failing in a
-  rarely seen doorway (card 012). *Evidence:* 1 seed each.
-- **Trust a learned walking distance only within the reach its input
-  shows; copies trained on the same data share its blind spots.** On
-  the believed 13 x 13 view, learned walking matched the exact field at
-  every answered decision of tiers 1–2 and on 7,430 of 7,431 short
-  routes of tier 3, but on 26 of 33 routes that left the view, with all
-  three copies agreeing on the wrong move; one such miss looped and lost
-  an episode. With thousands of doorways in the data, card 012's
-  failure did not recur. *Evidence:* card 097.1.
+  priced afresh flip when a turn changes which is cheaper (cards 058,
+  060: 71–73%); keeping the last step's choice gave 100%. Keep the need
+  last pursued even when it is the only one unmet (card 074.1), never
+  override an order the test finds (card 074: decoy 94% → 100%), and
+  make an act chosen to learn its outcome whatever the model predicts
+  (card 101). *Confirmed* for looking.
+- **Only values trained through the encoder see deep conditions** ("door
+  open" in 27% of frames on frozen features, 98% trained through; cards
+  008, 012). A threshold on 0.95^steps flickered into a spurious
+  condition. *Evidence:* 1 seed each.
+- **A declared front hides a relation the model must learn elsewhere.**
+  MiniGrid's view turns with the agent, so the front is always the same
+  place. Crafter's does not, so the tile "do" acts on is a relation to
+  the agent's heading. Given the front, stone was mined in 31 of 31
+  predictions; asked of every token, 7 of 31. *Evidence:* card 102.1, one
+  seed.
+- **Trust a learned distance only within the reach its input shows;
+  copies trained on the same data share its blind spots.** Learned
+  walking matched the exact field on 7,430 of 7,431 short routes but on
+  26 of 33 that left the view, all copies agreeing. *Evidence:* card
+  097.1.
 
 ## Networks and objectives
 
-- **Networks trained on average error drop rare but certain differences
-  and hold conditions redundantly; let counting decide discrete units and
-  train networks to recognise them.** A 4-bit code gave the goal square
-  (0.04% of rows) the green door's code; Dirichlet-multinomial evidence
-  found all 8 kinds, about 260 nats apart (card 027). Pixel networks needed
-  about 30× the unlocks exact counting needs (right in 4%, 45%, 90%, 100%
-  of cases at 10, 30, 100, 300), erring as "it will not work" (card 005).
-  A network reading out every needed fact at 0.9995 still gave fragmented,
-  unswitchable rules (card 006). *Evidence:* cards 005, 006, 027.
+- **Networks trained on average error drop rare but certain differences;
+  let counting decide discrete units and train networks to recognise
+  them.** A 4-bit code merged the goal square (0.04% of rows) with a door;
+  evidence counting found all 8 kinds. Pixel networks needed about 30×
+  the unlocks counting needs, and one reading out every fact at 0.9995
+  still gave fragmented rules. Where a network must learn them, draw
+  steps by their last loss, unweighted: pushes and door changes (2–3%
+  of steps) were never learned from uniform draws, and replaying events
+  or weighting the replay skewed or cancelled it. *Evidence:* cards
+  005, 006, 027, 102.2.
+- **A blend of ways is free; code each place by one way and learn the
+  latent source where the content changed.** Trained on every place
+  alike, arm A learned "nothing changes" (gate 32%, "keep" 43%); with a
+  change head it drew pushed shapes as a blend of keep and set (0% of
+  shapes moved). Scoring each way alone by its code length (the mixture's
+  −log Σ p e^−cost) still left the pointer untrained wherever keep was
+  cheaper (gate 56%); training the source by copy's own cost where the
+  content changed gave 92% and moved shapes of several colours (83%).
+  *Evidence:* card 102.4.
 - **Query a network only in the form it was trained on, check that
-  copies from other seeds agree, and score rare-event curves on events
-  that change something.** Arm A, trained on whole states and queried
-  on two tokens, was right only by luck: retrained copies gave 0% of
-  tier 2's pick up changes. Scored per event, most of which change
-  nothing, a prior leaning to "nothing happens" won, and its fitted
-  weight (10,000) overrode memory in the agent (tier 2 89/100).
-  *Evidence:* cards 096.1, 096.2.
+  copies agree, and score rare events on events that change something.**
+  Arm A, queried on two tokens after training on whole states, was right
+  by luck (retrained copies: 0% of tier 2's pick ups); scored per event, a
+  "nothing happens" prior won and its weight overrode memory. *Evidence:*
+  cards 096.1, 096.2.
+- **Test action sensitivity before training; latent self-prediction
+  erases what actions change.** Without a stop-gradient, latent
+  prediction ignored actions (shuffled ratio 1.00–1.04). Against an EMA
+  target with a variance floor, a door's opening moved its vector 0.03
+  against noise 0.019, and a planner on it succeeded 0–3%. An off-by-one
+  pairing hid death anticipation. *Evidence:* GRL-105, GRL-106; cards
+  001, 052, 053. *Confirmed.*
+- **Some objectives carry too little or the wrong signal.** Distance to a
+  goal state is not distance to a condition (rank correlation 0.01–0.05);
+  inverse-action questions do not beat the action prior beyond lag 2; a
+  reachable-future bonus collapsed to sleeping. *Evidence:* card 001;
+  old:gamma/DECISIONS.md; GRL-108.
+
+## Tokens from frames (Crafter)
+
 - **To learn invariance to a change shared by a whole frame, put both
-  conditions' candidates in one softmax.** Crafter tiles paired across
-  light through the agent's moves got the same code by day and night
-  for 12.8% of night tiles while all candidates came from the night
-  frame (a shared light shift cancels), 94.0% with the day frame's tiles
-  among them. At night no pixel threshold separates same from
-  different, so pixel judgments belong only between places that drew
-  identically when redrawn. *Evidence:* cards 098, 098.2.
-- **No kernel width rescues tokens the encoder runs together.** The
-  object files that held movers on the true state (IDF1 0.934) reached
-  0.717 on Crafter tokens, with 82% of night frames unfollowed. At the
-  identity radius, night movers sit among scenery; at a fifth of it they
-  have about one record each, so the evidence is gone. By day the share
-  was the same at every width. The width that best predicts next moves
-  (a fifth of the radius) made births worse: it is not a width for
-  pooling evidence. *Evidence:* cards 098.6, 098.7.
-- **Test action sensitivity and frame–action pairing before training.**
-  Latent prediction without a stop-gradient ignored actions (shuffled
-  ratio 1.00–1.04) where reconstruction did not (GRL-106); a latent
-  transition learned nothing on an allocentric grid (ratio 1.0) and did on
-  egocentric frames (50–200; card 001). An off-by-one pairing hid death
-  anticipation (GRL-105). A target network is not enough: predicting its
-  own next vectors against a moving-average target, with a variance
-  floor, an encoder erased what actions change (a door's opening moved
-  its vector 0.03 against noise 0.019; keys of three colours one code),
-  so every transition was trivially predictable; a planner on it
-  succeeded in 0–3% (card 052 step T, card 053). *Evidence:*
-  old:grl/records/GRL-105.json, GRL-106.json; card 001 gate; card 052
-  step T correction. *Confirmed* for latent self-prediction.
-- **Some objectives carry too little or the wrong signal.** Distance to
-  a goal state is not distance to a condition (rank correlation 0.01–0.05
-  from example frames, 0.57–0.78 from the exact state; card 001, 7 runs).
-  Inverse-action questions cannot beat the action prior beyond lag 2
-  (old:gamma/DECISIONS.md); a contrastive reachable-future bonus drove
-  collapse to sleeping (GRL-108, 2 of 3 seeds).
+  conditions' candidates in one softmax.** Tiles paired across light got
+  the same code by day and night for 12.8% of night tiles with only the
+  night frame's candidates, 94.0% with the day frame's among them. At
+  night no pixel threshold separates same from different. *Evidence:*
+  cards 098, 098.2.
+- **No kernel width rescues tokens the encoder runs together.** Files
+  that held movers on the true state (IDF1 0.934) reached 0.717 on
+  tokens; night movers sit among scenery at the identity radius and have
+  about one record each at a fifth of it. The width that best predicts
+  moves is not a width for pooling evidence. *Evidence:* cards 098.6,
+  098.7.
+- **A walk over every place prefers "they swapped" to "it moved"; tracking
+  needs a way to be hidden or revealed.** The grass a cow covers has no
+  right continuation, and "the cow became grass, the grass a cow" is
+  one-to-one, so the cycle rewards it: motion trained through the walk
+  learned "nothing moves" (284 of 290 moved cows linked to grass). Fitted
+  to appearance's links it drifted (appearance cannot say where an
+  identical tile went); neighbours in the input split kinds (335 codes)
+  and lost movers (67%); a change branch trained through the walk took
+  over. A tile has one right continuation, so edge dropout forces wrong
+  ones. *Evidence:* card 098.8.
+- **Common fate groups tiles into objects once ground is learned, a
+  mover must leave its place, and the odds of one object are the
+  world's own.** Moved shapes became exactly one token in 99.5% of
+  states (colour and touching: 56%), and Crafter formed no false group
+  in 21,947 states. Without the last two rules, 49% of Crafter's states
+  held one: a new arrow read as its skeleton moving, a spawned cow as a
+  change. Read a group through a pair layer within it, not a mean of its
+  tiles: true objects predicted pushes 100% against 88%. *Evidence:*
+  card 102.2.
+- **Match a token across absence by the codes tracked tokens wear, not
+  its own code.** 098.3's codes include the ground beneath a creature,
+  so 76% of lost Crafter identities came back as another code. Weighting
+  the match by how often a token of one code is seen as the other lifted
+  identity from 74% to 80% (card 102.3, smoke test).
+- **Read the view's motion in the world's own units, and compare
+  hypotheses on the same evidence.** Cut into patches that do not fit the
+  tiles, the view's motion was never read (8-pixel patches: 0% of moves;
+  3 pixels off phase: −1 point); read in pixels, 94.9%, with the step
+  length (±7 px) learned. Summing mismatch over known places favours
+  shifts into the unseen; pricing the unseen as new content favours "no
+  move"; either moves the result by several points. *Evidence:* cards
+  102.5, 102.7, 102.8, one run each.
+- **Count evidence per independent observation, not per pixel; choose the
+  count by the agent's own self-consistency.** With the camera's pixels
+  learned and left out (26 of 26 in the agent's tile), a cow stepping on
+  plain grass outvoted the action's prior (44 pixels × ~19 nats against
+  3–5): still steps 99% → 91%; the sprite had been a hidden "no move" vote.
+  Dividing the evidence by τ = 300 pixels gave 99.3% held out (night 96.9%;
+  the declared agent tile 98.1–98.5%). τ was the value whose placements
+  left re-seen world content most often as written; this peaked where the
+  evaluator's accuracy did. Letting false files remove evidence instead
+  cost 11 points. *Evidence:* cards 103.1, 103.3, 103.4, one run each.
+- **Place a partial view with the agent's own motion, not by matching
+  alone.** A wrong placement that sees only never-seen places matches
+  perfectly (0% success); placing only among the placements the action
+  could lead to gave 100% (cards 057, 061). In Crafter, two frames miss a
+  fifth of real moves on uniform ground; placing against belief gets 98%
+  (card 098.8), 99.3% with tempered evidence (card 103.4). *Confirmed* for
+  these worlds.
 
 ## Memory
 
 - **A longer context is not memory.** A history model scored 1.716
   transfer CE against 1.713 for a current-frame model; memory claims need
-  that control and a test where the past is necessary. Learned recurrent
-  updates drifted on repeated evidence (.052 mean, .991 max). *Evidence:*
-  old:gamma/notes/2026-09-21-continuous-learnability.md; RLM-003, -007.
-  *Confirmed* (drift *suggestive*).
-- **Recall by a similarity-weighted vote needs a space where shared
-  properties are near and new things are far.** On label codes the vote
-  opened a new-coloured door at the first try; on card 031's encoder
-  nothing carried (10 of 10 seeds wrong). Replay into that encoder
-  carried pick-up and drop but pushed familiar tiles off their codes (9
-  of 10), which broke acting. *Evidence:* card 033. *Confirmed* (label
-  arm as control).
-
-- **A planner needs crisp identity; one learned weighting of vectors per
-  action cannot supply it.** Colour had to count at doors and nowhere
-  else: adding colour weight fixed doors (held-out −0.73 → −0.16) and hurt
-  everything else (−0.010 → −0.040). Recall in two levels, equal codes for
-  the same thing and vectors for similar things, matched the counted
-  planner in all four worlds (cards 042–043). But the levels must be
-  mixed, not switched: when a thing's own tries replaced similar things,
-  one failed toggle (switch off) made a new door never openable, and the
-  new-colour switch tests fell from 30% to 17%. Judging every remembered
-  situation by the mixed prediction gave 40%, with the switch turned on by
-  plan (cards 046–047). A failed try rules out its situation, not the
-  thing. A learned router is no exception: voting over every stored key,
-  it gave a locked door 0.27–0.53 "opens with an empty hand" across views
-  although 1,544 such tries had all failed, and the agent turned in place
-  before the door in 28 of 30 tier 3 episodes; voting among keys of the
-  same tiles first ended the loop (cards 091, 091.1). *Confirmed.*
-
-- **Place a partial view with the agent's own motion, not by matching
-  alone.** With a 7 × 7 view, a wrong placement that sees only
-  never-seen places matches perfectly, and after a pick up the true one
-  shows the changed tile and hand: 0% success and wrong memories in every
-  episode. Placing the view only among the placements the action could
-  lead to gave 100% and no wrong remembered tile in 220 episodes. The
-  motion itself can be learned from the small view: count correspondences
-  only where both places were observed and vary (far places are seen
-  almost only as wall and "predict" anything), then trim to one rigid
-  transformation; 16–35 shared places give every move exactly (card 061).
-  *Evidence:* cards 057, 061. *Confirmed* for this world.
+  a test where the past is necessary. *Evidence:* RLM-003, -007.
+  *Confirmed.*
+- **Recall by a similarity vote needs a space where shared properties are
+  near and new things far.** On label codes the vote opened a new-coloured
+  door at the first try; on card 031's encoder nothing carried (10 of 10
+  wrong). *Evidence:* card 033. *Confirmed.*
+- **A planner needs crisp identity: recall in two levels, mixed, not
+  switched.** Equal codes for the same thing and vectors for similar
+  things matched the counted planner (cards 042–043). Switching to a
+  thing's own tries let one failed toggle make a new door never openable
+  (30% → 17%); a failed try rules out its situation, not the thing. A
+  router voting over every key gave a locked door 0.27–0.53 "opens" after
+  1,544 failures; voting among keys of the same tiles first ended the loop
+  (cards 046–047, 091, 091.1). *Confirmed.*
+- **Recall that compares by a network's context cannot see a condition
+  the network has not learned.** The 11 stored iron-tool successes
+  counted for nothing when a new iron try came, because arm A's context
+  did not separate them from the 5,900 failures (0 of 5 made). *Evidence:*
+  card 102.1, upper bound.
 
 ## Process
 
 - **Change pass/fail criteria at most once; then open a new experiment.**
   *Evidence:* old:grl/notes/2026-09-10-reset.md.
-- **A report counter must not share a name with the record it is merged
-  into.** Card 074.1's counter `steps` overwrote each episode's step
-  count, so its steps and time per step were wrong (0.337 s per step
-  reported, 0.262 measured); found when a run "differed" from card 074's
-  with identical actions. *Evidence:* card 074.2.
-- **Time a change under the run's own parallel load before the full
-  run.** Single processes hid two tier 3 slowdowns: 24 math threads per
-  forked worker (load 137 on 24 cores), and a step that searched the
-  map every step, 3.6 times slower with 20 episodes in parallel; the
-  first full runs reached about 85 steps per hour. *Evidence:* card 092,
-  `runs/092/speed_*`.
-
-- **Label a diagnostic from each run's own record.** A per-class count
-  over workers 0–7 read worker 0's classes for all, and two patches
-  were made against it before the error was found. *Evidence:* card
-  098.6.
-- **Log every loss term separately;** a combined value hid a scale failure
-  (old:legacy/mgrid/README.md). **Check cheap-model extraction;** of 61
-  lessons Haiku drew from the old repo, about 10 survived unchanged.
+- **Name counters apart from the records they merge into, and label a
+  diagnostic from each run's own record.** A counter `steps` overwrote
+  episode step counts (card 074.2); a per-class count read worker 0's
+  classes for all workers (card 098.6).
+- **Time a change under the run's own parallel load.** 24 math threads per
+  forked worker and a per-step map search made tier 3 3.6 times slower
+  in parallel. *Evidence:* card 092.
+- **Log every loss term separately;** a combined value hid a scale failure.
+  **Check cheap-model extraction;** of 61 lessons Haiku drew from the old
+  repo, about 10 survived.
 
 ## Not yet mined
 

@@ -1,0 +1,707 @@
+{
+ "world3": {
+  "forms": {
+   "learned": {
+    "returns of movers within 50 steps": 6159,
+    "with a file at the return": 0.9974,
+    "log-likelihood per return (all)": -1.0865,
+    "inside the 90% region (returns with a file)": 0.9119,
+    "identity kept (all returns)": 0.9768,
+    "map places right when back in view": 1.0,
+    "map places back in view": 248221,
+    "by time away": {
+     "1-5 steps away": {
+      "returns": 3176,
+      "log-likelihood": -1.103,
+      "identity kept": 0.996
+     },
+     "6-20 steps away": {
+      "returns": 2145,
+      "log-likelihood": -0.989,
+      "identity kept": 0.984
+     },
+     "21-50 steps away": {
+      "returns": 838,
+      "log-likelihood": -1.273,
+      "identity kept": 0.885
+     }
+    },
+    "by kind": {
+     "6": {
+      "returns": 3309,
+      "log-likelihood": -1.6,
+      "identity kept": 0.958
+     },
+     "5": {
+      "returns": 2850,
+      "log-likelihood": -0.49,
+      "identity kept": 0.999
+     }
+    },
+    "belief seconds per step": 5.5e-05
+   },
+   "still": {
+    "returns of movers within 50 steps": 6159,
+    "with a file at the return": 0.8488,
+    "log-likelihood per return (all)": -4.7798,
+    "inside the 90% region (returns with a file)": 0.5461,
+    "identity kept (all returns)": 0.2333,
+    "map places right when back in view": 1.0,
+    "map places back in view": 248221,
+    "by time away": {
+     "1-5 steps away": {
+      "returns": 3176,
+      "log-likelihood": -4.792,
+      "identity kept": 0.381
+     },
+     "6-20 steps away": {
+      "returns": 2145,
+      "log-likelihood": -4.835,
+      "identity kept": 0.082
+     },
+     "21-50 steps away": {
+      "returns": 838,
+      "log-likelihood": -4.591,
+      "identity kept": 0.061
+     }
+    },
+    "by kind": {
+     "6": {
+      "returns": 3309,
+      "log-likelihood": -5.087,
+      "identity kept": 0.246
+     },
+     "5": {
+      "returns": 2850,
+      "log-likelihood": -4.423,
+      "identity kept": 0.219
+     }
+    },
+    "belief seconds per step": 6e-05
+   },
+   "rule098": {
+    "returns of movers within 50 steps": 6159,
+    "with a file at the return": 0.862,
+    "log-likelihood per return (all)": -1.4765,
+    "inside the 90% region (returns with a file)": 0.9084,
+    "identity kept (all returns)": 0.8566,
+    "map places right when back in view": 1.0,
+    "map places back in view": 248221,
+    "by time away": {
+     "1-5 steps away": {
+      "returns": 3176,
+      "log-likelihood": -1.103,
+      "identity kept": 0.996
+     },
+     "6-20 steps away": {
+      "returns": 2145,
+      "log-likelihood": -0.988,
+      "identity kept": 0.985
+     },
+     "21-50 steps away": {
+      "returns": 838,
+      "log-likelihood": -4.143,
+      "identity kept": 0.0
+     }
+    },
+    "by kind": {
+     "6": {
+      "returns": 3309,
+      "log-likelihood": -1.796,
+      "identity kept": 0.886
+     },
+     "5": {
+      "returns": 2850,
+      "log-likelihood": -1.105,
+      "identity kept": 0.823
+     }
+    },
+    "belief seconds per step": 3.1e-05
+   },
+   "truth": {
+    "returns of movers within 50 steps": 6159,
+    "with a file at the return": 0.9972,
+    "log-likelihood per return (all)": -1.0658,
+    "inside the 90% region (returns with a file)": 0.9115,
+    "identity kept (all returns)": 0.9896,
+    "map places right when back in view": 0.9995,
+    "map places back in view": 7296,
+    "by time away": {
+     "1-5 steps away": {
+      "returns": 3176,
+      "log-likelihood": -1.087,
+      "identity kept": 0.998
+     },
+     "6-20 steps away": {
+      "returns": 2145,
+      "log-likelihood": -0.964,
+      "identity kept": 0.99
+     },
+     "21-50 steps away": {
+      "returns": 838,
+      "log-likelihood": -1.244,
+      "identity kept": 0.956
+     }
+    },
+    "by kind": {
+     "6": {
+      "returns": 3309,
+      "log-likelihood": -1.598,
+      "identity kept": 0.981
+     },
+     "5": {
+      "returns": 2850,
+      "log-likelihood": -0.448,
+      "identity kept": 1.0
+     }
+    },
+    "belief seconds per step": 4e-05
+   }
+  },
+  "K curve (learned)": {
+   "1": {
+    "log-likelihood per return": -1.6275,
+    "identity kept": 0.8022,
+    "belief seconds per step": 3.2e-05
+   },
+   "2": {
+    "log-likelihood per return": -1.1266,
+    "identity kept": 0.9635,
+    "belief seconds per step": 4.3e-05
+   },
+   "4": {
+    "log-likelihood per return": -1.0865,
+    "identity kept": 0.9768,
+    "belief seconds per step": 5.2e-05
+   },
+   "8": {
+    "log-likelihood per return": -1.0865,
+    "identity kept": 0.9768,
+    "belief seconds per step": 5.4e-05
+   },
+   "16": {
+    "log-likelihood per return": -1.0865,
+    "identity kept": 0.9768,
+    "belief seconds per step": 5.4e-05
+   }
+  },
+  "criterion 1": {
+   "inside the 90% region (bar 0.85-0.95)": 0.9119,
+   "bootstrap": {
+    "learned - still": {
+     "difference per return": 3.6934,
+     "95% interval": [
+      3.6054,
+      3.7822
+     ],
+     "p (difference <= 0)": 0.0,
+     "segments": 463,
+     "returns": 6159
+    },
+    "learned - rule098": {
+     "difference per return": 0.39,
+     "95% interval": [
+      0.3528,
+      0.4281
+     ],
+     "p (difference <= 0)": 0.0,
+     "segments": 463,
+     "returns": 6159
+    }
+   },
+   "holds": true
+  },
+  "criterion 2": {
+   "identity kept": 0.9768,
+   "bar": 0.9,
+   "binomial 95% interval": [
+    0.973,
+    0.9806
+   ],
+   "098.6's rule": 0.8566,
+   "upper bound": 0.9896,
+   "holds": true
+  },
+  "criterion 3": {
+   "map places right when back in view": 1.0,
+   "map places back in view": 248221,
+   "chosen K": 4,
+   "belief seconds per step at the chosen K": 5.2e-05,
+   "holds": true
+  },
+  "learned per code (own tracks)": {
+   "3": {
+    "move rate": 0.0,
+    "static": true,
+    "vanish per step": 0.0,
+    "steps": 1905704
+   },
+   "5": {
+    "move rate": 0.0,
+    "static": true,
+    "vanish per step": 0.0,
+    "steps": 75463
+   },
+   "6": {
+    "move rate": 0.7083,
+    "static": false,
+    "vanish per step": 0.004,
+    "steps": 148155
+   },
+   "7": {
+    "move rate": 0.4701,
+    "static": false,
+    "vanish per step": 0.0202,
+    "steps": 25509
+   },
+   "8": {
+    "move rate": 0.9599,
+    "static": false,
+    "vanish per step": 0.0394,
+    "steps": 15046
+   }
+  },
+  "learned per code (truth tracks)": {
+   "5": {
+    "move rate": 0.9634,
+    "static": false,
+    "vanish per step": 0.0,
+    "steps": 16632
+   },
+   "6": {
+    "move rate": 0.4826,
+    "static": false,
+    "vanish per step": 0.0,
+    "steps": 26800
+   },
+   "7": {
+    "move rate": 0.0,
+    "static": true,
+    "vanish per step": 0.0,
+    "steps": 75463
+   },
+   "8": {
+    "move rate": 0.0,
+    "static": true,
+    "vanish per step": 0.0477,
+    "steps": 19731
+   }
+  },
+  "ground codes": [
+   0,
+   2,
+   4,
+   9
+  ]
+ },
+ "crafter": {
+  "forms": {
+   "learned": {
+    "returns of movers within 50 steps": 1357,
+    "with a file at the return": 0.9595,
+    "log-likelihood per return (all)": -1.5074,
+    "inside the 90% region (returns with a file)": 0.8936,
+    "identity kept (all returns)": 0.8106,
+    "map places right when back in view": 1.0,
+    "map places back in view": 5,
+    "by time away": {
+     "1-5 steps away": {
+      "returns": 851,
+      "log-likelihood": -1.181,
+      "identity kept": 0.906
+     },
+     "6-20 steps away": {
+      "returns": 430,
+      "log-likelihood": -2.015,
+      "identity kept": 0.705
+     },
+     "21-50 steps away": {
+      "returns": 76,
+      "log-likelihood": -2.287,
+      "identity kept": 0.342
+     }
+    },
+    "by kind": {
+     "1": {
+      "returns": 1103,
+      "log-likelihood": -1.486,
+      "identity kept": 0.809
+     },
+     "3": {
+      "returns": 225,
+      "log-likelihood": -1.541,
+      "identity kept": 0.84
+     },
+     "2": {
+      "returns": 29,
+      "log-likelihood": -2.068,
+      "identity kept": 0.655
+     }
+    },
+    "belief seconds per step": 4.4e-05
+   },
+   "still": {
+    "returns of movers within 50 steps": 1357,
+    "with a file at the return": 0.7826,
+    "log-likelihood per return (all)": -4.1451,
+    "inside the 90% region (returns with a file)": 0.628,
+    "identity kept (all returns)": 0.2587,
+    "map places right when back in view": 1.0,
+    "map places back in view": 5,
+    "by time away": {
+     "1-5 steps away": {
+      "returns": 851,
+      "log-likelihood": -3.936,
+      "identity kept": 0.392
+     },
+     "6-20 steps away": {
+      "returns": 430,
+      "log-likelihood": -4.514,
+      "identity kept": 0.037
+     },
+     "21-50 steps away": {
+      "returns": 76,
+      "log-likelihood": -4.404,
+      "identity kept": 0.013
+     }
+    },
+    "by kind": {
+     "1": {
+      "returns": 1103,
+      "log-likelihood": -4.132,
+      "identity kept": 0.263
+     },
+     "3": {
+      "returns": 225,
+      "log-likelihood": -4.213,
+      "identity kept": 0.24
+     },
+     "2": {
+      "returns": 29,
+      "log-likelihood": -4.098,
+      "identity kept": 0.241
+     }
+    },
+    "belief seconds per step": 3.7e-05
+   },
+   "rule098": {
+    "returns of movers within 50 steps": 1357,
+    "with a file at the return": 0.9035,
+    "log-likelihood per return (all)": -1.6144,
+    "inside the 90% region (returns with a file)": 0.8944,
+    "identity kept (all returns)": 0.7907,
+    "map places right when back in view": 1.0,
+    "map places back in view": 5,
+    "by time away": {
+     "1-5 steps away": {
+      "returns": 851,
+      "log-likelihood": -1.184,
+      "identity kept": 0.906
+     },
+     "6-20 steps away": {
+      "returns": 430,
+      "log-likelihood": -2.019,
+      "identity kept": 0.702
+     },
+     "21-50 steps away": {
+      "returns": 76,
+      "log-likelihood": -4.143,
+      "identity kept": 0.0
+     }
+    },
+    "by kind": {
+     "1": {
+      "returns": 1103,
+      "log-likelihood": -1.593,
+      "identity kept": 0.788
+     },
+     "3": {
+      "returns": 225,
+      "log-likelihood": -1.661,
+      "identity kept": 0.822
+     },
+     "2": {
+      "returns": 29,
+      "log-likelihood": -2.068,
+      "identity kept": 0.655
+     }
+    },
+    "belief seconds per step": 3.6e-05
+   },
+   "truth": {
+    "returns of movers within 50 steps": 1357,
+    "with a file at the return": 0.9816,
+    "log-likelihood per return (all)": -1.3533,
+    "inside the 90% region (returns with a file)": 0.9136,
+    "identity kept (all returns)": 0.9506,
+    "map places right when back in view": 0.88,
+    "map places back in view": 25,
+    "by time away": {
+     "1-5 steps away": {
+      "returns": 851,
+      "log-likelihood": -1.037,
+      "identity kept": 0.987
+     },
+     "6-20 steps away": {
+      "returns": 430,
+      "log-likelihood": -1.843,
+      "identity kept": 0.912
+     },
+     "21-50 steps away": {
+      "returns": 76,
+      "log-likelihood": -2.128,
+      "identity kept": 0.763
+     }
+    },
+    "by kind": {
+     "1": {
+      "returns": 1103,
+      "log-likelihood": -1.347,
+      "identity kept": 0.95
+     },
+     "3": {
+      "returns": 225,
+      "log-likelihood": -1.368,
+      "identity kept": 0.96
+     },
+     "2": {
+      "returns": 29,
+      "log-likelihood": -1.463,
+      "identity kept": 0.897
+     }
+    },
+    "belief seconds per step": 3.3e-05
+   }
+  },
+  "K curve (learned)": {
+   "1": {
+    "log-likelihood per return": -2.0519,
+    "identity kept": 0.6441,
+    "belief seconds per step": 2.6e-05
+   },
+   "2": {
+    "log-likelihood per return": -1.7006,
+    "identity kept": 0.7627,
+    "belief seconds per step": 3.2e-05
+   },
+   "4": {
+    "log-likelihood per return": -1.5396,
+    "identity kept": 0.7996,
+    "belief seconds per step": 3.8e-05
+   },
+   "8": {
+    "log-likelihood per return": -1.5074,
+    "identity kept": 0.8106,
+    "belief seconds per step": 4.3e-05
+   },
+   "16": {
+    "log-likelihood per return": -1.5074,
+    "identity kept": 0.8106,
+    "belief seconds per step": 4.4e-05
+   }
+  },
+  "criterion 1": {
+   "inside the 90% region (bar 0.85-0.95)": 0.8936,
+   "bootstrap": {
+    "learned - still": {
+     "difference per return": 2.6377,
+     "95% interval": [
+      2.4872,
+      2.7943
+     ],
+     "p (difference <= 0)": 0.0,
+     "segments": 552,
+     "returns": 1357
+    },
+    "learned - rule098": {
+     "difference per return": 0.107,
+     "95% interval": [
+      0.0822,
+      0.1359
+     ],
+     "p (difference <= 0)": 0.0,
+     "segments": 552,
+     "returns": 1357
+    }
+   },
+   "holds": true
+  },
+  "criterion 2": {
+   "identity kept": 0.8106,
+   "bar": 0.8,
+   "binomial 95% interval": [
+    0.7898,
+    0.8314
+   ],
+   "098.6's rule": 0.7907,
+   "upper bound": 0.9506,
+   "holds": true
+  },
+  "criterion 3": {
+   "map places right when back in view": 1.0,
+   "map places back in view": 5,
+   "chosen K": 8,
+   "belief seconds per step at the chosen K": 4.3e-05,
+   "holds": true
+  },
+  "learned per code (own tracks)": {
+   "2": {
+    "move rate": 0.1989,
+    "static": false,
+    "vanish per step": 0.002,
+    "steps": 46580
+   },
+   "7": {
+    "move rate": 0.242,
+    "static": false,
+    "vanish per step": 0.0481,
+    "steps": 7314
+   },
+   "10": {
+    "move rate": 0.0223,
+    "static": false,
+    "vanish per step": 0.0455,
+    "steps": 18004
+   },
+   "17": {
+    "move rate": 0.4084,
+    "static": false,
+    "vanish per step": 0.0229,
+    "steps": 56322
+   },
+   "18": {
+    "move rate": 0.2072,
+    "static": false,
+    "vanish per step": 0.0022,
+    "steps": 44928
+   },
+   "27": {
+    "move rate": 0.1885,
+    "static": false,
+    "vanish per step": 0.0017,
+    "steps": 49647
+   },
+   "35": {
+    "move rate": 0.1976,
+    "static": false,
+    "vanish per step": 0.0018,
+    "steps": 46118
+   },
+   "36": {
+    "move rate": 0.4375,
+    "static": false,
+    "vanish per step": 0.0983,
+    "steps": 10042
+   },
+   "37": {
+    "move rate": 0.005,
+    "static": true,
+    "vanish per step": 0.0517,
+    "steps": 2180
+   },
+   "41": {
+    "move rate": 0.6863,
+    "static": false,
+    "vanish per step": 0.683,
+    "steps": 51
+   },
+   "43": {
+    "move rate": 0.384,
+    "static": false,
+    "vanish per step": 0.0664,
+    "steps": 20473
+   },
+   "45": {
+    "move rate": 0.9599,
+    "static": false,
+    "vanish per step": 0.1469,
+    "steps": 5383
+   },
+   "46": {
+    "move rate": 0.2017,
+    "static": false,
+    "vanish per step": 0.187,
+    "steps": 1487
+   },
+   "47": {
+    "move rate": 0.2931,
+    "static": false,
+    "vanish per step": 0.7386,
+    "steps": 58
+   },
+   "48": {
+    "move rate": 0.0,
+    "static": true,
+    "vanish per step": 0.0581,
+    "steps": 723
+   },
+   "49": {
+    "move rate": 0.2393,
+    "static": false,
+    "vanish per step": 0.2308,
+    "steps": 560
+   },
+   "50": {
+    "move rate": 0.131,
+    "static": false,
+    "vanish per step": 0.0036,
+    "steps": 420
+   },
+   "51": {
+    "move rate": 0.1245,
+    "static": false,
+    "vanish per step": 0.0644,
+    "steps": 3462
+   },
+   "52": {
+    "move rate": 0.2212,
+    "static": false,
+    "vanish per step": 0.0951,
+    "steps": 3648
+   }
+  },
+  "learned per code (truth tracks)": {
+   "1": {
+    "move rate": 0.4273,
+    "static": false,
+    "vanish per step": 0.0008,
+    "steps": 92675
+   },
+   "2": {
+    "move rate": 0.3768,
+    "static": false,
+    "vanish per step": 0.004,
+    "steps": 26786
+   },
+   "3": {
+    "move rate": 0.2279,
+    "static": false,
+    "vanish per step": 0.0002,
+    "steps": 17273
+   },
+   "4": {
+    "move rate": 1.0,
+    "static": false,
+    "vanish per step": 0.1338,
+    "steps": 10716
+   },
+   "5": {
+    "move rate": 0.0,
+    "static": true,
+    "vanish per step": 0.0128,
+    "steps": 29938
+   }
+  },
+  "ground codes": [
+   0,
+   1,
+   4,
+   9,
+   11,
+   12,
+   21,
+   33,
+   39
+  ]
+ }
+}

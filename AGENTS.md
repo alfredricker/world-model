@@ -39,6 +39,9 @@ There are no other documents. Do not create notes, reviews or summaries.
   by the user. Runs over 30 minutes are handed to the user as commands.
 - A feasibility gate (upper bound + trivial baseline) passes before the
   main run. A test that cannot be passed is not an experiment.
+- Every card's section 2 ends with a portability check (CHARTER rule 9):
+  each assumption about the environment, and whether it holds in Crafter,
+  ARC-AGI-3 and robotics.
 - Change one component per experiment. Replacing the model or switching
   direction follows the CHARTER rules, and needs the user's explicit sign-off.
   The one exception is the architecture-selection screen in CHARTER.md, run
@@ -47,11 +50,14 @@ There are no other documents. Do not create notes, reviews or summaries.
 - Cards are judged on Crafter. CHARTER's three MiniGrid tiers are run
   only when a card decided keep makes a significant architecture change
   (a new arch_version), before that version is adopted (the user,
-  2026-10-11). The tiers are judged as follows: tier 1 against its
+  2026-10-11). The breaking worlds run at the same point, as smoke tests
+  (CHARTER rule 10). The tiers are judged as follows: tier 1 against its
   threshold (≥ 99%), tiers 2 and 3 against the best version so far
   (better, no different or worse). The version is adopted only if tier 1
   passes and no tier is worse (the user, 2026-10-05).
 - Do not edit `src/` while a run is using it.
+- Every run, smoke tests included, is capped on memory, CPU and time
+  (CHARTER rule 5 gives the command).
 
 ## Writing
 

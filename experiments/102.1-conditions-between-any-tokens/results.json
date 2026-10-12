@@ -1,0 +1,801 @@
+{
+ "crafter": {
+  "upper bound": {
+   "make": {
+    "steps": 7697,
+    "log-likelihood per step": -0.3332,
+    "whole scored next state right": 0.9886,
+    "scored tokens that changed": 610,
+    "changed tokens right (change and result)": 0.9
+   },
+   "do": {
+    "steps": 1233,
+    "log-likelihood per step": -0.5151,
+    "whole scored next state right": 0.9384,
+    "scored tokens that changed": 133,
+    "changed tokens right (change and result)": 0.4737
+   },
+   "place": {
+    "steps": 4992,
+    "log-likelihood per step": -0.3206,
+    "whole scored next state right": 0.9838,
+    "scored tokens that changed": 2115,
+    "changed tokens right (change and result)": 0.982
+   },
+   "noop": {
+    "steps": 1291,
+    "log-likelihood per step": -0.313,
+    "whole scored next state right": 0.993,
+    "scored tokens that changed": 4,
+    "changed tokens right (change and result)": 0.0
+   },
+   "makes that made a tool": {
+    "tries": 236,
+    "whole scored next state right": 0.9576
+   }
+  },
+  "tokens (arm C, every token)": {
+   "make": {
+    "steps": 7697,
+    "log-likelihood per step": -0.3357,
+    "whole scored next state right": 0.9932,
+    "scored tokens that changed": 610,
+    "changed tokens right (change and result)": 0.8984
+   },
+   "do": {
+    "steps": 1233,
+    "log-likelihood per step": -0.7409,
+    "whole scored next state right": 0.9165,
+    "scored tokens that changed": 133,
+    "changed tokens right (change and result)": 0.0602
+   },
+   "place": {
+    "steps": 4992,
+    "log-likelihood per step": -0.4154,
+    "whole scored next state right": 0.9513,
+    "scored tokens that changed": 2115,
+    "changed tokens right (change and result)": 0.8993
+   },
+   "noop": {
+    "steps": 1291,
+    "log-likelihood per step": -0.3149,
+    "whole scored next state right": 0.9954,
+    "scored tokens that changed": 4,
+    "changed tokens right (change and result)": 0.0
+   },
+   "makes that made a tool": {
+    "tries": 236,
+    "whole scored next state right": 0.9619
+   }
+  },
+  "two-place query": {
+   "make": {
+    "steps": 7697,
+    "log-likelihood per step": -0.542,
+    "whole scored next state right": 0.9671,
+    "scored tokens that changed": 610,
+    "changed tokens right (change and result)": 0.5197
+   },
+   "do": {
+    "steps": 1233,
+    "log-likelihood per step": -0.5953,
+    "whole scored next state right": 0.9351,
+    "scored tokens that changed": 133,
+    "changed tokens right (change and result)": 0.4361
+   },
+   "place": {
+    "steps": 4992,
+    "log-likelihood per step": -0.4145,
+    "whole scored next state right": 0.9704,
+    "scored tokens that changed": 2115,
+    "changed tokens right (change and result)": 0.9329
+   },
+   "noop": {
+    "steps": 1291,
+    "log-likelihood per step": -0.3612,
+    "whole scored next state right": 0.9969,
+    "scored tokens that changed": 4,
+    "changed tokens right (change and result)": 0.0
+   },
+   "makes that made a tool": {
+    "tries": 236,
+    "whole scored next state right": 0.3898
+   }
+  }
+ },
+ "crafter nothing changes": {
+  "make": {
+   "log-likelihood per step": -0.7372,
+   "whole scored next state right": 0.9643
+  },
+  "do": {
+   "log-likelihood per step": -1.0008,
+   "whole scored next state right": 0.9189
+  },
+  "place": {
+   "log-likelihood per step": -3.9095,
+   "whole scored next state right": 0.7877
+  }
+ },
+ "crafter tokens, arm A alone (change log-likelihood; results not saved)": {
+  "make": {
+   "log-likelihood per step": -0.3167
+  },
+  "do": {
+   "log-likelihood per step": -0.7342
+  },
+  "place": {
+   "log-likelihood per step": -0.4184
+  }
+ },
+ "crafter paired bootstrap (tokens - two-place, per step, over episodes)": {
+  "make": {
+   "steps": 7697,
+   "episodes": 400,
+   "difference per step (tokens - two-place)": 0.2063,
+   "95% interval": [
+    0.1716,
+    0.2428
+   ],
+   "p (difference <= 0)": 0.0
+  },
+  "do": {
+   "steps": 1233,
+   "episodes": 376,
+   "difference per step (tokens - two-place)": -0.1456,
+   "95% interval": [
+    -0.2153,
+    -0.0797
+   ],
+   "p (difference <= 0)": 1.0
+  },
+  "place": {
+   "steps": 4992,
+   "episodes": 400,
+   "difference per step (tokens - two-place)": -0.0008,
+   "95% interval": [
+    -0.0299,
+    0.0271
+   ],
+   "p (difference <= 0)": 0.5105
+  }
+ },
+ "criterion 1": {
+  "make: log-likelihood above the two-place query (p < 0.05)": true,
+  "make: whole scored next state right / upper bound's (>= 0.95)": 1.0047,
+  "do: no worse than two-place within 0.01 nats": false,
+  "place: no worse than two-place within 0.01 nats": true,
+  "holds": false
+ },
+ "criterion 2": {
+  "crafter role test (tokens)": {
+   "tests": 196,
+   "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+   "share passing (all 8 near >= 0.5, all 16 far < 0.5)": 0.9388,
+   "mean P(made) near": 0.9465,
+   "mean P(made) far": 0.0012,
+   "near places >= 0.5": 0.9636,
+   "far places < 0.5": 1.0
+  },
+  "crafter role test (two-place)": {
+   "tests": 196,
+   "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+   "share passing (all 8 near >= 0.5, all 16 far < 0.5)": 0.0,
+   "mean P(made) near": 0.2315,
+   "mean P(made) far": 0.1507,
+   "near places >= 0.5": 0.1945,
+   "far places < 0.5": 0.9133
+  },
+  "crafter role test (upper bound)": {
+   "tests": 196,
+   "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+   "share passing (all 8 near >= 0.5, all 16 far < 0.5)": 0.9541,
+   "mean P(made) near": 0.9721,
+   "mean P(made) far": 0.0004,
+   "near places >= 0.5": 0.9732,
+   "far places < 0.5": 1.0
+  },
+  "world 1 (tokens)": {
+   "lamps at pushes, changed": {
+    "tokens": 354,
+    "P >= 0.5 iff changed": 1.0
+   },
+   "lamps at pushes, unchanged": {
+    "tokens": 2723,
+    "P >= 0.5 iff changed": 0.957
+   },
+   "lamps lit": {
+    "tokens": 213,
+    "P >= 0.5 iff changed": 1.0
+   }
+  },
+  "world 1 (upper bound)": {
+   "lamps at pushes, changed": {
+    "tokens": 354,
+    "P >= 0.5 iff changed": 0.9096
+   },
+   "lamps at pushes, unchanged": {
+    "tokens": 2723,
+    "P >= 0.5 iff changed": 0.9717
+   },
+   "lamps lit": {
+    "tokens": 213,
+    "P >= 0.5 iff changed": 0.8545
+   }
+  },
+  "world 1 (two-place)": {
+   "lamps at pushes, changed": {
+    "tokens": 354,
+    "P >= 0.5 iff changed": 0.1017
+   },
+   "lamps at pushes, unchanged": {
+    "tokens": 2723,
+    "P >= 0.5 iff changed": 0.9879
+   },
+   "lamps lit": {
+    "tokens": 213,
+    "P >= 0.5 iff changed": 0.0939
+   }
+  },
+  "holds": false,
+  "world 1, second seed (robustness check, not judged)": {
+   "tokens, seed 7": {
+    "lamps at pushes, changed": 0.6328,
+    "lamps at pushes, unchanged": 0.9835,
+    "changed by column 5, 6, 7": [
+     0.714,
+     0.686,
+     0.317
+    ]
+   },
+   "upper bound, seed 7": {
+    "lamps at pushes, changed": 0.9802,
+    "lamps at pushes, unchanged": 0.9853,
+    "changed by column 5, 6, 7": [
+     1.0,
+     0.985,
+     0.921
+    ]
+   },
+   "seed 1021, changed by column 5, 6, 7": {
+    "tokens": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "upper bound": [
+     1.0,
+     0.956,
+     0.587
+    ]
+   }
+  }
+ },
+ "criterion 3": {
+  "tier1": {
+   "kernel width (x median distance)": 0.1,
+   "alpha": 0.3,
+   "alpha_r": 0.0,
+   "arm C": {
+    "tries": 25490,
+    "exact next state": 1.0,
+    "change log-likelihood per try": -0.001292
+   },
+   "arm A alone": {
+    "tries": 25490,
+    "exact next state": 0.999911,
+    "change log-likelihood per try": -0.001822
+   },
+   "version 27's arm C (front and hand only)": 1.0,
+   "difference from version 27 (points)": 0.0
+  },
+  "tier2": {
+   "kernel width (x median distance)": 0.1,
+   "alpha": 0.3,
+   "alpha_r": 0.0,
+   "arm C": {
+    "tries": 28938,
+    "exact next state": 0.999664,
+    "change log-likelihood per try": -0.002599
+   },
+   "arm A alone": {
+    "tries": 28938,
+    "exact next state": 0.999477,
+    "change log-likelihood per try": -0.003083
+   },
+   "version 27's arm C (front and hand only)": 1.0,
+   "difference from version 27 (points)": -0.0336,
+   "counterfactual boxes: hand holds that box": {
+    "blue": 1.0,
+    "red": 1.0,
+    "grey": 1.0,
+    "yellow": 1.0,
+    "green": 1.0,
+    "purple": 1.0
+   }
+  },
+  "tier3": {
+   "kernel width (x median distance)": 0.1,
+   "alpha": 0.3,
+   "alpha_r": 0.0,
+   "arm C": {
+    "tries": 31951,
+    "exact next state": 0.996975,
+    "change log-likelihood per try": -0.007044
+   },
+   "arm A alone": {
+    "tries": 31951,
+    "exact next state": 0.989442,
+    "change log-likelihood per try": -0.013657
+   },
+   "version 27's arm C (front and hand only)": 0.998293,
+   "difference from version 27 (points)": -0.1318
+  },
+  "holds": false
+ },
+ "attention of the made tool's slot (tokens)": {
+  "layer 1": {
+   "on the table tokens": 0.007,
+   "on the agent": 0.001,
+   "on carried slots": 0.1481,
+   "on itself": 0.0005
+  },
+  "layer 2": {
+   "on the table tokens": 0.474,
+   "on the agent": 0.0008,
+   "on carried slots": 0.3899,
+   "on itself": 0.0159
+  }
+ },
+ "cost": {
+  "upper bound": {
+   "query seconds per step": 0.00011,
+   "store instances (centroids)": 216574
+  },
+  "tokens": {
+   "query seconds per step": 0.00011,
+   "store instances (centroids)": 118554
+  },
+  "two-place": {
+   "query seconds per step": 0.00016,
+   "store instances (centroids)": 118554
+  }
+ },
+ "fit": {
+  "upper bound": {
+   "kernel width (x median context distance)": 0.05,
+   "median context distance": 7.547,
+   "alpha": 30.0,
+   "validation own-label log-likelihood per step": -2.1798,
+   "alpha_r (results)": 0.0,
+   "validation results right, by alpha_r": {
+    "0.0": 0.9394,
+    "1e-06": 0.9282,
+    "0.0001": 0.9114,
+    "0.01": 0.8973,
+    "1.0": 0.8823,
+    "100.0": 0.7463,
+    "inf": 0.7463
+   }
+  },
+  "tokens": {
+   "kernel width (x median context distance)": 0.05,
+   "median context distance": 7.5738,
+   "alpha": 1.0,
+   "validation own-label log-likelihood per step": -2.1256,
+   "alpha_r (results)": 0.0,
+   "validation results right, by alpha_r": {
+    "0.0": 0.9494,
+    "1e-06": 0.9488,
+    "0.0001": 0.9472,
+    "0.01": 0.9423,
+    "1.0": 0.917,
+    "100.0": 0.9112,
+    "inf": 0.9111
+   }
+  },
+  "two-place": {
+   "kernel width (x median context distance)": 0.05,
+   "median context distance": 5.4419,
+   "alpha": 0.3,
+   "validation own-label log-likelihood per step": -3.291,
+   "alpha_r (results)": 0.0,
+   "validation results right, by alpha_r": {
+    "0.0": 0.9076,
+    "1e-06": 0.9027,
+    "0.0001": 0.8987,
+    "0.01": 0.8928,
+    "1.0": 0.881,
+    "100.0": 0.8721,
+    "inf": 0.8721
+   }
+  },
+  "world 1 tokens": {
+   "kernel width (x median context distance)": 0.25,
+   "median context distance": 2.2761,
+   "alpha": 1.0,
+   "validation own-label log-likelihood per step": -0.0099,
+   "alpha_r (results)": 100.0,
+   "validation results right, by alpha_r": {
+    "0.0": 0.9958,
+    "1e-06": 0.9958,
+    "0.0001": 0.9958,
+    "0.01": 0.9959,
+    "1.0": 0.9995,
+    "100.0": 0.9997,
+    "inf": 0.9997
+   }
+  }
+ },
+ "revision 1 (positions only as differences)": {
+  "crafter": {
+   "make": {
+    "steps": 7697,
+    "log-likelihood per step": -0.5488,
+    "whole scored next state right": 0.9569,
+    "scored tokens that changed": 610,
+    "changed tokens right (change and result)": 0.1639
+   },
+   "do": {
+    "steps": 1233,
+    "log-likelihood per step": -0.7057,
+    "whole scored next state right": 0.9189,
+    "scored tokens that changed": 133,
+    "changed tokens right (change and result)": 0.0827
+   },
+   "place": {
+    "steps": 4992,
+    "log-likelihood per step": -0.3791,
+    "whole scored next state right": 0.9688,
+    "scored tokens that changed": 2115,
+    "changed tokens right (change and result)": 0.9319
+   },
+   "makes that made a tool": {
+    "tries": 236,
+    "whole scored next state right": 0.0593
+   }
+  },
+  "crafter role test": {
+   "tests": 196,
+   "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+   "share passing (all 8 near >= 0.5, all 16 far < 0.5)": 0.0,
+   "mean P(made) near": 0.2011,
+   "mean P(made) far": 0.2001,
+   "near places >= 0.5": 0.0663,
+   "far places < 0.5": 0.9337
+  },
+  "crafter paired bootstrap against two-place": {
+   "make": {
+    "steps": 7697,
+    "episodes": 400,
+    "difference per step (tokens - two-place)": -0.0068,
+    "95% interval": [
+     -0.0369,
+     0.0233
+    ],
+    "p (difference <= 0)": 0.668
+   },
+   "do": {
+    "steps": 1233,
+    "episodes": 376,
+    "difference per step (tokens - two-place)": -0.1104,
+    "95% interval": [
+     -0.1767,
+     -0.0476
+    ],
+    "p (difference <= 0)": 0.9995
+   },
+   "place": {
+    "steps": 4992,
+    "episodes": 400,
+    "difference per step (tokens - two-place)": 0.0354,
+    "95% interval": [
+     0.0079,
+     0.0616
+    ],
+    "p (difference <= 0)": 0.006
+   }
+  },
+  "world 1 seed 1021": {
+   "changed caught": 0.6723,
+   "unchanged right": 0.9772,
+   "changed by column 5, 6, 7": [
+    0.734,
+    0.723,
+    0.413
+   ]
+  },
+  "world 1 seed 7": {
+   "changed caught": 0.9605,
+   "unchanged right": 0.9758,
+   "changed by column 5, 6, 7": [
+    0.974,
+    0.964,
+    0.921
+   ]
+  },
+  "world 1 lamp attention at changes, layer 1 (seed 1021, test)": {
+   "agent": 0.436,
+   "wall": 0.215,
+   "empty row": 0.207,
+   "floor": 0.115,
+   "box": 0.02
+  },
+  "minigrid": {
+   "tier1": {
+    "kernel width (x median distance)": 0.1,
+    "alpha": 0.3,
+    "alpha_r": 0.0,
+    "arm C": {
+     "tries": 25490,
+     "exact next state": 1.0,
+     "change log-likelihood per try": -0.0013
+    },
+    "arm A alone": {
+     "tries": 25490,
+     "exact next state": 0.999462,
+     "change log-likelihood per try": -0.002066
+    },
+    "version 27's arm C (front and hand only)": 1.0,
+    "difference from version 27 (points)": 0.0
+   },
+   "tier2": {
+    "kernel width (x median distance)": 0.1,
+    "alpha": 30.0,
+    "alpha_r": 0.0,
+    "arm C": {
+     "tries": 28938,
+     "exact next state": 0.999782,
+     "change log-likelihood per try": -0.002456
+    },
+    "arm A alone": {
+     "tries": 28938,
+     "exact next state": 0.999707,
+     "change log-likelihood per try": -0.002455
+    },
+    "version 27's arm C (front and hand only)": 1.0,
+    "difference from version 27 (points)": -0.0218,
+    "counterfactual boxes: hand holds that box": {
+     "blue": 0.99,
+     "red": 0.9867,
+     "grey": 0.9933,
+     "yellow": 0.9867,
+     "green": 0.9933,
+     "purple": 0.99
+    }
+   },
+   "tier3": {
+    "kernel width (x median distance)": 0.1,
+    "alpha": 0.3,
+    "alpha_r": 0.0,
+    "arm C": {
+     "tries": 31951,
+     "exact next state": 0.984253,
+     "change log-likelihood per try": -0.037304
+    },
+    "arm A alone": {
+     "tries": 31951,
+     "exact next state": 0.968187,
+     "change log-likelihood per try": -0.129148
+    },
+    "version 27's arm C (front and hand only)": 0.998293,
+    "difference from version 27 (points)": -1.404
+   }
+  }
+ },
+ "revision 2 (gates per pair; GL adds offsets from the action's locus)": {
+  "crafter GL": {
+   "make": {
+    "steps": 7697,
+    "log-likelihood per step": -0.6362,
+    "whole scored next state right": 0.9576,
+    "scored tokens that changed": 610,
+    "changed tokens right (change and result)": 0.0311
+   },
+   "do": {
+    "steps": 1233,
+    "log-likelihood per step": -0.8612,
+    "whole scored next state right": 0.9173,
+    "scored tokens that changed": 133,
+    "changed tokens right (change and result)": 0.015
+   },
+   "place": {
+    "steps": 4992,
+    "log-likelihood per step": -0.4828,
+    "whole scored next state right": 0.9493,
+    "scored tokens that changed": 2115,
+    "changed tokens right (change and result)": 0.8832
+   },
+   "makes that made a tool": {
+    "tries": 236,
+    "whole scored next state right": 0.0
+   },
+   "role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (all 8 near >= 0.5, all 16 far < 0.5)": 0.0,
+    "mean P(made) near": 0.0557,
+    "mean P(made) far": 0.0551,
+    "near places >= 0.5": 0.0121,
+    "far places < 0.5": 0.9917
+   },
+   "open gates per state": {
+    "layer 1": 3.3,
+    "layer 2": 5.1
+   }
+  },
+  "world 1 G seed 1021 (gates collapsed: training loss 3.64 against tau 0.046)": {
+   "lamps": {
+    "lamps at pushes, changed": {
+     "tokens": 354,
+     "P >= 0.5 iff changed": 0.0
+    },
+    "lamps at pushes, unchanged": {
+     "tokens": 2723,
+     "P >= 0.5 iff changed": 1.0
+    },
+    "lamps lit": {
+     "tokens": 213,
+     "P >= 0.5 iff changed": 0.0
+    }
+   },
+   "layer-1 weight by kind at lamp changes": {
+    "floor": 0.0,
+    "wall": 0.0,
+    "agent": 0.0,
+    "box": 0.0,
+    "lamp": 0.0,
+    "lit lamp": 0.0,
+    "empty row": 0.0
+   },
+   "open gates per state": {
+    "layer 1": 0.0,
+    "layer 2": 0.0
+   }
+  },
+  "world 1 GL seed 1021": {
+   "lamps": {
+    "lamps at pushes, changed": {
+     "tokens": 354,
+     "P >= 0.5 iff changed": 0.4181
+    },
+    "lamps at pushes, unchanged": {
+     "tokens": 2723,
+     "P >= 0.5 iff changed": 0.9802
+    },
+    "lamps lit": {
+     "tokens": 213,
+     "P >= 0.5 iff changed": 0.5211
+    }
+   },
+   "layer-1 weight by kind at lamp changes": {
+    "floor": 0.87,
+    "wall": 0.0,
+    "agent": 0.0,
+    "box": 0.113,
+    "lamp": 0.012,
+    "lit lamp": 0.005,
+    "empty row": 0.0
+   },
+   "open gates per state": {
+    "layer 1": 16.8,
+    "layer 2": 2.6
+   }
+  },
+  "world 1 GL seed 1021, fixed cost 0.01 nats per open gate (diagnostic)": {
+   "lamps": {
+    "lamps at pushes, changed": {
+     "tokens": 354,
+     "P >= 0.5 iff changed": 0.0169
+    },
+    "lamps at pushes, unchanged": {
+     "tokens": 2723,
+     "P >= 0.5 iff changed": 0.9993
+    },
+    "lamps lit": {
+     "tokens": 213,
+     "P >= 0.5 iff changed": 0.0282
+    }
+   },
+   "layer-1 weight by kind at lamp changes": {
+    "floor": 0.523,
+    "wall": 0.0,
+    "agent": 0.0,
+    "box": 0.0,
+    "lamp": 0.0,
+    "lit lamp": 0.0,
+    "empty row": 0.477
+   },
+   "open gates per state": {
+    "layer 1": 7.1,
+    "layer 2": 2.4
+   }
+  },
+  "not run (chain stopped)": [
+   "world 1 seed 7",
+   "MiniGrid G and GL",
+   "Crafter compare"
+  ]
+ },
+ "revision 3 (gates never pushed shut; positions as GL)": {
+  "crafter": {
+   "make": {
+    "steps": 7697,
+    "log-likelihood per step": -0.534,
+    "whole scored next state right": 0.9587,
+    "scored tokens that changed": 610,
+    "changed tokens right (change and result)": 0.1377
+   },
+   "do": {
+    "steps": 1233,
+    "log-likelihood per step": -0.7572,
+    "whole scored next state right": 0.9197,
+    "scored tokens that changed": 133,
+    "changed tokens right (change and result)": 0.0526
+   },
+   "place": {
+    "steps": 4992,
+    "log-likelihood per step": -0.3702,
+    "whole scored next state right": 0.9635,
+    "scored tokens that changed": 2115,
+    "changed tokens right (change and result)": 0.9196
+   },
+   "makes that made a tool": {
+    "tries": 236,
+    "whole scored next state right": 0.0932
+   },
+   "role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (all 8 near >= 0.5, all 16 far < 0.5)": 0.0,
+    "mean P(made) near": 0.2009,
+    "mean P(made) far": 0.1834,
+    "near places >= 0.5": 0.1148,
+    "far places < 0.5": 0.9047
+   },
+   "open gates per state (sigmoid > 0.5)": {
+    "layer 1": 23065.2,
+    "layer 2": 154.9
+   }
+  },
+  "world 1 seed 1021": {
+   "lamps": {
+    "lamps at pushes, changed": {
+     "tokens": 354,
+     "P >= 0.5 iff changed": 0.7175
+    },
+    "lamps at pushes, unchanged": {
+     "tokens": 2723,
+     "P >= 0.5 iff changed": 0.9868
+    },
+    "lamps lit": {
+     "tokens": 213,
+     "P >= 0.5 iff changed": 0.6338
+    }
+   },
+   "changed caught by column 5, 6, 7": [
+    0.766,
+    0.723,
+    0.587
+   ],
+   "layer-1 weight by kind at lamp changes": {
+    "floor": 0.383,
+    "wall": 0.342,
+    "agent": 0.013,
+    "box": 0.033,
+    "lamp": 0.006,
+    "lit lamp": 0.002,
+    "empty row": 0.221
+   },
+   "open gates per state (sigmoid > 0.5)": {
+    "layer 1": 22970.0,
+    "layer 2": 2436.3
+   }
+  },
+  "not run (chain stopped)": [
+   "world 1 seed 7",
+   "MiniGrid",
+   "Crafter compare"
+  ]
+ }
+}

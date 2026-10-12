@@ -195,6 +195,14 @@ Agreed with the user 2026-09-24.
    passed (rule 7).
 4. **Documents.** Only those listed in AGENTS.md. Cards have a length cap.
 5. **Runs.** No long run without a card the user has read and approved.
+   Every run, smoke tests included, is capped so that it cannot crash the
+   machine (the user, 2026-10-12, after an uncapped run used all memory;
+   the machine has 60 GB and no swap). Launch it as
+   `timeout <limit> systemd-run --user --scope -q -p MemoryMax=16G
+   -p MemorySwapMax=0 -p CPUQuota=800% nice -n 10 bin/prun python …`
+   with `OMP_NUM_THREADS=4`. Then a blow-up kills only the run. Before
+   scaling a smoke test up, check that no array grows with the square of
+   a count the change could enlarge.
 6. **Success criteria declared first.** Before a run, the card states the
    metrics, the threshold for each, what it is compared against, and why
    those numbers would show the capability. They are not changed after the
@@ -219,3 +227,33 @@ Agreed with the user 2026-09-24.
    counting in place of recall, a side network, or engineered code
    meanings. Changing "Current direction" itself needs the user's explicit
    agreement.
+9. **Portability** (agreed with the user 2026-10-11). Every card's
+   section 2 has a portability check. It lists each assumption the
+   mechanism makes about the environment (a place or slot it names, a
+   grid, objects of one tile, a front, fixed action ids, a view that
+   follows the agent, a world that changes only by the agent). For each,
+   it says whether the assumption holds in Crafter, ARC-AGI-3 and
+   robotics. An assumption that does not hold everywhere is an
+   environment-specific prior: it is removed, or declared with the card
+   that will remove it. Narrowing a mechanism because nothing is lost in
+   the current environment is such a prior, since one environment cannot
+   show the loss. A narrowing for speed is kept only as a cache checked
+   against the general form. A new environment should change only the
+   adapter: frames to tokens, the list of actions and the goal. Anything
+   more is recorded as a finding.
+10. **Breaking worlds** (agreed with the user 2026-10-11). These are
+    small worlds, each built to defeat one environment-specific
+    assumption:
+    - a condition between tokens away from the agent;
+    - an object of many tiles;
+    - a token that leaves view and comes back moved;
+    - a body in a fixed view, or no body;
+    - an action aimed at a place;
+    - a world that changes by itself.
+
+    They come from one engine (`tools/card102/worlds.py`), give pixels
+    and actions only, and are drawn so that Crafter's adapter reads them.
+    Card series 102 builds them. A card that changes the architecture
+    runs every breaking world built so far as a smoke test, alongside
+    MiniGrid's tiers, before its version is adopted. A world that a
+    change breaks again is a regression under rule 8.

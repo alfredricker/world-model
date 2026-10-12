@@ -24,6 +24,12 @@ it moves toward.
 The difference from ARCHITECTURE.md at this arch_version, with a small
 before/after sketch. At most one component changes.
 
+### Portability check (CHARTER rule 9)
+
+| Assumption | Crafter | ARC-AGI-3 | Robotics | Here |
+|---|---|---|---|---|
+| Each assumption the mechanism makes about the environment | holds? | holds? | holds? | removed, declared (with the card that removes it), or general |
+
 ## 3. Dependencies
 
 Every part this experiment relies on, and why it can be trusted: a passed

@@ -1,0 +1,552 @@
+{
+ "gate (world 2 test)": {
+  "gate: fates of moving or changing object tiles right": 1.0,
+  "gate: object tiles that stay, called still": 1.0,
+  "moving or changing object tiles": 33891
+ },
+ "learned": {
+  "world 2": {
+   "ground codes": [
+    2
+   ],
+   "ground": {
+    "single-tile moves": 110438,
+    "revealed or covered, by code": {
+     "2": 220876
+    },
+    "moving, by code": {
+     "10": 110438
+    },
+    "share of a code's tiles that change, ground": {
+     "2": 0.0254
+    }
+   },
+   "p (a mover's steps that move)": 0.1061,
+   "evidence for, against (nats)": [
+    2.233,
+    -2.943
+   ],
+   "prior log-odds of one object (training)": -0.618,
+   "share of pairs seen together that are one object (training)": 0.3502
+  },
+  "crafter": {
+   "ground codes": [
+    0,
+    4,
+    9,
+    11,
+    12,
+    33,
+    37
+   ],
+   "ground": {
+    "single-tile moves": 12576,
+    "revealed or covered, by code": {
+     "0": 24935,
+     "37": 74,
+     "12": 62,
+     "11": 55,
+     "4": 10,
+     "33": 8,
+     "9": 8
+    },
+    "moving, by code": {
+     "17": 8305,
+     "36": 1111,
+     "45": 760,
+     "27": 637,
+     "18": 483,
+     "35": 455,
+     "2": 426,
+     "7": 160,
+     "39": 143,
+     "0": 48,
+     "46": 21,
+     "51": 14,
+     "49": 7,
+     "12": 6
+    },
+    "share of a code's tiles that change, ground": {
+     "0": 0.0108,
+     "4": 0.0006,
+     "9": 0.0012,
+     "11": 0.0056,
+     "12": 0.015,
+     "33": 0.0095,
+     "37": 0.0025
+    }
+   },
+   "p (a mover's steps that move)": 0.1112,
+   "evidence for, against (nats)": [
+    2.187,
+    -2.984
+   ],
+   "prior log-odds of one object (training)": -9.618,
+   "share of pairs seen together that are one object (training)": 0.0001,
+   "view shift = minus the agent's move (evaluator)": 0.996
+  }
+ },
+ "criterion 1": {
+  "fate groups": {
+   "after": {
+    "right": 0.995,
+    "of": 50647
+   },
+   "before": {
+    "right": 0.0,
+    "of": 124953
+   },
+   "after, by kind": {
+    "door": {
+     "right": 1.0,
+     "of": 10547
+    },
+    "shape, several colours": {
+     "right": 0.9946,
+     "of": 19804
+    },
+    "shape, one colour": {
+     "right": 0.9929,
+     "of": 20296
+    }
+   }
+  },
+  "colour and touching": {
+   "after": {
+    "right": 0.5574,
+    "of": 50647
+   },
+   "before": {
+    "right": 0.584,
+    "of": 124953
+   },
+   "after, by kind": {
+    "door": {
+     "right": 1.0,
+     "of": 10547
+    },
+    "shape, several colours": {
+     "right": 0.0,
+     "of": 19804
+    },
+    "shape, one colour": {
+     "right": 0.8714,
+     "of": 20296
+    }
+   }
+  },
+  "holds": true
+ },
+ "criterion 2": {
+  "tiles": {
+   "first time": {
+    "every tile right": 0.7739,
+    "steps": 3622
+   },
+   "first time: blocked push, one colour": {
+    "every tile right": 0.8108,
+    "steps": 1559
+   },
+   "first time: blocked push, several colours": {
+    "every tile right": 0.8011,
+    "steps": 1307
+   },
+   "first time: door": {
+    "every tile right": 1.0,
+    "steps": 180
+   },
+   "first time: push, one colour": {
+    "every tile right": 0.6471,
+    "steps": 289
+   },
+   "first time: push, several colours": {
+    "every tile right": 0.4355,
+    "steps": 287
+   },
+   "object moved or changed before": {
+    "every tile right": 0.8602,
+    "steps": 3168
+   },
+   "object moved or changed before: blocked push, one colour": {
+    "every tile right": 0.8543,
+    "steps": 1153
+   },
+   "object moved or changed before: blocked push, several colours": {
+    "every tile right": 0.8826,
+    "steps": 1082
+   },
+   "object moved or changed before: door": {
+    "every tile right": 1.0,
+    "steps": 491
+   },
+   "object moved or changed before: push, one colour": {
+    "every tile right": 0.7477,
+    "steps": 218
+   },
+   "object moved or changed before: push, several colours": {
+    "every tile right": 0.5848,
+    "steps": 224
+   }
+  },
+  "fate": {
+   "first time": {
+    "every tile right": 0.8029,
+    "steps": 3622
+   },
+   "first time: blocked push, one colour": {
+    "every tile right": 0.8582,
+    "steps": 1559
+   },
+   "first time: blocked push, several colours": {
+    "every tile right": 0.9028,
+    "steps": 1307
+   },
+   "first time: door": {
+    "every tile right": 1.0,
+    "steps": 180
+   },
+   "first time: push, one colour": {
+    "every tile right": 0.4256,
+    "steps": 289
+   },
+   "first time: push, several colours": {
+    "every tile right": 0.3031,
+    "steps": 287
+   },
+   "object moved or changed before": {
+    "every tile right": 0.9489,
+    "steps": 3168
+   },
+   "object moved or changed before: blocked push, one colour": {
+    "every tile right": 0.9679,
+    "steps": 1153
+   },
+   "object moved or changed before: blocked push, several colours": {
+    "every tile right": 0.988,
+    "steps": 1082
+   },
+   "object moved or changed before: door": {
+    "every tile right": 1.0,
+    "steps": 491
+   },
+   "object moved or changed before: push, one colour": {
+    "every tile right": 0.7752,
+    "steps": 218
+   },
+   "object moved or changed before: push, several colours": {
+    "every tile right": 0.7188,
+    "steps": 224
+   }
+  },
+  "truth": {
+   "first time": {
+    "every tile right": 0.9161,
+    "steps": 3622
+   },
+   "first time: blocked push, one colour": {
+    "every tile right": 0.8942,
+    "steps": 1559
+   },
+   "first time: blocked push, several colours": {
+    "every tile right": 0.9541,
+    "steps": 1307
+   },
+   "first time: door": {
+    "every tile right": 1.0,
+    "steps": 180
+   },
+   "first time: push, one colour": {
+    "every tile right": 0.8789,
+    "steps": 289
+   },
+   "first time: push, several colours": {
+    "every tile right": 0.8467,
+    "steps": 287
+   },
+   "object moved or changed before": {
+    "every tile right": 0.952,
+    "steps": 3168
+   },
+   "object moved or changed before: blocked push, one colour": {
+    "every tile right": 0.9384,
+    "steps": 1153
+   },
+   "object moved or changed before: blocked push, several colours": {
+    "every tile right": 0.975,
+    "steps": 1082
+   },
+   "object moved or changed before: door": {
+    "every tile right": 1.0,
+    "steps": 491
+   },
+   "object moved or changed before: push, one colour": {
+    "every tile right": 0.8853,
+    "steps": 218
+   },
+   "object moved or changed before: push, several colours": {
+    "every tile right": 0.8705,
+    "steps": 224
+   }
+  },
+  "tiles, pushes that moved the shape": 0.6651,
+  "tiles, blocked pushes": 0.868,
+  "fate, pushes that moved the shape": 0.7466,
+  "fate, blocked pushes": 0.9776,
+  "truth, pushes that moved the shape": 0.8778,
+  "truth, blocked pushes": 0.9561,
+  "fate / upper bound (objects moved before; bar 0.95)": 0.9967,
+  "fate / upper bound, pushes that moved the shape": 0.8505,
+  "holds": true
+ },
+ "criterion 3": {
+  "states": 21947,
+  "criterion 3: states with a group of two or more tiles (all false in Crafter)": 0.0,
+  "criterion 3: tiles in such groups / tracked tiles that ever moved or changed": 0.0,
+  "tracked tiles that ever moved or changed, per state": 3.65,
+  "fates per state: moved, changed in place, vanished": [
+   0.447,
+   0.08,
+   0.052
+  ],
+  "false links: states a tile stays in a group (median, 90th percentile)": null,
+  "holds": true
+ },
+ "first sight (the pair head, objects not yet moved)": {
+  "tiles": {
+   "objects not yet moved, exactly one group": 0.3075,
+   "of": 24777
+  },
+  "fate": {
+   "objects not yet moved, exactly one group": 0.3349,
+   "of": 24777
+  },
+  "truth": {
+   "objects not yet moved, exactly one group": 0.3437,
+   "of": 24777
+  }
+ },
+ "every tile's fate right, all test steps (own labels)": {
+  "tiles": 0.99855,
+  "fate": 0.99887,
+  "truth": 0.99914
+ },
+ "training format diagnostics (per-tile form, objects moved before)": {
+  "half of each batch from event steps, 4,000 steps": {
+   "pushes that moved the shape": 0.3801,
+   "blocked pushes": 0.3673,
+   "doors": 1.0
+  },
+  "prioritised replay with importance weights, 4,000 steps": {
+   "pushes that moved the shape": 0.0,
+   "blocked pushes": 1.0,
+   "doors": 0.277
+  },
+  "prioritised replay without importance weights, 4,000 steps": {
+   "pushes that moved the shape": 0.3348,
+   "blocked pushes": 0.9526,
+   "doors": 1.0
+  },
+  "uniform draws, 8,000 steps (fate form, first chain)": {
+   "pushes that moved the shape": 0.0,
+   "doors": 0.0
+  }
+ },
+ "training": {
+  "tiles": {
+   "steps": 12000,
+   "replay": "prioritised, alpha 0.6, beta from 0.0",
+   "seconds": 225.3
+  },
+  "fate": {
+   "steps": 12000,
+   "replay": "prioritised, alpha 0.6, beta from 0.0",
+   "seconds": 225.3
+  },
+  "truth": {
+   "steps": 12000,
+   "replay": "prioritised, alpha 0.6, beta from 0.0",
+   "seconds": 225.3
+  }
+ },
+ "revision 1 (a pair layer within each group, attention pooling)": {
+  "tiles": {
+   "first time": {
+    "every tile right": 0.7973,
+    "steps": 3622
+   },
+   "first time: blocked push, one colour": {
+    "every tile right": 0.839,
+    "steps": 1559
+   },
+   "first time: blocked push, several colours": {
+    "every tile right": 0.8523,
+    "steps": 1307
+   },
+   "first time: door": {
+    "every tile right": 1.0,
+    "steps": 180
+   },
+   "first time: push, one colour": {
+    "every tile right": 0.5779,
+    "steps": 289
+   },
+   "first time: push, several colours": {
+    "every tile right": 0.4146,
+    "steps": 287
+   },
+   "object moved or changed before": {
+    "every tile right": 0.8756,
+    "steps": 3168
+   },
+   "object moved or changed before: blocked push, one colour": {
+    "every tile right": 0.8864,
+    "steps": 1153
+   },
+   "object moved or changed before: blocked push, several colours": {
+    "every tile right": 0.915,
+    "steps": 1082
+   },
+   "object moved or changed before: door": {
+    "every tile right": 1.0,
+    "steps": 491
+   },
+   "object moved or changed before: push, one colour": {
+    "every tile right": 0.6514,
+    "steps": 218
+   },
+   "object moved or changed before: push, several colours": {
+    "every tile right": 0.5759,
+    "steps": 224
+   }
+  },
+  "fate": {
+   "first time": {
+    "every tile right": 0.7554,
+    "steps": 3622
+   },
+   "first time: blocked push, one colour": {
+    "every tile right": 0.7858,
+    "steps": 1559
+   },
+   "first time: blocked push, several colours": {
+    "every tile right": 0.7919,
+    "steps": 1307
+   },
+   "first time: door": {
+    "every tile right": 1.0,
+    "steps": 180
+   },
+   "first time: push, one colour": {
+    "every tile right": 0.5848,
+    "steps": 289
+   },
+   "first time: push, several colours": {
+    "every tile right": 0.4425,
+    "steps": 287
+   },
+   "object moved or changed before": {
+    "every tile right": 0.9596,
+    "steps": 3168
+   },
+   "object moved or changed before: blocked push, one colour": {
+    "every tile right": 0.9428,
+    "steps": 1153
+   },
+   "object moved or changed before: blocked push, several colours": {
+    "every tile right": 0.975,
+    "steps": 1082
+   },
+   "object moved or changed before: door": {
+    "every tile right": 1.0,
+    "steps": 491
+   },
+   "object moved or changed before: push, one colour": {
+    "every tile right": 0.9128,
+    "steps": 218
+   },
+   "object moved or changed before: push, several colours": {
+    "every tile right": 0.9286,
+    "steps": 224
+   }
+  },
+  "truth": {
+   "first time": {
+    "every tile right": 0.9749,
+    "steps": 3622
+   },
+   "first time: blocked push, one colour": {
+    "every tile right": 0.9615,
+    "steps": 1559
+   },
+   "first time: blocked push, several colours": {
+    "every tile right": 0.9786,
+    "steps": 1307
+   },
+   "first time: door": {
+    "every tile right": 1.0,
+    "steps": 180
+   },
+   "first time: push, one colour": {
+    "every tile right": 0.9965,
+    "steps": 289
+   },
+   "first time: push, several colours": {
+    "every tile right": 0.993,
+    "steps": 287
+   },
+   "object moved or changed before": {
+    "every tile right": 0.9899,
+    "steps": 3168
+   },
+   "object moved or changed before: blocked push, one colour": {
+    "every tile right": 0.9948,
+    "steps": 1153
+   },
+   "object moved or changed before: blocked push, several colours": {
+    "every tile right": 0.976,
+    "steps": 1082
+   },
+   "object moved or changed before: door": {
+    "every tile right": 1.0,
+    "steps": 491
+   },
+   "object moved or changed before: push, one colour": {
+    "every tile right": 1.0,
+    "steps": 218
+   },
+   "object moved or changed before: push, several colours": {
+    "every tile right": 1.0,
+    "steps": 224
+   }
+  },
+  "tiles, pushes that moved the shape": 0.6131,
+  "tiles, blocked pushes": 0.9002,
+  "fate, pushes that moved the shape": 0.9208,
+  "fate, blocked pushes": 0.9584,
+  "truth, pushes that moved the shape": 1.0,
+  "truth, blocked pushes": 0.9857,
+  "fate / upper bound (objects moved before; bar 0.95)": 0.9694,
+  "fate / upper bound, pushes that moved the shape (bar 0.95)": 0.9208,
+  "criterion 2 holds": true,
+  "pushes reach the bar": false,
+  "first sight": {
+   "tiles": {
+    "objects not yet moved, exactly one group": 0.3219,
+    "of": 24777
+   },
+   "fate": {
+    "objects not yet moved, exactly one group": 0.3401,
+    "of": 24777
+   },
+   "truth": {
+    "objects not yet moved, exactly one group": 0.3698,
+    "of": 24777
+   }
+  },
+  "seconds": {
+   "tiles": 327.0,
+   "fate": 327.3,
+   "truth": 327.2
+  }
+ }
+}

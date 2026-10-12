@@ -6,19 +6,61 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Cards / rung:** [card 098.5](experiments/098.5-tokens-that-persist/card.md) (tokens that persist when they
-  move: object files followed in the placing step) and
-  [card 098.6](experiments/098.6-what-moves-by-itself/card.md) (what moves by itself, from evidence),
-  [card 098.7](experiments/098.7-how-wide-is-like-this/card.md) (how wide "tokens like this" is),
-  [card 098.8](experiments/098.8-what-happens-next-shapes-tokens/card.md) (the encoder shaped by continuity, motion and change), then
-  [card 098.4](experiments/098.4-what-the-action-causes/card.md) (what the action causes and what the world does
-  by itself, each against doing nothing). Rung 1 (P7, P2, P6, P5). Set
-  2026-10-10 when the user moved work to Crafter, asking that designs
-  carry to Minecraft and robotics.
-- **Why these:** following things that move without a grid; telling
-  what the agent caused from what would have happened anyway; chance
-  against hidden state.
-- **Until:** card 098.4 has a decision.
+- **Cards / rung:** series [103](experiments/103-tracking-with-general-priors/card.md), tracking with general
+  priors: [103.1](experiments/103.1-world-and-camera-layers/card.md) the world and camera layers,
+  [103.2](experiments/103.2-object-files-as-sprites/card.md) object files as sprites, [103.3](experiments/103.3-view-motion-with-files/card.md) the view's motion with files
+  explained away, [103.4](experiments/103.4-evidence-per-observation/card.md) evidence per independent observation. Rung 1. Set 2026-10-12 after a review of object-centric video models and tracking.
+- **Why these:** correspondence (the view's motion, which object is which)
+  is where series 102 stuck; the review asked which mechanisms carry
+  identity with few, general priors, a moving camera and small compute.
+- **Until:** series 103 has decided its next card after 103.3.
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| SAVi, SAVi++ (Kipf et al. 2022; Elsayed et al. 2022); STEVE (Singh et al. 2022); VideoSAUR (Zadaianchuk et al. 2023); `object-centric-learning-with-slot-attention` (not the rest in papi) | Slots carried by a predictor need first-frame cues or pretrained features and GPU-days: SAVi 78 FG-ARI with cues, 48 without; with a moving camera 19 → 3. Not used: cost and priors |
+| SCALOR (Jiang et al. 2020), SILOT (Crawford and Pineau 2020), `axiom` (Heins et al. 2025) | Propagation plus discovery: each object carried forward with explicit presence, new ones only from what the tracked ones leave unexplained; dozens of sprites in minutes (SCALOR MOTA 84.6% at ~90 objects). All assume a fixed camera. Card 103.2's structure |
+| SPACE + MOC (Delfosse et al. 2023); `2203_10159`, `2303_15555` (Bao et al.); `2205_08515` (EISEN, Chen et al. 2022) | Motion as the teacher, not an input: Atari detection 4 → 95 (MOC), TRI-PD 10 → 51 (DOM); subtracting the known mover finds what it moves (EISEN). Card 103.3 subtracts files from the view's evidence |
+| Jojic and Frey 2001, flexible sprites; Wang and Adelson 1994 (not in papi) | A layer is an appearance, a mask and a transformation; occlusion by layer order. Card 103.2's files |
+| Meister et al. 2018 (UnFlow); Jonschkowski et al. 2020 (UFlow); Stone et al. 2021 (SMURF) (not in papi) | Robust photometric matching with occlusion masked out and edge-aware smoothness; census beat brightness constancy by ~35%. Card 103.1's robust likelihood |
+| Engel, Koltun and Cremers 2017, DSO (not in papi) | Direct odometry models exposure: a global brightness change between frames. Card 103.1's offset |
+| Zhou et al. 2017, SfMLearner; Partsey et al. 2022 (not in papi) | An explainability mask leaves out pixels that do not move with the camera; an action embedding in visual odometry +8 points of navigation success |
+| Bian et al. 2022, MS-CRW; Tokmakov and Jabri 2022, RAM; Sarlin et al. 2020, SuperGlue (not in papi) | A random walk has no way to place occluded content (EPE 17.4; 3.9 with a smoothness regressor); a "no match" bin or memory nodes give hidden content a continuation. Card 098.8's failure named |
+| Bewley et al. 2016, SORT; Zhang et al. 2022, ByteTrack; Cao et al. 2023, OC-SORT (not in papi) | Better detections matter most (+18.9% in SORT); low-confidence detections kept for existing tracks (IDF1 76.9 → 79.3); re-updating across a gap. Card 103.2's files lose most where detections are missing |
+| Varin, Reid and Firth 2011, composite likelihood; Grünwald 2012, Safe Bayes; Holmes and Walker 2017, calibrating the power of a likelihood (not in papi) | A likelihood that treats dependent observations as independent is overconfident; raising it to a power (a learning rate) corrects it, and the power can be chosen from the data. Card 103.4's τ, chosen by the agent's own self-consistency |
+| Spelke 1995; Xu and Carey 1996; Scholl and Pylyshyn 1999 (not in papi) | Infants individuate objects by spatiotemporal continuity before features; tracking survives occlusion only at an occluding edge. The series' priors |
+
+Previous focus (series 102, set 2026-10-11 when the user started the series,
+until card 102.8's decision): relations between any tokens, objects as what
+moves together, short-term memory, the self as what actions control.
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| Battaglia et al. 2016, interaction networks (not in papi); `1706_01427` (Santoro et al. 2017, Relation Networks) | One pair function shared over every pair of objects, its messages summed per object: card 102.1's arm A. A relation network on raw object pairs can learn shortcuts that do not carry (26.5% on held-out images, via `2206_05056`), which breaking world 1 tests |
+| `1110_2211` (Pasula, Zettlemoyer and Kaelbling 2007) | Rules name only the objects they need, by their relation to the action's target (deictic references, chained from the action's arguments); scored by likelihood minus 0.5 per literal. Without deictic references the planner "did not attempt to act at all". Card 102.1 revision 2's locus; card 102.6 when the target is given |
+| `neural-production-systems` (Goyal et al. 2021); SPARTAN (Lei, Schölkopf and Posner 2025, arXiv 2411.06890, not in papi) | Sparse interactions with a closed default: each change reads one context token or none (NPS: ARI 0.3553 against 0.2632 with more balls at test; its parallel variant did worse than dense). Hard edges, the fewest open subject to the dense model's loss; a fixed high penalty collapses (SPARTAN: error rise when non-causal objects are removed, Pong 24.5% against 1140.2% for a transformer). Card 102.1 revision 2 |
+| `2206_13452` (CDL); `2406_03234` (FCDL); `elden`; `2107_10098` | Sparse causal graphs carry to unseen positions (FCDL: reward 4.81 against 1.10 with the box at unseen positions; λ insensitive over 1e-4 to 1e-2). Penalising soft attention or input masks directly was at chance (ELDEN); a fixed penalty drops rare dependencies (CDL) |
+| Louizos, Welling and Kingma 2018, hard-concrete L0 gates; Rezende and Viola 2018, GECO (not in papi) | Gates that close exactly, trained by reparameterisation; a constraint on the loss in place of a fixed penalty weight. Card 102.1 revision 2 |
+| `1803_02155` (Shaw et al. 2018); Csordás, Irie and Schmidhuber 2021; Ontañón et al. 2022; Sanchez-Gonzalez et al. 2020, GNS (not in papi) | Relative positions generalise where absolute ones fail (SCAN length split, Universal Transformer 0.21 → 1.00), but fixed context gives position back: GNS clips wall distances at its radius "to maintain spatial translation invariance" (card 102.1 revision 1: 42% of a lamp's weight on walls) |
+| Hill et al. 2020 (arXiv 1910.00571); `2309_00889`; Finney, Gardiol, Kaelbling and Oates 2002 (not in papi) | Positions measured from where the action happens generalise: an agent-centred view 0.60 against 0.40 for a fixed one; coordinates from the object acted on carry across positions. Anchor only on what the action fixes, never on a focus the model moves |
+| Choi et al. 2019, contingency-aware exploration (arXiv 1811.01483, not in papi) | The agent's cell found without labels by attention in an inverse-dynamics model (typically 1–2 cells off on 9 × 9): how card 102.5 can find the locus |
+| Wertheimer 1923, common fate; Spelke 1990, cohesion and boundedness (not in papi) | Parts that move together are one object; infants group by motion before appearance. Card 102.2's grouping |
+| Wang and Adelson 1994, layered motion (not in papi) | A change explained as a few layers, each moved by one transformation; the unchanged middle of a moved bar is grouped with its ends (the aperture problem). Card 102.2 |
+| Bohg et al. 2017, interactive perception (not in papi) | Acting on a scene is how a robot finds its objects and their joints; grouping from the effects of one's own actions |
+| Luck and Vogel 1997; Cowan 2001 (not in papi) | Visual short-term memory holds about four objects, each with its features bound; a reference for card 102.3's capacity, not a target |
+| Watson 1966; Gergely and Watson 1999 (not in papi) | Infants find their own body by perfect contingency between action and motion, and other agents by imperfect contingency. Card 102.5 |
+| Vinyals, Fortunato and Jaitly 2015, pointer networks; Finn, Goodfellow and Levine 2016, motion by moving pixels (not in papi) | Output by pointing at an input, not drawing it; a video model that moves pixels by learned transformations rather than synthesising them. Card 102.4's copy way |
+| Rissanen 1978, minimum description length; Hinton and Zemel 1994; Alemi et al. 2017, variational information bottleneck (not in papi) | Prefer the explanation with the shortest code: copying a token costs its source's index, drawing it the information of its content (a Gaussian's KL to a broad prior). Card 102.4 revision 1 |
+| Horn and Schunck 1981, optical flow (not in papi) | The aperture problem is solved by a smoothness term: a uniform region takes its neighbours' motion. The untried remedy for 102.4's one-colour middles |
+| Torr and Zisserman 2000, MLESAC (not in papi) | Robust matching as a mixture: each correspondence is an inlier at the noise scale or an outlier from a broad distribution. Card 102.5's placing, with each code's learned stillness as the mixing weight |
+
+Previous focus (cards 098.5–098.8 and 098.4, set 2026-10-10 when the
+user moved work to Crafter): object files and tracking (Kahneman,
+Treisman and Gibbs 1992; Bewley et al. 2016; IPDA and PMBM; `1703_04264`;
+Wald 1945), what moves by itself (`flowmo-wm`; `2303_15555`; `axiom`;
+Premack 1990), kernel width by held-out likelihood (Duin 1976), the
+contrastive random walk (Jabri, Owens and Efros 2020) and causal power
+(Cheng 1997), until the user started series 102 (098.8 stop; 098.4 still
+a draft).
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |

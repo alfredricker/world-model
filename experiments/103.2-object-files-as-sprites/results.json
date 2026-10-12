@@ -1,0 +1,10 @@
+{
+  "card": "103.2",
+  "idf1": {"true_origins_w89": 0.5308, "true_origins_w8": 0.5216, "learned_103.1_origins_w8": 0.3032,
+           "ref_098.6_tokens": 0.717, "ref_098.6_truth": 0.934, "identity_by_place": 0.009},
+  "id_recall_precision": {"true_origins_w89": [0.5055, 0.5588], "true_origins_w8": [0.5072, 0.5369], "learned_w8": [0.4786, 0.2218]},
+  "id_recall_by_kind_true_w89": {"cow": 0.4954, "zombie": 0.6147, "skeleton": 0.5155, "arrow": 0.3918},
+  "creature_frames_w89": 55655, "with_a_file": 0.657, "missed_not_moved_since_entering_view": 0.127, "missed_after_moving": 0.216,
+  "detections_on_scenery": 0.249, "file_life_median_frames": 10, "files_per_followed_creature": 1.6,
+  "outputs": "runs/103.2/track_crafter_*.json"
+}

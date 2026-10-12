@@ -1,0 +1,7 @@
+{
+  "card": "103.3", "worker": 8,
+  "files_excluded": {"right": 0.7938, "moves_still": [0.5705, 0.8567], "night": 0.5004, "idf1": 0.1729, "id_recall_precision": [0.4086, 0.1097], "excluded_world_pixels_per_step_median": 2063},
+  "files_not_excluded": {"right": 0.8292, "moves_still": [0.8314, 0.8286], "night": 0.4717, "idf1": 0.2217, "id_recall_precision": [0.4172, 0.1509]},
+  "ref_103.1_camera_layer": {"right": 0.9057, "moves_still": [0.8982, 0.9078], "night": 0.7236},
+  "outputs": "runs/103.3/joint_{on,off}_w8.json"
+}

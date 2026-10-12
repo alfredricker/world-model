@@ -1,0 +1,13 @@
+{
+  "card": "103.4",
+  "selection_train_w01": {
+    "tau": [1, 30, 100, 300, 1000, 3000],
+    "consistency": [0.97916, 0.98103, 0.9828, 0.98534, 0.9821, 0.97053],
+    "evaluator_right": [0.8307, 0.8653, 0.9259, 0.9937, 0.9796, 0.8623],
+    "evaluator_night": [0.4877, 0.5285, 0.6138, 0.9711, 0.9478, 0.8334]
+  },
+  "chosen_tau": 300,
+  "test_w8": {"right": 0.9927, "moves_still": [0.9957, 0.9919], "night": 0.9688, "steps": 24204},
+  "files_on_these_origins_w8": {"idf1": 0.4112, "id_recall_precision": [0.4969, 0.3506], "detections": 38781, "creature_frames": 27364},
+  "outputs": "runs/103.4/"
+}
