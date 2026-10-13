@@ -2,28 +2,38 @@
 
 Overwritten each session. At most 40 lines.
 
-- **Date:** 2026-10-12 (afternoon), `master`, nothing committed. **Rung:** 1, not passed.
+- **Date:** 2026-10-13, `master`, nothing committed. **Rung:** 1, not passed.
   **Architecture:** version 27 (nothing adopted). Cards are judged on Crafter; MiniGrid's tiers
   run only before adopting a kept change.
 - **Best version:** 27. Tier 1 **200/200** in 24.3 steps; tier 2 **100/100** in 30.2; tier 3
-  **30/30** in 118.8; fresh tier 3 seeds **100/100**.
-- **Objective (the user, 2026-10-12):** portability between MiniGrid, Crafter, ARC-AGI-3,
-  Minecraft and robots with limited, general priors; judged on Crafter; principled enough
-  for a paper this week. Log: [overnight-10-12.md](overnight-10-12.md) (night and afternoon).
-- **Series [103](experiments/103-tracking-with-general-priors/card.md), tracking with general priors** (opened after a review of
-  ~45 papers on object-centric video and tracking; LITERATURE's current focus):
-  - [103.1](experiments/103.1-world-and-camera-layers/card.md) **revise**. World and camera as layers: the camera's pixels are learned
-    (26, all the agent's sprite; 49 in world 3). Robust likelihood + exposure: night 94%.
-  - [103.2](experiments/103.2-object-files-as-sprites/card.md) **revise**. Object files as pixel sprites (propagation + discovery): IDF1 0.531
-    against 098.6's 0.717 on tile tokens. Missing: kinds for still creatures, earned existence.
-  - [103.3](experiments/103.3-view-motion-with-files/card.md) **stop**. Files explaining pixels away: false files remove the view's evidence.
-  - [103.4](experiments/103.4-evidence-per-observation/card.md) **keep**. Evidence per independent observation (τ = 300 px, chosen by the
-    agent's own self-consistency): Crafter's view motion **99.3%** held out (night 96.9%),
-    above the declared agent tile's 98.1–98.5%; world 3 100%. Removes 098.5's declared tile.
-- **Next:** 103.5, card 103.2's revision (sprite templates under 098.6's files level) on 103.4's
-  origins (files there: IDF1 0.411; evaluator's origins 0.522). Then one-colour shapes and
-  files in belief (in place of layers.py).
-- **For the user:** whether 103.4's placing becomes the Crafter adapter now; adoption as a
-  version needs MiniGrid's tiers, whose view turns (a 2-D shift does not cover it).
-- **Series [102](experiments/102-minigrid-assumptions/card.md)** (overnight): 102.1–102.3 kept; 102.4–102.6, 102.8 revise; 102.7 kept (finding).
+  **30/30** in 118.8; fresh tier 3 seeds **100/100**. Written up as a paper in
+  [papers/minigrid/paper.tex](papers/minigrid/paper.tex).
+- **Objective (the user, 2026-10-13, for this week):** align the model with GOAL by
+  integrated learning: "We need to describe _all_ changes within a latent space that the model
+  can use to predict outcomes in the environment and form conditions." One effect model for
+  every action, motion included, and the world's own changes. The planner's conditions come
+  from what that model learns; perception parts (SAM 2.1, later depth) feed it. CHARTER's
+  "Current direction", GOAL P12/P21 and LESSONS were updated the same day.
+- **Tonight's order (proposed):** 104 in the background → series 105: 105.1 one transition
+  model offline: the belief's token vectors and the action in, every token's next vector out (no
+  event types) → 105.2 the world's own changes on 104's tracks, with history as input (arms) →
+  105.3 conditions from the effect model in the agent. A general form may cost a stated loss
+  (AGENTS.md's margin, the user 2026-10-13). LESSONS needs pruning (over 3 pages).
+- **GOAL C1 amended (the user, 2026-10-13):** a declared, pretrained perception front end
+  with no language or class labels may supply objects' outlines and their correspondence
+  across frames. The agent need not be learned end to end.
+- **Series [103](experiments/103-tracking-with-general-priors/card.md) closed.** 103.4 **keep**
+  (Crafter's view motion 99.3% held out by general rules). [103.5](experiments/103.5-files-level-on-sprites/card.md)
+  **stop**: IDF1 0.623 on the learned view (0.641 on the evaluator's), against 0.717 on tile
+  tokens and 0.934 on the true state.
+- **Active card: [104](experiments/104-sam-correspondence/card.md), SAM 2.1 for correspondence (draft,
+  awaiting approval).** SAM 2.1 carries each creature's mask; the agent says where to point
+  (change in the world's frame after 103.4's view motion) and which tracks to keep (earned
+  existence). Bar: IDF1 at least 0.80, at most 1% on scenery, at least 20 frames per second.
+- **Smoke tests (`tools/card104/`):** pointed at a creature at 16 px per tile, SAM's top mask
+  has IoU 0.81–0.86 (cows, zombies), 0.55–0.62 (skeletons); at 7 px it misses cows; "everything"
+  mode fails. Propagation: 30 frames per second, on its creature in every frame.
+- **Installed (additions only):** SAM 2 from Meta's repository (commit 2b90b9f), torchvision
+  0.29.0+cu130, hydra-core, iopath; checkpoints in `runs/sam2/ckpt/`. Crafter is not
+  reproducible across processes (despawning iterates a set), so 104 collects new play.
 - **Every run is capped** (CHARTER rule 5).

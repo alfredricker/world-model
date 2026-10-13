@@ -3,8 +3,8 @@ id: "103.5"
 title: card 098.6's files level on pixel sprites — earned existence, records by look, recognition, negative information
 rung: 1
 serves: [P7, P2]
-status: approved
-verdict:
+status: done
+verdict: fail
 arch_version: 27
 date: 2026-10-12
 ---
@@ -138,3 +138,42 @@ fails, while criteria 2 and 3 hold. Recall is the limit:
 
 **Budget:** each run is one worker, 5 minutes, capped. That is 4 training
 runs and 4 test runs, about 25 minutes with two at once.
+
+## 7. Result
+
+Run 2026-10-12, workers 8–9, with the long-term memory learned on workers
+0–1 of the same arm ([results.json](results.json)).
+
+| Measure | Evaluator's origins | 103.4's origins | Bar |
+|---|---|---|---|
+| IDF1, movers pooled | 0.641 | **0.623** | 0.717 (098.6, tile tokens) |
+| ID recall / ID precision | 0.528 / 0.814 | 0.520 / 0.779 | |
+| Detections on no creature | 0.44% | 4.3% | at most 1% |
+| ID recall: cow, zombie, skeleton, arrow (worker 8) | 0.55, 0.50, 0.51, 0.40 | 0.55, 0.48, 0.51, 0.40 | |
+| Night creature frames with a file | 46% | 45% | |
+| Still creatures (before a move) with a file | 7.3% | 7.4% | |
+
+1. **Fail.** 0.623 on the learned view, against 0.717. The prediction
+   (0.64–0.68 on the evaluator's view) was met at the bottom end.
+2. **Pass.** The learned view costs 0.017 against the evaluator's.
+3. **Fail on the learned view** (4.3%), pass on the evaluator's (0.44%).
+   False files follow placing errors.
+
+Where a creature's frames went (worker 8, learned view): 64.5% to its own
+file, 12.3% to another file (identity broken and restarted), 10.0% to a
+file still tentative, and 11.8% to nothing (7.8 points of it at night,
+after moving). Fragmentation, slow confirmation and night are each about a
+tenth.
+
+## 8. Decision
+
+**Stop** (2026-10-13). The rules did not foresee this case: IDF1 0.623 lies
+between the stop line (0.58) and the revise line (0.63), and criterion 3
+fails on the learned view. The user then set hand-built correspondence
+aside. GOAL C1 now lets a declared, pretrained perception front end
+supply objects' outlines and their correspondence ("we shouldn't need to
+solve an agent completely end to end"). Card
+[104](../104-sam-correspondence/card.md) gives that job to SAM 2.1. These
+numbers, rerun on 104's new held-out play, are its baseline. Kept for
+104: earned existence (tentative, then confirmed) and scoring by IDF1 with
+detections on no creature.

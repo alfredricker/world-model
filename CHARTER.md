@@ -97,10 +97,58 @@ and it applies once.
 Agreed with the user between 2026-09-28 and 2026-09-29. New cards build on
 these; rule 8 guards against sliding back.
 
-- **Effects of actions.** The primitive is how an action changes
-  conditions, learned from the agent's own outcomes. Moves are actions
-  too; walking is move effects in the same learner. Nothing is read from
-  the simulator.
+- **One transition model over vector states** (the user, 2026-10-13:
+  "INTEGRATED LEARNING!" and "it should be as simple as latent
+  transitions of vector states. There is no 'choice'"). This widens
+  "effects of actions" (2026-09-28).
+  - **The state.** A set of token vectors, as perception gives them.
+    Appearance and position live in the same vector.
+  - **A step's change.** The change of those vectors, including tokens
+    that appear or vanish.
+  - **What it covers.** Every action, moves included, and the world's own
+    changes when the agent does nothing, all in one model.
+  - **No vocabulary of events.** Moving, opening, being mined and being
+    blocked are names we give to regions of that change. The model does
+    not choose among them, and no list of kinds of change is written:
+    possible events are learned from experience. What the agent carries
+    or holds is whatever tokens perception shows, not a declared slot.
+  - **Relations are learned.** Which tokens a change depends on is
+    learned. No place such as "the front" or "the hand" is declared, and
+    nothing is read from the simulator.
+  - **Version 27 drifted from this.**
+    - Moves kept their own models (card 095.4 was closed).
+    - Arm C read only the front and the hand, in four outcome categories.
+    - Its results were chosen among keep, copy, shift and set.
+    All three are special cases of one residual, attention-reading
+    prediction of the next vector.
+- **A general form may cost some loss at first** (the user, 2026-10-13).
+  - **Why.** Hand-engineered priors are hard to match in the world they
+    were built for, but they fight scalability and slow every step up
+    the ladder.
+  - **Rule.** A change toward a unified, general mechanism is kept with
+    a stated loss against the special case it replaces (AGENTS.md gives
+    the default margin for MiniGrid's tiers).
+  - **Not this.** A card must not narrow a general form back into a
+    special case because the special case scores higher in one world.
+- **Perception may have several parts; prediction has one** (the user,
+  2026-10-13). Declared front ends may supply tokens and their
+  correspondence across frames (GOAL C1): a tracker, a segmenter, later
+  depth. Everything they produce enters one token state, which one effect
+  model and one planner read.
+- **Conditions come from the effect model** (the user, 2026-10-13).
+  - **What a condition is.** A fact about tokens that an effect is found
+    to depend on: changing that fact in the model's input changes the
+    predicted effect. The planner's conditions are these, not supplied
+    forms.
+  - **Chains.** An effect makes facts true, and those facts are
+    conditions of other effects. Chains of conditions are paths through
+    this graph.
+  - **Searched from both ends.**
+    - Backward from the goal finds which conditions matter.
+    - Forward from the present, one imagined effect at a time (not frame
+      by frame), checks that a chain holds together: things used up, side
+      effects that undo a condition, and the world's own changes in the
+      meantime.
 - **One encoder.** A new comparison or readout reads, and if needed
   trains, the existing encoder that feeds the codebooks. Networks inside
   a component (an MLP as recall's metric, for example) are used where

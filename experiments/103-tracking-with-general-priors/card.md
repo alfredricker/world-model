@@ -86,7 +86,7 @@ None of them names a tile, a kind, a ground or an object size.
 | [103.2](../103.2-object-files-as-sprites/card.md) | Object files as sprite layers: propagation plus discovery with existence, on pixels | IDF1 on Crafter's movers against 098.6's 0.717 | **revise**: 0.531 (learned origins 0.303) |
 | [103.3](../103.3-view-motion-with-files/card.md) | The view's motion with files explained away | 103.1's criteria, with 103.2's files | **stop**: false files remove the view's evidence (79.4%) |
 | [103.4](../103.4-evidence-per-observation/card.md) | Evidence counted per independent observation: the likelihood tempered by τ, chosen by self-consistency | 103.1's criteria, τ chosen without labels | **keep**: 99.3% on held-out play (night 96.9%), τ = 300 chosen by self-consistency; world 3 100% |
-| 103.5 | Files on the right frame: 103.2's revision (sprite templates under 098.6's files level), on 103.4's origins | IDF1 against 0.717 | planned |
+| [103.5](../103.5-files-level-on-sprites/card.md) | Files on the right frame: 103.2's revision (sprite templates under 098.6's files level), on 103.4's origins | IDF1 against 0.717 | **stop**: 0.623 (evaluator's origins 0.641); detections on no creature 4.3% |
 
 **Order.** 103.1 gives the frame of the world; 103.2 needs it. 103.3 tried
 to join the two by letting files explain their pixels away. On learned
@@ -94,3 +94,12 @@ origins most files were false, so it removed the view's evidence. 103.4
 attacks the same failure at its root: a mover's pixels are not independent
 observations. One-colour shapes (the aperture problem) and files in belief
 (card 102.3's memory in place of layers.py) wait for files that hold.
+
+**Series closed** (2026-10-13). The view's motion is solved by general
+rules (103.4, kept). Object identity is not: the best hand-built tracker
+reached IDF1 0.62–0.64, against 0.717 on tile tokens and 0.934 on the true
+state. The user then amended GOAL C1 so that a declared, pretrained
+perception front end may supply objects' outlines and correspondence.
+Card [104](../104-sam-correspondence/card.md) gives that job to SAM 2.1.
+What carries over: 103.4's view motion, 103.1's camera pixels, and 103.5's
+earned existence and scoring.

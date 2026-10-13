@@ -28,7 +28,11 @@ current approach cannot get there.
 
 - **C1 Learned, not supplied.** Objects, relations, events, skills and goals
   are learned. The environment gives pixels and actions only; labels and
-  simulator state are for the evaluator. A hand-built mechanism can be a
+  simulator state are for the evaluator. A declared, pretrained perception
+  front end with no language or class labels may supply objects' outlines
+  and their correspondence across frames; what objects are, what they do
+  and what they mean is learned (the user, 2026-10-13: the agent need not
+  be learned end to end). Any other hand-built mechanism can be a
   baseline or a probe, never a result. Until P20, goals may be supplied as
   tasks: a target condition shown as example observations or a success
   signal. What a goal requires and how to reach it are always learned.
@@ -134,6 +138,10 @@ Each has a one-line meaning, an example, and the shape of a test.
   agent infers which conditions made that possible: the right tools, enough
   health, being deep in a cave. The unmet conditions that most raise
   that likelihood become more immediate subgoals, and so on down to actions.
+  Conditions are not supplied as forms. A condition is a fact about the
+  learned state that the agent's own model of effects is found to depend
+  on, and every change, the agent's moves included, comes from that one
+  model.
   Goals are re-weighed as the situation changes: a threat that could end
   every goal makes survival the immediate goal, while the agent tries to
   keep the conditions it has built up. Survival need not be supplied: it
@@ -167,7 +175,11 @@ Each has a one-line meaning, an example, and the shape of a test.
   relevant factors. System 2 deliberates over chains of conditions
   ("condition A enables condition B, which enables the goal"), comparing
   candidate chains and backtracking when one fails, not by simulating many
-  latent steps; this keeps its compute reasonable. The hierarchy of
+  latent steps; this keeps its compute reasonable. Chains are searched
+  from both ends. Backward from the goal finds which conditions matter.
+  Forward from the present, one imagined effect at a time, checks whether
+  they hold together: things used up, side effects, and the world's own
+  changes. The hierarchy of
   conditions (P12) is what lets the lower levels run as System 1.
   *Example:* dodging an arrow is System 1; planning the route to diamonds
   is System 2. *Test:* on new tasks, deliberating over conditions beats
@@ -196,6 +208,6 @@ that can show it.
 ## Not assumed
 
 Language input, pretrained semantic models, a symbolic program language, a
-supplied event or skill vocabulary, pixel reconstruction as the
+supplied event, condition or skill vocabulary, pixel reconstruction as the
 definition of imagination, next-frame (t+1) prediction as the definition of a
 consequence, a fixed prediction horizon.

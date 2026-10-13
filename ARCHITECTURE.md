@@ -735,6 +735,9 @@ At every step:
   - a tile is 4 pieces of 8 numbers, and identity is within 1.25 × the
     noise scale per piece;
   - interactions change only the front and the hand (four categories);
+  - a changed token's result is chosen among four written relations
+    (keep, copy from another token, shift, set). This is a supplied
+    vocabulary of change (recorded 2026-10-13);
   - arm C's results snap to tokens of the catalogue;
   - an outcome is acted on when its probability is at least one half;
   - the no-plan score U = 1 − max(P(no change), P(change) · c), divided
@@ -743,7 +746,15 @@ At every step:
     and a never-seen place shows the unseen appearance;
   - a move correspondence counts where both places were observed in at
     least 50 rows and vary, and the fit is trimmed until every
-    correspondence lies within half a place.
+    correspondence lies within half a place;
+  - the planner's condition forms are written by hand: end, has(h),
+    walk(j), face(a, u, j) and part(a, u, j, c), and so is the achiever
+    template (at most two needs: a carried-token need, then facing). What
+    fills them is learned (recorded 2026-10-13, from the paper's review);
+  - forward has three declared outcomes. A try counts as "moved" when the
+    view changed and "blocked" when it did not, and "ended" is the
+    environment's flag. Memory's forward labels compare the adapter's
+    13 × 13 grid, including cells the agent could not see.
 - **The world is assumed static except for the agent.** A remembered
   token stays as last seen. An imagined step changes only the agent's
   pose, the front and the hand. Any change at the front or the hand is
@@ -759,6 +770,12 @@ At every step:
   - the order of the fallbacks.
 - **Offline networks trained in MiniGrid:** the encoder, arm A and card
   087's property network.
+  - Card 087's network is trained on labels read from the simulator:
+    whether `agent_pos` changed, and whether the carried and front tiles
+    changed. The data comes from designed property play.
+  - This breaks C1's "simulator state is for the evaluator" (recorded
+    2026-10-13). Its weight is 0.001, so it decides only appearances
+    never walked into.
 - **Goal and experience.**
   - On tier 1 the goal is the episode's end. On tiers 2 and 3 it is
     holding the mission's object, written in as its tile from the

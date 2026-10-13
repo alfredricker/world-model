@@ -65,6 +65,26 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   became two steps that were not learned (made tools 96% → 6%; card
   102.1 revision 1). *Evidence:* phwm record §5.4–5.5; cards
   069, 070, 084–084.3, 102.1. *Confirmed.*
+- **"No loss in this world" narrows the model into the world's shape,
+  and the narrowing becomes structure.**
+  - **How it happened.** Each narrowing was measured as costless in
+    MiniGrid and then built on:
+    - arm C asked only about the front and the hand (card 095.3);
+    - moves kept their own models (card 095.4, closed with "nothing for
+      MiniGrid to test").
+  - **What it cost.**
+    - The planner needed five hand-written condition forms (end, has,
+      walk, face, part) and a template for achievers. CHARTER already
+      said "walking is move effects in the same learner".
+    - Forward's prior network was trained on labels read from the
+      simulator (card 087: whether `agent_pos` changed).
+    - The forms are MiniGrid's world-description (one hand, one front,
+      passability). They do not cover Crafter's inventory, "a table near"
+      or crafting.
+  - **The fix.** Before building on a closure that cites "no loss", test
+    it against the next world.
+  - *Evidence:* the version 27 paper's review (2026-10-13); cards 087,
+    095.3, 095.4, 102.1.
 - **Verify that held-out cases are held out; keep new combinations apart
   from new members.** PHWM's first held run left 98% of queries in the
   support set. Combinations .943 (ceiling .976), new members .808.

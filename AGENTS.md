@@ -55,6 +55,15 @@ There are no other documents. Do not create notes, reviews or summaries.
   threshold (≥ 99%), tiers 2 and 3 against the best version so far
   (better, no different or worse). The version is adopted only if tier 1
   passes and no tier is worse (the user, 2026-10-05).
+  - **Exception for general forms** (the user, 2026-10-13: "we should
+    sacrifice some loss initially if it is a change in a generalize /
+    unified direction"). A version that replaces a declared prior with a
+    more general mechanism may be adopted with a loss. The loss must be
+    stated in its card before the run, and it goes into ARCHITECTURE's
+    known limits to be won back later.
+  - **Default margin, unless the card states another:** tier 1 at least
+    95%, tiers 2 and 3 at most 10 points below the best version, and mean
+    steps at most 1.5 times.
 - Do not edit `src/` while a run is using it.
 - Every run, smoke tests included, is capped on memory, CPU and time
   (CHARTER rule 5 gives the command).

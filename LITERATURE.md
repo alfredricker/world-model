@@ -6,14 +6,28 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Cards / rung:** series [103](experiments/103-tracking-with-general-priors/card.md), tracking with general
-  priors: [103.1](experiments/103.1-world-and-camera-layers/card.md) the world and camera layers,
-  [103.2](experiments/103.2-object-files-as-sprites/card.md) object files as sprites, [103.3](experiments/103.3-view-motion-with-files/card.md) the view's motion with files
-  explained away, [103.4](experiments/103.4-evidence-per-observation/card.md) evidence per independent observation, [103.5](experiments/103.5-files-level-on-sprites/card.md) 098.6's files level on sprites. Rung 1. Set 2026-10-12 after a review of object-centric video models and tracking.
-- **Why these:** correspondence (the view's motion, which object is which)
-  is where series 102 stuck; the review asked which mechanisms carry
-  identity with few, general priors, a moving camera and small compute.
-- **Until:** series 103 has decided its next card after 103.3.
+- **Cards / rung:** card [104](experiments/104-sam-correspondence/card.md), SAM 2.1 for correspondence. Rung 1.
+  Set 2026-10-13, when the user amended GOAL C1: a declared, pretrained
+  perception front end with no language or class labels may supply objects'
+  outlines and their correspondence across frames.
+- **Why these:** series 103 solved the view's motion but not identity
+  (IDF1 0.62–0.64 against 0.934 on the true state). A promptable video
+  segmenter carries masks through motion and occlusion; what the agent still
+  has to supply is where to point and which tracks to keep.
+- **Until:** card 104's decision.
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| Ravi et al. 2024, SAM 2 (arXiv 2408.00714; SAM 2.1 checkpoints, 2024-09) (not in papi) | A promptable segmenter for images and video. A point, box or mask on one frame gives a mask, and a memory of recent frames and the prompted ones carries it forward. An occlusion score says when the object is absent. Card 104's smoke test: pointed at a Crafter creature at 16 px per tile, its top answer has IoU 0.81 (cows), 0.86 (zombies) and 0.55–0.62 (skeletons) with the true outline, by day and night; at the stored 7 px its top answer misses cows (0.07). Its "everything" mode fails on Crafter (texture pieces win) |
+| Cheng et al. 2023, DEVA, "Tracking anything with decoupled video segmentation" (not in papi) | Image-level proposals and class-agnostic propagation kept apart. New objects are taken only where the propagated masks leave the frame unexplained. Card 104's births |
+| Savvy, "Toward open-world video segmentation over long horizons" (arXiv 2606.15632, 2026) (not in papi) | SAM 2 propagation with discovery in uncovered regions, deferred admission (a candidate is kept only after repeated agreement), a returning track checked against its own appearance memory, and stale memory pruned. It beats DEVA+SAM on long videos (VPQ 18.4 against 11.5 on ScanNet) at 1.3 frames per second. Card 104 takes its admission and pruning, not its proposer |
+| Zhang et al. 2025, OC-STORM, "Objects matter" (arXiv 2501.16443) (not in papi) | A frozen pretrained video segmenter tracks objects marked in a few frames, and per-object vectors feed a world model, which beats its pixel-only baseline on Atari and Hollow Knight. The precedent for a pretrained front end; card 104 discovers objects instead of having them marked |
+| Karaev et al. 2024, CoTracker3; TAPNext++ (CVPR 2026 Findings) (not in papi) | Dense point tracking: where each pixel went, with no notion of object. The alternative not chosen (2026-10-13), kept in case masks fail on a world |
+
+Previous focus (series 103, set 2026-10-12 after a review of object-centric
+video models and tracking, until 2026-10-13 when the user chose a pretrained
+front end): the world and camera layers, object files as sprites, evidence
+per independent observation, and 098.6's files level on sprites.
 
 | Paper (papi name) | What to take from it |
 | ----------------- | -------------------- |
