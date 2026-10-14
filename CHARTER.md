@@ -9,10 +9,35 @@ finished system must satisfy. This file governs how we move toward them.
 
 ## Current world
 
+**Craftium** (the user, 2026-10-13: "I like the idea of craftium as the
+main world"). Cards are judged in Craftium (Malagón et al. 2025): the
+Luanti engine (formerly Minetest) running VoxeLibre, a Minecraft clone.
+It is GOAL's "Minecraft" step, a 3D world between Crafter and robotics.
+
+- **The learner receives:**
+  - the rendered frame (640 × 360, field of view 90° vertical);
+  - its own pose: position in blocks, yaw and pitch (proprioception,
+    GOAL C1);
+  - its previous action, from Craftium's discrete list: forward, back,
+    left, right, jump, sneak, dig, place, choose slot 1–5, and turning by
+    the mouse left, right, up and down.
+- **The learner never receives** the game's state: creature positions or
+  identities, the voxel map, or event labels. Rewards are not supervision
+  unless a card declares it. The probe mod's log and the voxel map are for
+  scoring only (card 107).
+- **Settings:** lockstep, one game frame per step, as in card 107, with
+  Craftium's other defaults, including its physics multiplier (×20). A card
+  declares any setting it changes.
+- **Crafter becomes a development world,** as MiniGrid's worlds did. Its
+  cards stand as evidence, and brain parts may be diagnosed there.
+  - **Brain parts may be built on Crafter while Craftium lacks their
+    inputs** (the user, 2026-10-13). Each such card names the Craftium card
+    that follows it, which is its portability test.
+
 **MiniGrid's own environments, as three evaluation tiers** (decided with the
 user 2026-10-05, replacing the chained rooms of 2026-09-24 as the standing
-evaluation). *Amended by the user, 2026-10-11:* cards are judged on
-Crafter. The three tiers are run only when a card has decided keep on a
+evaluation). *Amended by the user, 2026-10-11:* cards were judged on
+Crafter, and from 2026-10-13 on Craftium (above). The three tiers are run only when a card has decided keep on a
 significant architecture change (a new architecture version), before
 that version is adopted, on the same environment seeds each time.
 
@@ -46,7 +71,7 @@ that version is adopted, on the same environment seeds each time.
 
 The next world (Crafter) is entered only when the ladder rungs that these
 worlds can test have passed. *Amended by the user, 2026-10-10:* work moves
-to Crafter now, with rung 1 still open.
+to Crafter now, with rung 1 still open; and on 2026-10-13 to Craftium.
 
 ## Capability ladder
 
@@ -135,6 +160,27 @@ these; rule 8 guards against sliding back.
   correspondence across frames (GOAL C1): a tracker, a segmenter, later
   depth. Everything they produce enters one token state, which one effect
   model and one planner read.
+  - **Perception supplies "where"** (the user, 2026-10-13). It gives tokens
+    at positions in a world frame, placed by the agent's own pose
+    (proprioception, GOAL C1).
+    - **Per world:** in Craftium, the position, yaw and pitch the game
+      reports, with learned depth along each pixel's ray (card 107); in
+      Crafter, the pose the game reports for the agent's body; in
+      ARC-AGI-3, the screen's own coordinates; in robotics, odometry, with
+      learned depth for where things are.
+    - **Not the brain's job.** The brain reads positions only as
+      differences and never supplies perception's frame. Its predictions
+      are not fed back to place the view.
+    - **Belief supplies "which one"** (the user, 2026-10-13).
+      Perception's correspondence holds while a token stays in view. When
+      a token reappears, or perception's link is unsure, it is matched to
+      a remembered token: the effect model predicts each remembered
+      token's next state, and new tokens are matched to those predictions
+      in the same latent space (predict, match, correct). This decides
+      only which remembered token a new one continues. It never places
+      the view and never overwrites what perception saw. Which tokens are
+      remembered, and how they may move while unseen, are learned, not
+      declared.
 - **Conditions come from the effect model** (the user, 2026-10-13).
   - **What a condition is.** A fact about tokens that an effect is found
     to depend on: changing that fact in the model's input changes the
@@ -280,8 +326,8 @@ Agreed with the user 2026-09-24.
    mechanism makes about the environment (a place or slot it names, a
    grid, objects of one tile, a front, fixed action ids, a view that
    follows the agent, a world that changes only by the agent). For each,
-   it says whether the assumption holds in Crafter, ARC-AGI-3 and
-   robotics. An assumption that does not hold everywhere is an
+   it says whether the assumption holds in Craftium, Crafter, ARC-AGI-3
+   and robotics. An assumption that does not hold everywhere is an
    environment-specific prior: it is removed, or declared with the card
    that will remove it. Narrowing a mechanism because nothing is lost in
    the current environment is such a prior, since one environment cannot
@@ -289,6 +335,15 @@ Agreed with the user 2026-09-24.
    against the general form. A new environment should change only the
    adapter: frames to tokens, the list of actions and the goal. Anything
    more is recorded as a finding.
+   - **Perception may be specific to an environment; the brain may not**
+     (the user, 2026-10-13, after card 104.1: "we might need crafter
+     specific perception. As long as the 'brain' of the model is fully
+     portable: belief over tokens, recall of tokens, and planning of tokens
+     in the latent space, then we will have succeeded").
+   - **What this means for a card.** Perception's assumptions are declared
+     in the adapter and need no card to remove them. The brain's
+     assumptions must hold in every environment. The brain is belief,
+     recall, the transition model and planning, all over tokens.
 10. **Breaking worlds** (agreed with the user 2026-10-11). These are
     small worlds, each built to defeat one environment-specific
     assumption:

@@ -1,0 +1,442 @@
+{
+ "card": "105.8",
+ "date": "2026-10-13",
+ "runs": {
+  "gate, learned origins": {
+   "form": "truth",
+   "arm": "Rb",
+   "seed": 1021,
+   "steps": 30000,
+   "loss": "code",
+   "tau": 0.1035,
+   "training transitions": 132785,
+   "test transitions": 69685,
+   "move": {
+    "steps": 16698,
+    "whole scored next state right": 0.9278,
+    "nothing changes: whole scored next state right": 0.9711,
+    "scored tokens that changed": 2777,
+    "changed scored tokens right": 0.4242,
+    "changed scored tokens right, saplings left out (105.8)": 0.4242
+   },
+   "do": {
+    "steps": 4108,
+    "whole scored next state right": 0.8895,
+    "nothing changes: whole scored next state right": 0.8844,
+    "scored tokens that changed": 630,
+    "changed scored tokens right": 0.4794,
+    "changed scored tokens right, saplings left out (105.8)": 0.9167
+   },
+   "place": {
+    "steps": 16780,
+    "whole scored next state right": 0.9622,
+    "nothing changes: whole scored next state right": 0.9218,
+    "scored tokens that changed": 2597,
+    "changed scored tokens right": 0.98,
+    "changed scored tokens right, saplings left out (105.8)": 0.98
+   },
+   "make": {
+    "steps": 25070,
+    "whole scored next state right": 0.9618,
+    "nothing changes: whole scored next state right": 0.9876,
+    "scored tokens that changed": 645,
+    "changed scored tokens right": 0.8915,
+    "changed scored tokens right, saplings left out (105.8)": 0.8915
+   },
+   "noop": {
+    "steps": 4242,
+    "whole scored next state right": 0.9606,
+    "nothing changes: whole scored next state right": 0.9981,
+    "scored tokens that changed": 8,
+    "changed scored tokens right": 0.375,
+    "changed scored tokens right, saplings left out (105.8)": 0.375
+   },
+   "1 makes that made a tool: whole scored next state right": 0.9576,
+   "makes that made a tool": 236,
+   "2 move steps: the agent's next place right, moved": 0.144,
+   "2 move steps: the agent's next place right, blocked": 0.3987,
+   "2 move steps: the agent's next place right, all": 0.173,
+   "move steps (moved, blocked)": [
+    14802,
+    1896
+   ],
+   "3 role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (made at all 8 near, at none of the 16 far)": 0.8776,
+    "near places made": 0.97,
+    "far places made": 0.0067
+   },
+   "seconds": 332.6
+  },
+  "gate, learned origins, rescored (probability read-out)": {
+   "net": "runs/105.8/truth_Rb_s1021_net.pt",
+   "tau": 0.1035,
+   "test transitions": 69685,
+   "move": {
+    "steps": 16698,
+    "whole scored next state right": 0.9278,
+    "nothing changes: whole scored next state right": 0.9711,
+    "scored tokens that changed": 2777,
+    "changed scored tokens right": 0.4242,
+    "changed scored tokens right, saplings left out (105.8)": 0.4242
+   },
+   "do": {
+    "steps": 4108,
+    "whole scored next state right": 0.8895,
+    "nothing changes: whole scored next state right": 0.8844,
+    "scored tokens that changed": 630,
+    "changed scored tokens right": 0.4794,
+    "changed scored tokens right, saplings left out (105.8)": 0.9167
+   },
+   "place": {
+    "steps": 16780,
+    "whole scored next state right": 0.9622,
+    "nothing changes: whole scored next state right": 0.9218,
+    "scored tokens that changed": 2597,
+    "changed scored tokens right": 0.98,
+    "changed scored tokens right, saplings left out (105.8)": 0.98
+   },
+   "make": {
+    "steps": 25070,
+    "whole scored next state right": 0.9618,
+    "nothing changes: whole scored next state right": 0.9876,
+    "scored tokens that changed": 645,
+    "changed scored tokens right": 0.8915,
+    "changed scored tokens right, saplings left out (105.8)": 0.8915
+   },
+   "noop": {
+    "steps": 4242,
+    "whole scored next state right": 0.9606,
+    "nothing changes: whole scored next state right": 0.9981,
+    "scored tokens that changed": 8,
+    "changed scored tokens right": 0.375,
+    "changed scored tokens right, saplings left out (105.8)": 0.375
+   },
+   "1 makes that made a tool: whole scored next state right": 0.9576,
+   "makes that made a tool": 236,
+   "2 move steps: the agent's next place right, moved": 0.9976,
+   "2 move steps: the agent's next place right, blocked": 0.7843,
+   "2 move steps: the agent's next place right, all": 0.9734,
+   "move steps (moved, blocked)": [
+    14802,
+    1896
+   ],
+   "2 read-out": "most probable agent code (105.8)",
+   "2 by the nearest agent code instead: moved, blocked, all": [
+    0.144,
+    0.3987,
+    0.173
+   ],
+   "3 role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (made at all 8 near, at none of the 16 far)": 0.8776,
+    "near places made": 0.97,
+    "far places made": 0.0067
+   }
+  },
+  "gate, evaluator's origins (diagnostic)": {
+   "form": "truth",
+   "arm": "Rb",
+   "seed": 1021,
+   "steps": 30000,
+   "loss": "code",
+   "tau": 0.12468,
+   "training transitions": 132785,
+   "test transitions": 69685,
+   "move": {
+    "steps": 16698,
+    "whole scored next state right": 0.9591,
+    "nothing changes: whole scored next state right": 0.9965,
+    "scored tokens that changed": 59,
+    "changed scored tokens right": 0.2203,
+    "changed scored tokens right, saplings left out (105.8)": 0.2203
+   },
+   "do": {
+    "steps": 4108,
+    "whole scored next state right": 0.8827,
+    "nothing changes: whole scored next state right": 0.8844,
+    "scored tokens that changed": 630,
+    "changed scored tokens right": 0.4937,
+    "changed scored tokens right, saplings left out (105.8)": 0.9506
+   },
+   "place": {
+    "steps": 16780,
+    "whole scored next state right": 0.9605,
+    "nothing changes: whole scored next state right": 0.9218,
+    "scored tokens that changed": 2597,
+    "changed scored tokens right": 0.9823,
+    "changed scored tokens right, saplings left out (105.8)": 0.9823
+   },
+   "make": {
+    "steps": 25070,
+    "whole scored next state right": 0.964,
+    "nothing changes: whole scored next state right": 0.9876,
+    "scored tokens that changed": 645,
+    "changed scored tokens right": 0.8791,
+    "changed scored tokens right, saplings left out (105.8)": 0.8791
+   },
+   "noop": {
+    "steps": 4242,
+    "whole scored next state right": 0.9646,
+    "nothing changes: whole scored next state right": 0.9981,
+    "scored tokens that changed": 8,
+    "changed scored tokens right": 0.5,
+    "changed scored tokens right, saplings left out (105.8)": 0.5
+   },
+   "1 makes that made a tool: whole scored next state right": 0.9703,
+   "makes that made a tool": 236,
+   "2 move steps: the agent's next place right, moved": 0.9999,
+   "2 move steps: the agent's next place right, blocked": 1.0,
+   "2 move steps: the agent's next place right, all": 0.9999,
+   "move steps (moved, blocked)": [
+    14802,
+    1896
+   ],
+   "2 read-out": "most probable agent code (105.8)",
+   "2 by the nearest agent code instead: moved, blocked, all": [
+    0.044,
+    0.702,
+    0.1187
+   ],
+   "3 role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (made at all 8 near, at none of the 16 far)": 0.9388,
+    "near places made": 0.9713,
+    "far places made": 0.0016
+   },
+   "seconds": 438.6,
+   "origins": "evaluator's (diagnostic)"
+  },
+  "tokens 1021": {
+   "form": "tokens",
+   "arm": "Rb",
+   "seed": 1021,
+   "steps": 30000,
+   "loss": "code",
+   "tau": 0.1505,
+   "training transitions": 132785,
+   "test transitions": 69685,
+   "move": {
+    "steps": 16698,
+    "whole scored next state right": 0.9091,
+    "nothing changes: whole scored next state right": 0.9711,
+    "scored tokens that changed": 2777,
+    "changed scored tokens right": 0.4332,
+    "changed scored tokens right, saplings left out (105.8)": 0.4332
+   },
+   "do": {
+    "steps": 4108,
+    "whole scored next state right": 0.8583,
+    "nothing changes: whole scored next state right": 0.8844,
+    "scored tokens that changed": 630,
+    "changed scored tokens right": 0.4286,
+    "changed scored tokens right, saplings left out (105.8)": 0.8272
+   },
+   "place": {
+    "steps": 16780,
+    "whole scored next state right": 0.9332,
+    "nothing changes: whole scored next state right": 0.9218,
+    "scored tokens that changed": 2597,
+    "changed scored tokens right": 0.9291,
+    "changed scored tokens right, saplings left out (105.8)": 0.9291
+   },
+   "make": {
+    "steps": 25070,
+    "whole scored next state right": 0.9423,
+    "nothing changes: whole scored next state right": 0.9876,
+    "scored tokens that changed": 645,
+    "changed scored tokens right": 0.8961,
+    "changed scored tokens right, saplings left out (105.8)": 0.8961
+   },
+   "noop": {
+    "steps": 4242,
+    "whole scored next state right": 0.9378,
+    "nothing changes: whole scored next state right": 0.9981,
+    "scored tokens that changed": 8,
+    "changed scored tokens right": 0.25,
+    "changed scored tokens right, saplings left out (105.8)": 0.25
+   },
+   "1 makes that made a tool: whole scored next state right": 0.9703,
+   "makes that made a tool": 236,
+   "2 move steps: the agent's next place right, moved": 0.7419,
+   "2 move steps: the agent's next place right, blocked": 0.1614,
+   "2 move steps: the agent's next place right, all": 0.676,
+   "move steps (moved, blocked)": [
+    14802,
+    1896
+   ],
+   "3 role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (made at all 8 near, at none of the 16 far)": 0.9439,
+    "near places made": 0.9764,
+    "far places made": 0.0086
+   },
+   "seconds": 298.1
+  },
+  "tokens 1021, rescored (probability read-out)": {
+   "net": "runs/105.8/tokens_Rb_s1021_net.pt",
+   "tau": 0.1505,
+   "test transitions": 69685,
+   "move": {
+    "steps": 16698,
+    "whole scored next state right": 0.9091,
+    "nothing changes: whole scored next state right": 0.9711,
+    "scored tokens that changed": 2777,
+    "changed scored tokens right": 0.4332,
+    "changed scored tokens right, saplings left out (105.8)": 0.4332
+   },
+   "do": {
+    "steps": 4108,
+    "whole scored next state right": 0.8583,
+    "nothing changes: whole scored next state right": 0.8844,
+    "scored tokens that changed": 630,
+    "changed scored tokens right": 0.4286,
+    "changed scored tokens right, saplings left out (105.8)": 0.8272
+   },
+   "place": {
+    "steps": 16780,
+    "whole scored next state right": 0.9332,
+    "nothing changes: whole scored next state right": 0.9218,
+    "scored tokens that changed": 2597,
+    "changed scored tokens right": 0.9291,
+    "changed scored tokens right, saplings left out (105.8)": 0.9291
+   },
+   "make": {
+    "steps": 25070,
+    "whole scored next state right": 0.9423,
+    "nothing changes: whole scored next state right": 0.9876,
+    "scored tokens that changed": 645,
+    "changed scored tokens right": 0.8961,
+    "changed scored tokens right, saplings left out (105.8)": 0.8961
+   },
+   "noop": {
+    "steps": 4242,
+    "whole scored next state right": 0.9378,
+    "nothing changes: whole scored next state right": 0.9981,
+    "scored tokens that changed": 8,
+    "changed scored tokens right": 0.25,
+    "changed scored tokens right, saplings left out (105.8)": 0.25
+   },
+   "1 makes that made a tool: whole scored next state right": 0.9703,
+   "makes that made a tool": 236,
+   "2 move steps: the agent's next place right, moved": 0.9986,
+   "2 move steps: the agent's next place right, blocked": 0.7685,
+   "2 move steps: the agent's next place right, all": 0.9725,
+   "move steps (moved, blocked)": [
+    14802,
+    1896
+   ],
+   "2 read-out": "most probable agent code (105.8)",
+   "2 by the nearest agent code instead: moved, blocked, all": [
+    0.7419,
+    0.1614,
+    0.676
+   ],
+   "3 role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (made at all 8 near, at none of the 16 far)": 0.9439,
+    "near places made": 0.9764,
+    "far places made": 0.0086
+   }
+  },
+  "tokens 7": {
+   "form": "tokens",
+   "arm": "Rb",
+   "seed": 7,
+   "steps": 30000,
+   "loss": "code",
+   "tau": 0.14939,
+   "training transitions": 132785,
+   "test transitions": 69685,
+   "move": {
+    "steps": 16698,
+    "whole scored next state right": 0.9084,
+    "nothing changes: whole scored next state right": 0.9711,
+    "scored tokens that changed": 2777,
+    "changed scored tokens right": 0.4386,
+    "changed scored tokens right, saplings left out (105.8)": 0.4386
+   },
+   "do": {
+    "steps": 4108,
+    "whole scored next state right": 0.8556,
+    "nothing changes: whole scored next state right": 0.8844,
+    "scored tokens that changed": 630,
+    "changed scored tokens right": 0.4492,
+    "changed scored tokens right, saplings left out (105.8)": 0.8673
+   },
+   "place": {
+    "steps": 16780,
+    "whole scored next state right": 0.93,
+    "nothing changes: whole scored next state right": 0.9218,
+    "scored tokens that changed": 2597,
+    "changed scored tokens right": 0.9338,
+    "changed scored tokens right, saplings left out (105.8)": 0.9338
+   },
+   "make": {
+    "steps": 25070,
+    "whole scored next state right": 0.9391,
+    "nothing changes: whole scored next state right": 0.9876,
+    "scored tokens that changed": 645,
+    "changed scored tokens right": 0.8837,
+    "changed scored tokens right, saplings left out (105.8)": 0.8837
+   },
+   "noop": {
+    "steps": 4242,
+    "whole scored next state right": 0.943,
+    "nothing changes: whole scored next state right": 0.9981,
+    "scored tokens that changed": 8,
+    "changed scored tokens right": 0.375,
+    "changed scored tokens right, saplings left out (105.8)": 0.375
+   },
+   "1 makes that made a tool: whole scored next state right": 0.9534,
+   "makes that made a tool": 236,
+   "2 move steps: the agent's next place right, moved": 0.9979,
+   "2 move steps: the agent's next place right, blocked": 0.7938,
+   "2 move steps: the agent's next place right, all": 0.9747,
+   "move steps (moved, blocked)": [
+    14802,
+    1896
+   ],
+   "2 read-out": "most probable agent code (105.8)",
+   "2 by the nearest agent code instead: moved, blocked, all": [
+    0.6787,
+    0.0396,
+    0.6061
+   ],
+   "3 role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (made at all 8 near, at none of the 16 far)": 0.9643,
+    "near places made": 0.9675,
+    "far places made": 0.0
+   },
+   "seconds": 349.5
+  }
+ },
+ "103.4's placing on move steps (training / test)": {
+  "moves that succeeded": [
+   0.997,
+   0.9961
+  ],
+  "blocked moves": [
+   0.8209,
+   0.76
+  ],
+  "test, blocked, by blocker": {
+   "water": 0.92,
+   "stone": 0.891,
+   "tree": 0.83,
+   "table": 0.835,
+   "furnace": 0.87,
+   "cow": 0.641,
+   "zombie": 0.473,
+   "arrow": 0.556,
+   "plant": 0.755
+  }
+ }
+}

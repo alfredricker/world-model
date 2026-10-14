@@ -1,0 +1,76 @@
+{
+ "card": "105.2",
+ "date": "2026-10-13",
+ "gate: evaluator's kinds, arm Rb, change-weighted loss": {
+  "form": "truth",
+  "arm": "Rb",
+  "seed": 1021,
+  "steps": 30000,
+  "training transitions": 132785,
+  "test transitions": 69685,
+  "move": {
+   "steps": 16698,
+   "whole scored next state right": 0.4703,
+   "nothing changes: whole scored next state right": 0.9711,
+   "scored tokens that changed": 2777,
+   "changed scored tokens right": 0.6853
+  },
+  "do": {
+   "steps": 4108,
+   "whole scored next state right": 0.0745,
+   "nothing changes: whole scored next state right": 0.8844,
+   "scored tokens that changed": 630,
+   "changed scored tokens right": 0.9746
+  },
+  "place": {
+   "steps": 16780,
+   "whole scored next state right": 0.4337,
+   "nothing changes: whole scored next state right": 0.9218,
+   "scored tokens that changed": 2597,
+   "changed scored tokens right": 0.995
+  },
+  "make": {
+   "steps": 25070,
+   "whole scored next state right": 0.4669,
+   "nothing changes: whole scored next state right": 0.9876,
+   "scored tokens that changed": 645,
+   "changed scored tokens right": 0.9674
+  },
+  "noop": {
+   "steps": 4242,
+   "whole scored next state right": 0.454,
+   "nothing changes: whole scored next state right": 0.9981,
+   "scored tokens that changed": 8,
+   "changed scored tokens right": 0.75
+  },
+  "1 makes that made a tool: whole scored next state right": 0.5763,
+  "makes that made a tool": 236,
+  "2 move steps: the agent's next place right, moved": 1.0,
+  "2 move steps: the agent's next place right, blocked": 0.6725,
+  "2 move steps: the agent's next place right, all": 0.9628,
+  "move steps (moved, blocked)": [
+   14802,
+   1896
+  ],
+  "3 role test": {
+   "tests": 196,
+   "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+   "share passing (made at all 8 near, at none of the 16 far)": 0.9337,
+   "near places made": 0.9879,
+   "far places made": 0.0038
+  },
+  "seconds": 288.0
+ },
+ "diagnosis (2,000 held-out no-op steps)": {
+  "steps with an unchanged scored token predicted to change": 0.5135,
+  "of those tokens, grass": 3753,
+  "sand": 59,
+  "plant": 31,
+  "path": 29,
+  "typical: a grass tile predicted to become a cow; distance to the cow code vs its own": [
+   0.15,
+   1.27
+  ]
+ },
+ "placing on the curriculum (103.4's, as fitted by 103.5), share right by world": "0.9929-0.9950 (log: runs/105.2/log_origins.txt)"
+}

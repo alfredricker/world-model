@@ -1,0 +1,247 @@
+{
+ "card": "105.10",
+ "date": "2026-10-13",
+ "models": {
+  "seed 1021": {
+   "form": "tokens",
+   "arm": "Rb",
+   "seed": 1021,
+   "steps": 30000,
+   "loss": "code",
+   "tau": 0.14844,
+   "training transitions": 132785,
+   "test transitions": 69685,
+   "move": {
+    "steps": 16698,
+    "whole scored next state right": 0.9384,
+    "nothing changes: whole scored next state right": 0.9965,
+    "scored tokens that changed": 59,
+    "changed scored tokens right": 0.2203,
+    "changed scored tokens right, saplings left out (105.8)": 0.2203
+   },
+   "do": {
+    "steps": 4108,
+    "whole scored next state right": 0.87,
+    "nothing changes: whole scored next state right": 0.8844,
+    "scored tokens that changed": 630,
+    "changed scored tokens right": 0.4698,
+    "changed scored tokens right, saplings left out (105.8)": 0.9043
+   },
+   "place": {
+    "steps": 16780,
+    "whole scored next state right": 0.9347,
+    "nothing changes: whole scored next state right": 0.9218,
+    "scored tokens that changed": 2597,
+    "changed scored tokens right": 0.9311,
+    "changed scored tokens right, saplings left out (105.8)": 0.9311
+   },
+   "make": {
+    "steps": 25070,
+    "whole scored next state right": 0.9426,
+    "nothing changes: whole scored next state right": 0.9876,
+    "scored tokens that changed": 645,
+    "changed scored tokens right": 0.9008,
+    "changed scored tokens right, saplings left out (105.8)": 0.9008
+   },
+   "noop": {
+    "steps": 4242,
+    "whole scored next state right": 0.9422,
+    "nothing changes: whole scored next state right": 0.9981,
+    "scored tokens that changed": 8,
+    "changed scored tokens right": 0.25,
+    "changed scored tokens right, saplings left out (105.8)": 0.25
+   },
+   "1 makes that made a tool: whole scored next state right": 0.9619,
+   "makes that made a tool": 236,
+   "2 move steps: the agent's next place right, moved": 0.9998,
+   "2 move steps: the agent's next place right, blocked": 0.9995,
+   "2 move steps: the agent's next place right, all": 0.9998,
+   "move steps (moved, blocked)": [
+    14802,
+    1896
+   ],
+   "2 read-out": "most probable agent code (105.8)",
+   "2 by the nearest agent code instead: moved, blocked, all": [
+    0.9062,
+    0.7104,
+    0.884
+   ],
+   "3 role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (made at all 8 near, at none of the 16 far)": 0.9388,
+    "near places made": 0.9688,
+    "far places made": 0.0006
+   },
+   "seconds": 228.1,
+   "origins": "the agent's own pose (proprioception, GOAL C1 as amended 2026-10-13; card 105.10)"
+  },
+  "seed 7": {
+   "form": "tokens",
+   "arm": "Rb",
+   "seed": 7,
+   "steps": 30000,
+   "loss": "code",
+   "tau": 0.14992,
+   "training transitions": 132785,
+   "test transitions": 69685,
+   "move": {
+    "steps": 16698,
+    "whole scored next state right": 0.9398,
+    "nothing changes: whole scored next state right": 0.9965,
+    "scored tokens that changed": 59,
+    "changed scored tokens right": 0.2203,
+    "changed scored tokens right, saplings left out (105.8)": 0.2203
+   },
+   "do": {
+    "steps": 4108,
+    "whole scored next state right": 0.8622,
+    "nothing changes: whole scored next state right": 0.8844,
+    "scored tokens that changed": 630,
+    "changed scored tokens right": 0.4365,
+    "changed scored tokens right, saplings left out (105.8)": 0.8457
+   },
+   "place": {
+    "steps": 16780,
+    "whole scored next state right": 0.9338,
+    "nothing changes: whole scored next state right": 0.9218,
+    "scored tokens that changed": 2597,
+    "changed scored tokens right": 0.9284,
+    "changed scored tokens right, saplings left out (105.8)": 0.9284
+   },
+   "make": {
+    "steps": 25070,
+    "whole scored next state right": 0.9419,
+    "nothing changes: whole scored next state right": 0.9876,
+    "scored tokens that changed": 645,
+    "changed scored tokens right": 0.8915,
+    "changed scored tokens right, saplings left out (105.8)": 0.8915
+   },
+   "noop": {
+    "steps": 4242,
+    "whole scored next state right": 0.9427,
+    "nothing changes: whole scored next state right": 0.9981,
+    "scored tokens that changed": 8,
+    "changed scored tokens right": 0.375,
+    "changed scored tokens right, saplings left out (105.8)": 0.375
+   },
+   "1 makes that made a tool: whole scored next state right": 0.9661,
+   "makes that made a tool": 236,
+   "2 move steps: the agent's next place right, moved": 0.9994,
+   "2 move steps: the agent's next place right, blocked": 0.9989,
+   "2 move steps: the agent's next place right, all": 0.9993,
+   "move steps (moved, blocked)": [
+    14802,
+    1896
+   ],
+   "2 read-out": "most probable agent code (105.8)",
+   "2 by the nearest agent code instead: moved, blocked, all": [
+    0.8926,
+    0.6524,
+    0.8654
+   ],
+   "3 role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (made at all 8 near, at none of the 16 far)": 0.9235,
+    "near places made": 0.9688,
+    "far places made": 0.0035
+   },
+   "seconds": 229.3,
+   "origins": "the agent's own pose (proprioception, GOAL C1 as amended 2026-10-13; card 105.10)"
+  }
+ },
+ "conditions (105.4's Crafter part)": {
+  "seed 1021": {
+   "net": "runs/105.10/tokens_Rb_s1021_net.pt",
+   "make (a tool made)": {
+    "events asked (model right on the unaltered outcome)": 232,
+    "events the model got wrong (not asked)": 4,
+    "precision": 0.7654,
+    "recall": 0.9982,
+    "events with exactly the true conditions": 0.9612,
+    "baseline '3 x 3 and carried slots': precision": 0.1177,
+    "baseline: recall": 1.0,
+    "true conditions per event (mean)": 2.35
+   },
+   "move, blocked": {
+    "events asked (model right on the unaltered outcome)": 300,
+    "events the model got wrong (not asked)": 0,
+    "precision": 0.9472,
+    "recall": 0.9567,
+    "events with exactly the true conditions": 0.95,
+    "baseline '3 x 3 and carried slots': precision": 0.125,
+    "baseline: recall": 1.0,
+    "true conditions per event (mean)": 1.0
+   },
+   "move, succeeded": {
+    "events asked (model right on the unaltered outcome)": 300,
+    "events the model got wrong (not asked)": 0,
+    "precision": 0.9898,
+    "recall": 1.0,
+    "events with exactly the true conditions": 0.9967,
+    "baseline '3 x 3 and carried slots': precision": 0.1217,
+    "baseline: recall": 1.0,
+    "true conditions per event (mean)": 0.97
+   },
+   "seconds": 10.3
+  },
+  "seed 7": {
+   "net": "runs/105.10/tokens_Rb_s7_net.pt",
+   "make (a tool made)": {
+    "events asked (model right on the unaltered outcome)": 232,
+    "events the model got wrong (not asked)": 4,
+    "precision": 0.8439,
+    "recall": 1.0,
+    "events with exactly the true conditions": 0.944,
+    "baseline '3 x 3 and carried slots': precision": 0.1177,
+    "baseline: recall": 1.0,
+    "true conditions per event (mean)": 2.35
+   },
+   "move, blocked": {
+    "events asked (model right on the unaltered outcome)": 300,
+    "events the model got wrong (not asked)": 0,
+    "precision": 0.9704,
+    "recall": 0.9833,
+    "events with exactly the true conditions": 0.98,
+    "baseline '3 x 3 and carried slots': precision": 0.125,
+    "baseline: recall": 1.0,
+    "true conditions per event (mean)": 1.0
+   },
+   "move, succeeded": {
+    "events asked (model right on the unaltered outcome)": 300,
+    "events the model got wrong (not asked)": 0,
+    "precision": 0.9154,
+    "recall": 1.0,
+    "events with exactly the true conditions": 0.99,
+    "baseline '3 x 3 and carried slots': precision": 0.1217,
+    "baseline: recall": 1.0,
+    "true conditions per event (mean)": 0.97
+   },
+   "seconds": 10.3
+  }
+ },
+ "extra make conditions (seed 1021 / 7): grass tiles at rings 2-4 and the 3 x 3": {
+  "ring 3": [
+   63,
+   40
+  ],
+  "ring 2": [
+   39,
+   30
+  ],
+  "ring 4": [
+   35,
+   25
+  ],
+  "3 x 3": [
+   18,
+   0
+  ]
+ },
+ "replacements that flipped a make, away from the 3 x 3 (seed 1021)": {
+  "plant": 99,
+  "zombie": 54,
+  "table": 44
+ }
+}

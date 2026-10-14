@@ -6,7 +6,31 @@ Full text and notes live in paperpipe; use the `papi` name to look them up.
 
 The papers agents should work from until the user changes or requests a change to this section. Read these (via `papi`) before proposing designs for the listed cards.
 
-- **Cards / rung:** card [104](experiments/104-sam-correspondence/card.md), SAM 2.1 for correspondence. Rung 1.
+- **Cards / rung:** series [105](experiments/105-one-transition-model/card.md),
+  one transition model over vector states. Rung 1. Set 2026-10-13 (overnight),
+  when card 104 stopped and the series' cards ran.
+- **Why these:** one model must carry every action and the world's own
+  changes, read positions only as differences, and give a distribution over
+  what each token becomes. Its conditions are read by intervention, and
+  perception should expect what it predicts.
+- **Until:** the user's review of series 105.
+
+| Paper (papi name) | What to take from it |
+| ----------------- | -------------------- |
+| `swin-transformer-v2` (Liu et al. 2022, arXiv 2111.09883) | A continuous relative position bias: a small network of log-spaced differences, sign(d)·log2(1 + abs(d))/log2(8), bounded in the released code by 16·sigmoid. The paper gives it for transfer across window sizes; card 105.6 found it also trains in every seed where the unbounded form did not (105.1) |
+| Snell, Swersky and Zemel 2017, prototypical networks (not in papi) | Class probabilities as a softmax of negative squared distances to prototypes. Card 105.8 scores the predicted vector by the likelihood of the next code this way: a proper scoring rule in the encoder's own space, so random changes are not forecast and rare certain ones are not ignored |
+| Pearl 2009; Woodward 2003 (not in papi) | A cause is what, intervened on, changes the effect. Card 105.4 reads conditions by replacing one token at a time; the truth is the world's rule under the same replacement |
+| Rao and Ballard 1999; Friston 2005 (not in papi) | Perception as inference under the model's predictions. Card 105.9: the view's motion is placed under the transition model's expectation, not the action's habit |
+| Lakshminarayanan, Pritzel and Blundell 2017, deep ensembles; McClelland, McNaughton and O'Reilly 1995, complementary learning systems (not in papi) | Disagreement between independently trained copies marks what a model does not know. Replay in sleep consolidates. Card 106 reads conditions in sleep from remembered events and counts an intervention only where two seeds agree (Crafter's make precision 0.77–0.84 → 0.99); copies share blind spots on states neither saw |
+| `samurai` (Yang et al. 2024, arXiv 2411.11922) | SAM 2 with motion-aware memory selection for look-alike distractors. Tried in card 104 (memory selection only): no gain; SAM's swaps among identical cows need a prediction of where each will be |
+| Teed and Deng 2020, RAFT (arXiv 2003.12039; torchvision `raft_large`); Karaev et al. 2024, CoTracker3 (arXiv 2410.11831) (not in papi) | Pretrained motion: RAFT gives dense flow between two frames; CoTracker3 tracks a grid of points over a window. Card 104.1 (stopped) tried them as the evidence for the view's motion. On Crafter's repeated tiles both read motion as none: an exact one-tile shift is found at 33% (RAFT) and 18% (CoTracker3) of points, against 100% on noise, and 4–5% of real moves. In Craftium's 3D pasture (smoke test, 2026-10-13), CoTracker3 online keeps a prompted cow 78% of the time while the cow stays in view, but only 13% after it has left and come back |
+| Malagón et al. 2025, Craftium (ICML; arXiv 2407.03969) (not in papi) | Gymnasium environments on the Luanti engine (formerly Minetest); its open world runs VoxeLibre, a Minecraft clone, with mobs, day and night. Reports the agent's position, yaw and pitch each step, and a voxel observation. In lockstep (sync mode) it runs at real time, about 58 steps per second per environment; the paper's ~2,700 steps per second come without lockstep, where a step advances almost no game time. The frame returned at a step is drawn from the previous step's pose. Card 107's world |
+| Lin et al. 2025, Depth Anything 3 (arXiv 2511.10647; ICLR 2026) (not in papi) | Depth and rays from any number of views on a plain DINO-style transformer, with or without their camera poses. On Craftium's renders (smoke test) the shape is right (12–18% error with each frame's scale fixed), but the scale drifts by ±0.17–0.32 from frame to frame. Its Umeyama step fails when the cameras lie on a line. Card 107 tunes the single-frame metric model's depth head |
+| Godard et al. 2019, Monodepth2 (arXiv 1806.01260); Zhou et al. 2017, SfMLearner (not in papi) | Depth learned without labels: each frame, moved by its predicted depth and the camera's motion, should reproduce its neighbours. The photometric loss is SSIM with L1, the smaller of two sources per pixel, and a mask that keeps only pixels the warp explains better than no motion. Card 107 uses it with the pose known, so depth comes out in the pose's units |
+
+Previous focus (card 104, set 2026-10-13 when the user amended GOAL C1, until
+104's stop the same night): SAM 2.1 for correspondence.
+
   Set 2026-10-13, when the user amended GOAL C1: a declared, pretrained
   perception front end with no language or class labels may supply objects'
   outlines and their correspondence across frames.

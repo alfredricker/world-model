@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Card 107: run Python in the Craftium env, with the NixOS libraries its bundled Luanti needs (X11, zlib, GL).
+set -euo pipefail
+ROOT=$(cd "$(dirname "$(readlink -f "$0")")/../.." && pwd)
+find_lib() {    # a store dir holding a 64-bit copy of the library (as bin/prun)
+    local pattern=$1 wanted=$2 dir
+    for dir in $(ls -dt /nix/store/$pattern 2>/dev/null); do
+        if [[ -e "$dir/$wanted" ]] && [[ $(od -An -j4 -N1 -tu1 "$dir/$wanted") -eq 2 ]]; then echo "$dir"; return; fi
+    done
+    echo "cprun: no 64-bit $wanted" >&2; exit 1
+}
+L=/run/opengl-driver/lib
+for x in "*-libx11-*/lib libX11.so.6" "*-libxext-*/lib libXext.so.6" "*-libxcb-*/lib libxcb.so.1" "*-libxau-*/lib libXau.so.6" \
+         "*-libxdmcp-*/lib libXdmcp.so.6" "*-zlib-*/lib libz.so.1" "*-libglvnd-*/lib libEGL.so.1"; do
+    L=$L:$(find_lib $x)
+done
+export LD_LIBRARY_PATH=$L${NIX_LD_LIBRARY_PATH:+:$NIX_LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+export __EGL_VENDOR_LIBRARY_DIRS=/run/opengl-driver/share/glvnd/egl_vendor.d
+export PYTHONPATH="$ROOT/tools/card107${PYTHONPATH:+:$PYTHONPATH}"
+exec "$ROOT/runs/107/envs/craftium_venv/bin/python" "$@"

@@ -1,0 +1,1289 @@
+{
+ "card": "106",
+ "date": "2026-10-13",
+ "world 1 (105.6's models; copy = the next seed)": {
+  "seed 1021": {
+   "net": "runs/105.6/tokens_Rb_s1021_net.pt",
+   "copy": "runs/105.6/tokens_Rb_s7_net.pt",
+   "lamp lights": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 213,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9828,
+      1.0
+     ]
+    },
+    "H": {
+     "asked": 213,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9828,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 213,
+     "precision": 1.0,
+     "recall": 0.9984,
+     "events with exactly the true conditions": 0.9953,
+     "against the truth over possible states: precision, recall": [
+      0.9828,
+      0.9984
+     ]
+    },
+    "HK": {
+     "asked": 213,
+     "precision": 1.0,
+     "recall": 0.9984,
+     "events with exactly the true conditions": 0.9953,
+     "against the truth over possible states: precision, recall": [
+      0.9828,
+      0.9984
+     ]
+    }
+   },
+   "lamp goes out": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 141,
+     "precision": 0.6566,
+     "recall": 0.4014,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6566,
+      0.4224
+     ]
+    },
+    "H": {
+     "asked": 141,
+     "precision": 0.6566,
+     "recall": 0.4014,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6566,
+      0.4224
+     ]
+    },
+    "K": {
+     "asked": 141,
+     "precision": 0.6667,
+     "recall": 0.4,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6667,
+      0.4209
+     ]
+    },
+    "HK": {
+     "asked": 141,
+     "precision": 0.6667,
+     "recall": 0.4,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6667,
+      0.4209
+     ]
+    }
+   },
+   "push": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    }
+   },
+   "move": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "blocked": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    }
+   },
+   "gate: H keeps possible, keeps impossible, sets aside possible, sets aside impossible": [
+    206835,
+    39744,
+    0,
+    0
+   ],
+   "gate: share of possible kept, share of impossible set aside": [
+    1.0,
+    0.0
+   ],
+   "seconds": 25.2
+  },
+  "seed 7": {
+   "net": "runs/105.6/tokens_Rb_s7_net.pt",
+   "copy": "runs/105.6/tokens_Rb_s3_net.pt",
+   "lamp lights": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 213,
+     "precision": 1.0,
+     "recall": 0.9984,
+     "events with exactly the true conditions": 0.9953,
+     "against the truth over possible states: precision, recall": [
+      0.9828,
+      0.9984
+     ]
+    },
+    "H": {
+     "asked": 213,
+     "precision": 1.0,
+     "recall": 0.9984,
+     "events with exactly the true conditions": 0.9953,
+     "against the truth over possible states: precision, recall": [
+      0.9828,
+      0.9984
+     ]
+    },
+    "K": {
+     "asked": 213,
+     "precision": 1.0,
+     "recall": 0.7496,
+     "events with exactly the true conditions": 0.3052,
+     "against the truth over possible states: precision, recall": [
+      0.977,
+      0.7452
+     ]
+    },
+    "HK": {
+     "asked": 213,
+     "precision": 1.0,
+     "recall": 0.7496,
+     "events with exactly the true conditions": 0.3052,
+     "against the truth over possible states: precision, recall": [
+      0.977,
+      0.7452
+     ]
+    }
+   },
+   "lamp goes out": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 141,
+     "precision": 0.6667,
+     "recall": 0.4,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6667,
+      0.4209
+     ]
+    },
+    "H": {
+     "asked": 141,
+     "precision": 0.6667,
+     "recall": 0.4,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6667,
+      0.4209
+     ]
+    },
+    "K": {
+     "asked": 141,
+     "precision": 0.6667,
+     "recall": 0.4,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6667,
+      0.4209
+     ]
+    },
+    "HK": {
+     "asked": 141,
+     "precision": 0.6667,
+     "recall": 0.4,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6667,
+      0.4209
+     ]
+    }
+   },
+   "push": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    }
+   },
+   "move": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "blocked": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    }
+   },
+   "gate: H keeps possible, keeps impossible, sets aside possible, sets aside impossible": [
+    206835,
+    39744,
+    0,
+    0
+   ],
+   "gate: share of possible kept, share of impossible set aside": [
+    1.0,
+    0.0
+   ],
+   "seconds": 25.2
+  },
+  "seed 3": {
+   "net": "runs/105.6/tokens_Rb_s3_net.pt",
+   "copy": "runs/105.6/tokens_Rb_s1021_net.pt",
+   "lamp lights": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 213,
+     "precision": 0.9876,
+     "recall": 0.7496,
+     "events with exactly the true conditions": 0.3052,
+     "against the truth over possible states: precision, recall": [
+      0.9649,
+      0.7452
+     ]
+    },
+    "H": {
+     "asked": 213,
+     "precision": 0.9876,
+     "recall": 0.7496,
+     "events with exactly the true conditions": 0.3052,
+     "against the truth over possible states: precision, recall": [
+      0.9649,
+      0.7452
+     ]
+    },
+    "K": {
+     "asked": 213,
+     "precision": 1.0,
+     "recall": 0.7496,
+     "events with exactly the true conditions": 0.3052,
+     "against the truth over possible states: precision, recall": [
+      0.977,
+      0.7452
+     ]
+    },
+    "HK": {
+     "asked": 213,
+     "precision": 1.0,
+     "recall": 0.7496,
+     "events with exactly the true conditions": 0.3052,
+     "against the truth over possible states: precision, recall": [
+      0.977,
+      0.7452
+     ]
+    }
+   },
+   "lamp goes out": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 141,
+     "precision": 0.6667,
+     "recall": 0.4,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6667,
+      0.4209
+     ]
+    },
+    "H": {
+     "asked": 141,
+     "precision": 0.6667,
+     "recall": 0.4,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6667,
+      0.4209
+     ]
+    },
+    "K": {
+     "asked": 141,
+     "precision": 0.6667,
+     "recall": 0.4,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6667,
+      0.4209
+     ]
+    },
+    "HK": {
+     "asked": 141,
+     "precision": 0.6667,
+     "recall": 0.4,
+     "events with exactly the true conditions": 0.0,
+     "against the truth over possible states: precision, recall": [
+      0.6667,
+      0.4209
+     ]
+    }
+   },
+   "push": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9617,
+      1.0
+     ]
+    }
+   },
+   "move": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "blocked": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0,
+     "against the truth over possible states: precision, recall": [
+      0.9818,
+      1.0
+     ]
+    }
+   },
+   "gate: H keeps possible, keeps impossible, sets aside possible, sets aside impossible": [
+    206835,
+    39744,
+    0,
+    0
+   ],
+   "gate: share of possible kept, share of impossible set aside": [
+    1.0,
+    0.0
+   ],
+   "seconds": 25.2
+  }
+ },
+ "Crafter (105.10's models; copy = the other seed)": {
+  "seed 1021": {
+   "net": "runs/105.10/tokens_Rb_s1021_net.pt",
+   "copy": "runs/105.10/tokens_Rb_s7_net.pt",
+   "make (a tool made)": {
+    "events the model got wrong (not asked)": 4,
+    "events the copies disagree on": 1,
+    "none": {
+     "asked": 232,
+     "precision": 0.7654,
+     "recall": 0.9982,
+     "events with exactly the true conditions": 0.9612
+    },
+    "H": {
+     "asked": 232,
+     "precision": 0.7991,
+     "recall": 0.9982,
+     "events with exactly the true conditions": 0.9698
+    },
+    "K": {
+     "asked": 231,
+     "precision": 0.9927,
+     "recall": 1.0,
+     "events with exactly the true conditions": 0.9957
+    },
+    "HK": {
+     "asked": 231,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0
+    },
+    "replacements H set aside, by kind (codes' labels, scoring only)": {
+     "14": 2265,
+     "17": 488,
+     "15": 141,
+     "16": 86,
+     "18": 75,
+     "4": 4,
+     "11": 4,
+     "5": 1
+    },
+    "replacements K set aside, by kind (codes' labels, scoring only)": {
+     "11": 213,
+     "18": 171,
+     "1": 86,
+     "15": 73,
+     "12": 65,
+     "6": 63,
+     "5": 32,
+     "17": 13
+    }
+   },
+   "move, blocked": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 0.9472,
+     "recall": 0.9567,
+     "events with exactly the true conditions": 0.95
+    },
+    "H": {
+     "asked": 300,
+     "precision": 0.9527,
+     "recall": 0.94,
+     "events with exactly the true conditions": 0.9333
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 0.9533,
+     "events with exactly the true conditions": 0.9533
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 0.9367,
+     "events with exactly the true conditions": 0.9367
+    },
+    "replacements H set aside, by kind (codes' labels, scoring only)": {
+     "14": 2304,
+     "15": 1405,
+     "17": 1044,
+     "16": 652,
+     "6": 544,
+     "18": 302,
+     "5": 292,
+     "3": 214
+    },
+    "replacements K set aside, by kind (codes' labels, scoring only)": {
+     "2": 16,
+     "14": 16,
+     "5": 15,
+     "16": 10,
+     "6": 7,
+     "1": 5,
+     "15": 4,
+     "17": 3
+    }
+   },
+   "move, succeeded": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 0.9898,
+     "recall": 1.0,
+     "events with exactly the true conditions": 0.9967
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 0.9795,
+     "events with exactly the true conditions": 0.98
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 0.9795,
+     "events with exactly the true conditions": 0.98
+    },
+    "replacements H set aside, by kind (codes' labels, scoring only)": {
+     "14": 2427,
+     "17": 1150,
+     "16": 604,
+     "15": 531,
+     "6": 280,
+     "18": 207,
+     "3": 154,
+     "8": 103
+    },
+    "replacements K set aside, by kind (codes' labels, scoring only)": {
+     "17": 23,
+     "16": 15,
+     "6": 9,
+     "3": 4,
+     "18": 2,
+     "14": 2,
+     "15": 2,
+     "5": 1
+    }
+   },
+   "seconds": 18.0
+  },
+  "seed 7": {
+   "net": "runs/105.10/tokens_Rb_s7_net.pt",
+   "copy": "runs/105.10/tokens_Rb_s1021_net.pt",
+   "make (a tool made)": {
+    "events the model got wrong (not asked)": 4,
+    "events the copies disagree on": 1,
+    "none": {
+     "asked": 232,
+     "precision": 0.8439,
+     "recall": 1.0,
+     "events with exactly the true conditions": 0.944
+    },
+    "H": {
+     "asked": 232,
+     "precision": 0.8585,
+     "recall": 1.0,
+     "events with exactly the true conditions": 0.9612
+    },
+    "K": {
+     "asked": 231,
+     "precision": 0.9927,
+     "recall": 1.0,
+     "events with exactly the true conditions": 0.9957
+    },
+    "HK": {
+     "asked": 231,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0
+    },
+    "replacements H set aside, by kind (codes' labels, scoring only)": {
+     "14": 2662,
+     "17": 488,
+     "15": 165,
+     "16": 92,
+     "18": 86,
+     "5": 9,
+     "11": 8,
+     "4": 3
+    },
+    "replacements K set aside, by kind (codes' labels, scoring only)": {
+     "11": 212,
+     "18": 110,
+     "15": 73,
+     "12": 65,
+     "5": 32,
+     "1": 29,
+     "17": 13,
+     "14": 10
+    }
+   },
+   "move, blocked": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 0.9704,
+     "recall": 0.9833,
+     "events with exactly the true conditions": 0.98
+    },
+    "H": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 0.9767,
+     "events with exactly the true conditions": 0.9767
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 0.9533,
+     "events with exactly the true conditions": 0.9533
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 0.94,
+     "events with exactly the true conditions": 0.94
+    },
+    "replacements H set aside, by kind (codes' labels, scoring only)": {
+     "14": 2219,
+     "15": 1473,
+     "17": 1034,
+     "16": 722,
+     "6": 437,
+     "5": 337,
+     "18": 260,
+     "4": 195
+    },
+    "replacements K set aside, by kind (codes' labels, scoring only)": {
+     "2": 16,
+     "14": 16,
+     "5": 15,
+     "16": 10,
+     "6": 7,
+     "1": 5,
+     "15": 4,
+     "17": 3
+    }
+   },
+   "move, succeeded": {
+    "events the model got wrong (not asked)": 0,
+    "events the copies disagree on": 0,
+    "none": {
+     "asked": 300,
+     "precision": 0.9154,
+     "recall": 1.0,
+     "events with exactly the true conditions": 0.99
+    },
+    "H": {
+     "asked": 300,
+     "precision": 0.9175,
+     "recall": 0.9897,
+     "events with exactly the true conditions": 0.9833
+    },
+    "K": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "events with exactly the true conditions": 1.0
+    },
+    "HK": {
+     "asked": 300,
+     "precision": 1.0,
+     "recall": 0.9863,
+     "events with exactly the true conditions": 0.9867
+    },
+    "replacements H set aside, by kind (codes' labels, scoring only)": {
+     "14": 2554,
+     "17": 1149,
+     "16": 635,
+     "15": 588,
+     "6": 255,
+     "18": 236,
+     "3": 177,
+     "11": 115
+    },
+    "replacements K set aside, by kind (codes' labels, scoring only)": {
+     "17": 23,
+     "16": 15,
+     "6": 9,
+     "3": 4,
+     "18": 2,
+     "14": 2,
+     "15": 2,
+     "5": 1
+    }
+   },
+   "seconds": 18.1
+  }
+ },
+ "planning in world 1 (105.5's planner, statements read in sleep)": {
+  "none": {
+   "filter": "none",
+   "worlds": 200,
+   "solvable (breadth-first search, 30 steps)": 155,
+   "lamp lit within 50 steps, all worlds": 0.655,
+   "lamp lit, solvable worlds": "131 of 155 (0.845)",
+   "statements": 30,
+   "lamp-lighting statements": [
+    [
+     4,
+     [
+      [
+       -1,
+       -2,
+       6
+      ],
+      [
+       -1,
+       -1,
+       5
+      ],
+      [
+       -1,
+       0,
+       0
+      ]
+     ],
+     3
+    ],
+    [
+     1,
+     [
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       1,
+       1,
+       5
+      ],
+      [
+       2,
+       1,
+       6
+      ]
+     ],
+     3
+    ],
+    [
+     1,
+     [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       2,
+       0,
+       5
+      ],
+      [
+       3,
+       0,
+       6
+      ]
+     ],
+     3
+    ],
+    [
+     4,
+     [
+      [
+       0,
+       -3,
+       6
+      ],
+      [
+       0,
+       -2,
+       5
+      ],
+      [
+       0,
+       -1,
+       0
+      ]
+     ],
+     2
+    ],
+    [
+     2,
+     [
+      [
+       -2,
+       1,
+       6
+      ],
+      [
+       -1,
+       1,
+       5
+      ],
+      [
+       0,
+       1,
+       0
+      ]
+     ],
+     2
+    ],
+    [
+     3,
+     [
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       0,
+       2,
+       5
+      ],
+      [
+       0,
+       3,
+       6
+      ]
+     ],
+     2
+    ]
+   ],
+   "seconds to read statements": 6.5,
+   "seconds": 19.8
+  },
+  "K": {
+   "filter": "K",
+   "worlds": 200,
+   "solvable (breadth-first search, 30 steps)": 155,
+   "lamp lit within 50 steps, all worlds": 0.655,
+   "lamp lit, solvable worlds": "131 of 155 (0.845)",
+   "statements": 30,
+   "lamp-lighting statements": [
+    [
+     4,
+     [
+      [
+       -1,
+       -2,
+       6
+      ],
+      [
+       -1,
+       -1,
+       5
+      ],
+      [
+       -1,
+       0,
+       0
+      ]
+     ],
+     3
+    ],
+    [
+     1,
+     [
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       1,
+       1,
+       5
+      ],
+      [
+       2,
+       1,
+       6
+      ]
+     ],
+     3
+    ],
+    [
+     1,
+     [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       2,
+       0,
+       5
+      ],
+      [
+       3,
+       0,
+       6
+      ]
+     ],
+     3
+    ],
+    [
+     4,
+     [
+      [
+       0,
+       -3,
+       6
+      ],
+      [
+       0,
+       -2,
+       5
+      ],
+      [
+       0,
+       -1,
+       0
+      ]
+     ],
+     2
+    ],
+    [
+     2,
+     [
+      [
+       -2,
+       1,
+       6
+      ],
+      [
+       -1,
+       1,
+       5
+      ],
+      [
+       0,
+       1,
+       0
+      ]
+     ],
+     2
+    ],
+    [
+     3,
+     [
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       0,
+       2,
+       5
+      ],
+      [
+       0,
+       3,
+       6
+      ]
+     ],
+     2
+    ]
+   ],
+   "seconds to read statements": 12.1,
+   "seconds": 23.7
+  }
+ }
+}

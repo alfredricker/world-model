@@ -1,0 +1,141 @@
+{
+ "card": "105.6",
+ "date": "2026-10-13",
+ "runs": {
+  "tokens_Rb_s1021": {
+   "form": "tokens",
+   "arm": "Rb",
+   "seed": 1021,
+   "steps": 15000,
+   "test steps": 99000,
+   "1 lamps at pushes, changed: right": 1.0,
+   "1 lamps at pushes, unchanged: right": 0.9875,
+   "1 lamps at pushes, changed, by column": {
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0
+   },
+   "lamps at pushes (changed, unchanged)": [
+    354,
+    2723
+   ],
+   "2 move steps: agent's place and target right, moved": 1.0,
+   "2 move steps: agent's place and target right, blocked": 1.0,
+   "move steps (moved, blocked)": [
+    61826,
+    17412
+   ],
+   "3 whole next state right (63 world tiles)": 0.9997,
+   "nothing changes: whole next state right": 0.3755,
+   "tokens that changed: right": 1.0,
+   "seconds": 145.2,
+   "training loss every 1000 steps": [
+    1.87618,
+    0.00374,
+    0.00083,
+    0.00059,
+    0.00021,
+    8e-05,
+    9e-05,
+    6e-05,
+    3e-05,
+    2e-05,
+    2e-05,
+    4e-05,
+    2e-05,
+    1e-05,
+    1e-05
+   ]
+  },
+  "tokens_Rb_s7": {
+   "form": "tokens",
+   "arm": "Rb",
+   "seed": 7,
+   "steps": 15000,
+   "test steps": 99000,
+   "1 lamps at pushes, changed: right": 1.0,
+   "1 lamps at pushes, unchanged: right": 0.989,
+   "1 lamps at pushes, changed, by column": {
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0
+   },
+   "lamps at pushes (changed, unchanged)": [
+    354,
+    2723
+   ],
+   "2 move steps: agent's place and target right, moved": 1.0,
+   "2 move steps: agent's place and target right, blocked": 1.0,
+   "move steps (moved, blocked)": [
+    61826,
+    17412
+   ],
+   "3 whole next state right (63 world tiles)": 0.9997,
+   "nothing changes: whole next state right": 0.3755,
+   "tokens that changed: right": 1.0,
+   "seconds": 145.5,
+   "training loss every 1000 steps": [
+    1.87448,
+    0.02003,
+    0.00216,
+    0.00168,
+    0.01221,
+    0.00046,
+    5e-05,
+    5e-05,
+    4e-05,
+    2e-05,
+    2e-05,
+    2e-05,
+    2e-05,
+    1e-05,
+    2e-05
+   ]
+  },
+  "tokens_Rb_s3": {
+   "form": "tokens",
+   "arm": "Rb",
+   "seed": 3,
+   "steps": 15000,
+   "test steps": 99000,
+   "1 lamps at pushes, changed: right": 1.0,
+   "1 lamps at pushes, unchanged: right": 0.9673,
+   "1 lamps at pushes, changed, by column": {
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0
+   },
+   "lamps at pushes (changed, unchanged)": [
+    354,
+    2723
+   ],
+   "2 move steps: agent's place and target right, moved": 1.0,
+   "2 move steps: agent's place and target right, blocked": 1.0,
+   "move steps (moved, blocked)": [
+    61826,
+    17412
+   ],
+   "3 whole next state right (63 world tiles)": 0.9989,
+   "nothing changes: whole next state right": 0.3755,
+   "tokens that changed: right": 1.0,
+   "seconds": 139.8,
+   "training loss every 1000 steps": [
+    1.87572,
+    0.0157,
+    0.0051,
+    0.00062,
+    0.00064,
+    0.0004,
+    0.00029,
+    0.00028,
+    0.00022,
+    0.00015,
+    0.0001,
+    2e-05,
+    3e-05,
+    2e-05,
+    2e-05
+   ]
+  }
+ }
+}

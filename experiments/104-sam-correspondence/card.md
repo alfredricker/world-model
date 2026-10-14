@@ -3,15 +3,16 @@ id: "104"
 title: SAM 2.1 for correspondence — creatures' identity from a pretrained promptable video segmenter
 rung: 1
 serves: [P7, P2]
-status: draft
-verdict:
+status: done
+verdict: stop
 arch_version: 27
 date: 2026-10-13
 ---
 
 # 104: SAM 2.1 for correspondence
 
-Drafted 2026-10-13 at the user's request ("let's use SAM 2.1 for
+Approved by the user 2026-10-13 ("Yes", for the overnight session). Drafted at the
+user's request ("let's use SAM 2.1 for
 correspondence"), after the user amended GOAL C1. A declared, pretrained
 perception front end with no language or class labels may now supply
 objects' outlines and their correspondence across frames. Series
@@ -148,4 +149,76 @@ No run exceeds 30 minutes.
 
 ## 7. Result
 
+Run 2026-10-13 ([results.json](results.json)). The tracker
+(`tools/card104/track.py`) runs SAM 2.1's own track step per object, online,
+with its memory pruned to the last 15 frames. It was tuned in oracle mode on
+worker 10's first 3,000 frames. The gate ran on frames 3,000–29,999, which
+tuning never saw.
+
+**Tuning** (oracle prompts, evaluator's origins, first frames of worker 10):
+
+| Configuration | Frames | IDF1 | On no creature |
+|---|---|---|---|
+| A point at the tile's centre, prompted once | 1,500 | 0.623 | 11.5% |
+| A point on the sprite, prompted once | 1,500 | 0.600 | 17.8% |
+| + re-prompted when a track ends; a colour gate; duplicates end | 3,000 | 0.725 | 7.3% |
+| Overlaps split by SAM's logit instead of duplicates ending | 3,000 | 0.688 | 6.6% |
+| The same, with the small model | 3,000 | 0.696 | 2.5% |
+| The same, with SAMURAI's memory selection | 3,000 | 0.679 | 8.6% |
+| Box prompts (the tile), with or without the gate | 3,000 | 0.645 / 0.600 | 17–22% |
+| Duplicates end, nearest-neighbour upscaling (rerun) | 3,000 | 0.735 | 7.1% |
+| **Duplicates end, bicubic upscaling (SAM's own loader)** | 3,000 | **0.780** | 2.9% |
+
+**The gate** (held-out frames, the last configuration):
+
+| Measure | Value | Bar |
+|---|---|---|
+| Oracle-prompted IDF1 | **0.784** | ≥ 0.85 |
+| ID recall / ID precision | 0.733 / 0.844 | |
+| ID recall: cow, zombie, skeleton, arrow | 0.72, 0.83, 0.68, 0.72 | |
+| Detections on no creature | 2.2% | (test: ≤ 1%) |
+| Frames per second, end to end | **36.8** | ≥ 20 |
+| GPU memory, peak | 0.74 GB | |
+
+- **Gate: fail** on identity (0.784 against 0.85); speed passes. The test's
+  bar (0.80) lies above this upper bound, so the test was not run.
+- **The upper bound is generous.** When a creature's track ended, the
+  oracle prompted it again under its true identity: 2,574 times, against
+  1,117 first prompts. Prompted only once, SAM scored 0.60–0.62, no better
+  than 103.5's rerun on workers 11–12 (0.623 and 0.625 with the learned
+  view).
+- **Where SAM loses a creature,** seen in renders of 3,000 frames: tracks
+  older than 10 frames on a creature in view report nothing on 27% of
+  frames (364 of 1,350). Three causes:
+  - **Night:** the creature cannot be seen at all.
+  - **Swaps:** the track moves to a like creature, such as a second cow two
+    tiles away.
+  - **Shrinking masks:** the mask covers only part of the sprite and
+    shrinks frame by frame.
+
+  The view's motion does not matter: SAM calls a creature in view absent
+  on 12% of frames when the view moved and 10% when it did not.
+- **Where SAM is good:** its masks, while it has them, lie on creatures.
+  Detections on no creature were 2.2%, against 4.3% for 103.5. And it is
+  fast.
+- **Prediction:** oracle about 0.9, wrong (0.78). Speed 25–30 frames per
+  second, beaten (37).
+
 ## 8. Decision
+
+**Stop** (2026-10-13), SAM 2.1's propagation as Crafter's source of
+correspondence. The gate failed, so the card cannot be passed as written.
+The stop line was 0.10 above 103.5's rerun, about 0.72. Even the oracle's
+upper bound clears it by only 0.06, and only by restoring each creature's
+true identity every time SAM lost it. Discovery cannot restore identity.
+
+What SAM lacks here is what tells one cow from another: where each one is
+expected to be next. Its memory matches appearance, and Crafter's cows look
+alike. SAM is worth keeping for outlines when prompted: masks on creatures,
+2.2% elsewhere, 37 frames per second. Correspondence between like objects
+is prediction's job. That fits the series' rule that perception may have
+several parts but prediction has one: the transition model predicts where
+each object goes, and association follows the prediction. That is a
+question for series 105's objects card
+([105.3](../105.3-objects-and-history/card.md)), whose input changes with
+this decision.

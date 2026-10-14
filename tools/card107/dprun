@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Card 107: run Python in the depth overlay env (the project's torch, read-only, plus Depth Anything 3).
+set -euo pipefail
+ROOT=$(cd "$(dirname "$(readlink -f "$0")")/../.." && pwd)
+E=$ROOT/runs/107/envs
+find_lib() {
+    local pattern=$1 wanted=$2 dir
+    for dir in $(ls -dt /nix/store/$pattern 2>/dev/null); do
+        if [[ -e "$dir/$wanted" ]] && [[ $(od -An -j4 -N1 -tu1 "$dir/$wanted") -eq 2 ]]; then echo "$dir"; return; fi
+    done
+    echo "dprun: no 64-bit $wanted" >&2; exit 1
+}
+export LD_LIBRARY_PATH="/run/opengl-driver/lib:$(find_lib "*-gcc-*-lib/lib" libstdc++.so.6):$(find_lib "*-zlib-*/lib" libz.so.1)${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export PYTHONPATH="$E/da3_src/src:$E/da3_stubs:$ROOT/tools/card107${PYTHONPATH:+:$PYTHONPATH}"
+exec "$E/depth_venv/bin/python" "$@"

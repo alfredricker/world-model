@@ -1,0 +1,322 @@
+{
+ "card": "105.9",
+ "date": "2026-10-13",
+ "placing": {
+  "curr 0": {
+   "placements right": 0.996,
+   "moves that succeeded": 0.9995,
+   "blocked moves": 0.9042,
+   "blocked moves (n)": 428,
+   "still steps": 1.0
+  },
+  "curr 1": {
+   "placements right": 0.996,
+   "moves that succeeded": 1.0,
+   "blocked moves": 0.8883,
+   "blocked moves (n)": 376,
+   "still steps": 1.0
+  },
+  "curr 2": {
+   "placements right": 0.9966,
+   "moves that succeeded": 0.9986,
+   "blocked moves": 0.9145,
+   "blocked moves (n)": 386,
+   "still steps": 1.0
+  },
+  "curr 3": {
+   "placements right": 0.9977,
+   "moves that succeeded": 0.9985,
+   "blocked moves": 0.9494,
+   "blocked moves (n)": 415,
+   "still steps": 1.0
+  },
+  "curr 4": {
+   "placements right": 0.9966,
+   "moves that succeeded": 0.9976,
+   "blocked moves": 0.9308,
+   "blocked moves (n)": 448,
+   "still steps": 1.0
+  },
+  "curr 5": {
+   "placements right": 0.9967,
+   "moves that succeeded": 1.0,
+   "blocked moves": 0.9134,
+   "blocked moves (n)": 404,
+   "still steps": 1.0
+  },
+  "curr 6": {
+   "placements right": 0.9966,
+   "moves that succeeded": 0.999,
+   "blocked moves": 0.9256,
+   "blocked moves (n)": 457,
+   "still steps": 1.0
+  },
+  "curr 7": {
+   "placements right": 0.9959,
+   "moves that succeeded": 0.999,
+   "blocked moves": 0.9137,
+   "blocked moves (n)": 475,
+   "still steps": 1.0
+  },
+  "curr 8": {
+   "placements right": 0.9978,
+   "moves that succeeded": 0.9995,
+   "blocked moves": 0.9524,
+   "blocked moves (n)": 462,
+   "still steps": 1.0
+  },
+  "curr 9": {
+   "placements right": 0.9971,
+   "moves that succeeded": 0.9995,
+   "blocked moves": 0.9332,
+   "blocked moves (n)": 449,
+   "still steps": 1.0
+  },
+  "play 0": {
+   "placements right": 0.9936,
+   "moves that succeeded": 0.993,
+   "blocked moves": 0.7562,
+   "blocked moves (n)": 484,
+   "still steps": 1.0
+  },
+  "play 1": {
+   "placements right": 0.992,
+   "moves that succeeded": 0.987,
+   "blocked moves": 0.754,
+   "blocked moves (n)": 500,
+   "still steps": 1.0
+  },
+  "play 8": {
+   "placements right": 0.9942,
+   "moves that succeeded": 0.9934,
+   "blocked moves": 0.7892,
+   "blocked moves (n)": 498,
+   "still steps": 1.0
+  },
+  "play 9": {
+   "placements right": 0.9928,
+   "moves that succeeded": 0.9912,
+   "blocked moves": 0.7392,
+   "blocked moves (n)": 487,
+   "still steps": 1.0
+  }
+ },
+ "placing, held out, blocked moves": {
+  "old prior (103.4)": 0.76,
+  "model prior": 0.8502,
+  "n": 1896,
+  "by source, old -> new": {
+   "curr 8": [
+    0.866,
+    0.952
+   ],
+   "curr 9": [
+    0.862,
+    0.933
+   ],
+   "play 8": [
+    0.693,
+    0.789
+   ],
+   "play 9": [
+    0.634,
+    0.739
+   ]
+  },
+  "play, zombie blockers (new)": [
+   0.54,
+   0.57
+  ],
+  "play, at night (new)": [
+   0.658,
+   0.631
+  ]
+ },
+ "retrained token models": {
+  "seed 1021": {
+   "form": "tokens",
+   "arm": "Rb",
+   "seed": 1021,
+   "steps": 30000,
+   "loss": "code",
+   "tau": 0.14964,
+   "training transitions": 132785,
+   "test transitions": 69685,
+   "move": {
+    "steps": 16698,
+    "whole scored next state right": 0.9209,
+    "nothing changes: whole scored next state right": 0.9799,
+    "scored tokens that changed": 1696,
+    "changed scored tokens right": 0.464,
+    "changed scored tokens right, saplings left out (105.8)": 0.464
+   },
+   "do": {
+    "steps": 4108,
+    "whole scored next state right": 0.862,
+    "nothing changes: whole scored next state right": 0.8844,
+    "scored tokens that changed": 630,
+    "changed scored tokens right": 0.4381,
+    "changed scored tokens right, saplings left out (105.8)": 0.8488
+   },
+   "place": {
+    "steps": 16780,
+    "whole scored next state right": 0.9322,
+    "nothing changes: whole scored next state right": 0.9218,
+    "scored tokens that changed": 2597,
+    "changed scored tokens right": 0.9303,
+    "changed scored tokens right, saplings left out (105.8)": 0.9303
+   },
+   "make": {
+    "steps": 25070,
+    "whole scored next state right": 0.9424,
+    "nothing changes: whole scored next state right": 0.9876,
+    "scored tokens that changed": 645,
+    "changed scored tokens right": 0.8977,
+    "changed scored tokens right, saplings left out (105.8)": 0.8977
+   },
+   "noop": {
+    "steps": 4242,
+    "whole scored next state right": 0.9394,
+    "nothing changes: whole scored next state right": 0.9981,
+    "scored tokens that changed": 8,
+    "changed scored tokens right": 0.375,
+    "changed scored tokens right, saplings left out (105.8)": 0.375
+   },
+   "1 makes that made a tool: whole scored next state right": 0.9619,
+   "makes that made a tool": 236,
+   "2 move steps: the agent's next place right, moved": 0.9942,
+   "2 move steps: the agent's next place right, blocked": 0.8307,
+   "2 move steps: the agent's next place right, all": 0.9756,
+   "move steps (moved, blocked)": [
+    14802,
+    1896
+   ],
+   "2 read-out": "most probable agent code (105.8)",
+   "2 by the nearest agent code instead: moved, blocked, all": [
+    0.6126,
+    0.241,
+    0.5704
+   ],
+   "3 role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (made at all 8 near, at none of the 16 far)": 0.9184,
+    "near places made": 0.9745,
+    "far places made": 0.0016
+   },
+   "seconds": 231.9,
+   "origins": "103.4's placing with 105.8's model as its prior (105.9)"
+  },
+  "seed 7": {
+   "form": "tokens",
+   "arm": "Rb",
+   "seed": 7,
+   "steps": 30000,
+   "loss": "code",
+   "tau": 0.14871,
+   "training transitions": 132785,
+   "test transitions": 69685,
+   "move": {
+    "steps": 16698,
+    "whole scored next state right": 0.9201,
+    "nothing changes: whole scored next state right": 0.9799,
+    "scored tokens that changed": 1696,
+    "changed scored tokens right": 0.4917,
+    "changed scored tokens right, saplings left out (105.8)": 0.4917
+   },
+   "do": {
+    "steps": 4108,
+    "whole scored next state right": 0.8654,
+    "nothing changes: whole scored next state right": 0.8844,
+    "scored tokens that changed": 630,
+    "changed scored tokens right": 0.4698,
+    "changed scored tokens right, saplings left out (105.8)": 0.9105
+   },
+   "place": {
+    "steps": 16780,
+    "whole scored next state right": 0.9292,
+    "nothing changes: whole scored next state right": 0.9218,
+    "scored tokens that changed": 2597,
+    "changed scored tokens right": 0.928,
+    "changed scored tokens right, saplings left out (105.8)": 0.928
+   },
+   "make": {
+    "steps": 25070,
+    "whole scored next state right": 0.942,
+    "nothing changes: whole scored next state right": 0.9876,
+    "scored tokens that changed": 645,
+    "changed scored tokens right": 0.8884,
+    "changed scored tokens right, saplings left out (105.8)": 0.8884
+   },
+   "noop": {
+    "steps": 4242,
+    "whole scored next state right": 0.9404,
+    "nothing changes: whole scored next state right": 0.9981,
+    "scored tokens that changed": 8,
+    "changed scored tokens right": 0.5,
+    "changed scored tokens right, saplings left out (105.8)": 0.5
+   },
+   "1 makes that made a tool: whole scored next state right": 0.9619,
+   "makes that made a tool": 236,
+   "2 move steps: the agent's next place right, moved": 0.9945,
+   "2 move steps: the agent's next place right, blocked": 0.8307,
+   "2 move steps: the agent's next place right, all": 0.9759,
+   "move steps (moved, blocked)": [
+    14802,
+    1896
+   ],
+   "2 read-out": "most probable agent code (105.8)",
+   "2 by the nearest agent code instead: moved, blocked, all": [
+    0.8196,
+    0.1292,
+    0.7412
+   ],
+   "3 role test": {
+    "tests": 196,
+    "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+    "share passing (made at all 8 near, at none of the 16 far)": 0.8929,
+    "near places made": 0.9598,
+    "far places made": 0.001
+   },
+   "seconds": 231.6,
+   "origins": "103.4's placing with 105.8's model as its prior (105.9)"
+  }
+ },
+ "105.4 Crafter conditions on the retrained models": {
+  "seed 1021": {
+   "make": [
+    0.8708,
+    0.9963,
+    0.9522
+   ],
+   "blocked": [
+    0.4636,
+    0.9884,
+    0.8217
+   ],
+   "succeeded": [
+    0.9738,
+    0.7637,
+    0.77
+   ]
+  },
+  "seed 7": {
+   "make": [
+    0.7043,
+    0.9981,
+    0.9127
+   ],
+   "blocked": [
+    0.399,
+    1.0,
+    0.8327
+   ],
+   "succeeded": [
+    0.96,
+    0.8219,
+    0.81
+   ]
+  },
+  "columns": "precision, recall, events exactly right"
+ }
+}

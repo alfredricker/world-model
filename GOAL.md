@@ -27,12 +27,15 @@ current approach cannot get there.
 ## Constraints on every solution
 
 - **C1 Learned, not supplied.** Objects, relations, events, skills and goals
-  are learned. The environment gives pixels and actions only; labels and
-  simulator state are for the evaluator. A declared, pretrained perception
-  front end with no language or class labels may supply objects' outlines
-  and their correspondence across frames; what objects are, what they do
-  and what they mean is learned (the user, 2026-10-13: the agent need not
-  be learned end to end). Any other hand-built mechanism can be a
+  are learned. The environment gives pixels, actions and the agent's own
+  pose; labels and all other simulator state are for the evaluator. The
+  pose is proprioception: where the agent's body is and how it moved, as a
+  robot's odometry gives it. It says nothing about the world (the user,
+  2026-10-13: "Let's do proprioception", "and amend C1"). A declared,
+  pretrained perception front end with no language or class labels may
+  supply objects' outlines and their correspondence across frames; what
+  objects are, what they do and what they mean is learned (the user,
+  2026-10-13: the agent need not be learned end to end). Any other hand-built mechanism can be a
   baseline or a probe, never a result. Until P20, goals may be supplied as
   tasks: a target condition shown as example observations or a success
   signal. What a goal requires and how to reach it are always learned.

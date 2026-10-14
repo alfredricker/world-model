@@ -1,0 +1,132 @@
+{
+ "card": "104",
+ "date": "2026-10-13",
+ "gate (worker 10, frames 3000-29999, held out from tuning)": {
+  "worker": 10,
+  "frames from": 3000,
+  "mode": "oracle",
+  "origins": "true",
+  "model": "tiny",
+  "gate": 0.6,
+  "memory selection": false,
+  "prompt": "point",
+  "overlap": "dup",
+  "resize": "bicubic",
+  "IDF1 (movers pooled)": 0.7843,
+  "ID recall / ID precision": [
+   0.7328,
+   0.8436
+  ],
+  "object frames / detections": [
+   23724,
+   20608
+  ],
+  "ID recall by kind": {
+   "cow": 0.7199,
+   "zombie": 0.8277,
+   "skeleton": 0.6796,
+   "arrow": 0.7186
+  },
+  "detections on no creature: share": 0.0222,
+  "night creature frames: share with a track": 0.7249,
+  "still since seen: share with a track": 0.8352,
+  "frames per second (tracking and discovery)": 36.8,
+  "events": {
+   "prompted (oracle)": 1117,
+   "carried": 37035,
+   "carried: SAM says absent": 15805,
+   "carried: present, mask lost to another track": 0,
+   "masks refused by the appearance gate": 1636,
+   "duplicates ended": 2633,
+   "re-prompted (oracle)": 2574,
+   "ended": 500
+  },
+  "GPU memory peak (GB)": 0.74,
+  "seconds": 607.4
+ },
+ "development (worker 10, first frames; oracle prompts, evaluator's origins)": [
+  {
+   "configuration": "point at the tile's centre, prompted once",
+   "frames": 1500,
+   "IDF1": 0.6234,
+   "detections on no creature": 0.115
+  },
+  {
+   "configuration": "point on the sprite, prompted once",
+   "frames": 1500,
+   "IDF1": 0.6003,
+   "detections on no creature": 0.1777
+  },
+  {
+   "configuration": "+ re-prompted when a track ends, colour gate 0.6, duplicates end",
+   "frames": 3000,
+   "IDF1": 0.7247,
+   "detections on no creature": 0.0727
+  },
+  {
+   "configuration": "as above, overlaps split by logit instead of duplicates",
+   "frames": 3000,
+   "IDF1": 0.6881,
+   "detections on no creature": 0.0659
+  },
+  {
+   "configuration": "as above, small model",
+   "frames": 3000,
+   "IDF1": 0.6957,
+   "detections on no creature": 0.0252
+  },
+  {
+   "configuration": "as above, SAMURAI's memory selection",
+   "frames": 3000,
+   "IDF1": 0.6788,
+   "detections on no creature": 0.0858
+  },
+  {
+   "configuration": "box prompts, colour gate 0.6",
+   "frames": 3000,
+   "IDF1": 0.6447,
+   "detections on no creature": 0.174
+  },
+  {
+   "configuration": "box prompts, no colour gate",
+   "frames": 3000,
+   "IDF1": 0.6002,
+   "detections on no creature": 0.2197
+  },
+  {
+   "configuration": "duplicates end, nearest upscaling (rerun)",
+   "frames": 3000,
+   "IDF1": 0.7348,
+   "detections on no creature": 0.0708
+  },
+  {
+   "configuration": "duplicates end, bicubic upscaling (SAM's own loader)",
+   "frames": 3000,
+   "IDF1": 0.7804,
+   "detections on no creature": 0.0291
+  }
+ ],
+ "baseline: 103.5 rerun on workers 11-12 (103.4's origins / evaluator's)": {
+  "IDF1 worker 11": [
+   0.6231,
+   0.6551
+  ],
+  "IDF1 worker 12": [
+   0.6253,
+   0.6603
+  ],
+  "detections on no creature worker 11": [
+   0.0312,
+   0.0056
+  ],
+  "worker 12": [
+   0.0683,
+   0.0044
+  ]
+ },
+ "failure kinds (3,000 frames, tracks older than 10 frames, creature in view, not reported)": {
+  "SAM says absent": 213,
+  "refused by the colour gate": 139,
+  "share of these at night or swapped to a like creature": "seen in renders; not counted"
+ }
+}

@@ -40,14 +40,15 @@ There are no other documents. Do not create notes, reviews or summaries.
 - A feasibility gate (upper bound + trivial baseline) passes before the
   main run. A test that cannot be passed is not an experiment.
 - Every card's section 2 ends with a portability check (CHARTER rule 9):
-  each assumption about the environment, and whether it holds in Crafter,
-  ARC-AGI-3 and robotics.
+  each assumption about the environment, and whether it holds in Craftium,
+  Crafter, ARC-AGI-3 and robotics.
 - Change one component per experiment. Replacing the model or switching
   direction follows the CHARTER rules, and needs the user's explicit sign-off.
   The one exception is the architecture-selection screen in CHARTER.md, run
   once at arch_version 0.
 - A card ends with exactly one decision: keep, revise or stop.
-- Cards are judged on Crafter. CHARTER's three MiniGrid tiers are run
+- Cards are judged on Craftium (the user, 2026-10-13; on Crafter
+  before). CHARTER's three MiniGrid tiers are run
   only when a card decided keep makes a significant architecture change
   (a new arch_version), before that version is adopted (the user,
   2026-10-11). The breaking worlds run at the same point, as smoke tests

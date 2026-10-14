@@ -1,0 +1,274 @@
+{
+ "card": "107",
+ "date": "2026-10-13",
+ "data": {
+  "train_a": {
+   "mode": "roam",
+   "place": [
+    400,
+    400
+   ],
+   "steps": 1200,
+   "seed": 1,
+   "walked (blocks)": 590.2
+  },
+  "train_b": {
+   "mode": "roam",
+   "place": [
+    -300,
+    250
+   ],
+   "steps": 1200,
+   "seed": 2,
+   "walked (blocks)": 173.4
+  },
+  "train_c": {
+   "mode": "roam",
+   "place": [
+    600,
+    -200
+   ],
+   "steps": 1200,
+   "seed": 3,
+   "walked (blocks)": 673.5
+  },
+  "train_d": {
+   "mode": "roam",
+   "place": [
+    -500,
+    -500
+   ],
+   "steps": 101,
+   "seed": 4,
+   "walked (blocks)": 69.5
+  },
+  "train_e": {
+   "mode": "roam",
+   "place": [
+    250,
+    -600
+   ],
+   "steps": 1200,
+   "seed": 5,
+   "walked (blocks)": 372.8
+  },
+  "train_f": {
+   "mode": "roam",
+   "place": [
+    -700,
+    100
+   ],
+   "steps": 1200,
+   "seed": 6,
+   "walked (blocks)": 361.1
+  },
+  "test_pasture": {
+   "mode": "pasture",
+   "place": [
+    120,
+    92
+   ],
+   "steps": 1000,
+   "seed": 11,
+   "walked (blocks)": 76.8
+  },
+  "test_roam": {
+   "mode": "roam",
+   "place": [
+    900,
+    900
+   ],
+   "steps": 509,
+   "seed": 9,
+   "walked (blocks)": 277.1
+  }
+ },
+ "training targets with a source": 5196,
+ "gate": {
+  "test_pasture": {
+   "frames used (true depth and a source)": 30,
+   "photometric error at true": 0.02825,
+   "photometric error at true x0.8": 0.04405,
+   "photometric error at true x1.25": 0.03847,
+   "photometric error at released": 0.05308,
+   "truth lowest": true
+  },
+  "test_roam": {
+   "frames used (true depth and a source)": 16,
+   "photometric error at true": 0.02249,
+   "photometric error at true x0.8": 0.03202,
+   "photometric error at true x1.25": 0.02463,
+   "photometric error at released": 0.05299,
+   "truth lowest": true
+  },
+  "gate passes": true
+ },
+ "training": {
+  "steps": 3000,
+  "batch": 4,
+  "lr": 0.0001,
+  "seconds": 348,
+  "last": {
+   "step": 2999,
+   "loss": 0.02216,
+   "warped wins": 0.398,
+   "seconds": 348
+  }
+ },
+ "criterion 1, terrain": {
+  "test_pasture": {
+   "released": {
+    "terrain: mean |error| / depth": 0.324,
+    "terrain: share within 25%": 0.296,
+    "terrain, each frame's scale fixed: mean |error| / depth": 0.129,
+    "terrain: per-frame scale (median estimate / true): median, spread (std)": [
+     0.74,
+     0.163
+    ]
+   },
+   "tuned": {
+    "terrain: mean |error| / depth": 0.168,
+    "terrain: share within 25%": 0.736,
+    "terrain, each frame's scale fixed: mean |error| / depth": 0.152,
+    "terrain: per-frame scale (median estimate / true): median, spread (std)": [
+     0.985,
+     0.098
+    ]
+   }
+  },
+  "test_roam": {
+   "released": {
+    "terrain: mean |error| / depth": 0.543,
+    "terrain: share within 25%": 0.077,
+    "terrain, each frame's scale fixed: mean |error| / depth": 0.192,
+    "terrain: per-frame scale (median estimate / true): median, spread (std)": [
+     0.454,
+     0.362
+    ]
+   },
+   "tuned": {
+    "terrain: mean |error| / depth": 0.437,
+    "terrain: share within 25%": 0.52,
+    "terrain, each frame's scale fixed: mean |error| / depth": 0.215,
+    "terrain: per-frame scale (median estimate / true): median, spread (std)": [
+     1.018,
+     0.699
+    ]
+   }
+  }
+ },
+ "criterion 2, creatures (pasture; cows; hidden behind blocks left out)": {
+  "released": {
+   "creatures: (estimate - true centre depth) / true: median, mean |.|": [
+    -0.372,
+    0.408
+   ],
+   "creatures: (estimate - near surface) / near surface, surface = centre - 0.4: median, mean |.|": [
+    -0.335,
+    0.367
+   ],
+   "cows only, against the near surface: median, mean |.|": [
+    -0.335,
+    0.367
+   ],
+   "creature samples (cows), hidden behind blocks left out": [
+    2364,
+    2364,
+    527
+   ]
+  },
+  "tuned": {
+   "creatures: (estimate - true centre depth) / true: median, mean |.|": [
+    -0.338,
+    0.456
+   ],
+   "creatures: (estimate - near surface) / near surface, surface = centre - 0.4: median, mean |.|": [
+    -0.306,
+    0.497
+   ],
+   "cows only, against the near surface: median, mean |.|": [
+    -0.306,
+    0.497
+   ],
+   "creature samples (cows), hidden behind blocks left out": [
+    2364,
+    2364,
+    527
+   ]
+  }
+ },
+ "criterion 3, belief (pasture)": {
+  "clip": "test_pasture",
+  "v (blocks per step, from cows8)": 0.0237,
+  "exact": {
+   "IDF1": 0.954,
+   "IDF1, cows": 0.959,
+   "cow returns within 100 steps that get their own track back": [
+    1.0,
+    28
+   ],
+   "cow returns after more than 100 steps": [
+    0.875,
+    16
+   ]
+  },
+  "released": {
+   "IDF1": 0.544,
+   "IDF1, cows": 0.473,
+   "cow returns within 100 steps that get their own track back": [
+    0.429,
+    28
+   ],
+   "cow returns after more than 100 steps": [
+    0.0,
+    16
+   ]
+  },
+  "tuned": {
+   "IDF1": 0.552,
+   "IDF1, cows": 0.482,
+   "cow returns within 100 steps that get their own track back": [
+    0.5,
+    28
+   ],
+   "cow returns after more than 100 steps": [
+    0.25,
+    16
+   ]
+  }
+ },
+ "exploratory: positions from the ground depth at the feet (pasture)": {
+  "clip": "test_pasture",
+  "released": {
+   "position error / distance: median, mean": [
+    0.487,
+    0.646
+   ],
+   "IDF1": 0.539,
+   "IDF1, cows": 0.467,
+   "cow returns within 100 steps that get their own track back": [
+    0.464,
+    28
+   ]
+  },
+  "tuned": {
+   "position error / distance: median, mean": [
+    0.4,
+    0.637
+   ],
+   "IDF1": 0.574,
+   "IDF1, cows": 0.509,
+   "cow returns within 100 steps that get their own track back": [
+    0.393,
+    28
+   ]
+  }
+ },
+ "verdict": {
+  "gate": "pass",
+  "1 terrain": "fail (pasture 16.8% vs 15%, spread 0.098 vs 0.05; roam 43.7%, 0.699)",
+  "2 creatures": "fail (49.7% vs 10%)",
+  "3 belief": "fail (returns 50% vs 85%; IDF1 0.55 vs 0.80)",
+  "decision rule": "stop: the scale spread was not halved (pasture 0.163 -> 0.098, roam 0.362 -> 0.699)"
+ }
+}

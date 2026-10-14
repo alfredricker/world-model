@@ -1,0 +1,81 @@
+{
+ "card": "105.7",
+ "date": "2026-10-13",
+ "gate: evaluator's kinds, arm Rb, plain loss": {
+  "form": "truth",
+  "arm": "Rb",
+  "seed": 1021,
+  "steps": 30000,
+  "loss": "plain",
+  "training transitions": 132785,
+  "test transitions": 69685,
+  "move": {
+   "steps": 16698,
+   "whole scored next state right": 0.9362,
+   "nothing changes: whole scored next state right": 0.9711,
+   "scored tokens that changed": 2777,
+   "changed scored tokens right": 0.1707
+  },
+  "do": {
+   "steps": 4108,
+   "whole scored next state right": 0.8649,
+   "nothing changes: whole scored next state right": 0.8844,
+   "scored tokens that changed": 630,
+   "changed scored tokens right": 0.0
+  },
+  "place": {
+   "steps": 16780,
+   "whole scored next state right": 0.9713,
+   "nothing changes: whole scored next state right": 0.9218,
+   "scored tokens that changed": 2597,
+   "changed scored tokens right": 0.9819
+  },
+  "make": {
+   "steps": 25070,
+   "whole scored next state right": 0.9699,
+   "nothing changes: whole scored next state right": 0.9876,
+   "scored tokens that changed": 645,
+   "changed scored tokens right": 0.8481
+  },
+  "noop": {
+   "steps": 4242,
+   "whole scored next state right": 0.9689,
+   "nothing changes: whole scored next state right": 0.9981,
+   "scored tokens that changed": 8,
+   "changed scored tokens right": 0.0
+  },
+  "1 makes that made a tool: whole scored next state right": 0.9576,
+  "makes that made a tool": 236,
+  "2 move steps: the agent's next place right, moved": 0.9998,
+  "2 move steps: the agent's next place right, blocked": 0.8012,
+  "2 move steps: the agent's next place right, all": 0.9772,
+  "move steps (moved, blocked)": [
+   14802,
+   1896
+  ],
+  "3 role test": {
+   "tests": 196,
+   "skipped (not one table in the 5 x 5 square, or no grass outside)": 40,
+   "share passing (made at all 8 near, at none of the 16 far)": 0.9286,
+   "near places made": 0.9617,
+   "far places made": 0.0003
+  },
+  "seconds": 253.3
+ },
+ "do facing a tree (138 held-out steps)": {
+  "plain: front tile predicted tree (stays)": 138,
+  "plain: distance to tree / grass": [
+   0.018,
+   1.4
+  ],
+  "plain: wood slot predicted to change": 0.0,
+  "weighted (105.2): front tile predicted grass": 134,
+  "weighted: wood slot predicted to change": 0.949
+ },
+ "do's 630 scored changes (held out)": {
+  "sapling +1 (probability 0.1 per do on grass)": 275,
+  "tree to grass": 132,
+  "wood +1": 132,
+  "other": 91
+ }
+}

@@ -1,0 +1,507 @@
+{
+ "card": "104.1",
+ "date": "2026-10-13",
+ "gate (worker 10, M alone, flat prior)": {
+  "worker": 10,
+  "evidence steps": 5811,
+  "raft x4": {
+   "blocked moves, by day": [
+    1.0,
+    305
+   ],
+   "blocked moves, at night": [
+    1.0,
+    177
+   ],
+   "blocked moves": [
+    1.0,
+    482
+   ],
+   "moves that succeeded, by day": [
+    0.0271,
+    4572
+   ],
+   "moves that succeeded, at night": [
+    0.2378,
+    757
+   ],
+   "moves that succeeded": [
+    0.057,
+    5329
+   ],
+   "pairs per second, batched": 219.3,
+   "steps per second, one at a time": 78.1
+  },
+  "raft hi": {
+   "blocked moves, by day": [
+    1.0,
+    305
+   ],
+   "blocked moves, at night": [
+    1.0,
+    177
+   ],
+   "blocked moves": [
+    1.0,
+    482
+   ],
+   "moves that succeeded, by day": [
+    0.4414,
+    4572
+   ],
+   "moves that succeeded, at night": [
+    0.5561,
+    757
+   ],
+   "moves that succeeded": [
+    0.4577,
+    5329
+   ],
+   "pairs per second, batched": 169.3,
+   "steps per second, one at a time": 85.7
+  },
+  "cotracker x4": {
+   "blocked moves, by day": [
+    1.0,
+    305
+   ],
+   "blocked moves, at night": [
+    1.0,
+    177
+   ],
+   "blocked moves": [
+    1.0,
+    482
+   ],
+   "moves that succeeded, by day": [
+    0.0004,
+    4572
+   ],
+   "moves that succeeded, at night": [
+    0.0026,
+    757
+   ],
+   "moves that succeeded": [
+    0.0008,
+    5329
+   ],
+   "pairs per second, batched": 10.8,
+   "steps per second, one at a time": 10.5
+  }
+ },
+ "gate, cotracker at 16 px": "not finished: cut by the 15-minute cap (one clip per batch, about 10 clips per second)",
+ "synthetic check (64 pairs, content moved exactly one tile; share of points within 1.5 px of the truth)": {
+  "random noise": {
+   "raft": 1.0,
+   "cotracker": 0.997
+  },
+  "Crafter frames": {
+   "raft": 0.329,
+   "cotracker": 0.183
+  },
+  "no motion, either": 1.0
+ },
+ "development sweep, RAFT + habit (worker 10)": {
+  "x4": {
+   "M + habit, by tau: (tau, blocked right, succeeded right)": [
+    [
+     1,
+     1.0,
+     0.057
+    ],
+    [
+     10,
+     1.0,
+     0.0572
+    ],
+    [
+     100,
+     1.0,
+     0.0587
+    ],
+    [
+     1000.0,
+     1.0,
+     0.0657
+    ],
+    [
+     10000.0,
+     0.9979,
+     0.2434
+    ],
+    [
+     100000.0,
+     0.0,
+     1.0
+    ],
+    [
+     1000000.0,
+     0.0,
+     1.0
+    ],
+    [
+     10000000.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "share of points agreeing with the one-tile shift: mean on blocked, on succeeded": [
+    0.0002,
+    0.0994
+   ],
+   "its separation of blocked from succeeded (AUC)": 0.8957,
+   "its best single threshold (evaluator's choice): blocked right, succeeded right, threshold": [
+    0.971,
+    0.8035,
+    0.0
+   ]
+  },
+  "hi": {
+   "M + habit, by tau: (tau, blocked right, succeeded right)": [
+    [
+     1,
+     1.0,
+     0.4577
+    ],
+    [
+     10,
+     1.0,
+     0.459
+    ],
+    [
+     100,
+     1.0,
+     0.4643
+    ],
+    [
+     1000.0,
+     1.0,
+     0.4823
+    ],
+    [
+     10000.0,
+     1.0,
+     0.595
+    ],
+    [
+     100000.0,
+     0.0,
+     1.0
+    ],
+    [
+     1000000.0,
+     0.0,
+     1.0
+    ],
+    [
+     10000000.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "share of points agreeing with the one-tile shift: mean on blocked, on succeeded": [
+    0.0002,
+    0.4468
+   ],
+   "its separation of blocked from succeeded (AUC)": 0.9407,
+   "its best single threshold (evaluator's choice): blocked right, succeeded right, threshold": [
+    0.9585,
+    0.8895,
+    0.0
+   ]
+  }
+ },
+ "held-out sweep, RAFT 64 px x4 + habit (105.9's test set)": {
+  "curr 8": {
+   "M + habit, by tau: (tau, blocked right, succeeded right)": [
+    [
+     1,
+     1.0,
+     0.0283
+    ],
+    [
+     10,
+     1.0,
+     0.0283
+    ],
+    [
+     100,
+     1.0,
+     0.0288
+    ],
+    [
+     1000.0,
+     1.0,
+     0.0367
+    ],
+    [
+     10000.0,
+     1.0,
+     0.2369
+    ],
+    [
+     30000.0,
+     0.0,
+     1.0
+    ],
+    [
+     100000.0,
+     0.0,
+     1.0
+    ],
+    [
+     1000000.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "share of points agreeing with the one-tile shift: mean on blocked, on succeeded": [
+    0.0003,
+    0.0883
+   ],
+   "its separation of blocked from succeeded (AUC)": 0.9888,
+   "its best single threshold (evaluator's choice): blocked right, succeeded right, threshold": [
+    0.9437,
+    0.9796,
+    0.0
+   ],
+   "n (blocked, succeeded)": [
+    462,
+    2153
+   ]
+  },
+  "curr 9": {
+   "M + habit, by tau: (tau, blocked right, succeeded right)": [
+    [
+     1,
+     1.0,
+     0.0289
+    ],
+    [
+     10,
+     1.0,
+     0.0289
+    ],
+    [
+     100,
+     1.0,
+     0.0299
+    ],
+    [
+     1000.0,
+     1.0,
+     0.0347
+    ],
+    [
+     10000.0,
+     1.0,
+     0.2014
+    ],
+    [
+     30000.0,
+     0.0,
+     1.0
+    ],
+    [
+     100000.0,
+     0.0,
+     1.0
+    ],
+    [
+     1000000.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "share of points agreeing with the one-tile shift: mean on blocked, on succeeded": [
+    0.0002,
+    0.0815
+   ],
+   "its separation of blocked from succeeded (AUC)": 0.9953,
+   "its best single threshold (evaluator's choice): blocked right, succeeded right, threshold": [
+    0.951,
+    0.9918,
+    0.0
+   ],
+   "n (blocked, succeeded)": [
+    449,
+    2075
+   ]
+  },
+  "play 8": {
+   "M + habit, by tau: (tau, blocked right, succeeded right)": [
+    [
+     1,
+     1.0,
+     0.0518
+    ],
+    [
+     10,
+     1.0,
+     0.052
+    ],
+    [
+     100,
+     1.0,
+     0.0528
+    ],
+    [
+     1000.0,
+     1.0,
+     0.0607
+    ],
+    [
+     10000.0,
+     0.998,
+     0.2238
+    ],
+    [
+     30000.0,
+     0.0,
+     1.0
+    ],
+    [
+     100000.0,
+     0.0,
+     1.0
+    ],
+    [
+     1000000.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "share of points agreeing with the one-tile shift: mean on blocked, on succeeded": [
+    0.0003,
+    0.0936
+   ],
+   "its separation of blocked from succeeded (AUC)": 0.8913,
+   "its best single threshold (evaluator's choice): blocked right, succeeded right, threshold": [
+    0.9418,
+    0.8069,
+    0.0
+   ],
+   "n (blocked, succeeded)": [
+    498,
+    5325
+   ]
+  },
+  "play 9": {
+   "M + habit, by tau: (tau, blocked right, succeeded right)": [
+    [
+     1,
+     1.0,
+     0.0406
+    ],
+    [
+     10,
+     1.0,
+     0.0412
+    ],
+    [
+     100,
+     1.0,
+     0.0419
+    ],
+    [
+     1000.0,
+     1.0,
+     0.0463
+    ],
+    [
+     10000.0,
+     1.0,
+     0.1787
+    ],
+    [
+     30000.0,
+     0.0,
+     1.0
+    ],
+    [
+     100000.0,
+     0.0,
+     1.0
+    ],
+    [
+     1000000.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "share of points agreeing with the one-tile shift: mean on blocked, on succeeded": [
+    0.0003,
+    0.0764
+   ],
+   "its separation of blocked from succeeded (AUC)": 0.8695,
+   "its best single threshold (evaluator's choice): blocked right, succeeded right, threshold": [
+    0.9363,
+    0.7704,
+    0.0
+   ],
+   "n (blocked, succeeded)": [
+    487,
+    5249
+   ]
+  },
+  "all": {
+   "M + habit, by tau: (tau, blocked right, succeeded right)": [
+    [
+     1,
+     1.0,
+     0.0412
+    ],
+    [
+     10,
+     1.0,
+     0.0415
+    ],
+    [
+     100,
+     1.0,
+     0.0422
+    ],
+    [
+     1000.0,
+     1.0,
+     0.0484
+    ],
+    [
+     10000.0,
+     0.9995,
+     0.2066
+    ],
+    [
+     30000.0,
+     0.0,
+     1.0
+    ],
+    [
+     100000.0,
+     0.0,
+     1.0
+    ],
+    [
+     1000000.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "share of points agreeing with the one-tile shift: mean on blocked, on succeeded": [
+    0.0003,
+    0.085
+   ],
+   "its separation of blocked from succeeded (AUC)": 0.9133,
+   "its best single threshold (evaluator's choice): blocked right, succeeded right, threshold": [
+    0.943,
+    0.845,
+    0.0
+   ],
+   "n (blocked, succeeded)": [
+    1896,
+    14802
+   ]
+  }
+ },
+ "criterion 3": "not run (criteria 1 and 2 cannot pass together at any tau)"
+}
