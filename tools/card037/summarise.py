@@ -72,7 +72,7 @@ def main():
     res["arms"]["4_recall_lambda_at_start"]["stopped_at_25_minutes"] = {
         "not_finished": {"400": "first world's model not built after 25 minutes", "409": "building for about 10 minutes"},
         "not_run": [401, 402, 403, 404]}
-    out = ROOT / "experiments" / "037-recall-in-the-planner" / "results.json"
+    out = ROOT / "experiments" / "archive" / "037-recall-in-the-planner" / "results.json"
     out.write_text(json.dumps(res, indent=1) + "\n")
     print(json.dumps({k: v["criteria_seeds"] for k, v in res["arms"].items()}))
 

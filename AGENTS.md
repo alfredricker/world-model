@@ -15,6 +15,9 @@ Read, in order, and nothing else unless the task needs it:
 5. The "Current focus" section of [LITERATURE.md](LITERATURE.md).
 6. The active card under `experiments/`.
 
+New cards follow CHARTER's Roadmap: the next card serves the first step
+not yet built, and names that step.
+
 Read [LESSONS.md](LESSONS.md) before proposing any change to the model or the
 data. Use [LITERATURE.md](LITERATURE.md) and `papi` when a component's source
 matters. `python tools/index.py` lists every experiment.
@@ -26,7 +29,7 @@ There are no other documents. Do not create notes, reviews or summaries.
 | Information | Place |
 |---|---|
 | What the finished system must do | `GOAL.md`; only the user changes it |
-| A planned or finished experiment | `experiments/NNN-name/card.md` from [the template](experiments/_template/card.md), numbers in `results.json` |
+| A planned or finished experiment | `experiments/NNN-name/card.md` from [the template](experiments/_template/card.md), numbers in `results.json`; cards 001–101 (the MiniGrid agent up to version 27, and series 098) are in `experiments/archive/` |
 | Where we are now | `STATUS.md`, **overwritten**, at most 40 lines |
 | The current model | `ARCHITECTURE.md`; bump `arch_version` and add a change-log line when it changes |
 | A durable lesson with evidence | `LESSONS.md`; prune or merge, never let it exceed three pages (the user, 2026-10-01) |

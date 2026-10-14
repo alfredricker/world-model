@@ -23,7 +23,7 @@ would predict and act on them, and the codes would lose nothing. Serves:
 - C5, nothing lost.
 
 This follows [card 033](../033-relation-codes/card.md), which was stopped.
-The direction is set out in [CHARTER.md](../../CHARTER.md), under "Current
+The direction is set out in [CHARTER.md](../../../CHARTER.md), under "Current
 direction":
 - codes are names, and kinds are distributed across the codebooks;
 - recall replaces counting, and nothing is merged;

@@ -152,7 +152,7 @@ al.; Gatys et al.; Tenenbaum and Freeman), until card 089's decision.
 
 Previous focus (card 082, set 2026-10-06):
 
-- **Card / rung:** [card 082](experiments/082-reasoning-over-recalled-tries/card.md),
+- **Card / rung:** [card 082](experiments/archive/082-reasoning-over-recalled-tries/card.md),
   a network that reasons over recalled tries. Rung 6 (P3), with P10 and
   P21. Set with the user on 2026-10-06, after cards 076–081: recall
   compares the query with each stored try separately and votes, so it
@@ -180,9 +180,9 @@ Previous focus (card 082, set 2026-10-06):
 
 Previous focus (cards 049–050, set 2026-10-03):
 
-- **Card / rung:** [card 049](experiments/049-recall-through-conditions/card.md),
+- **Card / rung:** [card 049](experiments/archive/049-recall-through-conditions/card.md),
   recall through the conditions that matter, and
-  [card 050](experiments/050-own-tries-first/card.md), own tries first
+  [card 050](experiments/archive/050-own-tries-first/card.md), own tries first
   (kept as version 9, 2026-10-04). Before rung 1. Set with the user on
   2026-10-03, after tracing card 048's failures. In both, a token in view
   that does not matter to the action (a second door; a key missing from
@@ -216,8 +216,8 @@ Previous focus (cards 049–050, set 2026-10-03):
 
 Previous focus (cards 036–037, set 2026-09-29):
 
-- **Card / rung:** [card 036](experiments/036-fresh-codes/card.md), fresh
-  codes for new things, then [card 037](experiments/037-recall-in-the-planner/card.md),
+- **Card / rung:** [card 036](experiments/archive/036-fresh-codes/card.md), fresh
+  codes for new things, then [card 037](experiments/archive/037-recall-in-the-planner/card.md),
   recall in the planner. Before rung 1. Set with the user on 2026-09-29,
   after card 035 stopped. Recall on the encoder's vectors replaces the
   counted lookup behind the planner's entries, and novelty is judged per
@@ -238,7 +238,7 @@ Previous focus (cards 036–037, set 2026-09-29):
 
 Previous focus (card 035, stopped 2026-09-29):
 
-- **Card / rung:** [card 035](experiments/035-novelty-from-own-tiles/card.md),
+- **Card / rung:** [card 035](experiments/archive/035-novelty-from-own-tiles/card.md),
   novelty from a code's own tiles: card 034's recall-trained codes, read
   with a new rule. A tile is "new" in a codebook only when it lies
   farther from its nearest code than α times that code's own spread, with
@@ -263,7 +263,7 @@ Previous focus (card 035, stopped 2026-09-29):
 
 Previous focus (card 034, stopped 2026-09-29):
 
-- **Card / rung:** [card 034](experiments/034-recall-teaches-the-encoder/card.md),
+- **Card / rung:** [card 034](experiments/archive/034-recall-teaches-the-encoder/card.md),
   recall teaches the encoder: card 033's recall term trains card 031's
   encoder, with room in the codebooks, so that things that act alike share
   codes and a new appearance falls in with them. Before
@@ -287,7 +287,7 @@ Previous focus (card 034, stopped 2026-09-29):
 
 Previous focus (card 033, stopped 2026-09-29):
 
-- **Card / rung:** [card 033](experiments/033-relation-codes/card.md),
+- **Card / rung:** [card 033](experiments/archive/033-relation-codes/card.md),
   relation codes: recall of door tries, compared in card 031's encoder,
   predicts a door of a never-seen colour; "fits" becomes a code when it
   explains the tries more cheaply than one rule per colour. Before rung 1.
@@ -311,9 +311,9 @@ Previous focus (card 033, stopped 2026-09-29):
 
 Previous focus (card 032, stopped 2026-09-29):
 
-- **Card / rung:** [card 032](experiments/032-fewest-codes/card.md),
+- **Card / rung:** [card 032](experiments/archive/032-fewest-codes/card.md),
   fewest codes: card 031's encoder must describe the tiles with as few
-  codes as it can. [Card 031](experiments/031-codes-from-pixels/card.md)
+  codes as it can. [Card 031](experiments/archive/031-codes-from-pixels/card.md)
   (codes from pixels; revise) found that learned codes lose nothing but
   name tiles arbitrarily. Before rung 1. Changed with the user,
   2026-09-29, when card 030 was stopped.
@@ -385,7 +385,7 @@ Previous focus (card 030, stopped 2026-09-29; still the reading for the
 card on rules with a shared variable):
 
 - **Card / rung:** the transfer card, to be drafted from
-  [card 029's appendix B](experiments/029-subgoals-from-the-model/card.md):
+  [card 029's appendix B](experiments/archive/029-subgoals-from-the-model/card.md):
   attributes found as recurring differences, rules over relations, a
   withheld colour as the test. Before rung 1. Changed with the user,
   2026-09-28.

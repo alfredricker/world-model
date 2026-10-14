@@ -19,7 +19,8 @@ def front_matter(path: Path) -> dict:
 
 def main():
     root = Path(__file__).resolve().parent.parent / "experiments"
-    rows = [front_matter(p) for p in sorted(root.glob("[0-9]*/card.md"))]
+    cards = list(root.glob("archive/[0-9]*/card.md")) + list(root.glob("[0-9]*/card.md"))  # archive: 001-101
+    rows = [front_matter(p) for p in sorted(cards, key=lambda p: p.parent.name)]
     print(" | ".join(FIELDS))
     for meta in rows:
         print(" | ".join(meta.get(f, "") for f in FIELDS))

@@ -12,7 +12,7 @@ date: 2026-10-06
 # 082: reasoning over recalled tries
 
 Drafted at the user's request (2026-10-06), after the literature review
-in [LITERATURE.md](../../LITERATURE.md) (current focus) and CHARTER's
+in [LITERATURE.md](../../../LITERATURE.md) (current focus) and CHARTER's
 "recall and networks, each where it predicts better". Report only;
 putting it into the agent is a later card.
 

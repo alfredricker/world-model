@@ -4,7 +4,7 @@ arch_version: 27
 
 # Architecture
 
-Version 27 ([card 101](experiments/101-one-rule-with-no-plan/card.md),
+Version 27 ([card 101](experiments/archive/101-one-rule-with-no-plan/card.md),
 2026-10-10) has one rule for acting when the planner finds no plan and
 nothing unseen is left to walk to. It replaces card 095.7's inform and
 card 072's trying:
@@ -24,7 +24,7 @@ card 072's trying:
   - fresh tier 3 seeds 100/100 (26: 98/100), with no fallback loop.
     Seeds both versions win take 146.1 steps against 141.2.
 
-Version 26 ([card 100](experiments/100-one-held-intention/card.md),
+Version 26 ([card 100](experiments/archive/100-one-held-intention/card.md),
 2026-10-10) keeps choices between steps in one place, the intention:
 - Card 051's kept achievers and card 060's kept door are gone; the
   intention already holds both between triggers.
@@ -40,7 +40,7 @@ Version 26 ([card 100](experiments/100-one-held-intention/card.md),
 - The seed it loses had been won through card 074.1's memory of a tie
   resolved earlier in the episode, outside the last chain.
 
-Version 25 ([card 099](experiments/099-version-24-without-dead-parts/card.md),
+Version 25 ([card 099](experiments/archive/099-version-24-without-dead-parts/card.md),
 2026-10-10) is version 24 without the parts it no longer read:
 - Arm C alone predicts pick up, drop and toggle. It fits on its own store
   how much this episode's tries count.
@@ -65,13 +65,13 @@ below are history.
 
 Version 23 is version 21 with two changes found while chasing tier 3's
 failures overnight (2026-10-10, under the user's overnight authority):
-- **Exploring uncertain results** (version 22, [card 095.7](experiments/095.7-exploring-uncertain-results/card.md)): when
+- **Exploring uncertain results** (version 22, [card 095.7](experiments/archive/095.7-exploring-uncertain-results/card.md)): when
   there is no plan and nothing unseen to walk to, the agent acts on the
   nearest token whose result arm C is unsure of: the winning value's
   share of its way's neighbour weight below 0.8 (a grey box: about 1/6,
   since its key can be any of six colours). Before, boxes were opened
   only by random actions.
-- **An intention held between steps** (version 23, [card 097.2](experiments/097.2-running-a-skill/card.md), card
+- **An intention held between steps** (version 23, [card 097.2](experiments/archive/097.2-running-a-skill/card.md), card
   093's design): the chosen plan's chain of conditions is kept; each
   step continues the deepest unmet condition, the met ones below it
   protected, and deliberates from the top only on a trigger (the chain
@@ -83,7 +83,7 @@ Tier 1 200/200; tier 2 100/100 in 30 steps; tier 3 **30/30** in 129 steps
 (MiniGrid return 0.97); 100 fresh tier 3 seeds 99/100 (version 21:
 88/100; 12 won, 1 lost).
 
-Version 24 ([card 095.5](experiments/095.5-goals-over-the-predicted-state/card.md)): the planner's candidate hands, for an
+Version 24 ([card 095.5](experiments/archive/095.5-goals-over-the-predicted-state/card.md)): the planner's candidate hands, for an
 action's conditions and for "can this token be made walkable", come from
 arm C's store (the hands under which the action changed a token, this
 episode's own tries, card 072's guess), each judged by arm C, instead of
@@ -92,9 +92,9 @@ interaction stores are no longer read (still built at setup).
 
 Version 21 is version 20 with recall's prediction for pick up, drop and
 toggle replaced by card 095's state-change rule
-([card 095.3](experiments/095.3-state-change-in-the-agent/card.md), kept
+([card 095.3](experiments/archive/095.3-state-change-in-the-agent/card.md), kept
 2026-10-10 under the user's overnight authority):
-- **One rule for every token** ([095.1](experiments/095.1-which-tokens-change/card.md)): whether a token
+- **One rule for every token** ([095.1](experiments/archive/095.1-which-tokens-change/card.md)): whether a token
   changes, and what it becomes, is arm C: a vote over stored token
   instances (arm B, Hintzman's exemplar model, on conditions admitted by
   leave-one-out gain) with arm A's network (attention over a state's
@@ -106,7 +106,7 @@ toggle replaced by card 095's state-change rule
   the hand's; conditions on other places are marginalised (095.3's gate:
   no loss on held-out tries), so every query, real or imagined, is keyed
   on (action, front, hand) and cached for the run.
-- **At scale** ([095.2](experiments/095.2-recall-at-scale/card.md)): an exact radius index over the
+- **At scale** ([095.2](experiments/archive/095.2-recall-at-scale/card.md)): an exact radius index over the
   vote's metric and forgetting of stored groups that change no
   prediction.
 - **Unchanged:** own tries first (this episode's tries at the same
@@ -119,7 +119,7 @@ steps; tier 3 **24/30** (20: 14/30, better; 11 won, 1 lost, p = 0.006),
 0.038 s per step (20: 1.45).
 
 Version 20 is version 19 with two changes found while running card 092
-overnight ([card 091.1](experiments/091.1-router-within-identity/card.md),
+overnight ([card 091.1](experiments/archive/091.1-router-within-identity/card.md),
 kept 2026-10-09 under the user's overnight authority; the user may
 revert):
 - **Identity before the router.** Where stored keys share the query's
@@ -142,7 +142,7 @@ solved; tier 3 **14/30** (18: 5/30, 10 seeds won and 1 lost; 19: 0/30),
 1.45 s per step.
 
 Version 19 is version 18 with recall's prior read through a router
-([card 091](experiments/091-router-trained-on-diverse-worlds/card.md),
+([card 091](experiments/archive/091-router-trained-on-diverse-worlds/card.md),
 kept by the user 2026-10-08). Where a query has no tries of its own
 (own tries first is unchanged, card 050), version 18's neighbour vote
 over fitted weights per number is replaced by a vote over the stored
@@ -170,9 +170,9 @@ door in 28 of 30 episodes, from the router's interaction predictions
 (being traced). Random actions on tier 2 rose from 21% to 36% of steps.
 
 Version 18 is version 17 with orders read from plans and two-part needs
-split ([card 074](experiments/074-conflicts-read-from-plans/card.md),
-[074.1](experiments/074.1-orders-with-ties-and-split-needs/card.md),
-[074.2](experiments/074.2-orders-within-time/card.md), kept 2026-10-06):
+split ([card 074](experiments/archive/074-conflicts-read-from-plans/card.md),
+[074.1](experiments/archive/074.1-orders-with-ties-and-split-needs/card.md),
+[074.2](experiments/archive/074.2-orders-within-time/card.md), kept 2026-10-06):
 - **Orders by planning** (Koehler and Hoffmann's Definition 8, answered
   by the agent's own planner): need B comes before need A when, in the
   situation A's chain produces, the planner finds no plan for B that
@@ -197,7 +197,7 @@ tier 1 100% in 24.4 steps (version 17: 20.8); tier 2 59% (version 17:
 25%, better), 4 episodes out of time (6), 0.124 s per step.
 
 Version 17 is version 16 with needs ordered by the states they conflict
-over ([card 073](experiments/073-order-needs-by-conflicting-states/card.md),
+over ([card 073](experiments/archive/073-order-needs-by-conflicting-states/card.md),
 kept 2026-10-06), Koehler and Hoffmann's reasonable goal orderings tested
 on recall's conditions: a condition B comes before a state A when, where
 A holds, B does not and every way to B needs a part A fixes (the held
@@ -209,11 +209,11 @@ so ordered. Decoy world with the key known 99% (version 16: 94%); tier 1
 100% in 20.8 steps; tier 2 25% (version 16: 2%, better), 0.12 s per step.
 
 Version 16 is version 15 with three parts of one change
-([card 072](experiments/072-try-the-likeliest-way/card.md), kept by the
+([card 072](experiments/archive/072-try-the-likeliest-way/card.md), kept by the
 user 2026-10-05):
 - **Card 070's encoder**: card 054's recipe plus a term in which a
   key and door are judged "fits" through their relation only, on tiles
-  of fresh hues ([card 070](experiments/070-relation-only-fresh-hues/card.md)).
+  of fresh hues ([card 070](experiments/archive/070-relation-only-fresh-hues/card.md)).
   It separates every matching pair from every other (66 of 66; 9 of 9
   for hues it never saw).
 - **The relation `rel:P`**, ‖P(z_front − z_held)‖₁ with P (8 × 32) from that
@@ -236,7 +236,7 @@ from setup in every episode (the user, 2026-10-05: keeping it across
 episodes is not worth its costs for now).
 
 Version 15 is version 14 with walking that keeps nothing per pair of
-placements ([card 067](experiments/067-closeness-by-propagation/card.md),
+placements ([card 067](experiments/archive/067-closeness-by-propagation/card.md),
 kept 2026-10-05). For one situation and one need, every placement the
 agent could stand at takes its closeness to the need from its
 neighbours only (the need's placements are 0; any other is one more than
@@ -247,7 +247,7 @@ memory has seen made walkable can be crossed at one step more, and the
 first a least route crosses becomes the condition ("walk", j). Version
 14's how-soon network and its tables over every pair of the 676
 placements are gone, so the token lattice is sized to the map. On
-CHARTER's MiniGrid tiers ([card 066](experiments/066-minigrid-tiers/card.md)):
+CHARTER's MiniGrid tiers ([card 066](experiments/archive/066-minigrid-tiers/card.md)):
 DoorKey-8x8 100% (200 episodes, the same steps as version 14 in 199,
 2.1 ms per step against 2.9), BlockedUnlockPickup 0% as version 14 (memory
 and recall stop it, not walking), ObstructedMaze-Full: memory cannot yet
@@ -257,7 +257,7 @@ Version 14 is version 13 with each stored pick up, toggle and drop
 recording what the agent believed was around it (its tiles seen so far
 through the 7 × 7 occluded view, placed by its own motion) instead of
 the full window
-([card 062](experiments/062-tries-stored-as-believed/card.md); versions
+([card 062](experiments/archive/062-tries-stored-as-believed/card.md); versions
 11–14 kept overnight on 2026-10-05 and confirmed by the user the same day,
 with card 054's encoder). With it the planner's
 whole starting memory is learned from the view the agent has. The same
@@ -268,7 +268,7 @@ at 1.27 times (full view: 1.00 and 1.06).
 
 Version 13 is version 12 with the move model and undraw learned from the
 7 × 7 occluded view instead of the whole map
-([card 061](experiments/061-moves-learned-from-the-small-view/card.md),
+([card 061](experiments/archive/061-moves-learned-from-the-small-view/card.md),
 kept overnight on 2026-10-05, confirmed by the user): correspondences
 are counted only where both places were observed, and one rigid
 transformation per move is fitted to them by trimmed least squares;
@@ -278,7 +278,7 @@ toggle and drop still store what was in the full window.
 
 Version 12 is version 11 with MiniGrid's occlusion: walls and closed
 doors hide what lies behind them
-([card 060](experiments/060-walls-hide-what-is-behind/card.md), kept
+([card 060](experiments/archive/060-walls-hide-what-is-behind/card.md), kept
 overnight on 2026-10-05, confirmed by the user). With no chain of
 conditions it looks only at never-seen places next to places it knows
 it can walk on; when there are none, it opens a door next to never-seen
@@ -290,7 +290,7 @@ one door 100% at 1.61 times the shortest route.
 Version 11 is version 10 seeing only MiniGrid's 7 × 7 view (six rows
 ahead, three columns to each side, nothing behind) instead of a window
 that always holds the map
-([card 057](experiments/057-view-smaller-than-the-map/card.md), kept
+([card 057](experiments/archive/057-view-smaller-than-the-map/card.md), kept
 overnight on 2026-10-05 under the user's overnight rules; for the user
 to confirm). It places each view among the placements its own action
 could lead to, keeps what it has seen as tokens, stores its tries with
@@ -305,27 +305,27 @@ per step no longer grows with memory, and a planner that keeps its
 chain between steps: threats between the needs of one achiever, the
 choices of the last step tried first, routes through two blocked tokens,
 and the hand kept when only the view is asked for
-([card 051](experiments/051-planner-chains-and-rules/card.md), kept on
+([card 051](experiments/archive/051-planner-chains-and-rules/card.md), kept on
 2026-10-04). Version 9 is version 8 with a new recall: an action's outcome is
 predicted only from the conditions that changed outcomes in memory, and
 a situation's own tries come before its neighbours
-([card 049](experiments/049-recall-through-conditions/card.md) and
-[card 050](experiments/050-own-tries-first/card.md), kept on
+([card 049](experiments/archive/049-recall-through-conditions/card.md) and
+[card 050](experiments/archive/050-own-tries-first/card.md), kept on
 2026-10-04). Version 8 plans on the encoder's vectors, with the state
 held as tokens and walking as a learned approach plus its conditions. It
 was built up in cards 038–047:
 - version 6 was kept with
-  [card 043](experiments/043-consistent-hypotheticals/card.md);
-- [card 044](experiments/044-state-as-tokens/card.md) made the state a
+  [card 043](experiments/archive/043-consistent-hypotheticals/card.md);
+- [card 044](experiments/archive/044-state-as-tokens/card.md) made the state a
   set of tokens, each a what and a where;
-- [card 045](experiments/045-movement-through-conditions/card.md) made
+- [card 045](experiments/archive/045-movement-through-conditions/card.md) made
   walking a learned approach plus its conditions;
-- [card 047](experiments/047-situations-from-both-levels/card.md) takes
+- [card 047](experiments/archive/047-situations-from-both-levels/card.md) takes
   the situations for an action on a thing from both of recall's levels.
 
 It follows
 the direction signed off in
-[card 022](experiments/022-effects-post-mortem/card.md): the primitive is
+[card 022](experiments/archive/022-effects-post-mortem/card.md): the primitive is
 the effect of an action, learned from the agent's own outcomes, and moves
 are actions like any other. It also follows CHARTER.md's "Current
 direction": one latent space, codes as names, recall instead of counting.

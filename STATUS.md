@@ -22,9 +22,11 @@ Overwritten each session. At most 40 lines.
   conditions a goal needs and evaluates them from state and memory, with no forecast of when.
   CHARTER: System 1 (the one-step model, always on) and System 2 (statements: effect,
   conditions, spoilers; evaluated selectively from memory). Telling look-alikes apart deferred.
+- **Roadmap (CHARTER, new):** the model's trajectory in 7 steps; next cards come from the first
+  step not built. Steps 1–2 built in Crafter; step 3, belief over conditions, is next.
 - **Active card: [109](experiments/109-conditions-from-memory/card.md), conditions from memory
-  (draft).** A breaking world of searched caves: gems never come back, berries regrow; belief
-  from sight, else recall of revisits, else recall of first sightings. About 12 minutes.
+  (draft, step 3).** Searched caves: gems never come back, berries regrow. Recall against a
+  memory network, both trained by predicting what is seen next at a place. About 17 minutes.
 - **Decisions for the user:**
   1. **Approve 109.**
   2. **The ladder:** rung 1 still tests "how close a goal is" (steps to the goal), which P12 no
@@ -32,8 +34,7 @@ Overwritten each session. At most 40 lines.
      and 106 score them), rung 2 "evaluate them from state and memory" (109).
   3. **GOAL's other "how soon" lines:** the opening paragraph ("infer proximity"), C6, P19 and
      the suggested order still say it.
-  4. **Card folders:** 167 at the top of `experiments/`; a proposal to archive 001-101.
-  5. Earlier: 107's tuned head; GOAL C1 and depth; 105.5 in Crafter; 106's next filter.
-- **Docs:** LESSONS 1,992 words (two view-placing lessons merged to make room for 108's); the
+  4. Earlier: 107's tuned head; GOAL C1 and depth; 105.5 in Crafter; 106's next filter.
+- **Docs:** cards 001–101 moved to `experiments/archive/`. LESSONS 1,992 words (two view-placing lessons merged to make room for 108's); the
   paper's abstract overclaims (open). Every run is capped (CHARTER rule 5). Craftium's
   environments: `tools/card107/setup.sh`.

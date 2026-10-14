@@ -218,5 +218,5 @@ draft with the user) caches card 043's conditions by what they read (the
 situation's tiles and the stored try), which makes the same decisions,
 and reruns tier 2 and the time check. Version 17 stays the best version
 until then. The user's next card is
-[076](../076-remembered-orders-with-where/card.md): remembered orders
+[076](../076-router-for-remembered-orders/card.md): remembered orders
 that record where things are.

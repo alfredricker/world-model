@@ -97,7 +97,7 @@ goal is, then which conditions it needs, then acting on those conditions as
 subgoals, then deliberating over them.
 
 **Theory first** (agreed with the user 2026-09-26). The theory of
-conditions ([card 003](experiments/003-conditions-theory-check/card.md),
+conditions ([card 003](experiments/archive/003-conditions-theory-check/card.md),
 section 2) is checked with exact computation in a small key-and-door world
 before architectures are compared: a condition is what an achieving action
 needs, found by contrasting successes with failed attempts, and each
@@ -297,6 +297,30 @@ these; rule 8 guards against sliding back.
 - **Transfer is judged by tries.** How quickly a new thing is mapped onto
   known ones matters more than getting it right at first sight.
 - **Goals are any condition** over codes, positions and relations.
+
+## Roadmap
+
+The model's trajectory: the parts the brain needs, in the order cards
+build them (the user, 2026-10-14). Every card names the step it serves.
+Between sessions, the next card comes from the first step that is not
+built. Steps and their order change only with the user. Perception's
+adapter for Craftium (tokens and their places from the pose) runs in
+parallel; its cards name no step.
+
+| Step | Part | What it is | Built so far | Status |
+|---|---|---|---|---|
+| 1 | System 1, one step | One transition model over token vectors, for every action and the world's own changes | Series 105, with the view placed by the pose (105.10) | built in Crafter; "do" changes 85–90% |
+| 2 | Conditions of one-step effects | A token is a condition if replacing it changes System 1's predicted effect, counted where two trained copies agree | 105.4, 106 | built in Crafter (precision 0.99–1.0); world 1's lamp going out open |
+| 3 | Belief over conditions | b(condition \| state, memory) for what is out of view: seen now, else remembered and carried forward by how such facts change, else a prior from what is remembered nearby. Recall and a memory network compared by the rule for recall and networks. Trained by predicting what is seen when a place next comes into view | Card 109 (draft) | next |
+| 4 | Skills (options) in System 1 | A skill runs toward a target condition about a target token and ends when it holds, or when it stalls or a spoiler fires: approaching a token, mining it, dodging an arrow. Targets are the conditions statements name. Policies are learned from the agent's own play by hindsight. Primitive actions are skills of one step | 097.1 learned walking in MiniGrid and stopped | not started |
+| 5 | Statements over skills | ⟨skill and its target token, conditions at the start, effect, spoilers, reliability⟩. Conditions are regions of the encoder's latent space, for the target token and for tokens related to it. They are read from System 1 by intervention, and from contrasting a skill's successes with its failures. Reliabilities come from recall or a network | One-step statements as exact codes and offsets (105.5, 106) | not started |
+| 6 | Planning over statements | Backward: the subgoal is the condition whose belief, set true, most raises the plan's evaluation per cost. Forward, one statement at a time: side effects, the world's own changes and spoilers; a break becomes a maintenance condition | 105.5 (world 1, one-step statements) | partial |
+| 7 | Tests with the shape of GOAL P12's examples | Sleeping safely at night in Crafter, then Craftium: a spoiler from another agent, a condition kept over an interval, alternatives compared by belief | | not started |
+
+The planner's evaluation of a plan is a belief, not a time: the product
+of its statements' reliabilities, the beliefs in the conditions it relies
+on, and the beliefs that no spoiler fires while a condition is held. The
+products assume independence, as a first approximation.
 
 ## Rules
 

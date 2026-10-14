@@ -37,7 +37,7 @@ after: ego pixels -> shared encoder -> (spatial map, context)
                                    -> conditions / readiness / walking
 ```
 
-[Architecture version 2](../../ARCHITECTURE.md) specifies the tensors and
+[Architecture version 2](../../../ARCHITECTURE.md) specifies the tensors and
 priors. Every 8-pixel patch uses the same encoder. Room features remain a
 13 × 13 map. Context combines their mean with features of the inventory
 patch, before any mixing between room patches. Thus context is invariant

@@ -44,27 +44,41 @@ what is out of view) and P10 (retrieval helps where the view cannot).
 ## 2. What changes
 
 One component: System 2's evaluation of a condition at a place out of
-view. System 1 (series 105) is not used beyond its tokens.
+view, in two arms judged by CHARTER's rule for recall and networks. System
+1 (series 105) is not used beyond its tokens. This is the first card of
+series 109, belief over conditions (CHARTER "Roadmap", step 3).
 
 ```
 version 27:  a place out of view is as last seen, forever (a declared static world)
 102.3:       a token out of view spreads by its kind's counted motion; places themselves are as last seen
-this card:   b(code c at place x), asked only for the places a query names:
-               in view          perception
-               remembered       recall over stored revisits: places seen with content like x's last sighting,
-                                seen again after a gap like x's; b = the weighted share that then showed c
-               never seen       recall over stored first sightings: places whose remembered surroundings were
-                                like x's; b = the weighted share that held c when first seen
+this card:   b(code c at place x), asked only for the places a query names; in view, perception; otherwise
+             arm R (recall)    remembered: recall over stored revisits, places seen with content like x's last
+                                 sighting and seen again after a gap like x's; b = the weighted share that then
+                                 showed c
+                               never seen: recall over stored first sightings of places whose remembered
+                                 surroundings were like x's; b = the weighted share that held c when first seen
+             arm N (network)   a small transformer: a query token (the code asked, at x) attends over the
+                                 remembered places within 4 tiles of x (vector, offset from x, age; places never
+                                 seen absent) and gives b
 ```
+
+**Both arms learn from the same signal, without labels.** Whenever a
+remembered or never-seen place comes into view, what is seen there is the
+target for the belief held one step before: predict what you will see
+when you look. Arm N is trained on these targets with the log-likelihood.
+The arm used for the criteria is the one with the better held-out
+log-likelihood on validation episodes, as CHARTER's rule says. Both arms
+are reported.
 
 **Details:**
 - **Memory.** The places as last seen (102.3's map, placed by the pose):
   each place's code, vector and step.
-- **Recall.** Weights use codes first and vectors for similarity (card
+- **Recall (arm R).** Weights use codes first and vectors for similarity (card
   042's two levels). The gap enters as the log of its ratio. Each
   bandwidth is fitted by leave-one-out on training episodes.
-- **Surroundings of a never-seen place.** The mean vector of remembered
-  places within 3 tiles. This pooling is declared and simple.
+- **Surroundings of a never-seen place (arm R).** The mean vector of
+  remembered places within 3 tiles. This pooling is declared and simple;
+  arm N reads the places themselves.
 - **Selective.** A query names its places, and nothing else is evaluated.
   Here the evaluator names the cave ends; a later card lets the planner
   name them. The cost per query is reported.
@@ -88,6 +102,8 @@ this card:   b(code c at place x), asked only for the places a query names:
   (105.10).
 - **042** (kept): recall in two levels, codes for identity and vectors
   for similarity.
+- **Arm N's form:** 105.6's transformer, positions read only as
+  differences through the bounded bias, with the age as one more input.
 - **The tokens:** 098.3's encoder recipe on this world's play, as 102.3
   did for world 3.
 - **The engine:** the breaking worlds (`tools/card102/worlds.py`); world
@@ -156,10 +172,11 @@ training episodes (10, 30, 100, 300; P19).
 - **Stop** if, on remembered places, belief is no better than static
   memory.
 
-**Budget:** about 12 minutes, every run capped (CHARTER rule 5):
+**Budget:** about 17 minutes, every run capped (CHARTER rule 5):
 - the world and its play, about 2 minutes;
 - the encoder, about 5 minutes;
-- recall and probes, about 3 minutes.
+- arm N's training, about 5 minutes;
+- recall, probes and scoring, about 5 minutes.
 
 ## Appendix A. World 6, "searched caves"
 

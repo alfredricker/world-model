@@ -420,7 +420,7 @@ objects that span many cells, as in ARC-AGI-3's games (grids up to
   and night) does not apply, since ARC's colours do not vary with light.
 - **Why it would not solve objects of many cells:**
   - A token is one tile, encoded alone
-    ([`tools/card098/encoder.py`](../../tools/card098/encoder.py), the
+    ([`tools/card098/encoder.py`](../../../tools/card098/encoder.py), the
     encoder sees a 7 × 7-pixel tile and no neighbours). In ARC a cell is
     one colour value, so every cell of a colour gets the same vector.
   - The walk then cannot tell same-coloured cells apart: when a shape
