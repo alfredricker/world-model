@@ -181,20 +181,48 @@ these; rule 8 guards against sliding back.
       the view and never overwrites what perception saw. Which tokens are
       remembered, and how they may move while unseen, are learned, not
       declared.
-- **Conditions come from the effect model** (the user, 2026-10-13).
-  - **What a condition is.** A fact about tokens that an effect is found
-    to depend on: changing that fact in the model's input changes the
-    predicted effect. The planner's conditions are these, not supplied
-    forms.
-  - **Chains.** An effect makes facts true, and those facts are
-    conditions of other effects. Chains of conditions are paths through
-    this graph.
+    - **Priority** (the user, 2026-10-14, after card 108 stopped): telling
+      look-alikes apart is deferred. Belief's first job is to evaluate the
+      conditions a plan needs (System 2, below).
+- **Two levels of effect model; conditions evaluated from state and
+  memory** (the user, 2026-10-14, with GOAL P12 replaced; this widens
+  "conditions come from the effect model", 2026-10-13).
+  - **System 1** is the one transition model above. It predicts every
+    token's next state at every step, for every action and the world's own
+    changes. It is cheap, and it is always on.
+  - **System 2 holds statements:** an effect, the conditions it needs, and
+    its spoilers. A spoiler is an effect that ends the goal or one of its
+    conditions, and it has conditions of its own.
+    - **Where statements come from.** A condition is a fact about tokens
+      that an effect is found to depend on: changing that fact in System
+      1's input changes the predicted effect (card 105.4). No single frame
+      shows conditions about places and memory, such as "a cave not yet
+      searched". These come from contrasting reached goals with failures.
+      Statements are stored and merged in sleep (card 106). They are not
+      supplied forms.
+    - **Evaluation, not forecasting.** System 2 does not predict when a
+      goal will be reached. For each condition a plan needs, it forms a
+      belief that the condition holds:
+      - seen now;
+      - else remembered, carried forward by what has been learned about
+        how that kind of fact changes while unseen;
+      - else a learned prior, given what can be seen.
+    - **Selective.** Evaluating from memory is expensive. So a condition is
+      evaluated only when the plan's chain asks for it, or a surprise
+      forces it.
+  - **Chains.** An effect makes facts true, and those facts are conditions
+    of other effects. Chains of conditions are paths through this graph.
   - **Searched from both ends.**
-    - Backward from the goal finds which conditions matter.
+    - Backward from the goal finds which conditions matter. These include
+      the conditions that keep a spoiler from firing.
     - Forward from the present, one imagined effect at a time (not frame
-      by frame), checks that a chain holds together: things used up, side
-      effects that undo a condition, and the world's own changes in the
-      meantime.
+      by frame), checks that a chain holds together. It looks for things
+      used up, side effects that undo a condition (the stair that wakes
+      the parents), and the world's own changes in the meantime. A break
+      found forward becomes a new condition.
+  - **One representation.** Statements and beliefs are over the same
+    token vectors as System 1 (C2). They are not a second model of the
+    world.
 - **One encoder.** A new comparison or readout reads, and if needed
   trains, the existing encoder that feeds the codebooks. Networks inside
   a component (an MLP as recall's metric, for example) are used where

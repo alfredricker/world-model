@@ -116,6 +116,8 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
     certain changes 83–87%, no-ops 94–96% (105.8).
   - **Pick the read-out.** Under it, read a place by probability, not by
     distance (17% → 97%).
+  - **A harder second query takes capacity:** k-step queries cut do's
+    changes by 2.8 and 15.7 points (108).
   - *Evidence:* cards 005, 006, 027, 102.2, 105.2, 105.7, 105.8.
     *Confirmed.*
 - **Train each place's source where the content changed; a blend of ways
@@ -165,19 +167,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
 - **Common fate groups tiles into objects once ground is learned and a
   mover must leave its place** (99.5% of moved shapes one token; no false
   group in 21,947 Crafter states). *Evidence:* card 102.2.
-- **Read the view's motion in the world's own units, count evidence per
-  independent observation, and expect what the model predicts.** Pixels,
-  not patches (0% → 94.9%). Evidence divided by τ = 300 pixels gave 99.3%
-  held out, τ chosen by the agent's own self-consistency. With the action's
-  habit as the prior, blocked moves were placed right only 76% of the time
-  (zombies 47%); with the transition model's predicted next place, 85%.
-  Pretrained motion models do not help: they read a world of repeated
-  tiles as still (an exact one-tile shift found at 18–33% of points, 100%
-  on noise; 4–5% of real moves). *Evidence:* cards 102.5–102.8,
-  103.1–103.4, 104.1, 105.9.
-- **Place a partial view with the agent's own motion, not by matching
-  alone** (a wrong placement that sees only new places matches perfectly).
-  *Evidence:* cards 057, 061, 098.8. *Confirmed* for these worlds.
+- **Place a view by the agent's own motion, not by matching alone;** a
+  wrong placement that sees only new places matches perfectly. Learned
+  view motion reached 99.3% held out, but placed only 76–85% of blocked
+  moves right. Pretrained motion models read repeated tiles as still (4–5%
+  of real moves). The pose now places the view (C1, 105.10). *Evidence:*
+  cards 057, 061, 098.8, 102.5–102.8, 103.1–103.4, 104.1, 105.9.
 
 ## Memory
 
@@ -190,6 +185,11 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
 - **A planner needs crisp identity: recall in two levels, mixed, not
   switched.** A failed try rules out its situation, not the thing (30% →
   17% when switched). *Evidence:* cards 042–047, 091, 091.1. *Confirmed.*
+- **A prediction of what a place will hold is not identity.** Score a
+  file by its own part (with the token minus without it), and link it
+  only to codes one token wears. Otherwise an arrow's file takes a
+  skeleton. The model kept 83.8% of returns, against 87.9% for counted
+  motion; given Q from labels, it tied. *Evidence:* card 108.
 - **Recall that compares by a network's context cannot see a condition
   the network has not learned** (11 iron-tool successes lost among 5,900
   failures). *Evidence:* card 102.1.

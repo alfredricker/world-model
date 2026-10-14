@@ -133,30 +133,62 @@ Each has a one-line meaning, an example, and the shape of a test.
 
 - **P12 Goals as conditions, subgoals from conditions.** A goal is a
   condition in the learned state (holding diamonds), expressed in the same
-  terms as experience. From any state the agent predicts how likely it is to
-  reach the goal, and how soon, if it acts competently. A reached goal is
-  certain; for "make an iron pickaxe", standing by a table and a furnace
-  with wood, coal and iron in hand is nearly certain and a few steps away.
-  When a goal is reached, by exploration or in a demonstration (P16), the
-  agent infers which conditions made that possible: the right tools, enough
-  health, being deep in a cave. The unmet conditions that most raise
-  that likelihood become more immediate subgoals, and so on down to actions.
-  Conditions are not supplied as forms. A condition is a fact about the
-  learned state that the agent's own model of effects is found to depend
-  on, and every change, the agent's moves included, comes from that one
-  model.
-  Goals are re-weighed as the situation changes: a threat that could end
-  every goal makes survival the immediate goal, while the agent tries to
-  keep the conditions it has built up. Survival need not be supplied: it
-  follows from death making every goal unreachable.
-  *Example:* wanting diamonds makes an iron pickaxe a subgoal, which makes
-  iron ore a subgoal; a skeleton in range interrupts all of them. In chained
-  rooms, "be in the last room" makes the key, then the door, subgoals; "have
-  3 wood" differs from "collected wood once". *Test:* for a goal it was not
-  trained on, the agent predicts how likely and how soon the goal is from
-  different states (checked against outcomes), pursues an unrewarded
-  condition because it raises that likelihood, and avoids a threat and then
-  resumes.
+  terms as experience. The agent knows which conditions a goal needs, and
+  evaluates them from its current state and its memory. It does not
+  forecast when the goal will be reached (the user, 2026-10-14, replacing
+  "how likely and how soon").
+  - **Statements.** What the agent knows about conditions takes the form of
+    statements: an effect, the conditions it needs, and its spoilers.
+    A spoiler is an effect that ends the goal or one of its conditions, and
+    it has conditions of its own. Making an iron pickaxe needs a table and a
+    furnace nearby and wood, coal and iron in hand. A parent stops a child
+    reaching for cheese when the parent is awake and sees or hears the
+    child. When a goal is reached, by exploration or in a demonstration
+    (P16), the agent infers which conditions made that possible, by
+    contrast with its failures.
+  - **Evaluation.** For each condition a plan needs, the agent forms a
+    belief that it holds:
+    - from what it sees now;
+    - else from memory, carried forward by what it has learned about how
+      that kind of fact changes while unseen (sleepers stay asleep unless
+      woken; a mined diamond never comes back);
+    - else from a learned prior, given what it can see (deep caves
+      sometimes hold diamonds).
+
+    The unmet or doubtful conditions that matter most become subgoals, and
+    so on down to actions. Alternatives are compared by these beliefs and
+    by their cost.
+  - **Two levels of effect model.** System 1's model predicts every token's
+    next state at every step: a cow's step, an arrow's flight, the agent's
+    own motion. System 2's statements are abstract and selective. They are
+    read from that model and from memory. A condition is evaluated only when
+    a plan needs it or a surprise forces it, since evaluating it from
+    memory is expensive. Both levels use the same learned state (C2).
+  - **Not supplied.** Conditions are not supplied as forms. A condition is
+    a fact about the learned state that the agent's own model of effects,
+    or its record of successes and failures, is found to depend on.
+  - **Goals are re-weighed as the situation changes.** A threat that could
+    end every goal makes survival the immediate goal, while the agent tries
+    to keep the conditions it has built up. Survival need not be supplied:
+    it follows from death making every goal unreachable.
+
+  *Example:*
+  - Wanting diamonds makes an iron pickaxe a subgoal, which makes iron ore
+    a subgoal. A cave already searched is believed empty, so the agent
+    goes where it has not been. A skeleton in range interrupts all of them.
+  - A child who wants cheese at night knows the parents stop it when they
+    see or hear it. It believes they are asleep, so it keeps them asleep
+    by avoiding the stair that creaks.
+
+  *Test:* for a goal it was not trained on, the agent:
+  - names the conditions the goal needs, checked against the world's
+    rules;
+  - holds beliefs in them that are calibrated against the truth, across
+    states and histories;
+  - chooses differently after two histories with the same view, where
+    memory decides;
+  - pursues an unrewarded condition because the goal needs it;
+  - avoids a threat and then resumes.
 - **P14 Execute and recover.** Carry out a plan with feedback; notice when
   effects did not happen and revise. *Test:* recovers after a perturbation.
 - **P15 Informative exploration.** Seek experience that resolves the

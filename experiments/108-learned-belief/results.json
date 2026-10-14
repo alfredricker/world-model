@@ -1,0 +1,1001 @@
+{
+ "criterion 3 (k-step model against 105.10, same seed)": {
+  "seed 1021": {
+   "moves": {
+    "105.10": 0.9998,
+    "card 108": 0.9995,
+    "change in points": -0.03,
+    "within 2 points": true
+   },
+   "blocked moves": {
+    "105.10": 0.9995,
+    "card 108": 0.9968,
+    "change in points": -0.27,
+    "within 2 points": true
+   },
+   "makes that made a tool": {
+    "105.10": 0.9619,
+    "card 108": 0.9449,
+    "change in points": -1.7,
+    "within 2 points": true
+   },
+   "do's changes, saplings left out": {
+    "105.10": 0.9043,
+    "card 108": 0.7469,
+    "change in points": -15.74,
+    "within 2 points": false
+   },
+   "place, whole state": {
+    "105.10": 0.9347,
+    "card 108": 0.9437,
+    "change in points": 0.9,
+    "within 2 points": true
+   }
+  },
+  "seed 7": {
+   "moves": {
+    "105.10": 0.9993,
+    "card 108": 0.9993,
+    "change in points": 0.0,
+    "within 2 points": true
+   },
+   "blocked moves": {
+    "105.10": 0.9989,
+    "card 108": 0.9979,
+    "change in points": -0.1,
+    "within 2 points": true
+   },
+   "makes that made a tool": {
+    "105.10": 0.9661,
+    "card 108": 0.9237,
+    "change in points": -4.24,
+    "within 2 points": false
+   },
+   "do's changes, saplings left out": {
+    "105.10": 0.8457,
+    "card 108": 0.8179,
+    "change in points": -2.78,
+    "within 2 points": false
+   },
+   "place, whole state": {
+    "105.10": 0.9338,
+    "card 108": 0.9454,
+    "change in points": 1.16,
+    "within 2 points": true
+   }
+  }
+ },
+ "gate check, seed 1021": {
+  "seed": 1021,
+  "creature codes": [
+   7,
+   17,
+   33,
+   36,
+   41,
+   43,
+   45,
+   46,
+   47,
+   49,
+   51,
+   52
+  ],
+  "k = 5": {
+   "creatures": 7943,
+   "log-likelihood: model, counted, stays": [
+    -3.1755,
+    -3.2198,
+    -6.8634
+   ],
+   "model - counted (95% interval)": [
+    0.0443,
+    0.0158,
+    0.0732
+   ],
+   "95% interval over segments": [
+    0.0016,
+    0.0862
+   ],
+   "segments": 785,
+   "place at t + k inside the patch": 0.9982
+  },
+  "k = 20": {
+   "creatures": 3437,
+   "log-likelihood: model, counted, stays": [
+    -4.8135,
+    -4.9459,
+    -8.2203
+   ],
+   "model - counted (95% interval)": [
+    0.1325,
+    0.0815,
+    0.1849
+   ],
+   "95% interval over segments": [
+    0.0427,
+    0.225
+   ],
+   "segments": 578,
+   "place at t + k inside the patch": 0.9424
+  },
+  "seconds": 21.5
+ },
+ "gate check, seed 7": {
+  "seed": 7,
+  "creature codes": [
+   7,
+   17,
+   36,
+   37,
+   41,
+   43,
+   45,
+   46,
+   47,
+   49,
+   51,
+   52
+  ],
+  "k = 5": {
+   "creatures": 7943,
+   "log-likelihood: model, counted, stays": [
+    -3.156,
+    -3.2198,
+    -6.8634
+   ],
+   "model - counted (95% interval)": [
+    0.0638,
+    0.0353,
+    0.0929
+   ],
+   "95% interval over segments": [
+    0.0236,
+    0.1034
+   ],
+   "segments": 785,
+   "place at t + k inside the patch": 0.9982
+  },
+  "k = 20": {
+   "creatures": 3437,
+   "log-likelihood: model, counted, stays": [
+    -4.9442,
+    -4.9459,
+    -8.2203
+   ],
+   "model - counted (95% interval)": [
+    0.0018,
+    -0.0492,
+    0.0537
+   ],
+   "95% interval over segments": [
+    -0.0824,
+    0.0901
+   ],
+   "segments": 578,
+   "place at t + k inside the patch": 0.9424
+  },
+  "seconds": 21.7
+ },
+ "belief: model_s1021": {
+  "form": "model",
+  "seed": 1021,
+  "1 returns within 50 steps, by day": 1465,
+  "1 identity kept on returns": 0.8382,
+  "returns: a candidate at the place / a file of the creature / linked to some file": [
+   0.9502,
+   0.9092,
+   0.8922
+  ],
+  "by kind (cow 1, zombie 2, skeleton 3)": {
+   "1": {
+    "returns": 1282,
+    "kept": 0.8635
+   },
+   "2": {
+    "returns": 18,
+    "kept": 0.3889
+   },
+   "3": {
+    "returns": 165,
+    "kept": 0.6909
+   }
+  },
+  "by time away": {
+   "1-5": {
+    "returns": 917,
+    "kept": 0.8888
+   },
+   "6-20": {
+    "returns": 470,
+    "kept": 0.7723
+   },
+   "21-50": {
+    "returns": 78,
+    "kept": 0.641
+   }
+  },
+  "2 IDF1": 0.8939,
+  "2 IDF1: ID recall, ID precision, objects, detections": [
+   0.8518,
+   0.9405,
+   34452,
+   31205
+  ],
+  "IDF1, arrows as objects (098.6)": 0.8524,
+  "IDF1, arrows as objects (098.6): ID recall, ID precision, objects, detections": [
+   0.8057,
+   0.9048,
+   38900,
+   34641
+  ],
+  "belief seconds per step": 0.00177,
+  "the agent's own codes": [
+   2,
+   18,
+   27,
+   35,
+   50
+  ],
+  "creature codes": [
+   7,
+   17,
+   33,
+   36,
+   41,
+   43,
+   45,
+   46,
+   47,
+   49,
+   51,
+   52
+  ],
+  "lambda (per place and step) and vanishing (per step), creature codes": {
+   "7": [
+    5.27e-05,
+    0.0015
+   ],
+   "17": [
+    0.000455,
+    0.0004
+   ],
+   "33": [
+    0.000111,
+    0.0122
+   ],
+   "36": [
+    9.61e-05,
+    0.0653
+   ],
+   "41": [
+    3.66e-05,
+    0.3389
+   ],
+   "43": [
+    0.000278,
+    0.0339
+   ],
+   "45": [
+    5.63e-05,
+    0.0932
+   ],
+   "46": [
+    2.87e-05,
+    0.0591
+   ],
+   "47": [
+    4.06e-05,
+    0.8382
+   ],
+   "49": [
+    1.86e-05,
+    0.0725
+   ],
+   "51": [
+    2.78e-05,
+    0.0198
+   ],
+   "52": [
+    6.16e-05,
+    0.0529
+   ]
+  },
+  "seconds": 90.9,
+  "1 paired against counted motion": {
+   "returns paired": 1465,
+   "difference in points": -4.1,
+   "95% interval (bootstrap over segments)": [
+    -5.54,
+    -2.69
+   ],
+   "kept only here / only by counted": [
+    20,
+    80
+   ],
+   "McNemar p": 0.0
+  }
+ },
+ "belief: model_s7": {
+  "form": "model",
+  "seed": 7,
+  "1 returns within 50 steps, by day": 1465,
+  "1 identity kept on returns": 0.8389,
+  "returns: a candidate at the place / a file of the creature / linked to some file": [
+   0.9502,
+   0.9106,
+   0.901
+  ],
+  "by kind (cow 1, zombie 2, skeleton 3)": {
+   "1": {
+    "returns": 1282,
+    "kept": 0.869
+   },
+   "2": {
+    "returns": 18,
+    "kept": 0.3889
+   },
+   "3": {
+    "returns": 165,
+    "kept": 0.6545
+   }
+  },
+  "by time away": {
+   "1-5": {
+    "returns": 917,
+    "kept": 0.8909
+   },
+   "6-20": {
+    "returns": 470,
+    "kept": 0.766
+   },
+   "21-50": {
+    "returns": 78,
+    "kept": 0.6667
+   }
+  },
+  "2 IDF1": 0.8898,
+  "2 IDF1: ID recall, ID precision, objects, detections": [
+   0.8526,
+   0.9303,
+   34452,
+   31573
+  ],
+  "IDF1, arrows as objects (098.6)": 0.8481,
+  "IDF1, arrows as objects (098.6): ID recall, ID precision, objects, detections": [
+   0.8057,
+   0.8953,
+   38900,
+   35009
+  ],
+  "belief seconds per step": 0.00171,
+  "the agent's own codes": [
+   2,
+   18,
+   27,
+   35,
+   50
+  ],
+  "creature codes": [
+   7,
+   17,
+   36,
+   37,
+   41,
+   43,
+   45,
+   46,
+   47,
+   49,
+   51,
+   52
+  ],
+  "lambda (per place and step) and vanishing (per step), creature codes": {
+   "7": [
+    5.27e-05,
+    0.0015
+   ],
+   "17": [
+    0.000455,
+    0.0004
+   ],
+   "36": [
+    9.67e-05,
+    0.0653
+   ],
+   "37": [
+    4.02e-05,
+    0.0439
+   ],
+   "41": [
+    3.76e-05,
+    0.3389
+   ],
+   "43": [
+    0.000278,
+    0.0343
+   ],
+   "45": [
+    5.63e-05,
+    0.0969
+   ],
+   "46": [
+    2.87e-05,
+    0.0591
+   ],
+   "47": [
+    4.06e-05,
+    0.8382
+   ],
+   "49": [
+    1.89e-05,
+    0.0675
+   ],
+   "51": [
+    2.78e-05,
+    0.0198
+   ],
+   "52": [
+    6.16e-05,
+    0.0529
+   ]
+  },
+  "seconds": 87.7,
+  "1 paired against counted motion": {
+   "returns paired": 1465,
+   "difference in points": -4.03,
+   "95% interval (bootstrap over segments)": [
+    -5.57,
+    -2.55
+   ],
+   "kept only here / only by counted": [
+    24,
+    83
+   ],
+   "McNemar p": 0.0
+  }
+ },
+ "belief: modelq_s1021": {
+  "form": "modelq",
+  "seed": 1021,
+  "1 returns within 50 steps, by day": 1465,
+  "1 identity kept on returns": 0.8751,
+  "returns: a candidate at the place / a file of the creature / linked to some file": [
+   0.9502,
+   0.9454,
+   0.9113
+  ],
+  "by kind (cow 1, zombie 2, skeleton 3)": {
+   "1": {
+    "returns": 1282,
+    "kept": 0.8736
+   },
+   "2": {
+    "returns": 18,
+    "kept": 0.3889
+   },
+   "3": {
+    "returns": 165,
+    "kept": 0.9394
+   }
+  },
+  "by time away": {
+   "1-5": {
+    "returns": 917,
+    "kept": 0.9084
+   },
+   "6-20": {
+    "returns": 470,
+    "kept": 0.8362
+   },
+   "21-50": {
+    "returns": 78,
+    "kept": 0.7179
+   }
+  },
+  "2 IDF1": 0.9112,
+  "2 IDF1: ID recall, ID precision, objects, detections": [
+   0.8682,
+   0.9586,
+   34452,
+   31205
+  ],
+  "IDF1, arrows as objects (098.6)": 0.8734,
+  "IDF1, arrows as objects (098.6): ID recall, ID precision, objects, detections": [
+   0.8256,
+   0.9271,
+   38900,
+   34641
+  ],
+  "belief seconds per step": 0.0018,
+  "the agent's own codes": [
+   2,
+   18,
+   27,
+   35,
+   50
+  ],
+  "creature codes": [
+   7,
+   17,
+   33,
+   36,
+   41,
+   43,
+   45,
+   46,
+   47,
+   49,
+   51,
+   52
+  ],
+  "lambda (per place and step) and vanishing (per step), creature codes": {
+   "7": [
+    5.27e-05,
+    0.0015
+   ],
+   "17": [
+    0.000455,
+    0.0004
+   ],
+   "33": [
+    0.000111,
+    0.0122
+   ],
+   "36": [
+    9.61e-05,
+    0.0653
+   ],
+   "41": [
+    3.66e-05,
+    0.3389
+   ],
+   "43": [
+    0.000278,
+    0.0339
+   ],
+   "45": [
+    5.63e-05,
+    0.0932
+   ],
+   "46": [
+    2.87e-05,
+    0.0591
+   ],
+   "47": [
+    4.06e-05,
+    0.8382
+   ],
+   "49": [
+    1.86e-05,
+    0.0725
+   ],
+   "51": [
+    2.78e-05,
+    0.0198
+   ],
+   "52": [
+    6.16e-05,
+    0.0529
+   ]
+  },
+  "seconds": 92.0,
+  "1 paired against counted motion": {
+   "returns paired": 1465,
+   "difference in points": -0.41,
+   "95% interval (bootstrap over segments)": [
+    -1.3,
+    0.49
+   ],
+   "kept only here / only by counted": [
+    22,
+    28
+   ],
+   "McNemar p": 0.47989
+  }
+ },
+ "belief: counted": {
+  "form": "counted",
+  "seed": null,
+  "1 returns within 50 steps, by day": 1465,
+  "1 identity kept on returns": 0.8792,
+  "returns: a candidate at the place / a file of the creature / linked to some file": [
+   0.9502,
+   0.944,
+   0.914
+  ],
+  "by kind (cow 1, zombie 2, skeleton 3)": {
+   "1": {
+    "returns": 1282,
+    "kept": 0.8783
+   },
+   "2": {
+    "returns": 18,
+    "kept": 0.3333
+   },
+   "3": {
+    "returns": 165,
+    "kept": 0.9455
+   }
+  },
+  "by time away": {
+   "1-5": {
+    "returns": 917,
+    "kept": 0.916
+   },
+   "6-20": {
+    "returns": 470,
+    "kept": 0.8362
+   },
+   "21-50": {
+    "returns": 78,
+    "kept": 0.7051
+   }
+  },
+  "2 IDF1": 0.9139,
+  "2 IDF1: ID recall, ID precision, objects, detections": [
+   0.8709,
+   0.9615,
+   34452,
+   31205
+  ],
+  "IDF1, arrows as objects (098.6)": 0.8961,
+  "IDF1, arrows as objects (098.6): ID recall, ID precision, objects, detections": [
+   0.847,
+   0.9512,
+   38900,
+   34641
+  ],
+  "belief seconds per step": 0.0001,
+  "the agent's own codes": [
+   2,
+   18,
+   27,
+   35,
+   50
+  ],
+  "creature codes": [
+   7,
+   17,
+   33,
+   36,
+   41,
+   43,
+   45,
+   46,
+   47,
+   49,
+   51,
+   52
+  ],
+  "lambda (per place and step) and vanishing (per step), creature codes": {
+   "7": [
+    5.27e-05,
+    0.0015
+   ],
+   "17": [
+    0.000455,
+    0.0004
+   ],
+   "33": [
+    0.000111,
+    0.0122
+   ],
+   "36": [
+    9.61e-05,
+    0.0653
+   ],
+   "41": [
+    3.66e-05,
+    0.3389
+   ],
+   "43": [
+    0.000278,
+    0.0339
+   ],
+   "45": [
+    5.63e-05,
+    0.0932
+   ],
+   "46": [
+    2.87e-05,
+    0.0591
+   ],
+   "47": [
+    4.06e-05,
+    0.8382
+   ],
+   "49": [
+    1.86e-05,
+    0.0725
+   ],
+   "51": [
+    2.78e-05,
+    0.0198
+   ],
+   "52": [
+    6.16e-05,
+    0.0529
+   ]
+  },
+  "seconds": 7.9
+ },
+ "belief: stays": {
+  "form": "stays",
+  "seed": null,
+  "1 returns within 50 steps, by day": 1465,
+  "1 identity kept on returns": 0.3877,
+  "returns: a candidate at the place / a file of the creature / linked to some file": [
+   0.9502,
+   0.9167,
+   0.4082
+  ],
+  "by kind (cow 1, zombie 2, skeleton 3)": {
+   "1": {
+    "returns": 1282,
+    "kept": 0.3931
+   },
+   "2": {
+    "returns": 18,
+    "kept": 0.2222
+   },
+   "3": {
+    "returns": 165,
+    "kept": 0.3636
+   }
+  },
+  "by time away": {
+   "1-5": {
+    "returns": 917,
+    "kept": 0.4962
+   },
+   "6-20": {
+    "returns": 470,
+    "kept": 0.2213
+   },
+   "21-50": {
+    "returns": 78,
+    "kept": 0.1154
+   }
+  },
+  "2 IDF1": 0.3425,
+  "2 IDF1: ID recall, ID precision, objects, detections": [
+   0.3263,
+   0.3603,
+   34452,
+   31205
+  ],
+  "IDF1, arrows as objects (098.6)": 0.3272,
+  "IDF1, arrows as objects (098.6): ID recall, ID precision, objects, detections": [
+   0.3093,
+   0.3474,
+   38900,
+   34641
+  ],
+  "belief seconds per step": 7e-05,
+  "the agent's own codes": [
+   2,
+   18,
+   27,
+   35,
+   50
+  ],
+  "creature codes": [
+   7,
+   17,
+   33,
+   36,
+   41,
+   43,
+   45,
+   46,
+   47,
+   49,
+   51,
+   52
+  ],
+  "lambda (per place and step) and vanishing (per step), creature codes": {
+   "7": [
+    5.27e-05,
+    0.0015
+   ],
+   "17": [
+    0.000455,
+    0.0004
+   ],
+   "33": [
+    0.000111,
+    0.0122
+   ],
+   "36": [
+    9.61e-05,
+    0.0653
+   ],
+   "41": [
+    3.66e-05,
+    0.3389
+   ],
+   "43": [
+    0.000278,
+    0.0339
+   ],
+   "45": [
+    5.63e-05,
+    0.0932
+   ],
+   "46": [
+    2.87e-05,
+    0.0591
+   ],
+   "47": [
+    4.06e-05,
+    0.8382
+   ],
+   "49": [
+    1.86e-05,
+    0.0725
+   ],
+   "51": [
+    2.78e-05,
+    0.0198
+   ],
+   "52": [
+    6.16e-05,
+    0.0529
+   ]
+  },
+  "seconds": 6.2,
+  "1 paired against counted motion": {
+   "returns paired": 1465,
+   "difference in points": -49.15,
+   "95% interval (bootstrap over segments)": [
+    -51.98,
+    -46.24
+   ],
+   "kept only here / only by counted": [
+    17,
+    737
+   ],
+   "McNemar p": 0.0
+  }
+ },
+ "belief: oracle": {
+  "form": "oracle",
+  "seed": null,
+  "1 returns within 50 steps, by day": 1465,
+  "1 identity kept on returns": 0.9386,
+  "returns: a candidate at the place / a file of the creature / linked to some file": [
+   0.9502,
+   0.9768,
+   0.9386
+  ],
+  "by kind (cow 1, zombie 2, skeleton 3)": {
+   "1": {
+    "returns": 1282,
+    "kept": 0.9399
+   },
+   "2": {
+    "returns": 18,
+    "kept": 0.3889
+   },
+   "3": {
+    "returns": 165,
+    "kept": 0.9879
+   }
+  },
+  "by time away": {
+   "1-5": {
+    "returns": 917,
+    "kept": 0.9411
+   },
+   "6-20": {
+    "returns": 470,
+    "kept": 0.9319
+   },
+   "21-50": {
+    "returns": 78,
+    "kept": 0.9487
+   }
+  },
+  "2 IDF1": 0.9307,
+  "2 IDF1: ID recall, ID precision, objects, detections": [
+   0.8868,
+   0.9791,
+   34452,
+   31205
+  ],
+  "IDF1, arrows as objects (098.6)": 0.9243,
+  "IDF1, arrows as objects (098.6): ID recall, ID precision, objects, detections": [
+   0.8737,
+   0.9811,
+   38900,
+   34641
+  ],
+  "belief seconds per step": 3e-05,
+  "the agent's own codes": [
+   2,
+   18,
+   27,
+   35,
+   50
+  ],
+  "creature codes": [
+   7,
+   17,
+   33,
+   36,
+   41,
+   43,
+   45,
+   46,
+   47,
+   49,
+   51,
+   52
+  ],
+  "lambda (per place and step) and vanishing (per step), creature codes": {
+   "7": [
+    5.27e-05,
+    0.0015
+   ],
+   "17": [
+    0.000455,
+    0.0004
+   ],
+   "33": [
+    0.000111,
+    0.0122
+   ],
+   "36": [
+    9.61e-05,
+    0.0653
+   ],
+   "41": [
+    3.66e-05,
+    0.3389
+   ],
+   "43": [
+    0.000278,
+    0.0339
+   ],
+   "45": [
+    5.63e-05,
+    0.0932
+   ],
+   "46": [
+    2.87e-05,
+    0.0591
+   ],
+   "47": [
+    4.06e-05,
+    0.8382
+   ],
+   "49": [
+    1.86e-05,
+    0.0725
+   ],
+   "51": [
+    2.78e-05,
+    0.0198
+   ],
+   "52": [
+    6.16e-05,
+    0.0529
+   ]
+  },
+  "seconds": 4.5,
+  "1 paired against counted motion": {
+   "returns paired": 1465,
+   "difference in points": 5.94,
+   "95% interval (bootstrap over segments)": [
+    4.51,
+    7.45
+   ],
+   "kept only here / only by counted": [
+    90,
+    3
+   ],
+   "McNemar p": 0.0
+  }
+ }
+}
