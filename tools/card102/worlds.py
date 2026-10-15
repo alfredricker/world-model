@@ -32,6 +32,12 @@ the next colour in a fixed cycle; a click on a lamp toggles it; elsewhere nothin
 column 6; test worlds use world 2's held-out shapes and click everywhere.
 
   bin/prun python tools/card102/worlds.py 5      → runs/card102/world5_{train,test}.npz
+
+World 6, "searched caves" (card 109): a corridor with six dead-end caves seen through a 9 x 7 view that follows the
+agent; a cave's end shows only from inside. Dark caves may hold a gem, which never comes back once taken; sand caves
+hold a bush whose berry regrows 30-60 steps after it is eaten. The evaluator keeps the whole grid and the events.
+
+  bin/prun python tools/card102/worlds.py 6      → runs/card102/world6_{train,test}.npz
 """
 import sys
 from pathlib import Path
@@ -576,7 +582,218 @@ class World5:
         return ""
 
 
+# ------------------------------------------------------------------------------------------------ world 6, "searched caves"
+FLOOR6, WALL6, AGENT6, DARK, SAND, GEM, RIPE, BARE = range(8)
+NAMES6 = ["floor", "wall", "agent", "dark floor", "sand", "gem", "ripe bush", "bare bush"]
+GW6, GH6, PAD6, DEPTH6 = 25, 15, 4, 4                  # grid width and height, wall padding, cave depth
+CORRIDOR6 = (6, 7, 8)                                  # the corridor's rows; up caves rows 5..2, down caves 9..12
+
+
+def tile6(kind):
+    t = np.zeros((T, T, 3), np.uint8)
+    base = {FLOOR6: (70, 70, 70), DARK: (34, 30, 40), SAND: (190, 170, 110)}
+    if kind == WALL6:
+        t[:] = (150, 110, 60)
+        t[3, :] = (110, 80, 40)
+    elif kind == AGENT6:
+        t[:] = (70, 70, 70)
+        t[1:6, 1:6] = (60, 160, 230)
+        t[2:5, 2:5] = (240, 240, 240)
+    elif kind == GEM:
+        t[:] = base[DARK]
+        t[2:5, 1:6] = t[1:6, 2:5] = (90, 220, 240)
+        t[3, 3] = (240, 255, 255)
+    elif kind in (RIPE, BARE):
+        t[:] = base[SAND]
+        t[1:6, 2:5] = t[2:5, 1:6] = (40, 120, 40)
+        if kind == RIPE:
+            t[2, 2] = t[4, 4] = t[2, 4] = (220, 30, 60)
+    else:
+        t[:] = base[kind]
+    return t
+
+
+TILES6 = np.stack([tile6(k) for k in range(8)])
+
+
+class World6:
+    """A corridor 3 tiles high with six dead-end caves, 1 wide and 4 deep (three up, three down), seen through a 9 x 7
+    view centred on the agent. From the corridor a cave shows its first one to three tiles; its end only from inside.
+    A cave is dark (its end holds a gem with probability 0.5) or sand (its end holds a bush, ripe with probability
+    0.7, else bare and ripening 30-60 steps from the start). Walking into a gem takes it, and gems never come back.
+    Walking into a ripe bush eats the berry; the bare bush ripens again 30-60 steps later, seen or not. Walls and bushes
+    block; the agent stays where it was when it takes or eats."""
+
+    def __init__(self, rng, layout=None):
+        self.rng = rng
+        self.g = np.full((GH6 + 2 * PAD6, GW6 + 2 * PAD6), WALL6, np.int8)
+        for y in CORRIDOR6:
+            self.g[PAD6 + y, PAD6 + 1:PAD6 + GW6 - 1] = FLOOR6
+        self.caves = []                                # [end x, end y, kind (0 dark, 1 sand), side (-1 up, 1 down)]
+        self.ripen = {}                                # end place -> step at which its bare bush ripens
+        self.t = 0
+        for side in (-1, 1):
+            cols = layout["cols"][side] if layout else self.columns()
+            for c in cols:
+                kind = layout["kind"][(side, c)] if layout else int(rng.random() < 0.5)
+                y0 = CORRIDOR6[0] - 1 if side < 0 else CORRIDOR6[-1] + 1
+                for d in range(DEPTH6):
+                    self.g[PAD6 + y0 + side * d, PAD6 + c] = DARK if kind == 0 else SAND
+                ex, ey = c, y0 + side * (DEPTH6 - 1)
+                if layout:
+                    content = layout["end"][(side, c)]
+                elif kind == 0:
+                    content = GEM if rng.random() < 0.5 else DARK
+                else:
+                    content = RIPE if rng.random() < 0.7 else BARE
+                self.g[PAD6 + ey, PAD6 + ex] = content
+                if content == BARE:
+                    self.ripen[(ex, ey)] = int(rng.integers(30, 61))
+                self.caves.append([ex, ey, kind, side])
+        self.agent = layout["start"] if layout else np.array([int(rng.integers(1, GW6 - 1)), int(rng.choice(CORRIDOR6))])
+        self.gems = self.berries = 0
+
+    def columns(self):
+        while True:
+            c = np.sort(self.rng.choice(np.arange(2, GW6 - 2), 3, replace=False))
+            if np.diff(c).min() >= 3:
+                return [int(v) for v in c]
+
+    def kind(self, x, y):
+        return int(self.g[PAD6 + y, PAD6 + x])
+
+    def walkable(self, x, y):
+        return self.kind(x, y) in (FLOOR6, DARK, SAND)
+
+    def step(self, a):
+        """One step; returns the event: ("take", end) or ("eat", end) or None."""
+        ev = None
+        if a in MOVES:
+            dx, dy = MOVES[a]
+            x, y = int(self.agent[0] + dx), int(self.agent[1] + dy)
+            k = self.kind(x, y)
+            if k == GEM:
+                self.g[PAD6 + y, PAD6 + x] = DARK
+                self.gems += 1
+                ev = ("take", (x, y))
+            elif k == RIPE:
+                self.g[PAD6 + y, PAD6 + x] = BARE
+                self.berries += 1
+                self.ripen[(x, y)] = self.t + 1 + int(self.rng.integers(30, 61))
+                ev = ("eat", (x, y))
+            elif self.walkable(x, y):
+                self.agent = np.array([x, y])
+        self.t += 1
+        for (x, y), r in list(self.ripen.items()):
+            if r <= self.t and self.kind(x, y) == BARE:
+                self.g[PAD6 + y, PAD6 + x] = RIPE
+                del self.ripen[(x, y)]
+        return ev
+
+    def view(self):
+        ax, ay = int(self.agent[0]) + PAD6, int(self.agent[1]) + PAD6
+        v = self.g[ay - 3:ay + 4, ax - 4:ax + 5].copy()
+        v[3, 4] = AGENT6
+        return v
+
+    def frame(self):
+        """The 9 x 7 view above two rows of carried items (gems in slot 0, berries in slot 1; a bar per item, up to 7)."""
+        f = np.zeros((64, 64, 3), np.uint8)
+        f[:H * T, :W * T] = TILES6[self.view()].transpose(0, 2, 1, 3, 4).reshape(H * T, W * T, 3)
+        for slot, (n, kind) in enumerate(((self.gems, GEM), (self.berries, RIPE))):
+            if n:
+                f[H * T:H * T + T, slot * T:(slot + 1) * T] = TILES6[kind]
+                f[H * T + T:H * T + T + 2, slot * T:slot * T + min(n, 7)] = (255, 255, 255)
+        return f
+
+    def path_step(self, goal):
+        """The first move of a shortest walk to goal (breadth-first over walkable places), or 0 if there is none."""
+        start = (int(self.agent[0]), int(self.agent[1]))
+        if start == goal:
+            return 0
+        prev = {start: None}
+        q = [start]
+        for cur in q:
+            if cur == goal:
+                break
+            for a, (dx, dy) in MOVES.items():
+                nxt = (cur[0] + dx, cur[1] + dy)
+                if nxt not in prev and (self.walkable(*nxt) or nxt == goal):
+                    prev[nxt] = (cur, a)
+                    q.append(nxt)
+        if goal not in prev:
+            return 0
+        cur = goal
+        while prev[cur][0] != start:
+            cur = prev[cur][0]
+        return prev[cur][1]
+
+
+class Visitor6:
+    """The play (declared, C3): walk to a random cave's end and into it, back to a random place in the corridor's
+    middle row, then another cave; a random action with probability 0.1, a noop with probability 0.05."""
+
+    def __init__(self, rng):
+        self.rng, self.plan = rng, None
+
+    def act(self, w):
+        r = self.rng.random()
+        if r < 0.05:
+            return 0
+        if r < 0.15:
+            return int(self.rng.integers(0, 5))
+        here = (int(w.agent[0]), int(w.agent[1]))
+        if self.plan is None:                          # ("in", the tile before the end, the end)
+            ex, ey, _, side = w.caves[int(self.rng.integers(len(w.caves)))]
+            self.plan = ("in", (ex, ey - side), (ex, ey))
+        if self.plan[0] == "in":
+            if here == self.plan[1]:                   # walk into the end, then back to the corridor
+                ex, ey = self.plan[2]
+                self.plan = ("out", (int(self.rng.integers(1, GW6 - 1)), CORRIDOR6[1]), None)
+                return next(a for a, d in MOVES.items() if d == (ex - here[0], ey - here[1]))
+            return w.path_step(self.plan[1]) or int(self.rng.integers(1, 5))
+        if here == self.plan[1]:
+            self.plan = None
+            return 0
+        return w.path_step(self.plan[1]) or int(self.rng.integers(1, 5))
+
+
+def play6(n_ep, steps, seed):
+    """Play world 6 with Visitor6. The evaluator keeps the whole grid each step, the caves and the events."""
+    rng = np.random.default_rng(seed)
+    n = n_ep * steps
+    obs = np.zeros((n, 64, 64, 3), np.uint8)
+    act, ep, done = np.zeros(n, np.int8), np.zeros(n, np.int32), np.zeros(n, bool)
+    sem, pos = np.zeros((n, H, W), np.int8), np.zeros((n, 2), np.int16)
+    grid = np.zeros((n, GH6, GW6), np.int8)
+    caves = np.zeros((n_ep, 6, 4), np.int16)
+    event = np.full((n, 3), -1, np.int16)              # kind (0 take, 1 eat), end x, end y
+    t = 0
+    for e in range(n_ep):
+        w, pol = World6(rng), Visitor6(rng)
+        caves[e] = w.caves
+        for s in range(steps):
+            obs[t], sem[t], pos[t], ep[t] = w.frame(), w.view(), w.agent, e
+            grid[t] = w.g[PAD6:PAD6 + GH6, PAD6:PAD6 + GW6]
+            a = pol.act(w)
+            act[t] = a
+            ev = w.step(a)
+            if ev:
+                event[t] = (0 if ev[0] == "take" else 1, *ev[1])
+            done[t] = s == steps - 1
+            t += 1
+    return {"obs": obs, "act": act, "sem": sem, "pos": pos, "ep": ep, "done": done, "grid": grid, "caves": caves,
+            "event": event, "light": np.ones(n, np.float32), "sleep": np.zeros(n, bool), "names": np.array(NAMES6)}
+
+
 if __name__ == "__main__":
+    if sys.argv[1:] == ["6"]:
+        for split, seed, n_ep in (("train", 1091, 500), ("test", 1092, 200)):
+            z = play6(n_ep, 300, seed)
+            np.savez_compressed(OUT / f"world6_{split}.npz", **z)
+            ev = z["event"]
+            print(split, "steps", len(z["act"]), "gems taken", int((ev[:, 0] == 0).sum()), "berries eaten",
+                  int((ev[:, 0] == 1).sum()), flush=True)
     OUT.mkdir(parents=True, exist_ok=True)
     if sys.argv[1:] == ["5"]:
         for split, seed, test in (("train", 1061, False), ("test", 1062, True)):

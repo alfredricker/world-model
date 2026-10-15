@@ -3,8 +3,8 @@ id: "109"
 title: conditions from memory — believing what holds out of view, from what was seen and how such facts change
 rung: 2
 serves: [P12, P2, P10]
-status: draft
-verdict:
+status: done
+verdict: fail
 arch_version: 27
 date: 2026-10-14
 ---
@@ -109,7 +109,12 @@ are reported.
 - **The engine:** the breaking worlds (`tools/card102/worlds.py`); world
   6 is added (Appendix A).
 - **Literature:** exemplar recall (Hintzman 1986, in LITERATURE); a place
-  seen empty as negative information (IPDA, in LITERATURE).
+  seen empty as negative information (IPDA, in LITERATURE). Memory
+  formed by predicting what will be sensed is MERLIN's principle (Wayne et
+  al. 2018, `papi` 1803_10760); a memory laid out by place and read by
+  attention is Neural Map's (Parisotto and Salakhutdinov 2018, `papi`
+  neural-map). Both were checked after the draft; their stored summaries
+  are placeholders.
 
 ## 4. Data check
 
@@ -178,21 +183,174 @@ training episodes (10, 30, 100, 300; P19).
 - arm N's training, about 5 minutes;
 - recall, probes and scoring, about 5 minutes.
 
+## 7. Result
+
+Run 2026-10-14 ([results.json](results.json); `tools/card109/belief.py`,
+`runs/109/`). World 6's play and tokens took 1 minute. The encoder's 8
+codes in use each matched one kind of tile (purity 1.0). The belief run
+took 163 seconds, within the stated 17 minutes, capped.
+
+**Two departures from the plan:**
+- **The smoke test was the main run.** A bug in reading the arguments
+  made the smoke test run the declared configuration: 8,000 training
+  steps for arm N and 100 pairs per goal. It is kept as the main run;
+  code and seeds are as declared. The bug is fixed.
+- **Recall's bandwidths were fitted on held-out training episodes**
+  (400–449, by a grid), not by leave-one-out. Two of the three ended at
+  the grid's lower edge: s = 0.1, h = 0.125, s_c = 0.03.
+
+**Data check (section 4): passes.**
+- **Revisits:** bushes last seen bare were seen again 480 times after
+  30–60 steps, against the 100 required. Every gap had at least 32
+  revisits for every content.
+- **Ripening unseen:** 1,105 bushes left bare were ripe when next seen.
+- **First sightings of cave ends:** 647 gems, 686 empty dark ends, 1,213
+  ripe bushes, 152 bare ones.
+
+**Gate:**
+- **The upper bound** passes criteria 2 and 3 at 100%.
+- **View only fails criterion 3** (0% of pairs for both goals), as
+  required.
+- **"At least 90% of probes have one best cave" fails as written:** 46%
+  for gems, 27% for berries. Ties under the upper bound are part of the
+  world: two unsearched dark caves both hold a gem with p = 0.5, and two
+  bushes seen ripe are both certain. Criterion 2 was therefore scored
+  where not every cave ties (70% of probes for gems, 99% for berries),
+  with any of the tied best caves counted right. Paired probes have one
+  best cave by construction.
+
+**Arm chosen: N, the network.** Held-out log-likelihood on episodes
+450–499 at every place coming into view was −0.044 for N and −0.074 for
+recall (−0.18 and −0.71 at cave ends alone).
+
+**Test probes** (200 episodes, 4,285 probes, each cave end for both
+goals). Log-likelihood is per place and condition, in nats; 0 is
+perfect.
+
+| Form | Log-likelihood | Remembered places | Never-seen places | 2. Choice right, gem / berry | 3. Pairs following the history, gem / berry |
+|---|---|---|---|---|---|
+| Upper bound | −0.109 | −0.029 | −0.256 | 100% / 100% | 100% / 100% |
+| **N, network** | **−0.317** | −0.073 | **−0.764** | **99.0% / 95.3%** | **98% / 100%** |
+| R, recall | −0.415 | −0.060 | −1.068 | 89.1% / 88.5% | 79% / 100% |
+| Static memory (version 27) | −0.943 | −0.874 | −1.068 | 92.8% / 84.8% | 79% / 100% |
+| View only | −1.356 | −1.021 | −1.970 | 33.7% / 53.3% | 0% / 0% |
+
+**Criteria:**
+1. **Belief: fail.** N is above both baselines (paired bootstrap over
+   episodes, p < 0.001): +1.04 nats against view only (95% interval
+   0.99 to 1.09) and +0.63 against static memory (0.58 to 0.67). It is
+   0.208 nats below the upper bound (0.191 to 0.225), against the 0.15
+   allowed.
+2. **Choice: pass,** 99.0% for gems and 95.3% for berries, against 90%.
+3. **Memory decides: pass,** 98% of gem pairs and 100% of berry pairs,
+   against 90%.
+
+**Where the 0.208 nats arise:**
+
+| Places | Share of the gap, nats |
+|---|---|
+| Never-seen ends of sand caves already seen (ripe bush) | 0.080 |
+| Never-seen ends of dark caves already seen (gem) | 0.042 |
+| Ends of caves never seen at all (both conditions) | 0.058 |
+| Remembered places (nearly all bushes left bare 1–60 steps before) | 0.029 |
+
+**Never-seen ends: the network's belief fades with the agent's
+distance** (mean belief against the upper bound's):
+
+| The agent's distance from the end | Gem in a dark cave: N / bound | Ripe bush in a sand cave: N / bound |
+|---|---|---|
+| 0–6 steps (about 600 probes each) | 0.42 / 0.50 | 0.89 / 0.91 |
+| 7–12 steps (about 1,950) | 0.30 / 0.50 | 0.77 / 0.92 |
+| 13–40 steps (about 1,530) | 0.11 / 0.50 | 0.45 / 0.94 |
+
+The cause is where the training targets arrive. A cave's end is first
+seen just after its mouth, so every target paired a never-seen end with
+surroundings seen a step before. Asked from afar, the network met old
+surroundings it had never been trained on, and read them as "not an
+end". Recall's mean of the surroundings did not single out the ends at
+all: 0.05 for a gem at every distance.
+
+**Ends of caves never seen** get almost 0 from both arms, while the
+upper bound gives 0.25 for a gem. Here the bound uses what the agent
+cannot know: that a cave is there. The probe named the place, and the
+agent had seen nothing near it.
+
+**Remembered places.** Gems and empty dark ends were exactly right in N
+and in static memory, at every gap. Bushes left bare cost the most:
+
+| Gap since a bare bush was last seen | N | R | Static | Bound |
+|---|---|---|---|---|
+| 1–29 steps (2,470) | −0.375 | −0.291 | −0.636 | −0.087 |
+| 30–60 steps (1,682) | −0.856 | −0.542 | −4.460 | −0.424 |
+| 61–300 steps (2,894) | −0.013 | −0.011 | −6.908 | −0.001 |
+
+Recall predicts ripening better than the network: by 0.08 nats in the
+first range and 0.31 in the second.
+
+**Also reported:**
+- **Cost per query,** batched on the GPU: 13 µs for recall, 23 µs for
+  the network.
+- **Recall against the number of training episodes** (P19): −0.475 with
+  10 episodes, −0.453 with 30, −0.427 with 100, −0.416 with 300. The
+  network's curve was not run; it needs four trainings.
+
+**Prediction against result:**
+- **Gems:** remembered gem places were exact as predicted; never-seen
+  dark ends were not.
+- **The 0.15 nats:** missed, as predicted, but mostly on never-seen
+  places (0.18 of 0.21), not on ripening (0.03).
+- **Criteria 2 and 3:** passed at 95–100%, as predicted.
+- **Baselines:** failed where expected. View only chose the best gem
+  cave in 34% of probes. Static memory lost 6.9 nats on bushes left bare
+  more than 60 steps before.
+
+## 8. Decision
+
+**Revise.** Criteria 2 and 3 pass, and the belief is far above both
+baselines (+0.63 nats over static memory), so this is not a stop. On
+remembered places it lies within 0.044 nats of the bound. Criterion 1
+fails on its margin, and the misses are localised.
+- **Never-seen places queried from afar (0.12 nats):** a gap in the
+  training signal, not in the form. The next card would build each
+  target also from memory as it stood k steps before the sighting, with
+  ages counted to the sighting. The target is still what is seen; only
+  some recent sightings are left out, as a query from afar leaves them
+  out. One component, the training targets.
+- **Ends of caves never seen (0.06 nats):** a flaw in this card's upper
+  bound. The next card names only places the agent could know of, here
+  the ends of caves whose mouth it has seen.
+- **Recall beat the network on ripening.** CHARTER's rule ("each where
+  it predicts better") allows choosing per source rather than per card.
+  That would be a separate card.
+
 ## Appendix A. World 6, "searched caves"
 
-- **Layout.** A corridor 3 tiles high and about 25 long, with six dead-end
-  caves (three up, three down), each 1 tile wide and 6 deep. The 9 × 7
-  view follows the agent. From the corridor it shows the first two tiles
-  of a cave. A cave's end shows only from at least three tiles inside.
+- **Layout.** A corridor 3 tiles high and 23 long, with six dead-end
+  caves (three up, three down, at least 3 columns apart), each 1 tile
+  wide and 4 deep. The 9 × 7 view follows the agent. From the corridor
+  it shows the first one to three tiles of a cave, never its end. A
+  cave's end shows from the cave's first tile inward, and from inside a
+  neighbouring cave less than 5 columns away (nothing occludes). As
+  drafted the caves were 6 deep; 4 fits the view, and the property
+  tested (the end is out of view from the corridor) is unchanged.
 - **Two kinds of cave,** told apart by their floor along the whole cave:
   - **dark:** the end holds a gem with p = 0.5;
   - **sand:** the end holds a bush, ripe with p = 0.7.
 - **Gems.** Walking onto a gem takes it into the carried row and leaves
   floor. Gems never come back.
 - **Berries.** Walking onto a ripe bush eats the berry and leaves a bare
-  bush. It ripens again 30–60 steps later, seen or not.
+  bush. It ripens again 30–60 steps later, seen or not. A bush bare at
+  the start ripens 30–60 steps into the episode.
 - **Episodes.** 300 steps each; layout and contents are random per
   episode. 500 training episodes and 200 test episodes.
 - **The play (declared, C3).** The agent walks to a random cave's end and
-  back to the corridor, then picks another, with 10% random actions. The
-  evaluator keeps the state.
+  back to a random place in the corridor, then picks another, with 10%
+  random actions and 5% noops. The evaluator keeps the state.
+- **Paired histories (criterion 3).** One layout, two scripted visit
+  orders, the same final place and step:
+  - **gems:** dark caves D1 and D2 hold gems and D3 none; history A takes
+    D1's gem and looks into D3, history B takes D2's and looks into D3;
+  - **berries:** sand caves S1 and S2 hold ripe bushes; history A looks
+    at S2 and eats S1 last, history B the reverse.
+  A pair is kept only if each history has one best cave under the upper
+  bound and the two differ.

@@ -67,15 +67,13 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   targets.** Replacing one token at a time gave world 1's conditions of
   pushes and moves exactly (precision and recall 1.0; baseline precision
   0.09–0.14). In Crafter, perception had misplaced about a quarter of
-  blocked moves, as if the agent walked on, more often near creatures. The model
-  learned it, and conditions on distant cows and zombies followed
-  (blocked-move precision 0.23–0.31). Placed by the agent's own pose, the
+  blocked moves as walks; the model learned it, with conditions on distant
+  cows and zombies (blocked-move precision 0.23–0.31). Placed by the agent's own pose, the
   same model gave 0.95–0.97. *Evidence:* cards 105.4, 105.10.
 - **Check a condition only in a situation the learned effects produce.**
   Splicing memories gave a base-rate guess (88–91%); checking in the
-  imagined result of the achieving action gave 100% (5 of 5 seeds). In
-  card 105.4, 493 of 501 false conditions of a lamp going out came from a
-  state the world cannot produce (a lit lamp with no box beside it). The
+  imagined result of the achieving action gave 100%. In card 105.4, 493
+  of 501 false conditions came from a state the world cannot produce. The
   model's own dynamics cannot flag such states: trained only on states the
   world produces, it predicted no change under no-op for 0 of 39,744
   impossible ones (card 106). *Evidence:* cards 042, 043, 105.4, 106.
@@ -136,9 +134,8 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   log-spaced input and a bounded output, as in Swin V2's code, fit in 3
   of 3. *Evidence:* cards 105.1, 105.6.
 - **Test action sensitivity before training; latent self-prediction
-  erases what actions change** (shuffled ratio 1.00–1.04; a door moved its
-  vector 0.03 against noise 0.019). *Evidence:* GRL-105, GRL-106; cards
-  052, 053. *Confirmed.*
+  erases what actions change** (a door moved its vector 0.03 against noise
+  0.019). *Evidence:* GRL-105, GRL-106; cards 052, 053. *Confirmed.*
 - **Some objectives carry too little or the wrong signal:** distance to a
   goal state is not distance to a condition (rank correlation 0.01–0.05),
   and a reachable-future bonus collapsed to sleeping. *Evidence:* card
@@ -188,8 +185,13 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
 - **A prediction of what a place will hold is not identity.** Score a
   file by its own part (with the token minus without it), and link it
   only to codes one token wears. Otherwise an arrow's file takes a
-  skeleton. The model kept 83.8% of returns, against 87.9% for counted
-  motion; given Q from labels, it tied. *Evidence:* card 108.
+  skeleton (83.8% of returns kept, against 87.9% for counted motion).
+  *Evidence:* card 108.
+- **Targets from looking arrive only where the agent looks.** A cave's end
+  is first seen just after its mouth, so a network trained to predict
+  sightings never met old surroundings, and from afar read them as "no
+  end" (a gem: 0.42 near, 0.11 far, against 0.5). Train also on memory as
+  it stood earlier. *Evidence:* card 109. *Suggestive.*
 - **Recall that compares by a network's context cannot see a condition
   the network has not learned** (11 iron-tool successes lost among 5,900
   failures). *Evidence:* card 102.1.
@@ -203,8 +205,8 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
 - **Time a change under the run's own load, and profile before a long
   run.** Parallel threads made tier 3 3.6 times slower (card 092). A gather
   in a backward pass made a step 1.5 s instead of 21 ms (card 105.1).
-- **Wait on a file a run writes, not on a process name**; `pgrep -f`
-  matches the waiting command itself (2026-10-13).
+- **Wait on a file a run writes, not on a process name** (`pgrep -f`
+  matches the waiting command).
 
 ## Not yet mined
 

@@ -1,0 +1,591 @@
+{
+ "data check (section 4)": {
+  "events (places coming into view)": 1156768,
+  "of them cave ends": 9992,
+  "kind codes": {
+   "floor": 2,
+   "wall": 0,
+   "agent": 7,
+   "dark floor": 4,
+   "sand": 3,
+   "gem": 5,
+   "ripe bush": 6,
+   "bare bush": 12
+  },
+  "cave ends seen again, by what was last seen and the gap": {
+   "last seen as gem": {
+    "gap 1-9": 54,
+    "gap 10-29": 52,
+    "gap 30-60": 75,
+    "gap 61-120": 57,
+    "gap 121-300": 32
+   },
+   "last seen as dark floor": {
+    "gap 1-9": 2329,
+    "gap 10-29": 591,
+    "gap 30-60": 675,
+    "gap 61-120": 544,
+    "gap 121-300": 300
+   },
+   "last seen as ripe bush": {
+    "gap 1-9": 150,
+    "gap 10-29": 210,
+    "gap 30-60": 213,
+    "gap 61-120": 186,
+    "gap 121-300": 78
+   },
+   "last seen as bare bush": {
+    "gap 1-9": 163,
+    "gap 10-29": 388,
+    "gap 30-60": 480,
+    "gap 61-120": 459,
+    "gap 121-300": 258
+   }
+  },
+  "bare bushes seen ripe on their next sighting": 1105,
+  "first sightings of cave ends (gem, dark floor, ripe, bare)": [
+   647,
+   686,
+   1213,
+   152
+  ]
+ },
+ "arm chosen": "N",
+ "selection (held-out log-likelihood, episodes 450-499)": {
+  "R": {
+   "every place": -0.0737,
+   "cave ends": -0.705
+  },
+  "N": {
+   "every place": -0.0438,
+   "cave ends": -0.1844
+  }
+ },
+ "recall fit": {
+  "s": 0.1,
+  "h": 0.125,
+  "sc": 0.03,
+  "grid": {
+   "s 0.1 0.125": -0.0006,
+   "s 0.1 0.25": -0.0007,
+   "s 0.1 0.5": -0.0008,
+   "s 0.1 1.0": -0.0009,
+   "s 0.3 0.125": -0.0006,
+   "s 0.3 0.25": -0.0008,
+   "s 0.3 0.5": -0.0008,
+   "s 0.3 1.0": -0.0009,
+   "s 1.0 0.125": -0.0006,
+   "s 1.0 0.25": -0.0008,
+   "s 1.0 0.5": -0.0008,
+   "s 1.0 1.0": -0.0009,
+   "sc 0.03": -0.4426,
+   "sc 0.1": -0.5165,
+   "sc 0.3": -0.5882,
+   "sc 1.0": -0.6906
+  }
+ },
+ "cost per query, seconds (R, N)": {
+  "R": 1.31e-05,
+  "N": 2.29e-05
+ },
+ "test probes": {
+  "probes": 4285,
+  "probes where not every cave ties (gem, berry)": [
+   0.7048,
+   0.99
+  ],
+  "probes with one best cave (gem, berry)": [
+   0.4623,
+   0.2672
+  ],
+  "R": {
+   "log-likelihood per place and condition": -0.4154,
+   "by goal (gem, berry)": [
+    -0.3776,
+    -0.4531
+   ],
+   "by source (remembered, never seen)": [
+    -0.0596,
+    -1.0678
+   ],
+   "choice right (gem, berry), probes where not every cave ties": [
+    0.8914,
+    0.8852
+   ]
+  },
+  "static": {
+   "log-likelihood per place and condition": -0.9426,
+   "by goal (gem, berry)": [
+    -0.3729,
+    -1.5123
+   ],
+   "by source (remembered, never seen)": [
+    -0.8743,
+    -1.0678
+   ],
+   "choice right (gem, berry), probes where not every cave ties": [
+    0.9278,
+    0.8482
+   ]
+  },
+  "view only": {
+   "log-likelihood per place and condition": -1.3555,
+   "by goal (gem, berry)": [
+    -0.6886,
+    -2.0225
+   ],
+   "by source (remembered, never seen)": [
+    -1.0207,
+    -1.9696
+   ],
+   "choice right (gem, berry), probes where not every cave ties": [
+    0.3371,
+    0.5328
+   ]
+  },
+  "N": {
+   "log-likelihood per place and condition": -0.317,
+   "by goal (gem, berry)": [
+    -0.2652,
+    -0.3687
+   ],
+   "by source (remembered, never seen)": [
+    -0.073,
+    -0.7642
+   ],
+   "choice right (gem, berry), probes where not every cave ties": [
+    0.9897,
+    0.9526
+   ]
+  },
+  "upper bound": {
+   "log-likelihood per place and condition": -0.1089,
+   "by goal (gem, berry)": [
+    -0.1315,
+    -0.0862
+   ],
+   "by source (remembered, never seen)": [
+    -0.0288,
+    -0.2558
+   ],
+   "choice right (gem, berry), probes where not every cave ties": [
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "criterion 1 (paired bootstrap over episodes: mean, 95% interval, p not above 0)": {
+  "N minus view only": [
+   1.0385814905166626,
+   [
+    0.9928558810131897,
+    1.085532479198994
+   ],
+   0.0
+  ],
+  "N minus static": [
+   0.6256147027015686,
+   [
+    0.582843280510926,
+    0.6700303180943012
+   ],
+   0.0
+  ],
+  "upper bound minus N": [
+   0.20807535083547704,
+   [
+    0.1913523399660901,
+    0.22484404028221422
+   ],
+   0.0
+  ],
+  "N minus R": [
+   0.098420649766922,
+   [
+    0.0830582023307711,
+    0.11415955856143234
+   ],
+   0.0
+  ]
+ },
+ "remembered ends by last sighting and gap (log-likelihood, count)": {
+  "R": {
+   "gem, gap 1-29": [
+    -0.3218,
+    227
+   ],
+   "gem, gap 30-60": [
+    -0.0477,
+    141
+   ],
+   "gem, gap 61-300": [
+    -0.0718,
+    192
+   ],
+   "dark floor, gap 1-29": [
+    -0.0053,
+    2608
+   ],
+   "dark floor, gap 30-60": [
+    -0.001,
+    1763
+   ],
+   "dark floor, gap 61-300": [
+    -0.001,
+    2670
+   ],
+   "ripe bush, gap 1-29": [
+    -0.1586,
+    855
+   ],
+   "ripe bush, gap 30-60": [
+    -0.0127,
+    512
+   ],
+   "ripe bush, gap 61-300": [
+    -0.019,
+    623
+   ],
+   "bare bush, gap 1-29": [
+    -0.2912,
+    2470
+   ],
+   "bare bush, gap 30-60": [
+    -0.5423,
+    1682
+   ],
+   "bare bush, gap 61-300": [
+    -0.0114,
+    2894
+   ]
+  },
+  "static": {
+   "gem, gap 1-29": [
+    -0.001,
+    227
+   ],
+   "gem, gap 30-60": [
+    -0.001,
+    141
+   ],
+   "gem, gap 61-300": [
+    -0.001,
+    192
+   ],
+   "dark floor, gap 1-29": [
+    -0.001,
+    2608
+   ],
+   "dark floor, gap 30-60": [
+    -0.001,
+    1763
+   ],
+   "dark floor, gap 61-300": [
+    -0.001,
+    2670
+   ],
+   "ripe bush, gap 1-29": [
+    -0.001,
+    855
+   ],
+   "ripe bush, gap 30-60": [
+    -0.001,
+    512
+   ],
+   "ripe bush, gap 61-300": [
+    -0.001,
+    623
+   ],
+   "bare bush, gap 1-29": [
+    -0.6358,
+    2470
+   ],
+   "bare bush, gap 30-60": [
+    -4.4604,
+    1682
+   ],
+   "bare bush, gap 61-300": [
+    -6.9078,
+    2894
+   ]
+  },
+  "view only": {
+   "gem, gap 1-29": [
+    -4.9888,
+    227
+   ],
+   "gem, gap 30-60": [
+    -5.165,
+    141
+   ],
+   "gem, gap 61-300": [
+    -5.4024,
+    192
+   ],
+   "dark floor, gap 1-29": [
+    -0.0276,
+    2608
+   ],
+   "dark floor, gap 30-60": [
+    -0.0223,
+    1763
+   ],
+   "dark floor, gap 61-300": [
+    -0.0201,
+    2670
+   ],
+   "ripe bush, gap 1-29": [
+    -4.3503,
+    855
+   ],
+   "ripe bush, gap 30-60": [
+    -4.5882,
+    512
+   ],
+   "ripe bush, gap 61-300": [
+    -4.4484,
+    623
+   ],
+   "bare bush, gap 1-29": [
+    -0.535,
+    2470
+   ],
+   "bare bush, gap 30-60": [
+    -3.3003,
+    1682
+   ],
+   "bare bush, gap 61-300": [
+    -5.1972,
+    2894
+   ]
+  },
+  "N": {
+   "gem, gap 1-29": [
+    -0.001,
+    227
+   ],
+   "gem, gap 30-60": [
+    -0.001,
+    141
+   ],
+   "gem, gap 61-300": [
+    -0.0011,
+    192
+   ],
+   "dark floor, gap 1-29": [
+    -0.001,
+    2608
+   ],
+   "dark floor, gap 30-60": [
+    -0.001,
+    1763
+   ],
+   "dark floor, gap 61-300": [
+    -0.001,
+    2670
+   ],
+   "ripe bush, gap 1-29": [
+    -0.001,
+    855
+   ],
+   "ripe bush, gap 30-60": [
+    -0.001,
+    512
+   ],
+   "ripe bush, gap 61-300": [
+    -0.001,
+    623
+   ],
+   "bare bush, gap 1-29": [
+    -0.3749,
+    2470
+   ],
+   "bare bush, gap 30-60": [
+    -0.856,
+    1682
+   ],
+   "bare bush, gap 61-300": [
+    -0.0133,
+    2894
+   ]
+  },
+  "upper bound": {
+   "gem, gap 1-29": [
+    -0.001,
+    227
+   ],
+   "gem, gap 30-60": [
+    -0.001,
+    141
+   ],
+   "gem, gap 61-300": [
+    -0.001,
+    192
+   ],
+   "dark floor, gap 1-29": [
+    -0.001,
+    2608
+   ],
+   "dark floor, gap 30-60": [
+    -0.001,
+    1763
+   ],
+   "dark floor, gap 61-300": [
+    -0.001,
+    2670
+   ],
+   "ripe bush, gap 1-29": [
+    -0.001,
+    855
+   ],
+   "ripe bush, gap 30-60": [
+    -0.001,
+    512
+   ],
+   "ripe bush, gap 61-300": [
+    -0.001,
+    623
+   ],
+   "bare bush, gap 1-29": [
+    -0.0872,
+    2470
+   ],
+   "bare bush, gap 30-60": [
+    -0.4237,
+    1682
+   ],
+   "bare bush, gap 61-300": [
+    -0.001,
+    2894
+   ]
+  }
+ },
+ "criterion 3 (paired histories)": {
+  "R": {
+   "pairs where the choice follows the history (gem, berry)": [
+    0.79,
+    1.0
+   ],
+   "pairs": [
+    100,
+    100
+   ]
+  },
+  "static": {
+   "pairs where the choice follows the history (gem, berry)": [
+    0.79,
+    1.0
+   ],
+   "pairs": [
+    100,
+    100
+   ]
+  },
+  "view only": {
+   "pairs where the choice follows the history (gem, berry)": [
+    0.0,
+    0.0
+   ],
+   "pairs": [
+    100,
+    100
+   ]
+  },
+  "N": {
+   "pairs where the choice follows the history (gem, berry)": [
+    0.98,
+    1.0
+   ],
+   "pairs": [
+    100,
+    100
+   ]
+  },
+  "upper bound": {
+   "pairs where the choice follows the history (gem, berry)": [
+    1.0,
+    1.0
+   ],
+   "pairs": [
+    100,
+    100
+   ]
+  }
+ },
+ "recall's log-likelihood by training episodes (P19)": {
+  "10": -0.4752,
+  "30": -0.4526,
+  "100": -0.4268,
+  "300": -0.4162
+ },
+ "seconds": 162.9,
+ "never-seen cave ends: mean belief by the agent's distance (test probes)": {
+  "known dark cave, gem, agent 0-6 steps away": {
+   "count": 572,
+   "N": 0.419,
+   "R": 0.046,
+   "upper bound": 0.5
+  },
+  "known dark cave, gem, agent 7-12 steps away": {
+   "count": 1904,
+   "N": 0.297,
+   "R": 0.045,
+   "upper bound": 0.5
+  },
+  "known dark cave, gem, agent 13-40 steps away": {
+   "count": 1558,
+   "N": 0.112,
+   "R": 0.046,
+   "upper bound": 0.5
+  },
+  "known sand cave, ripe bush, agent 0-6 steps away": {
+   "count": 622,
+   "N": 0.892,
+   "R": 0.16,
+   "upper bound": 0.913
+  },
+  "known sand cave, ripe bush, agent 7-12 steps away": {
+   "count": 1981,
+   "N": 0.773,
+   "R": 0.152,
+   "upper bound": 0.921
+  },
+  "known sand cave, ripe bush, agent 13-40 steps away": {
+   "count": 1504,
+   "N": 0.454,
+   "R": 0.15,
+   "upper bound": 0.936
+  },
+  "cave never seen, gem, agent 7-12 steps away": {
+   "count": 307,
+   "N": 0.001,
+   "R": 0.005,
+   "upper bound": 0.25
+  },
+  "cave never seen, gem, agent 13-40 steps away": {
+   "count": 625,
+   "N": 0.0,
+   "R": 0.002,
+   "upper bound": 0.25
+  },
+  "cave never seen, ripe bush, agent 7-12 steps away": {
+   "count": 307,
+   "N": 0.001,
+   "R": 0.006,
+   "upper bound": 0.382
+  },
+  "cave never seen, ripe bush, agent 13-40 steps away": {
+   "count": 625,
+   "N": 0.0,
+   "R": 0.003,
+   "upper bound": 0.391
+  }
+ },
+ "upper bound minus N, nats per place and condition, by where it arises": {
+  "known dark cave, gem": 0.0417,
+  "known sand cave, ripe bush": 0.0799,
+  "cave never seen, gem": 0.0251,
+  "cave never seen, ripe bush": 0.0327,
+  "remembered places": 0.0288
+ }
+}

@@ -5,6 +5,7 @@ world's own training play; identity codes are the nearest prototype. Crafter's t
   bin/prun python tools/card102.2/tokens.py world3      → runs/102.3/world3_* (card 102.3)
   bin/prun python tools/card102.2/tokens.py world4      → runs/102.5/world4_* (card 102.5)
   bin/prun python tools/card102.2/tokens.py world5      → runs/102.6/world5_* (card 102.6)
+  bin/prun python tools/card102.2/tokens.py world6      → runs/109/world6_* (card 109)
 """
 import sys
 from pathlib import Path
@@ -59,7 +60,10 @@ def main(world="world2", out=OUT, seed=1031, still_only=False):
 
 
 if __name__ == "__main__":
-    if sys.argv[1:2] == ["world3"]:                     # card 102.3's breaking world 3
+    if sys.argv[1:2] == ["world6"]:                     # card 109's breaking world 6 (searched caves)
+        (ROOT / "runs" / "109").mkdir(exist_ok=True)
+        main("world6", ROOT / "runs" / "109", 1091, still_only=True)
+    elif sys.argv[1:2] == ["world3"]:                   # card 102.3's breaking world 3
         main("world3", ROOT / "runs" / "102.3", 1041, still_only=True)
     elif sys.argv[1:2] == ["world5"]:                   # card 102.6's breaking world 5 (clicks)
         (ROOT / "runs" / "102.6").mkdir(exist_ok=True)
