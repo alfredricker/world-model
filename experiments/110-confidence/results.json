@@ -1,0 +1,2549 @@
+{
+ "world1 s1021": {
+  "net": "runs/105.6/tokens_Rb_s1021_net.pt",
+  "copy": "runs/105.6/tokens_Rb_s7_net.pt",
+  "memory vectors": 2846889,
+  "smoke": false,
+  "fit": {
+   "tau": 0.1624,
+   "tiles": 252000,
+   "wrong tiles": 1,
+   "k chosen": 1,
+   "alpha, beta": [
+    5.8028,
+    -2.449
+   ],
+   "by k": {
+    "1": {
+     "alpha, beta": [
+      5.182,
+      -2.39
+     ],
+     "held-out log-likelihood": -1e-05
+    },
+    "4": {
+     "alpha, beta": [
+      5.333,
+      -2.428
+     ],
+     "held-out log-likelihood": -1e-05
+    },
+    "16": {
+     "alpha, beta": [
+      5.678,
+      -2.545
+     ],
+     "held-out log-likelihood": -1e-05
+    }
+   }
+  },
+  "1 calibration": {
+   "action 0, all tiles": {
+    "n": 26145,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 0, lamps": {
+    "n": 616,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 1, all tiles": {
+    "n": 26397,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 1, tiles whose code changed": {
+    "n": 698,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 1, lamps": {
+    "n": 620,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 2, all tiles": {
+    "n": 23562,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 2, tiles whose code changed": {
+    "n": 600,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 2, lamps": {
+    "n": 556,
+    "ECE P": 0.0,
+    "ECE R": 0.0004,
+    "accuracy": 1.0
+   },
+   "action 3, all tiles": {
+    "n": 24696,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 3, tiles whose code changed": {
+    "n": 596,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 3, lamps": {
+    "n": 584,
+    "ECE P": 0.0017,
+    "ECE R": 0.0016,
+    "accuracy": 0.9983
+   },
+   "action 4, all tiles": {
+    "n": 25200,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 4, tiles whose code changed": {
+    "n": 620,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 4, lamps": {
+    "n": 587,
+    "ECE P": 0.0017,
+    "ECE R": 0.0017,
+    "accuracy": 0.9983
+   }
+  },
+  "1 reliability R (confidence, accuracy, n)": [
+   [
+    1.0,
+    1.0,
+    126000
+   ]
+  ],
+  "3 conditions": {
+   "lamp lights": {
+    "none": {
+     "asked": 213,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 202,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 213,
+     "precision, recall": [
+      1.0,
+      0.9984
+     ]
+    },
+    "R": {
+     "asked": 202,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "RK": {
+     "asked": 202,
+     "precision, recall": [
+      1.0,
+      0.9983
+     ]
+    },
+    "oracle": {
+     "asked": 213,
+     "precision, recall": [
+      1.0,
+      0.0892
+     ]
+    },
+    "thresholds P, R": [
+     0.9998,
+     0.9783
+    ]
+   },
+   "lamp goes out": {
+    "none": {
+     "asked": 141,
+     "precision, recall": [
+      0.6566,
+      0.4014
+     ]
+    },
+    "P": {
+     "asked": 134,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "K": {
+     "asked": 141,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "R": {
+     "asked": 133,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "RK": {
+     "asked": 133,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "oracle": {
+     "asked": 141,
+     "precision, recall": [
+      1.0,
+      0.0411
+     ]
+    },
+    "thresholds P, R": [
+     0.9999,
+     0.9749
+    ]
+   },
+   "push": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 289,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.7877
+     ]
+    },
+    "RK": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.7877
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.4767
+     ]
+    },
+    "thresholds P, R": [
+     1.0,
+     0.9999
+    ]
+   },
+   "move": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 298,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 298,
+     "precision, recall": [
+      1.0,
+      0.4396
+     ]
+    },
+    "RK": {
+     "asked": 298,
+     "precision, recall": [
+      1.0,
+      0.4396
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.4567
+     ]
+    },
+    "thresholds P, R": [
+     1.0,
+     1.0
+    ]
+   },
+   "blocked": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 286,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.4377
+     ]
+    },
+    "RK": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.4377
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.1303
+     ]
+    },
+    "thresholds P, R": [
+     1.0,
+     0.9999
+    ]
+   }
+  },
+  "2 AUROC for a wrong prediction": {
+   "P": {
+    "all": 0.8516,
+    "lamp lights": 0.9972,
+    "lamp goes out": 0.5699,
+    "push": 0.9996,
+    "move": null,
+    "blocked": 0.9999
+   },
+   "K": {
+    "all": 0.5782,
+    "lamp lights": 0.825,
+    "lamp goes out": 0.5043,
+    "push": 1.0,
+    "move": null,
+    "blocked": 0.5832
+   },
+   "R": {
+    "all": 0.8353,
+    "lamp lights": 0.9959,
+    "lamp goes out": 0.2885,
+    "push": 0.9997,
+    "move": null,
+    "blocked": 1.0
+   },
+   "oracle": {
+    "all": 0.6176,
+    "lamp lights": 0.5309,
+    "lamp goes out": 0.5283,
+    "push": 0.6411,
+    "move": null,
+    "blocked": 0.6681
+   },
+   "RK": {
+    "all": 0.8354,
+    "lamp lights": 0.9951,
+    "lamp goes out": 0.2885,
+    "push": 1.0,
+    "move": null,
+    "blocked": 0.9997
+   },
+   "R: AUROC for impossible states (diagnostic)": 0.5501,
+   "K: AUROC for impossible states (diagnostic)": 0.5017,
+   "P: AUROC for impossible states (diagnostic)": 0.5414,
+   "raw distance (diagnostic), by k: AUROC for impossible, for wrong": {
+    "1": [
+     0.5419,
+     0.7915
+    ],
+    "4": [
+     0.5424,
+     0.7986
+    ],
+    "16": [
+     0.5434,
+     0.8234
+    ]
+   },
+   "raw distance (diagnostic), lamp goes out, by k: AUROC for impossible, for wrong": {
+    "1": [
+     0.4831,
+     0.288
+    ],
+    "4": [
+     0.4834,
+     0.2913
+    ],
+    "16": [
+     0.4803,
+     0.2874
+    ]
+   },
+   "replacements, wrong, impossible": [
+    244735,
+    1172,
+    37707
+   ],
+   "mean R confidence: possible and right, possible and wrong, impossible": [
+    0.9978,
+    0.9014,
+    0.9955
+   ]
+  },
+  "P19: R's precision and recall against the memory's occurrences of the kind": {
+   "lamp lights": {
+    "training occurrences": 560,
+    "10": [
+     1.0,
+     1.0
+    ],
+    "30": [
+     1.0,
+     1.0
+    ],
+    "100": [
+     1.0,
+     1.0
+    ],
+    "300": [
+     1.0,
+     1.0
+    ]
+   },
+   "lamp goes out": {
+    "training occurrences": 395,
+    "10": [
+     0.6561,
+     0.4015
+    ],
+    "30": [
+     0.6667,
+     0.4
+    ],
+    "100": [
+     0.6667,
+     0.4
+    ],
+    "300": [
+     0.6667,
+     0.4
+    ]
+   },
+   "push": {
+    "training occurrences": 6545,
+    "10": [
+     1.0,
+     0.9123
+    ],
+    "30": [
+     1.0,
+     0.8807
+    ],
+    "100": [
+     1.0,
+     0.7877
+    ],
+    "300": [
+     1.0,
+     0.7825
+    ]
+   },
+   "move": {
+    "training occurrences": 178596,
+    "10": [
+     0.0,
+     0.0
+    ],
+    "30": [
+     0.0,
+     0.0
+    ],
+    "100": [
+     0.0,
+     0.0
+    ],
+    "300": [
+     1.0,
+     0.0035
+    ]
+   },
+   "blocked": {
+    "training occurrences": 52325,
+    "10": [
+     1.0,
+     1.0
+    ],
+    "30": [
+     1.0,
+     1.0
+    ],
+    "100": [
+     1.0,
+     1.0
+    ],
+    "300": [
+     1.0,
+     0.9641
+    ]
+   }
+  },
+  "seconds": 122.8
+ },
+ "world1 s7": {
+  "net": "runs/105.6/tokens_Rb_s7_net.pt",
+  "copy": "runs/105.6/tokens_Rb_s3_net.pt",
+  "memory vectors": 2846889,
+  "smoke": false,
+  "fit": {
+   "tau": 0.16261,
+   "tiles": 252000,
+   "wrong tiles": 1,
+   "k chosen": 1,
+   "alpha, beta": [
+    3.9988,
+    -4.2833
+   ],
+   "by k": {
+    "1": {
+     "alpha, beta": [
+      3.596,
+      -3.938
+     ],
+     "held-out log-likelihood": -1e-05
+    },
+    "4": {
+     "alpha, beta": [
+      3.962,
+      -3.87
+     ],
+     "held-out log-likelihood": -1e-05
+    },
+    "16": {
+     "alpha, beta": [
+      4.631,
+      -3.521
+     ],
+     "held-out log-likelihood": -1e-05
+    }
+   }
+  },
+  "1 calibration": {
+   "action 0, all tiles": {
+    "n": 26145,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 0, lamps": {
+    "n": 616,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 1, all tiles": {
+    "n": 26397,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 1, tiles whose code changed": {
+    "n": 698,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 1, lamps": {
+    "n": 620,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 2, all tiles": {
+    "n": 23562,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 2, tiles whose code changed": {
+    "n": 600,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 2, lamps": {
+    "n": 556,
+    "ECE P": 0.0,
+    "ECE R": 0.001,
+    "accuracy": 1.0
+   },
+   "action 3, all tiles": {
+    "n": 24696,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 3, tiles whose code changed": {
+    "n": 596,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 3, lamps": {
+    "n": 584,
+    "ECE P": 0.0014,
+    "ECE R": 0.0001,
+    "accuracy": 0.9983
+   },
+   "action 4, all tiles": {
+    "n": 25200,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 4, tiles whose code changed": {
+    "n": 620,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 4, lamps": {
+    "n": 587,
+    "ECE P": 0.0017,
+    "ECE R": 0.0009,
+    "accuracy": 0.9983
+   }
+  },
+  "1 reliability R (confidence, accuracy, n)": [
+   [
+    0.034,
+    0.0,
+    1
+   ],
+   [
+    0.487,
+    0.0,
+    1
+   ],
+   [
+    0.843,
+    1.0,
+    3
+   ],
+   [
+    1.0,
+    1.0,
+    125995
+   ]
+  ],
+  "3 conditions": {
+   "lamp lights": {
+    "none": {
+     "asked": 213,
+     "precision, recall": [
+      1.0,
+      0.9984
+     ]
+    },
+    "P": {
+     "asked": 202,
+     "precision, recall": [
+      1.0,
+      0.9851
+     ]
+    },
+    "K": {
+     "asked": 213,
+     "precision, recall": [
+      1.0,
+      0.7496
+     ]
+    },
+    "R": {
+     "asked": 202,
+     "precision, recall": [
+      1.0,
+      0.9983
+     ]
+    },
+    "RK": {
+     "asked": 202,
+     "precision, recall": [
+      1.0,
+      0.7442
+     ]
+    },
+    "oracle": {
+     "asked": 213,
+     "precision, recall": [
+      1.0,
+      0.0892
+     ]
+    },
+    "thresholds P, R": [
+     0.9999,
+     0.6551
+    ]
+   },
+   "lamp goes out": {
+    "none": {
+     "asked": 141,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "P": {
+     "asked": 134,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "K": {
+     "asked": 141,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "R": {
+     "asked": 134,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "RK": {
+     "asked": 134,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "oracle": {
+     "asked": 141,
+     "precision, recall": [
+      1.0,
+      0.0411
+     ]
+    },
+    "thresholds P, R": [
+     0.9998,
+     0.7324
+    ]
+   },
+   "push": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 288,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.7842
+     ]
+    },
+    "RK": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.7842
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.4767
+     ]
+    },
+    "thresholds P, R": [
+     1.0,
+     1.0
+    ]
+   },
+   "move": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 295,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 295,
+     "precision, recall": [
+      1.0,
+      0.5492
+     ]
+    },
+    "RK": {
+     "asked": 295,
+     "precision, recall": [
+      1.0,
+      0.5492
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.4567
+     ]
+    },
+    "thresholds P, R": [
+     1.0,
+     1.0
+    ]
+   },
+   "blocked": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 287,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.7846
+     ]
+    },
+    "RK": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.7846
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.1303
+     ]
+    },
+    "thresholds P, R": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "2 AUROC for a wrong prediction": {
+   "P": {
+    "all": 0.8285,
+    "lamp lights": 0.0686,
+    "lamp goes out": 0.4998,
+    "push": null,
+    "move": null,
+    "blocked": 0.4652
+   },
+   "K": {
+    "all": 0.5793,
+    "lamp lights": 0.9164,
+    "lamp goes out": 0.5,
+    "push": null,
+    "move": null,
+    "blocked": 0.5961
+   },
+   "R": {
+    "all": 0.7881,
+    "lamp lights": 0.0928,
+    "lamp goes out": 0.3377,
+    "push": null,
+    "move": null,
+    "blocked": 0.9999
+   },
+   "oracle": {
+    "all": 0.6176,
+    "lamp lights": 0.5309,
+    "lamp goes out": 0.5282,
+    "push": null,
+    "move": null,
+    "blocked": 0.6682
+   },
+   "RK": {
+    "all": 0.8289,
+    "lamp lights": 0.865,
+    "lamp goes out": 0.3377,
+    "push": null,
+    "move": null,
+    "blocked": 0.9999
+   },
+   "R: AUROC for impossible states (diagnostic)": 0.5402,
+   "K: AUROC for impossible states (diagnostic)": 0.5039,
+   "P: AUROC for impossible states (diagnostic)": 0.5437,
+   "raw distance (diagnostic), by k: AUROC for impossible, for wrong": {
+    "1": [
+     0.5321,
+     0.675
+    ],
+    "4": [
+     0.532,
+     0.7036
+    ],
+    "16": [
+     0.5302,
+     0.7325
+    ]
+   },
+   "raw distance (diagnostic), lamp goes out, by k: AUROC for impossible, for wrong": {
+    "1": [
+     0.4653,
+     0.3371
+    ],
+    "4": [
+     0.4649,
+     0.3401
+    ],
+    "16": [
+     0.4663,
+     0.3292
+    ]
+   },
+   "replacements, wrong, impossible": [
+    244735,
+    1156,
+    37707
+   ],
+   "mean R confidence: possible and right, possible and wrong, impossible": [
+    0.9752,
+    0.8292,
+    0.9711
+   ]
+  },
+  "P19: R's precision and recall against the memory's occurrences of the kind": {
+   "lamp lights": {
+    "training occurrences": 560,
+    "10": [
+     1.0,
+     0.9983
+    ],
+    "30": [
+     1.0,
+     0.9967
+    ],
+    "100": [
+     1.0,
+     0.9983
+    ],
+    "300": [
+     1.0,
+     0.9983
+    ]
+   },
+   "lamp goes out": {
+    "training occurrences": 395,
+    "10": [
+     0.6667,
+     0.4
+    ],
+    "30": [
+     0.6667,
+     0.4
+    ],
+    "100": [
+     0.6667,
+     0.4
+    ],
+    "300": [
+     0.6667,
+     0.4
+    ]
+   },
+   "push": {
+    "training occurrences": 6545,
+    "10": [
+     1.0,
+     0.9912
+    ],
+    "30": [
+     1.0,
+     0.986
+    ],
+    "100": [
+     1.0,
+     0.9509
+    ],
+    "300": [
+     1.0,
+     0.8737
+    ]
+   },
+   "move": {
+    "training occurrences": 178596,
+    "10": [
+     0.0,
+     0.0
+    ],
+    "30": [
+     1.0,
+     0.0351
+    ],
+    "100": [
+     1.0,
+     0.2351
+    ],
+    "300": [
+     1.0,
+     0.0034
+    ]
+   },
+   "blocked": {
+    "training occurrences": 52325,
+    "10": [
+     1.0,
+     1.0
+    ],
+    "30": [
+     1.0,
+     1.0
+    ],
+    "100": [
+     1.0,
+     0.926
+    ],
+    "300": [
+     1.0,
+     0.7613
+    ]
+   }
+  },
+  "seconds": 121.5
+ },
+ "world1 s3": {
+  "net": "runs/105.6/tokens_Rb_s3_net.pt",
+  "copy": "runs/105.6/tokens_Rb_s1021_net.pt",
+  "memory vectors": 2846889,
+  "smoke": false,
+  "fit": {
+   "tau": 0.17007,
+   "tiles": 252000,
+   "wrong tiles": 4,
+   "k chosen": 16,
+   "alpha, beta": [
+    8.2417,
+    -5.4698
+   ],
+   "by k": {
+    "1": {
+     "alpha, beta": [
+      5.978,
+      -3.513
+     ],
+     "held-out log-likelihood": -3e-05
+    },
+    "4": {
+     "alpha, beta": [
+      5.869,
+      -3.391
+     ],
+     "held-out log-likelihood": -3e-05
+    },
+    "16": {
+     "alpha, beta": [
+      7.009,
+      -4.582
+     ],
+     "held-out log-likelihood": -2e-05
+    }
+   }
+  },
+  "1 calibration": {
+   "action 0, all tiles": {
+    "n": 26145,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 0, lamps": {
+    "n": 616,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 1, all tiles": {
+    "n": 26397,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 1, tiles whose code changed": {
+    "n": 698,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 1, lamps": {
+    "n": 620,
+    "ECE P": 0.0,
+    "ECE R": 0.0001,
+    "accuracy": 1.0
+   },
+   "action 2, all tiles": {
+    "n": 23562,
+    "ECE P": 0.0001,
+    "ECE R": 0.0001,
+    "accuracy": 0.9999
+   },
+   "action 2, tiles whose code changed": {
+    "n": 600,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 2, lamps": {
+    "n": 556,
+    "ECE P": 0.0048,
+    "ECE R": 0.0024,
+    "accuracy": 0.9946
+   },
+   "action 3, all tiles": {
+    "n": 24696,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 3, tiles whose code changed": {
+    "n": 596,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 3, lamps": {
+    "n": 584,
+    "ECE P": 0.0017,
+    "ECE R": 0.0018,
+    "accuracy": 0.9983
+   },
+   "action 4, all tiles": {
+    "n": 25200,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 4, tiles whose code changed": {
+    "n": 620,
+    "ECE P": 0.0,
+    "ECE R": 0.0,
+    "accuracy": 1.0
+   },
+   "action 4, lamps": {
+    "n": 587,
+    "ECE P": 0.0017,
+    "ECE R": 0.0017,
+    "accuracy": 0.9983
+   }
+  },
+  "1 reliability R (confidence, accuracy, n)": [
+   [
+    0.092,
+    0.0,
+    2
+   ],
+   [
+    0.101,
+    0.0,
+    1
+   ],
+   [
+    0.642,
+    1.0,
+    2
+   ],
+   [
+    0.778,
+    0.0,
+    1
+   ],
+   [
+    0.869,
+    0.667,
+    3
+   ],
+   [
+    1.0,
+    1.0,
+    125991
+   ]
+  ],
+  "3 conditions": {
+   "lamp lights": {
+    "none": {
+     "asked": 213,
+     "precision, recall": [
+      0.9876,
+      0.7496
+     ]
+    },
+    "P": {
+     "asked": 202,
+     "precision, recall": [
+      1.0,
+      0.6238
+     ]
+    },
+    "K": {
+     "asked": 213,
+     "precision, recall": [
+      1.0,
+      0.7496
+     ]
+    },
+    "R": {
+     "asked": 202,
+     "precision, recall": [
+      1.0,
+      0.731
+     ]
+    },
+    "RK": {
+     "asked": 202,
+     "precision, recall": [
+      1.0,
+      0.731
+     ]
+    },
+    "oracle": {
+     "asked": 213,
+     "precision, recall": [
+      1.0,
+      0.0892
+     ]
+    },
+    "thresholds P, R": [
+     0.9964,
+     0.1428
+    ]
+   },
+   "lamp goes out": {
+    "none": {
+     "asked": 141,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "P": {
+     "asked": 134,
+     "precision, recall": [
+      0.6573,
+      0.3836
+     ]
+    },
+    "K": {
+     "asked": 141,
+     "precision, recall": [
+      0.6667,
+      0.4
+     ]
+    },
+    "R": {
+     "asked": 133,
+     "precision, recall": [
+      0.6254,
+      0.3338
+     ]
+    },
+    "RK": {
+     "asked": 133,
+     "precision, recall": [
+      0.6254,
+      0.3338
+     ]
+    },
+    "oracle": {
+     "asked": 141,
+     "precision, recall": [
+      1.0,
+      0.0411
+     ]
+    },
+    "thresholds P, R": [
+     0.9995,
+     0.6909
+    ]
+   },
+   "push": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 286,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.507
+     ]
+    },
+    "RK": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.507
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.4767
+     ]
+    },
+    "thresholds P, R": [
+     1.0,
+     1.0
+    ]
+   },
+   "move": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 290,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 290,
+     "precision, recall": [
+      1.0,
+      0.0655
+     ]
+    },
+    "RK": {
+     "asked": 290,
+     "precision, recall": [
+      1.0,
+      0.0655
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.4567
+     ]
+    },
+    "thresholds P, R": [
+     1.0,
+     1.0
+    ]
+   },
+   "blocked": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 284,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "RK": {
+     "asked": 284,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.1303
+     ]
+    },
+    "thresholds P, R": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "2 AUROC for a wrong prediction": {
+   "P": {
+    "all": 0.841,
+    "lamp lights": 0.974,
+    "lamp goes out": 0.4084,
+    "push": null,
+    "move": null,
+    "blocked": 0.9999
+   },
+   "K": {
+    "all": 0.6103,
+    "lamp lights": 0.8628,
+    "lamp goes out": 0.4999,
+    "push": null,
+    "move": null,
+    "blocked": 0.8269
+   },
+   "R": {
+    "all": 0.8283,
+    "lamp lights": 0.898,
+    "lamp goes out": 0.2272,
+    "push": null,
+    "move": null,
+    "blocked": 1.0
+   },
+   "oracle": {
+    "all": 0.6182,
+    "lamp lights": 0.5311,
+    "lamp goes out": 0.5282,
+    "push": null,
+    "move": null,
+    "blocked": 0.6682
+   },
+   "RK": {
+    "all": 0.8321,
+    "lamp lights": 0.9682,
+    "lamp goes out": 0.2271,
+    "push": null,
+    "move": null,
+    "blocked": 1.0
+   },
+   "R: AUROC for impossible states (diagnostic)": 0.5343,
+   "K: AUROC for impossible states (diagnostic)": 0.5026,
+   "P: AUROC for impossible states (diagnostic)": 0.5299,
+   "raw distance (diagnostic), by k: AUROC for impossible, for wrong": {
+    "1": [
+     0.5431,
+     0.8196
+    ],
+    "4": [
+     0.5449,
+     0.8271
+    ],
+    "16": [
+     0.5384,
+     0.8261
+    ]
+   },
+   "raw distance (diagnostic), lamp goes out, by k: AUROC for impossible, for wrong": {
+    "1": [
+     0.4722,
+     0.2303
+    ],
+    "4": [
+     0.4712,
+     0.2301
+    ],
+    "16": [
+     0.4708,
+     0.2272
+    ]
+   },
+   "replacements, wrong, impossible": [
+    244735,
+    1320,
+    37707
+   ],
+   "mean R confidence: possible and right, possible and wrong, impossible": [
+    0.9438,
+    0.6869,
+    0.9419
+   ]
+  },
+  "P19: R's precision and recall against the memory's occurrences of the kind": {
+   "lamp lights": {
+    "training occurrences": 560,
+    "10": [
+     0.987,
+     0.7541
+    ],
+    "30": [
+     0.987,
+     0.7541
+    ],
+    "100": [
+     0.987,
+     0.7541
+    ],
+    "300": [
+     1.0,
+     0.7343
+    ]
+   },
+   "lamp goes out": {
+    "training occurrences": 395,
+    "10": [
+     0.6667,
+     0.4
+    ],
+    "30": [
+     0.6667,
+     0.4
+    ],
+    "100": [
+     0.6667,
+     0.4
+    ],
+    "300": [
+     0.6243,
+     0.3323
+    ]
+   },
+   "push": {
+    "training occurrences": 6545,
+    "10": [
+     1.0,
+     1.0
+    ],
+    "30": [
+     1.0,
+     1.0
+    ],
+    "100": [
+     1.0,
+     0.6579
+    ],
+    "300": [
+     1.0,
+     0.5246
+    ]
+   },
+   "move": {
+    "training occurrences": 178596,
+    "10": [
+     1.0,
+     0.3088
+    ],
+    "30": [
+     1.0,
+     0.5053
+    ],
+    "100": [
+     0.0,
+     0.0
+    ],
+    "300": [
+     0.0,
+     0.0
+    ]
+   },
+   "blocked": {
+    "training occurrences": 52325,
+    "10": [
+     1.0,
+     1.0
+    ],
+    "30": [
+     1.0,
+     1.0
+    ],
+    "100": [
+     1.0,
+     1.0
+    ],
+    "300": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "seconds": 122.6
+ },
+ "crafter s1021": {
+  "net": "runs/105.10/tokens_Rb_s1021_net.pt",
+  "copy": "runs/105.10/tokens_Rb_s7_net.pt",
+  "memory vectors": 3366502,
+  "smoke": false,
+  "fit": {
+   "model tau": 0.14844,
+   "fitted tau": 0.17748,
+   "tokens": 317199,
+   "wrong tokens": 3073,
+   "k chosen": 1,
+   "alpha, beta": [
+    16.522,
+    -5.9102
+   ],
+   "by k": {
+    "1": {
+     "alpha, beta": [
+      16.906,
+      -6.067
+     ],
+     "held-out log-likelihood": -0.02618
+    },
+    "4": {
+     "alpha, beta": [
+      17.788,
+      -6.395
+     ],
+     "held-out log-likelihood": -0.02618
+    },
+    "16": {
+     "alpha, beta": [
+      13.994,
+      2.726
+     ],
+     "held-out log-likelihood": -0.02675
+    }
+   },
+   "raw distance AUROC for a wrong token (diagnostic), by k": {
+    "1": 0.5328,
+    "4": 0.5328,
+    "16": 0.5327
+   }
+  },
+  "1 calibration": {
+   "move, all tokens": {
+    "n": 32674,
+    "ECE P": 0.0014,
+    "ECE R": 0.0015,
+    "accuracy": 0.9904
+   },
+   "move, tokens whose code changed": {
+    "n": 1196,
+    "ECE P": 0.1277,
+    "ECE R": 0.1278,
+    "accuracy": 0.8035
+   },
+   "move, creatures": {
+    "n": 337,
+    "ECE P": 0.0621,
+    "ECE R": 0.0618,
+    "accuracy": 0.7062
+   },
+   "do, all tokens": {
+    "n": 10692,
+    "ECE P": 0.0025,
+    "ECE R": 0.0028,
+    "accuracy": 0.9906
+   },
+   "do, tokens whose code changed": {
+    "n": 127,
+    "ECE P": 0.4462,
+    "ECE R": 0.4446,
+    "accuracy": 0.3937
+   },
+   "do, creatures": {
+    "n": 113,
+    "ECE P": 0.0767,
+    "ECE R": 0.0702,
+    "accuracy": 0.646
+   },
+   "place, all tokens": {
+    "n": 38313,
+    "ECE P": 0.0018,
+    "ECE R": 0.0022,
+    "accuracy": 0.991
+   },
+   "place, tokens whose code changed": {
+    "n": 444,
+    "ECE P": 0.3883,
+    "ECE R": 0.388,
+    "accuracy": 0.4302
+   },
+   "place, creatures": {
+    "n": 397,
+    "ECE P": 0.0429,
+    "ECE R": 0.0417,
+    "accuracy": 0.6776
+   },
+   "make, all tokens": {
+    "n": 60102,
+    "ECE P": 0.0015,
+    "ECE R": 0.0017,
+    "accuracy": 0.9914
+   },
+   "make, tokens whose code changed": {
+    "n": 605,
+    "ECE P": 0.4281,
+    "ECE R": 0.4265,
+    "accuracy": 0.3587
+   },
+   "make, creatures": {
+    "n": 603,
+    "ECE P": 0.0281,
+    "ECE R": 0.0287,
+    "accuracy": 0.6766
+   },
+   "noop, all tokens": {
+    "n": 11016,
+    "ECE P": 0.0031,
+    "ECE R": 0.0034,
+    "accuracy": 0.9918
+   },
+   "noop, tokens whose code changed": {
+    "n": 118,
+    "ECE P": 0.4131,
+    "ECE R": 0.4109,
+    "accuracy": 0.4831
+   },
+   "noop, creatures": {
+    "n": 125,
+    "ECE P": 0.0713,
+    "ECE R": 0.0709,
+    "accuracy": 0.736
+   }
+  },
+  "1 reliability R (confidence, accuracy, n)": [
+   [
+    0.367,
+    0.625,
+    8
+   ],
+   [
+    0.471,
+    0.49,
+    51
+   ],
+   [
+    0.539,
+    0.533,
+    929
+   ],
+   [
+    0.648,
+    0.643,
+    420
+   ],
+   [
+    0.766,
+    0.827,
+    730
+   ],
+   [
+    0.846,
+    0.871,
+    3229
+   ],
+   [
+    0.998,
+    0.998,
+    153505
+   ]
+  ],
+  "3 conditions": {
+   "make (a tool made)": {
+    "none": {
+     "asked": 232,
+     "precision, recall": [
+      0.7654,
+      0.9982
+     ]
+    },
+    "P": {
+     "asked": 220,
+     "precision, recall": [
+      0.9864,
+      0.9941
+     ]
+    },
+    "K": {
+     "asked": 231,
+     "precision, recall": [
+      0.9927,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 220,
+     "precision, recall": [
+      0.9864,
+      0.9941
+     ]
+    },
+    "RK": {
+     "asked": 220,
+     "precision, recall": [
+      1.0,
+      0.9941
+     ]
+    },
+    "oracle": {
+     "asked": 232,
+     "precision, recall": [
+      1.0,
+      0.033
+     ]
+    },
+    "thresholds P, R": [
+     0.9482,
+     0.9481
+    ]
+   },
+   "move, blocked": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      0.9472,
+      0.9567
+     ]
+    },
+    "P": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.9263
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.9533
+     ]
+    },
+    "R": {
+     "asked": 285,
+     "precision, recall": [
+      0.9963,
+      0.9474
+     ]
+    },
+    "RK": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.9439
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.12
+     ]
+    },
+    "thresholds P, R": [
+     0.9996,
+     0.9922
+    ]
+   },
+   "move, succeeded": {
+    "none": {
+     "asked": 295,
+     "precision, recall": [
+      0.9898,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 280,
+     "precision, recall": [
+      1.0,
+      0.9747
+     ]
+    },
+    "K": {
+     "asked": 295,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 280,
+     "precision, recall": [
+      1.0,
+      0.8303
+     ]
+    },
+    "RK": {
+     "asked": 280,
+     "precision, recall": [
+      1.0,
+      0.8303
+     ]
+    },
+    "oracle": {
+     "asked": 295,
+     "precision, recall": [
+      1.0,
+      0.1507
+     ]
+    },
+    "thresholds P, R": [
+     1.0,
+     0.9998
+    ]
+   }
+  },
+  "2 AUROC for a wrong prediction": {
+   "P": {
+    "all": 0.9452,
+    "make (a tool made)": 0.9631,
+    "move, blocked": 0.8957,
+    "move, succeeded": 0.862
+   },
+   "K": {
+    "all": 0.9373,
+    "make (a tool made)": 0.9905,
+    "move, blocked": 0.7961,
+    "move, succeeded": 0.6829
+   },
+   "R": {
+    "all": 0.9789,
+    "make (a tool made)": 0.9663,
+    "move, blocked": 0.9767,
+    "move, succeeded": 0.9895
+   },
+   "oracle": {
+    "all": 0.5293,
+    "make (a tool made)": 0.501,
+    "move, blocked": 0.4954,
+    "move, succeeded": 0.5596
+   },
+   "RK": {
+    "all": 0.9917,
+    "make (a tool made)": 0.996,
+    "move, blocked": 0.9833,
+    "move, succeeded": 0.9914
+   },
+   "raw distance (diagnostic), by k: AUROC for wrong": {
+    "1": 0.9328,
+    "4": 0.9238,
+    "16": 0.9088
+   },
+   "replacements, wrong": [
+    177879,
+    456
+   ]
+  },
+  "P19: R's precision and recall against the memory's occurrences of the kind": {
+   "make (a tool made)": {
+    "training occurrences": 987,
+    "10": [
+     0.9883,
+     0.9941
+    ],
+    "30": [
+     0.9883,
+     0.9941
+    ],
+    "100": [
+     0.9883,
+     0.9941
+    ],
+    "300": [
+     0.9883,
+     0.9941
+    ]
+   },
+   "move, blocked": {
+    "training occurrences": 4373,
+    "10": [
+     0.9963,
+     0.9544
+    ],
+    "30": [
+     0.9963,
+     0.9474
+    ],
+    "100": [
+     0.9963,
+     0.9404
+    ],
+    "300": [
+     0.9963,
+     0.9509
+    ]
+   },
+   "move, succeeded": {
+    "training occurrences": 27448,
+    "10": [
+     1.0,
+     0.2022
+    ],
+    "30": [
+     1.0,
+     0.4224
+    ],
+    "100": [
+     1.0,
+     0.4152
+    ],
+    "300": [
+     1.0,
+     0.5632
+    ]
+   }
+  },
+  "seconds": 54.9
+ },
+ "crafter s7": {
+  "net": "runs/105.10/tokens_Rb_s7_net.pt",
+  "copy": "runs/105.10/tokens_Rb_s1021_net.pt",
+  "memory vectors": 3366502,
+  "smoke": false,
+  "fit": {
+   "model tau": 0.14992,
+   "fitted tau": 0.18129,
+   "tokens": 317199,
+   "wrong tokens": 3062,
+   "k chosen": 4,
+   "alpha, beta": [
+    17.7412,
+    -6.4534
+   ],
+   "by k": {
+    "1": {
+     "alpha, beta": [
+      1786.459,
+      -569.863
+     ],
+     "held-out log-likelihood": -0.02657
+    },
+    "4": {
+     "alpha, beta": [
+      17.83,
+      -6.53
+     ],
+     "held-out log-likelihood": -0.02604
+    },
+    "16": {
+     "alpha, beta": [
+      19.049,
+      -6.946
+     ],
+     "held-out log-likelihood": -0.02604
+    }
+   },
+   "raw distance AUROC for a wrong token (diagnostic), by k": {
+    "1": 0.5304,
+    "4": 0.5233,
+    "16": 0.5154
+   }
+  },
+  "1 calibration": {
+   "move, all tokens": {
+    "n": 32674,
+    "ECE P": 0.0012,
+    "ECE R": 0.0014,
+    "accuracy": 0.9904
+   },
+   "move, tokens whose code changed": {
+    "n": 1196,
+    "ECE P": 0.1323,
+    "ECE R": 0.1331,
+    "accuracy": 0.8035
+   },
+   "move, creatures": {
+    "n": 337,
+    "ECE P": 0.0413,
+    "ECE R": 0.0394,
+    "accuracy": 0.724
+   },
+   "do, all tokens": {
+    "n": 10692,
+    "ECE P": 0.0027,
+    "ECE R": 0.0028,
+    "accuracy": 0.9905
+   },
+   "do, tokens whose code changed": {
+    "n": 127,
+    "ECE P": 0.4015,
+    "ECE R": 0.3999,
+    "accuracy": 0.4173
+   },
+   "do, creatures": {
+    "n": 113,
+    "ECE P": 0.0834,
+    "ECE R": 0.0844,
+    "accuracy": 0.6283
+   },
+   "place, all tokens": {
+    "n": 38313,
+    "ECE P": 0.0015,
+    "ECE R": 0.0019,
+    "accuracy": 0.9909
+   },
+   "place, tokens whose code changed": {
+    "n": 444,
+    "ECE P": 0.3863,
+    "ECE R": 0.3815,
+    "accuracy": 0.4324
+   },
+   "place, creatures": {
+    "n": 397,
+    "ECE P": 0.0462,
+    "ECE R": 0.0445,
+    "accuracy": 0.6877
+   },
+   "make, all tokens": {
+    "n": 60102,
+    "ECE P": 0.0019,
+    "ECE R": 0.0022,
+    "accuracy": 0.9916
+   },
+   "make, tokens whose code changed": {
+    "n": 605,
+    "ECE P": 0.3974,
+    "ECE R": 0.3958,
+    "accuracy": 0.3868
+   },
+   "make, creatures": {
+    "n": 603,
+    "ECE P": 0.0301,
+    "ECE R": 0.0267,
+    "accuracy": 0.6799
+   },
+   "noop, all tokens": {
+    "n": 11016,
+    "ECE P": 0.0036,
+    "ECE R": 0.0041,
+    "accuracy": 0.9925
+   },
+   "noop, tokens whose code changed": {
+    "n": 118,
+    "ECE P": 0.3474,
+    "ECE R": 0.3524,
+    "accuracy": 0.4661
+   },
+   "noop, creatures": {
+    "n": 125,
+    "ECE P": 0.1054,
+    "ECE R": 0.1,
+    "accuracy": 0.752
+   }
+  },
+  "1 reliability R (confidence, accuracy, n)": [
+   [
+    0.373,
+    0.455,
+    11
+   ],
+   [
+    0.464,
+    0.542,
+    59
+   ],
+   [
+    0.539,
+    0.541,
+    1002
+   ],
+   [
+    0.646,
+    0.634,
+    339
+   ],
+   [
+    0.766,
+    0.794,
+    645
+   ],
+   [
+    0.841,
+    0.882,
+    3394
+   ],
+   [
+    0.998,
+    0.998,
+    153422
+   ]
+  ],
+  "3 conditions": {
+   "make (a tool made)": {
+    "none": {
+     "asked": 232,
+     "precision, recall": [
+      0.8439,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 220,
+     "precision, recall": [
+      0.9922,
+      0.9941
+     ]
+    },
+    "K": {
+     "asked": 231,
+     "precision, recall": [
+      0.9927,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 220,
+     "precision, recall": [
+      0.9941,
+      0.9941
+     ]
+    },
+    "RK": {
+     "asked": 220,
+     "precision, recall": [
+      1.0,
+      0.9941
+     ]
+    },
+    "oracle": {
+     "asked": 232,
+     "precision, recall": [
+      1.0,
+      0.033
+     ]
+    },
+    "thresholds P, R": [
+     0.9537,
+     0.9536
+    ]
+   },
+   "move, blocked": {
+    "none": {
+     "asked": 300,
+     "precision, recall": [
+      0.9704,
+      0.9833
+     ]
+    },
+    "P": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.9474
+     ]
+    },
+    "K": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.9533
+     ]
+    },
+    "R": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.9649
+     ]
+    },
+    "RK": {
+     "asked": 285,
+     "precision, recall": [
+      1.0,
+      0.9439
+     ]
+    },
+    "oracle": {
+     "asked": 300,
+     "precision, recall": [
+      1.0,
+      0.12
+     ]
+    },
+    "thresholds P, R": [
+     0.9998,
+     0.9906
+    ]
+   },
+   "move, succeeded": {
+    "none": {
+     "asked": 295,
+     "precision, recall": [
+      0.9154,
+      1.0
+     ]
+    },
+    "P": {
+     "asked": 280,
+     "precision, recall": [
+      0.9745,
+      0.9675
+     ]
+    },
+    "K": {
+     "asked": 295,
+     "precision, recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "R": {
+     "asked": 280,
+     "precision, recall": [
+      1.0,
+      0.6426
+     ]
+    },
+    "RK": {
+     "asked": 280,
+     "precision, recall": [
+      1.0,
+      0.6426
+     ]
+    },
+    "oracle": {
+     "asked": 295,
+     "precision, recall": [
+      1.0,
+      0.1541
+     ]
+    },
+    "thresholds P, R": [
+     0.9999,
+     0.9998
+    ]
+   }
+  },
+  "2 AUROC for a wrong prediction": {
+   "P": {
+    "all": 0.8852,
+    "make (a tool made)": 0.9915,
+    "move, blocked": 0.8601,
+    "move, succeeded": 0.9208
+   },
+   "K": {
+    "all": 0.8794,
+    "make (a tool made)": 0.9759,
+    "move, blocked": 0.7458,
+    "move, succeeded": 0.8581
+   },
+   "R": {
+    "all": 0.9583,
+    "make (a tool made)": 0.9917,
+    "move, blocked": 0.9425,
+    "move, succeeded": 0.9872
+   },
+   "oracle": {
+    "all": 0.5263,
+    "make (a tool made)": 0.501,
+    "move, blocked": 0.4908,
+    "move, succeeded": 0.5855
+   },
+   "RK": {
+    "all": 0.983,
+    "make (a tool made)": 0.9947,
+    "move, blocked": 0.974,
+    "move, succeeded": 0.9958
+   },
+   "raw distance (diagnostic), by k: AUROC for wrong": {
+    "1": 0.952,
+    "4": 0.9478,
+    "16": 0.9295
+   },
+   "replacements, wrong": [
+    177694,
+    235
+   ]
+  },
+  "P19: R's precision and recall against the memory's occurrences of the kind": {
+   "make (a tool made)": {
+    "training occurrences": 987,
+    "10": [
+     0.9923,
+     1.0
+    ],
+    "30": [
+     0.9922,
+     0.9961
+    ],
+    "100": [
+     0.9922,
+     0.9941
+    ],
+    "300": [
+     0.9922,
+     0.9941
+    ]
+   },
+   "move, blocked": {
+    "training occurrences": 4373,
+    "10": [
+     1.0,
+     0.9754
+    ],
+    "30": [
+     1.0,
+     0.9719
+    ],
+    "100": [
+     1.0,
+     0.9719
+    ],
+    "300": [
+     1.0,
+     0.9719
+    ]
+   },
+   "move, succeeded": {
+    "training occurrences": 27448,
+    "10": [
+     0.9402,
+     0.7942
+    ],
+    "30": [
+     1.0,
+     0.3177
+    ],
+    "100": [
+     1.0,
+     0.3105
+    ],
+    "300": [
+     1.0,
+     0.3213
+    ]
+   }
+  },
+  "seconds": 54.7
+ }
+}

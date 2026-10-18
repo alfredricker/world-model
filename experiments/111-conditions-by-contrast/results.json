@@ -1,0 +1,2222 @@
+{
+ "verdict": "uninterpretable",
+ "decision": "keep (the user, 2026-10-17; first decided stop)",
+ "why": "rung 1's bar asked memory alone for conditions that only experiment or others can separate",
+ "world1_labels": {
+  "form": "labels",
+  "training occurrences": {
+   "lamp lights": 560,
+   "lamp goes out": 395,
+   "push": 6545,
+   "move": 178596,
+   "blocked": 52325
+  },
+  "smoke": false,
+  "conditions": {
+   "lamp lights": {
+    "precision": 0.8527,
+    "recall": 0.5524,
+    "events exactly right": 0.1549,
+    "seconds per event": 0.007,
+    "events": 213,
+    "baseline 'within one step of i or the agent': precision, recall": [
+     0.191,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {
+     "the cell does not vary (< 5 a side)": 140,
+     "enough cases each side": 83,
+     "no contrast left (all successes)": 63
+    },
+    "false conditions: evaluator kind at (dy, dx) from the event's tile, top 8": {
+     "1 at (-1, -3)": 13,
+     "1 at (1, -2)": 11,
+     "1 at (1, -1)": 11,
+     "1 at (-2, 3)": 5,
+     "1 at (-2, 1)": 4,
+     "0 at (2, -2)": 4,
+     "3 at (-1, -1)": 3,
+     "3 at (1, -1)": 3
+    },
+    "true conditions per event (mean)": 3.0,
+    "facts of the first 5 events (dy, dx, value, = or ≠, power)": [
+     [
+      [
+       1,
+       2,
+       2,
+       "=",
+       0.0556
+      ],
+      [
+       1,
+       1,
+       3,
+       "=",
+       0.8962
+      ],
+      [
+       1,
+       0,
+       0,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       2,
+       2,
+       "=",
+       0.0556
+      ],
+      [
+       1,
+       1,
+       3,
+       "=",
+       0.8962
+      ],
+      [
+       1,
+       0,
+       0,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       -1,
+       2,
+       2,
+       "=",
+       0.0545
+      ],
+      [
+       -1,
+       1,
+       3,
+       "=",
+       0.8641
+      ],
+      [
+       -1,
+       0,
+       0,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       2,
+       2,
+       "=",
+       0.0556
+      ],
+      [
+       1,
+       1,
+       3,
+       "=",
+       0.8962
+      ],
+      [
+       1,
+       0,
+       0,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       -1,
+       2,
+       2,
+       "=",
+       0.0545
+      ],
+      [
+       -1,
+       1,
+       3,
+       "=",
+       0.8641
+      ],
+      [
+       -1,
+       0,
+       0,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      1.0,
+      0.0438
+     ],
+     "100": [
+      0.9551,
+      0.266
+     ],
+     "300": [
+      0.9692,
+      0.4429
+     ]
+    }
+   },
+   "lamp goes out": {
+    "precision": 0.7111,
+    "recall": 0.4922,
+    "events exactly right": 0.0,
+    "seconds per event": 0.0065,
+    "events": 141,
+    "baseline 'within one step of i or the agent': precision, recall": [
+     0.3846,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {
+     "enough cases each side": 136,
+     "the cell does not vary (< 5 a side)": 222
+    },
+    "false conditions: evaluator kind at (dy, dx) from the event's tile, top 8": {
+     "3 at (0, -1)": 45,
+     "3 at (1, 0)": 41,
+     "3 at (-1, 0)": 32,
+     "3 at (0, 1)": 23
+    },
+    "true conditions per event (mean)": 5.0,
+    "facts of the first 5 events (dy, dx, value, = or ≠, power)": [
+     [
+      [
+       1,
+       1,
+       2,
+       "=",
+       0.139
+      ],
+      [
+       1,
+       0,
+       3,
+       "=",
+       0.397
+      ],
+      [
+       1,
+       -1,
+       0,
+       "=",
+       0.79
+      ],
+      [
+       0,
+       1,
+       3,
+       "≠",
+       0.8587
+      ],
+      [
+       -1,
+       0,
+       3,
+       "≠",
+       0.9294
+      ],
+      [
+       0,
+       -1,
+       3,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       1,
+       2,
+       "=",
+       0.139
+      ],
+      [
+       1,
+       0,
+       3,
+       "=",
+       0.397
+      ],
+      [
+       1,
+       -1,
+       0,
+       "=",
+       0.79
+      ],
+      [
+       0,
+       1,
+       3,
+       "≠",
+       0.8587
+      ],
+      [
+       -1,
+       0,
+       3,
+       "≠",
+       0.9294
+      ],
+      [
+       0,
+       -1,
+       3,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       1,
+       2,
+       "=",
+       0.139
+      ],
+      [
+       1,
+       0,
+       3,
+       "=",
+       0.397
+      ],
+      [
+       1,
+       -1,
+       0,
+       "=",
+       0.79
+      ],
+      [
+       0,
+       1,
+       3,
+       "≠",
+       0.8587
+      ],
+      [
+       -1,
+       0,
+       3,
+       "≠",
+       0.9294
+      ],
+      [
+       0,
+       -1,
+       3,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       1,
+       2,
+       "=",
+       0.139
+      ],
+      [
+       1,
+       0,
+       3,
+       "=",
+       0.397
+      ],
+      [
+       1,
+       -1,
+       0,
+       "=",
+       0.79
+      ],
+      [
+       0,
+       1,
+       3,
+       "≠",
+       0.8587
+      ],
+      [
+       -1,
+       0,
+       3,
+       "≠",
+       0.9294
+      ],
+      [
+       0,
+       -1,
+       3,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       1,
+       2,
+       "=",
+       0.139
+      ],
+      [
+       1,
+       0,
+       3,
+       "=",
+       0.397
+      ],
+      [
+       1,
+       -1,
+       0,
+       "=",
+       0.79
+      ],
+      [
+       0,
+       1,
+       3,
+       "≠",
+       0.8587
+      ],
+      [
+       -1,
+       0,
+       3,
+       "≠",
+       0.9294
+      ],
+      [
+       0,
+       -1,
+       3,
+       "≠",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      1.0,
+      0.1035
+     ],
+     "100": [
+      0.6655,
+      0.2709
+     ],
+     "300": [
+      0.6561,
+      0.3816
+     ]
+    }
+   },
+   "push": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "events exactly right": 1.0,
+    "seconds per event": 0.01,
+    "events": 300,
+    "baseline 'within one step of i or the agent': precision, recall": [
+     0.1429,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {},
+    "false conditions: evaluator kind at (dy, dx) from the event's tile, top 8": {},
+    "true conditions per event (mean)": 2.0,
+    "facts of the first 5 events (dy, dx, value, = or ≠, power)": [
+     [
+      [
+       0,
+       2,
+       2,
+       "=",
+       0.0492
+      ],
+      [
+       0,
+       1,
+       3,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       2,
+       2,
+       "=",
+       0.0492
+      ],
+      [
+       0,
+       1,
+       3,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       2,
+       2,
+       "=",
+       0.0492
+      ],
+      [
+       0,
+       1,
+       3,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       2,
+       2,
+       "=",
+       0.0492
+      ],
+      [
+       0,
+       1,
+       3,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       2,
+       2,
+       "=",
+       0.0492
+      ],
+      [
+       0,
+       1,
+       3,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      0.0,
+      0.0
+     ],
+     "100": [
+      1.0,
+      0.6067
+     ],
+     "300": [
+      1.0,
+      0.8883
+     ]
+    }
+   },
+   "move": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "events exactly right": 1.0,
+    "seconds per event": 0.0051,
+    "events": 300,
+    "baseline 'within one step of i or the agent': precision, recall": [
+     0.0909,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {},
+    "false conditions: evaluator kind at (dy, dx) from the event's tile, top 8": {},
+    "true conditions per event (mean)": 1.0,
+    "facts of the first 5 events (dy, dx, value, = or ≠, power)": [
+     [
+      [
+       0,
+       1,
+       2,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       1,
+       2,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       1,
+       2,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       1,
+       2,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       1,
+       2,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      0.0,
+      0.0
+     ],
+     "100": [
+      1.0,
+      0.2333
+     ],
+     "300": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "blocked": {
+    "precision": 0.3529,
+    "recall": 0.2736,
+    "events exactly right": 0.2,
+    "seconds per event": 0.0033,
+    "events": 300,
+    "baseline 'within one step of i or the agent': precision, recall": [
+     0.125,
+     0.9119
+    ],
+    "missed true conditions, by reason (final subset)": {
+     "no contrast left (all successes)": 239
+    },
+    "false conditions: evaluator kind at (dy, dx) from the event's tile, top 8": {
+     "1 at (-3, 7)": 18,
+     "1 at (-5, -6)": 18,
+     "1 at (-5, -7)": 17,
+     "1 at (-5, -4)": 13,
+     "1 at (-5, -3)": 11,
+     "1 at (-5, -5)": 11,
+     "1 at (-1, -7)": 10,
+     "1 at (-5, -1)": 10
+    },
+    "true conditions per event (mean)": 1.1,
+    "facts of the first 5 events (dy, dx, value, = or ≠, power)": [
+     [
+      [
+       0,
+       -1,
+       0,
+       "≠",
+       0.8466
+      ],
+      [
+       -2,
+       5,
+       0,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       -1,
+       0,
+       "≠",
+       0.8466
+      ],
+      [
+       -1,
+       -3,
+       6,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       -1,
+       -2,
+       6,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       -4,
+       7,
+       1,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       -5,
+       7,
+       1,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      1.0,
+      0.7173
+     ],
+     "100": [
+      1.0,
+      0.9119
+     ],
+     "300": [
+      0.9536,
+      1.0
+     ]
+    }
+   }
+  },
+  "seconds": 67.0
+ },
+ "world1_codes": {
+  "form": "codes",
+  "training occurrences": {
+   "lamp lights": 560,
+   "lamp goes out": 395,
+   "push": 6545,
+   "move": 178596,
+   "blocked": 52325
+  },
+  "smoke": false,
+  "conditions": {
+   "lamp lights": {
+    "precision": 0.8527,
+    "recall": 0.5524,
+    "events exactly right": 0.1549,
+    "seconds per event": 0.0074,
+    "events": 213,
+    "baseline 'within one step of i or the agent': precision, recall": [
+     0.191,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {
+     "the cell does not vary (< 5 a side)": 140,
+     "enough cases each side": 83,
+     "no contrast left (all successes)": 63
+    },
+    "false conditions: evaluator kind at (dy, dx) from the event's tile, top 8": {
+     "1 at (-1, -3)": 13,
+     "1 at (1, -2)": 11,
+     "1 at (1, -1)": 11,
+     "1 at (-2, 3)": 5,
+     "1 at (-2, 1)": 4,
+     "0 at (2, -2)": 4,
+     "3 at (-1, -1)": 3,
+     "3 at (1, -1)": 3
+    },
+    "true conditions per event (mean)": 3.0,
+    "facts of the first 5 events (dy, dx, value, = or ≠, power)": [
+     [
+      [
+       1,
+       2,
+       6,
+       "=",
+       0.0556
+      ],
+      [
+       1,
+       1,
+       5,
+       "=",
+       0.8962
+      ],
+      [
+       1,
+       0,
+       0,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       2,
+       6,
+       "=",
+       0.0556
+      ],
+      [
+       1,
+       1,
+       5,
+       "=",
+       0.8962
+      ],
+      [
+       1,
+       0,
+       0,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       -1,
+       2,
+       6,
+       "=",
+       0.0545
+      ],
+      [
+       -1,
+       1,
+       5,
+       "=",
+       0.8641
+      ],
+      [
+       -1,
+       0,
+       0,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       2,
+       6,
+       "=",
+       0.0556
+      ],
+      [
+       1,
+       1,
+       5,
+       "=",
+       0.8962
+      ],
+      [
+       1,
+       0,
+       0,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       -1,
+       2,
+       6,
+       "=",
+       0.0545
+      ],
+      [
+       -1,
+       1,
+       5,
+       "=",
+       0.8641
+      ],
+      [
+       -1,
+       0,
+       0,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      1.0,
+      0.0438
+     ],
+     "100": [
+      0.9551,
+      0.266
+     ],
+     "300": [
+      0.9692,
+      0.4429
+     ]
+    }
+   },
+   "lamp goes out": {
+    "precision": 0.7111,
+    "recall": 0.4922,
+    "events exactly right": 0.0,
+    "seconds per event": 0.0066,
+    "events": 141,
+    "baseline 'within one step of i or the agent': precision, recall": [
+     0.3846,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {
+     "enough cases each side": 136,
+     "the cell does not vary (< 5 a side)": 222
+    },
+    "false conditions: evaluator kind at (dy, dx) from the event's tile, top 8": {
+     "3 at (0, -1)": 45,
+     "3 at (1, 0)": 41,
+     "3 at (-1, 0)": 32,
+     "3 at (0, 1)": 23
+    },
+    "true conditions per event (mean)": 5.0,
+    "facts of the first 5 events (dy, dx, value, = or ≠, power)": [
+     [
+      [
+       1,
+       1,
+       6,
+       "=",
+       0.139
+      ],
+      [
+       1,
+       0,
+       5,
+       "=",
+       0.397
+      ],
+      [
+       1,
+       -1,
+       0,
+       "=",
+       0.79
+      ],
+      [
+       0,
+       1,
+       5,
+       "≠",
+       0.8587
+      ],
+      [
+       -1,
+       0,
+       5,
+       "≠",
+       0.9294
+      ],
+      [
+       0,
+       -1,
+       5,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       1,
+       6,
+       "=",
+       0.139
+      ],
+      [
+       1,
+       0,
+       5,
+       "=",
+       0.397
+      ],
+      [
+       1,
+       -1,
+       0,
+       "=",
+       0.79
+      ],
+      [
+       0,
+       1,
+       5,
+       "≠",
+       0.8587
+      ],
+      [
+       -1,
+       0,
+       5,
+       "≠",
+       0.9294
+      ],
+      [
+       0,
+       -1,
+       5,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       1,
+       6,
+       "=",
+       0.139
+      ],
+      [
+       1,
+       0,
+       5,
+       "=",
+       0.397
+      ],
+      [
+       1,
+       -1,
+       0,
+       "=",
+       0.79
+      ],
+      [
+       0,
+       1,
+       5,
+       "≠",
+       0.8587
+      ],
+      [
+       -1,
+       0,
+       5,
+       "≠",
+       0.9294
+      ],
+      [
+       0,
+       -1,
+       5,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       1,
+       6,
+       "=",
+       0.139
+      ],
+      [
+       1,
+       0,
+       5,
+       "=",
+       0.397
+      ],
+      [
+       1,
+       -1,
+       0,
+       "=",
+       0.79
+      ],
+      [
+       0,
+       1,
+       5,
+       "≠",
+       0.8587
+      ],
+      [
+       -1,
+       0,
+       5,
+       "≠",
+       0.9294
+      ],
+      [
+       0,
+       -1,
+       5,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       1,
+       1,
+       6,
+       "=",
+       0.139
+      ],
+      [
+       1,
+       0,
+       5,
+       "=",
+       0.397
+      ],
+      [
+       1,
+       -1,
+       0,
+       "=",
+       0.79
+      ],
+      [
+       0,
+       1,
+       5,
+       "≠",
+       0.8587
+      ],
+      [
+       -1,
+       0,
+       5,
+       "≠",
+       0.9294
+      ],
+      [
+       0,
+       -1,
+       5,
+       "≠",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      1.0,
+      0.1035
+     ],
+     "100": [
+      0.6655,
+      0.2709
+     ],
+     "300": [
+      0.6561,
+      0.3816
+     ]
+    }
+   },
+   "push": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "events exactly right": 1.0,
+    "seconds per event": 0.0108,
+    "events": 300,
+    "baseline 'within one step of i or the agent': precision, recall": [
+     0.1429,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {},
+    "false conditions: evaluator kind at (dy, dx) from the event's tile, top 8": {},
+    "true conditions per event (mean)": 2.0,
+    "facts of the first 5 events (dy, dx, value, = or ≠, power)": [
+     [
+      [
+       0,
+       2,
+       6,
+       "=",
+       0.0492
+      ],
+      [
+       0,
+       1,
+       5,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       2,
+       6,
+       "=",
+       0.0492
+      ],
+      [
+       0,
+       1,
+       5,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       2,
+       6,
+       "=",
+       0.0492
+      ],
+      [
+       0,
+       1,
+       5,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       2,
+       6,
+       "=",
+       0.0492
+      ],
+      [
+       0,
+       1,
+       5,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       2,
+       6,
+       "=",
+       0.0492
+      ],
+      [
+       0,
+       1,
+       5,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      0.0,
+      0.0
+     ],
+     "100": [
+      1.0,
+      0.6067
+     ],
+     "300": [
+      1.0,
+      0.8883
+     ]
+    }
+   },
+   "move": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "events exactly right": 1.0,
+    "seconds per event": 0.0056,
+    "events": 300,
+    "baseline 'within one step of i or the agent': precision, recall": [
+     0.0909,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {},
+    "false conditions: evaluator kind at (dy, dx) from the event's tile, top 8": {},
+    "true conditions per event (mean)": 1.0,
+    "facts of the first 5 events (dy, dx, value, = or ≠, power)": [
+     [
+      [
+       0,
+       1,
+       6,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       1,
+       6,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       1,
+       6,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       1,
+       6,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       1,
+       6,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      0.0,
+      0.0
+     ],
+     "100": [
+      1.0,
+      0.2333
+     ],
+     "300": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "blocked": {
+    "precision": 0.3529,
+    "recall": 0.2736,
+    "events exactly right": 0.2,
+    "seconds per event": 0.0034,
+    "events": 300,
+    "baseline 'within one step of i or the agent': precision, recall": [
+     0.125,
+     0.9119
+    ],
+    "missed true conditions, by reason (final subset)": {
+     "no contrast left (all successes)": 239
+    },
+    "false conditions: evaluator kind at (dy, dx) from the event's tile, top 8": {
+     "1 at (-3, 7)": 18,
+     "1 at (-5, -6)": 18,
+     "1 at (-5, -7)": 17,
+     "1 at (-5, -4)": 13,
+     "1 at (-5, -3)": 11,
+     "1 at (-5, -5)": 11,
+     "1 at (-1, -7)": 10,
+     "1 at (-5, -1)": 10
+    },
+    "true conditions per event (mean)": 1.1,
+    "facts of the first 5 events (dy, dx, value, = or ≠, power)": [
+     [
+      [
+       0,
+       -1,
+       0,
+       "≠",
+       0.8466
+      ],
+      [
+       -2,
+       5,
+       0,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       0,
+       -1,
+       0,
+       "≠",
+       0.8466
+      ],
+      [
+       -1,
+       -3,
+       7,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       -1,
+       -2,
+       7,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       -4,
+       7,
+       2,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       -5,
+       7,
+       2,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      1.0,
+      0.7173
+     ],
+     "100": [
+      1.0,
+      0.9119
+     ],
+     "300": [
+      0.9536,
+      1.0
+     ]
+    }
+   }
+  },
+  "seconds": 69.4
+ },
+ "crafter_labels": {
+  "form": "labels",
+  "values": 105,
+  "smoke": false,
+  "training occurrences": {
+   "make (a tool made)": 987,
+   "move, blocked": 4373,
+   "move, succeeded": 27448
+  },
+  "conditions": {
+   "make (a tool made)": {
+    "precision": 0.9739,
+    "recall": 0.9223,
+    "events exactly right": 0.8432,
+    "seconds per event": 0.007,
+    "events": 236,
+    "baseline 'the 3 x 3 and every carried slot': precision, recall": [
+     0.0959,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {
+     "enough cases each side": 36,
+     "the cell does not vary (< 5 a side)": 8
+    },
+    "false conditions: evaluator label at token, top 8": {
+     "label 11 at token 22": 4,
+     "label 119 at token 64": 4,
+     "label 11 at token 40": 4,
+     "label 11 at token 30": 2
+    },
+    "true conditions per event (mean)": 2.4,
+    "facts of the first 5 events (token, value, = or ≠, power)": [
+     [
+      [
+       68,
+       60,
+       "≠",
+       0.1042
+      ],
+      [
+       32,
+       11,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       68,
+       60,
+       "≠",
+       0.1042
+      ],
+      [
+       40,
+       11,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       68,
+       60,
+       "≠",
+       0.1042
+      ],
+      [
+       22,
+       11,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       68,
+       60,
+       "≠",
+       0.1042
+      ],
+      [
+       40,
+       11,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       68,
+       60,
+       "≠",
+       0.1042
+      ],
+      [
+       30,
+       11,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      0.0,
+      0.0
+     ],
+     "100": [
+      0.9897,
+      0.5088
+     ],
+     "300": [
+      0.9799,
+      0.8622
+     ]
+    }
+   },
+   "move, blocked": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "events exactly right": 1.0,
+    "seconds per event": 0.0068,
+    "events": 300,
+    "baseline 'the 3 x 3 and every carried slot': precision, recall": [
+     0.0385,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {},
+    "false conditions: evaluator label at token, top 8": {},
+    "true conditions per event (mean)": 1.0,
+    "facts of the first 5 events (token, value, = or ≠, power)": [
+     [
+      [
+       30,
+       2,
+       "≠",
+       0.9483
+      ],
+      [
+       30,
+       5,
+       "≠",
+       0.9821
+      ],
+      [
+       30,
+       4,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       2,
+       "≠",
+       0.9483
+      ],
+      [
+       30,
+       5,
+       "≠",
+       0.9821
+      ],
+      [
+       30,
+       4,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       2,
+       "≠",
+       0.9483
+      ],
+      [
+       30,
+       5,
+       "≠",
+       0.9821
+      ],
+      [
+       30,
+       4,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       2,
+       "≠",
+       0.9483
+      ],
+      [
+       30,
+       5,
+       "≠",
+       0.9821
+      ],
+      [
+       30,
+       4,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       2,
+       "≠",
+       0.9483
+      ],
+      [
+       30,
+       5,
+       "≠",
+       0.9821
+      ],
+      [
+       30,
+       4,
+       "≠",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      1.0,
+      1.0
+     ],
+     "100": [
+      1.0,
+      1.0
+     ],
+     "300": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "move, succeeded": {
+    "precision": 0.9701,
+    "recall": 1.0,
+    "events exactly right": 0.97,
+    "seconds per event": 0.003,
+    "events": 300,
+    "baseline 'the 3 x 3 and every carried slot': precision, recall": [
+     0.0374,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {},
+    "false conditions: evaluator label at token, top 8": {
+     "label 2 at token 30": 3,
+     "label 2 at token 32": 2,
+     "label 2 at token 22": 2,
+     "label 2 at token 40": 1,
+     "label 2 at token 19": 1
+    },
+    "true conditions per event (mean)": 0.97,
+    "facts of the first 5 events (token, value, = or ≠, power)": [
+     [
+      [
+       30,
+       2,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       2,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       2,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       2,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       2,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      0.0,
+      0.0
+     ],
+     "100": [
+      0.0,
+      0.0
+     ],
+     "300": [
+      0.9733,
+      1.0
+     ]
+    }
+   }
+  },
+  "seconds": 13.5
+ },
+ "crafter_codes": {
+  "form": "codes",
+  "values": 53,
+  "smoke": false,
+  "training occurrences": {
+   "make (a tool made)": 987,
+   "move, blocked": 4373,
+   "move, succeeded": 27448
+  },
+  "conditions": {
+   "make (a tool made)": {
+    "precision": 0.9739,
+    "recall": 0.9223,
+    "events exactly right": 0.8432,
+    "seconds per event": 0.0062,
+    "events": 236,
+    "baseline 'the 3 x 3 and every carried slot': precision, recall": [
+     0.0959,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {
+     "the cell does not vary (< 5 a side)": 8,
+     "enough cases each side": 36
+    },
+    "false conditions: evaluator label at token, top 8": {
+     "label 11 at token 22": 4,
+     "label 119 at token 64": 4,
+     "label 11 at token 40": 4,
+     "label 11 at token 30": 2
+    },
+    "true conditions per event (mean)": 2.4,
+    "facts of the first 5 events (token, value, = or ≠, power)": [
+     [
+      [
+       68,
+       3,
+       "≠",
+       0.1042
+      ],
+      [
+       32,
+       37,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       68,
+       3,
+       "≠",
+       0.1042
+      ],
+      [
+       40,
+       37,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       68,
+       3,
+       "≠",
+       0.1042
+      ],
+      [
+       22,
+       37,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       68,
+       3,
+       "≠",
+       0.1042
+      ],
+      [
+       40,
+       37,
+       "=",
+       1.0
+      ]
+     ],
+     [
+      [
+       68,
+       3,
+       "≠",
+       0.1042
+      ],
+      [
+       30,
+       37,
+       "=",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      0.0,
+      0.0
+     ],
+     "100": [
+      0.9897,
+      0.5088
+     ],
+     "300": [
+      0.9799,
+      0.8622
+     ]
+    }
+   },
+   "move, blocked": {
+    "precision": 0.8641,
+    "recall": 0.89,
+    "events exactly right": 0.8867,
+    "seconds per event": 0.0059,
+    "events": 300,
+    "baseline 'the 3 x 3 and every carried slot': precision, recall": [
+     0.0385,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {
+     "enough cases each side": 32,
+     "the cell does not vary (< 5 a side)": 1
+    },
+    "false conditions: evaluator label at token, top 8": {
+     "label 2 at token 39": 3,
+     "label 106 at token 63": 3,
+     "label 123 at token 65": 3,
+     "label 171 at token 70": 2,
+     "label 104 at token 63": 2,
+     "label 124 at token 65": 2,
+     "label 183 at token 71": 2,
+     "label 107 at token 63": 2
+    },
+    "true conditions per event (mean)": 1.0,
+    "facts of the first 5 events (token, value, = or ≠, power)": [
+     [
+      [
+       30,
+       0,
+       "≠",
+       0.9426
+      ],
+      [
+       30,
+       11,
+       "≠",
+       0.9804
+      ],
+      [
+       30,
+       12,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       0,
+       "≠",
+       0.9426
+      ],
+      [
+       30,
+       11,
+       "≠",
+       0.9804
+      ],
+      [
+       30,
+       12,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       0,
+       "≠",
+       0.9426
+      ],
+      [
+       30,
+       11,
+       "≠",
+       0.9804
+      ],
+      [
+       30,
+       12,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       0,
+       "≠",
+       0.9426
+      ],
+      [
+       30,
+       11,
+       "≠",
+       0.9804
+      ],
+      [
+       30,
+       12,
+       "≠",
+       1.0
+      ]
+     ],
+     [
+      [
+       30,
+       0,
+       "≠",
+       0.9426
+      ],
+      [
+       30,
+       11,
+       "≠",
+       0.9804
+      ],
+      [
+       30,
+       12,
+       "≠",
+       1.0
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      1.0,
+      0.89
+     ],
+     "100": [
+      1.0,
+      0.89
+     ],
+     "300": [
+      0.9926,
+      0.89
+     ]
+    }
+   },
+   "move, succeeded": {
+    "precision": 0.5378,
+    "recall": 1.0,
+    "events exactly right": 0.2667,
+    "seconds per event": 0.006,
+    "events": 300,
+    "baseline 'the 3 x 3 and every carried slot': precision, recall": [
+     0.0374,
+     1.0
+    ],
+    "missed true conditions, by reason (final subset)": {},
+    "false conditions: evaluator label at token, top 8": {
+     "label 109 at token 63": 185,
+     "label 170 at token 70": 10,
+     "label 2 at token 38": 8,
+     "label 118 at token 64": 8,
+     "label 106 at token 63": 6,
+     "label 2 at token 30": 3,
+     "label 116 at token 64": 3,
+     "label 105 at token 63": 3
+    },
+    "true conditions per event (mean)": 0.97,
+    "facts of the first 5 events (token, value, = or ≠, power)": [
+     [
+      [
+       30,
+       0,
+       "=",
+       0.9848
+      ],
+      [
+       63,
+       20,
+       "=",
+       0.8979
+      ]
+     ],
+     [
+      [
+       30,
+       0,
+       "=",
+       0.9848
+      ],
+      [
+       63,
+       20,
+       "=",
+       0.8979
+      ],
+      [
+       31,
+       2,
+       "≠",
+       0.8622
+      ]
+     ],
+     [
+      [
+       30,
+       0,
+       "=",
+       0.9848
+      ],
+      [
+       63,
+       20,
+       "=",
+       0.8979
+      ],
+      [
+       31,
+       2,
+       "≠",
+       0.8622
+      ]
+     ],
+     [
+      [
+       30,
+       0,
+       "=",
+       0.9848
+      ],
+      [
+       63,
+       20,
+       "=",
+       0.8979
+      ],
+      [
+       31,
+       2,
+       "≠",
+       0.8622
+      ]
+     ],
+     [
+      [
+       30,
+       0,
+       "=",
+       0.9848
+      ],
+      [
+       63,
+       20,
+       "=",
+       0.8979
+      ],
+      [
+       31,
+       2,
+       "≠",
+       0.8622
+      ]
+     ]
+    ],
+    "P19: precision, recall with memory holding about n occurrences": {
+     "10": [
+      0.0,
+      0.0
+     ],
+     "30": [
+      0.0,
+      0.0
+     ],
+     "100": [
+      0.0,
+      0.0
+     ],
+     "300": [
+      0.9733,
+      1.0
+     ]
+    }
+   }
+  },
+  "seconds": 12.7
+ }
+}

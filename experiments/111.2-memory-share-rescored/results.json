@@ -1,0 +1,613 @@
+{
+ "verdict": "fail",
+ "decision": "revise (scoring only: the truth's producibility check omitted the room's border; carried into card 112's scoring)",
+ "date": "2026-10-18",
+ "fresh world 1 test rooms": {
+  "episodes": 2000,
+  "steps": 200000,
+  "seed": 1112,
+  "lamps lit / put out (steps)": [
+   355,
+   263
+  ]
+ },
+ "world1_labels": {
+  "seconds": 118.5,
+  "conditions": {
+   "lamp lights": {
+    "events": 300,
+    "precision": 0.8935,
+    "recall": 0.6544,
+    "contrastable share": 0.6222,
+    "recall on contrastable": 0.9482,
+    "closed share": 0.19,
+    "closed events": 57,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     0.54,
+     0.3519
+    ],
+    "baseline near the change": [
+     0.1927,
+     1.0
+    ],
+    "P19": {
+     "10": {
+      "precision": 0.9649,
+      "recall": 0.0611,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": 1.0,
+      "recall": 0.1578,
+      "recall on contrastable": 0.8659,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 0.8636,
+      "recall": 0.2533,
+      "recall on contrastable": 0.8571,
+      "closed and complete, of closed": null
+     },
+     "300": {
+      "precision": 0.881,
+      "recall": 0.5278,
+      "recall on contrastable": 0.8035,
+      "closed and complete, of closed": 1.0
+     }
+    }
+   },
+   "lamp goes out": {
+    "events": 264,
+    "precision": 0.9897,
+    "recall": 0.5713,
+    "contrastable share": 0.3097,
+    "recall on contrastable": 0.9427,
+    "closed share": 0.0833,
+    "closed events": 22,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     0.0833,
+     1.0
+    ],
+    "baseline near the change": [
+     0.4442,
+     1.0
+    ],
+    "P19": {
+     "10": {
+      "precision": 1.0,
+      "recall": 0.0263,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": 0.852,
+      "recall": 0.1098,
+      "recall on contrastable": 0.56,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 0.995,
+      "recall": 0.3945,
+      "recall on contrastable": 0.9482,
+      "closed and complete, of closed": null
+     },
+     "300": {
+      "precision": 0.9535,
+      "recall": 0.5122,
+      "recall on contrastable": 0.9894,
+      "closed and complete, of closed": 0.0
+     }
+    }
+   },
+   "push": {
+    "events": 300,
+    "precision": 1.0,
+    "recall": 1.0,
+    "contrastable share": 1.0,
+    "recall on contrastable": 1.0,
+    "closed share": 1.0,
+    "closed events": 300,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     1.0,
+     1.0
+    ],
+    "baseline near the change": [
+     0.1431,
+     1.0
+    ],
+    "P19": {
+     "10": {
+      "precision": null,
+      "recall": 0.0,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": 0.973,
+      "recall": 0.12,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 1.0,
+      "recall": 0.53,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "300": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     }
+    }
+   },
+   "move": {
+    "events": 300,
+    "precision": 1.0,
+    "recall": 1.0,
+    "contrastable share": 1.0,
+    "recall on contrastable": 1.0,
+    "closed share": 1.0,
+    "closed events": 300,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     1.0,
+     1.0
+    ],
+    "baseline near the change": [
+     0.0915,
+     1.0
+    ],
+    "P19": {
+     "10": {
+      "precision": null,
+      "recall": 0.0,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": null,
+      "recall": 0.0,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 1.0,
+      "recall": 0.25,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "300": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     }
+    }
+   },
+   "blocked": {
+    "events": 300,
+    "precision": 0.9622,
+    "recall": 1.0,
+    "contrastable share": 0.9909,
+    "recall on contrastable": 1.0,
+    "closed share": 1.0,
+    "closed events": 300,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     1.0,
+     1.0
+    ],
+    "baseline near the change": [
+     0.1228,
+     0.8822
+    ],
+    "P19": {
+     "10": {
+      "precision": null,
+      "recall": 0.0,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": 1.0,
+      "recall": 0.6979,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 0.7399,
+      "recall": 0.8852,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": 0.9828
+     },
+     "300": {
+      "precision": 0.9539,
+      "recall": 1.0,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": 1.0
+     }
+    }
+   }
+  }
+ },
+ "world1_labels_border": {
+  "seconds": 35.8,
+  "conditions": {
+   "lamp lights": {
+    "events": 300,
+    "precision": 0.9392,
+    "recall": 0.6544,
+    "contrastable share": 0.6222,
+    "recall on contrastable": 0.9482,
+    "closed share": 0.19,
+    "closed events": 57,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     0.54,
+     0.3519
+    ],
+    "baseline near the change": [
+     0.2421,
+     1.0
+    ],
+    "P19": {}
+   },
+   "lamp goes out": {
+    "events": 264,
+    "precision": 0.9897,
+    "recall": 0.5893,
+    "contrastable share": 0.4011,
+    "recall on contrastable": 0.9539,
+    "closed share": 0.0833,
+    "closed events": 22,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     0.0833,
+     1.0
+    ],
+    "baseline near the change": [
+     0.4958,
+     1.0
+    ],
+    "P19": {}
+   },
+   "push": {
+    "events": 300,
+    "precision": 1.0,
+    "recall": 1.0,
+    "contrastable share": 1.0,
+    "recall on contrastable": 1.0,
+    "closed share": 1.0,
+    "closed events": 300,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     1.0,
+     1.0
+    ],
+    "baseline near the change": [
+     0.1819,
+     1.0
+    ],
+    "P19": {}
+   },
+   "move": {
+    "events": 300,
+    "precision": 1.0,
+    "recall": 1.0,
+    "contrastable share": 1.0,
+    "recall on contrastable": 1.0,
+    "closed share": 1.0,
+    "closed events": 300,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     1.0,
+     1.0
+    ],
+    "baseline near the change": [
+     0.1174,
+     1.0
+    ],
+    "P19": {}
+   },
+   "blocked": {
+    "events": 300,
+    "precision": 1.0,
+    "recall": 1.0,
+    "contrastable share": 0.9889,
+    "recall on contrastable": 1.0,
+    "closed share": 1.0,
+    "closed events": 300,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     1.0,
+     1.0
+    ],
+    "baseline near the change": [
+     0.053,
+     0.8778
+    ],
+    "P19": {}
+   }
+  }
+ },
+ "crafter_codes": {
+  "seconds": 26.7,
+  "conditions": {
+   "make (a tool made)": {
+    "events": 236,
+    "precision": 0.9632,
+    "recall": 0.9258,
+    "contrastable share": 0.4364,
+    "recall on contrastable": 1.0,
+    "closed share": 0.4576,
+    "closed events": 108,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     0.8856,
+     1.0
+    ],
+    "baseline near the change": [
+     0.0959,
+     1.0
+    ],
+    "P19": {
+     "10": {
+      "precision": 0.5357,
+      "recall": 0.0265,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": 1.0,
+      "recall": 0.1095,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 0.9874,
+      "recall": 0.553,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "300": {
+      "precision": 0.9801,
+      "recall": 0.8693,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     }
+    }
+   },
+   "move, blocked": {
+    "events": 300,
+    "precision": 0.8498,
+    "recall": 0.8867,
+    "contrastable share": 0.8767,
+    "recall on contrastable": 1.0,
+    "closed share": 0.8867,
+    "closed events": 266,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     0.8867,
+     1.0
+    ],
+    "baseline near the change": [
+     0.0385,
+     1.0
+    ],
+    "P19": {
+     "10": {
+      "precision": null,
+      "recall": 0.0,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": 1.0,
+      "recall": 0.8867,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 1.0,
+      "recall": 0.8867,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "300": {
+      "precision": 0.816,
+      "recall": 0.8867,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": 1.0
+     }
+    }
+   },
+   "move, succeeded": {
+    "events": 300,
+    "precision": 0.4536,
+    "recall": 1.0,
+    "contrastable share": 0.9966,
+    "recall on contrastable": 1.0,
+    "closed share": 0.0,
+    "closed events": 0,
+    "closed and complete, of closed": null,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     0.0,
+     null
+    ],
+    "baseline near the change": [
+     0.0376,
+     1.0
+    ],
+    "P19": {
+     "10": {
+      "precision": null,
+      "recall": 0.0,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": null,
+      "recall": 0.0,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "recall on contrastable": 0.0,
+      "closed and complete, of closed": 0.0
+     },
+     "300": {
+      "precision": 0.9766,
+      "recall": 0.9966,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": 1.0
+     }
+    }
+   }
+  }
+ },
+ "crafter_labels": {
+  "seconds": 25.7,
+  "conditions": {
+   "make (a tool made)": {
+    "events": 236,
+    "precision": 0.9633,
+    "recall": 0.9276,
+    "contrastable share": 0.4364,
+    "recall on contrastable": 1.0,
+    "closed share": 0.4576,
+    "closed events": 108,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     0.8856,
+     1.0
+    ],
+    "baseline near the change": [
+     0.0959,
+     1.0
+    ],
+    "P19": {
+     "10": {
+      "precision": 0.5357,
+      "recall": 0.0265,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": 1.0,
+      "recall": 0.1095,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 0.9841,
+      "recall": 0.5477,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "300": {
+      "precision": 0.9801,
+      "recall": 0.8693,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     }
+    }
+   },
+   "move, blocked": {
+    "events": 300,
+    "precision": 1.0,
+    "recall": 1.0,
+    "contrastable share": 0.99,
+    "recall on contrastable": 1.0,
+    "closed share": 1.0,
+    "closed events": 300,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     1.0,
+     1.0
+    ],
+    "baseline near the change": [
+     0.0385,
+     1.0
+    ],
+    "P19": {
+     "10": {
+      "precision": null,
+      "recall": 0.0,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": null
+     },
+     "300": {
+      "precision": 0.831,
+      "recall": 1.0,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": 1.0
+     }
+    }
+   },
+   "move, succeeded": {
+    "events": 300,
+    "precision": 0.9734,
+    "recall": 1.0,
+    "contrastable share": 0.9966,
+    "recall on contrastable": 1.0,
+    "closed share": 1.0,
+    "closed events": 300,
+    "closed and complete, of closed": 1.0,
+    "111.1's closing (5 cases): closed share, complete of closed": [
+     1.0,
+     1.0
+    ],
+    "baseline near the change": [
+     0.0376,
+     1.0
+    ],
+    "P19": {
+     "10": {
+      "precision": null,
+      "recall": 0.0,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "30": {
+      "precision": null,
+      "recall": 0.0,
+      "recall on contrastable": null,
+      "closed and complete, of closed": null
+     },
+     "100": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "recall on contrastable": 0.0,
+      "closed and complete, of closed": 0.0
+     },
+     "300": {
+      "precision": 0.9766,
+      "recall": 0.9966,
+      "recall on contrastable": 1.0,
+      "closed and complete, of closed": 1.0
+     }
+    }
+   }
+  }
+ }
+}

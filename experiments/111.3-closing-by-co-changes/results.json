@@ -1,0 +1,506 @@
+{
+ "verdict": "pass",
+ "decision": "keep",
+ "date": "2026-10-18",
+ "runs": {
+  "world1_train": {
+   "seconds": 107.3,
+   "conditions": {
+    "lamp lights": {
+     "events": 300,
+     "precision": 0.9392,
+     "recall": 0.6544,
+     "closed share (111.2)": 0.19,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 0.19,
+     "closed events": 57,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "missed in reopened": 0,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 57,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 0.0833,
+     "co-changes asked per event": 3.1067,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      40
+     ],
+     "reopened examples (lamp row, col, action; offsets)": []
+    },
+    "lamp goes out": {
+     "events": 264,
+     "precision": 0.9897,
+     "recall": 0.5893,
+     "closed share (111.2)": 0.0833,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 0.0833,
+     "closed events": 22,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "missed in reopened": 0,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 22,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 0.0379,
+     "co-changes asked per event": 3.0909,
+     "diagnostic: co-change facts stated: recall, false added": [
+      0.6283,
+      15
+     ],
+     "reopened examples (lamp row, col, action; offsets)": []
+    },
+    "push": {
+     "events": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "closed share (111.2)": 1.0,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 1.0,
+     "closed events": 300,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "missed in reopened": 0,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 300,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 1.0,
+     "co-changes asked per event": 2.1433,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      54
+     ],
+     "reopened examples (lamp row, col, action; offsets)": []
+    },
+    "move": {
+     "events": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "closed share (111.2)": 1.0,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 1.0,
+     "closed events": 300,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "missed in reopened": 0,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 300,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 1.0,
+     "co-changes asked per event": 1.0,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      0
+     ],
+     "reopened examples (lamp row, col, action; offsets)": []
+    },
+    "blocked": {
+     "events": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "closed share (111.2)": 1.0,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 1.0,
+     "closed events": 300,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "missed in reopened": 0,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 300,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 1.0,
+     "co-changes asked per event": 0.0,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      0
+     ],
+     "reopened examples (lamp row, col, action; offsets)": []
+    }
+   }
+  },
+  "world1_evalrooms": {
+   "seconds": 133.0,
+   "conditions": {
+    "lamp lights": {
+     "events": 300,
+     "precision": 0.9298,
+     "recall": 0.8122,
+     "closed share (111.2)": 0.8133,
+     "closed and complete, of closed (111.2)": 0.5369,
+     "closed share": 0.42,
+     "closed events": 126,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 118,
+     "missed in reopened, doubted (2)": 1.0,
+     "missed in reopened": 113,
+     "doubted facts per reopened answer (2)": 1.0085,
+     "complete under 111.2": 131,
+     "complete under 111.2, still closed (3)": 0.9618,
+     "closed share under 'doubt every unvaried fact'": 0.4367,
+     "co-changes asked per event": 3.1067,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      64
+     ],
+     "reopened examples (lamp row, col, action; offsets)": [
+      {
+       "event": [
+        3,
+        6,
+        2
+       ],
+       "missed": [
+        [
+         0,
+         -1
+        ]
+       ],
+       "doubted facts (dy, dx, value, =)": [
+        [
+         0,
+         -1,
+         0,
+         true
+        ]
+       ]
+      },
+      {
+       "event": [
+        3,
+        5,
+        2
+       ],
+       "missed": [
+        [
+         1,
+         0
+        ]
+       ],
+       "doubted facts (dy, dx, value, =)": [
+        [
+         1,
+         0,
+         0,
+         true
+        ]
+       ]
+      },
+      {
+       "event": [
+        5,
+        7,
+        2
+       ],
+       "missed": [
+        [
+         0,
+         -1
+        ]
+       ],
+       "doubted facts (dy, dx, value, =)": [
+        [
+         0,
+         -1,
+         0,
+         true
+        ]
+       ]
+      },
+      {
+       "event": [
+        4,
+        5,
+        2
+       ],
+       "missed": [
+        [
+         1,
+         0
+        ]
+       ],
+       "doubted facts (dy, dx, value, =)": [
+        [
+         1,
+         0,
+         0,
+         true
+        ]
+       ]
+      }
+     ]
+    },
+    "lamp goes out": {
+     "events": 264,
+     "precision": 0.9714,
+     "recall": 0.859,
+     "closed share (111.2)": 0.2614,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 0.2614,
+     "closed events": 69,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "missed in reopened": 0,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 69,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 0.2614,
+     "co-changes asked per event": 3.0909,
+     "diagnostic: co-change facts stated: recall, false added": [
+      0.8624,
+      19
+     ],
+     "reopened examples (lamp row, col, action; offsets)": []
+    },
+    "push": {
+     "events": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "closed share (111.2)": 1.0,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 1.0,
+     "closed events": 300,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "missed in reopened": 0,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 300,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 1.0,
+     "co-changes asked per event": 2.1433,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      84
+     ],
+     "reopened examples (lamp row, col, action; offsets)": []
+    },
+    "move": {
+     "events": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "closed share (111.2)": 1.0,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 1.0,
+     "closed events": 300,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "missed in reopened": 0,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 300,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 1.0,
+     "co-changes asked per event": 1.0,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      0
+     ],
+     "reopened examples (lamp row, col, action; offsets)": []
+    },
+    "blocked": {
+     "events": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "closed share (111.2)": 1.0,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 1.0,
+     "closed events": 300,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "missed in reopened": 0,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 300,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 1.0,
+     "co-changes asked per event": 0.0,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      0
+     ],
+     "reopened examples (lamp row, col, action; offsets)": []
+    }
+   }
+  },
+  "crafter_codes": {
+   "seconds": 20.9,
+   "conditions": {
+    "make (a tool made)": {
+     "events": 236,
+     "precision": 0.9632,
+     "recall": 0.9258,
+     "closed share (111.2)": 0.4576,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 0.4534,
+     "closed events": 107,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 1,
+     "missed in reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "doubted facts per reopened answer (2)": 1.0,
+     "complete under 111.2": 108,
+     "complete under 111.2, still closed (3)": 0.9907,
+     "closed share under 'doubt every unvaried fact'": 0.0,
+     "co-changes asked per event": 2.0805,
+     "diagnostic: co-change facts stated: recall, false added": [
+      0.9735,
+      181
+     ],
+     "reopened examples": [
+      {
+       "event index": 16531,
+       "missed tokens": [],
+       "doubted (token, label at t, code, =)": [
+        [
+         3,
+         2,
+         0,
+         true
+        ]
+       ]
+      }
+     ]
+    },
+    "move, blocked": {
+     "events": 300,
+     "precision": 0.8498,
+     "recall": 0.8867,
+     "closed share (111.2)": 0.8867,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 0.8867,
+     "closed events": 266,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 266,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 0.0,
+     "co-changes asked per event": 0.91,
+     "diagnostic: co-change facts stated: recall, false added": [
+      0.8867,
+      325
+     ],
+     "reopened examples": []
+    },
+    "move, succeeded": {
+     "events": 300,
+     "precision": 0.4536,
+     "recall": 1.0,
+     "closed share (111.2)": 0.0,
+     "closed and complete, of closed (111.2)": null,
+     "closed share": 0.0,
+     "closed events": 0,
+     "closed and complete, of closed (1)": null,
+     "reopened": 0,
+     "missed in reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 0,
+     "complete under 111.2, still closed (3)": null,
+     "closed share under 'doubt every unvaried fact'": 0.0,
+     "co-changes asked per event": 0.7267,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      266
+     ],
+     "reopened examples": []
+    }
+   }
+  },
+  "crafter_labels": {
+   "seconds": 19.0,
+   "conditions": {
+    "make (a tool made)": {
+     "events": 236,
+     "precision": 0.9633,
+     "recall": 0.9276,
+     "closed share (111.2)": 0.4576,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 0.4534,
+     "closed events": 107,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 1,
+     "missed in reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "doubted facts per reopened answer (2)": 1.0,
+     "complete under 111.2": 108,
+     "complete under 111.2, still closed (3)": 0.9907,
+     "closed share under 'doubt every unvaried fact'": 0.0,
+     "co-changes asked per event": 2.0763,
+     "diagnostic: co-change facts stated: recall, false added": [
+      0.977,
+      177
+     ],
+     "reopened examples": [
+      {
+       "event index": 16531,
+       "missed tokens": [],
+       "doubted (token, label at t, code, =)": [
+        [
+         3,
+         2,
+         2,
+         true
+        ]
+       ]
+      }
+     ]
+    },
+    "move, blocked": {
+     "events": 300,
+     "precision": 1.0,
+     "recall": 1.0,
+     "closed share (111.2)": 1.0,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 1.0,
+     "closed events": 300,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 300,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 0.0,
+     "co-changes asked per event": 1.03,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      358
+     ],
+     "reopened examples": []
+    },
+    "move, succeeded": {
+     "events": 300,
+     "precision": 0.9734,
+     "recall": 1.0,
+     "closed share (111.2)": 1.0,
+     "closed and complete, of closed (111.2)": 1.0,
+     "closed share": 1.0,
+     "closed events": 300,
+     "closed and complete, of closed (1)": 1.0,
+     "reopened": 0,
+     "missed in reopened": 0,
+     "missed in reopened, doubted (2)": null,
+     "doubted facts per reopened answer (2)": null,
+     "complete under 111.2": 300,
+     "complete under 111.2, still closed (3)": 1.0,
+     "closed share under 'doubt every unvaried fact'": 0.0,
+     "co-changes asked per event": 0.7767,
+     "diagnostic: co-change facts stated: recall, false added": [
+      1.0,
+      272
+     ],
+     "reopened examples": []
+    }
+   }
+  }
+ }
+}

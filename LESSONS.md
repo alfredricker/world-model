@@ -26,6 +26,9 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   40; against the simulator, 0 of 40. *Evidence:* card 052. *Confirmed.*
 - **Examples of a goal are evidence only if drawn the way the agent's own
   experience was** (card 056: 95–97% only with play like the agent's).
+- **Split a calibration test by what the input shows, never by the
+  outcome:** "tokens that changed" fails any honest forecast of a random
+  change (card 110: 0.13–0.45).
 - **A hand-built mechanism that passes is not a result, and offline gains
   need checking in live behaviour.** *Evidence:*
   old:grl/notes/2026-09-10-reset.md. *Confirmed.*
@@ -76,15 +79,31 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   of 501 false conditions came from a state the world cannot produce. The
   model's own dynamics cannot flag such states: trained only on states the
   world produces, it predicted no change under no-op for 0 of 39,744
-  impossible ones (card 106). *Evidence:* cards 042, 043, 105.4, 106.
-  *Confirmed.*
+  impossible ones (card 106). Setting aside unfamiliar states also drops
+  true conditions, which are found by making new surroundings (an exact
+  oracle: recall 0.03–0.48). Doubt should lead to a try, not a filter.
+  *Evidence:* cards 042, 043, 105.4, 106, 110. *Confirmed.*
 - **Softmax attention must spend its weight, so it learns from tokens that
-  explain nothing** (a lamp put 42% on walls, which give its position
-  back). Gates that can close fix it, but pruning closes rare relations for
-  good. *Evidence:* card 102.1 revisions 1–3, one seed each.
+  explain nothing** (a lamp put 42% on walls). Gates that close fix it,
+  but pruning closes rare relations for good. *Evidence:* card 102.1.
 - **Contrast successes with failures; one smooth distance cannot mark
-  conditions.** *Evidence:* cards 001, 003, 004, 010. *Confirmed* for the
-  pattern.
+  conditions.** Memory's contrasts found Crafter's conditions (0.97–1.0)
+  and world 1's moves and pushes. Every true condition memory could
+  contrast was found for lamps lighting; the rest never varied in memory
+  and are experiment's. Compute significance in log space: with 59,000
+  cases p fell below 1e-300, every fact tied, and a far wall won (blocked
+  moves 0.35 / 0.27, 0.98 / 1.0 in log space). An oracle that says what
+  memory could find must hold every condition, including one the truth
+  cannot judge (111.1: 217 "missed" conditions became 3). An answer that
+  leaves only successes is not complete on few cases (all 63 under 30
+  cases missed one; 111.2: on 29 cases, 1.0). A truth asked of states the
+  world can produce must check every invariant (111.2 missed the border).
+  Trying where memory is open, without setting up the state, adds little
+  (+0.011 against random play): the missing case differs in the missing
+  fact. Closing on many successes misses facts they never varied (0.51
+  complete with 50,000 more steps); keep an answer open while a fact a
+  co-occurring change needs went untested (111.3: 1.0, one doubt per
+  answer). *Evidence:* cards 001, 003, 004, 010, 111–112. *Confirmed.*
 - **Choose what to act on by the action's effect on its parent condition,
   and keep a choice while it still gives a plan.** Refusing moves that end
   a condition met higher up gave 100% (41 of 1,000 layouts looped before).
@@ -148,19 +167,16 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   12.8% → 94.0%). *Evidence:* cards 098, 098.2.
 - **Appearance cannot tell look-alikes apart; correspondence needs a
   prediction of where each will be.** A walk over every place linked 284
-  of 290 moved cows to grass (098.8). SAM 2.1, prompted at each creature
-  and re-prompted with its true identity whenever lost, reached IDF1 0.78.
-  Prompted once it reached 0.60, as hand-built files did (0.62); its tracks
-  swapped to the next cow. In Craftium's 3D pasture, CoTracker3 keeps a
-  cow 78% of the time while it stays in view, but only 13% after it has
-  left and come back. A belief in the world's frame, with exact positions
-  and the pose, brings every cow back within 100 steps. *Evidence:* cards
-  098.6–098.8, 103.5, 104; smoke tests of 2026-10-13 (card 107, section 1).
+  of 290 moved cows to grass (098.8). SAM 2.1 prompted once reached IDF1
+  0.60, as hand-built files did (0.62); its tracks swapped to the next cow.
+  CoTracker3 in Craftium keeps a cow 78% of the time in view, 13% after it
+  leaves and returns. A belief in the world's frame, with the pose, brings
+  every cow back within 100 steps. *Evidence:* cards 098.6–098.8, 103.5,
+  104; smoke tests of 2026-10-13.
 - **Pretrained depth sees terrain, not creatures.** Tuning Depth Anything
-  3's head by view synthesis with the known pose fixed the scale (0.74 →
-  0.99 of true; 30% → 74% of pixels within 25%). A cow 10–20 pixels across
-  is still lost in the patch-scale depth (31% too near), and the loss's
-  mask drops movers anyway. *Evidence:* card 107.
+  3's head with the known pose fixed the scale (0.74 → 0.99 of true), but
+  a cow 10–20 pixels across is still placed 31% too near. *Evidence:* card
+  107.
 - **Common fate groups tiles into objects once ground is learned and a
   mover must leave its place** (99.5% of moved shapes one token; no false
   group in 21,947 Crafter states). *Evidence:* card 102.2.
@@ -194,14 +210,16 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   it stood earlier. *Evidence:* card 109. *Suggestive.*
 - **Recall that compares by a network's context cannot see a condition
   the network has not learned** (11 iron-tool successes lost among 5,900
-  failures). *Evidence:* card 102.1.
+  failures). Familiarity in System 1's own vectors put a lit lamp with no
+  box among ordinary lit lamps (AUROC for its errors 0.23–0.34). It did
+  flag tokens placed where the input was new (Crafter, 0.96–0.98).
+  *Evidence:* cards 102.1, 110. *Confirmed.*
 
 ## Process
 
 - **Change pass/fail criteria at most once; then open a new experiment.**
-- **Name counters apart from the records they merge into, label a
-  diagnostic from each run's own record, and log every loss term
-  separately.** *Evidence:* cards 074.2, 098.6.
+- **Name counters apart from the records they merge into, and log every
+  loss term separately.** *Evidence:* cards 074.2, 098.6.
 - **Time a change under the run's own load, and profile before a long
   run.** Parallel threads made tier 3 3.6 times slower (card 092). A gather
   in a backward pass made a step 1.5 s instead of 21 ms (card 105.1).

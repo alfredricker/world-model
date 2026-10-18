@@ -1,18 +1,15 @@
 # Status
 
 Overwritten each session. At most 40 lines.
-
-- **Date:** 2026-10-14, `master`, nothing committed (the archive move is staged). **Rung:** 1, not passed.
+- **Date:** 2026-10-18, `master`, uncommitted: ladder, cards 110–112, 111.3. **Rung:** 1 (new test), not passed.
   **Architecture:** version 27 (nothing adopted). **Main world: Craftium** (CHARTER "Current
   world"). Crafter is a development world; brain parts may be built there while Craftium lacks
   their inputs, each card naming its Craftium follow-up.
 - **Objective (the user, this week):** integrated learning: one transition model over vector
   states for every action and the world's own changes, conditions read from it, perception
   parts feeding it.
-- **Built so far:** series 105's one transition model over tokens (105.6, 105.8), the view placed
-  by the pose (105.10); conditions read by intervention where two copies agree (105.4, 106).
-  [108](experiments/108-learned-belief/card.md) stopped: a prediction of what a place will hold
-  is not identity. Craftium runs under the caps; 107 (depth) stopped.
+- **Built so far:** one transition model over tokens (105.6, 105.8), the view placed by the pose
+  (105.10); conditions by contrast over memory (111). 107 (depth) and 108 (belief) stopped.
 - **Direction (the user, 2026-10-14):** GOAL P12 replaced: conditions evaluated from state and
   memory, no forecast of when. CHARTER: System 1 (one step, always on) and System 2 (statements,
   evaluated selectively). Telling look-alikes apart deferred.
@@ -29,12 +26,15 @@ Overwritten each session. At most 40 lines.
   1. **Card 109.1 (not drafted):** build training targets also from memory as it stood k steps
      before the sighting, and name only places the agent could know of (109's bound knew where
      unseen caves were). Shall I draft it?
-  2. **The ladder:** rung 1 still tests "how close a goal is" (steps to the goal), which P12 no
-     longer asks. Proposed: rung 1 "know the conditions of effects and goals" (scored as 105.4
-     and 106 score them), rung 2 "evaluate them from state and memory" (109).
-  3. **GOAL's other "how soon" lines:** the opening paragraph ("infer proximity"), C6, P19 and
+  2. **GOAL's other "how soon" lines:** the opening paragraph ("infer proximity"), C6, P19 and
      the suggested order still say it.
-  4. Earlier: 107's tuned head; GOAL C1 and depth; 105.5 in Crafter; 106's next filter.
-- **Docs:** cards 001–101 moved to `experiments/archive/`. LESSONS 1,992 words (two view-placing lessons merged to make room for 108's); the
-  paper's abstract overclaims (open). Every run is capped (CHARTER rule 5). Craftium's
-  environments: `tools/card107/setup.sh`.
+  3. **[110](experiments/110-confidence/card.md) stop** (P5): familiarity on System 1's vectors misses
+     what the model never learned; filtering unfamiliar states drops true conditions. Earlier: 107; C1.
+  4. **[112](experiments/112-experiment-on-open-answers/card.md) stop** (P15): trying where memory is
+     open beat random play by only +0.011. **[111.3](experiments/111.3-closing-by-co-changes/card.md)
+     keep:** an answer stays open while a fact a co-occurring change needs went untested; closed
+     answers complete 1.0 (0.54 before, large memory), one doubt each. Next, choose: (1) conditions
+     through co-changes (lamps lighting recall 0.65 → 1.0 in the diagnostic); (2) set up doubted
+     facts (rung 4); (3) Craftium.
+- **Docs:** cards 001–101 in `experiments/archive/`. LESSONS 2,220 words. The paper's abstract
+  overclaims (open). Every run capped (rule 5). Craftium: `tools/card107/setup.sh`.

@@ -80,21 +80,22 @@ every rung below it has passed.
 
 | Rung | Property (GOAL.md) | Capability | Test that shows it | Status |
 |---|---|---|---|---|
-| 1 | P12, P6, P19 | Tell how close a goal is from any state, and how each action changes that, including through rare interactions | Goal-conditioned fork: at a development probe step, the learner is shown a goal condition (holding a key of a given colour, a given door open, a given box open) as a set of example frames from other episodes in which it holds. For each of the 5 actions, the evaluator computes the true fewest steps to the goal after that action by searching a copy of the simulator (unreachable counts as infinite; the learner never sees these numbers). The learner must rank the actions by it. Scored on interaction-decisive forks (the best action is a pickup or toggle) and movement-decisive forks that are decidable from the current view: some action is best in every reachable development state that shows the same egocentric view (decided 2026-09-26; the rest need memory and are reported, and become the memory rung's test). A pickup or toggle that changes nothing must not be ranked best. Two pass criteria, each at a threshold fixed by the card's feasibility gate: interaction-decisive top-1 above a goal-swapped control (the same model shown another goal), and the rank correlation between predicted and true steps-to-goal over fork states. Also report the score against the number of distinct interaction events in training (10, 30, 100, 300) | open |
-| 2 | P12, P16 | Infer the conditions a goal needs | Subgoal choice: in a state where a condition of the goal is unmet, the learner ranks candidate conditions, each shown as example frames like a goal, by how much achieving them brings the goal closer; the evaluator's search gives the truth. Chains up to box → key → door. Scored above a goal-swapped control. The candidates are a test device; the learner never trains on them | sketch |
-| 3 | P12 | Act to reach an unrewarded subgoal that enables a goal | Defined when rung 2 passes | sketch |
-| 4 | P21 | Deliberate over chains of conditions | Defined when rung 3 passes | sketch |
-| 5 | P2 | Remember an unseen event | Toggle at a switch door whose switch was pressed out of view: history model above a trained current-frame model by ≥ 0.1, n ≥ 30 | sketch |
+| 1 | P12, P6, P19 | Know the conditions of effects and goals | **Effects:** at each held-out step where an effect occurs (any action's, or the world's own; a spoiler is an effect like any other), the learner names the tokens the effect depends on. **Goals:** shown a goal as example frames (GOAL C1), it names the effects that make the goal hold and their conditions. The truth is the world's own rules, written out for scoring only (as in card 105.4), and is asked only of states the world can produce. Pass: precision and recall at least 0.9 for every kind of effect with at least 100 held-out events, and for every goal, each above the baseline "every token near the change". Both are also reported against the number of distinct occurrences in training (10, 30, 100, 300; P19). Judged in Craftium; in Crafter while Craftium lacks the tokens, each card naming its Craftium follow-up. Replaces the steps-to-goal fork (the user, 2026-10-16), since P12 no longer asks how soon a goal is reached | open: in Crafter, one-step makes and moves pass (card 106: precision 0.99–1.0, recall 0.95–1.0); goals, other effects and Craftium not yet tested |
+| 2 | P12, P2, P10 | Evaluate conditions from state and memory | For a condition a goal needs, about a place out of view, the learner forms a belief that it holds: from the view, else from memory carried forward by how such facts change while unseen, else from a prior given what is remembered nearby. Scored as card 109 scores it: the log-likelihood of the truth above a view-only and a static-memory baseline and within a margin of an upper bound; the place chosen is the right one; and in paired histories with the same view, the choice follows memory. This absorbs the former rung 5, an event remembered out of view (the user, 2026-10-16). Thresholds are fixed by the card's feasibility gate (109: 0.15 nats, 90%, 90%) | open: card 109 passed choice (95–99%) and memory (98–100%), and missed the bound by 0.21 nats against 0.15 |
+| 3 | P9, P12 | Learn reusable skills and when they fail | A skill runs toward a target condition about a target token (approach it, mine it, dodge it) and ends when the condition holds, when it stalls or when a spoiler fires (Roadmap step 4). It must work from new start positions and with new participants, and the learner must know the conditions of its success, found by contrasting its successes with its failures (Roadmap step 5). Moved from rung 8 (the user, 2026-10-16), since rungs 4 and 5 act and plan through skills | sketch |
+| 4 | P12 | Act to reach an unrewarded subgoal that enables a goal | Defined when rung 3 passes | sketch |
+| 5 | P21 | Deliberate over chains of conditions | Defined when rung 4 passes | sketch |
 | 6 | P3 | Apply a relation to new participants | Locked door with matching key, on `transfer_colour` (colours never seen) | sketch |
 | 7 | P8 | Compose known consequences into longer chains | Held-out key → door → switch sequences | sketch |
-| 8 | P9 | Learn a reusable skill | Defined when rung 7 passes | sketch |
 
 "Sketch" rungs get their exact test and thresholds in a card when they are
 reached, not before.
 
-The order follows GOAL.md's main insight (decided 2026-09-26): how close a
-goal is, then which conditions it needs, then acting on those conditions as
-subgoals, then deliberating over them.
+The order follows GOAL.md's main insight (decided 2026-09-26; rungs 1–3
+changed by the user 2026-10-16, after P12 was replaced): which conditions
+effects and goals need, then evaluating them from state and memory, then
+skills that reach conditions, then acting on those conditions as subgoals,
+then deliberating over them.
 
 **Theory first** (agreed with the user 2026-09-26). The theory of
 conditions ([card 003](experiments/archive/003-conditions-theory-check/card.md),
@@ -193,11 +194,21 @@ these; rule 8 guards against sliding back.
   - **System 2 holds statements:** an effect, the conditions it needs, and
     its spoilers. A spoiler is an effect that ends the goal or one of its
     conditions, and it has conditions of its own.
-    - **Where statements come from.** A condition is a fact about tokens
-      that an effect is found to depend on: changing that fact in System
-      1's input changes the predicted effect (card 105.4). No single frame
-      shows conditions about places and memory, such as "a cave not yet
-      searched". These come from contrasting reached goals with failures.
+    - **Where statements come from** (the user, 2026-10-17, replacing
+      imagined alteration of System 1's input, cards 105.4–110). A
+      condition is a fact about tokens that an effect is found to depend
+      on, in three ways:
+      - **deduction from memory:** what remembered successes of the effect
+        share and the failed tries lack;
+      - **experiment:** where facts always occurred together in memory, or
+        memory holds too few cases, the agent changes one in the world and
+        watches (P15);
+      - **others:** a demonstration adds successes (P16).
+
+      Imagined alteration (replacing a token in System 1's input) is not a
+      source. It returns only what the model already learned, and it asks
+      about states the world cannot produce (card 110). Which remembered
+      changes count as the same effect is read from the learned state.
       Statements are stored and merged in sleep (card 106). They are not
       supplied forms.
     - **Evaluation, not forecasting.** System 2 does not predict when a
@@ -310,10 +321,10 @@ parallel; its cards name no step.
 | Step | Part | What it is | Built so far | Status |
 |---|---|---|---|---|
 | 1 | System 1, one step | One transition model over token vectors, for every action and the world's own changes | Series 105, with the view placed by the pose (105.10) | built in Crafter; "do" changes 85–90% |
-| 2 | Conditions of one-step effects | A token is a condition if replacing it changes System 1's predicted effect, counted where two trained copies agree | 105.4, 106 | built in Crafter (precision 0.99–1.0); world 1's lamp going out open |
+| 2 | Conditions of one-step effects | Facts that remembered successes of an effect share and failed tries lack, separated by experiment where they always occurred together | By imagined alteration (105.4, 106; replaced 2026-10-17). By contrast over memory (111–111.2): finds what memory holds evidence for (0.94–1.0), and closes only complete answers; the open ones are left to experiment | memory part built, closing by co-changes (111.3); opportunistic experiment stopped (112) |
 | 3 | Belief over conditions | b(condition \| state, memory) for what is out of view: seen now, else remembered and carried forward by how such facts change, else a prior from what is remembered nearby. Recall and a memory network compared by the rule for recall and networks. Trained by predicting what is seen when a place next comes into view | Card 109 (revise): a network over the remembered places around the query, within 0.04 nats of the bound on remembered places; never-seen places queried from afar missed | in progress |
 | 4 | Skills (options) in System 1 | A skill runs toward a target condition about a target token and ends when it holds, or when it stalls or a spoiler fires: approaching a token, mining it, dodging an arrow. Targets are the conditions statements name. Policies are learned from the agent's own play by hindsight. Primitive actions are skills of one step | 097.1 learned walking in MiniGrid and stopped | not started |
-| 5 | Statements over skills | ⟨skill and its target token, conditions at the start, effect, spoilers, reliability⟩. Conditions are regions of the encoder's latent space, for the target token and for tokens related to it. They are read from System 1 by intervention, and from contrasting a skill's successes with its failures. Reliabilities come from recall or a network | One-step statements as exact codes and offsets (105.5, 106) | not started |
+| 5 | Statements over skills | ⟨skill and its target token, conditions at the start, effect, spoilers, reliability⟩. Conditions are regions of the encoder's latent space, for the target token and for tokens related to it. They come from contrasting a skill's successes with its failures, and from experiments. Reliabilities come from recall or a network | One-step statements as exact codes and offsets (105.5, 106) | not started |
 | 6 | Planning over statements | Backward: the subgoal is the condition whose belief, set true, most raises the plan's evaluation per cost. Forward, one statement at a time: side effects, the world's own changes and spoilers; a break becomes a maintenance condition | 105.5 (world 1, one-step statements) | partial |
 | 7 | Tests with the shape of GOAL P12's examples | Sleeping safely at night in Crafter, then Craftium: a spoiler from another agent, a condition kept over an interval, alternatives compared by belief | | not started |
 
