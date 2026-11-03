@@ -21,6 +21,17 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   saplings Crafter grants with probability 0.1. On a grid a smallest 90%
   region holds more than 90% (card 102.3). Check too that the trivial
   baseline fails the gate: "the view never moves" passed card 104.1's.
+  Dense events defeat timing alone: with one every 31 steps and ±5 steps
+  of tolerance, random boundaries scored F1 0.33. Matching in time and
+  place dropped random to 0.05 (card 115).
+- **Run a baseline given every input except the cue under test.** In play
+  data from a controller that steers toward a target, the next actions
+  reveal whether the motion was blocked. Actions alone were right on 95%
+  of locked drawer pulls and 98.5% of locked window pulls, so the pixel
+  model's pass said nothing about the lock (card 114). Test such effects
+  counterfactually: change the cue, keep the actions. There the model
+  followed the lock (97–100%; actions alone 0–5%, card 114.1). The cue was
+  used, but only the counterfactual could show it. *Confirmed.*
 - **Score effects against the simulator, never against the model's own
   codes.** Codes that never saw doors open scored "nothing happens" 40 of
   40; against the simulator, 0 of 40. *Evidence:* card 052. *Confirmed.*

@@ -1,0 +1,57 @@
+{
+ "verdict": "uninterpretable",
+ "decision": "revise: 116.1 at 448 px (32 x 32 patches)",
+ "date": "2026-11-01",
+ "gate": {
+  "ceiling": {
+   "fg_ari": 0.6831928780460271,
+   "mbo": {
+    "arm": 0.7701,
+    "cube": 0.1462,
+    "button0": 0.004,
+    "button1": 0.0034,
+    "drawer": 0.6096,
+    "window": 0.7581
+   },
+   "mean_mbo": 0.3819
+  },
+  "kmeans": {
+   "fg_ari": 0.6772967617594131,
+   "mbo": {
+    "arm": 0.6391,
+    "cube": 0.0221,
+    "button0": 0.0216,
+    "button1": 0.0213,
+    "drawer": 0.204,
+    "window": 0.3345
+   },
+   "mean_mbo": 0.2071
+  }
+ },
+ "ceilings_600_frames": {
+  "14x14": {
+   "fg_ari": 0.684,
+   "cube": 0.166,
+   "button0": 0.004,
+   "button1": 0.003
+  },
+  "24x24": {
+   "fg_ari": 0.814,
+   "cube": 0.398,
+   "button0": 0.32,
+   "button1": 0.147
+  },
+  "32x32": {
+   "fg_ari": 0.808,
+   "cube": 0.528,
+   "button0": 0.571,
+   "button1": 0.567
+  },
+  "37x37": {
+   "fg_ari": 0.797,
+   "cube": 0.489,
+   "button0": 0.531,
+   "button1": 0.404
+  }
+ }
+}

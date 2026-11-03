@@ -9,69 +9,34 @@ finished system must satisfy. This file governs how we move toward them.
 
 ## Current world
 
-**Craftium** (the user, 2026-10-13: "I like the idea of craftium as the
-main world"). Cards are judged in Craftium (Malagón et al. 2025): the
-Luanti engine (formerly Minetest) running VoxeLibre, a Minecraft clone.
-It is GOAL's "Minecraft" step, a 3D world between Crafter and robotics.
+**OGBench `visual-scene`** (the user, 2026-10-31, card
+[113](experiments/113-post-mortem-learned-stack/card.md); Park et al.
+2024). A simulated UR5e arm with a cube, a drawer, a window and two
+buttons. Each button toggles the lock on the drawer or the window.
 
 - **The learner receives:**
-  - the rendered frame (640 × 360, field of view 90° vertical);
-  - its own pose: position in blocks, yaw and pitch (proprioception,
-    GOAL C1);
-  - its previous action, from Craftium's discrete list: forward, back,
-    left, right, jump, sneak, dig, place, choose slot 1–5, and turning by
-    the mouse left, right, up and down.
-- **The learner never receives** the game's state: creature positions or
-  identities, the voxel map, or event labels. Rewards are not supervision
-  unless a card declares it. The probe mod's log and the voxel map are for
-  scoring only (card 107).
-- **Settings:** lockstep, one game frame per step, as in card 107, with
-  Craftium's other defaults, including its physics multiplier (×20). A card
-  declares any setting it changes.
-- **Crafter becomes a development world,** as MiniGrid's worlds did. Its
-  cards stand as evidence, and brain parts may be diagnosed there.
-  - **Brain parts may be built on Crafter while Craftium lacks their
-    inputs** (the user, 2026-10-13). Each such card names the Craftium card
-    that follows it, which is its portability test.
+  - the 64 × 64 RGB frame;
+  - its previous action: a 5-D end-effector displacement (x, y, z,
+    gripper yaw, gripper opening);
+  - the arm's own state, if OGBench provides it (proprioception, GOAL C1;
+    to be checked in the thinking session);
+  - at test time, a goal given as example frames of the target condition.
+- **The learner never receives** object states, lock states or the
+  evaluator's success flags while learning. OGBench's state observations
+  are for scoring and for upper bounds only.
+- **Experience:** `visual-scene-play-v0`, 1 million transitions of
+  scripted random interaction, without reward (declared, C3).
+- **Portability tests.** Crafter and Craftium (card 107's setup,
+  `tools/card107/setup.sh`) are run when a version is to be adopted, in
+  place of MiniGrid's three tiers. Rule 10's breaking worlds stay as smoke
+  tests where the adapter can read them.
 
-**MiniGrid's own environments, as three evaluation tiers** (decided with the
-user 2026-10-05, replacing the chained rooms of 2026-09-24 as the standing
-evaluation). *Amended by the user, 2026-10-11:* cards were judged on
-Crafter, and from 2026-10-13 on Craftium (above). The three tiers are run only when a card has decided keep on a
-significant architecture change (a new architecture version), before
-that version is adopted, on the same environment seeds each time.
-
-| Tier | Environment | Size | Task | How it is judged |
-|---|---|---|---|---|
-| 1 | `MiniGrid-DoorKey-8x8-v0` | 8 × 8 | key → door → goal square | **≥ 99% success** (pass/fail) |
-| 2 | `MiniGrid-BlockedUnlockPickup-v0` | 11 × 6 | move the ball blocking the door → key → door → pick up the box | against the best version so far |
-| 3 | `MiniGrid-ObstructedMaze-Full-v1` | 16 × 16 | keys hidden in boxes, balls blocking doors, locked doors across rooms; 3,600 steps | against the best version so far |
-
-- **Tier 3 is v1** (the user, 2026-10-05): MiniGrid's fix of v0, whose
-  layouts can have a ball covering a key and so be unsolvable.
-- **Against the best version:** success on the same seeds, compared pair
-  by pair: better or worse when the paired difference is beyond chance
-  (McNemar's test, p < 0.05), otherwise no different; steps to success
-  reported alongside. A kept change is adopted only if tier 1 passes and
-  neither tier 2 nor tier 3 is worse; the card's own question decides
-  the rest.
-  STATUS names the best version and its three scores.
-- **The learner receives:** MiniGrid's 7 × 7 egocentric view with
-  occlusion, as tile images, and its own previous action: turn left, turn
-  right, forward, pick up, drop, toggle (MiniGrid's "done" is not used).
-  The goal is the environment's success signal (episode end), or its
-  mission given as a goal condition or example frames (GOAL C1).
-- **The learner never receives:** simulator state, object positions or
-  identities, event labels, rewards as supervision unless a card declares
-  it, or the evaluator's probe labels.
-- **Experience:** random play in each environment, collected as card 034's
-  (declared per card); the encoder is shared across environments (C2).
-- **Development worlds:** the key, switch, either and both worlds and the
-  chained rooms stay for the ladder's tests and for diagnosis.
-
-The next world (Crafter) is entered only when the ladder rungs that these
-worlds can test have passed. *Amended by the user, 2026-10-10:* work moves
-to Crafter now, with rung 1 still open; and on 2026-10-13 to Craftium.
+**History.** MiniGrid's DoorKey-8x8, BlockedUnlockPickup and
+ObstructedMaze-Full were the standing evaluation from 2026-10-05, and the
+adoption test until 2026-10-31. Version 27's scores are in
+ARCHITECTURE.md. Crafter was the judged world from 2026-10-11, and
+Craftium from 2026-10-13 (Malagón et al. 2025, card 107). Their cards
+stand as evidence in `experiments/archive/`.
 
 ## Capability ladder
 
@@ -80,22 +45,28 @@ every rung below it has passed.
 
 | Rung | Property (GOAL.md) | Capability | Test that shows it | Status |
 |---|---|---|---|---|
-| 1 | P12, P6, P19 | Know the conditions of effects and goals | **Effects:** at each held-out step where an effect occurs (any action's, or the world's own; a spoiler is an effect like any other), the learner names the tokens the effect depends on. **Goals:** shown a goal as example frames (GOAL C1), it names the effects that make the goal hold and their conditions. The truth is the world's own rules, written out for scoring only (as in card 105.4), and is asked only of states the world can produce. Pass: precision and recall at least 0.9 for every kind of effect with at least 100 held-out events, and for every goal, each above the baseline "every token near the change". Both are also reported against the number of distinct occurrences in training (10, 30, 100, 300; P19). Judged in Craftium; in Crafter while Craftium lacks the tokens, each card naming its Craftium follow-up. Replaces the steps-to-goal fork (the user, 2026-10-16), since P12 no longer asks how soon a goal is reached | open: in Crafter, one-step makes and moves pass (card 106: precision 0.99–1.0, recall 0.95–1.0); goals, other effects and Craftium not yet tested |
-| 2 | P12, P2, P10 | Evaluate conditions from state and memory | For a condition a goal needs, about a place out of view, the learner forms a belief that it holds: from the view, else from memory carried forward by how such facts change while unseen, else from a prior given what is remembered nearby. Scored as card 109 scores it: the log-likelihood of the truth above a view-only and a static-memory baseline and within a margin of an upper bound; the place chosen is the right one; and in paired histories with the same view, the choice follows memory. This absorbs the former rung 5, an event remembered out of view (the user, 2026-10-16). Thresholds are fixed by the card's feasibility gate (109: 0.15 nats, 90%, 90%) | open: card 109 passed choice (95–99%) and memory (98–100%), and missed the bound by 0.21 nats against 0.15 |
-| 3 | P9, P12 | Learn reusable skills and when they fail | A skill runs toward a target condition about a target token (approach it, mine it, dodge it) and ends when the condition holds, when it stalls or when a spoiler fires (Roadmap step 4). It must work from new start positions and with new participants, and the learner must know the conditions of its success, found by contrasting its successes with its failures (Roadmap step 5). Moved from rung 8 (the user, 2026-10-16), since rungs 4 and 5 act and plan through skills | sketch |
-| 4 | P12 | Act to reach an unrewarded subgoal that enables a goal | Defined when rung 3 passes | sketch |
-| 5 | P21 | Deliberate over chains of conditions | Defined when rung 4 passes | sketch |
-| 6 | P3 | Apply a relation to new participants | Locked door with matching key, on `transfer_colour` (colours never seen) | sketch |
-| 7 | P8 | Compose known consequences into longer chains | Held-out key → door → switch sequences | sketch |
+| 1 | P6 | System 1 predicts action effects from pixels | Card [114](experiments/114-lock-effects-from-pixels/card.md): from a real frame and the actions after it, the model predicts that a pull opens the drawer or window when unlocked and not when locked (each ≥ 90%), and that a press flips the lock (≥ 90%), at the step the effect shows; within 5 points of the same model on OGBench's state observations. "No change" and "lock-blind" each fail one lock state. Card [114.1](experiments/114.1-counterfactual-lock/card.md): the same with the lock flipped in the simulator and the actions kept (actions alone fail) | passed (114, 114.1) |
+| 2 | P7, P4 | Segment events: boundaries and conditions without labels | Card [115](experiments/115-boundaries-from-surprise/card.md): boundaries from System 1's surprise match the simulator's condition changes (F1 ≥ 0.6 within one model step, 0.15 above plain change, 80% on the changing object); then each object's stable states between boundaries match the simulator's condition variables (set by the conditions card) | open |
+| 3 | P9 | Skills reach single conditions | A goal-conditioned policy reaches one-condition goals given as example frames (drawer open, button pressed, cube at a place) from new starts | sketch |
+| 4 | P12, P19 | Know the conditions of skills | Learned preconditions name the true ones (opening the drawer needs it unlocked), scored against the simulator's state: precision and recall ≥ 0.9, with the curve against distinct occurrences (P19) | sketch |
+| 5 | P12 | Act to reach an unrewarded subgoal that enables a goal | On tasks that need an unlock, the agent presses the button first with no reward for it; success against HIQL's published per-task scores | sketch |
+| 6 | P21 | Deliberate over chains of conditions | `visual-scene`'s longest tasks (up to eight atomic behaviors), with compute reported (P17) | sketch |
+| 7 | P2, P10 | Evaluate conditions from memory | Defined when rung 6 passes | sketch |
+| 8 | P3, P8 | Transfer and composition | Held-out combinations; `visual-puzzle`; Craftium | sketch |
+
+Rung 2 (event segmentation) inserted by the user, 2026-11-01; the rungs
+after it moved down one. Rungs replaced by the user, 2026-10-31 (card 113). The former rungs 1–7
+(conditions of effects, conditions from memory, skills, unrewarded
+subgoals, chains, relations, composition) were judged in Crafter. Their
+results are in cards 105–112, in `experiments/archive/`.
 
 "Sketch" rungs get their exact test and thresholds in a card when they are
 reached, not before.
 
-The order follows GOAL.md's main insight (decided 2026-09-26; rungs 1–3
-changed by the user 2026-10-16, after P12 was replaced): which conditions
-effects and goals need, then evaluating them from state and memory, then
-skills that reach conditions, then acting on those conditions as subgoals,
-then deliberating over them.
+The order follows GOAL.md's main insight (decided 2026-09-26; changed by
+the user 2026-10-16 and 2026-10-31): a model of effects, then skills that
+reach conditions, then the conditions of those skills, then acting on
+unmet conditions as subgoals, then deliberating over chains of them.
 
 **Theory first** (agreed with the user 2026-09-26). The theory of
 conditions ([card 003](experiments/archive/003-conditions-theory-check/card.md),
@@ -122,6 +93,18 @@ and it applies once.
 
 Agreed with the user between 2026-09-28 and 2026-09-29. New cards build on
 these; rule 8 guards against sliding back.
+
+- **Learned methods below conditions** (the user, 2026-10-31, card
+  [113](experiments/113-post-mortem-learned-stack/card.md)). Perception,
+  System 1 and skills use published learned methods, cited in
+  LITERATURE.md (rule 7(b)): a self-supervised visual encoder, an
+  action-conditioned latent transition model, and goal-conditioned skills
+  learned from reward-free play by hindsight with a learned closeness to
+  conditions. This project's own mechanisms are conditions, goals given as
+  conditions (example frames), and choosing subgoals backward over memory.
+  Closeness is a graded sense, as the hippocampus has of goals, not a
+  count of steps (the user, 2026-10-31). It is measured to the set of
+  states where a condition holds, never to one goal state (card 001).
 
 - **One transition model over vector states** (the user, 2026-10-13:
   "INTEGRATED LEARNING!" and "it should be as simple as latent
@@ -161,7 +144,8 @@ these; rule 8 guards against sliding back.
   correspondence across frames (GOAL C1): a tracker, a segmenter, later
   depth. Everything they produce enters one token state, which one effect
   model and one planner read.
-  - **Perception supplies "where"** (the user, 2026-10-13). It gives tokens
+  - **Perception supplies "where"** (the user, 2026-10-13; paused until
+    the Craftium portability test, card 113). It gives tokens
     at positions in a world frame, placed by the agent's own pose
     (proprioception, GOAL C1).
     - **Per world:** in Craftium, the position, yaw and pitch the game
@@ -172,7 +156,8 @@ these; rule 8 guards against sliding back.
     - **Not the brain's job.** The brain reads positions only as
       differences and never supplies perception's frame. Its predictions
       are not fed back to place the view.
-    - **Belief supplies "which one"** (the user, 2026-10-13).
+    - **Belief supplies "which one"** (the user, 2026-10-13; paused until
+      the Craftium portability test, card 113).
       Perception's correspondence holds while a token stays in view. When
       a token reappears, or perception's link is unsure, it is matched to
       a remembered token: the effect model predicts each remembered
@@ -314,19 +299,30 @@ these; rule 8 guards against sliding back.
 The model's trajectory: the parts the brain needs, in the order cards
 build them (the user, 2026-10-14). Every card names the step it serves.
 Between sessions, the next card comes from the first step that is not
-built. Steps and their order change only with the user. Perception's
-adapter for Craftium (tokens and their places from the pose) runs in
-parallel; its cards name no step.
+built. Steps and their order change only with the user. Choosing and
+checking the encoder (the thinking session after card 113, then card
+114) serves step 1.
 
-| Step | Part | What it is | Built so far | Status |
+Reordered by the user, 2026-10-31 (card 113): skills come before the
+conditions read from them, and every step is rebuilt on the learned
+stack. "Before 113" says what the hand-built stack showed for that part.
+
+Reordered by the user, 2026-11-01 (after card 114.1): event segmentation
+is step 2. Conditions are the stable stretches between event boundaries,
+and a boundary is perceived where a tracked feature changes unpredictably
+(Zacks et al. 2007). Skills are read from the segments. Far-future
+thinking runs over conditions, never over rolled-out latent states.
+
+| Step | Part | What it is | Before 113 | Status |
 |---|---|---|---|---|
-| 1 | System 1, one step | One transition model over token vectors, for every action and the world's own changes | Series 105, with the view placed by the pose (105.10) | built in Crafter; "do" changes 85–90% |
-| 2 | Conditions of one-step effects | Facts that remembered successes of an effect share and failed tries lack, separated by experiment where they always occurred together | By imagined alteration (105.4, 106; replaced 2026-10-17). By contrast over memory (111–111.2): finds what memory holds evidence for (0.94–1.0), and closes only complete answers; the open ones are left to experiment | memory part built, closing by co-changes (111.3); opportunistic experiment stopped (112) |
-| 3 | Belief over conditions | b(condition \| state, memory) for what is out of view: seen now, else remembered and carried forward by how such facts change, else a prior from what is remembered nearby. Recall and a memory network compared by the rule for recall and networks. Trained by predicting what is seen when a place next comes into view | Card 109 (revise): a network over the remembered places around the query, within 0.04 nats of the bound on remembered places; never-seen places queried from afar missed | in progress |
-| 4 | Skills (options) in System 1 | A skill runs toward a target condition about a target token and ends when it holds, or when it stalls or a spoiler fires: approaching a token, mining it, dodging an arrow. Targets are the conditions statements name. Policies are learned from the agent's own play by hindsight. Primitive actions are skills of one step | 097.1 learned walking in MiniGrid and stopped | not started |
-| 5 | Statements over skills | ⟨skill and its target token, conditions at the start, effect, spoilers, reliability⟩. Conditions are regions of the encoder's latent space, for the target token and for tokens related to it. They come from contrasting a skill's successes with its failures, and from experiments. Reliabilities come from recall or a network | One-step statements as exact codes and offsets (105.5, 106) | not started |
-| 6 | Planning over statements | Backward: the subgoal is the condition whose belief, set true, most raises the plan's evaluation per cost. Forward, one statement at a time: side effects, the world's own changes and spoilers; a break becomes a maintenance condition | 105.5 (world 1, one-step statements) | partial |
-| 7 | Tests with the shape of GOAL P12's examples | Sleeping safely at night in Crafter, then Craftium: a spoiler from another agent, a condition kept over an interval, alternatives compared by belief | | not started |
+| 1 | System 1, one step | An action-conditioned transition model over the encoder's patch tokens, for every action and the world's own changes | Series 105 in Crafter, with the view placed by the pose (105.10) | built (cards 114, 114.1) |
+| 2 | Event segmentation | Temporal: boundaries where System 1's prediction of a tracked feature fails beyond its usual error. Perceptual: objects from a pretrained segmenter (masks, correspondence). Conditions are each object's stable states between its boundaries | Common fate grouped tiles into objects (102.2); surprise against expected noise (LITERATURE, series 103) | not started |
+| 3 | Skills (options) in System 1 | A goal-conditioned policy and a learned closeness from reward-free play by hindsight; a skill runs toward a target condition and ends when it holds, stalls or a spoiler fires. The activity between boundaries gives candidate skills. Primitive actions are skills of one step | 097.1 learned walking in MiniGrid and stopped | not started |
+| 4 | Conditions of skills | Preconditions as regions of the encoder's space: where a skill reaching a condition succeeds against where it fails, by contrast over memory and by experiment | One-step effects: imagined alteration (105.4, 106), contrast over memory (111–111.3) | not started |
+| 5 | Statements over skills | ⟨skill and its target condition, conditions at the start, effect, spoilers, reliability⟩. Reliabilities from recall or a network | One-step statements as exact codes and offsets (105.5, 106) | not started |
+| 6 | Belief over conditions | b(condition \| state, memory) for what is out of view: seen now, else remembered and carried forward, else a prior | Card 109 (revise) | not started |
+| 7 | Planning over statements | Backward from the goal over remembered states and statements; forward, one statement at a time, for side effects, the world's own changes and spoilers | 105.5 (world 1) | not started |
+| 8 | Tests with the shape of GOAL P12's examples | `visual-scene`'s chained tasks, then Craftium: a spoiler, a condition kept over an interval, alternatives compared by belief | | not started |
 
 The planner's evaluation of a plan is a belief, not a time: the product
 of its statements' reliabilities, the beliefs in the conditions it relies

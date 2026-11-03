@@ -1,40 +1,40 @@
 # Status
 
 Overwritten each session. At most 40 lines.
-- **Date:** 2026-10-18, `master`, uncommitted: ladder, cards 110–112, 111.3. **Rung:** 1 (new test), not passed.
-  **Architecture:** version 27 (nothing adopted). **Main world: Craftium** (CHARTER "Current
-  world"). Crafter is a development world; brain parts may be built there while Craftium lacks
-  their inputs, each card naming its Craftium follow-up.
-- **Objective (the user, this week):** integrated learning: one transition model over vector
-  states for every action and the world's own changes, conditions read from it, perception
-  parts feeding it.
-- **Built so far:** one transition model over tokens (105.6, 105.8), the view placed by the pose
-  (105.10); conditions by contrast over memory (111). 107 (depth) and 108 (belief) stopped.
-- **Direction (the user, 2026-10-14):** GOAL P12 replaced: conditions evaluated from state and
-  memory, no forecast of when. CHARTER: System 1 (one step, always on) and System 2 (statements,
-  evaluated selectively). Telling look-alikes apart deferred.
-- **Roadmap (CHARTER, new):** the model's trajectory in 7 steps; next cards come from the first
-  step not built. Steps 1–2 built in Crafter; step 3, belief over conditions, in progress.
-- **[109](experiments/109-conditions-from-memory/card.md) fail → revise** (conditions from memory,
-  world 6 "searched caves"). A network over the remembered places around a queried place, trained
-  only to predict what is seen when a place comes into view, beat recall (−0.317 against −0.415
-  nats) and both baselines (+0.63 over static memory). Choice right 99% (gems) and 95%
-  (berries); in paired histories the choice followed memory in 98% and 100%. Missed the bound
-  by 0.21 nats against 0.15 allowed: never-seen cave ends asked about from afar (0.42 near, 0.11
-  far, against 0.5), because a cave's end is only ever first seen just after its mouth.
+- **Date:** 2026-11-01, `master`, uncommitted: cards 113–115, CHARTER (ladder, Roadmap),
+  AGENTS, GOAL C1, LITERATURE focus, LESSONS, cards 102–112 archived. **Rung:** 2 (event
+  segmentation), open. **Architecture:** version 27 (MiniGrid). **World:** OGBench
+  `visual-scene`.
+- **Direction:** published learned methods below ([card 113](experiments/113-post-mortem-learned-stack/card.md));
+  conditions are event segmentation (the user, 2026-11-01; Zacks et al. 2007): stable
+  stretches between boundaries, a boundary where a tracked feature changes unpredictably.
+  Far-future thinking runs over conditions, never rolled-out latents. CHARTER: Roadmap
+  step 2 and ladder rung 2 are event segmentation; skills come after.
+- **Rung 1 passed** ([114](experiments/114-lock-effects-from-pixels/card.md),
+  [114.1](experiments/114.1-counterfactual-lock/card.md)): a DINO-WM-style predictor on frozen
+  DINOv2 patches follows the lock when only the lock changes (96.9–100%; actions alone 0–5%).
+- **[115](experiments/115-boundaries-from-surprise/card.md): uninterpretable, revise.**
+  Boundaries from the predictor's surprise. The gate's bound (change with the arm masked)
+  reached F1 0.43, under the 0.6 bar; random 0.33, because events are dense. Matching in
+  time and place (after the run): random 0.05, surprise 0.30, plain change 0.31, change
+  with the arm masked 0.40. Surprise finds condition changes (lock flips best, cube
+  worst), but no better than plain change: most false boundaries sit on the arm.
+- **Segmentation review (2026-11-01, LITERATURE's current focus):** objects learned as slots
+  on the frozen DINOv2 patches (SlotContrast; slot quality tracks planning on OGBench
+  Cube); boundaries from influence and stability, not surprise (CAI, SEM-2, GateL0RD); the
+  self as what every action influences; conditions as recurring stable states (ASOT, FCDL);
+  operators for forward and backward search (DeepSym line). Planner bar: GAS 54.4% on
+  `visual-scene-play`. Portability tests paused (the user, 2026-11-01; AGENTS).
+- **[116](experiments/116-objects-as-slots/card.md): uninterpretable at its gate.** The 14 × 14
+  grid cannot show the buttons (ceiling mBO 0.004). **[116.1](experiments/116.1-slots-at-448/card.md)
+  running** at 448 px (32 × 32; ceiling 0.54–0.58 on cube and buttons). After 29 min (20k
+  steps, not converged): FG-ARI 0.87 but mean mBO 0.21 (= k-means); slots separate objects
+  from each other, not from the table; no button slot. **The user runs the 100k-step
+  command in card 116.1 (about 2.4 h)**; then it is scored. 117 and 118 approved, waiting.
+- **Setup:** ogbench, mujoco, dm_control (no labmaze) and scikit-learn installed with pip,
+  not in `pyproject.toml`. Rendering needs `MUJOCO_GL=egl`, libglvnd on `LD_LIBRARY_PATH`,
+  `__EGL_VENDOR_LIBRARY_DIRS`. Data in `~/.ogbench/data`; features in `runs/114/` (67 GB).
 - **Decisions for the user:**
-  1. **Card 109.1 (not drafted):** build training targets also from memory as it stood k steps
-     before the sighting, and name only places the agent could know of (109's bound knew where
-     unseen caves were). Shall I draft it?
-  2. **GOAL's other "how soon" lines:** the opening paragraph ("infer proximity"), C6, P19 and
-     the suggested order still say it.
-  3. **[110](experiments/110-confidence/card.md) stop** (P5): familiarity on System 1's vectors misses
-     what the model never learned; filtering unfamiliar states drops true conditions. Earlier: 107; C1.
-  4. **[112](experiments/112-experiment-on-open-answers/card.md) stop** (P15): trying where memory is
-     open beat random play by only +0.011. **[111.3](experiments/111.3-closing-by-co-changes/card.md)
-     keep:** an answer stays open while a fact a co-occurring change needs went untested; closed
-     answers complete 1.0 (0.54 before, large memory), one doubt each. Next, choose: (1) conditions
-     through co-changes (lamps lighting recall 0.65 → 1.0 in the diagnostic); (2) set up doubted
-     facts (rung 4); (3) Craftium.
-- **Docs:** cards 001–101 in `experiments/archive/`. LESSONS 2,220 words. The paper's abstract
-  overclaims (open). Every run capped (rule 5). Craftium: `tools/card107/setup.sh`.
+  1. Run card 116.1's long training command (section 7).
+- **Docs:** cards 001–112 in `experiments/archive/`. LESSONS 2,345 words. The MiniGrid
+  paper's abstract overclaims (open). Every run capped (rule 5).

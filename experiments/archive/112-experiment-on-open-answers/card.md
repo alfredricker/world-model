@@ -29,7 +29,7 @@ going out than random play? Rung 1. Serves P15, P12, P10 and P5.
 ## 2. What changes
 
 One component: the exploration policy. Memory's contrast is 111.2's,
-unchanged ([tools/card111.2/contrast.py](../../tools/card111.2/contrast.py)).
+unchanged ([tools/card111.2/contrast.py](../../../tools/card111.2/contrast.py)).
 
 ```
 random:    each step, an action at random (card 102's policy)

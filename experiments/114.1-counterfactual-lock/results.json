@@ -1,0 +1,199 @@
+{
+ "verdict": "pass",
+ "decision": "keep (card 114's patch predictor is System 1; rung 1 met). Gate 1 sub-check missed: slide within 1 cm on 89.3% of factual replays (bar 95%); outcomes agree 98.4%",
+ "date": "2026-11-01",
+ "visual": {
+  "replays": 3078,
+  "fidelity": {
+   "slide_within_1cm": 0.8928,
+   "outcome_agrees": 0.9838,
+   "frame_abs_diff_factual": 0.277,
+   "frame_abs_diff_factual_max": 2.062
+  },
+  "lock_read_on_start_frame_right": 1.0,
+  "drawer_factual_locked": {
+   "n": 138,
+   "model_right": 1.0,
+   "model_lenient": 1.0,
+   "actions_only_right": 0.9493,
+   "lock_rule_right": 1.0
+  },
+  "drawer_factual_unlocked": {
+   "n": 555,
+   "model_right": 0.9514,
+   "model_lenient": 0.955,
+   "actions_only_right": 0.9369,
+   "lock_rule_right": 0.9261
+  },
+  "drawer_newly_locked": {
+   "n": 555,
+   "model_right": 1.0,
+   "model_lenient": 1.0,
+   "actions_only_right": 0.0973,
+   "lock_rule_right": 1.0,
+   "changed": {
+    "n": 514,
+    "model_right": 1.0,
+    "model_lenient": 1.0,
+    "actions_only_right": 0.0467,
+    "lock_rule_right": 1.0,
+    "model_forecast_opened": 0.0
+   }
+  },
+  "drawer_newly_unlocked": {
+   "n": 138,
+   "model_right": 0.9348,
+   "model_lenient": 0.942,
+   "actions_only_right": 0.1159,
+   "lock_rule_right": 0.9203,
+   "changed": {
+    "n": 127,
+    "model_right": 0.9685,
+    "model_lenient": 0.9764,
+    "actions_only_right": 0.0472,
+    "lock_rule_right": 1.0,
+    "model_forecast_opened": 0.9764
+   }
+  },
+  "window_factual_locked": {
+   "n": 195,
+   "model_right": 0.9744,
+   "model_lenient": 0.9744,
+   "actions_only_right": 0.9846,
+   "lock_rule_right": 1.0
+  },
+  "window_factual_unlocked": {
+   "n": 651,
+   "model_right": 0.9985,
+   "model_lenient": 0.9985,
+   "actions_only_right": 0.9985,
+   "lock_rule_right": 0.9985
+  },
+  "window_newly_locked": {
+   "n": 651,
+   "model_right": 0.9954,
+   "model_lenient": 0.9954,
+   "actions_only_right": 0.0,
+   "lock_rule_right": 1.0,
+   "changed": {
+    "n": 650,
+    "model_right": 0.9954,
+    "model_lenient": 0.9954,
+    "actions_only_right": 0.0,
+    "lock_rule_right": 1.0,
+    "model_forecast_opened": 0.0046
+   }
+  },
+  "window_newly_unlocked": {
+   "n": 195,
+   "model_right": 0.9949,
+   "model_lenient": 0.9949,
+   "actions_only_right": 0.0205,
+   "lock_rule_right": 0.9949,
+   "changed": {
+    "n": 194,
+    "model_right": 1.0,
+    "model_lenient": 1.0,
+    "actions_only_right": 0.0155,
+    "lock_rule_right": 1.0,
+    "model_forecast_opened": 1.0
+   }
+  }
+ },
+ "state": {
+  "replays": 2940,
+  "fidelity": {
+   "slide_within_1cm": 0.9061,
+   "outcome_agrees": 0.9905
+  },
+  "lock_read_on_start_frame_right": 1.0,
+  "drawer_factual_locked": {
+   "n": 107,
+   "model_right": 1.0,
+   "model_lenient": 1.0,
+   "actions_only_right": 0.9252,
+   "lock_rule_right": 1.0
+  },
+  "drawer_factual_unlocked": {
+   "n": 563,
+   "model_right": 0.9716,
+   "model_lenient": 0.9734,
+   "actions_only_right": 0.9556,
+   "lock_rule_right": 0.9449
+  },
+  "drawer_newly_locked": {
+   "n": 563,
+   "model_right": 0.9982,
+   "model_lenient": 0.9982,
+   "actions_only_right": 0.0746,
+   "lock_rule_right": 1.0,
+   "changed": {
+    "n": 532,
+    "model_right": 0.9981,
+    "model_lenient": 0.9981,
+    "actions_only_right": 0.0338,
+    "lock_rule_right": 1.0,
+    "model_forecast_opened": 0.0019
+   }
+  },
+  "drawer_newly_unlocked": {
+   "n": 107,
+   "model_right": 0.9813,
+   "model_lenient": 0.9813,
+   "actions_only_right": 0.1495,
+   "lock_rule_right": 0.8879,
+   "changed": {
+    "n": 95,
+    "model_right": 0.9789,
+    "model_lenient": 0.9789,
+    "actions_only_right": 0.0632,
+    "lock_rule_right": 1.0,
+    "model_forecast_opened": 0.9789
+   }
+  },
+  "window_factual_locked": {
+   "n": 159,
+   "model_right": 1.0,
+   "model_lenient": 1.0,
+   "actions_only_right": 0.9874,
+   "lock_rule_right": 1.0
+  },
+  "window_factual_unlocked": {
+   "n": 641,
+   "model_right": 1.0,
+   "model_lenient": 1.0,
+   "actions_only_right": 0.9969,
+   "lock_rule_right": 1.0
+  },
+  "window_newly_locked": {
+   "n": 641,
+   "model_right": 0.986,
+   "model_lenient": 0.986,
+   "actions_only_right": 0.0031,
+   "lock_rule_right": 1.0,
+   "changed": {
+    "n": 641,
+    "model_right": 0.986,
+    "model_lenient": 0.986,
+    "actions_only_right": 0.0031,
+    "lock_rule_right": 1.0,
+    "model_forecast_opened": 0.014
+   }
+  },
+  "window_newly_unlocked": {
+   "n": 159,
+   "model_right": 1.0,
+   "model_lenient": 1.0,
+   "actions_only_right": 0.0126,
+   "lock_rule_right": 1.0,
+   "changed": {
+    "n": 159,
+    "model_right": 1.0,
+    "model_lenient": 1.0,
+    "actions_only_right": 0.0126,
+    "lock_rule_right": 1.0,
+    "model_forecast_opened": 1.0
+   }
+  }
+ }
+}

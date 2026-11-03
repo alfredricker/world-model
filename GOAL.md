@@ -8,8 +8,7 @@ An agent that learns, from its own pixels and actions, a world model it can
 reuse: it discovers the things in its world and how they relate, predicts
 what its actions will cause, remembers what matters, and uses all of that to
 reach goals it was not trained on. Benchmarks proceed in increasing complexity.
-Simple models should begin with simple benchmarks, i.e. MiniGrid. Progress
-could look like `Mgrid -> Crafter -> Minecraft`.
+Simple models should begin with simple benchmarks, i.e. MiniGrid. Progress could look like `Mgrid -> robot manipulation in simulation (OGBench) -> Crafter and Minecraft -> real robots`
 
 The main insight of the model is P12. The agent should work towards satisfying
 latent goals through a hierarchy. First, it should be able to infer proximity to 
@@ -33,11 +32,12 @@ current approach cannot get there.
   robot's odometry gives it. It says nothing about the world (the user,
   2026-10-13: "Let's do proprioception", "and amend C1"). A declared,
   pretrained perception front end with no language or class labels may
-  supply objects' outlines and their correspondence across frames; what
+  supply objects' outlines and their correspondence across frames, and a
+  self-supervised visual encoder with no language or class labels may
+  supply feature vectors for image patches (the user, 2026-10-31, card
+  113); what
   objects are, what they do and what they mean is learned (the user,
-  2026-10-13: the agent need not be learned end to end). Any other hand-built mechanism can be a
-  baseline or a probe, never a result. Until P20, goals may be supplied as
-  tasks: a target condition shown as example observations or a success
+  2026-10-13: the agent need not be learned end to end). Any other hand-built mechanism can be a baseline or a probe, never a result. Until P20, goals may be supplied as tasks: a target condition shown as example observations or a success
   signal. What a goal requires and how to reach it are always learned.
 - **C2 One learner, one representation.** Perception, memory, prediction,
   goals and imagination use the same learned state, not separate models
@@ -135,8 +135,8 @@ Each has a one-line meaning, an example, and the shape of a test.
   condition in the learned state (holding diamonds), expressed in the same
   terms as experience. The agent knows which conditions a goal needs, and
   evaluates them from its current state and its memory. It does not
-  forecast when the goal will be reached (the user, 2026-10-14, replacing
-  "how likely and how soon").
+  forecast when the goal will be reached. It has a learned sense of how close it is to states where a condition holds, as the hippocampus has of goals. This trains its skills
+  and gives the cost by which alternatives are compared.
   - **Statements.** What the agent knows about conditions takes the form of
     statements: an effect, the conditions it needs, and its spoilers.
     A spoiler is an effect that ends the goal or one of its conditions, and

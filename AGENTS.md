@@ -29,7 +29,7 @@ There are no other documents. Do not create notes, reviews or summaries.
 | Information | Place |
 |---|---|
 | What the finished system must do | `GOAL.md`; only the user changes it |
-| A planned or finished experiment | `experiments/NNN-name/card.md` from [the template](experiments/_template/card.md), numbers in `results.json`; cards 001–101 (the MiniGrid agent up to version 27, and series 098) are in `experiments/archive/` |
+| A planned or finished experiment | `experiments/NNN-name/card.md` from [the template](experiments/_template/card.md), numbers in `results.json`; cards 001–112 (the MiniGrid agent up to version 27, and the hand-built general rebuild, series 098–112) are in `experiments/archive/` |
 | Where we are now | `STATUS.md`, **overwritten**, at most 40 lines |
 | The current model | `ARCHITECTURE.md`; bump `arch_version` and add a change-log line when it changes |
 | A durable lesson with evidence | `LESSONS.md`; prune or merge, never let it exceed three pages (the user, 2026-10-01) |
@@ -50,24 +50,30 @@ There are no other documents. Do not create notes, reviews or summaries.
   The one exception is the architecture-selection screen in CHARTER.md, run
   once at arch_version 0.
 - A card ends with exactly one decision: keep, revise or stop.
-- Cards are judged on Craftium (the user, 2026-10-13; on Crafter
-  before). CHARTER's three MiniGrid tiers are run
-  only when a card decided keep makes a significant architecture change
-  (a new arch_version), before that version is adopted (the user,
-  2026-10-11). The breaking worlds run at the same point, as smoke tests
-  (CHARTER rule 10). The tiers are judged as follows: tier 1 against its
-  threshold (≥ 99%), tiers 2 and 3 against the best version so far
-  (better, no different or worse). The version is adopted only if tier 1
-  passes and no tier is worse (the user, 2026-10-05).
+- Cards are judged on OGBench `visual-scene` (the user, 2026-10-31, card
+  113; on Craftium from 2026-10-13, on Crafter before). Crafter and
+  Craftium are run as portability tests only when a card decided keep
+  makes a significant architecture change (a new arch_version), before
+  that version is adopted. The breaking worlds run at the same point, as
+  smoke tests where the adapter can read them (CHARTER rule 10). Each
+  portability test is judged against the best version so far (better, no
+  different or worse), and the version is adopted only if none is worse.
+  The card that first runs a portability test defines its measures.
+  MiniGrid's three tiers were this test until 2026-10-31 (the user,
+  2026-10-05 and 2026-10-11). **Paused** (the user, 2026-11-01: "don't
+  worry about the crafter and craftium tests right now"): versions are
+  adopted without them while the focus is object and event segmentation.
+  Section 2's portability table stays in every card.
   - **Exception for general forms** (the user, 2026-10-13: "we should
     sacrifice some loss initially if it is a change in a generalize /
     unified direction"). A version that replaces a declared prior with a
     more general mechanism may be adopted with a loss. The loss must be
     stated in its card before the run, and it goes into ARCHITECTURE's
     known limits to be won back later.
-  - **Default margin, unless the card states another:** tier 1 at least
-    95%, tiers 2 and 3 at most 10 points below the best version, and mean
-    steps at most 1.5 times.
+  - **Default margin, unless the card states another:** each portability
+    measure at most 10 points below the best version, and mean steps at
+    most 1.5 times (carried over from the tiers until the user sets
+    others).
 - Do not edit `src/` while a run is using it.
 - Every run, smoke tests included, is capped on memory, CPU and time
   (CHARTER rule 5 gives the command).

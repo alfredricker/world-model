@@ -317,7 +317,7 @@ The first run's failures point to one cause: relations from raw
 positions are learned position by position. Three revisions tried to
 make them carry. Each changed one component, was judged by the same
 criteria, and was approved by the user. Revisions 2 and 3 came after a
-literature review, whose papers are rows in [LITERATURE](../../LITERATURE.md).
+literature review, whose papers are rows in [LITERATURE](../../../LITERATURE.md).
 
 | | What changed | Crafter: tools made right / role test | World 1: lamp changes caught | Lamp's weight on walls and empty rows | Why it failed |
 |---|---|---|---|---|---|

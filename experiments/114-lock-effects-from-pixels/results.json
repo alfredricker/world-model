@@ -1,0 +1,152 @@
+{
+ "verdict": "uninterpretable",
+ "decision": "revise (the test: a counterfactual lock in the simulator with the same recorded actions, card 114.1; model kept)",
+ "date": "2026-10-31",
+ "split": "train episodes 0-899 (every fifth frame); held out: 100 validation episodes + training episodes 900-999",
+ "gate": {
+  "probes": {
+   "button0": {
+    "accuracy": 1.0,
+    "majority": 0.5496
+   },
+   "button1": {
+    "accuracy": 1.0,
+    "majority": 0.5764
+   },
+   "drawer": {
+    "r2": 0.9774,
+    "rmse_cm": 0.95
+   },
+   "window": {
+    "r2": 0.9737,
+    "rmse_cm": 1.36
+   },
+   "cube_x": {
+    "r2": 0.8343,
+    "rmse_cm": 1.77
+   },
+   "cube_y": {
+    "r2": 0.8812,
+    "rmse_cm": 4.91
+   },
+   "cube_z": {
+    "r2": 0.8333,
+    "rmse_cm": 2.61
+   }
+  },
+  "upper_bound_state": {
+   "drawer_locked": {
+    "n": 107,
+    "right": 1.0,
+    "lenient": 1.0,
+    "no_change": 1.0,
+    "lock_blind": 0.0
+   },
+   "drawer_unlocked": {
+    "n": 563,
+    "right": 0.9645,
+    "lenient": 0.9663,
+    "no_change": 0.0657,
+    "lock_blind": 0.9343
+   },
+   "window_locked": {
+    "n": 159,
+    "right": 1.0,
+    "lenient": 1.0,
+    "no_change": 1.0,
+    "lock_blind": 0.0
+   },
+   "window_unlocked": {
+    "n": 641,
+    "right": 1.0,
+    "lenient": 1.0,
+    "no_change": 0.0,
+    "lock_blind": 1.0
+   },
+   "press": {
+    "n": 1424,
+    "right": 0.9291,
+    "button0": 0.945,
+    "button1": 0.9116,
+    "no_change": 0.0
+   },
+   "quiet": {
+    "n_windows": 8000,
+    "no_false_flip_per_step": 0.9999,
+    "no_false_flip_per_window": 0.999,
+    "cube_err_cm_by_k": [
+     0.18,
+     0.25,
+     0.31,
+     0.36
+    ]
+   }
+  }
+ },
+ "patch_predictor": {
+  "parameters_M": 13.54,
+  "train_minutes": 25,
+  "steps": 32059,
+  "held_out_mse": 0.2036,
+  "scores": {
+   "drawer_locked": {
+    "n": 138,
+    "right": 1.0,
+    "lenient": 1.0,
+    "no_change": 1.0,
+    "lock_blind": 0.0
+   },
+   "drawer_unlocked": {
+    "n": 555,
+    "right": 0.964,
+    "lenient": 0.9712,
+    "no_change": 0.0919,
+    "lock_blind": 0.9081
+   },
+   "window_locked": {
+    "n": 195,
+    "right": 0.9744,
+    "lenient": 0.9744,
+    "no_change": 1.0,
+    "lock_blind": 0.0
+   },
+   "window_unlocked": {
+    "n": 651,
+    "right": 1.0,
+    "lenient": 1.0,
+    "no_change": 0.0,
+    "lock_blind": 1.0
+   },
+   "press": {
+    "n": 1346,
+    "right": 0.9532,
+    "button0": 0.9559,
+    "button1": 0.9506,
+    "no_change": 0.0
+   },
+   "quiet": {
+    "n_windows": 8000,
+    "no_false_flip_per_step": 0.9998,
+    "no_false_flip_per_window": 0.9981,
+    "cube_err_cm_by_k": [
+     4.38,
+     4.46,
+     4.54,
+     4.58
+    ]
+   }
+  }
+ },
+ "actions_only_baseline_right": {
+  "drawer_locked": 0.949,
+  "drawer_unlocked": 0.959,
+  "window_locked": 0.985,
+  "window_unlocked": 1.0,
+  "first_chunk_only": {
+   "drawer_locked": 0.688,
+   "drawer_unlocked": 0.926,
+   "window_locked": 0.974,
+   "window_unlocked": 0.995
+  }
+ }
+}

@@ -28,7 +28,7 @@ P10 (memory), P5 (memory knows where its answer is incomplete) and P19.
 ## 2. What changes
 
 One component: card 111's contrast over memory
-([tools/card111.1/contrast.py](../../tools/card111.1/contrast.py)).
+([tools/card111.1/contrast.py](../../../tools/card111.1/contrast.py)).
 
 ```
 111:    greedy: add the fact with the smallest Fisher p (p clamped at 1e-300); threshold 0.01 / all facts;
@@ -79,7 +79,7 @@ cases and assume nothing about the world.
 ## 4. Data check
 
 Run 2026-10-18 on 111's events, with (a) only
-([runs/111.1/](../../runs/111.1/), `diag_*.json`). Precision / recall,
+([runs/111.1/](../../../runs/111.1/), `diag_*.json`). Precision / recall,
 against 111's numbers:
 
 | Kind | 111 | (a) log space | Contrastable share | Recall on those |
@@ -204,8 +204,8 @@ world can produce).
 - **(d) Near misses** hold 38–44% of the conditions missed in open
   answers in world 1, and 24–34% for Crafter's makes.
 
-**Checks after the run** ([oracle_check.py](../../tools/card111.1/oracle_check.py),
-[closed_check.py](../../tools/card111.1/closed_check.py)).
+**Checks after the run** ([oracle_check.py](../../../tools/card111.1/oracle_check.py),
+[closed_check.py](../../../tools/card111.1/closed_check.py)).
 - **Criterion 2's measure was mis-specified twice.**
   - **The pushed box.** This card's truth leaves it unjudged: removing
     it gives a lit lamp with no box beside it. "Contrastable" therefore

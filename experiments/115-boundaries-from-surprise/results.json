@@ -1,0 +1,157 @@
+{
+ "verdict": "uninterpretable",
+ "decision": "revise: objects first (perceptual segmenter, SAM 2), then 115.1 per-object surprise with the self discounted, matched in time and place",
+ "date": "2026-11-01",
+ "score": {
+  "events": {
+   "cube start": 599,
+   "cube stop": 599,
+   "drawer start": 313,
+   "drawer stop": 314,
+   "lock flip": 690,
+   "window start": 371,
+   "window stop": 371
+  },
+  "events_dropped_no_score": 2,
+  "random": {
+   "f1": 0.3303,
+   "boundaries": 7552
+  },
+  "surprise": {
+   "f1": 0.3984,
+   "precision": 0.2851,
+   "recall": 0.661,
+   "boundaries": 7552,
+   "f1_label_free_top3pct": 0.1773,
+   "recall_by_kind": {
+    "cube start": 0.591,
+    "cube stop": 0.6494,
+    "drawer start": 0.5176,
+    "drawer stop": 0.4777,
+    "lock flip": 0.829,
+    "window start": 0.6846,
+    "window stop": 0.7332
+   },
+   "unmatched_near_gripper_change": 0.3017,
+   "localised": 0.6893,
+   "localised_by_kind": {
+    "cube start": 0.4831,
+    "cube stop": 0.4884,
+    "drawer start": 0.5062,
+    "drawer stop": 0.5667,
+    "lock flip": 0.8514,
+    "window start": 0.9016,
+    "window stop": 0.8824
+   }
+  },
+  "change": {
+   "f1": 0.4147,
+   "precision": 0.4067,
+   "recall": 0.4231,
+   "boundaries": 3388,
+   "f1_label_free_top3pct": 0.286,
+   "recall_by_kind": {
+    "cube start": 0.0167,
+    "cube stop": 0.0918,
+    "drawer start": 0.2204,
+    "drawer stop": 0.6975,
+    "lock flip": 0.8536,
+    "window start": 0.5283,
+    "window stop": 0.6469
+   },
+   "unmatched_near_gripper_change": 0.4562
+  },
+  "change_arm_masked": {
+   "f1": 0.4312,
+   "precision": 0.5025,
+   "recall": 0.3776,
+   "boundaries": 2448,
+   "f1_label_free_top3pct": 0.3017,
+   "recall_by_kind": {
+    "cube start": 0.0167,
+    "cube stop": 0.0684,
+    "drawer start": 0.0927,
+    "drawer stop": 0.6783,
+    "lock flip": 0.758,
+    "window start": 0.5472,
+    "window stop": 0.5687
+   },
+   "unmatched_near_gripper_change": 0.6527
+  }
+ },
+ "diagnostics_after_run": {
+  "surprise": {
+   "time_only_f1": 0.3984,
+   "time_and_place": {
+    "f1": 0.3012,
+    "precision": 0.2596,
+    "recall": 0.3586,
+    "boundaries": 4499,
+    "recall_by_kind": {
+     "cube start": 0.0568,
+     "cube stop": 0.1102,
+     "drawer start": 0.2492,
+     "drawer stop": 0.2834,
+     "lock flip": 0.6855,
+     "window start": 0.5741,
+     "window stop": 0.5795
+    }
+   }
+  },
+  "random_time_and_place_f1": 0.0542,
+  "surprise_arm_masked": {
+   "time_only_f1": 0.4037,
+   "time_and_place": {
+    "f1": 0.2961,
+    "precision": 0.2546,
+    "recall": 0.3537,
+    "boundaries": 4524,
+    "recall_by_kind": {
+     "cube start": 0.0952,
+     "cube stop": 0.1452,
+     "drawer start": 0.3546,
+     "drawer stop": 0.3822,
+     "lock flip": 0.7014,
+     "window start": 0.4879,
+     "window stop": 0.3019
+    }
+   }
+  },
+  "change": {
+   "time_only_f1": 0.4144,
+   "time_and_place": {
+    "f1": 0.3143,
+    "precision": 0.3823,
+    "recall": 0.2668,
+    "boundaries": 2273,
+    "recall_by_kind": {
+     "cube start": 0.005,
+     "cube stop": 0.0551,
+     "drawer start": 0.0767,
+     "drawer stop": 0.2389,
+     "lock flip": 0.4812,
+     "window start": 0.4879,
+     "window stop": 0.5957
+    }
+   }
+  },
+  "change_arm_masked": {
+   "time_only_f1": 0.4301,
+   "time_and_place": {
+    "f1": 0.397,
+    "precision": 0.4993,
+    "recall": 0.3294,
+    "boundaries": 2149,
+    "recall_by_kind": {
+     "cube start": 0.0117,
+     "cube stop": 0.0568,
+     "drawer start": 0.0927,
+     "drawer stop": 0.672,
+     "lock flip": 0.6478,
+     "window start": 0.4717,
+     "window stop": 0.4582
+    }
+   }
+  }
+ }
+}

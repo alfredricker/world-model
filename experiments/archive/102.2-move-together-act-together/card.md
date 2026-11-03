@@ -83,7 +83,7 @@ this card:   token = a group of tiles that share fate
 - Card 102.1's kept form of arm A (softmax attention, raw positions).
 - The placing step (cards 057, 061) and card 098.5's pair test, which
   are the one-layer and one-tile cases of these layers.
-- Rows in [LITERATURE](../../LITERATURE.md): common fate (Wertheimer
+- Rows in [LITERATURE](../../../LITERATURE.md): common fate (Wertheimer
   1923; Spelke 1990), layers (Wang and Adelson 1994), interactive
   perception (Bohg et al. 2017), log-likelihood ratio tests (Wald 1945).
 

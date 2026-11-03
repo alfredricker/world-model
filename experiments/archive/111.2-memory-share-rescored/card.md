@@ -32,7 +32,7 @@ answer it marks closed complete? Rung 1. Serves P12, P10, P5 and P19.
 ```
 
 This is the one change to the method
-([tools/card111.2/contrast.py](../../tools/card111.2/contrast.py)). Scoring
+([tools/card111.2/contrast.py](../../../tools/card111.2/contrast.py)). Scoring
 changes, both from 111.1's checks:
 - **Truth, world 1:**
   - A cell whose every replacement gives a state the world can't produce
@@ -148,7 +148,7 @@ capped: world 1 took 119 s, Crafter 26 s per form.
     300.
 
 **Check after the run: the room's border**
-([world1.py](../../tools/card111.2/world1.py) `--border`, not the card's
+([world1.py](../../../tools/card111.2/world1.py) `--border`, not the card's
 scoring).
 - 48 of lamps lighting's false conditions are border walls beside the
   lamp: "a wall at (1, −2)" 32 times, "(1, −1)" 16 times.

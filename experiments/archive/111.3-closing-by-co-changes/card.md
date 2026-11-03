@@ -27,7 +27,7 @@ leave complete answers closed? Rung 1. Serves P5, P12 and P10.
 
 ## 2. What changes
 
-One component: the closing rule ([tools/card111.3/](../../tools/card111.3/)).
+One component: the closing rule ([tools/card111.3/](../../../tools/card111.3/)).
 
 ```
 111.2:  closed when the kept facts leave only successes, on >= 29 cases
