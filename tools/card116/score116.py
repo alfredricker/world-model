@@ -7,7 +7,8 @@
   object's most frequent best slot in that clip.
 - Arm slots: in each truth frame, how many slots have most of their pixels on the arm.
 
-  bin/prun python tools/card116/score116.py [--model slots.pt] → runs/116/score116[_<model>].json
+  bin/prun python tools/card116/score116.py [--model slots.pt] [--feat feat256] → runs/116/score116[_<model>].json
+Card 116.3 also reports the parts score (parts.py) of the truth frames.
 """
 import json
 import sys
@@ -19,6 +20,7 @@ import torch
 sys.path.insert(0, str(Path(__file__).parent))
 from metrics import NAMES, scores, upsample  # noqa: E402
 from slots import load_model  # noqa: E402
+from parts import parts_score  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'runs/116'
@@ -43,13 +45,14 @@ def main():
     model_name = sys.argv[sys.argv.index('--model') + 1] if '--model' in sys.argv else 'slots.pt'
     model = load_model(OUT / model_name, device=dev)
     t = np.load(OUT / 'truth.npz')
-    feat = np.load(OUT / 'feat448_val.npy', mmap_mode='r')
+    feat = np.load(OUT / f"{sys.argv[sys.argv.index('--feat') + 1] if '--feat' in sys.argv else 'feat448'}_val.npy", mmap_mode='r')
     fidx = np.load(OUT / 'frames448_val.npy')
     row = lambda fr: np.searchsorted(fidx, fr)
     hist = t['frames'][:, None] + SKIP * np.arange(-4, 1)
     m = masks_for(model, feat, row(hist))[:, -1]
     seg = upsample(m)
-    res = {'frames': scores(seg, t['labels'])}
+    res = {'frames': scores(seg, t['labels']), 'parts': parts_score(seg, t['labels'])}
+    print('parts', res['parts'], flush=True)
     lab = t['labels']
     arm_slots = [sum(((s == k) & (l == 1)).sum() > 0.5 * max((s == k).sum(), 1) for k in np.unique(s))
                  for s, l in zip(seg, lab)]

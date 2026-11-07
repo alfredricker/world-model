@@ -3,8 +3,8 @@ id: "116.1"
 title: objects as slots at 448 pixels — the same slot model on a 32 × 32 patch grid that can show the buttons and cube
 rung: 2
 serves: [P7]
-status: running
-verdict:
+status: done
+verdict: fail
 arch_version: 27
 date: 2026-11-01
 ---
@@ -157,10 +157,21 @@ error was still falling (1.04 at step 2,250, 0.69 at 4,750, 0.47 at
 
   It is then scored with `tools/card116/score116.py --model slots_long.pt`.
 
+- **The long run was not made** (the user, 2026-11-03, choosing the
+  fallback). Reconstruction error had nearly levelled off (0.49 at step
+  14,000, 0.47 at 20,500), and the failures are of a kind more steps do
+  not mend: the plain table is cheap to reconstruct, so object slots keep
+  it, and a button (about 3 of 1,024 patches) carries too little of the
+  loss to earn a slot.
+
+Verdict: **fail** on all three criteria, at 20,521 steps.
+
 ## 8. Decision
 
-Pending the long run. If it still fails criterion 1 with slots that
-spill onto the table, the next card distils SAM 2's masks into the slot
-encoder, as WorldDP does (allowed by C1). The slots then learn object
-extents from a supplied segmenter, and identity over time from their own
-recurrence.
+**Stop.** Slots trained only to reconstruct the frozen patches separate
+the large objects from each other but not from the table, and bind no
+button. Section 8's fallback follows: card
+[116.2](../116.2-slots-from-sam-masks/card.md) trains the same slots with
+SAM 2's masks as a second target, as WorldDP does, so the outlines come
+from a supplied segmenter (C1) and identity over time from the slots'
+own recurrence.

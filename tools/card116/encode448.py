@@ -4,6 +4,8 @@
 --set val:   the validation frames card 116.1 scores: the 2,000 truth frames with 4 model steps of history each, and the
              100 clips with a 4-step lead-in.
 --part i/n:  encode only part i of n of the frames (each part its own capped run); parts write into one memmap.
+--src rgb256: read card 116.3's 256-px renders (runs/116/rgb256_<set>.npy) instead of the dataset's 64-px frames
+             → runs/116/feat256_<set>.npy.
 
   bin/prun python tools/card116/encode448.py --set train|val [--part 0/2] → runs/116/feat448_<set>.npy, frames448_<set>.npy
 """
@@ -49,13 +51,19 @@ def main():
     which = arg('--set', 'val')
     part, nparts = (int(x) for x in arg('--part', '0/1').split('/'))
     idx = frame_list(which)
-    obs = frames_file('visual-scene-play-v0' + ('-val' if which == 'val' else ''))
-    path = OUT / f'feat448_{which}.npy'
+    src = arg('--src', 'dataset')
+    if src == 'rgb256':
+        rgb = np.load(OUT / f'rgb256_{which}.npy', mmap_mode='r')
+        obs = type('ByRow', (), {'__getitem__': lambda self, fr: rgb[np.searchsorted(idx, fr)]})()
+    else:
+        obs = frames_file('visual-scene-play-v0' + ('-val' if which == 'val' else ''))
+    path = OUT / (f'feat256_{which}.npy' if src == 'rgb256' else f'feat448_{which}.npy')
     if path.exists():
         feat = np.load(path, mmap_mode='r+')
     else:
         feat = np.lib.format.open_memmap(path, 'w+', np.float16, (len(idx), 1024, 384))
-    np.save(OUT / f'frames448_{which}.npy', idx)
+    if src != 'rgb256':
+        np.save(OUT / f'frames448_{which}.npy', idx)
     lo, hi = len(idx) * part // nparts, len(idx) * (part + 1) // nparts
     enc = load_encoder('cuda')
     t0, B = time.time(), 128

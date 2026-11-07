@@ -191,6 +191,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
 - **Common fate groups tiles into objects once ground is learned and a
   mover must leave its place** (99.5% of moved shapes one token; no false
   group in 21,947 Crafter states). *Evidence:* card 102.2.
+- **Slots trained only to reconstruct frozen patches keep the plain
+  background with each object and skip objects of a few patches.** At
+  448 px, 20k steps, the table filled 52–83% of each object slot's
+  pixels, no slot took a button (3 of 1,024 patches), and mean mBO tied
+  k-means (0.21). *Evidence:* card 116.1. *Suggestive* (one run, not
+  converged).
 - **Place a view by the agent's own motion, not by matching alone;** a
   wrong placement that sees only new places matches perfectly. Learned
   view motion reached 99.3% held out, but placed only 76–85% of blocked

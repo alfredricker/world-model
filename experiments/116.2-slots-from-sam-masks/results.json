@@ -1,0 +1,125 @@
+{
+ "verdict": "uninterpretable",
+ "decision": "revise: 116.3 renders at 256 px, slots as parts",
+ "date": "2026-11-03",
+ "teacher_gate_64px": {
+  "32_fine": {
+   "fg_ari": 0.24354232459980846,
+   "mbo": {
+    "arm": 0.2655,
+    "cube": 0.5093,
+    "button0": 0.3216,
+    "button1": 0.3175,
+    "drawer": 0.2522,
+    "window": 0.2964
+   },
+   "mean_mbo": 0.3271,
+   "points": 32,
+   "order": "fine",
+   "seconds_per_frame": 0.752,
+   "sam_masks_per_frame": 33.553333333333335,
+   "segments_mean": 27.8,
+   "segments_p95": 35,
+   "share_frames_over_7": 1.0,
+   "unsupervised_patches": 3.1,
+   "own_segment": {
+    "cube": 0.678,
+    "button0": 0.353,
+    "button1": 0.39
+   }
+  },
+  "32_coarse": {
+   "fg_ari": 0.26915982363786534,
+   "mbo": {
+    "arm": 0.2751,
+    "cube": 0.402,
+    "button0": 0.0502,
+    "button1": 0.0562,
+    "drawer": 0.2896,
+    "window": 0.2773
+   },
+   "mean_mbo": 0.2251,
+   "points": 32,
+   "order": "coarse",
+   "seconds_per_frame": 0.752,
+   "sam_masks_per_frame": 33.553333333333335,
+   "segments_mean": 20.69,
+   "segments_p95": 27,
+   "share_frames_over_7": 1.0,
+   "unsupervised_patches": 1.6,
+   "own_segment": {
+    "cube": 0.504,
+    "button0": 0.007,
+    "button1": 0.013
+   }
+  },
+  "16_fine": {
+   "fg_ari": 0.23180323670943448,
+   "mbo": {
+    "arm": 0.2631,
+    "cube": 0.5055,
+    "button0": 0.2781,
+    "button1": 0.2718,
+    "drawer": 0.2202,
+    "window": 0.2731
+   },
+   "mean_mbo": 0.302,
+   "points": 16,
+   "order": "fine",
+   "seconds_per_frame": 0.205,
+   "sam_masks_per_frame": 24.906666666666666,
+   "segments_mean": 23.52,
+   "segments_p95": 30,
+   "share_frames_over_7": 1.0,
+   "unsupervised_patches": 0.9,
+   "own_segment": {
+    "cube": 0.667,
+    "button0": 0.357,
+    "button1": 0.393
+   }
+  },
+  "16_coarse": {
+   "fg_ari": 0.2481171281485034,
+   "mbo": {
+    "arm": 0.2685,
+    "cube": 0.4296,
+    "button0": 0.0482,
+    "button1": 0.0604,
+    "drawer": 0.246,
+    "window": 0.2563
+   },
+   "mean_mbo": 0.2182,
+   "points": 16,
+   "order": "coarse",
+   "seconds_per_frame": 0.205,
+   "sam_masks_per_frame": 24.906666666666666,
+   "segments_mean": 18.26,
+   "segments_p95": 24,
+   "share_frames_over_7": 1.0,
+   "unsupervised_patches": 0.8,
+   "own_segment": {
+    "cube": 0.559,
+    "button0": 0.003,
+    "button1": 0.02
+   }
+  }
+ },
+ "best_raw_sam_mask_iou_60_frames": {
+  "64px": {
+   "arm": 0.21,
+   "cube": 0.596,
+   "button0": 0.385,
+   "button1": 0.419,
+   "drawer": 0.39,
+   "window": 0.26
+  },
+  "256px": {
+   "arm": 0.197,
+   "cube": 0.732,
+   "button0": 0.845,
+   "button1": 0.845,
+   "drawer": 0.628,
+   "window": 0.136
+  }
+ }
+}

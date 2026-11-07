@@ -1,0 +1,70 @@
+{
+ "verdict": "fail",
+ "decision": "stop: slots keep the table and bind no button; 116.2 trains them with SAM 2 masks",
+ "date": "2026-11-03",
+ "steps": 20521,
+ "gate": {
+  "ceiling": {
+   "fg_ari": 0.8085753250823685,
+   "mbo": {
+    "arm": 0.8849,
+    "cube": 0.5437,
+    "button0": 0.5768,
+    "button1": 0.5704,
+    "drawer": 0.768,
+    "window": 0.8601
+   },
+   "mean_mbo": 0.7006
+  },
+  "kmeans": {
+   "fg_ari": 0.6230253967801553,
+   "mbo": {
+    "arm": 0.5537,
+    "cube": 0.0342,
+    "button0": 0.0162,
+    "button1": 0.0162,
+    "drawer": 0.2772,
+    "window": 0.3468
+   },
+   "mean_mbo": 0.2074
+  },
+  "sam2_ref_300_frames": {
+   "fg_ari": 0.2624644832744127,
+   "mbo": {
+    "arm": 0.2733,
+    "cube": 0.6376,
+    "button0": 0.3983,
+    "button1": 0.4898,
+    "drawer": 0.3055,
+    "window": 0.2952
+   },
+   "mean_mbo": 0.4,
+   "masks_per_frame": 33.553333333333335,
+   "seconds_per_frame": 0.74
+  }
+ },
+ "score_20k_steps": {
+  "frames": {
+   "fg_ari": 0.8676544316380534,
+   "mbo": {
+    "arm": 0.462,
+    "cube": 0.21,
+    "button0": 0.012,
+    "button1": 0.0331,
+    "drawer": 0.2285,
+    "window": 0.3225
+   },
+   "mean_mbo": 0.2113
+  },
+  "arm_slots_mean": 0.466,
+  "consistency": {
+   "arm": 1.0,
+   "cube": 0.7692,
+   "button0": 0.9333,
+   "button1": 0.7467,
+   "drawer": 0.9895,
+   "window": 0.9914
+  },
+  "consistency_min": 0.7467
+ }
+}
