@@ -1,0 +1,380 @@
+{
+ "verdict": "fail",
+ "decision": "revise: keep 256-px frames; read an event as its connected regions of change, not one top patch",
+ "date": "2026-11-10",
+ "px256": {
+  "grid": 32,
+  "top1pct_patches": 11,
+  "touches": 2110,
+  "touch": {
+   "cube": {
+    "n": 558,
+    "top_patch_exact": 0.6129,
+    "found_top1pct": 0.8065,
+    "median_rank": 0.0
+   },
+   "lock: button": {
+    "n": 722,
+    "top_patch_exact": 0.0831,
+    "found_top1pct": 0.2742,
+    "median_rank": 20.0
+   },
+   "lock: handle": {
+    "n": 722,
+    "top_patch_exact": 0.8753,
+    "found_top1pct": 0.9917,
+    "median_rank": 0.0
+   },
+   "drawer": {
+    "n": 298,
+    "top_patch_exact": 0.7987,
+    "found_top1pct": 0.9799,
+    "median_rank": 0.0
+   },
+   "window": {
+    "n": 358,
+    "top_patch_exact": 0.6397,
+    "found_top1pct": 0.9469,
+    "median_rank": 0.0
+   }
+  },
+  "touch_top_patch_on_arm": 0.2251,
+  "touch_arm_masked": {
+   "cube": {
+    "n": 558,
+    "top_patch_exact": 0.4767,
+    "found_top1pct": 0.6685,
+    "median_rank": 1.0
+   },
+   "lock: button": {
+    "n": 722,
+    "top_patch_exact": 0.1025,
+    "found_top1pct": 0.313,
+    "median_rank": 19.0
+   },
+   "lock: handle": {
+    "n": 722,
+    "top_patch_exact": 0.8781,
+    "found_top1pct": 0.9751,
+    "median_rank": 0.0
+   },
+   "drawer": {
+    "n": 298,
+    "top_patch_exact": 0.8188,
+    "found_top1pct": 0.9832,
+    "median_rank": 0.0
+   },
+   "window": {
+    "n": 358,
+    "top_patch_exact": 0.6732,
+    "found_top1pct": 0.9804,
+    "median_rank": 0.0
+   }
+  },
+  "chance": {
+   "cube": {
+    "n": 558,
+    "top_patch_exact": 0.0108,
+    "found_top1pct": 0.1219,
+    "median_rank": 54.0
+   },
+   "lock: button": {
+    "n": 722,
+    "top_patch_exact": 0.0055,
+    "found_top1pct": 0.0803,
+    "median_rank": 85.0
+   },
+   "lock: handle": {
+    "n": 722,
+    "top_patch_exact": 0.0651,
+    "found_top1pct": 0.5651,
+    "median_rank": 9.0
+   },
+   "drawer": {
+    "n": 298,
+    "top_patch_exact": 0.1074,
+    "found_top1pct": 0.6644,
+    "median_rank": 6.0
+   },
+   "window": {
+    "n": 358,
+    "top_patch_exact": 0.1006,
+    "found_top1pct": 0.6229,
+    "median_rank": 8.0
+   }
+  },
+  "fixed_best_frame": {
+   "cube": {
+    "n": 557,
+    "top_patch_exact": 0.3519,
+    "found_top1pct": 0.544,
+    "median_rank": 8.0
+   },
+   "lock: button": {
+    "n": 722,
+    "top_patch_exact": 0.0152,
+    "found_top1pct": 0.0873,
+    "median_rank": 35.5
+   },
+   "lock: handle": {
+    "n": 722,
+    "top_patch_exact": 0.8878,
+    "found_top1pct": 0.9709,
+    "median_rank": 0.0
+   },
+   "drawer": {
+    "n": 298,
+    "top_patch_exact": 0.9866,
+    "found_top1pct": 0.9933,
+    "median_rank": 0.0
+   },
+   "window": {
+    "n": 358,
+    "top_patch_exact": 0.9749,
+    "found_top1pct": 0.9944,
+    "median_rank": 0.0
+   }
+  },
+  "fixed_thresholded_transitions": {
+   "f1": 0.6252,
+   "precision": 0.7151,
+   "recall": 0.5553,
+   "recall_by_kind": {
+    "cube": 0.0608,
+    "drawer": 0.983,
+    "lock": 0.5297,
+    "window": 0.9554
+   }
+  },
+  "extent_true_seed": {
+   "block2": {
+    "grown": {
+     "arm": 0.31,
+     "cube": 0.025,
+     "button0": 0.042,
+     "button1": 0.029,
+     "drawer": 0.315,
+     "window": 0.309
+    },
+    "oracle_threshold": {
+     "arm": 0.39,
+     "cube": 0.613,
+     "button0": 0.35,
+     "button1": 0.32,
+     "drawer": 0.545,
+     "window": 0.572
+    },
+    "kmeans": {
+     "arm": 0.415,
+     "cube": 0.044,
+     "button0": 0.086,
+     "button1": 0.087,
+     "drawer": 0.196,
+     "window": 0.486
+    },
+    "seed_alone": {
+     "arm": 0.005,
+     "cube": 0.139,
+     "button0": 0.128,
+     "button1": 0.128,
+     "drawer": 0.016,
+     "window": 0.012
+    }
+   },
+   "block12": {
+    "grown": {
+     "arm": 0.52,
+     "cube": 0.061,
+     "button0": 0.07,
+     "button1": 0.069,
+     "drawer": 0.541,
+     "window": 0.481
+    },
+    "oracle_threshold": {
+     "arm": 0.598,
+     "cube": 0.749,
+     "button0": 0.582,
+     "button1": 0.591,
+     "drawer": 0.664,
+     "window": 0.597
+    },
+    "kmeans": {
+     "arm": 0.604,
+     "cube": 0.059,
+     "button0": 0.061,
+     "button1": 0.061,
+     "drawer": 0.456,
+     "window": 0.52
+    },
+    "seed_alone": {
+     "arm": 0.005,
+     "cube": 0.139,
+     "button0": 0.128,
+     "button1": 0.128,
+     "drawer": 0.016,
+     "window": 0.012
+    }
+   }
+  }
+ },
+ "px64_same_measures": {
+  "grid": 14,
+  "top1pct_patches": 2,
+  "touches": 2110,
+  "touch": {
+   "cube": {
+    "n": 558,
+    "top_patch_exact": 0.3584,
+    "found_top1pct": 0.5287,
+    "median_rank": 1.0
+   },
+   "lock: button": {
+    "n": 722,
+    "top_patch_exact": 0.0249,
+    "found_top1pct": 0.0332,
+    "median_rank": 9.0
+   },
+   "lock: handle": {
+    "n": 722,
+    "top_patch_exact": 0.8573,
+    "found_top1pct": 0.9086,
+    "median_rank": 0.0
+   },
+   "drawer": {
+    "n": 298,
+    "top_patch_exact": 0.2685,
+    "found_top1pct": 0.5034,
+    "median_rank": 1.0
+   },
+   "window": {
+    "n": 358,
+    "top_patch_exact": 0.5223,
+    "found_top1pct": 0.7402,
+    "median_rank": 0.0
+   }
+  },
+  "touch_top_patch_on_arm": 0.3242,
+  "touch_arm_masked": {
+   "cube": {
+    "n": 558,
+    "top_patch_exact": 0.1165,
+    "found_top1pct": 0.181,
+    "median_rank": 181.0
+   },
+   "lock: button": {
+    "n": 722,
+    "top_patch_exact": 0.0526,
+    "found_top1pct": 0.0845,
+    "median_rank": 7.0
+   },
+   "lock: handle": {
+    "n": 722,
+    "top_patch_exact": 0.8601,
+    "found_top1pct": 0.885,
+    "median_rank": 0.0
+   },
+   "drawer": {
+    "n": 298,
+    "top_patch_exact": 0.2349,
+    "found_top1pct": 0.5034,
+    "median_rank": 1.0
+   },
+   "window": {
+    "n": 358,
+    "top_patch_exact": 0.5223,
+    "found_top1pct": 0.7682,
+    "median_rank": 0.0
+   }
+  },
+  "chance": {
+   "cube": {
+    "n": 558,
+    "top_patch_exact": 0.0269,
+    "found_top1pct": 0.052,
+    "median_rank": 26.0
+   },
+   "lock: button": {
+    "n": 722,
+    "top_patch_exact": 0.0097,
+    "found_top1pct": 0.0222,
+    "median_rank": 44.0
+   },
+   "lock: handle": {
+    "n": 722,
+    "top_patch_exact": 0.097,
+    "found_top1pct": 0.1953,
+    "median_rank": 6.0
+   },
+   "drawer": {
+    "n": 298,
+    "top_patch_exact": 0.1477,
+    "found_top1pct": 0.2685,
+    "median_rank": 5.0
+   },
+   "window": {
+    "n": 358,
+    "top_patch_exact": 0.1006,
+    "found_top1pct": 0.176,
+    "median_rank": 6.0
+   }
+  },
+  "fixed_best_frame": {
+   "cube": {
+    "n": 558,
+    "top_patch_exact": 0.1308,
+    "found_top1pct": 0.1792,
+    "median_rank": 9.0
+   },
+   "lock: button": {
+    "n": 722,
+    "top_patch_exact": 0.0014,
+    "found_top1pct": 0.0152,
+    "median_rank": 12.0
+   },
+   "lock: handle": {
+    "n": 722,
+    "top_patch_exact": 0.9238,
+    "found_top1pct": 0.9404,
+    "median_rank": 0.0
+   },
+   "drawer": {
+    "n": 298,
+    "top_patch_exact": 0.8154,
+    "found_top1pct": 0.9262,
+    "median_rank": 0.0
+   },
+   "window": {
+    "n": 358,
+    "top_patch_exact": 0.9832,
+    "found_top1pct": 0.9916,
+    "median_rank": 0.0
+   }
+  },
+  "fixed_thresholded_transitions": {
+   "f1": 0.6057,
+   "precision": 0.6887,
+   "recall": 0.5406,
+   "recall_by_kind": {
+    "cube": 0.092,
+    "drawer": 0.8102,
+    "lock": 0.5615,
+    "window": 0.9291
+   }
+  }
+ },
+ "button_diagnostic": {
+  "px256": {
+   "found_top1pct_handle_excluded": 0.952,
+   "top_exact_handle_excluded": 0.459,
+   "patches_above_button": {
+    "handle": 16.0,
+    "arm": 1.0,
+    "elsewhere": 1.6
+   }
+  },
+  "px64": {
+   "found_top1pct_handle_excluded": 0.535,
+   "top_exact_handle_excluded": 0.324
+  }
+ }
+}

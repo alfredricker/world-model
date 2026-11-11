@@ -1,0 +1,116 @@
+{
+ "verdict": "pass",
+ "decision": "keep: touch-bracketed comparison as a second source beside card 119; the matching rule was lenient (random patches 56%), strict reading in the card",
+ "date": "2026-11-10",
+ "touches": 2110,
+ "touches_dropped_at_episode_ends": 50,
+ "card119_on_this_dataset": {
+  "f1": 0.6553,
+  "precision": 0.7334,
+  "recall": 0.5922,
+  "recall_by_kind": {
+   "cube": 0.1597,
+   "drawer": 0.9887,
+   "lock": 0.5643,
+   "window": 0.9318
+  }
+ },
+ "transitions_inside_a_touch": {
+  "cube": 558,
+  "drawer": 298,
+  "lock": 722,
+  "window": 358
+ },
+ "transitions_all": {
+  "cube": 576,
+  "drawer": 353,
+  "lock": 723,
+  "window": 381
+ },
+ "touch": {
+  "found": {
+   "cube": 0.9373,
+   "drawer": 0.9832,
+   "lock": 0.9931,
+   "window": 0.9721,
+   "all": 0.9716
+  },
+  "top_patch_on_a_changed_object": 0.8308,
+  "top_patch_on_arm": 0.3242,
+  "touches_without_transition": 242,
+  "auc_with_vs_without_transition": 0.887
+ },
+ "touch_arm_masked": {
+  "found": {
+   "cube": 0.8835,
+   "drawer": 0.9899,
+   "lock": 0.9875,
+   "window": 0.9832,
+   "all": 0.9571
+  }
+ },
+ "random_time": {
+  "found": {
+   "cube": 0.4588,
+   "drawer": 0.4899,
+   "lock": 0.4598,
+   "window": 0.3827,
+   "all": 0.4499
+  }
+ },
+ "touch_random_patches": {
+  "found": {
+   "cube": 0.353,
+   "drawer": 0.6342,
+   "lock": 0.6898,
+   "window": 0.581,
+   "all": 0.564
+  }
+ },
+ "card119_best_frame_no_threshold": {
+  "found": {
+   "cube": 0.5376,
+   "drawer": 1.0,
+   "lock": 0.9806,
+   "window": 1.0,
+   "all": 0.8595
+  }
+ },
+ "strict_top1_diagnostic": {
+  "touch": {
+   "cube": 0.3584,
+   "drawer": 0.2685,
+   "lock": 0.0249,
+   "window": 0.5223,
+   "all": 0.2505
+  },
+  "touch_arm_masked": {
+   "cube": 0.1165,
+   "drawer": 0.2349,
+   "lock": 0.0526,
+   "window": 0.5223,
+   "all": 0.186
+  },
+  "random_time": {
+   "cube": 0.1362,
+   "drawer": 0.1443,
+   "lock": 0.0,
+   "window": 0.0726,
+   "all": 0.0749
+  },
+  "touch_random_patch_expected": {
+   "cube": 0.0229,
+   "drawer": 0.1171,
+   "lock": 0.0133,
+   "window": 0.1019,
+   "all": 0.0484
+  },
+  "card119_best_frame": {
+   "cube": 0.1308,
+   "drawer": 0.8154,
+   "lock": 0.0014,
+   "window": 0.9832,
+   "all": 0.3456
+  }
+ }
+}

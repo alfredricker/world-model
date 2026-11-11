@@ -1,0 +1,414 @@
+{
+ "card": "127",
+ "date": "2026-11-11",
+ "verdict": "pass",
+ "decision": "keep",
+ "gate_reenact": {
+  "gain": [
+   [
+    0.210999995470047,
+    -0.0010000000474974513,
+    -0.003000000026077032
+   ],
+   [
+    -0.0,
+    0.20900000631809235,
+    0.0010000000474974513
+   ],
+   [
+    -0.04500000178813934,
+    0.014999999664723873,
+    0.19099999964237213
+   ]
+  ],
+  "safe_z": 2.73,
+  "kinds": {
+   "press button 1 (drawer lock)": {
+    "remembered": 361,
+    "trials": 30,
+    "success": 1.0,
+    "mean_steps": 37.5
+   },
+   "press button 2 (window lock)": {
+    "remembered": 348,
+    "trials": 30,
+    "success": 1.0,
+    "mean_steps": 36.8
+   },
+   "open the drawer": {
+    "remembered": 51,
+    "trials": 30,
+    "success": 0.83,
+    "mean_steps": 38.9
+   },
+   "open the window": {
+    "remembered": 102,
+    "trials": 30,
+    "success": 0.87,
+    "mean_steps": 37.7
+   },
+   "press button 1, locked start": {
+    "remembered": 361,
+    "trials": 30,
+    "success": 1.0,
+    "mean_steps": 39.4
+   },
+   "press button 2, locked start": {
+    "remembered": 348,
+    "trials": 30,
+    "success": 1.0,
+    "mean_steps": 38.2
+   }
+  },
+  "chain_unlock_then_close_drawer": {
+   "trials": 30,
+   "success": 0.97
+  }
+ },
+ "knowledge": [
+  {
+   "place": 0,
+   "touches": 275,
+   "changed": 0.69,
+   "centre": [
+    -0.6399999856948853,
+    2.240000009536743,
+    2.3399999141693115
+   ],
+   "effect_ratio": 9.0,
+   "effect_on": {
+    "window": 7
+   },
+   "condition": {
+    "contrast": 23.6,
+    "on": {
+     "arm": 1,
+     "button1": 8,
+     "window": 1
+    },
+    "cause_place": 2,
+    "changed_with_cause": 1.0,
+    "unchanged_with_cause": 0.03,
+    "changed_rate_by_state": [
+     0.03,
+     0.78
+    ],
+    "valid": true,
+    "presses": 180
+   }
+  },
+  {
+   "place": 1,
+   "touches": 207,
+   "changed": 0.66,
+   "centre": [
+    -0.8999999761581421,
+    -1.159999966621399,
+    0.8600000143051147
+   ],
+   "effect_ratio": 7.4,
+   "effect_on": {
+    "drawer": 8
+   },
+   "condition": {
+    "contrast": 86.2,
+    "on": {
+     "button0": 8
+    },
+    "cause_place": 4,
+    "changed_with_cause": 1.0,
+    "unchanged_with_cause": 0.03,
+    "changed_rate_by_state": [
+     0.93,
+     0.05
+    ],
+    "valid": true,
+    "presses": 194
+   }
+  },
+  {
+   "place": 2,
+   "touches": 400,
+   "changed": 0.83,
+   "centre": [
+    1.5399999618530273,
+    0.47999998927116394,
+    1.25
+   ],
+   "effect_ratio": 2.8,
+   "effect_on": {
+    "button0": 1,
+    "window": 7
+   },
+   "condition": {
+    "contrast": 11.9,
+    "on": {},
+    "cause_place": 4,
+    "changed_with_cause": 0.17,
+    "unchanged_with_cause": 0.21,
+    "changed_rate_by_state": [
+     1.0,
+     0.83
+    ],
+    "valid": false
+   }
+  },
+  {
+   "place": 3,
+   "touches": 204,
+   "changed": 0.78,
+   "centre": [
+    -0.44999998807907104,
+    1.25,
+    0.25
+   ],
+   "effect_ratio": 3.5,
+   "effect_on": {},
+   "condition": {
+    "contrast": 1.2,
+    "on": {
+     "window": 1
+    },
+    "cause_place": 0,
+    "changed_with_cause": 0.65,
+    "unchanged_with_cause": 0.04,
+    "changed_rate_by_state": [
+     0.75,
+     0.8
+    ],
+    "valid": false
+   }
+  },
+  {
+   "place": 4,
+   "touches": 404,
+   "changed": 0.5,
+   "centre": [
+    1.5399999618530273,
+    -0.49000000953674316,
+    1.2599999904632568
+   ],
+   "effect_ratio": 2.1,
+   "effect_on": {
+    "button1": 5
+   },
+   "condition": {
+    "contrast": 104.3,
+    "on": {
+     "drawer": 6
+    },
+    "cause_place": 1,
+    "changed_with_cause": 0.48,
+    "unchanged_with_cause": 0.05,
+    "changed_rate_by_state": [
+     0.86,
+     0.08
+    ],
+    "valid": false
+   }
+  },
+  {
+   "place": 5,
+   "touches": 166,
+   "changed": 0.66,
+   "centre": [
+    -0.9300000071525574,
+    -2.0,
+    0.8799999952316284
+   ],
+   "effect_ratio": 7.4,
+   "effect_on": {
+    "drawer": 9
+   },
+   "condition": {
+    "contrast": 76.4,
+    "on": {
+     "button0": 8
+    },
+    "cause_place": 4,
+    "changed_with_cause": 1.0,
+    "unchanged_with_cause": 0.03,
+    "changed_rate_by_state": [
+     0.92,
+     0.0
+    ],
+    "valid": true,
+    "presses": 194
+   }
+  },
+  {
+   "place": 6,
+   "touches": 139,
+   "changed": 0.75,
+   "centre": [
+    -0.949999988079071,
+    0.019999999552965164,
+    0.23000000417232513
+   ],
+   "effect_ratio": 3.0,
+   "effect_on": {},
+   "condition": {
+    "contrast": 1.1,
+    "on": {
+     "arm": 1
+    },
+    "cause_place": 1,
+    "changed_with_cause": 0.38,
+    "unchanged_with_cause": 0.09,
+    "changed_rate_by_state": [
+     0.84,
+     0.72
+    ],
+    "valid": false
+   }
+  },
+  {
+   "place": 7,
+   "touches": 134,
+   "changed": 0.78,
+   "centre": [
+    -0.1599999964237213,
+    -0.07000000029802322,
+    0.23000000417232513
+   ],
+   "effect_ratio": 2.9,
+   "effect_on": {},
+   "condition": {
+    "contrast": 1.6,
+    "on": {
+     "button1": 6
+    },
+    "cause_place": 2,
+    "changed_with_cause": 1.0,
+    "unchanged_with_cause": 0.03,
+    "changed_rate_by_state": [
+     0.87,
+     0.69
+    ],
+    "valid": false
+   }
+  },
+  {
+   "place": 8,
+   "touches": 146,
+   "changed": 0.74,
+   "centre": [
+    -0.03999999910593033,
+    2.2200000286102295,
+    2.3399999141693115
+   ],
+   "effect_ratio": 7.5,
+   "effect_on": {
+    "window": 5
+   },
+   "condition": {
+    "contrast": 7.8,
+    "on": {
+     "button1": 8
+    },
+    "cause_place": 2,
+    "changed_with_cause": 1.0,
+    "unchanged_with_cause": 0.03,
+    "changed_rate_by_state": [
+     0.21,
+     0.84
+    ],
+    "valid": true,
+    "presses": 177
+   }
+  },
+  {
+   "place": 9,
+   "touches": 31,
+   "changed": 0.23,
+   "centre": [
+    -0.5699999928474426,
+    -0.15000000596046448,
+    2.069999933242798
+   ],
+   "effect_ratio": 1.1,
+   "effect_on": {
+    "arm": 1
+   }
+  }
+ ],
+ "dev30": {
+  "tag": "dev30",
+  "episodes": 30,
+  "nocond": false,
+  "success": 0.667,
+  "mean_steps_when_success": 293.5,
+  "gave_up": 0.0
+ },
+ "dev30b": {
+  "tag": "dev30b",
+  "episodes": 30,
+  "nocond": false,
+  "success": 0.767,
+  "mean_steps_when_success": 206.2,
+  "gave_up": 0.0
+ },
+ "dev30c": {
+  "tag": "dev30c",
+  "episodes": 30,
+  "nocond": false,
+  "success": 0.933,
+  "mean_steps_when_success": 169.5,
+  "gave_up": 0.033
+ },
+ "dev30d": {
+  "tag": "dev30d",
+  "episodes": 30,
+  "nocond": false,
+  "success": 0.967,
+  "mean_steps_when_success": 142.6,
+  "gave_up": 0.033
+ },
+ "dev50": {
+  "tag": "dev50",
+  "episodes": 50,
+  "nocond": false,
+  "success": 0.92,
+  "mean_steps_when_success": 147.5,
+  "gave_up": 0.06
+ },
+ "task1": {
+  "tag": "task1",
+  "episodes": 50,
+  "nocond": false,
+  "success": 0.92,
+  "mean_steps_when_success": 159.6,
+  "gave_up": 0.02
+ },
+ "task2": {
+  "tag": "task2",
+  "episodes": 50,
+  "nocond": false,
+  "success": 0.94,
+  "mean_steps_when_success": 317.6,
+  "gave_up": 0.06
+ },
+ "task2_nocond": {
+  "tag": "task2_nocond",
+  "episodes": 50,
+  "nocond": true,
+  "success": 0.0,
+  "mean_steps_when_success": 0.0,
+  "gave_up": 0.0
+ },
+ "criteria": {
+  "task1": {
+   "success": 0.92,
+   "bar": 0.8
+  },
+  "task2": {
+   "success": 0.94,
+   "bar": 0.6
+  },
+  "task2_nocond": {
+   "success": 0.0,
+   "bar_below": 0.2
+  }
+ },
+ "five_task_mean_counting_cube_tasks_zero": 0.372
+}

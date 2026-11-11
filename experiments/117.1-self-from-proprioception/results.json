@@ -1,0 +1,136 @@
+{
+ "card": "117.1",
+ "date": "2026-11-10",
+ "status": "gate only, not passed",
+ "pose_model": {
+  "frames": 400,
+  "iou_with_arm": 0.269,
+  "pooled_iou": 0.277,
+  "oracle_threshold_pooled_iou": 0.287,
+  "arm_covered": 0.633,
+  "self_share_of_patches": 0.38,
+  "arm_share_of_patches": 0.199,
+  "other_objects_in_self": {
+   "cube": 0.719,
+   "button0": 0.045,
+   "button1": 0.052,
+   "drawer": 0.242,
+   "window": 0.047
+  },
+  "prediction_error": {
+   "on_arm": 3.158,
+   "off_arm": 1.752
+  },
+  "log_threshold": 4.134760074615478
+ },
+ "recall_k16": {
+  "frames": 400,
+  "k": 16,
+  "static_arm_share_of_arm": 0.471,
+  "mean_pose_distance_of_neighbours": 0.322,
+  "arm_share_of_patches": 0.199,
+  "block2": {
+   "iou_with_arm": 0.216,
+   "oracle_threshold_pooled_iou": 0.391,
+   "iou_with_moving_arm": 0.124,
+   "oracle_moving": 0.347,
+   "moving_arm_covered": 0.881,
+   "arm_covered": 0.913,
+   "self_share": 0.823,
+   "other_objects_in_self": {
+    "cube": 0.729,
+    "button0": 0.889,
+    "button1": 0.792,
+    "drawer": 0.398,
+    "window": 0.446
+   },
+   "threshold": -866.0304846191408
+  },
+  "block12": {
+   "iou_with_arm": 0.215,
+   "oracle_threshold_pooled_iou": 0.386,
+   "iou_with_moving_arm": 0.279,
+   "oracle_moving": 0.352,
+   "moving_arm_covered": 0.487,
+   "arm_covered": 0.306,
+   "self_share": 0.112,
+   "other_objects_in_self": {
+    "cube": 0.157,
+    "button0": 0.007,
+    "button1": 0.005,
+    "drawer": 0.032,
+    "window": 0.01
+   },
+   "threshold": 535.060442504883
+  },
+  "both": {
+   "iou_with_arm": 0.221,
+   "oracle_threshold_pooled_iou": 0.386,
+   "iou_with_moving_arm": 0.128,
+   "oracle_moving": 0.359,
+   "moving_arm_covered": 0.9,
+   "arm_covered": 0.921,
+   "self_share": 0.812,
+   "other_objects_in_self": {
+    "cube": 0.642,
+    "button0": 0.846,
+    "button1": 0.75,
+    "drawer": 0.355,
+    "window": 0.409
+   },
+   "threshold": -983.2518176269531
+  },
+  "block2_closest": {
+   "iou_with_arm": 0.195,
+   "oracle_threshold_pooled_iou": 0.358,
+   "iou_with_moving_arm": 0.231,
+   "oracle_moving": 0.287,
+   "moving_arm_covered": 0.469,
+   "arm_covered": 0.3,
+   "self_share": 0.154,
+   "other_objects_in_self": {
+    "cube": 0.621,
+    "button0": 0.122,
+    "button1": 0.106,
+    "drawer": 0.472,
+    "window": 0.239
+   },
+   "threshold": 2015.3743591308612
+  },
+  "block12_closest": {
+   "iou_with_arm": 0.239,
+   "oracle_threshold_pooled_iou": 0.33,
+   "iou_with_moving_arm": 0.29,
+   "oracle_moving": 0.316,
+   "moving_arm_covered": 0.606,
+   "arm_covered": 0.377,
+   "self_share": 0.172,
+   "other_objects_in_self": {
+    "cube": 0.634,
+    "button0": 0.007,
+    "button1": 0.035,
+    "drawer": 0.275,
+    "window": 0.105
+   },
+   "threshold": 783.2145489501954
+  },
+  "both_closest": {
+   "iou_with_arm": 0.227,
+   "oracle_threshold_pooled_iou": 0.336,
+   "iou_with_moving_arm": 0.266,
+   "oracle_moving": 0.297,
+   "moving_arm_covered": 0.568,
+   "arm_covered": 0.362,
+   "self_share": 0.174,
+   "other_objects_in_self": {
+    "cube": 0.651,
+    "button0": 0.083,
+    "button1": 0.104,
+    "drawer": 0.482,
+    "window": 0.231
+   },
+   "threshold": 2514.329052734375
+  }
+ },
+ "note": "recall with k 8 and the first score (random frames in place of the usual look) gave IoU 0.30-0.32, oracle 0.35-0.38; numbers in the card"
+}

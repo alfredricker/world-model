@@ -23,7 +23,14 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   baseline fails the gate: "the view never moves" passed card 104.1's.
   Dense events defeat timing alone: with one every 31 steps and ±5 steps
   of tolerance, random boundaries scored F1 0.33. Matching in time and
-  place dropped random to 0.05 (card 115).
+  place dropped random to 0.05 (card 115). Measure what random
+  answers score under the matching rule before setting a bar: with 4
+  patches and one patch of slack, random patches "found" 56% of
+  changes, and a lock flip's 99% came from the handle, not the button
+  (2%) (card 120). A bar on one top-ranked answer per event
+  fails an event with two changed places: the button was in the top 1%
+  of patches at 27% of lock flips, and at 95% once the handle that
+  changes with it was set aside (card 122).
 - **Run a baseline given every input except the cue under test.** In play
   data from a controller that steers toward a target, the next actions
   reveal whether the motion was blocked. Actions alone were right on 95%
@@ -43,6 +50,23 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
 - **A hand-built mechanism that passes is not a result, and offline gains
   need checking in live behaviour.** *Evidence:*
   old:grl/notes/2026-09-10-reset.md. *Confirmed.*
+
+- **Check a truth label's timing against the sensor before scoring who
+  caused what.** 24% of lock flips fall 1 to 5 frames before contact is
+  sensed, so a press defined from contact onward called real presses
+  non-presses (44–50% against 86–87% once allowed for). *Evidence:*
+  cards 125, 125.1. The sensor also misses whole pulls: a brief contact,
+  then the drawer opens unsensed, so a touch's after-state can show a
+  change that redoing the touch cannot make. Recall only touches across
+  which the change itself was seen (card 127).
+
+- **Decide by recall, not by a threshold on raw distance; and steady is
+  not unoccluded.** Live planning from remembered touches went from 77%
+  to 93% of self-made problems when "differs from the goal" became
+  "nearer a remembered change than a remembered non-change", and from
+  67% to 77% when the arm's rest pose moved from a spot where patches
+  were steady (in front of the window) to the remembered position
+  farthest from every place in use. *Evidence:* card 127.
 
 ## Generalisation
 
@@ -170,6 +194,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   goal state is not distance to a condition (rank correlation 0.01–0.05),
   and a reachable-future bonus collapsed to sleeping. *Evidence:* card
   001; GRL-108.
+- **A cost on how many tokens change rewards merging the agent with
+  what it moves, and a gate that compares only groupings of equal size
+  cannot see it.** With the cost, 65% of the cube sat in the arm's token
+  (13% without) and the drawer's lock was lost (balanced accuracy 0.65
+  against 0.83). Change one loss term per arm: the first pass changed
+  two and needed a third arm to read. *Evidence:* card 124.
 
 ## Perception (Crafter, Craftium)
 
@@ -197,6 +227,14 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   pixels, no slot took a button (3 of 1,024 patches), and mean mBO tied
   k-means (0.21). *Evidence:* card 116.1. *Suggestive* (one run, not
   converged).
+- **A frozen ViT loses where a change is with depth, and change alone
+  gives a seed, not an object.** Lasting change per patch (steady
+  before, steady after, different) found condition changes at F1 0.63
+  on DINOv2's block 2, 0.56 on block 4, 0.47 on block 8 and 0.30 on
+  block 12 (pixels 0.62, random 0.09). Patches that change together
+  covered only the strip a slide sweeps (drawer IoU 0.17; k-means on
+  appearance 0.30). *Evidence:* card 119. *Confirmed* for depth (four
+  blocks, one encoder); *suggestive* for units.
 - **Place a view by the agent's own motion, not by matching alone;** a
   wrong placement that sees only new places matches perfectly. Learned
   view motion reached 99.3% held out, but placed only 76–85% of blocked

@@ -1,39 +1,40 @@
 # Status
 
 Overwritten each session. At most 40 lines.
-- **Date:** 2026-11-03, `master`, uncommitted: 116.1–116.2 closed, 116.3 drafted, LITERATURE
-  (WorldDP row), LESSONS (slots). **Rung:** 2 (event segmentation), open. **Architecture:** version 27 (MiniGrid). **World:** OGBench
-  `visual-scene`.
+- **Date:** 2026-11-11, `master`, uncommitted: cards 119–127 written (121, 123, 117.1, 126 gate only), LESSONS.
+  **Rung:** 3 (skills and plans), open. **Architecture:** version 27 (MiniGrid).
+  **World:** OGBench `visual-scene`; cards 120 and 122 use the state dataset's episodes, rendered.
 - **Direction:** published learned methods below ([card 113](experiments/113-post-mortem-learned-stack/card.md));
-  conditions are event segmentation (the user, 2026-11-01; Zacks et al. 2007): stable
-  stretches between boundaries, a boundary where a tracked feature changes unpredictably.
-  Far-future thinking runs over conditions, never rolled-out latents. CHARTER: Roadmap
-  step 2 and ladder rung 2 are event segmentation; skills come after.
+  conditions are event segmentation: stable stretches between boundaries (the user,
+  2026-11-01). Planner bar: GAS 54.4% on `visual-scene-play`. Portability tests paused.
 - **Rung 1 passed** ([114](experiments/114-lock-effects-from-pixels/card.md),
-  [114.1](experiments/114.1-counterfactual-lock/card.md)): a DINO-WM-style predictor on frozen
-  DINOv2 patches follows the lock when only the lock changes (96.9–100%; actions alone 0–5%).
-- **[115](experiments/115-boundaries-from-surprise/card.md): uninterpretable, revise.** Surprise
-  marks condition changes no better than plain change (0.30 against 0.31, matched in time
-  and place; random 0.05); most false boundaries sit on the arm. Objects come first.
-- **Segmentation review (2026-11-01, LITERATURE's current focus):** slots on frozen DINOv2
-  patches; boundaries from influence and stability (CAI, SEM-2, GateL0RD); the self as what
-  every action influences; conditions as recurring stable states (ASOT, FCDL). Planner
-  bar: GAS 54.4% on `visual-scene-play`. Portability tests paused (the user, 2026-11-01).
-- **[116](experiments/116-objects-as-slots/card.md): uninterpretable at its gate** (the 14 × 14
-  grid cannot show the buttons). **[116.1](experiments/116.1-slots-at-448/card.md): fail, stop**
-  (2026-11-03). At 448 px, 20k steps: FG-ARI 0.87 but mean mBO 0.21 (= k-means); slots
-  keep the table around each object and no slot takes a button. Reconstruction error had
-  levelled off, so the 2.4 h run was skipped (the user's choice).
-- **[116.2](experiments/116.2-slots-from-sam-masks/card.md): uninterpretable, revise.** On
-  64 × 64 frames SAM 2 never outlines the arm, window or drawer.
-- **[116.3](experiments/116.3-parts-at-256/card.md) drafted, gate passed, awaiting approval.**
-  Frames re-rendered at 256 px; 32 slots as parts, one per SAM 2 segment. Teacher parts
-  score 0.50 against k-means 0.32. Smoke (8 min): buttons 0.49–0.50, drawer 0.56, cube 0.00;
-  best slot kept 45–49% of clip steps (bar 90%). 117 and 118 approved, waiting.
-- **Setup:** ogbench, mujoco, dm_control (no labmaze) and scikit-learn installed with pip,
-  not in `pyproject.toml`. Rendering needs `MUJOCO_GL=egl`, libglvnd on `LD_LIBRARY_PATH`,
-  `__EGL_VENDOR_LIBRARY_DIRS`. Data in `~/.ogbench/data`; features in `runs/114/` (67 GB).
-- **Decisions for the user:**
-  1. Approve 116.3's labelling (25 min) and training (30 min).
-- **Docs:** cards 001–112 in `experiments/archive/`. LESSONS 2,404 words. The MiniGrid
-  paper's abstract overclaims (open). Every run capped (rule 5).
+  [114.1](experiments/114.1-counterfactual-lock/card.md)): a predictor on frozen DINOv2 patches
+  follows the lock (96.9–100%; actions alone 0–5%). 115–116.2 (surprise, slots) failed.
+- **[119](experiments/119-variables-from-lasting-change/card.md): fail, revise.** Lasting change finds
+  boundaries on DINOv2 block 2 (F1 0.63; block 12, 0.30); units fail (drawer 0.17).
+- **[120](experiments/120-touch-brackets-events/card.md): pass, keep.** OGBench's `gripper_contact`
+  (state dataset only): 82% of touches hold exactly one transition. Before against after a
+  touch: cube top patch exact 36% (119: 13%); a lock flip shows on the handle, not the button.
+- **[122](experiments/122-sharper-frames/card.md): fail, revise.** 256-px renders, 32 × 32 patches,
+  strict measures. Cube exact top patch 61% (64 px: 36%), drawer 80% (27%). Button found
+  27% (bar 60%): the handle outranks it; handle aside, 95%. Small extents still flood.
+- **[123](experiments/123-regions-of-change/card.md), [121](experiments/121-extent-from-a-seed/card.md) gate only:** regions of change give the button; the cube merges into the arm.
+- **[124](experiments/124-tokens-from-consequences/card.md): fail, revise** (30 min per arm, one seed).
+  Slots at 256 px. Present only: finds the cube (0.55), mean 0.28 (bar 0.40). Next frame given
+  action and touch: loses the cube, nearly follows the drawer's lock (0.83, bar 0.9). A cost
+  on token change merges the cube into the arm. No button token in any arm.
+- **[125](experiments/125-conditions-by-contrast-over-touches/card.md): fail (2 of 3), revise.** The
+  event as the unit (the user): touches at one place, split by changed or not; the patches whose
+  before-features differ are the condition. Finds each lock's button; predicts as the true lock.
+- **Setup:** ogbench, mujoco, dm_control, scikit-learn by pip, not in `pyproject.toml`.
+  Rendering: `MUJOCO_GL=egl`, a 64-bit libglvnd on `LD_LIBRARY_PATH`,
+  `__EGL_VENDOR_LIBRARY_DIRS=/run/opengl-driver/share/glvnd/egl_vendor.d`. Data `~/.ogbench/data`. Cards 001–112: `experiments/archive/`.
+- **[117.1](experiments/117.1-self-from-proprioception/card.md) gate not passed** (the self from pose).
+- **[125.1](experiments/125.1-conditions-read-where-steady/card.md): fail (2 of 3), revise.** A patch counts only where steady: the arm drops out, a lock's state is read exactly.
+- **[125.2](experiments/125.2-chain-by-change-of-state/card.md): pass, keep.** The chain by change of
+  state between steady readings: all found, none false; the place to touch is the true button's.
+- **[126](experiments/126-dense-layer-from-touch-consequences/card.md) gate only:** no room for a
+  trained layer in this scene; kept for a harder one (the user).
+- **[127](experiments/127-plans-from-remembered-touches/card.md): pass, keep.** Plans backward over
+  conditions, each step a remembered touch redone, no training: task 1 92%, task 2 94% (bars 80, 60);
+  no condition check 0%. No cube: five-task mean 37% < 54.4%. **For the user:** cube next? adopt as v28?

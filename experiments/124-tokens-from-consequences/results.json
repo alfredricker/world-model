@@ -1,0 +1,367 @@
+{
+ "card": "124",
+ "date": "2026-11-10",
+ "verdict": "fail",
+ "decision": "revise",
+ "run": "30 minutes per arm, one seed each; arm C (next frame, no cost on token change) added after arms A and B; the 2-hour arms were not run",
+ "bars": {
+  "units_mean": 0.4,
+  "units_cube_and_buttons": 0.26,
+  "consequences_balanced_accuracy": 0.9,
+  "consequences_flip_share": 0.8,
+  "self_iou": 0.7
+ },
+ "kmeans_block12": {
+  "arm": 0.6,
+  "cube": 0.06,
+  "buttons": 0.06,
+  "drawer": 0.46,
+  "window": 0.52,
+  "mean": 0.29
+ },
+ "armA": {
+  "model": "armA.pt",
+  "step": 16961,
+  "args": {
+   "next": 0,
+   "sparse": 0.0,
+   "events": 0,
+   "batch": 24,
+   "patches": 256
+  },
+  "units_best_token_iou": {
+   "arm": 0.203,
+   "cube": 0.545,
+   "button0": 0.019,
+   "button1": 0.019,
+   "drawer": 0.486,
+   "window": 0.399
+  },
+  "units_mean": 0.279,
+  "self": {
+   "iou_with_arm": 0.113,
+   "tokens_chosen": 1.21
+  },
+  "mean_token_change_per_step": 0.4951,
+  "consequences": {
+   "drawer": {
+    "pulls": 350,
+    "locked": 52,
+    "factual_balanced_accuracy": 0.634,
+    "factual_mean_change": {
+     "unlocked": 23591.6664,
+     "locked": 21398.4131
+    },
+    "factual_right": 0.486,
+    "cf_flips_when_factual_right": 0.124,
+    "swap_button_flips_when_factual_right": 0.012,
+    "swap_slide_flips_when_factual_right": 0.024,
+    "swap_random_flips_when_factual_right": 0.024
+   },
+   "window": {
+    "pulls": 417,
+    "locked": 78,
+    "factual_balanced_accuracy": 0.522,
+    "factual_mean_change": {
+     "unlocked": 25296.8969,
+     "locked": 26123.8315
+    },
+    "factual_right": 0.343,
+    "cf_flips_when_factual_right": 0.182,
+    "swap_button_flips_when_factual_right": 0.035,
+    "swap_slide_flips_when_factual_right": 0.021,
+    "swap_random_flips_when_factual_right": 0.021
+   }
+  }
+ },
+ "armB": {
+  "model": "armB.pt",
+  "step": 16064,
+  "args": {
+   "next": 1,
+   "sparse": 0.1,
+   "events": 0,
+   "batch": 24,
+   "patches": 256
+  },
+  "units_best_token_iou": {
+   "arm": 0.379,
+   "cube": 0.054,
+   "button0": 0.065,
+   "button1": 0.062,
+   "drawer": 0.33,
+   "window": 0.245
+  },
+  "units_mean": 0.189,
+  "self": {
+   "iou_with_arm": 0.108,
+   "tokens_chosen": 0.48
+  },
+  "mean_token_change_per_step": 0.1757,
+  "consequences": {
+   "drawer": {
+    "pulls": 350,
+    "locked": 52,
+    "factual_balanced_accuracy": 0.646,
+    "factual_mean_change": {
+     "unlocked": 4973.2549,
+     "locked": 4290.1711
+    },
+    "factual_right": 0.843,
+    "cf_flips_when_factual_right": 0.234,
+    "swap_button_flips_when_factual_right": 0.031,
+    "swap_slide_flips_when_factual_right": 0.02,
+    "swap_random_flips_when_factual_right": 0.02
+   },
+   "window": {
+    "pulls": 417,
+    "locked": 78,
+    "factual_balanced_accuracy": 0.655,
+    "factual_mean_change": {
+     "unlocked": 4506.7098,
+     "locked": 4198.588
+    },
+    "factual_right": 0.825,
+    "cf_flips_when_factual_right": 0.076,
+    "swap_button_flips_when_factual_right": 0.012,
+    "swap_slide_flips_when_factual_right": 0.012,
+    "swap_random_flips_when_factual_right": 0.003
+   }
+  }
+ },
+ "diagnose": {
+  "segments": 150,
+  "true_objects_fixed": 0.861,
+  "armA.pt": {
+   "fixed": 0.596,
+   "tokens_in_use": 6.21,
+   "area_shares": [
+    0.471,
+    0.117,
+    0.107,
+    0.071,
+    0.054,
+    0.045,
+    0.041,
+    0.033,
+    0.024,
+    0.016,
+    0.013,
+    0.009
+   ],
+   "objects": {
+    "arm": {
+     "recall": 0.259,
+     "precision": 0.661,
+     "with_arm": 0.381
+    },
+    "cube": {
+     "recall": 0.785,
+     "precision": 0.726,
+     "with_arm": 0.026
+    },
+    "button0": {
+     "recall": 0.656,
+     "precision": 0.019,
+     "with_arm": 0.686
+    },
+    "button1": {
+     "recall": 0.698,
+     "precision": 0.021,
+     "with_arm": 0.71
+    },
+    "drawer": {
+     "recall": 0.527,
+     "precision": 0.846,
+     "with_arm": 0.248
+    },
+    "window": {
+     "recall": 0.628,
+     "precision": 0.55,
+     "with_arm": 0.291
+    }
+   }
+  },
+  "armB.pt": {
+   "fixed": 0.463,
+   "tokens_in_use": 8.2,
+   "area_shares": [
+    0.265,
+    0.212,
+    0.139,
+    0.1,
+    0.058,
+    0.056,
+    0.042,
+    0.039,
+    0.035,
+    0.022,
+    0.02,
+    0.012
+   ],
+   "objects": {
+    "arm": {
+     "recall": 0.633,
+     "precision": 0.48,
+     "with_arm": 0.637
+    },
+    "cube": {
+     "recall": 0.766,
+     "precision": 0.056,
+     "with_arm": 0.649
+    },
+    "button0": {
+     "recall": 0.313,
+     "precision": 0.087,
+     "with_arm": 0.144
+    },
+    "button1": {
+     "recall": 0.24,
+     "precision": 0.091,
+     "with_arm": 0.19
+    },
+    "drawer": {
+     "recall": 0.477,
+     "precision": 0.482,
+     "with_arm": 0.068
+    },
+    "window": {
+     "recall": 0.57,
+     "precision": 0.317,
+     "with_arm": 0.14
+    }
+   }
+  },
+  "armC.pt": {
+   "fixed": 0.742,
+   "tokens_in_use": 6.68,
+   "area_shares": [
+    0.454,
+    0.142,
+    0.065,
+    0.056,
+    0.053,
+    0.053,
+    0.044,
+    0.041,
+    0.028,
+    0.026,
+    0.021,
+    0.016
+   ],
+   "objects": {
+    "arm": {
+     "recall": 0.283,
+     "precision": 0.762,
+     "with_arm": 0.409
+    },
+    "cube": {
+     "recall": 0.745,
+     "precision": 0.155,
+     "with_arm": 0.129
+    },
+    "button0": {
+     "recall": 0.95,
+     "precision": 0.018,
+     "with_arm": 0.844
+    },
+    "button1": {
+     "recall": 0.856,
+     "precision": 0.016,
+     "with_arm": 0.764
+    },
+    "drawer": {
+     "recall": 0.328,
+     "precision": 0.753,
+     "with_arm": 0.331
+    },
+    "window": {
+     "recall": 0.945,
+     "precision": 0.557,
+     "with_arm": 0.034
+    }
+   }
+  }
+ },
+ "gate": {
+  "k-means 7": {
+   "effective_tokens_changed": 2.51,
+   "share_in_largest_token": 0.655
+  },
+  "k-means 12": {
+   "effective_tokens_changed": 3.44,
+   "share_in_largest_token": 0.591
+  },
+  "grid 3 x 3": {
+   "effective_tokens_changed": 3.08,
+   "share_in_largest_token": 0.619
+  },
+  "random 7": {
+   "effective_tokens_changed": 5.61,
+   "share_in_largest_token": 0.269
+  },
+  "true objects": {
+   "effective_tokens_changed": 2.08,
+   "share_in_largest_token": 0.666
+  },
+  "true objects, background left out": {
+   "effective_tokens_changed": 1.63,
+   "share_in_largest_token": 0.784
+  }
+ },
+ "armC": {
+  "model": "armC.pt",
+  "step": 15648,
+  "args": {
+   "next": 1,
+   "sparse": 0.0,
+   "events": 0,
+   "batch": 24,
+   "patches": 256
+  },
+  "units_best_token_iou": {
+   "arm": 0.251,
+   "cube": 0.138,
+   "button0": 0.017,
+   "button1": 0.016,
+   "drawer": 0.281,
+   "window": 0.532
+  },
+  "units_mean": 0.206,
+  "self": {
+   "iou_with_arm": 0.351,
+   "tokens_chosen": 2.69
+  },
+  "mean_token_change_per_step": 0.3104,
+  "consequences": {
+   "drawer": {
+    "pulls": 350,
+    "locked": 52,
+    "factual_balanced_accuracy": 0.83,
+    "factual_mean_change": {
+     "unlocked": 5724.1295,
+     "locked": 4652.0976
+    },
+    "factual_right": 0.791,
+    "cf_flips_when_factual_right": 0.628,
+    "swap_button_flips_when_factual_right": 0.007,
+    "swap_slide_flips_when_factual_right": 0.087,
+    "swap_random_flips_when_factual_right": 0.105
+   },
+   "window": {
+    "pulls": 417,
+    "locked": 78,
+    "factual_balanced_accuracy": 0.537,
+    "factual_mean_change": {
+     "unlocked": 2936.8098,
+     "locked": 2916.7297
+    },
+    "factual_right": 0.808,
+    "cf_flips_when_factual_right": 0.053,
+    "swap_button_flips_when_factual_right": 0.006,
+    "swap_slide_flips_when_factual_right": 0.006,
+    "swap_random_flips_when_factual_right": 0.012
+   }
+  }
+ }
+}

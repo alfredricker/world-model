@@ -1,0 +1,448 @@
+{
+ "card": "125.1",
+ "date": "2026-11-10",
+ "verdict": "fail",
+ "decision": "revise",
+ "criteria": {
+  "contrast_holds": "pass",
+  "arm_not_a_condition": "pass",
+  "chain": "fail"
+ },
+ "main": {
+  "touches": {
+   "memory": 2008,
+   "test": 2032
+  },
+  "steady_share": 0.66,
+  "places": [
+   {
+    "place": 0,
+    "kind": "quiet",
+    "memory": 156,
+    "test": 164,
+    "changed": 0.769,
+    "moved": {
+     "drawer": 0.026,
+     "window": 0.0
+    },
+    "flip": 0.0,
+    "contrast_ratio": 0.8,
+    "candidates_on": {
+     "arm": 0,
+     "cube": 0,
+     "button0": 0,
+     "button1": 0,
+     "drawer": 0,
+     "window": 0
+    },
+    "candidate_patches_allowed": 771
+   },
+   {
+    "place": 1,
+    "kind": "quiet",
+    "memory": 23,
+    "test": 17,
+    "changed": 0.217,
+    "moved": {
+     "drawer": 0.0,
+     "window": 0.0
+    },
+    "flip": 0.0
+   },
+   {
+    "place": 2,
+    "kind": "button",
+    "memory": 349,
+    "test": 355,
+    "changed": 0.837,
+    "moved": {
+     "drawer": 0.0,
+     "window": 0.0
+    },
+    "flip": 0.467,
+    "contrast_ratio": 14.8,
+    "candidates_on": {
+     "arm": 0,
+     "cube": 0,
+     "button0": 0,
+     "button1": 0,
+     "drawer": 0,
+     "window": 0
+    },
+    "candidate_patches_allowed": 603
+   },
+   {
+    "place": 3,
+    "kind": "drawer",
+    "memory": 215,
+    "test": 244,
+    "changed": 0.73,
+    "moved": {
+     "drawer": 0.707,
+     "window": 0.0
+    },
+    "flip": 0.0,
+    "contrast_ratio": 39.5,
+    "candidates_on": {
+     "arm": 0,
+     "cube": 0,
+     "button0": 8,
+     "button1": 0,
+     "drawer": 0,
+     "window": 0
+    },
+    "candidate_patches_allowed": 723,
+    "predict_moved_test": {
+     "candidate": 0.89,
+     "true_lock": 0.89
+    },
+    "chain": {
+     "states_match_true_lock": 0.891,
+     "readings_known": 0.787,
+     "setters": 216,
+     "are_presses": 0.435,
+     "presses": 170,
+     "presses_caught": 0.553,
+     "in_one_place": 0.958,
+     "modal_place": 8
+    }
+   },
+   {
+    "place": 4,
+    "kind": "window",
+    "memory": 345,
+    "test": 326,
+    "changed": 0.681,
+    "moved": {
+     "drawer": 0.0,
+     "window": 0.722
+    },
+    "flip": 0.0,
+    "contrast_ratio": 18.1,
+    "candidates_on": {
+     "arm": 0,
+     "cube": 0,
+     "button0": 0,
+     "button1": 8,
+     "drawer": 0,
+     "window": 0
+    },
+    "candidate_patches_allowed": 692,
+    "predict_moved_test": {
+     "candidate": 0.725,
+     "true_lock": 0.725
+    },
+    "chain": {
+     "states_match_true_lock": 0.914,
+     "readings_known": 0.797,
+     "setters": 181,
+     "are_presses": 0.503,
+     "presses": 147,
+     "presses_caught": 0.619,
+     "in_one_place": 0.967,
+     "modal_place": 2
+    }
+   },
+   {
+    "place": 5,
+    "kind": "quiet",
+    "memory": 130,
+    "test": 130,
+    "changed": 0.792,
+    "moved": {
+     "drawer": 0.015,
+     "window": 0.0
+    },
+    "flip": 0.0,
+    "contrast_ratio": 1.5,
+    "candidates_on": {
+     "arm": 1,
+     "cube": 0,
+     "button0": 0,
+     "button1": 8,
+     "drawer": 0,
+     "window": 0
+    },
+    "candidate_patches_allowed": 782
+   },
+   {
+    "place": 6,
+    "kind": "drawer",
+    "memory": 153,
+    "test": 177,
+    "changed": 0.634,
+    "moved": {
+     "drawer": 0.562,
+     "window": 0.0
+    },
+    "flip": 0.0,
+    "contrast_ratio": 33.4,
+    "candidates_on": {
+     "arm": 0,
+     "cube": 0,
+     "button0": 8,
+     "button1": 0,
+     "drawer": 0,
+     "window": 0
+    },
+    "candidate_patches_allowed": 629,
+    "predict_moved_test": {
+     "candidate": 0.831,
+     "true_lock": 0.831
+    },
+    "chain": {
+     "states_match_true_lock": 0.891,
+     "readings_known": 0.787,
+     "setters": 216,
+     "are_presses": 0.435,
+     "presses": 170,
+     "presses_caught": 0.553,
+     "in_one_place": 0.958,
+     "modal_place": 8
+    }
+   },
+   {
+    "place": 7,
+    "kind": "quiet",
+    "memory": 128,
+    "test": 108,
+    "changed": 0.766,
+    "moved": {
+     "drawer": 0.0,
+     "window": 0.016
+    },
+    "flip": 0.0,
+    "contrast_ratio": 0.9,
+    "candidates_on": {
+     "arm": 1,
+     "cube": 0,
+     "button0": 0,
+     "button1": 0,
+     "drawer": 1,
+     "window": 0
+    },
+    "candidate_patches_allowed": 800
+   },
+   {
+    "place": 8,
+    "kind": "button",
+    "memory": 398,
+    "test": 414,
+    "changed": 0.57,
+    "moved": {
+     "drawer": 0.0,
+     "window": 0.0
+    },
+    "flip": 0.475,
+    "contrast_ratio": 46.4,
+    "candidates_on": {
+     "arm": 0,
+     "cube": 0,
+     "button0": 0,
+     "button1": 0,
+     "drawer": 5,
+     "window": 0
+    },
+    "candidate_patches_allowed": 571
+   },
+   {
+    "place": 9,
+    "kind": "quiet",
+    "memory": 111,
+    "test": 97,
+    "changed": 0.64,
+    "moved": {
+     "drawer": 0.0,
+     "window": 0.0
+    },
+    "flip": 0.0,
+    "contrast_ratio": 1.0,
+    "candidates_on": {
+     "arm": 0,
+     "cube": 0,
+     "button0": 0,
+     "button1": 0,
+     "drawer": 0,
+     "window": 0
+    },
+    "candidate_patches_allowed": 810
+   }
+  ],
+  "criteria": {
+   "contrast_holds": true,
+   "arm_not_a_condition": true,
+   "chain": false,
+   "each": {
+    "c1": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "c2": [
+     true,
+     true
+    ],
+    "c3": [
+     false,
+     false,
+     false
+    ]
+   }
+  }
+ },
+ "diagnostics_not_judged": {
+  "readings_and_spans": [
+   {
+    "place": 3,
+    "slide": "drawer",
+    "steady": {
+     "direct_readings": 0.787,
+     "direct_right": 1.0,
+     "direct_right_at_button_place": 1.0,
+     "direct_right_elsewhere": 1.0,
+     "spans": 216,
+     "spans_with_a_press": 0.523,
+     "spans_touching_the_modal_place": 1.0,
+     "mean_touches_per_span": 2.24,
+     "presses": 169,
+     "presses_inside_a_span": 0.704
+    },
+    "stricter": {
+     "direct_readings": 0.62,
+     "direct_right": 1.0,
+     "direct_right_at_button_place": null,
+     "direct_right_elsewhere": 1.0,
+     "spans": 193,
+     "spans_with_a_press": 0.528,
+     "spans_touching_the_modal_place": 1.0,
+     "mean_touches_per_span": 2.88,
+     "presses": 165,
+     "presses_inside_a_span": 0.691
+    }
+   },
+   {
+    "place": 4,
+    "slide": "window",
+    "steady": {
+     "direct_readings": 0.797,
+     "direct_right": 1.0,
+     "direct_right_at_button_place": null,
+     "direct_right_elsewhere": 1.0,
+     "spans": 181,
+     "spans_with_a_press": 0.602,
+     "spans_touching_the_modal_place": 1.0,
+     "mean_touches_per_span": 2.21,
+     "presses": 145,
+     "presses_inside_a_span": 0.766
+    },
+    "stricter": {
+     "direct_readings": 0.605,
+     "direct_right": 1.0,
+     "direct_right_at_button_place": null,
+     "direct_right_elsewhere": 1.0,
+     "spans": 147,
+     "spans_with_a_press": 0.605,
+     "spans_touching_the_modal_place": 1.0,
+     "mean_touches_per_span": 2.94,
+     "presses": 138,
+     "presses_inside_a_span": 0.659
+    }
+   },
+   {
+    "place": 6,
+    "slide": "drawer",
+    "steady": {
+     "direct_readings": 0.787,
+     "direct_right": 1.0,
+     "direct_right_at_button_place": 1.0,
+     "direct_right_elsewhere": 1.0,
+     "spans": 216,
+     "spans_with_a_press": 0.523,
+     "spans_touching_the_modal_place": 1.0,
+     "mean_touches_per_span": 2.24,
+     "presses": 169,
+     "presses_inside_a_span": 0.704
+    },
+    "stricter": {
+     "direct_readings": 0.62,
+     "direct_right": 1.0,
+     "direct_right_at_button_place": null,
+     "direct_right_elsewhere": 1.0,
+     "spans": 193,
+     "spans_with_a_press": 0.528,
+     "spans_touching_the_modal_place": 1.0,
+     "mean_touches_per_span": 2.88,
+     "presses": 165,
+     "presses_inside_a_span": 0.691
+    }
+   }
+  ],
+  "corrected_press_truth": [
+   {
+    "place": 3,
+    "slide": "drawer",
+    "touch_level": {
+     "setters": 216,
+     "are_presses": 0.87,
+     "presses_caught": 0.578,
+     "in_one_place": 0.958
+    },
+    "span_level": {
+     "spans": 216,
+     "with_a_press": 1.0,
+     "touches_per_span": 2.24,
+     "all_touches_in_one_place": 0.005,
+     "presses": 322,
+     "presses_inside_a_span": 0.714,
+     "presses_with_a_net_change": 230,
+     "of_those_inside_a_span": 1.0
+    }
+   },
+   {
+    "place": 4,
+    "slide": "window",
+    "touch_level": {
+     "setters": 181,
+     "are_presses": 0.862,
+     "presses_caught": 0.561,
+     "in_one_place": 0.967
+    },
+    "span_level": {
+     "spans": 181,
+     "with_a_press": 1.0,
+     "touches_per_span": 2.21,
+     "all_touches_in_one_place": 0.0,
+     "presses": 273,
+     "presses_inside_a_span": 0.685,
+     "presses_with_a_net_change": 187,
+     "of_those_inside_a_span": 1.0
+    }
+   },
+   {
+    "place": 6,
+    "slide": "drawer",
+    "touch_level": {
+     "setters": 216,
+     "are_presses": 0.87,
+     "presses_caught": 0.578,
+     "in_one_place": 0.958
+    },
+    "span_level": {
+     "spans": 216,
+     "with_a_press": 1.0,
+     "touches_per_span": 2.24,
+     "all_touches_in_one_place": 0.005,
+     "presses": 322,
+     "presses_inside_a_span": 0.714,
+     "presses_with_a_net_change": 230,
+     "of_those_inside_a_span": 1.0
+    }
+   }
+  ],
+  "flip_timing": "24% of flips fall 1-5 frames before sensed contact (episodes 600-699)"
+ }
+}

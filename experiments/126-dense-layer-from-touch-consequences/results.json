@@ -1,0 +1,91 @@
+{
+ "card": "126",
+ "date": "2026-11-10",
+ "status": "gate only, not passed",
+ "gate": {
+  "touches": {
+   "memory": 2008,
+   "test": 2032
+  },
+  "with_a_true_change": 0.861,
+  "kinds": {
+   "cube": 466,
+   "drawer": 245,
+   "window": 279,
+   "button0": 361,
+   "button1": 322
+  },
+  "place": {
+   "cube": {
+    "nothing": 0.015,
+    "oracle": 0.441,
+    "oracle_arm_set_aside": 0.485,
+    "recall_by_motion": 0.409,
+    "recall_by_motion_arm_set_aside": 0.504
+   },
+   "drawer": {
+    "nothing": 0.101,
+    "oracle": 0.67,
+    "oracle_arm_set_aside": 0.713,
+    "recall_by_motion": 0.707,
+    "recall_by_motion_arm_set_aside": 0.744
+   },
+   "window": {
+    "nothing": 0.081,
+    "oracle": 0.434,
+    "oracle_arm_set_aside": 0.555,
+    "recall_by_motion": 0.459,
+    "recall_by_motion_arm_set_aside": 0.587
+   },
+   "button0": {
+    "nothing": 0.007,
+    "oracle": 0.114,
+    "oracle_arm_set_aside": 0.167,
+    "recall_by_motion": 0.087,
+    "recall_by_motion_arm_set_aside": 0.099
+   },
+   "button1": {
+    "nothing": 0.007,
+    "oracle": 0.08,
+    "oracle_arm_set_aside": 0.088,
+    "recall_by_motion": 0.051,
+    "recall_by_motion_arm_set_aside": 0.055
+   }
+  },
+  "whether": {
+   "oracle": 0.917,
+   "recall_by_motion": 0.9
+  }
+ },
+ "transfer_gate": {
+  "block2": {
+   "fit_button0_test_button1": 0.997,
+   "centred_fit_button0_test_button1": 1.0,
+   "fit_button1_test_button0": 0.983,
+   "centred_fit_button1_test_button0": 1.0,
+   "same_button_split": 1.0
+  },
+  "block12": {
+   "fit_button0_test_button1": 1.0,
+   "centred_fit_button0_test_button1": 1.0,
+   "fit_button1_test_button0": 1.0,
+   "centred_fit_button1_test_button0": 1.0,
+   "same_button_split": 1.0
+  },
+  "both": {
+   "fit_button0_test_button1": 1.0,
+   "centred_fit_button0_test_button1": 1.0,
+   "fit_button1_test_button0": 0.995,
+   "centred_fit_button1_test_button0": 1.0,
+   "same_button_split": 1.0
+  },
+  "readings": {
+   "0": 1546,
+   "1": 1599
+  },
+  "locked_share": {
+   "0": 0.441,
+   "1": 0.423
+  }
+ }
+}
