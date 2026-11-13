@@ -1,0 +1,194 @@
+{
+ "card": "133",
+ "date": "2026-11-12",
+ "score": "balanced accuracy, percent",
+ "runs": {
+  "400": {
+   "episodes": 400,
+   "stored_events": 7421,
+   "cube_change_on_full_reopen_cm": [
+    9.1,
+    12.6,
+    14.2
+   ],
+   "n": {
+    "pull": 2226,
+    "reopen": 198,
+    "reopen_seen": 171
+   },
+   "arms": {
+    "fixed": {
+     "pull": 76.7,
+     "reopen": 96.5,
+     "reopen_seen": 96.5,
+     "reopen_not_seen": null
+    },
+    "truth": {
+     "pull": 96.0,
+     "reopen": 88.1,
+     "reopen_seen": 88.2,
+     "reopen_not_seen": null
+    },
+    "weights": {
+     "pull": 64.1,
+     "reopen": 36.0,
+     "reopen_seen": 36.9,
+     "reopen_not_seen": null,
+     "lock_shuffled": 55.1,
+     "cube_shuffled": 64.6,
+     "learned_weights": [
+      0.44999998807907104,
+      0.3400000035762787,
+      1.3200000524520874,
+      9.75,
+      7.420000076293945,
+      18398.44921875,
+      7578.7900390625,
+      6414.0400390625,
+      2228.239990234375,
+      0.029999999329447746,
+      0.009999999776482582,
+      0.019999999552965164,
+      0.41999998688697815,
+      0.2800000011920929,
+      0.4000000059604645,
+      1.6100000143051147,
+      0.4699999988079071,
+      0.1899999976158142,
+      1.0,
+      0.4399999976158142,
+      8.960000038146973
+     ]
+    },
+    "network": {
+     "pull": 87.5,
+     "reopen": 93.1,
+     "reopen_seen": 93.2,
+     "reopen_not_seen": null,
+     "lock_shuffled": 54.5,
+     "cube_shuffled": 88.0
+    }
+   }
+  },
+  "100": {
+   "episodes": 100,
+   "stored_events": 1898,
+   "cube_change_on_full_reopen_cm": [
+    9.1,
+    12.6,
+    14.2
+   ],
+   "n": {
+    "pull": 2226,
+    "reopen": 198,
+    "reopen_seen": 171
+   },
+   "arms": {
+    "fixed": {
+     "pull": 71.5,
+     "reopen": 93.1,
+     "reopen_seen": 93.1,
+     "reopen_not_seen": null
+    },
+    "truth": {
+     "pull": 93.7,
+     "reopen": 92.5,
+     "reopen_seen": 92.7,
+     "reopen_not_seen": null
+    },
+    "weights": {
+     "pull": 80.8,
+     "reopen": 93.1,
+     "reopen_seen": 93.1,
+     "reopen_not_seen": null,
+     "lock_shuffled": 59.6,
+     "cube_shuffled": 82.6,
+     "learned_weights": [
+      0.44999998807907104,
+      0.25999999046325684,
+      0.20000000298023224,
+      3.7699999809265137,
+      12.420000076293945,
+      10.90999984741211,
+      9.489999771118164,
+      5.900000095367432,
+      10.640000343322754,
+      0.03999999910593033,
+      0.0,
+      0.029999999329447746,
+      0.5699999928474426,
+      1.2699999809265137,
+      0.3400000035762787,
+      1.2599999904632568,
+      0.4099999964237213,
+      0.10999999940395355,
+      1.9299999475479126,
+      0.15000000596046448,
+      1.2599999904632568
+     ]
+    },
+    "network": {
+     "pull": 73.3,
+     "reopen": 82.8,
+     "reopen_seen": 82.8,
+     "reopen_not_seen": null,
+     "lock_shuffled": 49.0,
+     "cube_shuffled": 73.6
+    }
+   }
+  }
+ },
+ "gate": {
+  "episodes": 400,
+  "stored_events": 7421,
+  "cube_change_on_full_reopen_cm": [
+   9.1,
+   12.6,
+   14.2
+  ],
+  "n": {
+   "pull": 2226,
+   "reopen": 198,
+   "reopen_seen": 171
+  },
+  "arms": {
+   "fixed": {
+    "pull": 76.7,
+    "reopen": 96.5,
+    "reopen_seen": 96.5,
+    "reopen_not_seen": null
+   },
+   "truth": {
+    "pull": 96.0,
+    "reopen": 88.1,
+    "reopen_seen": 88.2,
+    "reopen_not_seen": null
+   }
+  }
+ },
+ "criteria": {
+  "reads_memory": {
+   "bar": "pull >= 88 and reopen_seen >= 95",
+   "value": [
+    87.5,
+    93.2
+   ],
+   "verdict": "fail"
+  },
+  "from_100": {
+   "bar": "pull >= 85",
+   "value": 80.8,
+   "verdict": "fail"
+  },
+  "right_reason": {
+   "bar": "lock shuffled <= 65; cube shuffled within 2",
+   "value": [
+    54.5,
+    0.5
+   ],
+   "verdict": "pass"
+  }
+ },
+ "verdict": "fail",
+ "decision": "revise"
+}

@@ -13,6 +13,7 @@ Per place (k-means over gripper positions, card 125):
 The truth (object masks) is used only to print where the patches lie.
 
   bin/prun python tools/card127/know.py → runs/127/know.npz, runs/127/know.json
+  ... --groups runs/129/groups.npy (card 129.1: a group id per place) → runs/129.1/know.npz, know.json
 """
 import json
 import sys
@@ -42,6 +43,9 @@ def main():
     ym = sm > otsu(sm)
     km = KMeans(K, n_init=5, random_state=0).fit(M['pos'])
     pm = km.labels_
+    gfile = next((sys.argv[i + 1] for i in range(len(sys.argv) - 1) if sys.argv[i] == '--groups'), None)
+    if gfile:                                                              # card 129.1: places joined into groups
+        pm = np.load(gfile)[pm]
     nxt = np.where(np.r_[ep[1:] == ep[:-1], False])[0]                     # touches with a next touch in the episode
     # lasting change between steady readings
     D = np.zeros((n, 1024), np.float32)
@@ -58,12 +62,14 @@ def main():
     out, rep = {}, []
     for c in range(K):
         im = np.where(pm == c)[0]
+        if len(im) < 10:
+            continue
         w = W[im]
         ok = w.sum(0) >= max(10, 0.3 * len(im))
         ratio = np.where(ok, (D[im] * w).sum(0) / np.maximum(w.sum(0), 1) / (base + 1e-3), 0)
         eff = np.sort(np.argsort(ratio)[-TOP:])
         e = dict(place=c, touches=len(im), changed=round(float(ym[im].mean()), 2),
-                 centre=km.cluster_centers_[c].round(2).tolist(),
+                 centre=M['pos'][im].mean(0).round(2).tolist(),
                  effect_ratio=round(float(ratio[eff].mean()), 1), effect_on=on(eff, mk_all))
         if e['effect_ratio'] >= 5:
             out[f'eff{c}'] = eff
@@ -109,8 +115,9 @@ def main():
         print(json.dumps(e), flush=True)
     # per touch: readings usable for recall (the next touch's before is its after)
     out.update(place=pm, changed=ym, has_next=np.isin(np.arange(n), nxt), steady=steady, st=st, en=M['en'])
-    np.savez(ROOT / 'runs/127/know.npz', **out)
-    json.dump(rep, open(ROOT / 'runs/127/know.json', 'w'), indent=1)
+    dest = ROOT / ('runs/129.1' if gfile else 'runs/127')
+    np.savez(dest / 'know.npz', **out)
+    json.dump(rep, open(dest / 'know.json', 'w'), indent=1)
 
 
 if __name__ == '__main__':

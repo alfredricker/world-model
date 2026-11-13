@@ -35,6 +35,7 @@ There are no other documents. Do not create notes, reviews or summaries.
 | A durable lesson with evidence | `LESSONS.md`; prune or merge, never let it exceed three pages (the user, 2026-10-01) |
 | Which paper shaped which component; the current paper focus | `LITERATURE.md` |
 | What one overnight session did, card by card | `overnight-MM-DD.md`, temporary; the user deletes it once read |
+| How results, problems, principles, papers, models and abilities relate (the user, 2026-11-11) | `graph/<type>/<name>.md`, one node per file, typed links in the header; `python tools/graph.py` checks it and ranks problems. A finished card adds its results as nodes |
 
 ## Rules
 

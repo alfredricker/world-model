@@ -1,0 +1,151 @@
+{
+ "card": "129",
+ "date": "2026-11-11",
+ "verdict": "fail",
+ "decision": "revise",
+ "note": "feasibility gate step 1 not passed; main run not made",
+ "readout_mixture": {
+  "test_frames": 800,
+  "peaks_per_frame_median": 4.0,
+  "by_kind": {
+   "cause place": {
+    "n": 269,
+    "peak_within_1cm": 0.799,
+    "peak_within_3cm": 0.844,
+    "median_cm": 0.56,
+    "baseline_place_mean_median_cm": 0.48
+   },
+   "slide place": {
+    "n": 296,
+    "peak_within_1cm": 0.334,
+    "peak_within_3cm": 0.784,
+    "median_cm": 1.42,
+    "baseline_place_mean_median_cm": 1.46
+   },
+   "free place": {
+    "n": 235,
+    "peak_within_1cm": 0.349,
+    "peak_within_3cm": 0.698,
+    "median_cm": 1.29,
+    "baseline_place_mean_median_cm": 4.88
+   }
+  },
+  "any_frame_peak_near_true_cube": {
+   "within_1cm": 0.396,
+   "within_3cm": 0.555,
+   "median_cm": 1.51
+  }
+ },
+ "readout_per_place": {
+  "train": 3267,
+  "test": 800,
+  "own_place": {
+   "cause place": {
+    "n": 269,
+    "median_cm": 0.53,
+    "within_1cm": 0.944,
+    "within_3cm": 0.996,
+    "baseline_median_cm": 0.48
+   },
+   "slide place": {
+    "n": 296,
+    "median_cm": 1.33,
+    "within_1cm": 0.324,
+    "within_3cm": 0.875,
+    "baseline_median_cm": 1.46
+   },
+   "free place": {
+    "n": 235,
+    "median_cm": 0.78,
+    "within_1cm": 0.719,
+    "within_3cm": 0.979,
+    "baseline_median_cm": 4.88
+   }
+  },
+  "free_places": [
+   3,
+   6,
+   7,
+   9
+  ],
+  "every_frame_free_place_vs_true_cube": {
+   "3": {
+    "median_cm": 1.99,
+    "within_1cm": 0.344
+   },
+   "6": {
+    "median_cm": 1.69,
+    "within_1cm": 0.339
+   },
+   "7": {
+    "median_cm": 1.25,
+    "within_1cm": 0.419
+   },
+   "9": {
+    "median_cm": 13.39,
+    "within_1cm": 0.006
+   }
+  },
+  "every_frame_nearest_free_answer": {
+   "median_cm": 0.63,
+   "within_1cm": 0.736
+  }
+ },
+ "readout_per_group": {
+  "train": 3267,
+  "test": 800,
+  "own_place": {
+   "cause place": {
+    "n": 269,
+    "median_cm": 0.51,
+    "within_1cm": 0.941,
+    "within_3cm": 0.993,
+    "baseline_median_cm": 0.48
+   },
+   "slide place": {
+    "n": 296,
+    "median_cm": 2.09,
+    "within_1cm": 0.24,
+    "within_3cm": 0.655,
+    "baseline_median_cm": 2.96
+   },
+   "free place": {
+    "n": 235,
+    "median_cm": 0.7,
+    "within_1cm": 0.757,
+    "within_3cm": 0.979,
+    "baseline_median_cm": 8.53
+   }
+  },
+  "free_places": [
+   3,
+   9
+  ],
+  "every_frame_free_place_vs_true_cube": {
+   "3": {
+    "median_cm": 0.65,
+    "within_1cm": 0.723
+   },
+   "9": {
+    "median_cm": 12.79,
+    "within_1cm": 0.004
+   }
+  },
+  "every_frame_nearest_free_answer": {
+   "median_cm": 0.65,
+   "within_1cm": 0.723
+  }
+ },
+ "groups_of_places": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  1,
+  3,
+  3,
+  0,
+  9
+ ]
+}

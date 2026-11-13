@@ -1,0 +1,464 @@
+{
+ "card": "133.1",
+ "date": "2026-11-12",
+ "score": "balanced accuracy, percent, mean of 3 seeds",
+ "gate": {
+  "30": {
+   "prior": {
+    "pull": 64.7,
+    "reopen": 94.7,
+    "reopen_seen": 94.6
+   },
+   "hand_set": {
+    "pull": 55.4,
+    "reopen": 93.5,
+    "reopen_seen": 93.5
+   }
+  },
+  "100": {
+   "prior": {
+    "pull": 76.5,
+    "reopen": 89.9,
+    "reopen_seen": 89.9
+   },
+   "hand_set": {
+    "pull": 67.9,
+    "reopen": 89.8,
+    "reopen_seen": 89.9
+   }
+  },
+  "400": {
+   "prior": {
+    "pull": 84.9,
+    "reopen": 93.1,
+    "reopen_seen": 93.5
+   },
+   "hand_set": {
+    "pull": 76.7,
+    "reopen": 96.5,
+    "reopen_seen": 96.5
+   }
+  }
+ },
+ "runs": {
+  "30": {
+   "episodes": 30,
+   "arms": {
+    "prior": {
+     "pull": 64.7,
+     "reopen": 94.7,
+     "reopen_seen": 94.6,
+     "lock_shuffled": 52.5,
+     "cube_shuffled": 64.6,
+     "beta": 0.0,
+     "seeds": [
+      {
+       "pull": 59.2,
+       "reopen": 94.7,
+       "reopen_seen": 94.7,
+       "reopen_not_seen": null,
+       "lock_shuffled": 51.8,
+       "cube_shuffled": 57.1
+      },
+      {
+       "pull": 68.9,
+       "reopen": 94.1,
+       "reopen_seen": 93.9,
+       "reopen_not_seen": null,
+       "lock_shuffled": 54.7,
+       "cube_shuffled": 68.1
+      },
+      {
+       "pull": 65.9,
+       "reopen": 95.3,
+       "reopen_seen": 95.1,
+       "reopen_not_seen": null,
+       "lock_shuffled": 51.1,
+       "cube_shuffled": 68.6
+      }
+     ]
+    },
+    "weights": {
+     "pull": 64.9,
+     "reopen": 80.0,
+     "reopen_seen": 79.8,
+     "lock_shuffled": 50.5,
+     "cube_shuffled": 64.9,
+     "beta": 10.0,
+     "seeds": [
+      {
+       "pull": 71.2,
+       "reopen": 57.5,
+       "reopen_seen": 57.6,
+       "reopen_not_seen": null,
+       "lock_shuffled": 48.8,
+       "cube_shuffled": 67.4
+      },
+      {
+       "pull": 61.4,
+       "reopen": 92.2,
+       "reopen_seen": 91.9,
+       "reopen_not_seen": null,
+       "lock_shuffled": 55.5,
+       "cube_shuffled": 64.4
+      },
+      {
+       "pull": 62.0,
+       "reopen": 90.3,
+       "reopen_seen": 89.9,
+       "reopen_not_seen": null,
+       "lock_shuffled": 47.1,
+       "cube_shuffled": 63.0
+      }
+     ],
+     "held_out": {
+      "0.1": 2.9473538398742676,
+      "1.0": 2.798307418823242,
+      "10.0": 2.2956695556640625,
+      "100.0": 2.6269285678863525,
+      "1000.0": 2.749382495880127
+     }
+    },
+    "network": {
+     "pull": 64.6,
+     "reopen": 94.7,
+     "reopen_seen": 94.6,
+     "lock_shuffled": 52.8,
+     "cube_shuffled": 64.7,
+     "beta": 1000.0,
+     "seeds": [
+      {
+       "pull": 59.0,
+       "reopen": 94.7,
+       "reopen_seen": 94.7,
+       "reopen_not_seen": null,
+       "lock_shuffled": 51.2,
+       "cube_shuffled": 58.5
+      },
+      {
+       "pull": 68.9,
+       "reopen": 94.1,
+       "reopen_seen": 93.9,
+       "reopen_not_seen": null,
+       "lock_shuffled": 54.3,
+       "cube_shuffled": 69.2
+      },
+      {
+       "pull": 65.9,
+       "reopen": 95.3,
+       "reopen_seen": 95.1,
+       "reopen_not_seen": null,
+       "lock_shuffled": 53.0,
+       "cube_shuffled": 66.3
+      }
+     ],
+     "held_out": {
+      "0.1": 3.569791316986084,
+      "1.0": 3.1268727779388428,
+      "10.0": 2.9946439266204834,
+      "100.0": 3.045732259750366,
+      "1000.0": 2.8387279510498047
+     }
+    }
+   }
+  },
+  "100": {
+   "episodes": 100,
+   "arms": {
+    "prior": {
+     "pull": 76.5,
+     "reopen": 89.9,
+     "reopen_seen": 89.9,
+     "lock_shuffled": 56.9,
+     "cube_shuffled": 77.8,
+     "beta": 0.0,
+     "seeds": [
+      {
+       "pull": 76.5,
+       "reopen": 93.7,
+       "reopen_seen": 93.9,
+       "reopen_not_seen": null,
+       "lock_shuffled": 59.4,
+       "cube_shuffled": 77.7
+      },
+      {
+       "pull": 77.0,
+       "reopen": 94.4,
+       "reopen_seen": 94.2,
+       "reopen_not_seen": null,
+       "lock_shuffled": 57.0,
+       "cube_shuffled": 79.1
+      },
+      {
+       "pull": 76.0,
+       "reopen": 81.6,
+       "reopen_seen": 81.7,
+       "reopen_not_seen": null,
+       "lock_shuffled": 54.2,
+       "cube_shuffled": 76.5
+      }
+     ]
+    },
+    "weights": {
+     "pull": 73.4,
+     "reopen": 82.0,
+     "reopen_seen": 82.1,
+     "lock_shuffled": 53.6,
+     "cube_shuffled": 73.9,
+     "beta": 0.1,
+     "seeds": [
+      {
+       "pull": 74.4,
+       "reopen": 92.5,
+       "reopen_seen": 92.7,
+       "reopen_not_seen": null,
+       "lock_shuffled": 49.5,
+       "cube_shuffled": 74.1
+      },
+      {
+       "pull": 78.5,
+       "reopen": 83.4,
+       "reopen_seen": 83.5,
+       "reopen_not_seen": null,
+       "lock_shuffled": 61.3,
+       "cube_shuffled": 79.5
+      },
+      {
+       "pull": 67.4,
+       "reopen": 70.0,
+       "reopen_seen": 70.2,
+       "reopen_not_seen": null,
+       "lock_shuffled": 50.0,
+       "cube_shuffled": 68.0
+      }
+     ],
+     "held_out": {
+      "0.1": 2.6616976261138916,
+      "1.0": 2.7412145137786865,
+      "10.0": 3.021172046661377,
+      "100.0": 3.2173964977264404,
+      "1000.0": 3.3607444763183594
+     }
+    },
+    "network": {
+     "pull": 76.0,
+     "reopen": 89.9,
+     "reopen_seen": 90.0,
+     "lock_shuffled": 55.8,
+     "cube_shuffled": 77.2,
+     "beta": 10.0,
+     "seeds": [
+      {
+       "pull": 76.8,
+       "reopen": 93.7,
+       "reopen_seen": 93.9,
+       "reopen_not_seen": null,
+       "lock_shuffled": 55.1,
+       "cube_shuffled": 78.0
+      },
+      {
+       "pull": 76.2,
+       "reopen": 93.1,
+       "reopen_seen": 93.5,
+       "reopen_not_seen": null,
+       "lock_shuffled": 55.9,
+       "cube_shuffled": 76.8
+      },
+      {
+       "pull": 75.0,
+       "reopen": 82.8,
+       "reopen_seen": 82.6,
+       "reopen_not_seen": null,
+       "lock_shuffled": 56.4,
+       "cube_shuffled": 76.9
+      }
+     ],
+     "held_out": {
+      "0.1": 3.3160414695739746,
+      "1.0": 3.34601092338562,
+      "10.0": 3.01259708404541,
+      "100.0": 3.2996432781219482,
+      "1000.0": 3.444378614425659
+     }
+    }
+   }
+  },
+  "400": {
+   "episodes": 400,
+   "arms": {
+    "prior": {
+     "pull": 84.9,
+     "reopen": 93.1,
+     "reopen_seen": 93.5,
+     "lock_shuffled": 57.6,
+     "cube_shuffled": 83.6,
+     "beta": 0.0,
+     "seeds": [
+      {
+       "pull": 84.9,
+       "reopen": 93.1,
+       "reopen_seen": 93.5,
+       "reopen_not_seen": null,
+       "lock_shuffled": 58.3,
+       "cube_shuffled": 82.5
+      },
+      {
+       "pull": 84.9,
+       "reopen": 93.1,
+       "reopen_seen": 93.5,
+       "reopen_not_seen": null,
+       "lock_shuffled": 58.3,
+       "cube_shuffled": 85.0
+      },
+      {
+       "pull": 84.9,
+       "reopen": 93.1,
+       "reopen_seen": 93.5,
+       "reopen_not_seen": null,
+       "lock_shuffled": 56.3,
+       "cube_shuffled": 83.3
+      }
+     ]
+    },
+    "weights": {
+     "pull": 87.3,
+     "reopen": 92.9,
+     "reopen_seen": 93.2,
+     "lock_shuffled": 54.2,
+     "cube_shuffled": 85.9,
+     "beta": 1.0,
+     "seeds": [
+      {
+       "pull": 83.6,
+       "reopen": 92.5,
+       "reopen_seen": 92.7,
+       "reopen_not_seen": null,
+       "lock_shuffled": 55.0,
+       "cube_shuffled": 82.4
+      },
+      {
+       "pull": 89.3,
+       "reopen": 93.1,
+       "reopen_seen": 93.5,
+       "reopen_not_seen": null,
+       "lock_shuffled": 56.7,
+       "cube_shuffled": 86.4
+      },
+      {
+       "pull": 89.1,
+       "reopen": 93.1,
+       "reopen_seen": 93.5,
+       "reopen_not_seen": null,
+       "lock_shuffled": 51.0,
+       "cube_shuffled": 88.8
+      }
+     ],
+     "held_out": {
+      "0.1": 2.7580983638763428,
+      "1.0": 2.745208263397217,
+      "10.0": 2.756382465362549,
+      "100.0": 2.7522950172424316,
+      "1000.0": 2.763169765472412
+     }
+    },
+    "network": {
+     "pull": 87.9,
+     "reopen": 92.9,
+     "reopen_seen": 93.1,
+     "lock_shuffled": 52.2,
+     "cube_shuffled": 86.4,
+     "beta": 0.1,
+     "seeds": [
+      {
+       "pull": 88.8,
+       "reopen": 92.8,
+       "reopen_seen": 93.1,
+       "reopen_not_seen": null,
+       "lock_shuffled": 51.7,
+       "cube_shuffled": 87.0
+      },
+      {
+       "pull": 88.8,
+       "reopen": 92.8,
+       "reopen_seen": 93.1,
+       "reopen_not_seen": null,
+       "lock_shuffled": 52.0,
+       "cube_shuffled": 87.8
+      },
+      {
+       "pull": 86.0,
+       "reopen": 93.1,
+       "reopen_seen": 93.1,
+       "reopen_not_seen": null,
+       "lock_shuffled": 53.0,
+       "cube_shuffled": 84.4
+      }
+     ],
+     "held_out": {
+      "0.1": 2.6061267852783203,
+      "1.0": 2.702711820602417,
+      "10.0": 2.740694046020508,
+      "100.0": 2.7316699028015137,
+      "1000.0": 2.7046706676483154
+     }
+    }
+   }
+  }
+ },
+ "pulls_by_lock_seen_400": {
+  "n": {
+   "seen": 2003,
+   "not_seen": 223,
+   "failed_seen": 170,
+   "failed_not_seen": 52
+  },
+  "prior": [
+   89.4,
+   63.8
+  ],
+  "network_seeds": [
+   [
+    94.1,
+    64.3
+   ],
+   [
+    93.7,
+    63.1
+   ],
+   [
+    91.8,
+    56.5
+   ]
+  ],
+  "truth": [
+   95.3,
+   98.2
+  ],
+  "note": "computed after the run"
+ },
+ "criteria": {
+  "gain_at_400": {
+   "bar": "pull >= 88, reopen_seen >= 95",
+   "value": [
+    87.9,
+    93.1
+   ],
+   "verdict": "fail"
+  },
+  "holds_at_100": {
+   "bar": "pull >= 85, reopen >= 93",
+   "value": [
+    76.0,
+    90.0
+   ],
+   "verdict": "fail"
+  },
+  "never_worse_than_prior": {
+   "bar": "within 2 points at 30, 100, 400",
+   "worst": 0.5,
+   "verdict": "pass"
+  }
+ },
+ "verdict": "fail",
+ "decision": "revise"
+}

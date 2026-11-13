@@ -1,0 +1,145 @@
+{
+ "card": "130",
+ "date": "2026-11-11",
+ "status": "done",
+ "practice31": {
+  "tag": "practice31",
+  "episodes": 50,
+  "success": 0.86,
+  "mean_steps_when_success": 299.3,
+  "gave_up": 0.08,
+  "cube_within_4cm": 0.96
+ },
+ "practice32": {
+  "tag": "practice32",
+  "episodes": 50,
+  "success": 0.92,
+  "mean_steps_when_success": 293.2,
+  "gave_up": 0.02,
+  "cube_within_4cm": 1.0
+ },
+ "practice33": {
+  "tag": "practice33",
+  "episodes": 50,
+  "success": 0.94,
+  "mean_steps_when_success": 264.8,
+  "gave_up": 0.02,
+  "cube_within_4cm": 0.96
+ },
+ "gate_mix_own": {
+  "tag": "gate_mix_own",
+  "episodes": 50,
+  "success": 0.92,
+  "mean_steps_when_success": 283.8,
+  "gave_up": 0.02,
+  "cube_within_4cm": 0.96
+ },
+ "gate_mix_og3": {
+  "tag": "gate_mix_og3",
+  "episodes": 50,
+  "success": 0.88,
+  "mean_steps_when_success": 285.4,
+  "gave_up": 0.02,
+  "cube_within_4cm": 0.98
+ },
+ "gate_dev_own": {
+  "tag": "gate_dev_own",
+  "episodes": 50,
+  "success": 0.94,
+  "mean_steps_when_success": 187.0,
+  "gave_up": 0.04,
+  "cube_within_4cm": 1.0
+ },
+ "gate_dev_og3": {
+  "tag": "gate_dev_og3",
+  "episodes": 50,
+  "success": 1.0,
+  "mean_steps_when_success": 197.6,
+  "gave_up": 0.0,
+  "cube_within_4cm": 1.0
+ },
+ "verdict": "pass",
+ "decision": "keep",
+ "task1": {
+  "tag": "task1",
+  "episodes": 50,
+  "success": 1.0,
+  "mean_steps_when_success": 155.7,
+  "gave_up": 0.0,
+  "cube_within_4cm": 1.0
+ },
+ "task2": {
+  "tag": "task2",
+  "episodes": 50,
+  "success": 0.86,
+  "mean_steps_when_success": 378.0,
+  "gave_up": 0.14,
+  "cube_within_4cm": 1.0
+ },
+ "task3": {
+  "tag": "task3",
+  "episodes": 50,
+  "success": 0.82,
+  "mean_steps_when_success": 403.1,
+  "gave_up": 0.1,
+  "cube_within_4cm": 1.0
+ },
+ "og3_same_tasks": {
+  "task1": 0.84,
+  "task2": 0.9,
+  "task3": 0.72
+ },
+ "slide_touches_worked": {
+  "own": {
+   "task1": [
+    94,
+    167
+   ],
+   "task2": [
+    105,
+    182
+   ],
+   "task3": [
+    102,
+    266
+   ]
+  },
+  "og3": {
+   "task1": [
+    98,
+    261
+   ],
+   "task2": [
+    103,
+    148
+   ],
+   "task3": [
+    103,
+    286
+   ]
+  }
+ },
+ "open_drawer_per_try": {
+  "own": {
+   "task1": [
+    50,
+    110
+   ],
+   "task3": [
+    56,
+    157
+   ]
+  },
+  "og3": {
+   "task1": [
+    47,
+    195
+   ],
+   "task3": [
+    61,
+    217
+   ]
+  }
+ },
+ "five_task_mean_with_4_5_at_zero": 0.536
+}

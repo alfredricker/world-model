@@ -68,6 +68,29 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   were steady (in front of the window) to the remembered position
   farthest from every place in use. *Evidence:* card 127.
 
+- **A position read by soft arg-max over patches needs a per-patch
+  offset, and it does not extrapolate.** Reading the cube's position
+  from 8-pixel patches: 2.1 cm median with the weighted mean of patch
+  positions alone, 0.49 cm with an offset predicted from each patch's
+  features (target noise 0.41). Outside the range of remembered grasps
+  the error is 9 cm. *Evidence:* card 128.
+
+- **Where the hand meets an object is that object's variable only if
+  the object is what moves under the hand.** For the cube the contact
+  point reads its position to 0.65 cm; for a slide the frame does not
+  settle it (within 3 cm in 66–88% of touches), so a slide's state has
+  to be read from appearance. Check an assumed variable against the
+  data before unifying on it. Also: targets sharing one softmax
+  compete, and the one about to be touched wins (cube found in 40% of
+  frames); ask about one group at a time. *Evidence:* card 129.
+
+- **Places joined by remembered moves in both directions are one
+  variable.** With no truth this groups the three table places (the
+  cube), the two places of each slide, and leaves each button alone.
+  But merge only what the group shares: giving a slide one set of
+  appearance patches per group, not per place, made half-moved slides
+  read as done (task 2 96% → 54%). *Evidence:* cards 129, 129.1.
+
 ## Generalisation
 
 - **In one fixed world a lookup table and a general rule fit equally well;
@@ -151,6 +174,12 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
 - **Trust a learned distance only within the reach its input shows.**
   Learned walking matched 7,430 of 7,431 short routes but 26 of 33 that
   left the view, all copies agreeing. *Evidence:* card 097.1.
+- **Counting own tries is only as good as the reading of "worked".**
+  Preferring remembered touches by the agent's own success counts raised
+  the drawer's opening from 24–28% to 36–45% per try, but a window left
+  4–10 cm open reads as closed, so touches that leave it short are
+  counted as successes and kept (window touches 42–52% against 61–65%).
+  *Evidence:* card 130, one seed.
 
 ## Networks and objectives
 

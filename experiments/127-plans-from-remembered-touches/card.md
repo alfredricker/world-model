@@ -5,7 +5,7 @@ rung: 3
 serves: [P21, P12, P6, P4]
 status: done
 verdict: pass
-arch_version: 27
+arch_version: og1
 date: 2026-11-11
 ---
 
@@ -198,5 +198,4 @@ six-touch task falls to 0%. Limits: one seed and one memory; no cube
 (tasks 3–5); the rest pose rule and the 10-patch variables were chosen
 on self-made problems in this one scene; opening the drawer is
 unreliable per try; the goal is a frame; the fixed camera and the
-contact sensor are assumed. Not adopted into ARCHITECTURE here: that
-is a new version and the user's call.
+contact sensor are assumed. Adopted as architecture version og1 (the user, 2026-11-11; first written as 28).

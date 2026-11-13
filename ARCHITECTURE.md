@@ -1,8 +1,124 @@
 ---
-arch_version: 27
+arch_version: og4
 ---
 
 # Architecture
+
+Two lines of versions exist (the user, 2026-11-11): numbers 1–27 are
+the MiniGrid agent; **og1, og2, …** are the OGBench agent, which shares
+no code with it.
+
+Version og4 ([card 130](experiments/130-own-tries-first/card.md),
+2026-11-11, adopted by the user) is og3 plus version 27's own-tries
+rule, the first part shared by the two lines.
+- **Own tries:** after each touch the agent reads the scene again; a
+  move worked if its variable no longer differs from the goal, a press
+  if the condition's state changed. A touch that failed is not
+  recalled again in the episode. Among the 10 best matches the agent
+  redoes the touch with the highest P = (own successes + β·p0) /
+  (own tries + β), β = 1, p0 its own rate for that variable.
+- **Counts** come from 150 self-made problems (626 tries of 141
+  touches) and are frozen for benchmark runs.
+- **Results** (50 episodes each, one seed): tasks 1–5: 100, 86, 82, 0,
+  0%, mean 53.6% (og3 49.2%, og2 53.2%). Opening the drawer works in
+  36–45% of tries (og3: 24–28%).
+- **Known limits:** "worked" is the agent's own reading, so a window
+  left 4–10 cm open counts as a success and such touches are kept
+  (12 of 16 failures in tasks 2 and 3); β is not fitted; a replay
+  still does not react to the scene while it runs; og3's loss on
+  task 2 is not won back (86% against og2's 96%).
+  Code: `tools/card130/plan.py`.
+
+Version og3 ([card 129.2](experiments/129.2-appearance-per-place-aim-per-group/card.md),
+2026-11-11, adopted by the user with a stated loss) is og2 with its
+two code paths made one; nothing in it names the cube.
+- **Groups:** places are joined when remembered moves run both ways
+  between them ([card 129](experiments/129-one-skill-one-kind-of-variable/card.md)).
+  A group says which touches are moves of the same target.
+- **Two readings, switched on by tests on memory**
+  ([card 129.1](experiments/129.1-two-readings-chosen-by-memory/card.md)):
+  appearance, per place, where its touches change its 10 patches at
+  least 5 times the general level; aim, per group, from one read-out
+  asked about a group, where its held-out error is under half that of
+  the place's mean contact point.
+- **One skill:** every touch is its recorded path plus an offset
+  (aim now − contact, aim in goal − end), zero where there is no aim.
+  A move's end is where the hand next found the target.
+- **Planner:** a variable differs if either reading differs; ready
+  variables are taken in random order; conditions as og1.
+- **Results** (50 episodes each, one seed): tasks 1–5: 84, 90, 72, 0,
+  0%, mean 49.2% (og2: 84, 96, 86, 0, 0; 53.2%); random cube problems
+  96%.
+- **Loss accepted for the general form** (AGENTS, exception for
+  general forms; the margin set before the run was 10 points, the
+  user accepted 14 afterwards): task 3 is 14 points under og2, task 2
+  6 under. To be won back. The failures are slide pulls (opening the
+  drawer works in about a third of tries), shared with og2.
+  Code: `tools/card129.1/plan.py --places 1`, `tools/card129/`.
+
+Version og2 ([card 128](experiments/128-a-touch-moved-to-where-the-cube-is/card.md),
+2026-11-11) adds to og1 a skill that adapts and the first trained part:
+- **Read-out:** from a frame's patch features, where the gripper would
+  close on the cube. Per patch a score and an offset; softmax over
+  patches; the weighted mean of (a learned position per patch +
+  offset). Trained on the agent's own cube touches, the target being
+  the gripper's position at contact; no cube label. 0.49 cm median on
+  held-out touches; about 9 cm outside the range of remembered grasps.
+- **Shifted skill:** the remembered cube move nearest in start and end
+  is followed with an offset: (cube now − its grasp point) up to
+  contact, (cube in the goal frame − its release point) from release.
+- **Planner:** og1's, with the cube as one more variable whose value is
+  a position; it is moved first.
+- **Results:** task 3 86%; all five tasks 84, 96, 86, 0, 0, mean 53.2%
+  (50 episodes each, one seed). Tasks 4 and 5 (cube in a closed
+  drawer) are not handled. Code: `tools/card128/`.
+
+Version og1 ([card 127](experiments/127-plans-from-remembered-touches/card.md),
+2026-11-11, adopted by the user) is a different agent in a different
+world: OGBench's `visual-scene`, not MiniGrid. It shares no code with
+version 27; it keeps version 27's principles (conditions from memory,
+planning backward over conditions, no rollouts). Portability tests are
+paused, so it was adopted without them. Nothing in it is trained.
+- **Perception:** a frozen DINOv2 ViT-S/14, blocks 2 and 12 per patch,
+  on 256-pixel frames (32 × 32 patches). The camera is fixed, so a
+  patch is a place in the scene.
+- **Events:** the contact sensor brackets a touch
+  ([card 120](experiments/120-touch-brackets-events/card.md)). A touch
+  is remembered as the gripper's position, the patch features just
+  before it, how steady each patch was, and the recorded gripper path.
+  Its after-state is the reading before the next touch.
+- **Places:** k-means (10) over the gripper positions of the touches.
+- **Variables:** a place's 10 patches that its touches change most
+  between steady readings, relative to touches in general (kept if at
+  least 5 times).
+- **Conditions** (cards
+  [125](experiments/125-conditions-by-contrast-over-touches/card.md),
+  [125.1](experiments/125.1-conditions-read-where-steady/card.md),
+  [125.2](experiments/125.2-chain-by-change-of-state/card.md)): within
+  a place, the patches whose before-features differ between touches
+  that changed something and touches that did not; two states by
+  2-means over steady readings; the cause place is the one most
+  intervals with a change of state share.
+- **Skill:** redo a remembered touch: lift, move over its approach
+  point, descend, follow its recorded path, closed loop on
+  proprioception with a linear action-to-displacement fit.
+- **Planner:** rest and read; a variable differs if (now, goal) is
+  nearer a remembered change than a remembered non-change; recall the
+  touch whose before matches now and whose after matches the goal; if
+  its condition reads the wrong state, press at the cause place first;
+  restore a condition only when no pending step needs it; read again
+  after every touch.
+- **Results:** OGBench scene task 1 92%, task 2 94% (50 episodes, one
+  seed); 0% on task 2 without the condition check.
+- **Known limits of og1:** no cube (tasks 3–5), so the five-task
+  mean is 37% against the published 54.4%; needs the contact sensor,
+  proprioception, a fixed camera and a goal frame; a skill is a replay
+  and does not adapt to a moved target; opening the drawer works in
+  35% of tries; one memory of 100 episodes, one seed. Code:
+  `tools/card127/` (`know.py`, `plan.py`, `reenact.py`), not in `src/`.
+
+The rest of this document describes version 27, the MiniGrid agent,
+which the og line does not replace in code.
 
 Version 27 ([card 101](experiments/archive/101-one-rule-with-no-plan/card.md),
 2026-10-10) has one rule for acting when the planner finds no plan and
@@ -864,3 +980,7 @@ At every step:
 | 25 | 2026-10-10 | 099 | Version 24 without the parts it no longer read: arm C alone for pick up, drop and toggle, with its own fit of β; version 20's recall for them, card 091's router, card 085's fits and card 074.1's split not built. Every episode the same as version 24's (430 of 430); tier 3 setup 10 s (118), 0.012 s per step (0.034) |
 | 26 | 2026-10-10 | 100 | The intention the only memory of choices between steps: card 051's kept achievers and card 060's kept door removed, card 074.1's ties read from the intention's chain. Tiers 1–2 the same steps as version 25; tier 3 30/30 in 128.9; fresh seeds 98/100 in 141.2 (25: 99/100 in 144.5, no different). Arm A (no tie memory) took 25% more steps on tier 2 |
 | 27 | 2026-10-10 | 101 | One rule for acting with no plan and nothing unseen to walk to, in place of card 095.7's inform and card 072's trying: the (action, token, hand) whose outcome arm C knows least (own tries counted), ranked by uncertainty over walking steps, held by the intention and made whatever is predicted. Tiers 1–2 identical; tier 3 30/30 in 118.8 steps (26: 128.9); fresh seeds 100/100 (26: 98/100, no different), 146.1 steps on seeds both win (141.2); no fallback loop (26: two) |
+| og1 | 2026-11-11 | 127 | A new agent for OGBench `visual-scene` (no shared code with 27): frozen DINOv2 patches, a memory of touches, conditions by contrast (125–125.2), skills as remembered touches redone, a planner backward over conditions. Nothing trained. Task 1 92%, task 2 94%, 0% without the condition check; no cube. Adopted by the user without portability tests (paused) |
+| og2 | 2026-11-11 | 128 | og1 plus a read-out of the cube's position trained on the agent's own touches (0.49 cm) and a remembered cube move shifted to it. Task 3 86%; five-task mean 53.2%. Versions named og1, og2 from here (the user); og1 was first written as 28 |
+| og3 | 2026-11-11 | 129.2 | og2 with one skill and one comparison with the goal: groups of places from two-way moves, appearance per place and aim per group switched on by tests on memory; nothing names the cube. Tasks 1–3: 84, 90, 72% (og2: 84, 96, 86); adopted by the user with the task 3 loss stated |
+| og4 | 2026-11-11 | 130 | og3 plus version 27's own-tries rule: a failed touch is not recalled again in the episode; the agent's own success counts choose among the 10 best matches. Tasks 1–3: 100, 86, 82%; five-task mean 53.6%. |

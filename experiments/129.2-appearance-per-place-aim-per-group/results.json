@@ -1,0 +1,74 @@
+{
+ "card": "129.2",
+ "date": "2026-11-11",
+ "verdict": "fail",
+ "decision": "revise",
+ "second_look_at_benchmark": true,
+ "cube50": {
+  "tag": "places_cube50",
+  "episodes": 50,
+  "success": 0.96,
+  "mean_steps_when_success": 103.9,
+  "gave_up": 0.0,
+  "cube_within_4cm": 0.96
+ },
+ "task1": {
+  "tag": "places_task1",
+  "episodes": 50,
+  "success": 0.84,
+  "mean_steps_when_success": 190.6,
+  "gave_up": 0.08,
+  "cube_within_4cm": 1.0
+ },
+ "task2": {
+  "tag": "places_task2",
+  "episodes": 50,
+  "success": 0.9,
+  "mean_steps_when_success": 338.6,
+  "gave_up": 0.1,
+  "cube_within_4cm": 1.0
+ },
+ "task3": {
+  "tag": "places_task3",
+  "episodes": 50,
+  "success": 0.72,
+  "mean_steps_when_success": 397.8,
+  "gave_up": 0.12,
+  "cube_within_4cm": 0.96
+ },
+ "task4": {
+  "tag": "places_task4",
+  "episodes": 50,
+  "success": 0.0,
+  "mean_steps_when_success": 0.0,
+  "gave_up": 0.0,
+  "cube_within_4cm": 0.0
+ },
+ "task5": {
+  "tag": "places_task5",
+  "episodes": 50,
+  "success": 0.0,
+  "mean_steps_when_success": 0.0,
+  "gave_up": 0.0,
+  "cube_within_4cm": 0.0
+ },
+ "five_task_mean": 0.492,
+ "criteria": {
+  "task1": {
+   "success": 0.84,
+   "bar": 0.74
+  },
+  "task2": {
+   "success": 0.9,
+   "bar": 0.86
+  },
+  "task3": {
+   "success": 0.72,
+   "bar": 0.76
+  },
+  "cube": {
+   "success": 0.96,
+   "bar": 0.88
+  }
+ }
+}

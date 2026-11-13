@@ -63,10 +63,10 @@ class Done(Exception):
 
 
 class Agent:
-    def __init__(self, rng):
+    def __init__(self, rng, know='runs/127/know.npz'):
         self.rng = rng
         self.mem = Memory()
-        k = np.load(ROOT / 'runs/127/know.npz')
+        k = np.load(ROOT / know)
         self.st, self.en, self.place, self.steady = k['st'], k['en'], k['place'], k['steady']
         before = np.load(ROOT / 'runs/125/before_m400.npy', mmap_mode='r')
         n = len(self.st)

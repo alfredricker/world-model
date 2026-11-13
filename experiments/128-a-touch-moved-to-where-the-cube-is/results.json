@@ -1,0 +1,239 @@
+{
+ "card": "128",
+ "date": "2026-11-11",
+ "verdict": "pass",
+ "decision": "keep",
+ "gate_part1_skill_with_true_positions": {
+  "remembered_moves": 348,
+  "trials": 30,
+  "problems": {
+   "task 3": {
+    "replay": {
+     "success": 0.9,
+     "median_cm_from_goal": 2.3,
+     "mean_cm_recalled_move_off": 3.0
+    },
+    "shift": {
+     "success": 0.87,
+     "median_cm_from_goal": 1.3,
+     "mean_cm_recalled_move_off": 2.9
+    },
+    "shift+yaw": {
+     "success": 1.0,
+     "median_cm_from_goal": 0.4,
+     "mean_cm_recalled_move_off": 3.0
+    },
+    "shift, C wrong by 1 cm": {
+     "success": 0.93,
+     "median_cm_from_goal": 1.4,
+     "mean_cm_recalled_move_off": 3.1
+    },
+    "shift, C wrong by 2 cm": {
+     "success": 0.37,
+     "median_cm_from_goal": 18.3,
+     "mean_cm_recalled_move_off": 3.0
+    }
+   },
+   "random": {
+    "replay": {
+     "success": 0.47,
+     "median_cm_from_goal": 5.9,
+     "mean_cm_recalled_move_off": 3.9
+    },
+    "shift": {
+     "success": 1.0,
+     "median_cm_from_goal": 0.6,
+     "mean_cm_recalled_move_off": 3.7
+    },
+    "shift+yaw": {
+     "success": 0.97,
+     "median_cm_from_goal": 0.6,
+     "mean_cm_recalled_move_off": 3.9
+    },
+    "shift, C wrong by 1 cm": {
+     "success": 0.77,
+     "median_cm_from_goal": 1.2,
+     "mean_cm_recalled_move_off": 3.5
+    },
+    "shift, C wrong by 2 cm": {
+     "success": 0.47,
+     "median_cm_from_goal": 8.3,
+     "mean_cm_recalled_move_off": 4.3
+    }
+   }
+  }
+ },
+ "readout_no_offset": {
+  "held_out": {
+   "train_touches": 895,
+   "test_touches": 235,
+   "error_cm_median_p75_p90": {
+    "latest_frame_vs_target": [
+     2.1,
+     3.02,
+     4.0
+    ],
+    "random_frame_vs_target": [
+     2.77,
+     4.47,
+     6.23
+    ],
+    "latest_frame_vs_true_cube": [
+     2.21,
+     3.02,
+     3.95
+    ],
+    "baseline_mean_vs_target": [
+     8.54,
+     10.81,
+     12.16
+    ],
+    "target_vs_true_cube": [
+     0.41,
+     0.6,
+     0.77
+    ]
+   }
+  },
+  "live": {
+   "trials": 60,
+   "live_rest_pose_error_cm_median_p75_p90": [
+    3.4,
+    6.89,
+    11.43
+   ],
+   "goal_frame_error_cm_median_p75_p90": [
+    3.46,
+    4.2,
+    5.91
+   ]
+  }
+ },
+ "readout": {
+  "held_out": {
+   "train_touches": 895,
+   "test_touches": 235,
+   "error_cm_median_p75_p90": {
+    "latest_frame_vs_target": [
+     0.49,
+     0.66,
+     0.88
+    ],
+    "random_frame_vs_target": [
+     0.5,
+     0.68,
+     0.85
+    ],
+    "latest_frame_vs_true_cube": [
+     0.47,
+     0.64,
+     0.85
+    ],
+    "baseline_mean_vs_target": [
+     8.54,
+     10.81,
+     12.16
+    ],
+    "target_vs_true_cube": [
+     0.41,
+     0.6,
+     0.77
+    ]
+   }
+  },
+  "live": {
+   "trials": 60,
+   "live_rest_pose_error_cm_median_p75_p90": [
+    0.57,
+    2.89,
+    10.97
+   ],
+   "goal_frame_error_cm_median_p75_p90": [
+    0.56,
+    0.61,
+    0.65
+   ],
+   "inside_remembered_range_y>=-0.09": {
+    "n": 42,
+    "error_cm": [
+     0.43,
+     0.61,
+     0.96
+    ]
+   },
+   "outside": {
+    "n": 18,
+    "error_cm": [
+     9.18,
+     12.25,
+     13.76
+    ]
+   }
+  }
+ },
+ "smoke": {
+  "tag": "smoke",
+  "episodes": 20,
+  "success": 1.0,
+  "mean_steps_when_success": 81.8,
+  "cube_within_4cm": 1.0,
+  "median_read_error_cm": 0.41
+ },
+ "cube50": {
+  "tag": "cube50",
+  "episodes": 50,
+  "success": 0.98,
+  "mean_steps_when_success": 77.5,
+  "cube_within_4cm": 0.98,
+  "median_read_error_cm": 0.48
+ },
+ "cube50_noshift": {
+  "tag": "cube50_noshift",
+  "episodes": 50,
+  "success": 0.58,
+  "mean_steps_when_success": 234.0,
+  "cube_within_4cm": 0.62,
+  "median_read_error_cm": 0.55
+ },
+ "task1": {
+  "tag": "task1",
+  "episodes": 50,
+  "success": 0.84,
+  "mean_steps_when_success": 131.8,
+  "cube_within_4cm": 1.0,
+  "median_read_error_cm": 0.52
+ },
+ "task2": {
+  "tag": "task2",
+  "episodes": 50,
+  "success": 0.96,
+  "mean_steps_when_success": 324.1,
+  "cube_within_4cm": 1.0,
+  "median_read_error_cm": 0.47
+ },
+ "task3": {
+  "tag": "task3",
+  "episodes": 50,
+  "success": 0.86,
+  "mean_steps_when_success": 276.0,
+  "cube_within_4cm": 1.0,
+  "median_read_error_cm": 0.45
+ },
+ "task4": {
+  "tag": "task4",
+  "episodes": 50,
+  "success": 0.0,
+  "mean_steps_when_success": 0.0,
+  "cube_within_4cm": 0.0,
+  "median_read_error_cm": 0.54
+ },
+ "task5": {
+  "tag": "task5",
+  "episodes": 50,
+  "success": 0.0,
+  "mean_steps_when_success": 0.0,
+  "cube_within_4cm": 0.0,
+  "median_read_error_cm": 0.52
+ },
+ "five_task_mean": 0.532
+}

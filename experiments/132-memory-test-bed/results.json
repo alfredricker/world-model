@@ -1,0 +1,154 @@
+{
+ "card": "132",
+ "date": "2026-11-12",
+ "score": "balanced accuracy, percent",
+ "n": {
+  "reopen": {
+   "events": 198,
+   "positive": 40
+  },
+  "pull": {
+   "events": 2226,
+   "positive": 2004
+  }
+ },
+ "arms": {
+  "floor_A": {
+   "10": {
+    "reopen": 67.3,
+    "pull": 53.1
+   },
+   "30": {
+    "reopen": 95.2,
+    "pull": 57.8
+   },
+   "100": {
+    "reopen": 99.8,
+    "pull": 69.8
+   },
+   "400": {
+    "reopen": 100.0,
+    "pull": 81.3
+   }
+  },
+  "floor_B": {
+   "10": {
+    "reopen": 49.8,
+    "pull": 53.6
+   },
+   "30": {
+    "reopen": 50.1,
+    "pull": 56.3
+   },
+   "100": {
+    "reopen": 51.1,
+    "pull": 61.2
+   },
+   "400": {
+    "reopen": 51.6,
+    "pull": 64.4
+   }
+  },
+  "last_seen": {
+   "10": {
+    "reopen": 73.4,
+    "pull": 50.8
+   },
+   "30": {
+    "reopen": 79.3,
+    "pull": 53.4
+   },
+   "100": {
+    "reopen": 80.7,
+    "pull": 60.6
+   },
+   "400": {
+    "reopen": 79.7,
+    "pull": 70.2
+   }
+  },
+  "ceiling": {
+   "10": {
+    "reopen": 58.9,
+    "pull": 65.0
+   },
+   "30": {
+    "reopen": 73.2,
+    "pull": 81.8
+   },
+   "100": {
+    "reopen": 98.4,
+    "pull": 93.8
+   },
+   "400": {
+    "reopen": 100.0,
+    "pull": 94.8
+   }
+  }
+ },
+ "last_seen_split": {
+  "pull, lock not seen yet": {
+   "n": 244,
+   "failed": 54,
+   "balanced": 0.6007797270955166,
+   "plain": 0.7704918032786885
+  },
+  "pull, lock belief right": {
+   "n": 1955,
+   "failed": 165,
+   "balanced": 0.7300237006940917,
+   "plain": 0.9539641943734015
+  },
+  "pull, lock belief wrong": {
+   "n": 27,
+   "failed": 3,
+   "balanced": 0.4791666666666667,
+   "plain": 0.8518518518518519
+  },
+  "reopen, cube not seen yet": {
+   "n": 61,
+   "with_cube": 10,
+   "balanced": 0.5,
+   "plain": 0.8360655737704918
+  },
+  "reopen, cube seen before": {
+   "n": 137,
+   "with_cube": 30,
+   "balanced": 0.8953271028037384,
+   "plain": 0.948905109489051
+  }
+ },
+ "rule_from_true_lock": 96.1,
+ "criteria": {
+  "needs_memory": {
+   "bar": "floor <= 60 on both",
+   "camera_view": [
+    100.0,
+    81.3
+   ],
+   "narrow_view": [
+    51.6,
+    64.4
+   ],
+   "verdict": "fail"
+  },
+  "passable": {
+   "bar": "ceiling >= 95 on both",
+   "value": [
+    100.0,
+    94.8
+   ],
+   "verdict": "fail"
+  },
+  "few_episodes": {
+   "bar": "ceiling key, 10 episodes >= 85",
+   "value": [
+    58.9,
+    65.0
+   ],
+   "verdict": "fail"
+  }
+ },
+ "verdict": "fail",
+ "decision": "revise"
+}
