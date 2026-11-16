@@ -1,0 +1,404 @@
+{
+ "card": "141",
+ "date": "2026-11-14",
+ "verdict": "fail",
+ "decision": "revise",
+ "frames": {
+  "learn": 8230,
+  "test": 6170
+ },
+ "pairs": 12340,
+ "same_or_different": {
+  "cube table": {
+   "n": [
+    1153,
+    6494
+   ],
+   "current": 99.4,
+   "current_with_in_view": 96.5,
+   "probe": 99.0,
+   "probe_withheld": 99.4,
+   "current_withheld": 99.4
+  },
+  "cube open drawer": {
+   "n": [
+    350,
+    2417
+   ],
+   "current": 70.6,
+   "current_with_in_view": 92.2,
+   "probe": 99.0,
+   "probe_withheld": 98.7,
+   "current_withheld": 70.6
+  },
+  "cube hidden": {
+   "n": [
+    152,
+    1242
+   ],
+   "current": 61.0,
+   "current_with_in_view": 80.9,
+   "probe": 82.4,
+   "probe_withheld": 94.4,
+   "current_withheld": 61.0
+  },
+  "drawer 1-4": {
+   "n": [
+    4267,
+    1801
+   ],
+   "current": 69.8,
+   "current_with_in_view": null,
+   "probe": 87.4,
+   "probe_withheld": 87.3,
+   "current_withheld": 65.8
+  },
+  "drawer 4-10": {
+   "n": [
+    4267,
+    2227
+   ],
+   "current": 81.8,
+   "current_with_in_view": null,
+   "probe": 98.7,
+   "probe_withheld": 98.4,
+   "current_withheld": 78.9
+  },
+  "drawer over10": {
+   "n": [
+    4267,
+    4045
+   ],
+   "current": 93.1,
+   "current_with_in_view": null,
+   "probe": 98.9,
+   "probe_withheld": 98.7,
+   "current_withheld": 91.4
+  },
+  "window 1-4": {
+   "n": [
+    3962,
+    1712
+   ],
+   "current": 59.6,
+   "current_with_in_view": null,
+   "probe": 82.3,
+   "probe_withheld": 80.6,
+   "current_withheld": 59.4
+  },
+  "window 4-10": {
+   "n": [
+    3962,
+    2120
+   ],
+   "current": 76.6,
+   "current_with_in_view": null,
+   "probe": 99.2,
+   "probe_withheld": 98.8,
+   "current_withheld": 75.1
+  },
+  "window over10": {
+   "n": [
+    3962,
+    4546
+   ],
+   "current": 96.3,
+   "current_with_in_view": null,
+   "probe": 99.3,
+   "probe_withheld": 99.2,
+   "current_withheld": 95.5
+  },
+  "lock0": {
+   "n": [
+    6737,
+    5603
+   ],
+   "current": 89.0,
+   "current_with_in_view": null,
+   "probe": 96.7,
+   "probe_withheld": 93.5,
+   "current_withheld": 89.0
+  },
+  "lock1": {
+   "n": [
+    6752,
+    5588
+   ],
+   "current": 92.0,
+   "current_with_in_view": null,
+   "probe": 92.3,
+   "probe_withheld": 92.5,
+   "current_withheld": 92.0
+  }
+ },
+ "values": {
+  "current_cube": {
+   "table": {
+    "n": 4793,
+    "median_cm": 0.6,
+    "within_2cm": 0.979,
+    "read_in_view": 0.94
+   },
+   "open": {
+    "n": 985,
+    "median_cm": 27.69,
+    "within_2cm": 0.0,
+    "read_in_view": 0.004
+   },
+   "hidden": {
+    "n": 392,
+    "median_cm": 45.56,
+    "within_2cm": 0.0,
+    "read_in_view": 0.0
+   }
+  },
+  "current_lock": {
+   "0": 95.8,
+   "1": 94.2,
+   "5": 94.2,
+   "8": 95.7
+  },
+  "probe": {
+   "cube_value": {
+    "table": {
+     "n": 4793,
+     "median_cm": 0.18,
+     "within_2cm": 0.997
+    },
+    "open": {
+     "n": 985,
+     "median_cm": 0.39,
+     "within_2cm": 0.949
+    }
+   },
+   "slide_value": {
+    "drawer": {
+     "median_cm": 0.12,
+     "under1": 0.11,
+     "1-4": 0.14,
+     "4-10": 0.14,
+     "over10": 0.11
+    },
+    "window": {
+     "median_cm": 0.12,
+     "under1": 0.07,
+     "1-4": 0.17,
+     "4-10": 0.16,
+     "over10": 0.13
+    }
+   },
+   "lock_value": [
+    98.3,
+    96.1
+   ],
+   "in_view": 90.2
+  },
+  "probe_withheld": {
+   "cube_value": {
+    "table": {
+     "n": 4793,
+     "median_cm": 0.27,
+     "within_2cm": 0.833
+    },
+    "open": {
+     "n": 985,
+     "median_cm": 0.35,
+     "within_2cm": 0.951
+    }
+   },
+   "cube_table_by_y": {
+    "kept": {
+     "n": 3143,
+     "median_cm": 0.19
+    },
+    "withheld_part": {
+     "n": 1650,
+     "median_cm": 1.91
+    }
+   },
+   "slide_value": {
+    "drawer": {
+     "median_cm": 0.15,
+     "under1": 0.1,
+     "1-4": 0.16,
+     "4-10": 0.85,
+     "over10": 0.13
+    },
+    "window": {
+     "median_cm": 0.13,
+     "under1": 0.07,
+     "1-4": 0.17,
+     "4-10": 1.71,
+     "over10": 0.13
+    }
+   },
+   "lock_value": [
+    96.7,
+    96.1
+   ],
+   "in_view": 98.3
+  },
+  "base": {
+   "cube_table_median_cm": 8.24,
+   "slide_median_cm": {
+    "drawer": 6.89,
+    "window": 8.56
+   }
+  }
+ },
+ "read_out_coverage": {
+  "all": {
+   "kept": {
+    "n": 3143,
+    "median_cm": 0.6
+   },
+   "withheld_part": {
+    "n": 1650,
+    "median_cm": 0.62
+   },
+   "by_distance_past_the_cut": {
+    "0-2cm": 0.64,
+    "2-5cm": 0.62,
+    "5-12cm": 0.61
+   },
+   "open_drawer": 27.69
+  },
+  "withheld": {
+   "kept": {
+    "n": 3143,
+    "median_cm": 0.64
+   },
+   "withheld_part": {
+    "n": 1650,
+    "median_cm": 2.18
+   },
+   "by_distance_past_the_cut": {
+    "0-2cm": 0.88,
+    "2-5cm": 1.83,
+    "5-12cm": 4.36
+   },
+   "open_drawer": 22.08
+  },
+  "natural_coverage": {
+   "within 1 cm of a training touch": {
+    "n": 4710,
+    "median_cm": 0.6
+   },
+   "1 to 3 cm": {
+    "n": 59,
+    "median_cm": 0.98
+   },
+   "over 3 cm": {
+    "n": 24,
+    "median_cm": 3.58
+   }
+  }
+ },
+ "posthoc": {
+  "probe": {
+   "drawer": {
+    "gap_cell": 97.8,
+    "n": [
+     3817,
+     996
+    ],
+    "error_cm_p50_p90_p99": [
+     0.12,
+     0.39,
+     2.18
+    ],
+    "share_over_1cm": 0.031
+   },
+   "window": {
+    "gap_cell": 95.1,
+    "n": [
+     3572,
+     970
+    ],
+    "error_cm_p50_p90_p99": [
+     0.12,
+     0.57,
+     1.75
+    ],
+    "share_over_1cm": 0.045
+   },
+   "said_locatable_by_drawer_opening_cm": {
+    "0-1": [
+     168,
+     0.29
+    ],
+    "1-3": [
+     224,
+     0.11
+    ],
+    "3-5": [
+     76,
+     0.91
+    ],
+    "5-8": [
+     27,
+     0.93
+    ],
+    "8-20": [
+     882,
+     1.0
+    ]
+   }
+  },
+  "probe_withheld": {
+   "drawer": {
+    "gap_cell": 95.8,
+    "n": [
+     3817,
+     996
+    ],
+    "error_cm_p50_p90_p99": [
+     0.15,
+     0.94,
+     3.22
+    ],
+    "share_over_1cm": 0.092
+   },
+   "window": {
+    "gap_cell": 93.5,
+    "n": [
+     3572,
+     970
+    ],
+    "error_cm_p50_p90_p99": [
+     0.13,
+     1.42,
+     3.18
+    ],
+    "share_over_1cm": 0.145
+   },
+   "said_locatable_by_drawer_opening_cm": {
+    "0-1": [
+     168,
+     0.02
+    ],
+    "1-3": [
+     224,
+     0.04
+    ],
+    "3-5": [
+     76,
+     0.72
+    ],
+    "5-8": [
+     27,
+     0.96
+    ],
+    "8-20": [
+     882,
+     1.0
+    ]
+   }
+  }
+ },
+ "criteria": {
+  "1_test_can_be_passed": "fail",
+  "2_shows_known_faults": "pass",
+  "3_coverage": "fail (3.4x against 5x)"
+ }
+}

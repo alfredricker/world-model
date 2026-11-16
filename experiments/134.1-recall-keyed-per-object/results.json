@@ -1,0 +1,411 @@
+{
+ "card": "134.1",
+ "date": "2026-11-13",
+ "verdict": "pass",
+ "decision": "keep",
+ "criteria": {
+  "1_pull_only_at_least_80": {
+   "value": 90.3,
+   "bar": 80,
+   "flat": 57.9,
+   "rule": 90.3,
+   "true_lock": 91.9,
+   "passed": true
+  },
+  "2_lock_touched_at_least_92_and_reopen_within_2": {
+   "lock_touched": 95.3,
+   "bar": 92,
+   "flat": 88.5,
+   "true_lock": 95.9,
+   "reopen": 94.0,
+   "reopen_flat": 93.4,
+   "passed": true
+  },
+  "3_conditions_found_and_logloss_nothing": {
+   "drawer": [
+    "l0",
+    "contact"
+   ],
+   "window": [
+    "l1",
+    "contact"
+   ],
+   "drawer_cube": [
+    "cube",
+    "contact"
+   ],
+   "logloss": 0.437,
+   "bar": 0.538,
+   "passed": true
+  }
+ },
+ "gate": {
+  "record": {
+   "lock_touched": 96.3,
+   "lock_touched_logloss": 0.066,
+   "lock_touched_mean_prob": 0.897,
+   "pull_only": 68.2,
+   "pull_only_logloss": 0.169,
+   "pull_only_mean_prob": 0.951,
+   "nothing": 60.0,
+   "nothing_logloss": 0.457,
+   "nothing_mean_prob": 0.789,
+   "pull": 89.1,
+   "reopen": 89.6,
+   "calibration_gap": 0.8
+  },
+  "record_with_changed_flag": {
+   "lock_touched": 93.4,
+   "lock_touched_logloss": 0.105,
+   "lock_touched_mean_prob": 0.903,
+   "pull_only": 84.8,
+   "pull_only_logloss": 0.128,
+   "pull_only_mean_prob": 0.972,
+   "nothing": 58.2,
+   "nothing_logloss": 0.479,
+   "nothing_mean_prob": 0.758,
+   "pull": 88.4,
+   "reopen": 89.6,
+   "calibration_gap": 2.1
+  }
+ },
+ "with_flag": {
+  "n": {
+   "lock_touched": [
+    1534,
+    143
+   ],
+   "pull_only": [
+    464,
+    27
+   ],
+   "nothing": [
+    228,
+    52
+   ]
+  },
+  "selection_400": {
+   "cube->cube": {
+    "own": 53.2,
+    "added": [],
+    "held_out": 53.2,
+    "n": [
+     1411,
+     1168
+    ]
+   },
+   "drawer->cube": {
+    "own": 54.5,
+    "added": [
+     "cube",
+     "contact"
+    ],
+    "held_out": 85.3,
+    "n": [
+     1446,
+     337
+    ]
+   },
+   "drawer->drawer": {
+    "own": 71.3,
+    "added": [
+     "l0",
+     "contact"
+    ],
+    "held_out": 89.3,
+    "n": [
+     1446,
+     1208
+    ]
+   },
+   "drawer->window": {
+    "own": 49.8,
+    "added": [
+     "contact",
+     "l1"
+    ],
+    "held_out": 73.8,
+    "n": [
+     1446,
+     129
+    ]
+   },
+   "window->cube": {
+    "own": 50.2,
+    "added": [
+     "contact"
+    ],
+    "held_out": 84.1,
+    "n": [
+     1470,
+     147
+    ]
+   },
+   "window->window": {
+    "own": 53.8,
+    "added": [
+     "l1",
+     "contact"
+    ],
+    "held_out": 87.3,
+    "n": [
+     1470,
+     1385
+    ]
+   },
+   "l0->cube": {
+    "own": 50.0,
+    "added": [
+     "contact",
+     "drawer"
+    ],
+    "held_out": 91.8,
+    "n": [
+     1395,
+     50
+    ]
+   },
+   "l0->l0": {
+    "own": 55.6,
+    "added": [
+     "contact"
+    ],
+    "held_out": 76.8,
+    "n": [
+     1395,
+     1048
+    ]
+   },
+   "l0->l1": {
+    "own": 50.0,
+    "added": [
+     "contact"
+    ],
+    "held_out": 68.7,
+    "n": [
+     1395,
+     90
+    ]
+   },
+   "l1->cube": {
+    "own": 50.0,
+    "added": [
+     "contact"
+    ],
+    "held_out": 86.8,
+    "n": [
+     1197,
+     38
+    ]
+   },
+   "l1->l1": {
+    "own": 43.4,
+    "added": [
+     "contact"
+    ],
+    "held_out": 73.3,
+    "n": [
+     1197,
+     928
+    ]
+   }
+  },
+  "400": {
+   "lock_touched": 95.3,
+   "lock_touched_logloss": 0.078,
+   "lock_touched_mean_prob": 0.918,
+   "pull_only": 90.3,
+   "pull_only_logloss": 0.111,
+   "pull_only_mean_prob": 0.963,
+   "nothing": 64.0,
+   "nothing_logloss": 0.437,
+   "nothing_mean_prob": 0.789,
+   "pull": 88.7,
+   "reopen": 94.0,
+   "calibration_gap": 1.5
+  },
+  "selection_100": {
+   "cube->cube": {
+    "own": 51.7,
+    "added": [
+     "l1"
+    ],
+    "held_out": 57.8,
+    "n": [
+     355,
+     297
+    ]
+   },
+   "drawer->cube": {
+    "own": 52.8,
+    "added": [
+     "cube",
+     "contact"
+    ],
+    "held_out": 81.9,
+    "n": [
+     373,
+     77
+    ]
+   },
+   "drawer->drawer": {
+    "own": 72.9,
+    "added": [
+     "l0",
+     "contact",
+     "l1"
+    ],
+    "held_out": 89.4,
+    "n": [
+     373,
+     299
+    ]
+   },
+   "drawer->window": {
+    "own": 50.0,
+    "added": [
+     "contact",
+     "l0"
+    ],
+    "held_out": 60.4,
+    "n": [
+     373,
+     28
+    ]
+   },
+   "window->cube": {
+    "own": 50.0,
+    "added": [
+     "contact"
+    ],
+    "held_out": 76.2,
+    "n": [
+     350,
+     33
+    ]
+   },
+   "window->window": {
+    "own": 66.6,
+    "added": [
+     "l1",
+     "cube",
+     "contact"
+    ],
+    "held_out": 85.0,
+    "n": [
+     350,
+     329
+    ]
+   },
+   "l0->cube": {
+    "own": 50.0,
+    "added": [
+     "contact",
+     "window"
+    ],
+    "held_out": 82.0,
+    "n": [
+     356,
+     14
+    ]
+   },
+   "l0->l0": {
+    "own": 54.9,
+    "added": [
+     "contact"
+    ],
+    "held_out": 71.5,
+    "n": [
+     356,
+     263
+    ]
+   },
+   "l0->l1": {
+    "own": 50.0,
+    "added": [
+     "contact"
+    ],
+    "held_out": 61.8,
+    "n": [
+     356,
+     21
+    ]
+   },
+   "l1->l1": {
+    "own": 50.2,
+    "added": [
+     "contact"
+    ],
+    "held_out": 71.9,
+    "n": [
+     337,
+     260
+    ]
+   }
+  },
+  "100": {
+   "lock_touched": 87.9,
+   "lock_touched_logloss": 0.15,
+   "lock_touched_mean_prob": 0.911,
+   "pull_only": 58.4,
+   "pull_only_logloss": 0.201,
+   "pull_only_mean_prob": 0.97,
+   "nothing": 55.0,
+   "nothing_logloss": 0.552,
+   "nothing_mean_prob": 0.852,
+   "pull": 78.2,
+   "reopen": 92.7,
+   "calibration_gap": 2.6
+  }
+ },
+ "without_flag": {
+  "400": {
+   "lock_touched": 95.8,
+   "lock_touched_logloss": 0.057,
+   "lock_touched_mean_prob": 0.915,
+   "pull_only": 70.0,
+   "pull_only_logloss": 0.16,
+   "pull_only_mean_prob": 0.948,
+   "nothing": 64.0,
+   "nothing_logloss": 0.434,
+   "nothing_mean_prob": 0.792,
+   "pull": 86.5,
+   "reopen": 94.0,
+   "calibration_gap": 0.9
+  },
+  "100": {
+   "lock_touched": 94.567,
+   "lock_touched_logloss": 0.118,
+   "lock_touched_mean_prob": 0.923,
+   "pull_only": 53.667,
+   "pull_only_logloss": 0.231,
+   "pull_only_mean_prob": 0.958,
+   "nothing": 51.033,
+   "nothing_logloss": 0.58,
+   "nothing_mean_prob": 0.847,
+   "pull": 81.3,
+   "reopen": 93.4,
+   "calibration_gap": 2.833
+  }
+ },
+ "card134_reference": {
+  "flat_seen_400": {
+   "lock_touched": 88.5,
+   "pull_only": 50.2,
+   "nothing": 68.4,
+   "reopen": 93.4
+  },
+  "flat_effects_400": {
+   "lock_touched": 86.3,
+   "pull_only": 57.9,
+   "nothing": 61.3,
+   "reopen": 93.4
+  },
+  "truth_400": {
+   "lock_touched": 95.9,
+   "pull_only": 91.9,
+   "nothing": 98.2,
+   "reopen": 88.1
+  }
+ }
+}

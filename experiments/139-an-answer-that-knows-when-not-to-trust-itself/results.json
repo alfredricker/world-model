@@ -1,0 +1,490 @@
+{
+ "card": "139",
+ "date": "2026-11-13",
+ "verdict": "fail",
+ "decision": "stop",
+ "criteria": {
+  "1_cold_logloss_within_0.005_of_base_(random,drifts)_0.01_(two,chance)": {
+   "cold": {
+    "ch_random": {
+     "base": 0.694,
+     "k25": 0.712,
+     "trust": 0.704,
+     "over_base": 0.01
+    },
+    "ch_carry": {
+     "base": 0.694,
+     "k25": 0.022,
+     "trust": 0.02,
+     "over_base": -0.674
+    },
+    "ch_default": {
+     "base": 0.276,
+     "k25": 0.02,
+     "trust": 0.02,
+     "over_base": -0.256
+    },
+    "ch_drift_slow": {
+     "base": 0.695,
+     "k25": 0.721,
+     "trust": 0.709,
+     "over_base": 0.014
+    },
+    "ch_drift_fast": {
+     "base": 0.695,
+     "k25": 0.716,
+     "trust": 0.698,
+     "over_base": 0.003
+    },
+    "ch_timer": {
+     "base": 0.141,
+     "k25": 0.034,
+     "trust": 0.029,
+     "over_base": -0.112
+    },
+    "ch_chance": {
+     "base": 0.656,
+     "k25": 0.663,
+     "trust": 0.659,
+     "over_base": 0.003
+    },
+    "ch_two": {
+     "base": 0.591,
+     "k25": 0.651,
+     "trust": 0.62,
+     "over_base": 0.029
+    },
+    "ch_rewired": {
+     "base": 0.695,
+     "k25": 0.729,
+     "trust": 0.72,
+     "over_base": 0.025
+    }
+   },
+   "outside": [
+    "ch_random +0.010",
+    "ch_drift_slow +0.014",
+    "ch_two +0.029"
+   ],
+   "passed": false
+  },
+  "2_no_warm_factor_more_than_1_point_under_and_cold_carry_99": {
+   "warm_before_after": {
+    "ch_random": [
+     0.999,
+     1.0
+    ],
+    "ch_carry": [
+     0.995,
+     1.0
+    ],
+    "ch_default": [
+     0.995,
+     0.999
+    ],
+    "ch_drift_slow": [
+     0.905,
+     0.909
+    ],
+    "ch_drift_fast": [
+     0.824,
+     0.81
+    ],
+    "ch_timer": [
+     0.931,
+     0.963
+    ],
+    "ch_chance": [
+     0.752,
+     0.76
+    ],
+    "ch_two": [
+     0.797,
+     0.8
+    ],
+    "ch_rewired": [
+     0.624,
+     0.616
+    ]
+   },
+   "outside": [
+    "ch_drift_fast -1.4"
+   ],
+   "cold_carry": 1.0,
+   "passed": false
+  },
+  "3_calibration_within_1_point": {
+   "value": 0.587,
+   "before": 0.7,
+   "passed": true
+  }
+ },
+ "gate_mean": {
+  "ch_random": {
+   "cold": {
+    "n": 171.0,
+    "base": 0.694,
+    "observer": 0.595,
+    "k25": 0.712,
+    "k25_gap": null,
+    "k200": 0.733,
+    "k200_gap": null
+   },
+   "warm": {
+    "n": 548.333,
+    "base": 0.694,
+    "observer": 0.02,
+    "k25": 0.021,
+    "k25_gap": 0.999,
+    "k200": 0.244,
+    "k200_gap": 0.667
+   }
+  },
+  "ch_carry": {
+   "cold": {
+    "n": 176.333,
+    "base": 0.694,
+    "observer": 0.02,
+    "k25": 0.022,
+    "k25_gap": 0.997,
+    "k200": 0.152,
+    "k200_gap": 0.804
+   },
+   "warm": {
+    "n": 502.667,
+    "base": 0.699,
+    "observer": 0.02,
+    "k25": 0.024,
+    "k25_gap": 0.995,
+    "k200": 0.088,
+    "k200_gap": 0.899
+   }
+  },
+  "ch_default": {
+   "cold": {
+    "n": 179.0,
+    "base": 0.276,
+    "observer": 0.02,
+    "k25": 0.02,
+    "k25_gap": 1.0,
+    "k200": 0.039,
+    "k200_gap": 0.926
+   },
+   "warm": {
+    "n": 522.667,
+    "base": 0.675,
+    "observer": 0.02,
+    "k25": 0.023,
+    "k25_gap": 0.995,
+    "k200": 0.132,
+    "k200_gap": 0.829
+   }
+  },
+  "ch_drift_slow": {
+   "cold": {
+    "n": 185.333,
+    "base": 0.695,
+    "observer": 0.693,
+    "k25": 0.721,
+    "k25_gap": null,
+    "k200": 0.726,
+    "k200_gap": null
+   },
+   "warm": {
+    "n": 555.333,
+    "base": 0.692,
+    "observer": 0.297,
+    "k25": 0.334,
+    "k25_gap": 0.905,
+    "k200": 0.416,
+    "k200_gap": 0.698
+   }
+  },
+  "ch_drift_fast": {
+   "cold": {
+    "n": 171.0,
+    "base": 0.695,
+    "observer": 0.693,
+    "k25": 0.716,
+    "k25_gap": null,
+    "k200": 0.71,
+    "k200_gap": null
+   },
+   "warm": {
+    "n": 512.667,
+    "base": 0.694,
+    "observer": 0.528,
+    "k25": 0.554,
+    "k25_gap": 0.824,
+    "k200": 0.583,
+    "k200_gap": 0.661
+   }
+  },
+  "ch_timer": {
+   "cold": {
+    "n": 180.0,
+    "base": 0.141,
+    "observer": 0.02,
+    "k25": 0.034,
+    "k25_gap": null,
+    "k200": 0.063,
+    "k200_gap": null
+   },
+   "warm": {
+    "n": 520.333,
+    "base": 0.464,
+    "observer": 0.02,
+    "k25": 0.05,
+    "k25_gap": 0.931,
+    "k200": 0.186,
+    "k200_gap": 0.624
+   }
+  },
+  "ch_chance": {
+   "cold": {
+    "n": 179.667,
+    "base": 0.656,
+    "observer": 0.552,
+    "k25": 0.663,
+    "k25_gap": null,
+    "k200": 0.679,
+    "k200_gap": null
+   },
+   "warm": {
+    "n": 511.333,
+    "base": 0.644,
+    "observer": 0.353,
+    "k25": 0.424,
+    "k25_gap": 0.752,
+    "k200": 0.476,
+    "k200_gap": 0.576
+   }
+  },
+  "ch_two": {
+   "cold": {
+    "n": 130.0,
+    "base": 0.591,
+    "observer": 0.481,
+    "k25": 0.651,
+    "k25_gap": null,
+    "k200": 0.633,
+    "k200_gap": null
+   },
+   "warm": {
+    "n": 581.667,
+    "base": 0.577,
+    "observer": 0.064,
+    "k25": 0.168,
+    "k25_gap": 0.797,
+    "k200": 0.334,
+    "k200_gap": 0.475
+   }
+  },
+  "ch_rewired": {
+   "cold": {
+    "n": 132.667,
+    "base": 0.695,
+    "observer": 0.568,
+    "k25": 0.729,
+    "k25_gap": -0.273,
+    "k200": 0.729,
+    "k200_gap": -0.253
+   },
+   "warm": {
+    "n": 603.667,
+    "base": 0.693,
+    "observer": 0.058,
+    "k25": 0.297,
+    "k25_gap": 0.624,
+    "k200": 0.362,
+    "k200_gap": 0.521
+   }
+  }
+ },
+ "gate_calibration": {
+  "k25": 0.7,
+  "k200": 2.557
+ },
+ "mean": {
+  "ch_random": {
+   "cold": {
+    "n": 171.0,
+    "base": 0.694,
+    "observer": 0.595,
+    "k25": 0.712,
+    "k25_gap": null,
+    "trust": 0.704,
+    "trust_gap": null
+   },
+   "warm": {
+    "n": 548.333,
+    "base": 0.694,
+    "observer": 0.02,
+    "k25": 0.021,
+    "k25_gap": 0.999,
+    "trust": 0.02,
+    "trust_gap": 1.0
+   }
+  },
+  "ch_carry": {
+   "cold": {
+    "n": 176.333,
+    "base": 0.694,
+    "observer": 0.02,
+    "k25": 0.022,
+    "k25_gap": 0.997,
+    "trust": 0.02,
+    "trust_gap": 1.0
+   },
+   "warm": {
+    "n": 502.667,
+    "base": 0.699,
+    "observer": 0.02,
+    "k25": 0.024,
+    "k25_gap": 0.995,
+    "trust": 0.02,
+    "trust_gap": 1.0
+   }
+  },
+  "ch_default": {
+   "cold": {
+    "n": 179.0,
+    "base": 0.276,
+    "observer": 0.02,
+    "k25": 0.02,
+    "k25_gap": 1.0,
+    "trust": 0.02,
+    "trust_gap": 1.0
+   },
+   "warm": {
+    "n": 522.667,
+    "base": 0.675,
+    "observer": 0.02,
+    "k25": 0.023,
+    "k25_gap": 0.995,
+    "trust": 0.021,
+    "trust_gap": 0.999
+   }
+  },
+  "ch_drift_slow": {
+   "cold": {
+    "n": 185.333,
+    "base": 0.695,
+    "observer": 0.693,
+    "k25": 0.721,
+    "k25_gap": null,
+    "trust": 0.709,
+    "trust_gap": null
+   },
+   "warm": {
+    "n": 555.333,
+    "base": 0.692,
+    "observer": 0.297,
+    "k25": 0.334,
+    "k25_gap": 0.905,
+    "trust": 0.333,
+    "trust_gap": 0.909
+   }
+  },
+  "ch_drift_fast": {
+   "cold": {
+    "n": 171.0,
+    "base": 0.695,
+    "observer": 0.693,
+    "k25": 0.716,
+    "k25_gap": null,
+    "trust": 0.698,
+    "trust_gap": null
+   },
+   "warm": {
+    "n": 512.667,
+    "base": 0.694,
+    "observer": 0.528,
+    "k25": 0.554,
+    "k25_gap": 0.824,
+    "trust": 0.556,
+    "trust_gap": 0.81
+   }
+  },
+  "ch_timer": {
+   "cold": {
+    "n": 180.0,
+    "base": 0.141,
+    "observer": 0.02,
+    "k25": 0.034,
+    "k25_gap": null,
+    "trust": 0.029,
+    "trust_gap": null
+   },
+   "warm": {
+    "n": 520.333,
+    "base": 0.464,
+    "observer": 0.02,
+    "k25": 0.05,
+    "k25_gap": 0.931,
+    "trust": 0.036,
+    "trust_gap": 0.963
+   }
+  },
+  "ch_chance": {
+   "cold": {
+    "n": 179.667,
+    "base": 0.656,
+    "observer": 0.552,
+    "k25": 0.663,
+    "k25_gap": null,
+    "trust": 0.659,
+    "trust_gap": null
+   },
+   "warm": {
+    "n": 511.333,
+    "base": 0.644,
+    "observer": 0.353,
+    "k25": 0.424,
+    "k25_gap": 0.752,
+    "trust": 0.422,
+    "trust_gap": 0.76
+   }
+  },
+  "ch_two": {
+   "cold": {
+    "n": 130.0,
+    "base": 0.591,
+    "observer": 0.481,
+    "k25": 0.651,
+    "k25_gap": null,
+    "trust": 0.62,
+    "trust_gap": null
+   },
+   "warm": {
+    "n": 581.667,
+    "base": 0.577,
+    "observer": 0.064,
+    "k25": 0.168,
+    "k25_gap": 0.797,
+    "trust": 0.167,
+    "trust_gap": 0.8
+   }
+  },
+  "ch_rewired": {
+   "cold": {
+    "n": 132.667,
+    "base": 0.695,
+    "observer": 0.568,
+    "k25": 0.729,
+    "k25_gap": -0.273,
+    "trust": 0.72,
+    "trust_gap": -0.189
+   },
+   "warm": {
+    "n": 603.667,
+    "base": 0.693,
+    "observer": 0.058,
+    "k25": 0.297,
+    "k25_gap": 0.624,
+    "trust": 0.302,
+    "trust_gap": 0.616
+   }
+  }
+ }
+}

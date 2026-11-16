@@ -298,6 +298,43 @@ control or baseline supports it; *suggestive*, one seed or a diagnostic.
   box among ordinary lit lamps (AUROC for its errors 0.23–0.34). It did
   flag tokens placed where the input was new (Crafter, 0.96–0.98).
   *Evidence:* cards 102.1, 110. *Confirmed.*
+- **One flat key over everything in memory reads it badly; compare the
+  touched object's own record first and add the records that stored
+  outcomes show to matter.** The content that decided was in memory
+  each time (a rule on one item 90.3%) and a 33-item key read 57.9%;
+  adding content made recall worse. Keyed per object, with the other
+  records chosen by contrast over the store: 90.3% and 95.3% (true
+  state 91.9 and 95.9), and every parent found among 16 candidates in a
+  world it was not built on. *Evidence:* cards 132–134.1, 136.
+  *Confirmed.*
+- **Store "nothing happened" as an event, not as a small number.** A
+  flag for "that touch changed it" took an inference from 70.0 to
+  90.3%. *Evidence:* card 134.1. *Confirmed.*
+- **Do not empty an object's record when the episode ends; learn from
+  the store how much an old item counts.** Never emptied: what the last
+  episode left went from −4% to 99% of the gap to the best possible
+  answer, at 7–11 points elsewhere; one learned weight per key item,
+  priced by the number of stored cases, won those back and more (fast
+  drift 62 → 82%). A network correction was unsteady between worlds
+  (46, 36, 88%). *Evidence:* cards 137, 138. *Confirmed.*
+- **Memory cannot recover what changed unseen; it can say when to look
+  again.** With a quarter of touches hidden, time since seen recovered a
+  seventh of the loss; looking at the condition object when memories of
+  that age were often wrong recovered 74% for 0.38 looks per pull, and
+  "never seen" alone was most of that. The stored past must be made
+  under the same looking rule. *Evidence:* card 135. *Confirmed.*
+- **Build a memory test with an exact best possible answer, and score
+  apart the touches that only earlier episodes can help.** Scored
+  together, long-term factors hid behind short-term ones (36 points of
+  spread); apart, over 100. A delay alone tests nothing where nothing
+  changes unseen, and an upper bound from true state may be out of any
+  memory's reach. *Evidence:* cards 135, 136, 136.1. *Confirmed.*
+- **Check an explanation before building on it.** "The noise of 25
+  neighbours" (200 were worse), "a network is needed for stale values"
+  (weights sufficed) and a reference key chosen on mixed rules were each
+  wrong, and each cost a card or a bar. A rule change alters the
+  condition itself: right episodes +10 points, right key +10, both +23.
+  *Evidence:* cards 138–140. *Suggestive.*
 
 ## Process
 

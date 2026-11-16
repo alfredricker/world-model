@@ -1,0 +1,359 @@
+{
+ "card": "140",
+ "date": "2026-11-13",
+ "verdict": "fail",
+ "decision": "stop",
+ "gate": {
+  "reference": 0.723,
+  "baseline": 0.624,
+  "margin_points": 9.9,
+  "needed": 10,
+  "passed": false
+ },
+ "criteria": {
+  "1_rewired_warm_half_way_to_reference": {
+   "value": 0.636,
+   "needed": 0.674,
+   "passed": false
+  },
+  "2_no_harm": {
+   "warm_before_after": {
+    "ch_random": [
+     0.999,
+     0.983
+    ],
+    "ch_carry": [
+     0.995,
+     0.989
+    ],
+    "ch_default": [
+     0.995,
+     0.983
+    ],
+    "ch_drift_slow": [
+     0.905,
+     0.848
+    ],
+    "ch_drift_fast": [
+     0.824,
+     0.763
+    ],
+    "ch_timer": [
+     0.931,
+     0.905
+    ],
+    "ch_chance": [
+     0.752,
+     0.691
+    ],
+    "ch_two": [
+     0.797,
+     0.76
+    ],
+    "ch_rewired": [
+     0.624,
+     0.636
+    ]
+   },
+   "passed": false
+  },
+  "3_first_40_episodes_a_third_of_the_way": {
+   "k25": 0.387,
+   "periods": 0.396,
+   "reference": 0.453,
+   "note": "the reference is worse than the baseline here, so the bar is not defined",
+   "passed": false
+  }
+ },
+ "post_hoc_where_the_loss_sits": {
+  "a_card138": 0.625,
+  "b_right_episodes": 0.723,
+  "c_right_key": 0.727,
+  "d_both": 0.847,
+  "per_world": {
+   "0": {
+    "a": 0.658,
+    "b": 0.726,
+    "c": 0.722,
+    "d": 0.831
+   },
+   "1": {
+    "a": 0.643,
+    "b": 0.75,
+    "c": 0.736,
+    "d": 0.868
+   },
+   "2": {
+    "a": 0.573,
+    "b": 0.694,
+    "c": 0.724,
+    "d": 0.843
+   }
+  }
+ },
+ "mean": {
+  "ch_random": {
+   "cold": {
+    "n": 171.0,
+    "base": 0.694,
+    "observer": 0.595,
+    "weight_on_all": 0.923,
+    "k25": 0.712,
+    "k25_gap": null,
+    "periods": 0.716,
+    "periods_gap": null,
+    "hand": 0.712,
+    "hand_gap": null
+   },
+   "warm": {
+    "n": 548.333,
+    "base": 0.694,
+    "observer": 0.02,
+    "weight_on_all": 0.947,
+    "k25": 0.021,
+    "k25_gap": 0.999,
+    "periods": 0.031,
+    "periods_gap": 0.983,
+    "hand": 0.021,
+    "hand_gap": 0.999
+   }
+  },
+  "ch_carry": {
+   "cold": {
+    "n": 176.333,
+    "base": 0.694,
+    "observer": 0.02,
+    "weight_on_all": 0.863,
+    "k25": 0.022,
+    "k25_gap": 0.997,
+    "periods": 0.03,
+    "periods_gap": 0.985,
+    "hand": 0.022,
+    "hand_gap": 0.997
+   },
+   "warm": {
+    "n": 502.667,
+    "base": 0.699,
+    "observer": 0.02,
+    "weight_on_all": 0.867,
+    "k25": 0.024,
+    "k25_gap": 0.995,
+    "periods": 0.027,
+    "periods_gap": 0.989,
+    "hand": 0.024,
+    "hand_gap": 0.995
+   }
+  },
+  "ch_default": {
+   "cold": {
+    "n": 179.0,
+    "base": 0.276,
+    "observer": 0.02,
+    "weight_on_all": 0.86,
+    "k25": 0.02,
+    "k25_gap": 1.0,
+    "periods": 0.021,
+    "periods_gap": 0.996,
+    "hand": 0.02,
+    "hand_gap": 1.0
+   },
+   "warm": {
+    "n": 522.667,
+    "base": 0.675,
+    "observer": 0.02,
+    "weight_on_all": 0.86,
+    "k25": 0.023,
+    "k25_gap": 0.995,
+    "periods": 0.031,
+    "periods_gap": 0.983,
+    "hand": 0.023,
+    "hand_gap": 0.995
+   }
+  },
+  "ch_drift_slow": {
+   "cold": {
+    "n": 185.333,
+    "base": 0.695,
+    "observer": 0.693,
+    "weight_on_all": 0.683,
+    "k25": 0.721,
+    "k25_gap": null,
+    "periods": 0.725,
+    "periods_gap": null,
+    "hand": 0.721,
+    "hand_gap": null
+   },
+   "warm": {
+    "n": 555.333,
+    "base": 0.692,
+    "observer": 0.297,
+    "weight_on_all": 0.697,
+    "k25": 0.334,
+    "k25_gap": 0.905,
+    "periods": 0.357,
+    "periods_gap": 0.848,
+    "hand": 0.334,
+    "hand_gap": 0.905
+   }
+  },
+  "ch_drift_fast": {
+   "cold": {
+    "n": 171.0,
+    "base": 0.695,
+    "observer": 0.693,
+    "weight_on_all": 0.563,
+    "k25": 0.716,
+    "k25_gap": null,
+    "periods": 0.699,
+    "periods_gap": null,
+    "hand": 0.716,
+    "hand_gap": null
+   },
+   "warm": {
+    "n": 512.667,
+    "base": 0.694,
+    "observer": 0.528,
+    "weight_on_all": 0.567,
+    "k25": 0.554,
+    "k25_gap": 0.824,
+    "periods": 0.565,
+    "periods_gap": 0.763,
+    "hand": 0.554,
+    "hand_gap": 0.824
+   }
+  },
+  "ch_timer": {
+   "cold": {
+    "n": 180.0,
+    "base": 0.141,
+    "observer": 0.02,
+    "weight_on_all": 0.857,
+    "k25": 0.034,
+    "k25_gap": null,
+    "periods": 0.036,
+    "periods_gap": null,
+    "hand": 0.034,
+    "hand_gap": null
+   },
+   "warm": {
+    "n": 520.333,
+    "base": 0.464,
+    "observer": 0.02,
+    "weight_on_all": 0.86,
+    "k25": 0.05,
+    "k25_gap": 0.931,
+    "periods": 0.062,
+    "periods_gap": 0.905,
+    "hand": 0.05,
+    "hand_gap": 0.931
+   }
+  },
+  "ch_chance": {
+   "cold": {
+    "n": 179.667,
+    "base": 0.656,
+    "observer": 0.552,
+    "weight_on_all": 0.62,
+    "k25": 0.663,
+    "k25_gap": null,
+    "periods": 0.665,
+    "periods_gap": null,
+    "hand": 0.663,
+    "hand_gap": null
+   },
+   "warm": {
+    "n": 511.333,
+    "base": 0.644,
+    "observer": 0.353,
+    "weight_on_all": 0.62,
+    "k25": 0.424,
+    "k25_gap": 0.752,
+    "periods": 0.442,
+    "periods_gap": 0.691,
+    "hand": 0.424,
+    "hand_gap": 0.752
+   }
+  },
+  "ch_two": {
+   "cold": {
+    "n": 130.0,
+    "base": 0.591,
+    "observer": 0.481,
+    "weight_on_all": 0.847,
+    "k25": 0.651,
+    "k25_gap": null,
+    "periods": 0.641,
+    "periods_gap": null,
+    "hand": 0.651,
+    "hand_gap": null
+   },
+   "warm": {
+    "n": 581.667,
+    "base": 0.577,
+    "observer": 0.064,
+    "weight_on_all": 0.84,
+    "k25": 0.168,
+    "k25_gap": 0.797,
+    "periods": 0.187,
+    "periods_gap": 0.76,
+    "hand": 0.168,
+    "hand_gap": 0.797
+   }
+  },
+  "ch_rewired": {
+   "cold": {
+    "n": 132.667,
+    "base": 0.695,
+    "observer": 0.568,
+    "weight_on_all": 0.67,
+    "k25": 0.729,
+    "k25_gap": -0.273,
+    "periods": 0.718,
+    "periods_gap": -0.171,
+    "hand": 0.728,
+    "hand_gap": -0.257
+   },
+   "warm": {
+    "n": 603.667,
+    "base": 0.693,
+    "observer": 0.058,
+    "weight_on_all": 0.653,
+    "k25": 0.297,
+    "k25_gap": 0.624,
+    "periods": 0.289,
+    "periods_gap": 0.636,
+    "hand": 0.234,
+    "hand_gap": 0.723
+   },
+   "warm_first_40_after_rewiring": {
+    "n": 112.667,
+    "base": 0.692,
+    "observer": 0.06,
+    "weight_on_all": 0.53,
+    "k25": 0.387,
+    "k25_gap": 0.483,
+    "periods": 0.396,
+    "periods_gap": 0.469,
+    "hand": 0.453,
+    "hand_gap": 0.378
+   },
+   "warm_later": {
+    "n": 491.0,
+    "base": 0.694,
+    "observer": 0.058,
+    "weight_on_all": 0.687,
+    "k25": 0.277,
+    "k25_gap": 0.655,
+    "periods": 0.265,
+    "periods_gap": 0.674,
+    "hand": 0.184,
+    "hand_gap": 0.801
+   }
+  }
+ },
+ "calibration_gap": {
+  "k25": 0.7,
+  "periods": 0.88,
+  "hand": 0.7
+ }
+}

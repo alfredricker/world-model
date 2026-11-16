@@ -1,0 +1,593 @@
+{
+ "card": "136",
+ "date": "2026-11-13",
+ "verdict": "fail",
+ "decision": "revise",
+ "criteria": {
+  "1_random_child_gap_closed_at_least_60": {
+   "value": [
+    0.99,
+    0.94,
+    0.92
+   ],
+   "bar": 0.6,
+   "passed": true
+  },
+  "2_best_and_worst_factor_differ_by_40_points": {
+   "best": 1.0,
+   "worst": 0.64,
+   "difference": 36,
+   "bar": 40,
+   "passed": false
+  },
+  "3_steady_within_20_points_for_7_of_9": {
+   "ranges": {
+    "ch_random": 7,
+    "ch_carry": 7,
+    "ch_default": 0,
+    "ch_drift_slow": 5,
+    "ch_drift_fast": 12,
+    "ch_timer": 5,
+    "ch_chance": 11,
+    "ch_two": 2,
+    "ch_rewired": 19
+   },
+   "factors_within": 9,
+   "passed": true
+  }
+ },
+ "gate_mean": {
+  "ch_random": {
+   "base": 0.694,
+   "observer": 0.097
+  },
+  "ch_carry": {
+   "base": 0.7,
+   "observer": 0.02
+  },
+  "ch_default": {
+   "base": 0.564,
+   "observer": 0.02
+  },
+  "ch_drift_slow": {
+   "base": 0.695,
+   "observer": 0.331
+  },
+  "ch_drift_fast": {
+   "base": 0.694,
+   "observer": 0.522
+  },
+  "ch_timer": {
+   "base": 0.344,
+   "observer": 0.02
+  },
+  "ch_chance": {
+   "base": 0.658,
+   "observer": 0.379
+  },
+  "ch_two": {
+   "base": 0.552,
+   "observer": 0.076
+  },
+  "ch_rewired": {
+   "base": 0.694,
+   "observer": 0.084
+  }
+ },
+ "reading_mean": {
+  "ch_random": {
+   "base": 0.694,
+   "observer": 0.097,
+   "recall": 0.126,
+   "gap_closed": 0.95
+  },
+  "ch_carry": {
+   "base": 0.7,
+   "observer": 0.02,
+   "recall": 0.128,
+   "gap_closed": 0.843
+  },
+  "ch_default": {
+   "base": 0.564,
+   "observer": 0.02,
+   "recall": 0.02,
+   "gap_closed": 1.0
+  },
+  "ch_drift_slow": {
+   "base": 0.695,
+   "observer": 0.331,
+   "recall": 0.374,
+   "gap_closed": 0.88
+  },
+  "ch_drift_fast": {
+   "base": 0.694,
+   "observer": 0.522,
+   "recall": 0.559,
+   "gap_closed": 0.79
+  },
+  "ch_timer": {
+   "base": 0.344,
+   "observer": 0.02,
+   "recall": 0.077,
+   "gap_closed": 0.823
+  },
+  "ch_chance": {
+   "base": 0.658,
+   "observer": 0.379,
+   "recall": 0.475,
+   "gap_closed": 0.653
+  },
+  "ch_two": {
+   "base": 0.552,
+   "observer": 0.076,
+   "recall": 0.174,
+   "gap_closed": 0.793
+  },
+  "ch_rewired": {
+   "base": 0.694,
+   "observer": 0.084,
+   "recall": 0.304,
+   "gap_closed": 0.64
+  }
+ },
+ "gap_closed_per_world": {
+  "ch_random": [
+   0.99,
+   0.94,
+   0.92
+  ],
+  "ch_carry": [
+   0.8,
+   0.87,
+   0.86
+  ],
+  "ch_default": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ch_drift_slow": [
+   0.91,
+   0.86,
+   0.87
+  ],
+  "ch_drift_fast": [
+   0.79,
+   0.73,
+   0.85
+  ],
+  "ch_timer": [
+   0.8,
+   0.82,
+   0.85
+  ],
+  "ch_chance": [
+   0.72,
+   0.61,
+   0.63
+  ],
+  "ch_two": [
+   0.78,
+   0.8,
+   0.8
+  ],
+  "ch_rewired": [
+   0.59,
+   0.76,
+   0.57
+  ]
+ },
+ "cold_touches_mean": {
+  "ch_random": {
+   "n": 90.0,
+   "base": 0.696,
+   "observer": 0.615,
+   "recall": 0.684
+  },
+  "ch_carry": {
+   "n": 92.0,
+   "base": 0.7,
+   "observer": 0.02,
+   "recall": 0.718
+  },
+  "ch_default": {
+   "n": 101.667,
+   "base": 0.315,
+   "observer": 0.02,
+   "recall": 0.02
+  },
+  "ch_drift_slow": {
+   "n": 90.0,
+   "base": 0.691,
+   "observer": 0.693,
+   "recall": 0.693
+  },
+  "ch_drift_fast": {
+   "n": 94.0,
+   "base": 0.693,
+   "observer": 0.693,
+   "recall": 0.725
+  },
+  "ch_timer": {
+   "n": 96.333,
+   "base": 0.124,
+   "observer": 0.02,
+   "recall": 0.02
+  },
+  "ch_chance": {
+   "n": 98.333,
+   "base": 0.617,
+   "observer": 0.532,
+   "recall": 0.675
+  },
+  "ch_two": {
+   "n": 69.667,
+   "base": 0.515,
+   "observer": 0.391,
+   "recall": 0.558
+  },
+  "ch_rewired": {
+   "n": 72.667,
+   "base": 0.693,
+   "observer": 0.51,
+   "recall": 0.708
+  }
+ },
+ "chosen_last_block": {
+  "ch_random": [
+   [
+    "sw_rand_a"
+   ],
+   [
+    "sw_rand_a",
+    "ch_two"
+   ],
+   [
+    "sw_rand_a",
+    "ch_two"
+   ]
+  ],
+  "ch_carry": [
+   [
+    "sw_carry"
+   ],
+   [
+    "sw_carry"
+   ],
+   [
+    "sw_carry"
+   ]
+  ],
+  "ch_default": [
+   [
+    "sw_default"
+   ],
+   [
+    "sw_default"
+   ],
+   [
+    "sw_default"
+   ]
+  ],
+  "ch_drift_slow": [
+   [
+    "sw_drift_slow"
+   ],
+   [
+    "sw_drift_slow"
+   ],
+   [
+    "sw_drift_slow"
+   ]
+  ],
+  "ch_drift_fast": [
+   [
+    "sw_drift_fast"
+   ],
+   [
+    "sw_drift_fast"
+   ],
+   [
+    "sw_drift_fast"
+   ]
+  ],
+  "ch_timer": [
+   [
+    "sw_timer"
+   ],
+   [
+    "sw_timer"
+   ],
+   [
+    "sw_timer"
+   ]
+  ],
+  "ch_chance": [
+   [
+    "sw_rand_b",
+    "ch_two"
+   ],
+   [
+    "sw_rand_b"
+   ],
+   [
+    "sw_rand_b",
+    "sw_drift_slow"
+   ]
+  ],
+  "ch_two": [
+   [
+    "sw_rand_a",
+    "sw_rand_b"
+   ],
+   [
+    "sw_rand_b",
+    "sw_rand_a"
+   ],
+   [
+    "sw_rand_b",
+    "sw_rand_a"
+   ]
+  ],
+  "ch_rewired": [
+   [
+    "sw_rand_b",
+    "sw_spare"
+   ],
+   [
+    "sw_rand_b",
+    "sw_spare"
+   ],
+   [
+    "sw_rand_b"
+   ]
+  ]
+ },
+ "rewired_by_episodes_since": {
+  "0": {
+   "0-19": {
+    "recall": 0.401,
+    "observer": 0.078,
+    "base": 0.693
+   },
+   "20-49": {
+    "recall": 0.36,
+    "observer": 0.082,
+    "base": 0.694
+   },
+   "50-149": {
+    "recall": 0.29,
+    "observer": 0.082,
+    "base": 0.694
+   }
+  },
+  "1": {
+   "0-19": {
+    "recall": 0.289,
+    "observer": 0.109,
+    "base": 0.694
+   },
+   "20-49": {
+    "recall": 0.227,
+    "observer": 0.096,
+    "base": 0.693
+   },
+   "50-149": {
+    "recall": 0.206,
+    "observer": 0.069,
+    "base": 0.696
+   }
+  },
+  "2": {
+   "0-19": {
+    "recall": 0.458,
+    "observer": 0.109,
+    "base": 0.683
+   },
+   "20-49": {
+    "recall": 0.482,
+    "observer": 0.08,
+    "base": 0.698
+   },
+   "50-149": {
+    "recall": 0.224,
+    "observer": 0.075,
+    "base": 0.695
+   }
+  }
+ },
+ "worlds": {
+  "0": {
+   "obj": [
+    2,
+    10,
+    3,
+    11,
+    0,
+    4,
+    7,
+    5,
+    16,
+    12,
+    13,
+    6,
+    9,
+    14,
+    8,
+    1,
+    15
+   ],
+   "req": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "default": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "rate": {
+    "sw_drift_slow": 0.034,
+    "sw_drift_fast": 0.096
+   },
+   "T": 7
+  },
+  "1": {
+   "obj": [
+    1,
+    10,
+    14,
+    15,
+    7,
+    12,
+    3,
+    4,
+    5,
+    8,
+    0,
+    9,
+    2,
+    16,
+    13,
+    11,
+    6
+   ],
+   "req": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "default": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "rate": {
+    "sw_drift_slow": 0.026,
+    "sw_drift_fast": 0.086
+   },
+   "T": 6
+  },
+  "2": {
+   "obj": [
+    6,
+    15,
+    7,
+    10,
+    2,
+    11,
+    0,
+    14,
+    16,
+    13,
+    9,
+    12,
+    5,
+    3,
+    4,
+    8,
+    1
+   ],
+   "req": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "default": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "rate": {
+    "sw_drift_slow": 0.022,
+    "sw_drift_fast": 0.084
+   },
+   "T": 6
+  }
+ }
+}

@@ -1,0 +1,551 @@
+{
+ "card": "136.1",
+ "date": "2026-11-13",
+ "verdict": "pass",
+ "decision": "keep",
+ "criteria": {
+  "1_warm_random_at_least_60": {
+   "value": [
+    0.9,
+    0.92,
+    0.95
+   ],
+   "bar": 0.6,
+   "passed": true
+  },
+  "2_cold_best_and_worst_differ_by_40_points": {
+   "best": 1.0,
+   "worst": -0.2,
+   "carry": -0.037,
+   "bar": 40,
+   "passed": true
+  },
+  "3_four_fifths_of_entries_within_20_points": {
+   "entries_with_room_in_all_worlds": 13,
+   "within": 12,
+   "outside": [
+    "ch_rewired cold (35 points)"
+   ],
+   "passed": true
+  }
+ },
+ "gate_mean": {
+  "ch_random": {
+   "cold": {
+    "n": 171.0,
+    "base": 0.694,
+    "observer": 0.595,
+    "room": 0.099
+   },
+   "warm": {
+    "n": 548.333,
+    "base": 0.694,
+    "observer": 0.02,
+    "room": 0.674
+   }
+  },
+  "ch_carry": {
+   "cold": {
+    "n": 176.333,
+    "base": 0.694,
+    "observer": 0.02,
+    "room": 0.674
+   },
+   "warm": {
+    "n": 502.667,
+    "base": 0.699,
+    "observer": 0.02,
+    "room": 0.679
+   }
+  },
+  "ch_default": {
+   "cold": {
+    "n": 179.0,
+    "base": 0.276,
+    "observer": 0.02,
+    "room": 0.256
+   },
+   "warm": {
+    "n": 522.667,
+    "base": 0.675,
+    "observer": 0.02,
+    "room": 0.655
+   }
+  },
+  "ch_drift_slow": {
+   "cold": {
+    "n": 185.333,
+    "base": 0.695,
+    "observer": 0.693,
+    "room": 0.002
+   },
+   "warm": {
+    "n": 555.333,
+    "base": 0.692,
+    "observer": 0.297,
+    "room": 0.395
+   }
+  },
+  "ch_drift_fast": {
+   "cold": {
+    "n": 171.0,
+    "base": 0.695,
+    "observer": 0.693,
+    "room": 0.002
+   },
+   "warm": {
+    "n": 512.667,
+    "base": 0.694,
+    "observer": 0.528,
+    "room": 0.166
+   }
+  },
+  "ch_timer": {
+   "cold": {
+    "n": 180.0,
+    "base": 0.141,
+    "observer": 0.02,
+    "room": 0.121
+   },
+   "warm": {
+    "n": 520.333,
+    "base": 0.464,
+    "observer": 0.02,
+    "room": 0.444
+   }
+  },
+  "ch_chance": {
+   "cold": {
+    "n": 179.667,
+    "base": 0.656,
+    "observer": 0.552,
+    "room": 0.105
+   },
+   "warm": {
+    "n": 511.333,
+    "base": 0.644,
+    "observer": 0.353,
+    "room": 0.291
+   }
+  },
+  "ch_two": {
+   "cold": {
+    "n": 130.0,
+    "base": 0.591,
+    "observer": 0.481,
+    "room": 0.109
+   },
+   "warm": {
+    "n": 581.667,
+    "base": 0.577,
+    "observer": 0.064,
+    "room": 0.513
+   }
+  },
+  "ch_rewired": {
+   "cold": {
+    "n": 132.667,
+    "base": 0.695,
+    "observer": 0.568,
+    "room": 0.127
+   },
+   "warm": {
+    "n": 603.667,
+    "base": 0.693,
+    "observer": 0.058,
+    "room": 0.635
+   }
+  }
+ },
+ "reading_mean": {
+  "ch_random": {
+   "cold": {
+    "n": 171.0,
+    "base": 0.694,
+    "observer": 0.595,
+    "room": 0.099,
+    "recall": 0.683,
+    "gap_closed": null
+   },
+   "warm": {
+    "n": 548.333,
+    "base": 0.694,
+    "observer": 0.02,
+    "room": 0.674,
+    "recall": 0.072,
+    "gap_closed": 0.923
+   }
+  },
+  "ch_carry": {
+   "cold": {
+    "n": 176.333,
+    "base": 0.694,
+    "observer": 0.02,
+    "room": 0.674,
+    "recall": 0.718,
+    "gap_closed": -0.037
+   },
+   "warm": {
+    "n": 502.667,
+    "base": 0.699,
+    "observer": 0.02,
+    "room": 0.679,
+    "recall": 0.025,
+    "gap_closed": 0.993
+   }
+  },
+  "ch_default": {
+   "cold": {
+    "n": 179.0,
+    "base": 0.276,
+    "observer": 0.02,
+    "room": 0.256,
+    "recall": 0.02,
+    "gap_closed": 1.0
+   },
+   "warm": {
+    "n": 522.667,
+    "base": 0.675,
+    "observer": 0.02,
+    "room": 0.655,
+    "recall": 0.023,
+    "gap_closed": 0.997
+   }
+  },
+  "ch_drift_slow": {
+   "cold": {
+    "n": 185.333,
+    "base": 0.695,
+    "observer": 0.693,
+    "room": 0.002,
+    "recall": 0.727,
+    "gap_closed": null
+   },
+   "warm": {
+    "n": 555.333,
+    "base": 0.692,
+    "observer": 0.297,
+    "room": 0.395,
+    "recall": 0.37,
+    "gap_closed": 0.817
+   }
+  },
+  "ch_drift_fast": {
+   "cold": {
+    "n": 171.0,
+    "base": 0.695,
+    "observer": 0.693,
+    "room": 0.002,
+    "recall": 0.711,
+    "gap_closed": null
+   },
+   "warm": {
+    "n": 512.667,
+    "base": 0.694,
+    "observer": 0.528,
+    "room": 0.166,
+    "recall": 0.57,
+    "gap_closed": 0.733
+   }
+  },
+  "ch_timer": {
+   "cold": {
+    "n": 180.0,
+    "base": 0.141,
+    "observer": 0.02,
+    "room": 0.121,
+    "recall": 0.02,
+    "gap_closed": 1.0
+   },
+   "warm": {
+    "n": 520.333,
+    "base": 0.464,
+    "observer": 0.02,
+    "room": 0.444,
+    "recall": 0.084,
+    "gap_closed": 0.853
+   }
+  },
+  "ch_chance": {
+   "cold": {
+    "n": 179.667,
+    "base": 0.656,
+    "observer": 0.552,
+    "room": 0.105,
+    "recall": 0.656,
+    "gap_closed": null
+   },
+   "warm": {
+    "n": 511.333,
+    "base": 0.644,
+    "observer": 0.353,
+    "room": 0.291,
+    "recall": 0.434,
+    "gap_closed": 0.717
+   }
+  },
+  "ch_two": {
+   "cold": {
+    "n": 130.0,
+    "base": 0.591,
+    "observer": 0.481,
+    "room": 0.109,
+    "recall": 0.594,
+    "gap_closed": null
+   },
+   "warm": {
+    "n": 581.667,
+    "base": 0.577,
+    "observer": 0.064,
+    "room": 0.513,
+    "recall": 0.188,
+    "gap_closed": 0.757
+   }
+  },
+  "ch_rewired": {
+   "cold": {
+    "n": 132.667,
+    "base": 0.695,
+    "observer": 0.568,
+    "room": 0.127,
+    "recall": 0.718,
+    "gap_closed": -0.2
+   },
+   "warm": {
+    "n": 603.667,
+    "base": 0.693,
+    "observer": 0.058,
+    "room": 0.635,
+    "recall": 0.289,
+    "gap_closed": 0.637
+   }
+  }
+ },
+ "gap_closed_per_world": {
+  "ch_random": {
+   "cold": [
+    null,
+    -0.16,
+    0.25
+   ],
+   "warm": [
+    0.9,
+    0.92,
+    0.95
+   ]
+  },
+  "ch_carry": {
+   "cold": [
+    -0.05,
+    -0.01,
+    -0.05
+   ],
+   "warm": [
+    0.98,
+    1.0,
+    1.0
+   ]
+  },
+  "ch_default": {
+   "cold": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "warm": [
+    1.0,
+    1.0,
+    0.99
+   ]
+  },
+  "ch_drift_slow": {
+   "cold": [
+    null,
+    null,
+    null
+   ],
+   "warm": [
+    0.83,
+    0.81,
+    0.81
+   ]
+  },
+  "ch_drift_fast": {
+   "cold": [
+    null,
+    null,
+    null
+   ],
+   "warm": [
+    0.62,
+    0.78,
+    0.8
+   ]
+  },
+  "ch_timer": {
+   "cold": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "warm": [
+    0.85,
+    0.84,
+    0.87
+   ]
+  },
+  "ch_chance": {
+   "cold": [
+    0.04,
+    null,
+    0.19
+   ],
+   "warm": [
+    0.75,
+    0.76,
+    0.64
+   ]
+  },
+  "ch_two": {
+   "cold": [
+    -0.09,
+    0.04,
+    null
+   ],
+   "warm": [
+    0.75,
+    0.75,
+    0.77
+   ]
+  },
+  "ch_rewired": {
+   "cold": [
+    -0.1,
+    -0.45,
+    -0.05
+   ],
+   "warm": [
+    0.61,
+    0.64,
+    0.66
+   ]
+  }
+ },
+ "chosen_last_block": {
+  "ch_random": [
+   [
+    "sw_rand_a",
+    "ch_two"
+   ],
+   [
+    "sw_rand_a",
+    "ch_two"
+   ],
+   [
+    "sw_rand_a",
+    "ch_two"
+   ]
+  ],
+  "ch_carry": [
+   [
+    "sw_carry",
+    "ch_two"
+   ],
+   [
+    "sw_carry"
+   ],
+   [
+    "sw_carry"
+   ]
+  ],
+  "ch_default": [
+   [
+    "sw_default"
+   ],
+   [
+    "sw_default"
+   ],
+   [
+    "sw_default"
+   ]
+  ],
+  "ch_drift_slow": [
+   [
+    "sw_drift_slow"
+   ],
+   [
+    "sw_drift_slow"
+   ],
+   [
+    "sw_drift_slow"
+   ]
+  ],
+  "ch_drift_fast": [
+   [
+    "sw_drift_fast",
+    "ch_two"
+   ],
+   [
+    "sw_drift_fast"
+   ],
+   [
+    "sw_drift_fast",
+    "sw_default"
+   ]
+  ],
+  "ch_timer": [
+   [
+    "sw_timer"
+   ],
+   [
+    "sw_timer"
+   ],
+   [
+    "sw_timer"
+   ]
+  ],
+  "ch_chance": [
+   [
+    "sw_rand_b",
+    "ch_two",
+    "ch_rewired"
+   ],
+   [
+    "sw_rand_b"
+   ],
+   [
+    "sw_rand_b",
+    "ch_two"
+   ]
+  ],
+  "ch_two": [
+   [
+    "sw_rand_a",
+    "sw_rand_b",
+    "ch_random"
+   ],
+   [
+    "sw_rand_a",
+    "sw_rand_b",
+    "ch_random"
+   ],
+   [
+    "sw_rand_a",
+    "sw_rand_b",
+    "ch_chance"
+   ]
+  ],
+  "ch_rewired": [
+   [
+    "sw_rand_b",
+    "sw_spare"
+   ],
+   [
+    "sw_rand_b"
+   ],
+   [
+    "sw_rand_b"
+   ]
+  ]
+ }
+}
