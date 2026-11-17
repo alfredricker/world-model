@@ -1,0 +1,383 @@
+{
+ "card": "144",
+ "date": "2026-11-17",
+ "gate": {
+  "tune_all_labels_seed0_table_cm": 0.56,
+  "height_rule_table_pct": 99.1,
+  "height_rule_open_pct": 92.2,
+  "passed": true
+ },
+ "criteria": {
+  "1 no cost inside": {
+   "table_cm": 0.67,
+   "bar": 0.75,
+   "pair_table": 98.27,
+   "bar_cell": 98.5,
+   "verdict": "fail"
+  },
+  "2 further outside": {
+   "withheld_third_cm": 1.94,
+   "bar": 1.5,
+   "past_over_5_cm": 3.08,
+   "bar_past": 2.5,
+   "verdict": "fail"
+  },
+  "3 open drawer": {
+   "cm": 1.76,
+   "bar": 1.0,
+   "verdict": "fail"
+  }
+ },
+ "verdict": "fail",
+ "decision": "revise",
+ "mean": {
+  "og_a": {
+   "seeds": 3,
+   "table": 0.45,
+   "kept": 0.43,
+   "withheld_part": 0.5,
+   "past_over_5": 0.56,
+   "table_p90": 1.04,
+   "open_drawer": 1.7,
+   "open_within_1cm": 32.87,
+   "cut_cm": 2.21,
+   "pair_table": 99.43,
+   "pair_open": 91.13,
+   "per_seed": {
+    "table": [
+     0.46,
+     0.46,
+     0.44
+    ],
+    "withheld_part": [
+     0.51,
+     0.54,
+     0.45
+    ],
+    "open_drawer": [
+     1.41,
+     1.51,
+     2.17
+    ]
+   }
+  },
+  "og_w": {
+   "seeds": 3,
+   "table": 0.64,
+   "kept": 0.45,
+   "withheld_part": 3.32,
+   "past_over_5": 5.86,
+   "table_p90": 5.13,
+   "open_drawer": 1.49,
+   "open_within_1cm": 37.93,
+   "cut_cm": 9.82,
+   "pair_table": 75.53,
+   "pair_open": 94.93,
+   "per_seed": {
+    "table": [
+     0.64,
+     0.67,
+     0.6
+    ],
+    "withheld_part": [
+     2.24,
+     3.57,
+     4.15
+    ],
+    "open_drawer": [
+     1.47,
+     1.58,
+     1.43
+    ]
+   }
+  },
+  "both_a": {
+   "seeds": 3,
+   "table": 0.51,
+   "kept": 0.48,
+   "withheld_part": 0.58,
+   "past_over_5": 0.69,
+   "table_p90": 1.09,
+   "open_drawer": 1.63,
+   "open_within_1cm": 38.6,
+   "cut_cm": 2.58,
+   "pair_table": 99.23,
+   "pair_open": 89.97,
+   "open_drawer_told_the_height": 1.62,
+   "chose_table_on_table": 99.07,
+   "chose_above_in_open_drawer": 95.6,
+   "shift_patches_table": 0.33,
+   "largest_score_table": 3.98,
+   "largest_score_open": 0.52,
+   "per_seed": {
+    "table": [
+     0.48,
+     0.53,
+     0.53
+    ],
+    "withheld_part": [
+     0.54,
+     0.6,
+     0.6
+    ],
+    "open_drawer": [
+     1.24,
+     1.24,
+     2.42
+    ]
+   }
+  },
+  "both_w": {
+   "seeds": 3,
+   "table": 0.66,
+   "kept": 0.51,
+   "withheld_part": 1.32,
+   "past_over_5": 2.15,
+   "table_p90": 2.04,
+   "open_drawer": 1.45,
+   "open_within_1cm": 41.17,
+   "cut_cm": 4.37,
+   "pair_table": 95.47,
+   "pair_open": 94.6,
+   "open_drawer_told_the_height": 1.45,
+   "chose_table_on_table": 99.77,
+   "chose_above_in_open_drawer": 98.97,
+   "shift_patches_table": 0.42,
+   "largest_score_table": 2.95,
+   "largest_score_open": 2.22,
+   "per_seed": {
+    "table": [
+     0.69,
+     0.61,
+     0.67
+    ],
+    "withheld_part": [
+     1.3,
+     1.25,
+     1.41
+    ],
+    "open_drawer": [
+     1.53,
+     1.55,
+     1.27
+    ]
+   }
+  },
+  "map_a": {
+   "seeds": 3,
+   "table": 1.09,
+   "kept": 1.05,
+   "withheld_part": 1.15,
+   "past_over_5": 1.27,
+   "table_p90": 2.04,
+   "open_drawer": 1.9,
+   "open_within_1cm": 35.13,
+   "cut_cm": 4.23,
+   "pair_table": 95.8,
+   "pair_open": 89.93,
+   "open_drawer_told_the_height": 1.86,
+   "chose_table_on_table": 98.83,
+   "chose_above_in_open_drawer": 96.23,
+   "shift_patches_table": 0.0,
+   "largest_score_table": 5.64,
+   "largest_score_open": 2.35,
+   "per_seed": {
+    "table": [
+     1.08,
+     1.09,
+     1.09
+    ],
+    "withheld_part": [
+     1.07,
+     1.21,
+     1.17
+    ],
+    "open_drawer": [
+     1.09,
+     1.37,
+     3.23
+    ]
+   }
+  },
+  "map_w": {
+   "seeds": 3,
+   "table": 1.2,
+   "kept": 1.04,
+   "withheld_part": 1.84,
+   "past_over_5": 2.66,
+   "table_p90": 2.79,
+   "open_drawer": 1.45,
+   "open_within_1cm": 42.6,
+   "cut_cm": 6.33,
+   "pair_table": 90.23,
+   "pair_open": 94.8,
+   "open_drawer_told_the_height": 1.44,
+   "chose_table_on_table": 99.83,
+   "chose_above_in_open_drawer": 97.07,
+   "shift_patches_table": 0.0,
+   "largest_score_table": 5.39,
+   "largest_score_open": 4.71,
+   "per_seed": {
+    "table": [
+     1.35,
+     1.17,
+     1.07
+    ],
+    "withheld_part": [
+     1.73,
+     2.1,
+     1.7
+    ],
+    "open_drawer": [
+     1.19,
+     1.69,
+     1.46
+    ]
+   }
+  },
+  "off_a": {
+   "seeds": 3,
+   "table": 0.61,
+   "kept": 0.58,
+   "withheld_part": 0.69,
+   "past_over_5": 0.81,
+   "table_p90": 1.27,
+   "open_drawer": 1.75,
+   "open_within_1cm": 37.2,
+   "cut_cm": 2.76,
+   "pair_table": 99.13,
+   "pair_open": 89.6,
+   "open_drawer_told_the_height": 1.68,
+   "chose_table_on_table": 99.0,
+   "chose_above_in_open_drawer": 96.3,
+   "shift_patches_table": 0.39,
+   "largest_score_table": 5.64,
+   "largest_score_open": 2.35,
+   "per_seed": {
+    "table": [
+     0.6,
+     0.6,
+     0.63
+    ],
+    "withheld_part": [
+     0.62,
+     0.68,
+     0.76
+    ],
+    "open_drawer": [
+     1.14,
+     1.23,
+     2.89
+    ]
+   }
+  },
+  "off_w": {
+   "seeds": 3,
+   "table": 0.69,
+   "kept": 0.57,
+   "withheld_part": 1.21,
+   "past_over_5": 1.89,
+   "table_p90": 2.01,
+   "open_drawer": 1.41,
+   "open_within_1cm": 41.43,
+   "cut_cm": 4.29,
+   "pair_table": 96.33,
+   "pair_open": 94.67,
+   "open_drawer_told_the_height": 1.41,
+   "chose_table_on_table": 99.83,
+   "chose_above_in_open_drawer": 97.47,
+   "shift_patches_table": 0.41,
+   "largest_score_table": 5.39,
+   "largest_score_open": 4.71,
+   "per_seed": {
+    "table": [
+     0.71,
+     0.72,
+     0.64
+    ],
+    "withheld_part": [
+     1.13,
+     1.33,
+     1.17
+    ],
+    "open_drawer": [
+     1.37,
+     1.58,
+     1.27
+    ]
+   }
+  },
+  "tune_a": {
+   "seeds": 3,
+   "table": 0.67,
+   "kept": 0.64,
+   "withheld_part": 0.74,
+   "past_over_5": 0.86,
+   "table_p90": 1.34,
+   "open_drawer": 1.76,
+   "open_within_1cm": 36.87,
+   "cut_cm": 3.03,
+   "pair_table": 98.27,
+   "pair_open": 89.1,
+   "open_drawer_told_the_height": 1.75,
+   "chose_table_on_table": 99.2,
+   "chose_above_in_open_drawer": 95.77,
+   "shift_patches_table": 0.0,
+   "largest_score_table": 2.45,
+   "largest_score_open": -0.3,
+   "per_seed": {
+    "table": [
+     0.56,
+     0.69,
+     0.75
+    ],
+    "withheld_part": [
+     0.64,
+     0.71,
+     0.86
+    ],
+    "open_drawer": [
+     1.14,
+     1.27,
+     2.88
+    ]
+   }
+  },
+  "tune_w": {
+   "seeds": 3,
+   "table": 0.94,
+   "kept": 0.73,
+   "withheld_part": 1.94,
+   "past_over_5": 3.08,
+   "table_p90": 2.93,
+   "open_drawer": 1.45,
+   "open_within_1cm": 40.63,
+   "cut_cm": 6.53,
+   "pair_table": 89.83,
+   "pair_open": 94.53,
+   "open_drawer_told_the_height": 1.45,
+   "chose_table_on_table": 99.83,
+   "chose_above_in_open_drawer": 97.8,
+   "shift_patches_table": 0.0,
+   "largest_score_table": 2.27,
+   "largest_score_open": 1.19,
+   "per_seed": {
+    "table": [
+     0.97,
+     0.89,
+     0.95
+    ],
+    "withheld_part": [
+     1.81,
+     1.9,
+     2.11
+    ],
+    "open_drawer": [
+     1.56,
+     1.33,
+     1.47
+    ]
+   }
+  }
+ }
+}

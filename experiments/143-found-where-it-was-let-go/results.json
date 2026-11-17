@@ -1,0 +1,676 @@
+{
+ "card": "143",
+ "date": "2026-11-16",
+ "verdict": "fail",
+ "decision": "revise",
+ "data_check": {
+  "learn": {
+   "frames": 8230,
+   "cube": {
+    "forward table": {
+     "frames": 1798,
+     "median_cm": 0.38,
+     "within_1cm": 98.3
+    },
+    "forward open": {
+     "frames": 2,
+     "median_cm": 0.94,
+     "within_1cm": 50.0
+    },
+    "forward hidden": {
+     "frames": 0,
+     "median_cm": null,
+     "within_1cm": null
+    },
+    "backward table": {
+     "frames": 1692,
+     "median_cm": 0.32,
+     "within_1cm": 96.6,
+     "within_3cm": 98.4,
+     "median_3d_cm": 0.45
+    },
+    "backward open": {
+     "frames": 277,
+     "median_cm": 5.16,
+     "within_1cm": 37.9,
+     "within_3cm": 45.8,
+     "median_3d_cm": 6.02
+    },
+    "backward hidden": {
+     "frames": 126,
+     "median_cm": 14.24,
+     "within_1cm": 0.0,
+     "within_3cm": 0.0,
+     "median_3d_cm": 14.28
+    },
+    "moved but not released at the hand (over 5 cm)": {
+     "frames": 315,
+     "of_them_cube_in_drawer_after": 277
+    },
+    "frames covered if the release label is kept until the cube next moves": {
+     "table": 4949,
+     "open": 614,
+     "hidden": 0
+    },
+    "frames by where the cube is": {
+     "table": 6587,
+     "open": 1048,
+     "hidden": 595
+    },
+    "touches that hide the cube (open to hidden)": 119,
+    "touches that reveal it (hidden to open)": 67,
+    "touches that put it in the drawer (table to open)": 119,
+    "touches that take it out (open to table)": 1
+   }
+  },
+  "test": {
+   "frames": 6170,
+   "cube": {
+    "forward table": {
+     "frames": 1332,
+     "median_cm": 0.42,
+     "within_1cm": 97.9
+    },
+    "forward open": {
+     "frames": 0,
+     "median_cm": null,
+     "within_1cm": null
+    },
+    "forward hidden": {
+     "frames": 1,
+     "median_cm": 0.63,
+     "within_1cm": 100.0
+    },
+    "backward table": {
+     "frames": 1240,
+     "median_cm": 0.33,
+     "within_1cm": 95.7,
+     "within_3cm": 98.5,
+     "median_3d_cm": 0.46
+    },
+    "backward open": {
+     "frames": 290,
+     "median_cm": 6.66,
+     "within_1cm": 33.4,
+     "within_3cm": 40.0,
+     "median_3d_cm": 6.83
+    },
+    "backward hidden": {
+     "frames": 107,
+     "median_cm": 14.03,
+     "within_1cm": 0.0,
+     "within_3cm": 0.9,
+     "median_3d_cm": 14.1
+    },
+    "moved but not released at the hand (over 5 cm)": {
+     "frames": 319,
+     "of_them_cube_in_drawer_after": 281
+    },
+    "frames covered if the release label is kept until the cube next moves": {
+     "table": 3602,
+     "open": 487,
+     "hidden": 1
+    },
+    "frames by where the cube is": {
+     "table": 4793,
+     "open": 985,
+     "hidden": 392
+    },
+    "touches that hide the cube (open to hidden)": 101,
+    "touches that reveal it (hidden to open)": 67,
+    "touches that put it in the drawer (table to open)": 104,
+    "touches that take it out (open to table)": 0
+   }
+  },
+  "slides": {
+   "drawer": {
+    "touches_learn": 1371,
+    "touches_test": 1126,
+    "backward (release point, opening after)": {
+     "median_cm": 6.46,
+     "within_1cm": 4.1,
+     "within_3cm": 15.0,
+     "mean_value_cm": 7.44
+    },
+    "forward (contact point, opening before)": {
+     "median_cm": 6.4,
+     "within_1cm": 4.2,
+     "within_3cm": 16.0,
+     "mean_value_cm": 6.7
+    },
+    "travel (release minus contact, change of opening)": {
+     "median_cm": 6.52,
+     "within_1cm": 7.5,
+     "within_3cm": 23.4
+    },
+    "opening after, spread": {
+     "5": 0.0,
+     "25": 0.9,
+     "50": 5.3,
+     "75": 16.0,
+     "95": 16.0
+    }
+   },
+   "window": {
+    "touches_learn": 1763,
+    "touches_test": 1291,
+    "backward (release point, opening after)": {
+     "median_cm": 8.65,
+     "within_1cm": 2.3,
+     "within_3cm": 8.9,
+     "mean_value_cm": 8.63
+    },
+    "forward (contact point, opening before)": {
+     "median_cm": 6.98,
+     "within_1cm": 3.0,
+     "within_3cm": 13.2,
+     "mean_value_cm": 7.38
+    },
+    "travel (release minus contact, change of opening)": {
+     "median_cm": 13.29,
+     "within_1cm": 1.9,
+     "within_3cm": 15.2
+    },
+    "opening after, spread": {
+     "5": 0.0,
+     "25": 0.2,
+     "50": 8.7,
+     "75": 17.9,
+     "95": 20.0
+    }
+   }
+  }
+ },
+ "selection": {
+  "added_frames": 1101,
+  "in_training": 874,
+  "within_1cm_of_true_cube": 96.4,
+  "table": {
+   "frames": 1014,
+   "in_training": 805,
+   "median_cm": 0.3,
+   "within_1cm": 97.8
+  },
+  "open": {
+   "frames": 84,
+   "in_training": 66,
+   "median_cm": 0.43,
+   "within_1cm": 82.1
+  },
+  "hidden": {
+   "frames": 3,
+   "in_training": 3,
+   "median_cm": 11.26,
+   "within_1cm": 0.0
+  }
+ },
+ "gate": {
+  "upper_bound_one_frame_per_release": {
+   "cut_cm": 2.08,
+   "table": {
+    "n": 4793,
+    "median_cm": 0.41,
+    "within_1cm": 92.6,
+    "within_3cm": 99.8,
+    "largest_score_median": 8.12
+   },
+   "open": {
+    "n": 985,
+    "median_cm": 1.8,
+    "within_1cm": 29.1,
+    "within_3cm": 71.9,
+    "largest_score_median": 8.18
+   },
+   "hidden": {
+    "n": 392,
+    "median_cm": 13.6,
+    "within_1cm": 0.8,
+    "within_3cm": 4.8,
+    "largest_score_median": 2.48
+   },
+   "pairs": {
+    "cube table": 99.6,
+    "cube open drawer": 87.7,
+    "cube hidden": 58.0
+   },
+   "pairs_at_og4_cut_2.4cm": {
+    "cube table": 99.6,
+    "cube open drawer": 89.2,
+    "cube hidden": 58.3
+   },
+   "own_held_out_cm": {
+    "contact": 0.58,
+    "release": 0.48
+   },
+   "open_by_cm_from_nearest_release_label": {
+    "under 1": {
+     "n": 541,
+     "median_cm": 1.21
+    },
+    "1 to 3": {
+     "n": 321,
+     "median_cm": 2.61
+    },
+    "over 3": {
+     "n": 123,
+     "median_cm": 6.67
+    }
+   }
+  },
+  "upper_bound_four_frames_per_release": {
+   "cut_cm": 1.5,
+   "table": {
+    "n": 4793,
+    "median_cm": 0.28,
+    "within_1cm": 94.6,
+    "within_3cm": 99.7,
+    "largest_score_median": 8.11
+   },
+   "open": {
+    "n": 985,
+    "median_cm": 0.93,
+    "within_1cm": 53.4,
+    "within_3cm": 86.1,
+    "largest_score_median": 7.84
+   },
+   "hidden": {
+    "n": 392,
+    "median_cm": 15.32,
+    "within_1cm": 0.0,
+    "within_3cm": 0.3,
+    "largest_score_median": 1.78
+   },
+   "pairs": {
+    "cube table": 97.7,
+    "cube open drawer": 92.8,
+    "cube hidden": 58.3
+   },
+   "pairs_at_og4_cut_2.4cm": {
+    "cube table": 99.1,
+    "cube open drawer": 95.6,
+    "cube hidden": 61.9
+   },
+   "own_held_out_cm": {
+    "contact": 0.5,
+    "release": 0.28
+   },
+   "open_by_cm_from_nearest_release_label": {
+    "under 1": {
+     "n": 541,
+     "median_cm": 0.55
+    },
+    "1 to 3": {
+     "n": 321,
+     "median_cm": 1.18
+    },
+    "over 3": {
+     "n": 123,
+     "median_cm": 7.03
+    }
+   }
+  },
+  "trivial_baseline_og4": {
+   "cut_cm": 2.4,
+   "table": {
+    "n": 4793,
+    "median_cm": 0.6,
+    "within_1cm": 79.1,
+    "within_3cm": 99.3,
+    "largest_score_median": 6.77
+   },
+   "open": {
+    "n": 985,
+    "median_cm": 27.69,
+    "within_1cm": 0.0,
+    "within_3cm": 0.0,
+    "largest_score_median": 3.27
+   },
+   "hidden": {
+    "n": 392,
+    "median_cm": 45.56,
+    "within_1cm": 0.0,
+    "within_3cm": 0.0,
+    "largest_score_median": 0.82
+   },
+   "pairs": {
+    "cube table": 99.4,
+    "cube open drawer": 70.6,
+    "cube hidden": 61.0
+   },
+   "pairs_at_og4_cut_2.4cm": {
+    "cube table": 99.4,
+    "cube open drawer": 70.6,
+    "cube hidden": 61.0
+   },
+   "open_by_cm_from_nearest_release_label": {
+    "under 1": {
+     "n": 541,
+     "median_cm": 27.93
+    },
+    "1 to 3": {
+     "n": 321,
+     "median_cm": 25.56
+    },
+    "over 3": {
+     "n": 123,
+     "median_cm": 40.1
+    }
+   }
+  },
+  "live_baseline_og4": {
+   "tag": "og4",
+   "episodes": 50,
+   "cube_inside": 0.0,
+   "success": 0.0,
+   "cube_within_4cm": 0.0,
+   "stopped_by_itself_with_cube_inside": 0.0,
+   "goal_read_error_cm_median": 27.36,
+   "touches_mean": 8.7
+  }
+ },
+ "arms": {
+  "rel4_0": {
+   "cut_cm": 2.46,
+   "table": {
+    "n": 4793,
+    "median_cm": 0.46,
+    "within_1cm": 87.9,
+    "within_3cm": 99.3,
+    "largest_score_median": 6.12
+   },
+   "open": {
+    "n": 985,
+    "median_cm": 1.41,
+    "within_1cm": 35.8,
+    "within_3cm": 74.6,
+    "largest_score_median": 6.1
+   },
+   "hidden": {
+    "n": 392,
+    "median_cm": 25.34,
+    "within_1cm": 0.0,
+    "within_3cm": 0.0,
+    "largest_score_median": -0.81
+   },
+   "pairs": {
+    "cube table": 99.1,
+    "cube open drawer": 91.9,
+    "cube hidden": 65.6
+   },
+   "pairs_at_og4_cut_2.4cm": {
+    "cube table": 99.1,
+    "cube open drawer": 91.8,
+    "cube hidden": 65.0
+   },
+   "own_held_out_cm": {
+    "contact": 0.65,
+    "release": 0.62
+   },
+   "open_by_cm_from_nearest_release_label": {
+    "under 1": {
+     "n": 541,
+     "median_cm": 0.86
+    },
+    "1 to 3": {
+     "n": 321,
+     "median_cm": 2.27
+    },
+    "over 3": {
+     "n": 123,
+     "median_cm": 15.83
+    }
+   }
+  },
+  "rel4_1": {
+   "cut_cm": 2.53,
+   "table": {
+    "n": 4793,
+    "median_cm": 0.46,
+    "within_1cm": 88.3,
+    "within_3cm": 99.6,
+    "largest_score_median": 4.82
+   },
+   "open": {
+    "n": 985,
+    "median_cm": 1.51,
+    "within_1cm": 35.0,
+    "within_3cm": 73.1,
+    "largest_score_median": 2.65
+   },
+   "hidden": {
+    "n": 392,
+    "median_cm": 14.61,
+    "within_1cm": 0.0,
+    "within_3cm": 0.0,
+    "largest_score_median": -2.07
+   },
+   "pairs": {
+    "cube table": 99.3,
+    "cube open drawer": 92.9,
+    "cube hidden": 65.9
+   },
+   "pairs_at_og4_cut_2.4cm": {
+    "cube table": 99.2,
+    "cube open drawer": 92.5,
+    "cube hidden": 64.9
+   },
+   "own_held_out_cm": {
+    "contact": 0.6,
+    "release": 0.6
+   },
+   "open_by_cm_from_nearest_release_label": {
+    "under 1": {
+     "n": 541,
+     "median_cm": 0.81
+    },
+    "1 to 3": {
+     "n": 321,
+     "median_cm": 2.51
+    },
+    "over 3": {
+     "n": 123,
+     "median_cm": 10.84
+    }
+   }
+  },
+  "rel4_2": {
+   "cut_cm": 2.46,
+   "table": {
+    "n": 4793,
+    "median_cm": 0.44,
+    "within_1cm": 90.9,
+    "within_3cm": 99.5,
+    "largest_score_median": 5.98
+   },
+   "open": {
+    "n": 985,
+    "median_cm": 2.17,
+    "within_1cm": 27.8,
+    "within_3cm": 58.8,
+    "largest_score_median": -1.7
+   },
+   "hidden": {
+    "n": 392,
+    "median_cm": 11.42,
+    "within_1cm": 0.3,
+    "within_3cm": 0.3,
+    "largest_score_median": -1.89
+   },
+   "pairs": {
+    "cube table": 99.6,
+    "cube open drawer": 83.3,
+    "cube hidden": 67.9
+   },
+   "pairs_at_og4_cut_2.4cm": {
+    "cube table": 99.6,
+    "cube open drawer": 83.2,
+    "cube hidden": 68.1
+   },
+   "own_held_out_cm": {
+    "contact": 0.64,
+    "release": 0.59
+   },
+   "open_by_cm_from_nearest_release_label": {
+    "under 1": {
+     "n": 541,
+     "median_cm": 0.98
+    },
+    "1 to 3": {
+     "n": 321,
+     "median_cm": 3.83
+    },
+    "over 3": {
+     "n": 123,
+     "median_cm": 7.61
+    }
+   }
+  }
+ },
+ "mean_of_3_seeds": {
+  "seeds": 3,
+  "open_median_cm": 1.7,
+  "table_median_cm": 0.45,
+  "pairs_open": 89.37,
+  "pairs_table": 99.33,
+  "pairs_hidden": 66.47
+ },
+ "criteria": {
+  "1 found where it was put": {
+   "open_median_cm": 1.7,
+   "bar": 1.0,
+   "og4": 27.69,
+   "probe": 0.39,
+   "pairs_open": 89.37,
+   "pairs_bar": 95,
+   "pairs_og4": 70.6,
+   "verdict": "fail"
+  },
+  "2 no cost on the table": {
+   "table_median_cm": 0.45,
+   "bar": 0.75,
+   "og4": 0.6,
+   "pairs_table": 99.33,
+   "pairs_bar": 98.5,
+   "verdict": "pass"
+  },
+  "3 used in behaviour": {
+   "cube_inside": 0.68,
+   "bar": 0.7,
+   "og4": 0.0,
+   "with_moves_ending_at_release_not_declared": 0.9,
+   "verdict": "fail"
+  }
+ },
+ "put_away": {
+  "og4": {
+   "tag": "og4",
+   "episodes": 50,
+   "cube_inside": 0.0,
+   "success": 0.0,
+   "cube_within_4cm": 0.0,
+   "stopped_by_itself_with_cube_inside": 0.0,
+   "goal_read_error_cm_median": 27.36,
+   "touches_mean": 8.7
+  },
+  "og4_ends": {
+   "tag": "og4_ends",
+   "episodes": 50,
+   "cube_inside": 0.0,
+   "success": 0.0,
+   "cube_within_4cm": 0.0,
+   "stopped_by_itself_with_cube_inside": 0.0,
+   "goal_read_error_cm_median": 27.84,
+   "touches_mean": 8.6
+  },
+  "rel4_noends": {
+   "tag": "rel4_noends",
+   "episodes": 50,
+   "cube_inside": 0.68,
+   "success": 0.56,
+   "cube_within_4cm": 0.56,
+   "stopped_by_itself_with_cube_inside": 0.06,
+   "goal_read_error_cm_median": 1.14,
+   "touches_mean": 5.2
+  },
+  "rel4": {
+   "tag": "rel4",
+   "episodes": 50,
+   "cube_inside": 0.9,
+   "success": 0.84,
+   "cube_within_4cm": 0.84,
+   "stopped_by_itself_with_cube_inside": 0.04,
+   "goal_read_error_cm_median": 1.33,
+   "touches_mean": 2.6
+  }
+ },
+ "weight_centre_diagnostic": {
+  "upper_0": {
+   "table": {
+    "n": 4793,
+    "read_out_answer_cm": 0.41,
+    "centre_fit_on_truth": {
+     "fit_points": 6587,
+     "median_cm": 0.57,
+     "within_1cm": 85.7,
+     "within_3cm": 99.7
+    },
+    "centre_fit_on_own_labels": {
+     "fit_points": 1687,
+     "median_cm": 0.77,
+     "within_1cm": 69.1,
+     "within_3cm": 99.4
+    }
+   },
+   "open": {
+    "n": 985,
+    "read_out_answer_cm": 1.8,
+    "centre_fit_on_truth": {
+     "fit_points": 1048,
+     "median_cm": 0.97,
+     "within_1cm": 52.8,
+     "within_3cm": 98.4
+    },
+    "centre_fit_on_own_labels": {
+     "fit_points": 78,
+     "median_cm": 1.19,
+     "within_1cm": 46.3,
+     "within_3cm": 89.2
+    }
+   }
+  },
+  "rel4_0": {
+   "table": {
+    "n": 4793,
+    "read_out_answer_cm": 0.46,
+    "centre_fit_on_truth": {
+     "fit_points": 6587,
+     "median_cm": 0.8,
+     "within_1cm": 65.0,
+     "within_3cm": 99.6
+    },
+    "centre_fit_on_own_labels": {
+     "fit_points": 1687,
+     "median_cm": 0.88,
+     "within_1cm": 58.1,
+     "within_3cm": 99.5
+    }
+   },
+   "open": {
+    "n": 985,
+    "read_out_answer_cm": 1.41,
+    "centre_fit_on_truth": {
+     "fit_points": 1048,
+     "median_cm": 0.98,
+     "within_1cm": 50.9,
+     "within_3cm": 91.2
+    },
+    "centre_fit_on_own_labels": {
+     "fit_points": 78,
+     "median_cm": 1.18,
+     "within_1cm": 47.7,
+     "within_3cm": 89.8
+    }
+   }
+  }
+ }
+}

@@ -3,8 +3,8 @@ id: "142"
 title: find, then place — which patches hold an object is read from its appearance, and where those patches lie is read from a map shared by every object
 rung: 3
 serves: [P1, P5, P8]
-status: draft
-verdict:
+status: done
+verdict: fail
 arch_version: og4
 date: 2026-11-14
 ---
@@ -89,6 +89,29 @@ all touches and with the cube's touches in the upper third of the
 table withheld (card 141's split: 3,143 test frames in the kept
 part, 1,650 in the withheld part), over 3 seeds.
 
+**Amended before the run (2026-11-16, after
+[card 143](../143-found-where-it-was-let-go/card.md)).** The card was
+approved to run after 143, on its training set: og4's contact labels
+plus the release labels (up to four frames per release). Three things
+follow, none of which changes a criterion:
+
+- Every arm, the baseline included, is trained on that set, so the
+  gate measures the baseline again; "og4" below means og4's form of
+  read-out.
+- The cube now has labels at two heights (the table and, from
+  put-ins, the drawer), and one image location means two positions
+  at two heights. So the own map also takes the height, like the
+  shared one: `position = Q(centre, height) · B`, second order in
+  row, column and height, with one `B` per group (own) or one for
+  all groups (shared). The height is the hand's own height at the
+  label in training, and the group's usual height (the median of
+  its labels) when answering.
+- The maps are trained together with the score, as og4's read-out
+  is, not fitted afterwards.
+
+Reported without a bar: the cube in the open drawer, answered at the
+height of the cube's labels above the table.
+
 Not in this card, and named so that nothing is hidden: the cube in
 the open drawer (the finding step fails, check 3), and the opening
 of a slide (the appearance reading is coarse, card 141). Each is the
@@ -147,7 +170,23 @@ a gap in the smallest slide cell (same under 0.5 cm, different 2 to
   already shows the own map can match og4 inside the range (0.57
   against 0.60 cm).
 
-Result of the gate, before the main run:
+Result of the gate (2026-11-16): passed. Every fit here is trained on
+card 143's labels.
+
+- **Repairs.** With a gap, the probe scores 97.9 in the drawer's
+  smallest cell (5 seeds: 97.8 to 98.0) and 95.3 in the window's
+  (94.5 to 95.6; one seed is under 95). Its "can the cube be located"
+  answer has a balanced accuracy of 96.4 on average but 90.2 to 98.3
+  across seeds; with the drawer shut it says "locatable" in 3 to 29%
+  of frames (the first card's seed was the 29%), and the hidden-cube
+  pair cell runs from 82.4 to 94.6. That answer is not steady enough
+  to be a bar; the cube's value cells are (0.16 to 0.17 cm on the
+  table, 0.30 to 0.40 in the open drawer).
+- **Upper bound:** og4's form trained on all labels reads the upper
+  third to 0.50 cm (seeds 0.51, 0.54, 0.45).
+- **Trivial baseline:** with the third withheld, 3.32 cm there (2.24,
+  3.57, 4.15) and 0.45 in the kept part. The gap is over 1 cm in
+  every seed.
 
 ## 6. Success criteria and prediction
 
@@ -183,4 +222,69 @@ seeds take about 5 minutes more.
 
 ## 7. Result
 
+Run 2026-11-16, `tools/card142/` (`fit.py`, `after.py`, `score.py`;
+30 capped runs, each under 5 minutes), numbers in
+[results.json](results.json). Median error of the cube on the table,
+mean of 3 seeds; 4,793 test frames, 1,650 of them in the withheld
+third and 634 more than 5 cm past its edge.
+
+| Arm | All labels: whole table | Third withheld: kept part | Withheld third | Over 5 cm past the edge |
+|---|---|---|---|---|
+| og4's form (weight × (place + offset)) | 0.45 cm | 0.45 | 3.32 | 5.86 |
+| Own map, trained with the score (declared) | 4.19 | 1.55 | 3.70 (8.11, 1.49, 1.49) | 5.04 |
+| Shared map, trained with the score (declared) | 3.87 | 3.85 | 8.22 | 10.41 |
+| Own map, fitted afterwards on og4-form weights | 1.08 | 1.05 | 1.84 | 2.66 |
+| Shared map, fitted afterwards | 1.46 | 1.35 | 2.28 | 2.70 |
+| Bars (own map) | at most 0.75 | | at most 1.0 | at most 1.5 |
+
+The last two arms were added during the run and are not criteria.
+They are the form of this card's own check 2: the weights of an
+og4-form fit, their centre turned into a position by least squares on
+the agent's own labels (`after.py`).
+
+1. **Right outside the range: fail.** 3.70 cm in the withheld third
+   (bar 1.0) and 5.04 cm beyond 5 cm (bar 1.5), no better than og4's
+   form.
+2. **No cost inside: fail.** 4.19 cm on the table against og4's 0.45
+   (bar 0.75); the pair cell "both on the table" falls from 99.3 to
+   63.1.
+3. **One map for all objects: fail.** The shared map trained with the
+   score is 4.5 and 5.4 cm worse than the own map.
+
+What the run showed beyond the criteria:
+
+- **Training the map together with the score is unsteady.** Two
+  seeds of the own map reach 1.49 cm in the withheld third and one
+  8.11; trained on all labels it is worse than with a third
+  withheld. The amendment's choice to train them together was mine
+  and was not checked first; these arms say little about the idea.
+- **Fitted afterwards, the map does carry further than the offset,
+  and costs precision where the offset was trained.** In the
+  withheld third 1.84 against 3.32 cm, and beyond 5 cm 2.66 against
+  5.86; inside the range 1.05 against 0.45. Check 2's "the offset is
+  not needed for precision" (0.57 against 0.60 cm) does not hold
+  here: that fit used true positions on 6,587 frames and og4's
+  original weights.
+- **One map for every object is nearly as good as a map per
+  object**, fitted afterwards: 0.44 and 0.04 cm apart in the two
+  parts of criterion 1 (bar 0.3), from five clusters of labels at
+  five heights.
+- **The cube in the open drawer is not helped:** answered at the
+  drawer's height, 1.4 to 1.9 cm with the own map fitted afterwards
+  and 2.2 to 4.0 with the shared one, against 1.5 to 1.7 for og4's
+  form.
+
 ## 8. Decision
+
+**Revise.** All three criteria fail, and nothing changes in the
+agent: og4's form trained on card 143's labels stays the best
+reading inside the range (0.45 cm). What the card leaves is a
+sharper statement of the trade. The centre of the weights through a
+smooth map is right to about 1 cm everywhere it was tested,
+including 2.7 cm at more than 5 cm outside training; the offset from
+features is right to 0.45 cm inside and 5.9 cm outside. Next, for
+the user to approve: keep both, with the offset bounded so that it
+can only correct within about one patch (a shift of the centre in
+the image before the smooth map, not a free position), which cannot
+grow outside the range by construction; fitted in two stages so that
+the unsteady joint training is not in the way.

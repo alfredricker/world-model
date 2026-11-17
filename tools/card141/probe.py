@@ -53,6 +53,7 @@ def targets(t):
 
 def main():
     withhold = '--withhold' in sys.argv
+    seed = int(next((sys.argv[i + 1] for i in range(len(sys.argv) - 1) if sys.argv[i] == '--seed'), 0))   # card 142's repair: several seeds
     t0 = time.time()
     tl, tt = C.truth(C.LEARN), C.truth(C.TEST)
     Xl, Xt = C.frames(C.LEARN), C.frames(C.TEST)
@@ -73,8 +74,8 @@ def main():
             ms[:, j] = ~((tl[s][pick] >= 0.04) & (tl[s][pick] < 0.10))
     mc, ms = torch.tensor(mc).cuda().float(), torch.tensor(ms).cuda().float()
     tr = np.where(~dev)[0]
-    torch.manual_seed(0)
-    rng = np.random.default_rng(0)
+    torch.manual_seed(seed)
+    rng = np.random.default_rng(seed)
     model = Probe().cuda()
     opt = torch.optim.AdamW(model.parameters(), 1e-3, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, 2e-3, total_steps=STEPS)
@@ -101,7 +102,7 @@ def main():
             a, b = model(f)
             pc.append(a.cpu().numpy()); p5.append(b.cpu().numpy())
         out['cube'], out['five'] = np.concatenate(pc) / 10 + C.CEN, np.concatenate(p5)
-    np.savez(C.OUT / f'probe{"_withheld" if withhold else ""}.npz', **out)
+    np.savez(C.OUT / f'probe{"_withheld" if withhold else ""}{f"_s{seed}" if seed else ""}.npz', **out)
     print('done', f'{time.time() - t0:.0f}s', flush=True)
 
 

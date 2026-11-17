@@ -1,40 +1,40 @@
 # Status
 
 Overwritten each session. At most 40 lines.
-- **Date:** 2026-11-11, `master`, uncommitted: cards 119–128 written (121, 123, 117.1, 126 gate only), LESSONS.
+- **Date:** 2026-11-17, `master`, uncommitted: cards 142–144 run and written, `tools/card142/` to
+  `tools/card144/`, graph nodes, LESSONS (pruned to 199 lines 2026-11-17).
   **Rung:** 3 (skills and plans), open. **Architecture:** og4 (OGBench line; 27 is MiniGrid's last).
-  **World:** OGBench `visual-scene`; cards 120 and 122 use the state dataset's episodes, rendered.
-- **Direction:** published learned methods below ([card 113](experiments/113-post-mortem-learned-stack/card.md));
-  conditions are event segmentation: stable stretches between boundaries (the user,
-  2026-11-01). Planner bar: GAS 54.4% on `visual-scene-play`. Portability tests paused.
-- **Rung 1 passed** ([114](experiments/114-lock-effects-from-pixels/card.md),
-  [114.1](experiments/114.1-counterfactual-lock/card.md)): a predictor on frozen DINOv2 patches
-  follows the lock (96.9–100%; actions alone 0–5%). 115–116.2 (surprise, slots) failed.
-- **[119](experiments/119-variables-from-lasting-change/card.md): fail, revise.** Lasting change finds
-  boundaries on DINOv2 block 2 (F1 0.63; block 12, 0.30); units fail (drawer 0.17).
-- **[120](experiments/120-touch-brackets-events/card.md): pass, keep.** OGBench's `gripper_contact`
-  (state dataset only): 82% of touches hold exactly one transition. Before against after a
-  touch: cube top patch exact 36% (119: 13%); a lock flip shows on the handle, not the button.
-- **[122](experiments/122-sharper-frames/card.md): fail, revise.** 256-px renders, 32 × 32 patches,
-  strict measures. Cube exact top patch 61% (64 px: 36%), drawer 80% (27%). Button found
-  27% (bar 60%): the handle outranks it; handle aside, 95%. Small extents still flood.
-- **[123](experiments/123-regions-of-change/card.md), [121](experiments/121-extent-from-a-seed/card.md) gate only:** regions of change give the button; the cube merges into the arm.
-- **[124](experiments/124-tokens-from-consequences/card.md): fail, revise** (30 min per arm, one seed).
-  Slots at 256 px. Present only: finds the cube (0.55), mean 0.28 (bar 0.40). Next frame given
-  action and touch: loses the cube, nearly follows the drawer's lock (0.83, bar 0.9). A cost
-  on token change merges the cube into the arm. No button token in any arm.
-- **[125](experiments/125-conditions-by-contrast-over-touches/card.md): fail (2 of 3), revise.** The
-  event as the unit (the user): touches at one place, split by changed or not; the patches whose
-  before-features differ are the condition. Finds each lock's button; predicts as the true lock.
-- **Setup:** ogbench, mujoco, dm_control, scikit-learn by pip, not in `pyproject.toml`.
-  Rendering: `MUJOCO_GL=egl`, a 64-bit libglvnd on `LD_LIBRARY_PATH`,
-  `__EGL_VENDOR_LIBRARY_DIRS=/run/opengl-driver/share/glvnd/egl_vendor.d`. Data `~/.ogbench/data`. Cards 001–112: `experiments/archive/`.
-- **[117.1](experiments/117.1-self-from-proprioception/card.md) gate not passed.** **[125.1](experiments/125.1-conditions-read-where-steady/card.md): fail (2 of 3), revise.** A patch counts only where steady: the arm drops out, a lock's state is read exactly.
-- **[125.2](experiments/125.2-chain-by-change-of-state/card.md): pass, keep.** The chain by change of
-  state between steady readings: all found, none false; the place to touch is the true button's.
-- **[126](experiments/126-dense-layer-from-touch-consequences/card.md) gate only:** no room for a
-  trained layer in this scene; kept for a harder one (the user).
-- **[127](experiments/127-plans-from-remembered-touches/card.md): pass, keep (og1).** Plans backward over conditions, each step a remembered
-  touch redone, no training: task 1 92%, task 2 94%; 0% without the condition check.
-- **[128](experiments/128-a-touch-moved-to-where-the-cube-is/card.md): pass, keep (og2).** Cube read to 0.49 cm by a read-out trained on own
-  touches; task 3 86%; five tasks 53.2% (GAS 54.4%, unequal inputs). **[129](experiments/129-one-skill-one-kind-of-variable/card.md)–[129.2](experiments/129.2-appearance-per-place-aim-per-group/card.md): og3 adopted with a stated loss.** Unified, cube unnamed: 84, 90, 72%. **[130](experiments/130-own-tries-first/card.md): pass, keep.** v27's own-tries rule: 100, 86, 82% (five tasks 53.6%); a window left short still reads as done. Adopted as og4. [131](experiments/131-belief-out-of-view/card.md) stopped. **Now (the user, 2026-11-12):** perfect memory alone, on true visible state, cards 132–136; results go in `graph/`. **[132](experiments/132-memory-test-bed/card.md): fail, revise.** Camera view: absence tells where the cube is, no memory needed; narrow view: last seen 70–80% against 95–100% with the truth, lost in recall's fixed weighting. **[133](experiments/133-key-learned-from-recall-outcome/card.md): fail (1 of 3), revise.** A key trained on the recalled effect finds the lock unaided (pulls 76.7 → 87.5, truth 96.0) but is weak at 100 episodes. **[133.1](experiments/133.1-key-prior-corrected-by-evidence/card.md): fail (1 of 3), revise.** Equal-weight prior + priced network correction: never below the prior; pulls with the lock seen 93.2 (truth 95.3); no gain at 100 episodes; a tenth of pulls precede any sight of the lock (the prior's job). Next (the user): the prior over unseen state, then a harder memory test. **[134](experiments/134-unseen-state-from-effects/card.md): fail, revise.** Last effect per object added to memory: the content is there (a rule on it 90.3) but the flat key reads 57.9; the touched object's own record alone lifts seen-lock pulls 88.5 → 95.0 (truth 95.9). **[134.1](experiments/134.1-recall-keyed-per-object/card.md): pass, keep.** Recall per object, the other records chosen by contrast over the store: it finds drawer–lock, window–lock and drawer–cube untold; pulls 95.3 / 90.3 (flat 86.3 / 57.9, truth 95.9 / 91.9), reopenings 94.0; the unseen-lock inference needs 400 episodes (58.4 at 100). **[135](experiments/135-state-that-changes-out-of-sight/card.md): fail (2 of 3), revise.** A quarter of touches hidden (another hand): memory alone cannot recover (79.5, truth 96.2); looking at the condition object when a memory of that age is often wrong gives 91.7 at 0.38 looks per pull (never 80.7, random 83.8, always 95.5); among seen locks age is a weak sign (oracle 0.07 looks). **[136](experiments/136-memory-world/card.md): fail (2 of 3), revise.** A symbolic memory world (17 objects, one factor per kind of memory, exact best answer): 134.1's recall finds every parent and closes 64–100% of the gap over all touches, but on touches before anything is seen it has nothing of what the last episode left (0.718 against 0.020). **[136.1](experiments/136.1-memory-world-cold-and-warm/card.md): pass, keep.** Scored cold (before anything is seen in the episode) and warm: the test bed for memory. **[137](experiments/137-records-that-outlast-the-episode/card.md): fail (1 of 3), revise.** Records never emptied: what the last episode left is read (−4 → 99% of the gap), at a cost of 7–11 points on timer and fast drift. **[138](experiments/138-key-correction-on-the-memory-world/card.md): fail (declared arm), revise.** Key correction on never-emptied records: one learned weight per item lifts every warm factor (fast drift 62 → 82%, timer 78 → 93%) and keeps 100% across episodes; the network arm (declared) is unsteady (fast drift 56%). **[139](experiments/139-an-answer-that-knows-when-not-to-trust-itself/card.md): fail (1 of 3), stop.** A confidence read-out learned from recall's own past errors halves the excess over the base rate where nothing is known (0.712 → 0.704, base 0.694) but misses its bars; little prize left there. **[140](experiments/140-which-period-of-the-past-is-the-present-like/card.md): fail (gate missed by 0.1), stop.** Mixing the answers of stored periods by how each just predicted: rewired 62 → 64%, and 2–6 points of harm elsewhere. Afterwards: right episodes +10, right key +10, both 85%; a rule change changes the condition itself. The rewired child is left (the user, 2026-11-13); memory lessons are in LESSONS.md. Quick check on the OGBench bed (`tools/card138/ogbench.py`, no card): card 138's item weights lift pulls with the lock touched earlier from 95.3 to 96.1 (true lock 95.9) at 400 stored episodes and from 87.9 to 94.6 at 100; pulls inferred from an earlier pull stay at 90.5 and 60.4. **Next ingredient (the user): representation.** **[141](experiments/141-representation-test-bed/card.md): fail (1 of 3), revise.** Representation test bed on stored frames: a labelled probe on og4's frozen features locates the cube in the open drawer to 0.39 cm (og4 27.7) and reads a slide to 0.12 cm; og4 is 17 to 28 points under it there. With a third of the table withheld, the read-out (2.18 cm) and the labelled probe (1.91) both fail: a trained map from patches ends where its training ended. **For the user:** the next card, a reading that compares instead of mapping.
+  **World:** OGBench `visual-scene`. Planner bar: GAS 54.4% on `visual-scene-play`; og4 53.6% (tasks 1–5:
+  100, 86, 82, 0, 0). Portability tests paused.
+- **Direction:** learned methods below, our conditions on top ([card 113](experiments/113-post-mortem-learned-stack/card.md));
+  conditions are event segmentation (the user, 2026-11-01). One ingredient per week, the others assumed
+  perfect (the user, 2026-11-12).
+- **Memory week (cards 132–140), closed.** Kept: recall keyed per object (134.1), records never emptied
+  with a learned weight per key item (137, 138), looking again when a memory is stale (135), the test bed
+  (136.1). Open: small stores, a change of rule. None of it is in og4 yet.
+- **Representation week (from 2026-11-13).**
+  - **[141](experiments/141-representation-test-bed/card.md): fail, revise.** The test bed. The frozen features hold
+    what og4's readings lack (cube in the open drawer 0.39 cm with labels; og4 27.7); a trained map from
+    patches ends where its training ended.
+  - **[143](experiments/143-found-where-it-was-let-go/card.md): fail (1 of 3), revise; labels kept.** og4's read-out
+    had 2 frames of the cube in the open drawer. Adding "frame after a touch → release point": open drawer
+    27.7 → 1.70 cm (bar 1.0), table 0.60 → 0.45 cm, put-away problems 0 → 68% (bar 70%).
+  - **[142](experiments/142-find-then-place/card.md): fail (0 of 3), revise.** A smooth map from the centre of
+    the weights reads a withheld third of the table to 1.84 cm (og4's form 3.32) but 1.05 cm inside (0.45).
+  - **[144](experiments/144-a-centre-that-means-the-middle/card.md): fail (0 of 3), revise** (drafted and run
+    2026-11-17 on "do what you think is most important next"; bars mine). Second stage on og4's weights
+    with a fixed smooth map. The card's arm (train the score on) fails: table 0.67 cm, withheld third 1.94.
+    Its side arm, a shift bounded to one patch with the score frozen (142's proposal), reads the table to
+    0.61 cm (og4's form 0.45) and the withheld third to 1.21 (3.32), 1.89 beyond 5 cm (5.86). The open
+    drawer stays at 1.7 cm: one seed of three finds the cube weakly there in stage 1.
+- **No version adopted.** og4 is unchanged. Release labels: `runs/143/`. Read-outs: `runs/144/fit_off_a_<seed>.pt`.
+- **For the user, next decisions:**
+  1. Whether the bounded-shift read-out (trained on 143's labels) goes into the agent: a card that runs
+     it in behaviour (tasks 1–3, put-away problems) against og4, at a stated loss of 0.16 cm inside.
+  2. A card declaring "a move may end where the hand let go" (143: 68 → 90% on put-away problems).
+  3. A card for "when does a hold end": the contact sensor stops 7 to 25 frames before a slide stops,
+     so the hand cannot yet label a slide's opening (with the true moment: 0.3 to 1.3 cm).
+  4. Behind tasks 4 and 5: the open drawer (found weakly in one seed), "not in view", the drawer carrying the cube.
+- **Setup.** The project's `.venv` (rebuilt 2026-11-12) lacks ogbench, mujoco, scikit-learn and pyyaml; cards
+  142–143 ran with `~/.cache/pypoetry/virtualenvs/worldmodel-iVGTe5yi-py3.13` first on `PATH` inside `bin/prun`.
+  Rendering: `MUJOCO_GL=egl`, libglvnd (`runs/143/glvnd.txt`) on `LD_LIBRARY_PATH`, `__EGL_VENDOR_LIBRARY_DIRS=/run/opengl-driver/share/glvnd/egl_vendor.d`.
