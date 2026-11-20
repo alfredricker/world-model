@@ -1,0 +1,649 @@
+{
+ "card": "149",
+ "date": "2026-11-19",
+ "measure": "percent of 200 test tasks reached within 60 steps; mean of five streams of records",
+ "solver": {
+  "1": {
+   "success": 97.5,
+   "median_steps": 6.0,
+   "steps_over_oracle": 1.0
+  },
+  "2": {
+   "success": 100.0,
+   "median_steps": 12.0,
+   "steps_over_oracle": 1.0
+  }
+ },
+ "test": {
+  "task 1, full, 100 steps": {
+   "streams": 5,
+   "success": 75.3,
+   "per_stream": [
+    93.5,
+    60.0,
+    83.5,
+    59.5,
+    80.0
+   ],
+   "steps_over_solver": 1.33,
+   "belief_right": 100.0,
+   "no_way_steps": 2754,
+   "touching_places": 10
+  },
+  "task 1, full, 300 steps": {
+   "streams": 5,
+   "success": 89.2,
+   "per_stream": [
+    97.5,
+    97.0,
+    91.0,
+    63.0,
+    97.5
+   ],
+   "steps_over_solver": 1.18,
+   "belief_right": 100.0,
+   "no_way_steps": 1114,
+   "touching_places": 28
+  },
+  "task 1, full, 1000 steps": {
+   "streams": 5,
+   "success": 64.4,
+   "per_stream": [
+    97.5,
+    97.0,
+    30.5,
+    0.0,
+    97.0
+   ],
+   "steps_over_solver": 1.06,
+   "belief_right": 98.5,
+   "no_way_steps": 4119,
+   "touching_places": 71
+  },
+  "task 1, full, 3000 steps": {
+   "streams": 5,
+   "success": 58.8,
+   "per_stream": [
+    99.0,
+    0.0,
+    0.0,
+    98.0,
+    97.0
+   ],
+   "steps_over_solver": 1.1,
+   "belief_right": 98.5,
+   "no_way_steps": 4845,
+   "touching_places": 145
+  },
+  "task 1, reflex, 3000 steps": {
+   "streams": 5,
+   "success": 0.0,
+   "per_stream": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "steps_over_solver": null,
+   "belief_right": 100.0,
+   "no_way_steps": 0,
+   "touching_places": 145
+  },
+  "task 1, no_belief, 3000 steps": {
+   "streams": 5,
+   "success": 58.8,
+   "per_stream": [
+    99.0,
+    0.0,
+    0.0,
+    98.0,
+    97.0
+   ],
+   "steps_over_solver": 1.1,
+   "belief_right": 94.0,
+   "no_way_steps": 4845,
+   "touching_places": 145
+  },
+  "task 1, random, 3000 steps": {
+   "streams": 5,
+   "success": 20.5,
+   "per_stream": [
+    21.0,
+    21.0,
+    22.0,
+    19.0,
+    19.5
+   ],
+   "steps_over_solver": 8.53,
+   "belief_right": 0.0,
+   "no_way_steps": 0,
+   "touching_places": 145
+  },
+  "task 2, full, 100 steps": {
+   "streams": 5,
+   "success": 16.2,
+   "per_stream": [
+    21.5,
+    12.5,
+    13.5,
+    15.5,
+    18.0
+   ],
+   "steps_over_solver": 1.09,
+   "belief_right": 99.5,
+   "no_way_steps": 8830,
+   "touching_places": 10
+  },
+  "task 2, full, 300 steps": {
+   "streams": 5,
+   "success": 48.4,
+   "per_stream": [
+    33.0,
+    37.5,
+    54.0,
+    54.5,
+    63.0
+   ],
+   "steps_over_solver": 1.04,
+   "belief_right": 98.6,
+   "no_way_steps": 5139,
+   "touching_places": 28
+  },
+  "task 2, full, 1000 steps": {
+   "streams": 5,
+   "success": 83.4,
+   "per_stream": [
+    90.5,
+    65.5,
+    92.5,
+    93.5,
+    75.0
+   ],
+   "steps_over_solver": 1.0,
+   "belief_right": 98.6,
+   "no_way_steps": 1586,
+   "touching_places": 71
+  },
+  "task 2, full, 3000 steps": {
+   "streams": 5,
+   "success": 96.9,
+   "per_stream": [
+    98.5,
+    99.0,
+    94.0,
+    99.0,
+    94.0
+   ],
+   "steps_over_solver": 1.0,
+   "belief_right": 95.6,
+   "no_way_steps": 282,
+   "touching_places": 145
+  },
+  "task 2, reflex, 3000 steps": {
+   "streams": 5,
+   "success": 2.5,
+   "per_stream": [
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5
+   ],
+   "steps_over_solver": 1.05,
+   "belief_right": 100.0,
+   "no_way_steps": 0,
+   "touching_places": 145
+  },
+  "task 2, no_belief, 3000 steps": {
+   "streams": 5,
+   "success": 23.9,
+   "per_stream": [
+    25.5,
+    24.5,
+    21.0,
+    23.5,
+    25.0
+   ],
+   "steps_over_solver": 1.0,
+   "belief_right": 100.0,
+   "no_way_steps": 7545,
+   "touching_places": 145
+  },
+  "task 2, random, 3000 steps": {
+   "streams": 5,
+   "success": 0.0,
+   "per_stream": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "steps_over_solver": null,
+   "belief_right": 0.0,
+   "no_way_steps": 0,
+   "touching_places": 145
+  }
+ },
+ "validation_one_stream": [
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 100,
+   "mode": "full",
+   "touching_places": 8,
+   "success": 83.0,
+   "median_steps": 7.0,
+   "steps_over_oracle": 1.33,
+   "belief_right": 98.0,
+   "approach_steps": 1408,
+   "no_way": 1603,
+   "barred": 1561
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 300,
+   "mode": "full",
+   "touching_places": 25,
+   "success": 98.0,
+   "median_steps": 7.0,
+   "steps_over_oracle": 1.08,
+   "belief_right": 96.6,
+   "approach_steps": 1264,
+   "no_way": 33,
+   "barred": 58
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 1000,
+   "mode": "full",
+   "touching_places": 69,
+   "success": 98.0,
+   "median_steps": 6.0,
+   "steps_over_oracle": 1.01,
+   "belief_right": 99.0,
+   "approach_steps": 1230,
+   "no_way": 0,
+   "barred": 0
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 3000,
+   "mode": "full",
+   "touching_places": 153,
+   "success": 97.5,
+   "median_steps": 6.0,
+   "steps_over_oracle": 1.01,
+   "belief_right": 99.5,
+   "approach_steps": 1258,
+   "no_way": 0,
+   "barred": 0
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 3000,
+   "mode": "reflex",
+   "touching_places": 153,
+   "success": 0.0,
+   "median_steps": null,
+   "steps_over_oracle": null,
+   "belief_right": 100.0,
+   "approach_steps": 0,
+   "no_way": 0,
+   "barred": 0
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 3000,
+   "mode": "no_belief",
+   "touching_places": 153,
+   "success": 97.5,
+   "median_steps": 6.0,
+   "steps_over_oracle": 1.01,
+   "belief_right": 82.6,
+   "approach_steps": 1127,
+   "no_way": 0,
+   "barred": 0
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 3000,
+   "mode": "random",
+   "touching_places": 153,
+   "success": 12.0,
+   "median_steps": 36.5,
+   "steps_over_oracle": 12.46,
+   "belief_right": 0.0,
+   "approach_steps": 0,
+   "no_way": 0,
+   "barred": 0
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 100,
+   "mode": "full",
+   "touching_places": 8,
+   "success": 12.5,
+   "median_steps": 11.0,
+   "steps_over_oracle": 1.13,
+   "belief_right": 97.0,
+   "approach_steps": 1090,
+   "no_way": 9257,
+   "barred": 1646
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 300,
+   "mode": "full",
+   "touching_places": 25,
+   "success": 38.5,
+   "median_steps": 13.0,
+   "steps_over_oracle": 1.1,
+   "belief_right": 97.6,
+   "approach_steps": 1161,
+   "no_way": 6142,
+   "barred": 114
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 1000,
+   "mode": "full",
+   "touching_places": 69,
+   "success": 91.5,
+   "median_steps": 12.0,
+   "steps_over_oracle": 1.0,
+   "belief_right": 95.5,
+   "approach_steps": 1051,
+   "no_way": 826,
+   "barred": 0
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 3000,
+   "mode": "full",
+   "touching_places": 153,
+   "success": 98.0,
+   "median_steps": 12.0,
+   "steps_over_oracle": 1.0,
+   "belief_right": 98.1,
+   "approach_steps": 1103,
+   "no_way": 102,
+   "barred": 0
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 3000,
+   "mode": "reflex",
+   "touching_places": 153,
+   "success": 2.5,
+   "median_steps": 9.0,
+   "steps_over_oracle": 1.09,
+   "belief_right": 100.0,
+   "approach_steps": 0,
+   "no_way": 0,
+   "barred": 0
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 3000,
+   "mode": "no_belief",
+   "touching_places": 153,
+   "success": 39.0,
+   "median_steps": 11.5,
+   "steps_over_oracle": 1.0,
+   "belief_right": 100.0,
+   "approach_steps": 1051,
+   "no_way": 5970,
+   "barred": 0
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 3000,
+   "mode": "random",
+   "touching_places": 153,
+   "success": 0.0,
+   "median_steps": null,
+   "steps_over_oracle": null,
+   "belief_right": 0.0,
+   "approach_steps": 0,
+   "no_way": 0,
+   "barred": 0
+  }
+ ],
+ "validation_weaker_penalty_l1_0.0001_2000_steps": [
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 100,
+   "mode": "full",
+   "touching_places": 8,
+   "success": 83.0,
+   "median_steps": 7.0,
+   "steps_over_oracle": 1.33,
+   "belief_right": 98.8,
+   "approach_steps": 1434,
+   "no_way": 1603,
+   "barred": 1561
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 300,
+   "mode": "full",
+   "touching_places": 25,
+   "success": 98.0,
+   "median_steps": 7.0,
+   "steps_over_oracle": 1.08,
+   "belief_right": 98.3,
+   "approach_steps": 1317,
+   "no_way": 33,
+   "barred": 58
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 1000,
+   "mode": "full",
+   "touching_places": 69,
+   "success": 98.0,
+   "median_steps": 6.0,
+   "steps_over_oracle": 1.01,
+   "belief_right": 99.7,
+   "approach_steps": 1233,
+   "no_way": 0,
+   "barred": 0
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 3000,
+   "mode": "full",
+   "touching_places": 153,
+   "success": 30.5,
+   "median_steps": 6.0,
+   "steps_over_oracle": 1.0,
+   "belief_right": 100.0,
+   "approach_steps": 338,
+   "no_way": 8340,
+   "barred": 0
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 3000,
+   "mode": "reflex",
+   "touching_places": 153,
+   "success": 1.0,
+   "median_steps": 7.5,
+   "steps_over_oracle": 1.0,
+   "belief_right": 100.0,
+   "approach_steps": 0,
+   "no_way": 0,
+   "barred": 0
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 3000,
+   "mode": "no_belief",
+   "touching_places": 153,
+   "success": 30.5,
+   "median_steps": 6.0,
+   "steps_over_oracle": 1.0,
+   "belief_right": 100.0,
+   "approach_steps": 338,
+   "no_way": 8340,
+   "barred": 0
+  },
+  {
+   "task": 1,
+   "stream": 200,
+   "n": 3000,
+   "mode": "random",
+   "touching_places": 153,
+   "success": 12.0,
+   "median_steps": 36.5,
+   "steps_over_oracle": 12.46,
+   "belief_right": 0.0,
+   "approach_steps": 0,
+   "no_way": 0,
+   "barred": 0
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 100,
+   "mode": "full",
+   "touching_places": 8,
+   "success": 5.5,
+   "median_steps": 15.0,
+   "steps_over_oracle": 1.22,
+   "belief_right": 98.6,
+   "approach_steps": 1052,
+   "no_way": 10133,
+   "barred": 1492
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 300,
+   "mode": "full",
+   "touching_places": 25,
+   "success": 68.0,
+   "median_steps": 13.0,
+   "steps_over_oracle": 1.05,
+   "belief_right": 96.5,
+   "approach_steps": 1150,
+   "no_way": 3214,
+   "barred": 114
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 1000,
+   "mode": "full",
+   "touching_places": 69,
+   "success": 91.0,
+   "median_steps": 13.0,
+   "steps_over_oracle": 1.13,
+   "belief_right": 94.4,
+   "approach_steps": 1043,
+   "no_way": 1196,
+   "barred": 0
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 3000,
+   "mode": "full",
+   "touching_places": 153,
+   "success": 92.5,
+   "median_steps": 12.0,
+   "steps_over_oracle": 1.0,
+   "belief_right": 100.0,
+   "approach_steps": 1056,
+   "no_way": 748,
+   "barred": 0
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 3000,
+   "mode": "reflex",
+   "touching_places": 153,
+   "success": 2.5,
+   "median_steps": 9.0,
+   "steps_over_oracle": 1.09,
+   "belief_right": 100.0,
+   "approach_steps": 0,
+   "no_way": 0,
+   "barred": 0
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 3000,
+   "mode": "no_belief",
+   "touching_places": 153,
+   "success": 70.0,
+   "median_steps": 12.0,
+   "steps_over_oracle": 1.02,
+   "belief_right": 100.0,
+   "approach_steps": 1032,
+   "no_way": 2991,
+   "barred": 0
+  },
+  {
+   "task": 2,
+   "stream": 200,
+   "n": 3000,
+   "mode": "random",
+   "touching_places": 153,
+   "success": 0.0,
+   "median_steps": null,
+   "steps_over_oracle": null,
+   "belief_right": 0.0,
+   "approach_steps": 0,
+   "no_way": 0,
+   "barred": 0
+  }
+ ],
+ "diagnostic_3000_steps": {
+  "takes_with_the_hand_not_moving_per_stream": {
+   "100": "1 of 196",
+   "101": "0 of 214",
+   "102": "0 of 203",
+   "103": "0 of 207",
+   "104": "0 of 217"
+  },
+  "proposed_for_held_when_touching": "close the grip, no move (all five streams)",
+  "forward_prediction_for_that_action": {
+   "100": "held",
+   "101": "not held",
+   "102": "not held",
+   "103": "held",
+   "104": "held"
+  },
+  "task_1_success": {
+   "100": 99.0,
+   "101": 0.0,
+   "102": 0.0,
+   "103": 98.0,
+   "104": 97.0
+  }
+ }
+}

@@ -1,0 +1,199 @@
+{
+ "card": "146.1",
+ "date": "2026-11-19",
+ "per_seed": {
+  "1234": {
+   "name": "s1234",
+   "checkpoint": "runs/tetrominoes_akorn_attn_s1234/ema_49.pth",
+   "clustering, told 4": {
+    "fgari": 89.85622318942065,
+    "mbo": 54.124855197515245,
+    "merged": 12.5,
+    "labels_used": 4.0
+   },
+   "clustering, told 8": {
+    "fgari": 86.06094385107961,
+    "mbo": 56.664931197888826,
+    "merged": 2.8125,
+    "labels_used": 8.0
+   },
+   "clustering, distance threshold from validation": {
+    "fgari": 89.88264428755875,
+    "mbo": 54.53315841356252,
+    "merged": 10.3125,
+    "labels_used": 4.340625,
+    "threshold": 0.6499999999999999
+   },
+   "settling, K=8": {
+    "fgari": 89.24734012845825,
+    "mbo": 53.26316033551706,
+    "merged": 13.125,
+    "labels_used": 5.20625,
+    "params": {
+     "tau": 0.8,
+     "sharp": 1.0,
+     "radius": null,
+     "far": 0.0,
+     "scale": 0.25
+    },
+    "validation_fgari": 90.06305008210151
+   },
+   "settling, K=4, same parameters": {
+    "fgari": 87.82700606220983,
+    "mbo": 49.91943413417603,
+    "merged": 19.0625,
+    "labels_used": 3.9875
+   },
+   "settling, K=16, same parameters": {
+    "fgari": 89.53637436842813,
+    "mbo": 53.17119081522714,
+    "merged": 12.5,
+    "labels_used": 5.196875
+   }
+  },
+  "1235": {
+   "name": "s1235",
+   "checkpoint": "runs/tetrominoes_akorn_attn_s1235/ema_49.pth",
+   "clustering, told 4": {
+    "fgari": 88.87833361701401,
+    "mbo": 51.31508902257664,
+    "merged": 18.125,
+    "labels_used": 4.0
+   },
+   "clustering, told 8": {
+    "fgari": 83.99422450703469,
+    "mbo": 54.81293340603429,
+    "merged": 4.6875,
+    "labels_used": 8.0
+   },
+   "clustering, distance threshold from validation": {
+    "fgari": 88.57722013345723,
+    "mbo": 52.13715897697566,
+    "merged": 14.6875,
+    "labels_used": 4.421875,
+    "threshold": 0.6499999999999999
+   },
+   "settling, K=8": {
+    "fgari": 87.51612739748282,
+    "mbo": 52.261908216348395,
+    "merged": 14.374999999999998,
+    "labels_used": 5.371875,
+    "params": {
+     "tau": 0.8,
+     "sharp": 1.0,
+     "radius": null,
+     "far": 0.0,
+     "scale": 0.25
+    },
+    "validation_fgari": 87.08402691412458
+   },
+   "settling, K=4, same parameters": {
+    "fgari": 87.77674372721165,
+    "mbo": 48.80369879875882,
+    "merged": 20.0,
+    "labels_used": 3.99375
+   },
+   "settling, K=16, same parameters": {
+    "fgari": 87.11697754544545,
+    "mbo": 51.49632919376943,
+    "merged": 18.125,
+    "labels_used": 5.434375
+   }
+  },
+  "1236": {
+   "name": "s1236",
+   "checkpoint": "runs/tetrominoes_akorn_attn_s1236/ema_49.pth",
+   "clustering, told 4": {
+    "fgari": 89.78693659724375,
+    "mbo": 55.647326982857656,
+    "merged": 11.5625,
+    "labels_used": 4.0
+   },
+   "clustering, told 8": {
+    "fgari": 77.95981882580142,
+    "mbo": 53.98456369150277,
+    "merged": 0.9375,
+    "labels_used": 8.0
+   },
+   "clustering, distance threshold from validation": {
+    "fgari": 88.26327004473822,
+    "mbo": 54.78996739764849,
+    "merged": 15.937499999999998,
+    "labels_used": 3.959375,
+    "threshold": 0.6499999999999999
+   },
+   "settling, K=8": {
+    "fgari": 86.66230662008554,
+    "mbo": 54.86774680668783,
+    "merged": 15.937499999999998,
+    "labels_used": 4.3,
+    "params": {
+     "tau": 0.8,
+     "sharp": 1.0,
+     "radius": null,
+     "far": 0.0,
+     "scale": 0.25
+    },
+    "validation_fgari": 86.9572459372385
+   },
+   "settling, K=4, same parameters": {
+    "fgari": 88.33856267799642,
+    "mbo": 55.2162479732902,
+    "merged": 15.937499999999998,
+    "labels_used": 3.946875
+   },
+   "settling, K=16, same parameters": {
+    "fgari": 86.8639269308332,
+    "mbo": 54.91962881007289,
+    "merged": 15.937499999999998,
+    "labels_used": 4.25625
+   }
+  }
+ },
+ "criteria": {
+  "1 features on FG-ARI": {
+   "fgari": 89.3,
+   "bar": 85.0,
+   "verdict": "pass"
+  },
+  "2 settling matches clustering told 4": {
+   "settling_k8": 87.8,
+   "clustering_told_4": 89.5,
+   "below_by": 1.7,
+   "bar": 3.0,
+   "verdict": "pass"
+  },
+  "3 without the count": {
+   "settling_k8": 87.8,
+   "threshold_clustering": 88.9,
+   "merged_pct": 14,
+   "bar_merged": 10,
+   "verdict": "fail"
+  }
+ },
+ "reported": {
+  "settling_k16": 87.8,
+  "settling_k4": 88.0,
+  "clustering_told_8": 82.7,
+  "labels_used_k8": 5.0
+ },
+ "diagnostics": {
+  "settled_energy_below_truth_pct_of_images": [
+   99,
+   99,
+   86
+  ],
+  "where_settling_below_0.9": [
+   99,
+   99,
+   94
+  ],
+  "merged_by_both_pct": [
+   10,
+   12,
+   9
+  ]
+ },
+ "verdict": "fail",
+ "decision": "revise"
+}

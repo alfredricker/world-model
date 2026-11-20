@@ -151,6 +151,12 @@ record" is `old:phwm/docs/05-experimental-record.md`.
 - **Latent self-prediction erases what actions change; test action
   sensitivity before training.** Distance to a goal state is not distance
   to a condition. *Evidence:* GRL-105–108; cards 001, 052, 053.
+- **Energy forms (cards 146–149):** a patch holds a belief over objects, not
+  a unit vector; binding from motion needs evidence kept over time (98% found;
+  one step 40%); couplings learn an action token from a tenth of the
+  experience whole records need. **Such an energy is right only about
+  combinations it has seen:** ask it forward about a state and an action,
+  and test on several streams (149: 0% on 2 of 5; one validation stream hid it).
 
 ## Perception in moving-view worlds (Crafter, Craftium)
 
@@ -194,6 +200,5 @@ record" is `old:phwm/docs/05-experimental-record.md`.
 ## Process
 
 - **Change pass/fail criteria at most once; then open a new experiment.**
-- **Log every loss term separately, time a change under the run's own
-  load, and profile before a long run** (cards 074.2, 092, 105.1).
-- **Wait on a file a run writes, not on a process name.**
+  Log every loss term separately, time a change under the run's own load,
+  profile before a long run, and wait on a file a run writes (cards 074.2, 092, 105.1).
