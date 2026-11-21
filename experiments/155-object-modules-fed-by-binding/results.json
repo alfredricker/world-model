@@ -1,0 +1,781 @@
+{
+ "card": "155",
+ "worlds": 10,
+ "per_world": [
+  {
+   "world": 1,
+   "by": "colour",
+   "patterns": 92,
+   "objects_with_transitions": 84,
+   "by_true_behaviour": [
+    54,
+    0,
+    30
+   ],
+   "true_objects": [
+    79,
+    77,
+    40
+   ],
+   "informative_used": 2075,
+   "informative_with_masks": 2709,
+   "classes": 2,
+   "class_sizes": [
+    30,
+    54
+   ],
+   "class_purity": 100.0,
+   "known_bound": 59.7,
+   "known_bound_by_behaviour": {
+    "takeable": 80.7,
+    "fixed": 0.0,
+    "sticky": 100.0
+   },
+   "known_bound_own_pattern": 100.0,
+   "bound_take": 100.0,
+   "bound_effects": 91.4,
+   "bound_effects_bound": 91.1,
+   "known_take": 90.9,
+   "known_take_masks": 97.3,
+   "known_take_one": 31.6,
+   "known_take_by": {
+    "takeable": 80.3,
+    "fixed": 100.0,
+    "sticky": 100.0,
+    "exceptions": 100.0
+   },
+   "known_effects": 85.1,
+   "known_effects_masks": 91.7,
+   "known_effects_bound": 92.0,
+   "known_exceptions_take_masks": 88.9,
+   "new_bound": 0.0,
+   "new_take": 39.5,
+   "new_effects": 41.0,
+   "new_take_masks": 100.0,
+   "new_effects_masks": 91.5,
+   "new_mask_take": {
+    "all": 60.5,
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 0.0
+   },
+   "new_mask_effects": {
+    "all": 81.8,
+    "takeable": 87.6,
+    "sticky": 93.7,
+    "fixed": 51.7
+   },
+   "new_mask_effects_bound": {
+    "all": 91.5,
+    "takeable": 87.4,
+    "sticky": 93.7,
+    "fixed": 100.0
+   },
+   "seconds": 194
+  },
+  {
+   "world": 2,
+   "by": "colour",
+   "patterns": 81,
+   "objects_with_transitions": 76,
+   "by_true_behaviour": [
+    50,
+    0,
+    26
+   ],
+   "true_objects": [
+    71,
+    95,
+    34
+   ],
+   "informative_used": 1854,
+   "informative_with_masks": 2709,
+   "classes": 2,
+   "class_sizes": [
+    26,
+    50
+   ],
+   "class_purity": 100.0,
+   "known_bound": 46.0,
+   "known_bound_by_behaviour": {
+    "takeable": 100.0,
+    "fixed": 0.0,
+    "sticky": 64.7
+   },
+   "known_bound_own_pattern": 100.0,
+   "bound_take": 100.0,
+   "bound_effects": 93.8,
+   "bound_effects_bound": 94.2,
+   "known_take": 91.8,
+   "known_take_masks": 95.9,
+   "known_take_one": 45.5,
+   "known_take_by": {
+    "takeable": 100.0,
+    "fixed": 100.0,
+    "sticky": 64.2,
+    "exceptions": 80.6
+   },
+   "known_effects": 88.9,
+   "known_effects_masks": 90.4,
+   "known_effects_bound": 95.5,
+   "known_exceptions_take_masks": 80.6,
+   "new_bound": 0.0,
+   "new_take": 41.5,
+   "new_effects": 39.5,
+   "new_take_masks": 100.0,
+   "new_effects_masks": 94.5,
+   "new_mask_take": {
+    "all": 58.5,
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 0.0
+   },
+   "new_mask_effects": {
+    "all": 84.0,
+    "takeable": 92.4,
+    "sticky": 94.5,
+    "fixed": 47.2
+   },
+   "new_mask_effects_bound": {
+    "all": 94.5,
+    "takeable": 92.7,
+    "sticky": 94.5,
+    "fixed": 100.0
+   },
+   "seconds": 188
+  },
+  {
+   "world": 3,
+   "by": "colour",
+   "patterns": 84,
+   "objects_with_transitions": 80,
+   "by_true_behaviour": [
+    56,
+    0,
+    24
+   ],
+   "true_objects": [
+    77,
+    63,
+    32
+   ],
+   "informative_used": 2143,
+   "informative_with_masks": 2706,
+   "classes": 2,
+   "class_sizes": [
+    56,
+    24
+   ],
+   "class_purity": 100.0,
+   "known_bound": 62.8,
+   "known_bound_by_behaviour": {
+    "takeable": 100.0,
+    "fixed": 0.0,
+    "sticky": 100.0
+   },
+   "known_bound_own_pattern": 100.0,
+   "bound_take": 100.0,
+   "bound_effects": 90.8,
+   "bound_effects_bound": 91.2,
+   "known_take": 100.0,
+   "known_take_masks": 100.0,
+   "known_take_one": 36.9,
+   "known_take_by": {
+    "takeable": 100.0,
+    "fixed": 100.0,
+    "sticky": 100.0,
+    "exceptions": 100.0
+   },
+   "known_effects": 92.0,
+   "known_effects_masks": 92.3,
+   "known_effects_bound": 92.4,
+   "known_exceptions_take_masks": 100.0,
+   "new_bound": 0.0,
+   "new_take": 39.1,
+   "new_effects": 40.4,
+   "new_take_masks": 100.0,
+   "new_effects_masks": 92.4,
+   "new_mask_take": {
+    "all": 60.9,
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 0.0
+   },
+   "new_mask_effects": {
+    "all": 84.1,
+    "takeable": 90.1,
+    "sticky": 92.4,
+    "fixed": 53.3
+   },
+   "new_mask_effects_bound": {
+    "all": 92.4,
+    "takeable": 89.5,
+    "sticky": 92.7,
+    "fixed": 100.0
+   },
+   "seconds": 199
+  },
+  {
+   "world": 4,
+   "by": "colour",
+   "patterns": 82,
+   "objects_with_transitions": 77,
+   "by_true_behaviour": [
+    56,
+    0,
+    21
+   ],
+   "true_objects": [
+    78,
+    75,
+    34
+   ],
+   "informative_used": 1849,
+   "informative_with_masks": 2636,
+   "classes": 2,
+   "class_sizes": [
+    56,
+    21
+   ],
+   "class_purity": 100.0,
+   "known_bound": 51.3,
+   "known_bound_by_behaviour": {
+    "takeable": 100.0,
+    "fixed": 0.0,
+    "sticky": 93.7
+   },
+   "known_bound_own_pattern": 100.0,
+   "bound_take": 100.0,
+   "bound_effects": 94.6,
+   "bound_effects_bound": 94.9,
+   "known_take": 98.7,
+   "known_take_masks": 97.7,
+   "known_take_one": 47.5,
+   "known_take_by": {
+    "takeable": 100.0,
+    "fixed": 100.0,
+    "sticky": 93.7,
+    "exceptions": 100.0
+   },
+   "known_effects": 94.7,
+   "known_effects_masks": 95.6,
+   "known_effects_bound": 96.0,
+   "known_exceptions_take_masks": 88.5,
+   "new_bound": 0.0,
+   "new_take": 38.3,
+   "new_effects": 39.8,
+   "new_take_masks": 100.0,
+   "new_effects_masks": 92.4,
+   "new_mask_take": {
+    "all": 61.7,
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 0.0
+   },
+   "new_mask_effects": {
+    "all": 84.6,
+    "takeable": 89.7,
+    "sticky": 94.3,
+    "fixed": 51.5
+   },
+   "new_mask_effects_bound": {
+    "all": 92.5,
+    "takeable": 89.6,
+    "sticky": 94.3,
+    "fixed": 100.0
+   },
+   "seconds": 218
+  },
+  {
+   "world": 5,
+   "by": "colour",
+   "patterns": 105,
+   "objects_with_transitions": 95,
+   "by_true_behaviour": [
+    65,
+    0,
+    30
+   ],
+   "true_objects": [
+    79,
+    72,
+    45
+   ],
+   "informative_used": 2113,
+   "informative_with_masks": 2718,
+   "classes": 2,
+   "class_sizes": [
+    30,
+    65
+   ],
+   "class_purity": 100.0,
+   "known_bound": 50.5,
+   "known_bound_by_behaviour": {
+    "takeable": 92.2,
+    "fixed": 0.0,
+    "sticky": 91.9
+   },
+   "known_bound_own_pattern": 100.0,
+   "bound_take": 100.0,
+   "bound_effects": 90.5,
+   "bound_effects_bound": 90.3,
+   "known_take": 95.6,
+   "known_take_masks": 100.0,
+   "known_take_one": 45.1,
+   "known_take_by": {
+    "takeable": 92.2,
+    "fixed": 100.0,
+    "sticky": 91.7,
+    "exceptions": 100.0
+   },
+   "known_effects": 87.6,
+   "known_effects_masks": 92.2,
+   "known_effects_bound": 92.2,
+   "known_exceptions_take_masks": 100.0,
+   "new_bound": 0.0,
+   "new_take": 36.2,
+   "new_effects": 39.5,
+   "new_take_masks": 100.0,
+   "new_effects_masks": 90.4,
+   "new_mask_take": {
+    "all": 63.8,
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 0.0
+   },
+   "new_mask_effects": {
+    "all": 82.5,
+    "takeable": 86.4,
+    "sticky": 93.2,
+    "fixed": 50.3
+   },
+   "new_mask_effects_bound": {
+    "all": 90.4,
+    "takeable": 86.2,
+    "sticky": 93.2,
+    "fixed": 100.0
+   },
+   "seconds": 107
+  },
+  {
+   "world": 1,
+   "by": "shape",
+   "patterns": 69,
+   "objects_with_transitions": 61,
+   "by_true_behaviour": [
+    47,
+    1,
+    13
+   ],
+   "true_objects": [
+    68,
+    85,
+    32
+   ],
+   "informative_used": 1816,
+   "informative_with_masks": 2655,
+   "classes": 2,
+   "class_sizes": [
+    48,
+    13
+   ],
+   "class_purity": 98.4,
+   "known_bound": 57.5,
+   "known_bound_by_behaviour": {
+    "takeable": 93.9,
+    "fixed": 0.0,
+    "sticky": 88.3
+   },
+   "known_bound_own_pattern": 100.0,
+   "bound_take": 100.0,
+   "bound_effects": 91.7,
+   "bound_effects_bound": 91.9,
+   "known_take": 95.0,
+   "known_take_masks": 98.0,
+   "known_take_one": 38.2,
+   "known_take_by": {
+    "takeable": 93.7,
+    "fixed": 100.0,
+    "sticky": 88.1,
+    "exceptions": 100.0
+   },
+   "known_effects": 89.3,
+   "known_effects_masks": 92.4,
+   "known_effects_bound": 92.7,
+   "known_exceptions_take_masks": 88.5,
+   "new_bound": 0.0,
+   "new_take": 37.1,
+   "new_effects": 39.5,
+   "new_take_masks": 100.0,
+   "new_effects_masks": 93.1,
+   "new_mask_take": {
+    "all": 46.1,
+    "takeable": 100.0,
+    "sticky": 20.0,
+    "fixed": 0.0
+   },
+   "new_mask_effects": {
+    "all": 66.3,
+    "takeable": 92.1,
+    "sticky": 20.6,
+    "fixed": 46.2
+   },
+   "new_mask_effects_bound": {
+    "all": 93.1,
+    "takeable": 92.5,
+    "sticky": 89.7,
+    "fixed": 100.0
+   },
+   "seconds": 199
+  },
+  {
+   "world": 2,
+   "by": "shape",
+   "patterns": 80,
+   "objects_with_transitions": 76,
+   "by_true_behaviour": [
+    52,
+    0,
+    24
+   ],
+   "true_objects": [
+    73,
+    79,
+    38
+   ],
+   "informative_used": 1605,
+   "informative_with_masks": 2549,
+   "classes": 2,
+   "class_sizes": [
+    52,
+    24
+   ],
+   "class_purity": 100.0,
+   "known_bound": 40.1,
+   "known_bound_by_behaviour": {
+    "takeable": 89.1,
+    "fixed": 0.0,
+    "sticky": 79.1
+   },
+   "known_bound_own_pattern": 100.0,
+   "bound_take": 100.0,
+   "bound_effects": 94.6,
+   "bound_effects_bound": 94.6,
+   "known_take": 93.4,
+   "known_take_masks": 100.0,
+   "known_take_one": 53.5,
+   "known_take_by": {
+    "takeable": 89.0,
+    "fixed": 100.0,
+    "sticky": 78.0,
+    "exceptions": 100.0
+   },
+   "known_effects": 87.5,
+   "known_effects_masks": 96.6,
+   "known_effects_bound": 96.6,
+   "known_exceptions_take_masks": 100.0,
+   "new_bound": 0.0,
+   "new_take": 41.9,
+   "new_effects": 41.1,
+   "new_take_masks": 100.0,
+   "new_effects_masks": 93.5,
+   "new_mask_take": {
+    "all": 58.1,
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 0.0
+   },
+   "new_mask_effects": {
+    "all": 84.4,
+    "takeable": 92.6,
+    "sticky": 91.1,
+    "fixed": 53.0
+   },
+   "new_mask_effects_bound": {
+    "all": 93.5,
+    "takeable": 92.6,
+    "sticky": 91.1,
+    "fixed": 100.0
+   },
+   "seconds": 183
+  },
+  {
+   "world": 3,
+   "by": "shape",
+   "patterns": 96,
+   "objects_with_transitions": 90,
+   "by_true_behaviour": [
+    67,
+    0,
+    23
+   ],
+   "true_objects": [
+    77,
+    60,
+    30
+   ],
+   "informative_used": 2342,
+   "informative_with_masks": 2949,
+   "classes": 2,
+   "class_sizes": [
+    23,
+    67
+   ],
+   "class_purity": 100.0,
+   "known_bound": 62.5,
+   "known_bound_by_behaviour": {
+    "takeable": 86.6,
+    "fixed": 0.0,
+    "sticky": 100.0
+   },
+   "known_bound_own_pattern": 100.0,
+   "bound_take": 100.0,
+   "bound_effects": 90.6,
+   "bound_effects_bound": 90.9,
+   "known_take": 93.7,
+   "known_take_masks": 100.0,
+   "known_take_one": 31.0,
+   "known_take_by": {
+    "takeable": 86.2,
+    "fixed": 100.0,
+    "sticky": 100.0,
+    "exceptions": 100.0
+   },
+   "known_effects": 87.4,
+   "known_effects_masks": 92.5,
+   "known_effects_bound": 92.5,
+   "known_exceptions_take_masks": 100.0,
+   "new_bound": 0.0,
+   "new_take": 39.1,
+   "new_effects": 40.3,
+   "new_take_masks": 100.0,
+   "new_effects_masks": 91.7,
+   "new_mask_take": {
+    "all": 60.9,
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 0.0
+   },
+   "new_mask_effects": {
+    "all": 82.1,
+    "takeable": 86.9,
+    "sticky": 95.4,
+    "fixed": 48.9
+   },
+   "new_mask_effects_bound": {
+    "all": 91.8,
+    "takeable": 88.0,
+    "sticky": 95.8,
+    "fixed": 100.0
+   },
+   "seconds": 201
+  },
+  {
+   "world": 4,
+   "by": "shape",
+   "patterns": 81,
+   "objects_with_transitions": 75,
+   "by_true_behaviour": [
+    43,
+    0,
+    32
+   ],
+   "true_objects": [
+    73,
+    84,
+    40
+   ],
+   "informative_used": 1985,
+   "informative_with_masks": 2714,
+   "classes": 2,
+   "class_sizes": [
+    43,
+    32
+   ],
+   "class_purity": 100.0,
+   "known_bound": 59.2,
+   "known_bound_by_behaviour": {
+    "takeable": 92.1,
+    "fixed": 0.0,
+    "sticky": 94.9
+   },
+   "known_bound_own_pattern": 100.0,
+   "bound_take": 100.0,
+   "bound_effects": 92.5,
+   "bound_effects_bound": 92.4,
+   "known_take": 95.6,
+   "known_take_masks": 98.7,
+   "known_take_one": 35.7,
+   "known_take_by": {
+    "takeable": 92.1,
+    "fixed": 100.0,
+    "sticky": 94.8,
+    "exceptions": 92.0
+   },
+   "known_effects": 91.5,
+   "known_effects_masks": 92.6,
+   "known_effects_bound": 93.7,
+   "known_exceptions_take_masks": 92.0,
+   "new_bound": 0.0,
+   "new_take": 41.1,
+   "new_effects": 43.9,
+   "new_take_masks": 97.9,
+   "new_effects_masks": 93.5,
+   "new_mask_take": {
+    "all": 58.9,
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 0.0
+   },
+   "new_mask_effects": {
+    "all": 83.2,
+    "takeable": 92.2,
+    "sticky": 94.0,
+    "fixed": 48.2
+   },
+   "new_mask_effects_bound": {
+    "all": 94.5,
+    "takeable": 92.2,
+    "sticky": 94.6,
+    "fixed": 100.0
+   },
+   "seconds": 202
+  },
+  {
+   "world": 5,
+   "by": "shape",
+   "patterns": 94,
+   "objects_with_transitions": 82,
+   "by_true_behaviour": [
+    53,
+    0,
+    29
+   ],
+   "true_objects": [
+    75,
+    65,
+    48
+   ],
+   "informative_used": 2135,
+   "informative_with_masks": 2850,
+   "classes": 2,
+   "class_sizes": [
+    53,
+    29
+   ],
+   "class_purity": 100.0,
+   "known_bound": 55.2,
+   "known_bound_by_behaviour": {
+    "takeable": 82.4,
+    "fixed": 0.0,
+    "sticky": 89.0
+   },
+   "known_bound_own_pattern": 100.0,
+   "bound_take": 100.0,
+   "bound_effects": 91.3,
+   "bound_effects_bound": 91.6,
+   "known_take": 90.4,
+   "known_take_masks": 100.0,
+   "known_take_one": 35.0,
+   "known_take_by": {
+    "takeable": 82.2,
+    "fixed": 100.0,
+    "sticky": 88.9,
+    "exceptions": 100.0
+   },
+   "known_effects": 86.1,
+   "known_effects_masks": 92.9,
+   "known_effects_bound": 92.9,
+   "known_exceptions_take_masks": 100.0,
+   "new_bound": 0.0,
+   "new_take": 37.7,
+   "new_effects": 40.1,
+   "new_take_masks": 100.0,
+   "new_effects_masks": 92.9,
+   "new_mask_take": {
+    "all": 62.3,
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 0.0
+   },
+   "new_mask_effects": {
+    "all": 84.1,
+    "takeable": 90.9,
+    "sticky": 91.2,
+    "fixed": 51.0
+   },
+   "new_mask_effects_bound": {
+    "all": 92.9,
+    "takeable": 91.5,
+    "sticky": 91.2,
+    "fixed": 100.0
+   },
+   "seconds": 198
+  }
+ ],
+ "summary": {
+  "c1_worlds_passing": 10,
+  "bound_take_lowest": 100.0,
+  "bound_take_mean": 100.0,
+  "bound_effects_worst_shortfall": 0.4,
+  "c2_worlds_passing": 9,
+  "new_mask_takeable_lowest": 100.0,
+  "new_mask_sticky_lowest": 20.0,
+  "new_mask_takeable_mean": 100.0,
+  "new_mask_sticky_mean": 92.0,
+  "new_mask_fixed_mean": 0.0,
+  "new_mask_take_all_mean": 59.2,
+  "new_mask_effects_all_mean": 81.7,
+  "c3_known_take_mean": 94.5,
+  "c3_known_take_masks_mean": 98.8,
+  "known_take_lowest": 90.4,
+  "known_take_one_class": 40.0,
+  "known_effects_mean": 89.0,
+  "known_effects_masks_mean": 92.9,
+  "known_effects_bound_mean": 93.7,
+  "known_bound_mean": 54.5,
+  "known_takeable_bound_mean": 91.7,
+  "known_sticky_bound_mean": 90.2,
+  "known_fixed_bound_mean": 0.0,
+  "new_bound_mean": 0.0,
+  "new_take_mean": 39.1,
+  "new_take_masks_mean": 99.8,
+  "new_effects_mean": 40.5,
+  "new_effects_masks_mean": 92.6,
+  "classes": [
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2
+  ],
+  "class_purity_lowest": 98.4,
+  "share_of_informative_transitions_used": 73.2,
+  "objects_with_transitions_mean": 79.6,
+  "fixed_objects_with_transitions": 1,
+  "seconds_mean": 188.9
+ },
+ "verdicts": {
+  "1": "pass, 10 of 10 (take 100.0 in every world; effects at most 0.4 under the bound)",
+  "2": "fail, 9 of 10 (world 1 by shape: never-met sticky objects 20.0)",
+  "3": "pass (94.5 against 98.8 with masks)"
+ },
+ "check_of_world_1_by_shape": {
+  "note": "tools/card155/dbg.py 1 shape",
+  "sticky_objects_with_transitions": 13,
+  "shape_code_of_squares": {
+   "objects": 10,
+   "sticky": 7,
+   "takeable": 3,
+   "mean_pattern_overlap": 0.81
+  },
+  "sticky_objects_on_other_shape_codes": 6,
+  "appearance_prior_sticky_given_square_code": 0.66,
+  "belief_of_a_true_square_in_the_square_code": 0.8
+ }
+}

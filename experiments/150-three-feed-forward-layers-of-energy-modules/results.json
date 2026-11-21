@@ -1,0 +1,367 @@
+{
+ "card": "150",
+ "date": "2026-11-20",
+ "measure": "percent of (hand or already-moved object, step in which it moves) for which the object module's displacement is exactly right",
+ "runs": {
+  "small_200_40_1": {
+   "split": "small",
+   "episodes": 200,
+   "ticks": 40,
+   "share_updated": 1.0,
+   "layer1": "binding",
+   "rows": 28261,
+   "moving_rows": 16693,
+   "found": 99.3,
+   "moving": {
+    "state": 99.9,
+    "gated": 99.8,
+    "belief": 99.9
+   },
+   "moving_objects": {
+    "state": 99.5,
+    "gated": 99.5,
+    "belief": 99.5
+   },
+   "moving_under_40_pixels": {
+    "state": 99.9,
+    "gated": 99.8,
+    "belief": 99.9
+   },
+   "still": {
+    "state": 99.3,
+    "gated": 99.4,
+    "belief": 99.2
+   }
+  },
+  "test_200_10_0.5": {
+   "split": "test",
+   "episodes": 200,
+   "ticks": 10,
+   "share_updated": 0.5,
+   "layer1": "binding",
+   "rows": 29125,
+   "moving_rows": 16833,
+   "found": 98.0,
+   "moving": {
+    "state": 99.5,
+    "gated": 99.5,
+    "belief": 99.5
+   },
+   "moving_objects": {
+    "state": 99.1,
+    "gated": 99.1,
+    "belief": 99.1
+   },
+   "moving_under_40_pixels": {
+    "state": 99.4,
+    "gated": 99.4,
+    "belief": 99.4
+   },
+   "still": {
+    "state": 99.4,
+    "gated": 99.5,
+    "belief": 99.3
+   }
+  },
+  "test_200_10_1": {
+   "split": "test",
+   "episodes": 200,
+   "ticks": 10,
+   "share_updated": 1.0,
+   "layer1": "binding",
+   "rows": 29125,
+   "moving_rows": 16833,
+   "found": 98.0,
+   "moving": {
+    "state": 99.5,
+    "gated": 99.5,
+    "belief": 99.5
+   },
+   "moving_objects": {
+    "state": 99.0,
+    "gated": 99.0,
+    "belief": 99.0
+   },
+   "moving_under_40_pixels": {
+    "state": 99.4,
+    "gated": 99.4,
+    "belief": 99.4
+   },
+   "still": {
+    "state": 99.5,
+    "gated": 99.6,
+    "belief": 99.3
+   }
+  },
+  "test_200_1_1": {
+   "split": "test",
+   "episodes": 200,
+   "ticks": 1,
+   "share_updated": 1.0,
+   "layer1": "binding",
+   "rows": 29125,
+   "moving_rows": 16833,
+   "found": 95.9,
+   "moving": {
+    "state": 98.8,
+    "gated": 98.8,
+    "belief": 98.8
+   },
+   "moving_objects": {
+    "state": 97.1,
+    "gated": 97.1,
+    "belief": 97.3
+   },
+   "moving_under_40_pixels": {
+    "state": 99.3,
+    "gated": 99.3,
+    "belief": 99.3
+   },
+   "still": {
+    "state": 99.3,
+    "gated": 99.4,
+    "belief": 99.1
+   }
+  },
+  "test_200_2_1": {
+   "split": "test",
+   "episodes": 200,
+   "ticks": 2,
+   "share_updated": 1.0,
+   "layer1": "binding",
+   "rows": 29125,
+   "moving_rows": 16833,
+   "found": 97.7,
+   "moving": {
+    "state": 99.3,
+    "gated": 99.3,
+    "belief": 99.3
+   },
+   "moving_objects": {
+    "state": 98.8,
+    "gated": 98.7,
+    "belief": 98.8
+   },
+   "moving_under_40_pixels": {
+    "state": 99.3,
+    "gated": 99.3,
+    "belief": 99.3
+   },
+   "still": {
+    "state": 99.3,
+    "gated": 99.4,
+    "belief": 99.2
+   }
+  },
+  "test_200_40_1": {
+   "split": "test",
+   "episodes": 200,
+   "ticks": 40,
+   "share_updated": 1.0,
+   "layer1": "binding",
+   "rows": 29125,
+   "moving_rows": 16833,
+   "found": 98.0,
+   "moving": {
+    "state": 99.5,
+    "gated": 99.5,
+    "belief": 99.5
+   },
+   "moving_objects": {
+    "state": 99.0,
+    "gated": 99.0,
+    "belief": 99.0
+   },
+   "moving_under_40_pixels": {
+    "state": 99.4,
+    "gated": 99.4,
+    "belief": 99.4
+   },
+   "still": {
+    "state": 99.5,
+    "gated": 99.6,
+    "belief": 99.3
+   }
+  },
+  "test_200_40_1_one": {
+   "split": "test",
+   "episodes": 200,
+   "ticks": 40,
+   "share_updated": 1.0,
+   "layer1": "one module",
+   "rows": 29125,
+   "moving_rows": 16833,
+   "found": 100.0,
+   "moving": {
+    "state": 0.0,
+    "gated": 0.0,
+    "belief": 0.0
+   },
+   "moving_objects": {
+    "state": 0.0,
+    "gated": 0.0,
+    "belief": 0.0
+   },
+   "moving_under_40_pixels": {
+    "state": 0.0,
+    "gated": 0.0,
+    "belief": 0.0
+   },
+   "still": {
+    "state": 100.0,
+    "gated": 100.0,
+    "belief": 100.0
+   }
+  },
+  "test_200_40_1_true": {
+   "split": "test",
+   "episodes": 200,
+   "ticks": 40,
+   "share_updated": 1.0,
+   "layer1": "true masks",
+   "rows": 29125,
+   "moving_rows": 16833,
+   "found": 100.0,
+   "moving": {
+    "state": 99.8,
+    "gated": 99.8,
+    "belief": 99.8
+   },
+   "moving_objects": {
+    "state": 99.2,
+    "gated": 99.2,
+    "belief": 99.3
+   },
+   "moving_under_40_pixels": {
+    "state": 99.8,
+    "gated": 99.8,
+    "belief": 99.8
+   },
+   "still": {
+    "state": 99.6,
+    "gated": 99.8,
+    "belief": 99.5
+   }
+  },
+  "test_200_5_1": {
+   "split": "test",
+   "episodes": 200,
+   "ticks": 5,
+   "share_updated": 1.0,
+   "layer1": "binding",
+   "rows": 29125,
+   "moving_rows": 16833,
+   "found": 98.0,
+   "moving": {
+    "state": 99.4,
+    "gated": 99.5,
+    "belief": 99.5
+   },
+   "moving_objects": {
+    "state": 99.0,
+    "gated": 99.0,
+    "belief": 99.0
+   },
+   "moving_under_40_pixels": {
+    "state": 99.4,
+    "gated": 99.4,
+    "belief": 99.4
+   },
+   "still": {
+    "state": 99.4,
+    "gated": 99.5,
+    "belief": 99.3
+   }
+  },
+  "test_200_80_0.5": {
+   "split": "test",
+   "episodes": 200,
+   "ticks": 80,
+   "share_updated": 0.5,
+   "layer1": "binding",
+   "rows": 29125,
+   "moving_rows": 16833,
+   "found": 98.0,
+   "moving": {
+    "state": 99.5,
+    "gated": 99.5,
+    "belief": 99.5
+   },
+   "moving_objects": {
+    "state": 99.0,
+    "gated": 99.0,
+    "belief": 99.1
+   },
+   "moving_under_40_pixels": {
+    "state": 99.5,
+    "gated": 99.4,
+    "belief": 99.5
+   },
+   "still": {
+    "state": 99.5,
+    "gated": 99.6,
+    "belief": 99.3
+   }
+  },
+  "val_20_40_1": {
+   "split": "val",
+   "episodes": 20,
+   "ticks": 40,
+   "share_updated": 1.0,
+   "layer1": "binding",
+   "rows": 3167,
+   "moving_rows": 1660,
+   "found": 97.0,
+   "moving": {
+    "state": 99.3,
+    "gated": 99.3,
+    "belief": 99.3
+   },
+   "moving_objects": {
+    "state": 98.6,
+    "gated": 98.4,
+    "belief": 98.8
+   },
+   "moving_under_40_pixels": {
+    "state": 99.4,
+    "gated": 99.4,
+    "belief": 99.3
+   },
+   "still": {
+    "state": 99.3,
+    "gated": 99.4,
+    "belief": 98.9
+   }
+  },
+  "val_20_40_1_true": {
+   "split": "val",
+   "episodes": 20,
+   "ticks": 40,
+   "share_updated": 1.0,
+   "layer1": "true masks",
+   "rows": 3167,
+   "moving_rows": 1660,
+   "found": 100.0,
+   "moving": {
+    "state": 99.4,
+    "gated": 99.3,
+    "belief": 99.5
+   },
+   "moving_objects": {
+    "state": 98.0,
+    "gated": 97.6,
+    "belief": 98.4
+   },
+   "moving_under_40_pixels": {
+    "state": 99.7,
+    "gated": 99.6,
+    "belief": 99.8
+   },
+   "still": {
+    "state": 99.9,
+    "gated": 100.0,
+    "belief": 99.8
+   }
+  }
+ }
+}

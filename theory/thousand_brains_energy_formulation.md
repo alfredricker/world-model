@@ -550,3 +550,171 @@ holding fails on two of five streams, because the energy proposes a take
 without a move, which no record holds, and its forward answer for that is
 arbitrary. A pairwise energy trained at the data is defined only near the
 data; the agent has to try what it proposes and record it.
+
+**Layers of modules in parallel (the user, 2026-11-20; thinking, nothing built).**
+The user, after stopping card 149.1: "maybe we should try out experiments
+with modularizing energy into a layered structure, each module performing
+parallel computation ... each module can receive updates and internally
+update its energy state, and where the modules from deeper layers receive
+the energy state of previous layers asynchronously. Meaning the deeper
+layers update continuously in time based on the abstractions of
+intermediate layers", and asks whether a module should receive another
+module's scalar energy or its attractor state. Answer given: the state is
+what carries content and is what the literature passes (hierarchical
+predictive coding, hierarchical associative memory, equilibrium
+propagation; multiple-timescale recurrent networks for the slow upper
+layers); the natural message is the code of which attractor the lower
+module is in (its belief over stored patterns), which is what cards 147
+and 148 already use. The scalar energy is worth passing beside it as how
+well the module's input fits what it knows: a confidence for the layer
+above, a boundary signal for event segmentation when it jumps, and the
+"have I seen this" signal that card 149 lacked (true of a Hopfield energy
+over stored patterns, not of couplings trained by pseudolikelihood).
+Mechanics: one state tensor per layer, every module of a layer updated in
+one batched operation, each layer with its own time constant
+(tau dx/dt = -dE/dx); asynchronous updating is a random subset per tick
+and is the case for which Hopfield's energy descent is proved. Open
+choices: feed-forward only (a pipeline of settling modules, no total
+energy) or feedback as well (one total energy, joint settling); and how
+the variables between layers are learned, which nothing in the literature
+supplies.
+
+**Feed-forward layers, tested (cards [150](../experiments/150-three-feed-forward-layers-of-energy-modules/card.md) and [151](../experiments/151-layers-of-attractor-modules-in-a-world-of-parts/card.md), 2026-11-20).**
+On sprite pixels three layers (motion per pixel, binding per point, one
+module per object) give each object's motion in 99.5% of moving steps and
+do not care how they are clocked; the action layer was not put on top
+because nothing below produces "touched" and "held". In a world of
+patches, objects and scenes, a module is a memory of stored patterns with
+energy $E_k(x)$ for pattern $k$; the message upward is the normalised
+vector $m_k = -E_k(x) - \log\sum_j e^{-E_j(x)}$, and a module above has
+$E_K = -\sum_{c} m^{(c)}_{K_c}$ over its children $c$, where $K_c$ is the
+child pattern that $K$ contains. With this the stack equals a flat memory
+of whole scenes at every noise level; passing only $\arg\min_k E_k$ drops
+92.0% to 35.3%, and passing only $\min_k E_k$ gives chance. Each layer
+learns by storing its input when $\min_k E_k$ is over a threshold, so the
+scalar energy's job is "is this new", not content. On a stream one
+layer's low-pass memory is enough and several add their lags.
+
+**The object module: where, what, does (card [152](../experiments/152-an-object-module-that-knows-what-an-object-is-and-does/card.md), 2026-11-20).**
+A slot becomes a module with three parts. *Where* is the place $s$ of the
+object's own frame. *What* is a set of memories in that frame; for the
+individual's stored pattern $k$ (a mask $M_k$ and a texture $T_k$) the
+energy of the pair $(k, s)$ against the seen points $V$ with colours $x$ is
+$E(k,s) = \frac{1}{|V|}\big[\sum_{p \in V \cap M_k^s} \lVert x_p - T^s_{k,p}\rVert^2 + c\,|V \setminus M_k^s| + c\,|M_k^s \cap B|\big]$,
+where $B$ is the background that is seen: a pattern pixel hidden by
+another object costs nothing. What and where are the joint minimum, which
+is the Tolman-Eichenbaum form (a location code bound to what is sensed
+there) with a Hopfield memory. *Does* is a belief $w$ over kinds; kind
+$\kappa$ is a set of couplings $J^\kappa = J^0 + \Delta^\kappa$ over the
+step's tokens with $\Delta^\kappa$ sparse, and an object's evidence for
+$\kappa$ is the number of its records that $J^\kappa$ mispredicts. Looks
+enter as a pairwise energy between shape code, colour code and kind;
+the answer under a belief is $\sum_\kappa w_\kappa\,[\text{answer under } J^\kappa]$,
+a mixture, not the answer under $\sum_\kappa w_\kappa J^\kappa$. A single
+pairwise energy with a kind token cannot hold "this grip takes one kind
+and releases another". Results: recognition at a new place and half
+hidden 100%; a never-met object handled from its looks as if its
+behaviour were told in nine worlds of ten. Open: the rule that finds the
+kinds (mine is a pile of thresholds and failed in one world of five), and
+binding without true masks.
+
+**Kinds by one energy (card [153](../experiments/153-kinds-found-by-one-energy-in-two-domains/card.md), 2026-11-20).**
+The thresholds of card 152's kind learner are replaced by one energy over
+the grouping $z$ (item $i$ has kind $z_i$):
+$L(z, J) = \sum_i E_i(z_i) - \log P_{\text{CRP}}(z)$, with
+$E_i(\kappa) = -\sum_{r \in \text{records}(i)} \log p_{J^\kappa}(\text{effects}_r \mid \text{rest}_r)$,
+the effect tokens of a record taken together (scored one given the
+others they explain each other and no kind pays), and
+$\log P_{\text{CRP}}(z) = K \log\alpha + \sum_\kappa \log\Gamma(n_\kappa)$,
+$\alpha = 1$, the prior of latent-cause models. Every item fits its own
+sparse difference $\Delta_i$ from its kind's couplings; $J^{z_i} + \Delta_i$
+is a candidate kind, stored if it lowers $L$ counting only other items'
+records; kinds are refitted, merged if that lowers $L$, and given up when
+left with one member. The belief over kinds for a known item is
+$\propto \exp(f_{\text{looks}}(\kappa) - E_i(\kappa))$: looks as prior,
+records as likelihood, both in nats, in training as at test. Results:
+three kinds in 20 of 20 sprite worlds; the same code finds four word
+classes in a stream of words (99.2% of the gap to the best reader of
+forms). Two findings beside the rule. Card 152's failure was cured by
+teaching the looks couplings with every item (weighted by the entropy of
+its records' belief), not by the rule: two kinds that predict the same
+are harmless in a mixture. And the rule fails where no single item has
+records enough to propose a kind (30 episodes in one world; 100
+sentences): the proposal must come from items that share a looks code,
+and be judged after both kinds are refitted.
+
+**Classes from appearance and transitions together (card [153.1](../experiments/153.1-dynamics-classes-from-appearance-and-transitions/card.md), 2026-11-20).**
+Object $i$ has appearance features $a_i$ (attractor indices of its
+appearance memories), transitions $D_i$ and a dynamics class $z_i$. The
+posterior $p(z_i \mid a_i, D_i) \propto p(z_i \mid a_i)\,p(D_i \mid z_i)$
+is used during learning as at test. A class is proposed from one
+object's residual couplings or from the pooled transitions of all
+objects sharing an appearance attractor; it is fitted and kept only if
+it lowers
+$S = -\sum_i \log \sum_k p(z_i = k \mid a_i, D_i^{\text{fit}})\,p(D_i^{\text{held}} \mid k)$,
+fitted on one half of the transitions and scored on the other, both
+ways. No prior on the number of classes. Results: every sprite run at 30
+episodes (card 153: 19 of 20); the word stream at 100 sentences 84.3% of
+the gap (38.2), at 200 sentences 98.0% (84.9); nothing lost with more
+data. Costs: extra small classes are admitted (up to 8 for 4), a
+rule-breaking word with one or two transitions is outweighed by its
+appearance, and runs take 4 to 34 times longer.
+
+**Feedback as stored couplings (card [154](../experiments/154-feedback-from-object-modules-to-binding/card.md), 2026-11-20).**
+The first downward path. The binding layer's energy is
+$E(b) = -\tfrac12 \sum_{pq} J_{pq}\, b_p \cdot b_q$ with $J$ accumulated
+from co-motion. An object module stores, for a group that motion bound,
+its pattern $m$ (mask and appearance in a 16 by 16 frame) and the mean
+couplings $J^{in}_m$, $J^{out}_m$ the group had. At first sight a pattern
+recognised at place $s$ adds $J^{in}_m$ between the points it explains
+and $J^{out}_m$ from them to the rest, and sets its module's belief for
+them; the layer then settles as before. Recognition:
+$\text{score}(m, s) = \sum_{p \in m,\ \text{free}} [\,-\log q_{mp}$ if
+matched, $\log \tfrac12$ if not$]$, accepted above
+$\log(\#\text{patterns} \times \#\text{places})$, greedily, explained
+pixels no longer free. Results, sprite pixels, no masks: known things
+that have not moved are bound in 98.7 and 99.8% of cases (0 without
+feedback; 100 with true-mask patterns); a quarter or more hidden, 96.3
+and 99.7%. Open: objects that never move (no pattern), patterns of
+kinds instead of individuals, a memory that grows without bound.
+
+**The masks removed (card [155](../experiments/155-object-modules-fed-by-binding/card.md), 2026-11-20).**
+Cards 152 to 153.1 rerun with an object defined as a stored pattern of
+card 154's memory, its appearance features read from the pattern and its
+transitions counted from its first move. An object the binding has found
+is handled as with masks (take action right 100%, effects at the bound;
+both classes of moving things found in every world). The cost is one
+thing: an object exists for the model only after it has moved. A
+never-met object is not bound at first sight (take 39.1% against 99.8),
+a known object that never moved in training is invisible (all known
+objects 94.5 against 98.8), and no class is learned for fixed objects.
+The user: couplings as a function of appearance need a training
+incentive from the agent's interaction, not a designed loss or prior.
+
+**Appearance couplings taught by the agent's own action (card [156](../experiments/156-appearance-couplings-taught-by-the-agents-own-action/card.md), 2026-11-20).**
+A network reads the frame around two points and their offset and gives
+three states for the pair, together, apart, no evidence, taught by the
+binding layer's own $J$ at the end of each episode ($J \ge 3a$,
+$J \le -3b$, otherwise). At first sight
+$A_{pq} = J^{in} P(\text{together}) + J^{out} P(\text{apart})$ is added
+to the binding energy, the states' true frequencies put back and the
+pairs whose likeliest state is "no evidence" centred. Taking each pair's
+likeliest state instead leaves an object unbound when it looks like
+fixed ones; the plain expectation fragments the ground, because a 0.2%
+chance of "apart" times $J^{out}$, summed over all pairs, outweighs the
+layer's default pull of 0.05. Results: never-met objects bound before
+they move in 96 to 97% of cases; the take action right for 93.9% with a
+script's experience (39.1 without the couplings). An agent that goes to
+the groups its own binding sees teaches the couplings as well, but its
+takes always include a move and the test asks for one without (75.0).
+
+**Transitions from the binding layer's own states (card [157](../experiments/157-transitions-read-from-the-binding-layers-own-states/card.md), 2026-11-21).**
+An object's transition at a step is read from its points: contact (the
+box around them beside the hand's box), the displacement most of them
+made, and whether that is the hand's own. No simulator token and no mask
+in learning; "held" is dropped because no frame shows it, and the test
+asks for the action that brings the object along. On the same experience
+of the agent, 86.4% right for never-met objects against 85.0 with the
+simulator's tokens (100.0 with the true classes given); class purity
+88.9 against 97.8. The ground joins the fixed class, and patterns on the
+hand form a class of what always comes along.

@@ -151,12 +151,22 @@ record" is `old:phwm/docs/05-experimental-record.md`.
 - **Latent self-prediction erases what actions change; test action
   sensitivity before training.** Distance to a goal state is not distance
   to a condition. *Evidence:* GRL-105–108; cards 001, 052, 053.
-- **Energy forms (cards 146–149):** a patch holds a belief over objects, not
-  a unit vector; binding from motion needs evidence kept over time (98% found;
-  one step 40%); couplings learn an action token from a tenth of the
-  experience whole records need. **Such an energy is right only about
-  combinations it has seen:** ask it forward about a state and an action,
-  and test on several streams (149: 0% on 2 of 5; one validation stream hid it).
+- **Energy forms (cards 146–157):** a patch holds a belief over objects;
+  binding from motion needs evidence kept over time (98% vs 40%); couplings
+  learn an action token only for combinations seen (149). **Between layers
+  pass every pattern's energy, not the winner** (151: 92.0 vs 35.3).
+  **Teach a reader by every item, weighted by what its evidence says**
+  (83.5 → 92.7, card 153). With few transitions per object, propose a class
+  from all objects sharing an appearance attractor and keep it on held-out
+  prediction (38.2 → 84.3%, card 153.1). **Feedback can be the lower layer's
+  own couplings, stored and written back** where the pattern is recognised
+  (still objects bound 0 → 97%+, card 154). Without masks an object exists
+  only once it has moved (never-met objects: take 39 vs 100, card 155).
+  Score "known" by what the model stored, not by a simulator cut-off.
+  **Couplings predicted from appearance can be taught by motion alone**
+  (never-met objects bound before moving, 0 → 97%, card 156). An exploring
+  agent must make the records the test will ask about (take 75 vs 94).
+  Test for effects a frame can show: "held" is the simulator's state (card 157).
 
 ## Perception in moving-view worlds (Crafter, Craftium)
 
@@ -201,4 +211,4 @@ record" is `old:phwm/docs/05-experimental-record.md`.
 
 - **Change pass/fail criteria at most once; then open a new experiment.**
   Log every loss term separately, time a change under the run's own load,
-  profile before a long run, and wait on a file a run writes (cards 074.2, 092, 105.1).
+  profile before a long run, wait on a file a run writes (074.2, 092, 105.1).

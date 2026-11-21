@@ -1,0 +1,2240 @@
+{
+ "card": "157",
+ "development": {
+  "summary": {
+   "worlds": 2,
+   "sim": {
+    "new_all": 94.2,
+    "new_lowest": 88.3,
+    "new_by_shape": 88.3,
+    "new_by_colour": 100.0,
+    "new_takeable": 99.2,
+    "new_fixed": 97.0,
+    "new_sticky": 78.0,
+    "new_true_given": 100.0,
+    "new_one_class": 41.9,
+    "known_all": 92.7,
+    "purity": 97.7,
+    "purity_lowest": 97.2,
+    "classes": [
+     3,
+     4
+    ]
+   },
+   "own": {
+    "new_all": 92.0,
+    "new_lowest": 84.1,
+    "new_by_shape": 84.1,
+    "new_by_colour": 100.0,
+    "new_takeable": 93.9,
+    "new_fixed": 99.2,
+    "new_sticky": 73.7,
+    "new_true_given": 100.0,
+    "new_one_class": 41.4,
+    "known_all": 91.5,
+    "purity": 90.3,
+    "purity_lowest": 86.2,
+    "classes": [
+     6,
+     5
+    ],
+    "contact_caught": 72.3,
+    "contact_false": 7.8,
+    "moved_steps_same": 98.5,
+    "still_steps_same": 100.0
+   },
+   "gap_sim_minus_own": 2.2,
+   "worlds_own_at_or_above_sim": 1
+  },
+  "per_run": [
+   {
+    "world": 0,
+    "by": "colour",
+    "patterns": 200,
+    "experience": {
+     "stored": 86,
+     "known": 160,
+     "too_big": 2,
+     "still": 114,
+     "groups_tried": 690,
+     "groups_that_came": 109,
+     "objects": 302,
+     "objects_moved": 129
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 294,
+      "bound": 183,
+      "labels_on_the_ground_per_scene": 2.26,
+      "found_movable": 98.4,
+      "found_fixed": 0.0
+     },
+     "known_objects": {
+      "objects": 305,
+      "bound": 223,
+      "labels_on_the_ground_per_scene": 2.92,
+      "found_movable": 94.1,
+      "found_fixed": 7.7
+     }
+    },
+    "seconds": 382,
+    "experience_seconds": 186,
+    "sim": {
+     "new_all": 100.0,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 43.1,
+     "known_all": 90.0,
+     "known_appearance_only": 80.9,
+     "known_exceptions": 57.4,
+     "classes": 3,
+     "class_sizes": [
+      12,
+      25,
+      87
+     ],
+     "purity": 97.2,
+     "table": [
+      [
+       0.3,
+       3.4,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.3,
+       0.3,
+       21.0,
+       0.0,
+       0.0
+      ],
+      [
+       66.4,
+       1.7,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 124,
+     "objects_by_truth": [
+      82,
+      18,
+      24,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.174,
+      "colour": 0.826
+     },
+     "in_contact": 2199,
+     "came_along": 1656,
+     "fit_seconds": 51
+    },
+    "own": {
+     "new_all": 100.0,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 43.1,
+     "known_all": 96.3,
+     "known_appearance_only": 84.3,
+     "known_exceptions": 76.6,
+     "classes": 6,
+     "class_sizes": [
+      90,
+      23,
+      2,
+      1,
+      11,
+      73
+     ],
+     "purity": 94.5,
+     "table": [
+      [
+       6.1,
+       20.0,
+       1.8,
+       46.3,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       22.7,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       2.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.8,
+       0.0,
+       0.0
+      ],
+      [
+       10.9,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       68.4,
+       0.0,
+       0.0,
+       1.9,
+       0.0
+      ]
+     ],
+     "objects": 200,
+     "objects_by_truth": [
+      92,
+      25,
+      27,
+      54,
+      2
+     ],
+     "appearance_share": {
+      "shape": 0.198,
+      "colour": 0.802
+     },
+     "in_contact": 2343,
+     "came_along": 1909,
+     "fit_seconds": 254,
+     "contact_caught": 66.9,
+     "contact_false": 9.1,
+     "moved_steps_same": 97.7,
+     "still_steps_same": 100.0,
+     "patterns_on_the_hand_left_out": 116
+    }
+   },
+   {
+    "world": 0,
+    "by": "shape",
+    "patterns": 222,
+    "experience": {
+     "stored": 77,
+     "known": 145,
+     "too_big": 0,
+     "still": 145,
+     "groups_tried": 660,
+     "groups_that_came": 87,
+     "objects": 303,
+     "objects_moved": 117
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 297,
+      "bound": 292,
+      "labels_on_the_ground_per_scene": 0.36,
+      "found_movable": 97.2,
+      "found_fixed": 97.5
+     },
+     "known_objects": {
+      "objects": 301,
+      "bound": 301,
+      "labels_on_the_ground_per_scene": 0.23,
+      "found_movable": 99.5,
+      "found_fixed": 93.9
+     }
+    },
+    "seconds": 361,
+    "experience_seconds": 186,
+    "sim": {
+     "new_all": 88.3,
+     "new_by": {
+      "takeable": 98.3,
+      "fixed": 94.1,
+      "sticky": 56.1
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 40.7,
+     "known_all": 95.3,
+     "known_appearance_only": 74.2,
+     "known_exceptions": 100.0,
+     "classes": 4,
+     "class_sizes": [
+      66,
+      37,
+      1,
+      59
+     ],
+     "purity": 98.2,
+     "table": [
+      [
+       51.4,
+       0.8,
+       0.1,
+       0.0,
+       0.0
+      ],
+      [
+       0.2,
+       0.4,
+       30.0,
+       0.0,
+       0.0
+      ],
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.5,
+       23.8,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 163,
+     "objects_by_truth": [
+      68,
+      61,
+      34,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.942,
+      "colour": 0.058
+     },
+     "in_contact": 2093,
+     "came_along": 1437,
+     "fit_seconds": 81
+    },
+    "own": {
+     "new_all": 84.1,
+     "new_by": {
+      "takeable": 87.8,
+      "fixed": 98.3,
+      "sticky": 47.4
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 39.7,
+     "known_all": 86.8,
+     "known_appearance_only": 72.2,
+     "known_exceptions": 85.7,
+     "classes": 5,
+     "class_sizes": [
+      111,
+      44,
+      1,
+      1,
+      64
+     ],
+     "purity": 86.2,
+     "table": [
+      [
+       5.7,
+       41.4,
+       2.4,
+       22.8,
+       0.5
+      ],
+      [
+       4.9,
+       4.9,
+       32.4,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0
+      ],
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       56.2,
+       4.0,
+       1.0,
+       1.0,
+       0.0
+      ]
+     ],
+     "objects": 221,
+     "objects_by_truth": [
+      74,
+      79,
+      39,
+      27,
+      2
+     ],
+     "appearance_share": {
+      "shape": 0.767,
+      "colour": 0.233
+     },
+     "in_contact": 2524,
+     "came_along": 1447,
+     "fit_seconds": 205,
+     "contact_caught": 77.8,
+     "contact_false": 6.5,
+     "moved_steps_same": 99.2,
+     "still_steps_same": 100.0,
+     "patterns_on_the_hand_left_out": 106
+    }
+   }
+  ]
+ },
+ "test": {
+  "summary": {
+   "worlds": 10,
+   "sim": {
+    "new_all": 85.0,
+    "new_lowest": 56.1,
+    "new_by_shape": 76.8,
+    "new_by_colour": 93.2,
+    "new_takeable": 98.8,
+    "new_fixed": 72.1,
+    "new_sticky": 81.1,
+    "new_true_given": 95.1,
+    "new_one_class": 40.5,
+    "known_all": 87.2,
+    "purity": 97.8,
+    "purity_lowest": 95.4,
+    "classes": [
+     4,
+     3,
+     3,
+     3,
+     3,
+     3,
+     4,
+     3,
+     3,
+     3
+    ]
+   },
+   "own": {
+    "new_all": 86.4,
+    "new_lowest": 61.1,
+    "new_by_shape": 72.8,
+    "new_by_colour": 99.9,
+    "new_takeable": 80.2,
+    "new_fixed": 98.6,
+    "new_sticky": 75.1,
+    "new_true_given": 100.0,
+    "new_one_class": 36.7,
+    "known_all": 91.4,
+    "purity": 88.9,
+    "purity_lowest": 81.2,
+    "classes": [
+     6,
+     5,
+     5,
+     5,
+     4,
+     4,
+     6,
+     6,
+     5,
+     5
+    ],
+    "contact_caught": 69.4,
+    "contact_false": 7.5,
+    "moved_steps_same": 98.2,
+    "still_steps_same": 100.0
+   },
+   "gap_sim_minus_own": -1.4,
+   "worlds_own_at_or_above_sim": 7
+  },
+  "per_run": [
+   {
+    "world": 1,
+    "by": "colour",
+    "patterns": 216,
+    "experience": {
+     "stored": 92,
+     "known": 175,
+     "too_big": 0,
+     "still": 124,
+     "groups_tried": 599,
+     "groups_that_came": 103,
+     "objects": 299,
+     "objects_moved": 124
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 306,
+      "bound": 239,
+      "labels_on_the_ground_per_scene": 3.12,
+      "found_movable": 94.6,
+      "found_fixed": 37.5
+     },
+     "known_objects": {
+      "objects": 303,
+      "bound": 301,
+      "labels_on_the_ground_per_scene": 3.31,
+      "found_movable": 100.0,
+      "found_fixed": 55.8
+     }
+    },
+    "seconds": 363,
+    "experience_seconds": 276,
+    "sim": {
+     "new_all": 100.0,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 39.5,
+     "known_all": 94.3,
+     "known_appearance_only": 71.7,
+     "known_exceptions": 76.4,
+     "classes": 4,
+     "class_sizes": [
+      32,
+      31,
+      1,
+      79
+     ],
+     "purity": 98.8,
+     "table": [
+      [
+       0.0,
+       9.0,
+       0.2,
+       0.5,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       23.9,
+       0.0,
+       0.0
+      ],
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       58.4,
+       0.9,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 143,
+     "objects_by_truth": [
+      74,
+      36,
+      32,
+      1,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.09,
+      "colour": 0.91
+     },
+     "in_contact": 2360,
+     "came_along": 1688,
+     "fit_seconds": 95
+    },
+    "own": {
+     "new_all": 100.0,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 40.9,
+     "known_all": 98.0,
+     "known_appearance_only": 75.8,
+     "known_exceptions": 100.0,
+     "classes": 6,
+     "class_sizes": [
+      85,
+      1,
+      26,
+      12,
+      70,
+      19
+     ],
+     "purity": 92.8,
+     "table": [
+      [
+       3.0,
+       24.6,
+       4.0,
+       19.2,
+       0.6
+      ],
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       25.7,
+       0.0,
+       0.0
+      ],
+      [
+       4.9,
+       0.6,
+       0.0,
+       1.9,
+       0.0
+      ],
+      [
+       61.4,
+       1.0,
+       0.0,
+       1.6,
+       0.0
+      ],
+      [
+       18.1,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 213,
+     "objects_by_truth": [
+      102,
+      45,
+      34,
+      31,
+      1
+     ],
+     "appearance_share": {
+      "shape": 0.176,
+      "colour": 0.824
+     },
+     "in_contact": 2442,
+     "came_along": 1741,
+     "fit_seconds": 193,
+     "contact_caught": 70.3,
+     "contact_false": 6.3,
+     "moved_steps_same": 98.6,
+     "still_steps_same": 100.0,
+     "patterns_on_the_hand_left_out": 154
+    }
+   },
+   {
+    "world": 1,
+    "by": "shape",
+    "patterns": 245,
+    "experience": {
+     "stored": 82,
+     "known": 169,
+     "too_big": 0,
+     "still": 163,
+     "groups_tried": 724,
+     "groups_that_came": 98,
+     "objects": 316,
+     "objects_moved": 126
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 316,
+      "bound": 314,
+      "labels_on_the_ground_per_scene": 0.28,
+      "found_movable": 96.5,
+      "found_fixed": 95.8
+     },
+     "known_objects": {
+      "objects": 306,
+      "bound": 306,
+      "labels_on_the_ground_per_scene": 0.5,
+      "found_movable": 99.5,
+      "found_fixed": 93.0
+     }
+    },
+    "seconds": 333,
+    "experience_seconds": 281,
+    "sim": {
+     "new_all": 79.7,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 47.0,
+      "sticky": 96.9
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 40.0,
+     "known_all": 98.0,
+     "known_appearance_only": 79.7,
+     "known_exceptions": 88.5,
+     "classes": 3,
+     "class_sizes": [
+      44,
+      37,
+      75
+     ],
+     "purity": 98.1,
+     "table": [
+      [
+       0.8,
+       13.9,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.4,
+       0.4,
+       31.5,
+       0.0,
+       0.0
+      ],
+      [
+       54.7,
+       0.3,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 156,
+     "objects_by_truth": [
+      71,
+      50,
+      35,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.955,
+      "colour": 0.045
+     },
+     "in_contact": 2241,
+     "came_along": 1515,
+     "fit_seconds": 82
+    },
+    "own": {
+     "new_all": 89.0,
+     "new_by": {
+      "takeable": 93.8,
+      "fixed": 88.7,
+      "sticky": 80.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 41.9,
+     "known_all": 89.0,
+     "known_appearance_only": 81.1,
+     "known_exceptions": 100.0,
+     "classes": 5,
+     "class_sizes": [
+      117,
+      26,
+      38,
+      56,
+      6
+     ],
+     "purity": 87.3,
+     "table": [
+      [
+       12.2,
+       53.9,
+       3.4,
+       23.1,
+       1.0
+      ],
+      [
+       22.5,
+       2.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       2.4,
+       31.3,
+       1.0,
+       0.0
+      ],
+      [
+       47.9,
+       1.6,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       3.0,
+       2.9,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 243,
+     "objects_by_truth": [
+      95,
+      77,
+      43,
+      27,
+      1
+     ],
+     "appearance_share": {
+      "shape": 0.674,
+      "colour": 0.326
+     },
+     "in_contact": 2361,
+     "came_along": 1867,
+     "fit_seconds": 178,
+     "contact_caught": 68.5,
+     "contact_false": 6.5,
+     "moved_steps_same": 98.7,
+     "still_steps_same": 99.9,
+     "patterns_on_the_hand_left_out": 109
+    }
+   },
+   {
+    "world": 2,
+    "by": "colour",
+    "patterns": 234,
+    "experience": {
+     "stored": 86,
+     "known": 134,
+     "too_big": 0,
+     "still": 148,
+     "groups_tried": 666,
+     "groups_that_came": 80,
+     "objects": 300,
+     "objects_moved": 104
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 302,
+      "bound": 193,
+      "labels_on_the_ground_per_scene": 0.68,
+      "found_movable": 97.7,
+      "found_fixed": 11.2
+     },
+     "known_objects": {
+      "objects": 298,
+      "bound": 196,
+      "labels_on_the_ground_per_scene": 1.12,
+      "found_movable": 98.8,
+      "found_fixed": 9.5
+     }
+    },
+    "seconds": 236,
+    "experience_seconds": 280,
+    "sim": {
+     "new_all": 100.0,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 42.9,
+     "known_all": 92.5,
+     "known_appearance_only": 81.5,
+     "known_exceptions": 64.5,
+     "classes": 3,
+     "class_sizes": [
+      36,
+      34,
+      75
+     ],
+     "purity": 99.6,
+     "table": [
+      [
+       0.1,
+       10.2,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.1,
+       0.0,
+       27.5,
+       0.0,
+       0.0
+      ],
+      [
+       55.5,
+       0.2,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 145,
+     "objects_by_truth": [
+      73,
+      39,
+      33,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.2,
+      "colour": 0.8
+     },
+     "in_contact": 1906,
+     "came_along": 1342,
+     "fit_seconds": 54
+    },
+    "own": {
+     "new_all": 100.0,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 40.8,
+     "known_all": 89.4,
+     "known_appearance_only": 78.8,
+     "known_exceptions": 58.1,
+     "classes": 5,
+     "class_sizes": [
+      109,
+      6,
+      2,
+      37,
+      80
+     ],
+     "purity": 92.2,
+     "table": [
+      [
+       6.2,
+       44.4,
+       3.4,
+       14.3,
+       1.4
+      ],
+      [
+       3.0,
+       0.0,
+       1.0,
+       0.0,
+       2.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.9,
+       0.6,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       36.4,
+       0.0,
+       0.0
+      ],
+      [
+       78.0,
+       1.0,
+       0.0,
+       0.0,
+       1.0
+      ]
+     ],
+     "objects": 234,
+     "objects_by_truth": [
+      93,
+      72,
+      45,
+      19,
+      5
+     ],
+     "appearance_share": {
+      "shape": 0.255,
+      "colour": 0.745
+     },
+     "in_contact": 1932,
+     "came_along": 1720,
+     "fit_seconds": 106,
+     "contact_caught": 53.3,
+     "contact_false": 11.0,
+     "moved_steps_same": 92.8,
+     "still_steps_same": 99.8,
+     "patterns_on_the_hand_left_out": 103
+    }
+   },
+   {
+    "world": 2,
+    "by": "shape",
+    "patterns": 287,
+    "experience": {
+     "stored": 81,
+     "known": 141,
+     "too_big": 1,
+     "still": 206,
+     "groups_tried": 623,
+     "groups_that_came": 87,
+     "objects": 303,
+     "objects_moved": 116
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 304,
+      "bound": 298,
+      "labels_on_the_ground_per_scene": 0.94,
+      "found_movable": 96.0,
+      "found_fixed": 95.3
+     },
+     "known_objects": {
+      "objects": 309,
+      "bound": 309,
+      "labels_on_the_ground_per_scene": 0.5,
+      "found_movable": 97.9,
+      "found_fixed": 93.9
+     }
+    },
+    "seconds": 355,
+    "experience_seconds": 286,
+    "sim": {
+     "new_all": 90.9,
+     "new_by": {
+      "takeable": 92.5,
+      "fixed": 97.6,
+      "sticky": 76.1
+     },
+     "new_true_given": 82.2,
+     "new_one_class": 41.9,
+     "known_all": 96.7,
+     "known_appearance_only": 72.9,
+     "known_exceptions": 85.7,
+     "classes": 3,
+     "class_sizes": [
+      74,
+      40,
+      63
+     ],
+     "purity": 97.9,
+     "table": [
+      [
+       0.6,
+       19.2,
+       0.4,
+       0.0,
+       0.0
+      ],
+      [
+       0.6,
+       0.0,
+       33.6,
+       0.0,
+       0.0
+      ],
+      [
+       53.5,
+       0.7,
+       0.1,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 177,
+     "objects_by_truth": [
+      65,
+      70,
+      42,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.96,
+      "colour": 0.04
+     },
+     "in_contact": 1983,
+     "came_along": 1288,
+     "fit_seconds": 45
+    },
+    "own": {
+     "new_all": 61.1,
+     "new_by": {
+      "takeable": 41.5,
+      "fixed": 100.0,
+      "sticky": 19.4
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 35.6,
+     "known_all": 96.7,
+     "known_appearance_only": 64.4,
+     "known_exceptions": 94.3,
+     "classes": 5,
+     "class_sizes": [
+      168,
+      52,
+      2,
+      4,
+      60
+     ],
+     "purity": 88.7,
+     "table": [
+      [
+       8.7,
+       79.5,
+       4.5,
+       46.2,
+       1.0
+      ],
+      [
+       2.5,
+       5.0,
+       39.4,
+       2.0,
+       1.0
+      ],
+      [
+       0.0,
+       0.0,
+       1.0,
+       0.0,
+       1.0
+      ],
+      [
+       4.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       55.1,
+       2.0,
+       2.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 286,
+     "objects_by_truth": [
+      76,
+      106,
+      51,
+      50,
+      3
+     ],
+     "appearance_share": {
+      "shape": 0.781,
+      "colour": 0.219
+     },
+     "in_contact": 2397,
+     "came_along": 1351,
+     "fit_seconds": 226,
+     "contact_caught": 75.2,
+     "contact_false": 6.8,
+     "moved_steps_same": 99.0,
+     "still_steps_same": 100.0,
+     "patterns_on_the_hand_left_out": 116
+    }
+   },
+   {
+    "world": 3,
+    "by": "colour",
+    "patterns": 192,
+    "experience": {
+     "stored": 76,
+     "known": 153,
+     "too_big": 0,
+     "still": 116,
+     "groups_tried": 677,
+     "groups_that_came": 84,
+     "objects": 296,
+     "objects_moved": 117
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 300,
+      "bound": 191,
+      "labels_on_the_ground_per_scene": 0.23,
+      "found_movable": 96.2,
+      "found_fixed": 5.1
+     },
+     "known_objects": {
+      "objects": 298,
+      "bound": 288,
+      "labels_on_the_ground_per_scene": 0.1,
+      "found_movable": 95.7,
+      "found_fixed": 27.0
+     }
+    },
+    "seconds": 215,
+    "experience_seconds": 277,
+    "sim": {
+     "new_all": 80.3,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "new_true_given": 80.3,
+     "new_one_class": 38.5,
+     "known_all": 68.3,
+     "known_appearance_only": 64.2,
+     "known_exceptions": 32.1,
+     "classes": 3,
+     "class_sizes": [
+      20,
+      45,
+      76
+     ],
+     "purity": 98.4,
+     "table": [
+      [
+       0.0,
+       0.0,
+       17.2,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       12.3,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       61.7,
+       1.5,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 141,
+     "objects_by_truth": [
+      72,
+      49,
+      20,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.061,
+      "colour": 0.939
+     },
+     "in_contact": 2074,
+     "came_along": 1425,
+     "fit_seconds": 58
+    },
+    "own": {
+     "new_all": 100.0,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 41.1,
+     "known_all": 95.6,
+     "known_appearance_only": 81.9,
+     "known_exceptions": 75.5,
+     "classes": 4,
+     "class_sizes": [
+      80,
+      20,
+      28,
+      62
+     ],
+     "purity": 93.7,
+     "table": [
+      [
+       7.4,
+       48.2,
+       0.7,
+       14.8,
+       0.0
+      ],
+      [
+       19.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       25.3,
+       1.0,
+       0.0
+      ],
+      [
+       57.7,
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 190,
+     "objects_by_truth": [
+      91,
+      55,
+      27,
+      17,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.188,
+      "colour": 0.812
+     },
+     "in_contact": 2049,
+     "came_along": 1577,
+     "fit_seconds": 87,
+     "contact_caught": 67.9,
+     "contact_false": 5.2,
+     "moved_steps_same": 98.7,
+     "still_steps_same": 100.0,
+     "patterns_on_the_hand_left_out": 102
+    }
+   },
+   {
+    "world": 3,
+    "by": "shape",
+    "patterns": 237,
+    "experience": {
+     "stored": 92,
+     "known": 192,
+     "too_big": 0,
+     "still": 145,
+     "groups_tried": 688,
+     "groups_that_came": 107,
+     "objects": 290,
+     "objects_moved": 121
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 295,
+      "bound": 290,
+      "labels_on_the_ground_per_scene": 2.41,
+      "found_movable": 97.8,
+      "found_fixed": 98.3
+     },
+     "known_objects": {
+      "objects": 296,
+      "bound": 291,
+      "labels_on_the_ground_per_scene": 2.96,
+      "found_movable": 99.5,
+      "found_fixed": 92.5
+     }
+    },
+    "seconds": 311,
+    "experience_seconds": 281,
+    "sim": {
+     "new_all": 80.3,
+     "new_by": {
+      "takeable": 98.5,
+      "fixed": 63.7,
+      "sticky": 69.6
+     },
+     "new_true_given": 92.4,
+     "new_one_class": 39.1,
+     "known_all": 87.1,
+     "known_appearance_only": 67.6,
+     "known_exceptions": 68.3,
+     "classes": 3,
+     "class_sizes": [
+      54,
+      43,
+      76
+     ],
+     "purity": 97.2,
+     "table": [
+      [
+       0.0,
+       14.2,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       1.5,
+       0.0,
+       34.4,
+       0.0,
+       0.0
+      ],
+      [
+       51.3,
+       0.9,
+       0.5,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 173,
+     "objects_by_truth": [
+      71,
+      61,
+      41,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.926,
+      "colour": 0.074
+     },
+     "in_contact": 2334,
+     "came_along": 1569,
+     "fit_seconds": 66
+    },
+    "own": {
+     "new_all": 75.8,
+     "new_by": {
+      "takeable": 50.0,
+      "fixed": 100.0,
+      "sticky": 89.1
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 45.0,
+     "known_all": 85.7,
+     "known_appearance_only": 60.6,
+     "known_exceptions": 80.0,
+     "classes": 4,
+     "class_sizes": [
+      117,
+      59,
+      52,
+      8
+     ],
+     "purity": 81.2,
+     "table": [
+      [
+       15.9,
+       54.2,
+       5.5,
+       20.9,
+       0.5
+      ],
+      [
+       52.3,
+       2.0,
+       0.0,
+       0.9,
+       0.0
+      ],
+      [
+       4.9,
+       6.9,
+       36.5,
+       0.0,
+       0.0
+      ],
+      [
+       4.6,
+       1.0,
+       2.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 236,
+     "objects_by_truth": [
+      88,
+      75,
+      49,
+      23,
+      1
+     ],
+     "appearance_share": {
+      "shape": 0.726,
+      "colour": 0.274
+     },
+     "in_contact": 2432,
+     "came_along": 1594,
+     "fit_seconds": 169,
+     "contact_caught": 67.5,
+     "contact_false": 9.9,
+     "moved_steps_same": 96.8,
+     "still_steps_same": 100.0,
+     "patterns_on_the_hand_left_out": 180
+    }
+   },
+   {
+    "world": 4,
+    "by": "colour",
+    "patterns": 176,
+    "experience": {
+     "stored": 107,
+     "known": 200,
+     "too_big": 2,
+     "still": 69,
+     "groups_tried": 633,
+     "groups_that_came": 106,
+     "objects": 288,
+     "objects_moved": 126
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 296,
+      "bound": 283,
+      "labels_on_the_ground_per_scene": 1.35,
+      "found_movable": 97.8,
+      "found_fixed": 83.9
+     },
+     "known_objects": {
+      "objects": 306,
+      "bound": 282,
+      "labels_on_the_ground_per_scene": 1.78,
+      "found_movable": 99.4,
+      "found_fixed": 74.5
+     }
+    },
+    "seconds": 282,
+    "experience_seconds": 274,
+    "sim": {
+     "new_all": 86.2,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 64.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 96.2,
+     "new_one_class": 42.8,
+     "known_all": 78.5,
+     "known_appearance_only": 67.3,
+     "known_exceptions": 70.5,
+     "classes": 4,
+     "class_sizes": [
+      15,
+      41,
+      1,
+      74
+     ],
+     "purity": 98.2,
+     "table": [
+      [
+       0.0,
+       5.9,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.2,
+       34.9,
+       0.0,
+       0.0
+      ],
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       56.8,
+       1.0,
+       0.5,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 131,
+     "objects_by_truth": [
+      68,
+      22,
+      41,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.024,
+      "colour": 0.976
+     },
+     "in_contact": 2415,
+     "came_along": 1683,
+     "fit_seconds": 92
+    },
+    "own": {
+     "new_all": 100.0,
+     "new_by": {
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 43.1,
+     "known_all": 96.0,
+     "known_appearance_only": 79.9,
+     "known_exceptions": 93.4,
+     "classes": 6,
+     "class_sizes": [
+      43,
+      52,
+      5,
+      40,
+      5,
+      28
+     ],
+     "purity": 95.2,
+     "table": [
+      [
+       0.9,
+       20.3,
+       2.9,
+       9.8,
+       0.7
+      ],
+      [
+       46.4,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       1.7,
+       0.0,
+       0.0,
+       0.0,
+       3.0
+      ],
+      [
+       0.0,
+       0.0,
+       37.2,
+       0.0,
+       0.0
+      ],
+      [
+       3.0,
+       0.0,
+       0.0,
+       1.0,
+       1.0
+      ],
+      [
+       26.1,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 173,
+     "objects_by_truth": [
+      86,
+      25,
+      45,
+      12,
+      5
+     ],
+     "appearance_share": {
+      "shape": 0.204,
+      "colour": 0.796
+     },
+     "in_contact": 2267,
+     "came_along": 1742,
+     "fit_seconds": 122,
+     "contact_caught": 69.5,
+     "contact_false": 4.6,
+     "moved_steps_same": 99.5,
+     "still_steps_same": 100.0,
+     "patterns_on_the_hand_left_out": 181
+    }
+   },
+   {
+    "world": 4,
+    "by": "shape",
+    "patterns": 202,
+    "experience": {
+     "stored": 79,
+     "known": 232,
+     "too_big": 0,
+     "still": 123,
+     "groups_tried": 655,
+     "groups_that_came": 96,
+     "objects": 286,
+     "objects_moved": 117
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 291,
+      "bound": 282,
+      "labels_on_the_ground_per_scene": 0.29,
+      "found_movable": 92.4,
+      "found_fixed": 94.1
+     },
+     "known_objects": {
+      "objects": 304,
+      "bound": 304,
+      "labels_on_the_ground_per_scene": 0.23,
+      "found_movable": 99.5,
+      "found_fixed": 97.3
+     }
+    },
+    "seconds": 314,
+    "experience_seconds": 281,
+    "sim": {
+     "new_all": 56.1,
+     "new_by": {
+      "takeable": 99.1,
+      "fixed": 2.6,
+      "sticky": 81.5
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 41.1,
+     "known_all": 71.4,
+     "known_appearance_only": 52.9,
+     "known_exceptions": 78.0,
+     "classes": 3,
+     "class_sizes": [
+      25,
+      75,
+      33
+     ],
+     "purity": 96.0,
+     "table": [
+      [
+       0.0,
+       4.9,
+       0.2,
+       0.0,
+       0.0
+      ],
+      [
+       43.1,
+       1.8,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       25.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 133,
+     "objects_by_truth": [
+      52,
+      51,
+      30,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.819,
+      "colour": 0.181
+     },
+     "in_contact": 1865,
+     "came_along": 1257,
+     "fit_seconds": 51
+    },
+    "own": {
+     "new_all": 75.1,
+     "new_by": {
+      "takeable": 77.2,
+      "fixed": 97.4,
+      "sticky": 22.2
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 18.9,
+     "known_all": 85.9,
+     "known_appearance_only": 60.3,
+     "known_exceptions": 100.0,
+     "classes": 6,
+     "class_sizes": [
+      91,
+      4,
+      2,
+      23,
+      28,
+      53
+     ],
+     "purity": 85.7,
+     "table": [
+      [
+       6.6,
+       47.9,
+       5.5,
+       19.7,
+       1.8
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       4.0
+      ],
+      [
+       1.0,
+       0.0,
+       0.9,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       3.0,
+       19.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.8,
+       3.7,
+       19.0,
+       0.0,
+       0.0
+      ],
+      [
+       45.9,
+       5.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 201,
+     "objects_by_truth": [
+      57,
+      66,
+      52,
+      20,
+      6
+     ],
+     "appearance_share": {
+      "shape": 0.585,
+      "colour": 0.415
+     },
+     "in_contact": 2187,
+     "came_along": 1698,
+     "fit_seconds": 188,
+     "contact_caught": 68.6,
+     "contact_false": 8.5,
+     "moved_steps_same": 99.7,
+     "still_steps_same": 100.0,
+     "patterns_on_the_hand_left_out": 197
+    }
+   },
+   {
+    "world": 5,
+    "by": "colour",
+    "patterns": 137,
+    "experience": {
+     "stored": 73,
+     "known": 154,
+     "too_big": 1,
+     "still": 64,
+     "groups_tried": 695,
+     "groups_that_came": 82,
+     "objects": 297,
+     "objects_moved": 110
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 295,
+      "bound": 188,
+      "labels_on_the_ground_per_scene": 2.82,
+      "found_movable": 98.9,
+      "found_fixed": 0.0
+     },
+     "known_objects": {
+      "objects": 299,
+      "bound": 156,
+      "labels_on_the_ground_per_scene": 3.41,
+      "found_movable": 85.4,
+      "found_fixed": 11.9
+     }
+    },
+    "seconds": 259,
+    "experience_seconds": 114,
+    "sim": {
+     "new_all": 99.7,
+     "new_by": {
+      "takeable": 99.2,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 42.0,
+     "known_all": 87.8,
+     "known_appearance_only": 78.0,
+     "known_exceptions": 44.6,
+     "classes": 3,
+     "class_sizes": [
+      33,
+      3,
+      64
+     ],
+     "purity": 95.4,
+     "table": [
+      [
+       2.7,
+       0.0,
+       20.4,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.8,
+       1.2,
+       0.0,
+       0.0
+      ],
+      [
+       51.2,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 100,
+     "objects_by_truth": [
+      70,
+      2,
+      28,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.231,
+      "colour": 0.769
+     },
+     "in_contact": 2041,
+     "came_along": 1522,
+     "fit_seconds": 79
+    },
+    "own": {
+     "new_all": 99.7,
+     "new_by": {
+      "takeable": 99.2,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 42.0,
+     "known_all": 89.8,
+     "known_appearance_only": 78.0,
+     "known_exceptions": 53.8,
+     "classes": 5,
+     "class_sizes": [
+      32,
+      71,
+      5,
+      25,
+      4
+     ],
+     "purity": 85.1,
+     "table": [
+      [
+       9.1,
+       2.0,
+       5.6,
+       8.0,
+       1.0
+      ],
+      [
+       64.3,
+       0.6,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       3.9,
+       0.0,
+       1.0
+      ],
+      [
+       0.0,
+       0.0,
+       22.4,
+       1.0,
+       0.0
+      ],
+      [
+       2.8,
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 137,
+     "objects_by_truth": [
+      86,
+      3,
+      37,
+      9,
+      2
+     ],
+     "appearance_share": {
+      "shape": 0.244,
+      "colour": 0.756
+     },
+     "in_contact": 2126,
+     "came_along": 1564,
+     "fit_seconds": 115,
+     "contact_caught": 77.3,
+     "contact_false": 4.2,
+     "moved_steps_same": 99.5,
+     "still_steps_same": 100.0,
+     "patterns_on_the_hand_left_out": 101
+    }
+   },
+   {
+    "world": 5,
+    "by": "shape",
+    "patterns": 255,
+    "experience": {
+     "stored": 74,
+     "known": 150,
+     "too_big": 3,
+     "still": 181,
+     "groups_tried": 715,
+     "groups_that_came": 89,
+     "objects": 301,
+     "objects_moved": 113
+    },
+    "first_sight": {
+     "new_objects": {
+      "objects": 307,
+      "bound": 306,
+      "labels_on_the_ground_per_scene": 0.72,
+      "found_movable": 96.3,
+      "found_fixed": 90.6
+     },
+     "known_objects": {
+      "objects": 308,
+      "bound": 307,
+      "labels_on_the_ground_per_scene": 0.75,
+      "found_movable": 100.0,
+      "found_fixed": 87.2
+     }
+    },
+    "seconds": 325,
+    "experience_seconds": 284,
+    "sim": {
+     "new_all": 77.1,
+     "new_by": {
+      "takeable": 99.2,
+      "fixed": 46.4,
+      "sticky": 86.5
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 37.7,
+     "known_all": 97.0,
+     "known_appearance_only": 72.3,
+     "known_exceptions": 100.0,
+     "classes": 3,
+     "class_sizes": [
+      65,
+      52,
+      43
+     ],
+     "purity": 98.6,
+     "table": [
+      [
+       0.1,
+       16.8,
+       0.3,
+       0.0,
+       0.0
+      ],
+      [
+       41.5,
+       0.3,
+       0.1,
+       0.0,
+       0.0
+      ],
+      [
+       0.2,
+       0.4,
+       35.4,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 160,
+     "objects_by_truth": [
+      54,
+      64,
+      42,
+      0,
+      0
+     ],
+     "appearance_share": {
+      "shape": 0.978,
+      "colour": 0.022
+     },
+     "in_contact": 1980,
+     "came_along": 1197,
+     "fit_seconds": 68
+    },
+    "own": {
+     "new_all": 63.0,
+     "new_by": {
+      "takeable": 40.6,
+      "fixed": 100.0,
+      "sticky": 40.4
+     },
+     "new_true_given": 100.0,
+     "new_one_class": 17.5,
+     "known_all": 88.1,
+     "known_appearance_only": 59.4,
+     "known_exceptions": 100.0,
+     "classes": 5,
+     "class_sizes": [
+      151,
+      52,
+      47,
+      2,
+      2
+     ],
+     "purity": 87.3,
+     "table": [
+      [
+       5.3,
+       46.4,
+       2.6,
+       34.3,
+       0.0
+      ],
+      [
+       5.0,
+       3.0,
+       41.3,
+       0.0,
+       1.0
+      ],
+      [
+       39.1,
+       5.0,
+       1.2,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.9,
+       0.8,
+       0.0,
+       0.0
+      ]
+     ],
+     "objects": 254,
+     "objects_by_truth": [
+      59,
+      101,
+      53,
+      40,
+      1
+     ],
+     "appearance_share": {
+      "shape": 0.732,
+      "colour": 0.268
+     },
+     "in_contact": 2678,
+     "came_along": 1367,
+     "fit_seconds": 179,
+     "contact_caught": 76.1,
+     "contact_false": 11.5,
+     "moved_steps_same": 98.4,
+     "still_steps_same": 100.0,
+     "patterns_on_the_hand_left_out": 114
+    }
+   }
+  ]
+ },
+ "verdicts": {
+  "1": "pass (86.4 against 80.0; lowest world 61.1)",
+  "2": "pass (own tokens 1.4 points above the simulator's; per world -29.8 to +19.7)",
+  "3": "fail (88.9 against 90.0)"
+ },
+ "checks": {
+  "ground_patterns_left_out": {
+   "note": "own tokens refitted without the patterns on the ground (a check that reads the simulator); never-met objects, action right",
+   "shape 2": {
+    "with_ground": 61.1,
+    "without": 64.8,
+    "takeable": 46.2,
+    "sticky": 28.4,
+    "fixed": 100.0
+   },
+   "shape 4": {
+    "with_ground": 75.1,
+    "without": 86.0,
+    "takeable": 86.0,
+    "sticky": 70.4,
+    "fixed": 93.2
+   }
+  },
+  "contacts_of_fixed_objects": {
+   "note": "tools/card157/dev3.py: steps in contact, both / simulator only / own only",
+   "shape 4": [
+    171,
+    65,
+    44
+   ],
+   "shape 2": [
+    242,
+    124,
+    77
+   ],
+   "shape 1": [
+    225,
+    99,
+    41
+   ]
+  },
+  "reading": "neither check explains why the simulator-token arm answers 'cannot' for fewer fixed objects (72.1 against 98.6); left unexplained"
+ }
+}

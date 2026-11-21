@@ -1,0 +1,1142 @@
+{
+ "card": "156",
+ "runs": 20,
+ "per_run": [
+  {
+   "arm": "agent",
+   "world": 1,
+   "by": "colour",
+   "moved": 118,
+   "movable": 169,
+   "patterns": 208,
+   "still_patterns": 125,
+   "objects_by_true_behaviour": [
+    63,
+    47,
+    34
+   ],
+   "classes": 3,
+   "class_sizes": [
+    62,
+    31,
+    51
+   ],
+   "class_purity": 97.3,
+   "groups_tried": 592,
+   "groups_that_came": 96,
+   "new_found_movable": 97.8,
+   "new_found": {
+    "takeable": 96.8,
+    "sticky": 100.0,
+    "fixed": 25.0,
+    "movable, a width never seen": 98.0
+   },
+   "new_ground_labels": 2.08,
+   "new_take": 94.4,
+   "new_take_by": {
+    "takeable": 100.0,
+    "sticky": 71.2,
+    "fixed": 100.0
+   },
+   "new_effects": 86.6,
+   "new_effects_bound": 85.3,
+   "known_found_movable": 93.8,
+   "known_take": 84.8,
+   "known_take_by": {
+    "takeable": 92.0,
+    "sticky": 60.6,
+    "fixed": 91.5,
+    "exceptions": 61.1
+   },
+   "known_effects": 84.9,
+   "known_effects_bound": 86.6,
+   "known_ground_labels": 2.95,
+   "seconds": 462
+  },
+  {
+   "arm": "agent",
+   "world": 2,
+   "by": "colour",
+   "moved": 107,
+   "movable": 170,
+   "patterns": 232,
+   "still_patterns": 152,
+   "objects_by_true_behaviour": [
+    63,
+    42,
+    37
+   ],
+   "classes": 3,
+   "class_sizes": [
+    43,
+    38,
+    61
+   ],
+   "class_purity": 98.1,
+   "groups_tried": 660,
+   "groups_that_came": 87,
+   "new_found_movable": 100.0,
+   "new_found": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 8.0,
+    "movable, a width never seen": 100.0
+   },
+   "new_ground_labels": 0.73,
+   "new_take": 68.4,
+   "new_take_by": {
+    "takeable": 22.5,
+    "sticky": 100.0,
+    "fixed": 100.0
+   },
+   "new_effects": 90.2,
+   "new_effects_bound": 86.3,
+   "known_found_movable": 100.0,
+   "known_take": 76.0,
+   "known_take_by": {
+    "takeable": 23.9,
+    "sticky": 100.0,
+    "fixed": 100.0,
+    "exceptions": 50.0
+   },
+   "known_effects": 91.5,
+   "known_effects_bound": 87.2,
+   "known_ground_labels": 0.93,
+   "seconds": 474
+  },
+  {
+   "arm": "agent",
+   "world": 3,
+   "by": "colour",
+   "moved": 131,
+   "movable": 185,
+   "patterns": 195,
+   "still_patterns": 111,
+   "objects_by_true_behaviour": [
+    67,
+    52,
+    28
+   ],
+   "classes": 3,
+   "class_sizes": [
+    43,
+    28,
+    76
+   ],
+   "class_purity": 96.7,
+   "groups_tried": 651,
+   "groups_that_came": 108,
+   "new_found_movable": 99.5,
+   "new_found": {
+    "takeable": 99.2,
+    "sticky": 100.0,
+    "fixed": 31.4,
+    "movable, a width never seen": 100.0
+   },
+   "new_ground_labels": 0.33,
+   "new_take": 84.9,
+   "new_take_by": {
+    "takeable": 82.9,
+    "sticky": 59.3,
+    "fixed": 100.0
+   },
+   "new_effects": 83.4,
+   "new_effects_bound": 82.2,
+   "known_found_movable": 100.0,
+   "known_take": 73.7,
+   "known_take_by": {
+    "takeable": 77.5,
+    "sticky": 60.0,
+    "fixed": 77.8,
+    "exceptions": 43.4
+   },
+   "known_effects": 81.3,
+   "known_effects_bound": 81.2,
+   "known_ground_labels": 0.2,
+   "seconds": 461
+  },
+  {
+   "arm": "agent",
+   "world": 4,
+   "by": "colour",
+   "moved": 114,
+   "movable": 160,
+   "patterns": 168,
+   "still_patterns": 80,
+   "objects_by_true_behaviour": [
+    72,
+    24,
+    28
+   ],
+   "classes": 3,
+   "class_sizes": [
+    24,
+    29,
+    71
+   ],
+   "class_purity": 97.7,
+   "groups_tried": 634,
+   "groups_that_came": 93,
+   "new_found_movable": 97.8,
+   "new_found": {
+    "takeable": 97.7,
+    "sticky": 98.2,
+    "fixed": 75.0,
+    "movable, a width never seen": 100.0
+   },
+   "new_ground_labels": 2.92,
+   "new_take": 65.9,
+   "new_take_by": {
+    "takeable": 100.0,
+    "sticky": 0.0,
+    "fixed": 59.5
+   },
+   "new_effects": 85.9,
+   "new_effects_bound": 84.5,
+   "known_found_movable": 99.4,
+   "known_take": 65.0,
+   "known_take_by": {
+    "takeable": 97.9,
+    "sticky": 0.0,
+    "fixed": 71.5,
+    "exceptions": 72.1
+   },
+   "known_effects": 87.0,
+   "known_effects_bound": 87.7,
+   "known_ground_labels": 3.35,
+   "seconds": 459
+  },
+  {
+   "arm": "agent",
+   "world": 5,
+   "by": "colour",
+   "moved": 104,
+   "movable": 160,
+   "patterns": 161,
+   "still_patterns": 81,
+   "objects_by_true_behaviour": [
+    70,
+    24,
+    24
+   ],
+   "classes": 3,
+   "class_sizes": [
+    21,
+    25,
+    72
+   ],
+   "class_purity": 99.5,
+   "groups_tried": 694,
+   "groups_that_came": 78,
+   "new_found_movable": 97.9,
+   "new_found": {
+    "takeable": 100.0,
+    "sticky": 93.8,
+    "fixed": 8.4,
+    "movable, a width never seen": 100.0
+   },
+   "new_ground_labels": 2.57,
+   "new_take": 72.0,
+   "new_take_by": {
+    "takeable": 62.6,
+    "sticky": 43.8,
+    "fixed": 100.0
+   },
+   "new_effects": 82.8,
+   "new_effects_bound": 82.9,
+   "known_found_movable": 100.0,
+   "known_take": 68.8,
+   "known_take_by": {
+    "takeable": 58.9,
+    "sticky": 34.7,
+    "fixed": 94.0,
+    "exceptions": 46.2
+   },
+   "known_effects": 83.1,
+   "known_effects_bound": 83.5,
+   "known_ground_labels": 3.36,
+   "seconds": 416
+  },
+  {
+   "arm": "agent",
+   "world": 1,
+   "by": "shape",
+   "moved": 125,
+   "movable": 185,
+   "patterns": 214,
+   "still_patterns": 136,
+   "objects_by_true_behaviour": [
+    69,
+    52,
+    26
+   ],
+   "classes": 3,
+   "class_sizes": [
+    54,
+    25,
+    68
+   ],
+   "class_purity": 95.6,
+   "groups_tried": 731,
+   "groups_that_came": 101,
+   "new_found_movable": 97.5,
+   "new_found": {
+    "takeable": 96.2,
+    "sticky": 100.0,
+    "fixed": 87.3,
+    "movable, a width never seen": 98.6
+   },
+   "new_ground_labels": 0.25,
+   "new_take": 79.7,
+   "new_take_by": {
+    "takeable": 97.7,
+    "sticky": 80.0,
+    "fixed": 59.1
+   },
+   "new_effects": 77.2,
+   "new_effects_bound": 88.8,
+   "known_found_movable": 100.0,
+   "known_take": 98.7,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 96.5,
+    "exceptions": 100.0
+   },
+   "known_effects": 92.0,
+   "known_effects_bound": 89.7,
+   "known_ground_labels": 0.33,
+   "seconds": 442
+  },
+  {
+   "arm": "agent",
+   "world": 2,
+   "by": "shape",
+   "moved": 108,
+   "movable": 158,
+   "patterns": 275,
+   "still_patterns": 189,
+   "objects_by_true_behaviour": [
+    65,
+    81,
+    39
+   ],
+   "classes": 3,
+   "class_sizes": [
+    84,
+    44,
+    57
+   ],
+   "class_purity": 97.5,
+   "groups_tried": 633,
+   "groups_that_came": 92,
+   "new_found_movable": 93.2,
+   "new_found": {
+    "takeable": 93.5,
+    "sticky": 92.8,
+    "fixed": 90.6,
+    "movable, a width never seen": 96.2
+   },
+   "new_ground_labels": 0.95,
+   "new_take": 74.8,
+   "new_take_by": {
+    "takeable": 84.0,
+    "sticky": 14.9,
+    "fixed": 99.2
+   },
+   "new_effects": 71.5,
+   "new_effects_bound": 89.1,
+   "known_found_movable": 99.3,
+   "known_take": 84.2,
+   "known_take_by": {
+    "takeable": 89.0,
+    "sticky": 9.8,
+    "fixed": 100.0,
+    "exceptions": 67.1
+   },
+   "known_effects": 85.5,
+   "known_effects_bound": 92.7,
+   "known_ground_labels": 0.47,
+   "seconds": 455
+  },
+  {
+   "arm": "agent",
+   "world": 3,
+   "by": "shape",
+   "moved": 128,
+   "movable": 181,
+   "patterns": 238,
+   "still_patterns": 141,
+   "objects_by_true_behaviour": [
+    69,
+    60,
+    37
+   ],
+   "classes": 3,
+   "class_sizes": [
+    60,
+    40,
+    66
+   ],
+   "class_purity": 96.9,
+   "groups_tried": 678,
+   "groups_that_came": 96,
+   "new_found_movable": 97.8,
+   "new_found": {
+    "takeable": 97.7,
+    "sticky": 97.9,
+    "fixed": 96.5,
+    "movable, a width never seen": 98.4
+   },
+   "new_ground_labels": 1.0,
+   "new_take": 83.0,
+   "new_take_by": {
+    "takeable": 98.5,
+    "sticky": 0.0,
+    "fixed": 99.1
+   },
+   "new_effects": 83.7,
+   "new_effects_bound": 86.4,
+   "known_found_movable": 100.0,
+   "known_take": 76.3,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 0.0,
+    "fixed": 100.0,
+    "exceptions": 73.3
+   },
+   "known_effects": 90.1,
+   "known_effects_bound": 86.1,
+   "known_ground_labels": 1.68,
+   "seconds": 459
+  },
+  {
+   "arm": "agent",
+   "world": 4,
+   "by": "shape",
+   "moved": 114,
+   "movable": 182,
+   "patterns": 211,
+   "still_patterns": 130,
+   "objects_by_true_behaviour": [
+    61,
+    52,
+    33
+   ],
+   "classes": 4,
+   "class_sizes": [
+    46,
+    1,
+    36,
+    63
+   ],
+   "class_purity": 97.3,
+   "groups_tried": 631,
+   "groups_that_came": 85,
+   "new_found_movable": 89.0,
+   "new_found": {
+    "takeable": 89.5,
+    "sticky": 87.9,
+    "fixed": 92.4,
+    "movable, a width never seen": 88.7
+   },
+   "new_ground_labels": 0.15,
+   "new_take": 42.5,
+   "new_take_by": {
+    "takeable": 0.0,
+    "sticky": 7.4,
+    "fixed": 100.0
+   },
+   "new_effects": 76.5,
+   "new_effects_bound": 83.0,
+   "known_found_movable": 90.2,
+   "known_take": 40.7,
+   "known_take_by": {
+    "takeable": 0.0,
+    "sticky": 19.5,
+    "fixed": 100.0,
+    "exceptions": 34.0
+   },
+   "known_effects": 84.3,
+   "known_effects_bound": 82.9,
+   "known_ground_labels": 0.15,
+   "seconds": 492
+  },
+  {
+   "arm": "agent",
+   "world": 5,
+   "by": "shape",
+   "moved": 115,
+   "movable": 171,
+   "patterns": 261,
+   "still_patterns": 185,
+   "objects_by_true_behaviour": [
+    62,
+    66,
+    30
+   ],
+   "classes": 3,
+   "class_sizes": [
+    66,
+    32,
+    60
+   ],
+   "class_purity": 98.5,
+   "groups_tried": 713,
+   "groups_that_came": 84,
+   "new_found_movable": 98.9,
+   "new_found": {
+    "takeable": 100.0,
+    "sticky": 96.4,
+    "fixed": 96.6,
+    "movable, a width never seen": 98.4
+   },
+   "new_ground_labels": 0.1,
+   "new_take": 84.2,
+   "new_take_by": {
+    "takeable": 97.7,
+    "sticky": 15.4,
+    "fixed": 100.0
+   },
+   "new_effects": 87.2,
+   "new_effects_bound": 86.1,
+   "known_found_movable": 99.5,
+   "known_take": 74.9,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 15.6,
+    "fixed": 100.0,
+    "exceptions": 29.1
+   },
+   "known_effects": 89.9,
+   "known_effects_bound": 85.2,
+   "known_ground_labels": 0.06,
+   "seconds": 460
+  },
+  {
+   "arm": "script",
+   "world": 1,
+   "by": "colour",
+   "moved": 138,
+   "movable": 193,
+   "patterns": 301,
+   "still_patterns": 186,
+   "objects_by_true_behaviour": [
+    75,
+    63,
+    40
+   ],
+   "classes": 3,
+   "class_sizes": [
+    64,
+    40,
+    74
+   ],
+   "class_purity": 99.7,
+   "groups_tried": null,
+   "groups_that_came": null,
+   "new_found_movable": 99.5,
+   "new_found": {
+    "takeable": 99.2,
+    "sticky": 100.0,
+    "fixed": 10.0,
+    "movable, a width never seen": 100.0
+   },
+   "new_ground_labels": 4.11,
+   "new_take": 100.0,
+   "new_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 100.0
+   },
+   "new_effects": 91.5,
+   "new_effects_bound": 91.5,
+   "known_found_movable": 100.0,
+   "known_take": 97.3,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 91.5,
+    "exceptions": 88.9
+   },
+   "known_effects": 91.7,
+   "known_effects_bound": 92.0,
+   "known_ground_labels": 4.09,
+   "seconds": 388
+  },
+  {
+   "arm": "script",
+   "world": 2,
+   "by": "colour",
+   "moved": 118,
+   "movable": 159,
+   "patterns": 300,
+   "still_patterns": 199,
+   "objects_by_true_behaviour": [
+    70,
+    66,
+    34
+   ],
+   "classes": 3,
+   "class_sizes": [
+    66,
+    33,
+    71
+   ],
+   "class_purity": 100.0,
+   "groups_tried": null,
+   "groups_that_came": null,
+   "new_found_movable": 98.9,
+   "new_found": {
+    "takeable": 98.4,
+    "sticky": 100.0,
+    "fixed": 19.2,
+    "movable, a width never seen": 100.0
+   },
+   "new_ground_labels": 5.18,
+   "new_take": 100.0,
+   "new_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 100.0
+   },
+   "new_effects": 94.6,
+   "new_effects_bound": 94.5,
+   "known_found_movable": 100.0,
+   "known_take": 95.9,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 82.1,
+    "fixed": 100.0,
+    "exceptions": 80.6
+   },
+   "known_effects": 90.6,
+   "known_effects_bound": 95.5,
+   "known_ground_labels": 5.94,
+   "seconds": 412
+  },
+  {
+   "arm": "script",
+   "world": 3,
+   "by": "colour",
+   "moved": 135,
+   "movable": 189,
+   "patterns": 252,
+   "still_patterns": 168,
+   "objects_by_true_behaviour": [
+    78,
+    39,
+    31
+   ],
+   "classes": 3,
+   "class_sizes": [
+    37,
+    31,
+    80
+   ],
+   "class_purity": 99.9,
+   "groups_tried": null,
+   "groups_that_came": null,
+   "new_found_movable": 97.8,
+   "new_found": {
+    "takeable": 96.7,
+    "sticky": 100.0,
+    "fixed": 41.5,
+    "movable, a width never seen": 98.4
+   },
+   "new_ground_labels": 1.88,
+   "new_take": 100.0,
+   "new_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 100.0
+   },
+   "new_effects": 92.4,
+   "new_effects_bound": 92.4,
+   "known_found_movable": 100.0,
+   "known_take": 94.9,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 86.1,
+    "exceptions": 71.7
+   },
+   "known_effects": 91.1,
+   "known_effects_bound": 92.4,
+   "known_ground_labels": 2.4,
+   "seconds": 393
+  },
+  {
+   "arm": "script",
+   "world": 4,
+   "by": "colour",
+   "moved": 133,
+   "movable": 179,
+   "patterns": 273,
+   "still_patterns": 182,
+   "objects_by_true_behaviour": [
+    76,
+    59,
+    30
+   ],
+   "classes": 3,
+   "class_sizes": [
+    75,
+    30,
+    60
+   ],
+   "class_purity": 99.4,
+   "groups_tried": null,
+   "groups_that_came": null,
+   "new_found_movable": 97.8,
+   "new_found": {
+    "takeable": 98.4,
+    "sticky": 96.4,
+    "fixed": 32.1,
+    "movable, a width never seen": 98.1
+   },
+   "new_ground_labels": 1.29,
+   "new_take": 100.0,
+   "new_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 100.0
+   },
+   "new_effects": 92.3,
+   "new_effects_bound": 92.5,
+   "known_found_movable": 100.0,
+   "known_take": 97.7,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 95.1,
+    "exceptions": 88.5
+   },
+   "known_effects": 95.6,
+   "known_effects_bound": 96.0,
+   "known_ground_labels": 2.04,
+   "seconds": 278
+  },
+  {
+   "arm": "script",
+   "world": 5,
+   "by": "colour",
+   "moved": 146,
+   "movable": 191,
+   "patterns": 257,
+   "still_patterns": 133,
+   "objects_by_true_behaviour": [
+    79,
+    38,
+    44
+   ],
+   "classes": 3,
+   "class_sizes": [
+    38,
+    44,
+    79
+   ],
+   "class_purity": 100.0,
+   "groups_tried": null,
+   "groups_that_came": null,
+   "new_found_movable": 98.9,
+   "new_found": {
+    "takeable": 100.0,
+    "sticky": 96.9,
+    "fixed": 8.4,
+    "movable, a width never seen": 100.0
+   },
+   "new_ground_labels": 3.65,
+   "new_take": 100.0,
+   "new_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 100.0
+   },
+   "new_effects": 90.5,
+   "new_effects_bound": 90.4,
+   "known_found_movable": 100.0,
+   "known_take": 100.0,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 100.0,
+    "exceptions": 100.0
+   },
+   "known_effects": 92.3,
+   "known_effects_bound": 92.2,
+   "known_ground_labels": 3.96,
+   "seconds": 257
+  },
+  {
+   "arm": "script",
+   "world": 1,
+   "by": "shape",
+   "moved": 121,
+   "movable": 171,
+   "patterns": 296,
+   "still_patterns": 220,
+   "objects_by_true_behaviour": [
+    69,
+    79,
+    31
+   ],
+   "classes": 3,
+   "class_sizes": [
+    82,
+    28,
+    69
+   ],
+   "class_purity": 97.1,
+   "groups_tried": null,
+   "groups_that_came": null,
+   "new_found_movable": 97.0,
+   "new_found": {
+    "takeable": 98.5,
+    "sticky": 93.9,
+    "fixed": 92.4,
+    "movable, a width never seen": 100.0
+   },
+   "new_ground_labels": 0.06,
+   "new_take": 92.6,
+   "new_take_by": {
+    "takeable": 95.4,
+    "sticky": 75.4,
+    "fixed": 99.1
+   },
+   "new_effects": 82.6,
+   "new_effects_bound": 93.1,
+   "known_found_movable": 96.9,
+   "known_take": 95.0,
+   "known_take_by": {
+    "takeable": 98.4,
+    "sticky": 88.1,
+    "fixed": 94.8,
+    "exceptions": 88.5
+   },
+   "known_effects": 88.9,
+   "known_effects_bound": 92.7,
+   "known_ground_labels": 0.07,
+   "seconds": 390
+  },
+  {
+   "arm": "script",
+   "world": 2,
+   "by": "shape",
+   "moved": 122,
+   "movable": 155,
+   "patterns": 308,
+   "still_patterns": 225,
+   "objects_by_true_behaviour": [
+    70,
+    75,
+    36
+   ],
+   "classes": 3,
+   "class_sizes": [
+    84,
+    30,
+    67
+   ],
+   "class_purity": 98.7,
+   "groups_tried": null,
+   "groups_that_came": null,
+   "new_found_movable": 83.6,
+   "new_found": {
+    "takeable": 85.2,
+    "sticky": 81.2,
+    "fixed": 76.4,
+    "movable, a width never seen": 86.8
+   },
+   "new_ground_labels": 0.22,
+   "new_take": 74.8,
+   "new_take_by": {
+    "takeable": 79.2,
+    "sticky": 23.9,
+    "fixed": 98.4
+   },
+   "new_effects": 66.7,
+   "new_effects_bound": 93.5,
+   "known_found_movable": 98.6,
+   "known_take": 97.7,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 82.9,
+    "fixed": 100.0,
+    "exceptions": 90.0
+   },
+   "known_effects": 92.9,
+   "known_effects_bound": 96.6,
+   "known_ground_labels": 0.34,
+   "seconds": 416
+  },
+  {
+   "arm": "script",
+   "world": 3,
+   "by": "shape",
+   "moved": 144,
+   "movable": 190,
+   "patterns": 244,
+   "still_patterns": 143,
+   "objects_by_true_behaviour": [
+    75,
+    55,
+    29
+   ],
+   "classes": 3,
+   "class_sizes": [
+    49,
+    29,
+    81
+   ],
+   "class_purity": 98.2,
+   "groups_tried": null,
+   "groups_that_came": null,
+   "new_found_movable": 97.8,
+   "new_found": {
+    "takeable": 100.0,
+    "sticky": 91.5,
+    "fixed": 99.1,
+    "movable, a width never seen": 98.4
+   },
+   "new_ground_labels": 1.52,
+   "new_take": 87.9,
+   "new_take_by": {
+    "takeable": 100.0,
+    "sticky": 84.8,
+    "fixed": 75.2
+   },
+   "new_effects": 86.4,
+   "new_effects_bound": 91.8,
+   "known_found_movable": 100.0,
+   "known_take": 97.2,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 100.0,
+    "fixed": 91.0,
+    "exceptions": 100.0
+   },
+   "known_effects": 92.0,
+   "known_effects_bound": 92.5,
+   "known_ground_labels": 1.94,
+   "seconds": 406
+  },
+  {
+   "arm": "script",
+   "world": 4,
+   "by": "shape",
+   "moved": 133,
+   "movable": 184,
+   "patterns": 247,
+   "still_patterns": 164,
+   "objects_by_true_behaviour": [
+    71,
+    67,
+    39
+   ],
+   "classes": 3,
+   "class_sizes": [
+    62,
+    78,
+    37
+   ],
+   "class_purity": 98.7,
+   "groups_tried": null,
+   "groups_that_came": null,
+   "new_found_movable": 91.9,
+   "new_found": {
+    "takeable": 93.0,
+    "sticky": 89.7,
+    "fixed": 92.4,
+    "movable, a width never seen": 88.7
+   },
+   "new_ground_labels": 0.28,
+   "new_take": 90.2,
+   "new_take_by": {
+    "takeable": 95.6,
+    "sticky": 64.8,
+    "fixed": 96.6
+   },
+   "new_effects": 81.8,
+   "new_effects_bound": 94.5,
+   "known_found_movable": 99.5,
+   "known_take": 95.3,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 94.8,
+    "fixed": 90.6,
+    "exceptions": 92.0
+   },
+   "known_effects": 91.6,
+   "known_effects_bound": 93.7,
+   "known_ground_labels": 0.59,
+   "seconds": 440
+  },
+  {
+   "arm": "script",
+   "world": 5,
+   "by": "shape",
+   "moved": 138,
+   "movable": 201,
+   "patterns": 278,
+   "still_patterns": 180,
+   "objects_by_true_behaviour": [
+    71,
+    56,
+    49
+   ],
+   "classes": 3,
+   "class_sizes": [
+    57,
+    46,
+    73
+   ],
+   "class_purity": 98.2,
+   "groups_tried": null,
+   "groups_that_came": null,
+   "new_found_movable": 99.5,
+   "new_found": {
+    "takeable": 100.0,
+    "sticky": 98.2,
+    "fixed": 99.1,
+    "movable, a width never seen": 100.0
+   },
+   "new_ground_labels": 1.42,
+   "new_take": 93.9,
+   "new_take_by": {
+    "takeable": 100.0,
+    "sticky": 84.6,
+    "fixed": 91.1
+   },
+   "new_effects": 90.3,
+   "new_effects_bound": 92.9,
+   "known_found_movable": 100.0,
+   "known_take": 96.7,
+   "known_take_by": {
+    "takeable": 100.0,
+    "sticky": 88.9,
+    "fixed": 100.0,
+    "exceptions": 100.0
+   },
+   "known_effects": 91.8,
+   "known_effects_bound": 92.9,
+   "known_ground_labels": 1.52,
+   "seconds": 408
+  }
+ ],
+ "summary": {
+  "agent": {
+   "worlds": 10,
+   "new_found_movable_mean": 96.9,
+   "new_take_mean": 75.0,
+   "new_effects_mean": 82.5,
+   "new_effects_bound_mean": 85.5,
+   "new_ground_labels_mean": 1.11,
+   "known_found_movable_mean": 98.2,
+   "known_take_mean": 74.3,
+   "known_effects_mean": 87.0,
+   "known_ground_labels_mean": 1.35,
+   "class_purity_mean": 97.5,
+   "seconds_mean": 458.0,
+   "by_shape": {
+    "new_found_movable": 95.3,
+    "new_take": 72.8,
+    "known_take": 75.0
+   },
+   "by_colour": {
+    "new_found_movable": 98.6,
+    "new_take": 77.1,
+    "known_take": 73.7
+   },
+   "new_found_movable_lowest": 89.0,
+   "new_take_lowest": 42.5,
+   "known_take_lowest": 40.7,
+   "new_take_takeable": 74.6,
+   "new_take_sticky": 39.2,
+   "new_take_fixed": 91.7,
+   "new_found_takeable": 97.1,
+   "new_found_sticky": 96.7,
+   "new_found_fixed": 61.1,
+   "new_found_new_width": 97.8,
+   "share_of_movable_objects_moved": 67.6,
+   "classes": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    4,
+    3
+   ],
+   "worlds_with_no_sticky_class": 3
+  },
+  "script": {
+   "worlds": 10,
+   "new_found_movable_mean": 96.3,
+   "new_take_mean": 93.9,
+   "new_effects_mean": 86.9,
+   "new_effects_bound_mean": 92.7,
+   "new_ground_labels_mean": 1.96,
+   "known_found_movable_mean": 99.5,
+   "known_take_mean": 96.8,
+   "known_effects_mean": 91.8,
+   "known_ground_labels_mean": 2.29,
+   "class_purity_mean": 99.0,
+   "seconds_mean": 378.8,
+   "by_shape": {
+    "new_found_movable": 94.0,
+    "new_take": 87.9,
+    "known_take": 96.4
+   },
+   "by_colour": {
+    "new_found_movable": 98.6,
+    "new_take": 100.0,
+    "known_take": 97.2
+   },
+   "new_found_movable_lowest": 83.6,
+   "new_take_lowest": 74.8,
+   "known_take_lowest": 94.9,
+   "new_take_takeable": 97.0,
+   "new_take_sticky": 83.3,
+   "new_take_fixed": 96.0,
+   "new_found_takeable": 96.9,
+   "new_found_sticky": 94.8,
+   "new_found_fixed": 57.1,
+   "new_found_new_width": 97.0,
+   "share_of_movable_objects_moved": 73.3,
+   "classes": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+   ],
+   "worlds_with_no_sticky_class": 0
+  }
+ },
+ "verdicts": {
+  "1": "pass (96.9 on the mean; lowest world 89.0)",
+  "2": "fail (75.0 against 80.0)",
+  "3": "fail (75.0 against the script's 93.9)"
+ },
+ "check_of_the_take_failure": {
+  "note": "tools/card156/dev5.py 1 shape 50: transitions in which an object is taken, 50 episodes",
+  "script": {
+   "takes": 150,
+   "without_a_move": 35
+  },
+  "agent": {
+   "takes": 103,
+   "without_a_move": 0
+  },
+  "reading": "the test asks for the action that leaves an object held without moving it; the agent always moves as it grips, so its couplings have no record of that combination; with the true classes given, couplings fitted to the agent's transitions also score 0 on takeable objects in the four agent worlds looked at"
+ }
+}

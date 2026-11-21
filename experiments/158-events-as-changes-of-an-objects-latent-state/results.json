@@ -1,0 +1,6884 @@
+{
+ "card": "158",
+ "development, script": {
+  "summary": {
+   "worlds": 2,
+   "events_f1": {
+    "latent state": 72.8,
+    "state read from what is seen": 53.0,
+    "latent state, true behaviours given": 75.3,
+    "latent state, one class": 58.2,
+    "simulator's tokens, true behaviours": 83.1,
+    "simulator's tokens, true behaviours, penalty 5": 99.2,
+    "simulator's tokens, state read from what is seen": 60.9
+   },
+   "take": {
+    "latent state": 77.8,
+    "own tokens, true behaviours given": 100.0,
+    "own tokens, one class": 39.2,
+    "simulator's tokens, true behaviours": 100.0,
+    "simulator's tokens, true behaviours, penalty 5": 100.0
+   },
+   "events_f1_lowest": 67.5,
+   "events_precision": 69.7,
+   "events_recall": 76.8,
+   "gain_over_seen": 19.8,
+   "worlds_above_seen": 2,
+   "take_takeable": 69.2,
+   "take_fixed": 100.0,
+   "take_sticky": 49.1,
+   "by_shape": {
+    "f1": 67.5,
+    "take": 55.9,
+    "take_true_given": 100.0
+   },
+   "by_colour": {
+    "f1": 78.2,
+    "take": 99.7,
+    "take_true_given": 100.0
+   },
+   "statements": 8,
+   "statements_right": 6,
+   "statements_wrong": [
+    [
+     "shape",
+     0,
+     "takeable",
+     "released",
+     {
+      "grip": 0,
+      "moved": 1
+     }
+    ],
+    [
+     "shape",
+     0,
+     "sticky",
+     "taken",
+     {
+      "contact": 1,
+      "grip": 0,
+      "moved": 0
+     }
+    ]
+   ],
+   "taken_without_a_move_in_experience": [
+    77,
+    95
+   ],
+   "classes": [
+    5,
+    4
+   ],
+   "purity": 89.8
+  },
+  "per_run": [
+   {
+    "world": 0,
+    "by": "colour",
+    "experience": "script",
+    "kind_of": [
+     1,
+     2,
+     1,
+     0,
+     0
+    ],
+    "patterns": 212,
+    "tally": {
+     "stored": 89,
+     "known": 171,
+     "too_big": 1,
+     "still": 123
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      91,
+      22,
+      27,
+      8,
+      64
+     ],
+     "purity": 92.2,
+     "table": [
+      [
+       3.2,
+       44.4,
+       9.1,
+       14.2,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       19.7,
+       1.0,
+       0.0
+      ],
+      [
+       27.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       7.0,
+       0.0,
+       1.0
+      ],
+      [
+       56.4,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 309,
+     "taken_without_a_move": 77,
+     "all_true_events": 589,
+     "sequences": 619,
+     "sequences_on_true_objects": 290
+    },
+    "events": {
+     "latent state": {
+      "f1": 78.2,
+      "precision": 71.1,
+      "recall": 86.9,
+      "events_true": 658,
+      "events_model": 804
+     },
+     "state read from what is seen": {
+      "f1": 53.8,
+      "precision": 52.4,
+      "recall": 55.3,
+      "events_true": 658,
+      "events_model": 694
+     },
+     "latent state, true behaviours given": {
+      "f1": 83.6,
+      "precision": 73.1,
+      "recall": 97.7,
+      "events_true": 658,
+      "events_model": 880
+     },
+     "latent state, one class": {
+      "f1": 61.1,
+      "precision": 59.7,
+      "recall": 62.5,
+      "events_true": 658,
+      "events_model": 688
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 85.3,
+      "precision": 90.6,
+      "recall": 80.5,
+      "events_true": 589,
+      "events_model": 523
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.3,
+      "precision": 98.8,
+      "recall": 99.8,
+      "events_true": 589,
+      "events_model": 595
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 63.7,
+      "precision": 73.3,
+      "recall": 56.4,
+      "events_true": 589,
+      "events_model": 453
+     }
+    },
+    "first_sight": {
+     "objects": 294,
+     "bound": 226,
+     "labels_on_the_ground_per_scene": 0.98,
+     "found_movable": 98.4,
+     "found_fixed": 38.4
+    },
+    "take": {
+     "latent state": {
+      "n": 288,
+      "all": 99.7,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 98.2
+     },
+     "own tokens, true behaviours given": {
+      "n": 288,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 288,
+      "all": 37.8,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 288,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 288,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -7.2,
+      "state before": 7.14,
+      "contact": 2.15,
+      "grip": -0.07,
+      "moved": -1.51
+     },
+     "by_class": [
+      [
+       -7.2,
+       5.83,
+       2.17,
+       -1.25,
+       -1.51
+      ],
+      [
+       -3.36,
+       7.15,
+       6.43,
+       -11.81,
+       -1.51
+      ],
+      [
+       -8.42,
+       7.68,
+       2.14,
+       7.87,
+       -2.24
+      ],
+      [
+       -0.9,
+       7.14,
+       1.28,
+       -4.64,
+       -1.13
+      ],
+      [
+       -14.5,
+       7.14,
+       5.81,
+       11.7,
+       -1.79
+      ]
+     ],
+     "log_likelihood": [
+      -8581.3,
+      -957.2,
+      -950.3,
+      -949.4,
+      -948.9,
+      -948.7
+     ]
+    },
+    "seconds": 8
+   },
+   {
+    "world": 0,
+    "by": "shape",
+    "experience": "script",
+    "kind_of": [
+     1,
+     2,
+     1,
+     0,
+     0
+    ],
+    "patterns": 280,
+    "tally": {
+     "stored": 79,
+     "known": 157,
+     "too_big": 4,
+     "still": 201
+    },
+    "classes": {
+     "n": 4,
+     "sizes": [
+      165,
+      17,
+      45,
+      53
+     ],
+     "purity": 87.3,
+     "table": [
+      [
+       11.0,
+       89.5,
+       2.6,
+       38.5,
+       0.0
+      ],
+      [
+       10.7,
+       1.0,
+       3.0,
+       0.0,
+       2.0
+      ],
+      [
+       2.0,
+       5.0,
+       37.0,
+       0.0,
+       0.0
+      ],
+      [
+       46.0,
+       3.0,
+       1.7,
+       0.9,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 299,
+     "taken_without_a_move": 95,
+     "all_true_events": 571,
+     "sequences": 970,
+     "sequences_on_true_objects": 341
+    },
+    "events": {
+     "latent state": {
+      "f1": 67.5,
+      "precision": 68.3,
+      "recall": 66.7,
+      "events_true": 672,
+      "events_model": 656
+     },
+     "state read from what is seen": {
+      "f1": 52.3,
+      "precision": 54.9,
+      "recall": 50.0,
+      "events_true": 672,
+      "events_model": 612
+     },
+     "latent state, true behaviours given": {
+      "f1": 67.0,
+      "precision": 68.6,
+      "recall": 65.5,
+      "events_true": 672,
+      "events_model": 641
+     },
+     "latent state, one class": {
+      "f1": 55.3,
+      "precision": 60.5,
+      "recall": 50.9,
+      "events_true": 672,
+      "events_model": 565
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 80.9,
+      "precision": 91.2,
+      "recall": 72.7,
+      "events_true": 571,
+      "events_model": 455
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.0,
+      "precision": 98.1,
+      "recall": 99.8,
+      "events_true": 571,
+      "events_model": 581
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 58.0,
+      "precision": 68.9,
+      "recall": 50.1,
+      "events_true": 571,
+      "events_model": 415
+     }
+    },
+    "first_sight": {
+     "objects": 297,
+     "bound": 294,
+     "labels_on_the_ground_per_scene": 0.56,
+     "found_movable": 99.4,
+     "found_fixed": 97.5
+    },
+    "take": {
+     "latent state": {
+      "n": 290,
+      "all": 55.9,
+      "takeable": 38.3,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 290,
+      "all": 40.7,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "contact": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.997
+      ]
+     ],
+     "shared": {
+      "bias": -4.0,
+      "state before": 5.43,
+      "contact": 0.79,
+      "grip": -0.0,
+      "moved": -2.48
+     },
+     "by_class": [
+      [
+       -4.66,
+       5.41,
+       0.79,
+       -0.0,
+       -7.02
+      ],
+      [
+       -2.06,
+       5.43,
+       0.79,
+       0.86,
+       -1.57
+      ],
+      [
+       -1.42,
+       7.48,
+       3.79,
+       -9.05,
+       -2.48
+      ],
+      [
+       -10.71,
+       6.96,
+       4.54,
+       9.08,
+       -2.77
+      ]
+     ],
+     "log_likelihood": [
+      -13200.3,
+      -1101.0,
+      -1095.1,
+      -1094.9,
+      -1094.9,
+      -1094.9
+     ]
+    },
+    "seconds": 9
+   }
+  ]
+ },
+ "test, script": {
+  "summary": {
+   "worlds": 10,
+   "events_f1": {
+    "latent state": 71.3,
+    "state read from what is seen": 53.5,
+    "latent state, true behaviours given": 70.0,
+    "latent state, one class": 56.4,
+    "simulator's tokens, true behaviours": 81.3,
+    "simulator's tokens, true behaviours, penalty 5": 99.7,
+    "simulator's tokens, state read from what is seen": 63.6
+   },
+   "take": {
+    "latent state": 78.8,
+    "own tokens, true behaviours given": 100.0,
+    "own tokens, one class": 39.1,
+    "simulator's tokens, true behaviours": 100.0,
+    "simulator's tokens, true behaviours, penalty 5": 100.0
+   },
+   "events_f1_lowest": 65.8,
+   "events_precision": 67.4,
+   "events_recall": 76.6,
+   "gain_over_seen": 17.8,
+   "worlds_above_seen": 10,
+   "take_takeable": 68.7,
+   "take_fixed": 99.5,
+   "take_sticky": 57.4,
+   "by_shape": {
+    "f1": 68.0,
+    "take": 57.6,
+    "take_true_given": 100.0
+   },
+   "by_colour": {
+    "f1": 74.6,
+    "take": 99.9,
+    "take_true_given": 100.0
+   },
+   "statements": 40,
+   "statements_right": 30,
+   "statements_wrong": [
+    [
+     "colour",
+     2,
+     "sticky",
+     "taken",
+     {
+      "contact": 1,
+      "grip": 0,
+      "moved": 0
+     }
+    ],
+    [
+     "shape",
+     2,
+     "takeable",
+     "released",
+     {
+      "grip": 0,
+      "moved": 1
+     }
+    ],
+    [
+     "shape",
+     2,
+     "sticky",
+     "taken",
+     {
+      "contact": 1,
+      "grip": 0,
+      "moved": 0
+     }
+    ],
+    [
+     "shape",
+     2,
+     "sticky",
+     "released",
+     {
+      "contact": 0,
+      "grip": 1
+     }
+    ],
+    [
+     "shape",
+     3,
+     "takeable",
+     "taken",
+     {
+      "contact": 1,
+      "grip": 1,
+      "moved": 0
+     }
+    ],
+    [
+     "shape",
+     3,
+     "sticky",
+     "taken",
+     {
+      "contact": 1,
+      "grip": 0,
+      "moved": 0
+     }
+    ],
+    [
+     "shape",
+     4,
+     "takeable",
+     "taken",
+     {
+      "contact": 1,
+      "grip": 1,
+      "moved": 0
+     }
+    ],
+    [
+     "shape",
+     4,
+     "takeable",
+     "released",
+     {
+      "grip": 0,
+      "moved": 1
+     }
+    ],
+    [
+     "shape",
+     4,
+     "sticky",
+     "released",
+     {
+      "grip": 1,
+      "moved": 1
+     }
+    ],
+    [
+     "colour",
+     5,
+     "sticky",
+     "taken",
+     {
+      "contact": 1,
+      "grip": 0,
+      "moved": 0
+     }
+    ]
+   ],
+   "taken_without_a_move_in_experience": [
+    87,
+    71,
+    76,
+    79,
+    91,
+    84,
+    76,
+    86,
+    97,
+    81
+   ],
+   "classes": [
+    6,
+    5,
+    5,
+    5,
+    6,
+    4,
+    6,
+    5,
+    8,
+    7
+   ],
+   "purity": 89.3
+  },
+  "per_run": [
+   {
+    "world": 1,
+    "by": "colour",
+    "experience": "script",
+    "kind_of": [
+     2,
+     0,
+     0,
+     1,
+     1
+    ],
+    "patterns": 309,
+    "tally": {
+     "stored": 116,
+     "known": 166,
+     "too_big": 3,
+     "still": 193
+    },
+    "classes": {
+     "n": 6,
+     "sizes": [
+      151,
+      7,
+      1,
+      46,
+      1,
+      102
+     ],
+     "purity": 94.8,
+     "table": [
+      [
+       2.9,
+       46.2,
+       3.8,
+       24.7,
+       0.0
+      ],
+      [
+       2.0,
+       0.0,
+       1.0,
+       0.0,
+       4.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       45.7,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.9,
+       0.0
+      ],
+      [
+       88.3,
+       1.0,
+       0.0,
+       1.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 309,
+     "taken_without_a_move": 87,
+     "all_true_events": 588,
+     "sequences": 853,
+     "sequences_on_true_objects": 367
+    },
+    "events": {
+     "latent state": {
+      "f1": 81.2,
+      "precision": 77.7,
+      "recall": 85.1,
+      "events_true": 718,
+      "events_model": 786
+     },
+     "state read from what is seen": {
+      "f1": 55.0,
+      "precision": 57.0,
+      "recall": 53.2,
+      "events_true": 718,
+      "events_model": 670
+     },
+     "latent state, true behaviours given": {
+      "f1": 73.0,
+      "precision": 72.7,
+      "recall": 73.3,
+      "events_true": 718,
+      "events_model": 724
+     },
+     "latent state, one class": {
+      "f1": 56.9,
+      "precision": 60.8,
+      "recall": 53.5,
+      "events_true": 718,
+      "events_model": 632
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 78.7,
+      "precision": 89.2,
+      "recall": 70.4,
+      "events_true": 588,
+      "events_model": 464
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.7,
+      "precision": 99.3,
+      "recall": 100.0,
+      "events_true": 588,
+      "events_model": 592
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 62.6,
+      "precision": 73.2,
+      "recall": 54.8,
+      "events_true": 588,
+      "events_model": 440
+     }
+    },
+    "first_sight": {
+     "objects": 306,
+     "bound": 225,
+     "labels_on_the_ground_per_scene": 4.17,
+     "found_movable": 96.8,
+     "found_fixed": 23.3
+    },
+    "take": {
+     "latent state": {
+      "n": 301,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 301,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 301,
+      "all": 39.5,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 301,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 301,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 5,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 3,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -5.63,
+      "state before": 7.43,
+      "contact": 3.08,
+      "grip": 0.71,
+      "moved": -1.97
+     },
+     "by_class": [
+      [
+       -6.35,
+       7.33,
+       3.05,
+       0.71,
+       -7.53
+      ],
+      [
+       -2.01,
+       7.5,
+       2.77,
+       0.71,
+       -1.98
+      ],
+      [
+       -5.64,
+       7.42,
+       3.09,
+       0.7,
+       -1.98
+      ],
+      [
+       -1.35,
+       7.43,
+       4.23,
+       -10.45,
+       -1.98
+      ],
+      [
+       -5.62,
+       7.43,
+       3.12,
+       0.71,
+       -1.97
+      ],
+      [
+       -13.48,
+       8.21,
+       4.9,
+       11.63,
+       -2.34
+      ]
+     ],
+     "log_likelihood": [
+      -11482.6,
+      -1087.9,
+      -1073.7,
+      -1067.4,
+      -1066.5,
+      -1066.0
+     ]
+    },
+    "seconds": 384
+   },
+   {
+    "world": 1,
+    "by": "shape",
+    "experience": "script",
+    "kind_of": [
+     2,
+     0,
+     0,
+     1,
+     1
+    ],
+    "patterns": 294,
+    "tally": {
+     "stored": 76,
+     "known": 159,
+     "too_big": 0,
+     "still": 218
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      178,
+      5,
+      25,
+      13,
+      71
+     ],
+     "purity": 83.0,
+     "table": [
+      [
+       13.2,
+       110.4,
+       14.9,
+       23.5,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       1.9,
+       0.0,
+       3.0
+      ],
+      [
+       1.0,
+       4.0,
+       19.5,
+       0.0,
+       0.0
+      ],
+      [
+       10.0,
+       1.0,
+       1.0,
+       0.0,
+       1.0
+      ],
+      [
+       61.0,
+       5.0,
+       1.0,
+       2.5,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 273,
+     "taken_without_a_move": 71,
+     "all_true_events": 520,
+     "sequences": 764,
+     "sequences_on_true_objects": 357
+    },
+    "events": {
+     "latent state": {
+      "f1": 66.4,
+      "precision": 64.1,
+      "recall": 68.9,
+      "events_true": 586,
+      "events_model": 630
+     },
+     "state read from what is seen": {
+      "f1": 54.8,
+      "precision": 56.2,
+      "recall": 53.4,
+      "events_true": 586,
+      "events_model": 557
+     },
+     "latent state, true behaviours given": {
+      "f1": 69.6,
+      "precision": 70.7,
+      "recall": 68.4,
+      "events_true": 586,
+      "events_model": 567
+     },
+     "latent state, one class": {
+      "f1": 60.6,
+      "precision": 65.4,
+      "recall": 56.5,
+      "events_true": 586,
+      "events_model": 506
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 78.8,
+      "precision": 90.5,
+      "recall": 69.8,
+      "events_true": 520,
+      "events_model": 401
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.8,
+      "precision": 99.6,
+      "recall": 100.0,
+      "events_true": 520,
+      "events_model": 522
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 65.0,
+      "precision": 76.2,
+      "recall": 56.7,
+      "events_true": 520,
+      "events_model": 387
+     }
+    },
+    "first_sight": {
+     "objects": 316,
+     "bound": 314,
+     "labels_on_the_ground_per_scene": 0.06,
+     "found_movable": 95.5,
+     "found_fixed": 95.8
+    },
+    "take": {
+     "latent state": {
+      "n": 310,
+      "all": 47.4,
+      "takeable": 24.6,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 310,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 310,
+      "all": 37.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 310,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 310,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.998
+      ]
+     ],
+     "shared": {
+      "bias": -6.62,
+      "state before": 7.06,
+      "contact": 2.81,
+      "grip": 0.0,
+      "moved": -2.41
+     },
+     "by_class": [
+      [
+       -6.98,
+       7.0,
+       2.81,
+       -0.0,
+       -5.9
+      ],
+      [
+       0.66,
+       7.06,
+       2.8,
+       0.0,
+       -2.4
+      ],
+      [
+       -1.59,
+       7.07,
+       4.19,
+       -8.76,
+       -2.15
+      ],
+      [
+       -6.62,
+       7.07,
+       2.78,
+       6.83,
+       -3.12
+      ],
+      [
+       -11.8,
+       7.65,
+       4.45,
+       9.82,
+       -2.41
+      ]
+     ],
+     "log_likelihood": [
+      -10215.4,
+      -966.2,
+      -957.2,
+      -955.9,
+      -955.7,
+      -955.6
+     ]
+    },
+    "seconds": 283
+   },
+   {
+    "world": 2,
+    "by": "colour",
+    "experience": "script",
+    "kind_of": [
+     1,
+     2,
+     1,
+     0,
+     0
+    ],
+    "patterns": 287,
+    "tally": {
+     "stored": 106,
+     "known": 157,
+     "too_big": 3,
+     "still": 181
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      151,
+      4,
+      4,
+      46,
+      81
+     ],
+     "purity": 93.9,
+     "table": [
+      [
+       4.4,
+       73.4,
+       5.9,
+       18.6,
+       1.3
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       2.5,
+       0.0
+      ],
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0,
+       3.0
+      ],
+      [
+       0.0,
+       0.0,
+       43.6,
+       1.0,
+       0.0
+      ],
+      [
+       76.7,
+       0.0,
+       0.0,
+       1.0,
+       1.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 289,
+     "taken_without_a_move": 76,
+     "all_true_events": 554,
+     "sequences": 896,
+     "sequences_on_true_objects": 323
+    },
+    "events": {
+     "latent state": {
+      "f1": 74.4,
+      "precision": 69.8,
+      "recall": 79.8,
+      "events_true": 677,
+      "events_model": 774
+     },
+     "state read from what is seen": {
+      "f1": 53.9,
+      "precision": 52.4,
+      "recall": 55.5,
+      "events_true": 677,
+      "events_model": 717
+     },
+     "latent state, true behaviours given": {
+      "f1": 79.6,
+      "precision": 71.6,
+      "recall": 89.7,
+      "events_true": 677,
+      "events_model": 848
+     },
+     "latent state, one class": {
+      "f1": 57.4,
+      "precision": 57.5,
+      "recall": 57.3,
+      "events_true": 677,
+      "events_model": 675
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 78.6,
+      "precision": 88.5,
+      "recall": 70.8,
+      "events_true": 554,
+      "events_model": 443
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.8,
+      "precision": 99.8,
+      "recall": 99.8,
+      "events_true": 554,
+      "events_model": 554
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 64.8,
+      "precision": 74.0,
+      "recall": 57.6,
+      "events_true": 554,
+      "events_model": 431
+     }
+    },
+    "first_sight": {
+     "objects": 302,
+     "bound": 201,
+     "labels_on_the_ground_per_scene": 4.88,
+     "found_movable": 93.2,
+     "found_fixed": 16.0
+    },
+    "take": {
+     "latent state": {
+      "n": 294,
+      "all": 99.7,
+      "takeable": 99.2,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 294,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 294,
+      "all": 41.5,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 294,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 294,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 3,
+      "taken": {
+       "contact": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -4.73,
+      "state before": 6.45,
+      "contact": 2.14,
+      "grip": 0.65,
+      "moved": -2.08
+     },
+     "by_class": [
+      [
+       -5.42,
+       5.31,
+       2.14,
+       -0.68,
+       -4.74
+      ],
+      [
+       -4.72,
+       6.19,
+       2.14,
+       0.85,
+       -2.09
+      ],
+      [
+       -3.55,
+       7.23,
+       2.14,
+       1.39,
+       0.67
+      ],
+      [
+       -0.65,
+       8.03,
+       3.35,
+       -8.86,
+       -3.1
+      ],
+      [
+       -11.68,
+       6.99,
+       4.35,
+       10.09,
+       -2.08
+      ]
+     ],
+     "log_likelihood": [
+      -11794.7,
+      -1081.6,
+      -1074.3,
+      -1073.7,
+      -1073.5,
+      -1073.3
+     ]
+    },
+    "seconds": 381
+   },
+   {
+    "world": 2,
+    "by": "shape",
+    "experience": "script",
+    "kind_of": [
+     1,
+     2,
+     1,
+     0,
+     0
+    ],
+    "patterns": 309,
+    "tally": {
+     "stored": 85,
+     "known": 141,
+     "too_big": 2,
+     "still": 224
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      184,
+      49,
+      3,
+      4,
+      69
+     ],
+     "purity": 87.2,
+     "table": [
+      [
+       7.5,
+       91.4,
+       12.1,
+       32.6,
+       0.0
+      ],
+      [
+       3.0,
+       1.5,
+       40.7,
+       1.0,
+       1.0
+      ],
+      [
+       0.0,
+       0.0,
+       1.0,
+       0.0,
+       2.0
+      ],
+      [
+       1.9,
+       0.0,
+       0.0,
+       0.9,
+       0.0
+      ],
+      [
+       62.2,
+       3.0,
+       1.9,
+       1.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 282,
+     "taken_without_a_move": 79,
+     "all_true_events": 531,
+     "sequences": 963,
+     "sequences_on_true_objects": 352
+    },
+    "events": {
+     "latent state": {
+      "f1": 69.7,
+      "precision": 72.0,
+      "recall": 67.6,
+      "events_true": 583,
+      "events_model": 547
+     },
+     "state read from what is seen": {
+      "f1": 57.1,
+      "precision": 61.3,
+      "recall": 53.3,
+      "events_true": 583,
+      "events_model": 507
+     },
+     "latent state, true behaviours given": {
+      "f1": 70.8,
+      "precision": 73.0,
+      "recall": 68.8,
+      "events_true": 583,
+      "events_model": 549
+     },
+     "latent state, one class": {
+      "f1": 62.3,
+      "precision": 68.9,
+      "recall": 56.9,
+      "events_true": 583,
+      "events_model": 482
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 86.5,
+      "precision": 94.4,
+      "recall": 79.8,
+      "events_true": 531,
+      "events_model": 449
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.8,
+      "precision": 99.6,
+      "recall": 100.0,
+      "events_true": 531,
+      "events_model": 533
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 64.1,
+      "precision": 75.5,
+      "recall": 55.7,
+      "events_true": 531,
+      "events_model": 392
+     }
+    },
+    "first_sight": {
+     "objects": 304,
+     "bound": 248,
+     "labels_on_the_ground_per_scene": 0.19,
+     "found_movable": 84.7,
+     "found_fixed": 76.4
+    },
+    "take": {
+     "latent state": {
+      "n": 298,
+      "all": 43.6,
+      "takeable": 4.7,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 298,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 298,
+      "all": 41.9,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 298,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 298,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "contact": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "contact": 0,
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -4.79,
+      "state before": 4.71,
+      "contact": 2.78,
+      "grip": 0.0,
+      "moved": -2.39
+     },
+     "by_class": [
+      [
+       -5.76,
+       4.66,
+       2.78,
+       0.0,
+       -5.22
+      ],
+      [
+       -1.47,
+       5.51,
+       2.76,
+       -4.44,
+       -2.0
+      ],
+      [
+       0.64,
+       4.76,
+       2.77,
+       0.0,
+       -2.39
+      ],
+      [
+       -4.8,
+       3.89,
+       2.78,
+       2.24,
+       -2.39
+      ],
+      [
+       -9.3,
+       6.46,
+       3.99,
+       7.77,
+       -2.4
+      ]
+     ],
+     "log_likelihood": [
+      -12367.6,
+      -1108.9,
+      -1089.0,
+      -1087.5,
+      -1087.2,
+      -1086.9
+     ]
+    },
+    "seconds": 299
+   },
+   {
+    "world": 3,
+    "by": "colour",
+    "experience": "script",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 257,
+    "tally": {
+     "stored": 83,
+     "known": 180,
+     "too_big": 1,
+     "still": 174
+    },
+    "classes": {
+     "n": 6,
+     "sizes": [
+      131,
+      2,
+      36,
+      1,
+      4,
+      82
+     ],
+     "purity": 93.3,
+     "table": [
+      [
+       6.4,
+       32.1,
+       2.0,
+       37.3,
+       0.0
+      ],
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0
+      ],
+      [
+       0.0,
+       0.0,
+       33.7,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       3.5,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       78.0,
+       2.0,
+       0.0,
+       1.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 319,
+     "taken_without_a_move": 91,
+     "all_true_events": 615,
+     "sequences": 905,
+     "sequences_on_true_objects": 308
+    },
+    "events": {
+     "latent state": {
+      "f1": 66.7,
+      "precision": 56.4,
+      "recall": 81.7,
+      "events_true": 673,
+      "events_model": 975
+     },
+     "state read from what is seen": {
+      "f1": 50.1,
+      "precision": 44.5,
+      "recall": 57.2,
+      "events_true": 673,
+      "events_model": 865
+     },
+     "latent state, true behaviours given": {
+      "f1": 67.4,
+      "precision": 56.9,
+      "recall": 82.5,
+      "events_true": 673,
+      "events_model": 975
+     },
+     "latent state, one class": {
+      "f1": 50.1,
+      "precision": 46.4,
+      "recall": 54.4,
+      "events_true": 673,
+      "events_model": 789
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 86.6,
+      "precision": 92.9,
+      "recall": 81.1,
+      "events_true": 615,
+      "events_model": 537
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.7,
+      "precision": 99.5,
+      "recall": 99.8,
+      "events_true": 615,
+      "events_model": 617
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 64.5,
+      "precision": 73.5,
+      "recall": 57.4,
+      "events_true": 615,
+      "events_model": 480
+     }
+    },
+    "first_sight": {
+     "objects": 300,
+     "bound": 228,
+     "labels_on_the_ground_per_scene": 1.55,
+     "found_movable": 98.9,
+     "found_fixed": 39.0
+    },
+    "take": {
+     "latent state": {
+      "n": 299,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 299,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 299,
+      "all": 39.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 299,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 299,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 5,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -6.18,
+      "state before": 5.74,
+      "contact": 2.13,
+      "grip": 3.1,
+      "moved": -2.34
+     },
+     "by_class": [
+      [
+       -6.18,
+       3.65,
+       2.08,
+       -0.28,
+       -2.33
+      ],
+      [
+       -0.54,
+       5.74,
+       2.13,
+       3.09,
+       -2.32
+      ],
+      [
+       -1.58,
+       7.53,
+       4.86,
+       -11.86,
+       -2.35
+      ],
+      [
+       -6.17,
+       5.73,
+       2.1,
+       3.11,
+       -2.34
+      ],
+      [
+       -6.18,
+       5.72,
+       2.14,
+       4.13,
+       -2.34
+      ],
+      [
+       -11.19,
+       8.25,
+       3.57,
+       10.11,
+       -2.34
+      ]
+     ],
+     "log_likelihood": [
+      -12281.3,
+      -1397.8,
+      -1385.1,
+      -1384.0,
+      -1383.3,
+      -1383.0
+     ]
+    },
+    "seconds": 440
+   },
+   {
+    "world": 3,
+    "by": "shape",
+    "experience": "script",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 240,
+    "tally": {
+     "stored": 104,
+     "known": 160,
+     "too_big": 1,
+     "still": 136
+    },
+    "classes": {
+     "n": 4,
+     "sizes": [
+      97,
+      48,
+      85,
+      8
+     ],
+     "purity": 89.3,
+     "table": [
+      [
+       3.3,
+       54.7,
+       2.1,
+       28.4,
+       0.8
+      ],
+      [
+       2.0,
+       5.7,
+       39.0,
+       0.0,
+       0.0
+      ],
+      [
+       75.1,
+       7.3,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       5.0,
+       0.0,
+       0.0,
+       0.0,
+       3.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 337,
+     "taken_without_a_move": 84,
+     "all_true_events": 636,
+     "sequences": 831,
+     "sequences_on_true_objects": 312
+    },
+    "events": {
+     "latent state": {
+      "f1": 65.8,
+      "precision": 63.8,
+      "recall": 67.9,
+      "events_true": 708,
+      "events_model": 754
+     },
+     "state read from what is seen": {
+      "f1": 52.7,
+      "precision": 52.3,
+      "recall": 53.1,
+      "events_true": 708,
+      "events_model": 719
+     },
+     "latent state, true behaviours given": {
+      "f1": 66.9,
+      "precision": 65.2,
+      "recall": 68.8,
+      "events_true": 708,
+      "events_model": 747
+     },
+     "latent state, one class": {
+      "f1": 55.6,
+      "precision": 55.9,
+      "recall": 55.2,
+      "events_true": 708,
+      "events_model": 699
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 78.4,
+      "precision": 87.9,
+      "recall": 70.8,
+      "events_true": 636,
+      "events_model": 512
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.7,
+      "precision": 99.5,
+      "recall": 99.8,
+      "events_true": 636,
+      "events_model": 638
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 64.3,
+      "precision": 74.1,
+      "recall": 56.8,
+      "events_true": 636,
+      "events_model": 487
+     }
+    },
+    "first_sight": {
+     "objects": 295,
+     "bound": 295,
+     "labels_on_the_ground_per_scene": 2.28,
+     "found_movable": 97.8,
+     "found_fixed": 98.3
+    },
+    "take": {
+     "latent state": {
+      "n": 289,
+      "all": 93.1,
+      "takeable": 99.2,
+      "fixed": 94.7,
+      "sticky": 71.7
+     },
+     "own tokens, true behaviours given": {
+      "n": 289,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 289,
+      "all": 39.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 289,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 289,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 2,
+      "taken": {
+       "contact": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": false,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "contact": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.998
+      ]
+     ],
+     "shared": {
+      "bias": -4.77,
+      "state before": 6.61,
+      "contact": 2.77,
+      "grip": 0.03,
+      "moved": -2.28
+     },
+     "by_class": [
+      [
+       -6.3,
+       3.91,
+       2.77,
+       0.03,
+       -2.29
+      ],
+      [
+       -1.09,
+       6.61,
+       2.77,
+       -6.04,
+       -2.29
+      ],
+      [
+       -9.54,
+       7.26,
+       3.73,
+       7.79,
+       -2.29
+      ],
+      [
+       -4.65,
+       7.25,
+       0.86,
+       3.89,
+       -1.1
+      ]
+     ],
+     "log_likelihood": [
+      -10756.5,
+      -1558.8,
+      -1548.2,
+      -1548.0,
+      -1547.9,
+      -1547.9
+     ]
+    },
+    "seconds": 278
+   },
+   {
+    "world": 4,
+    "by": "colour",
+    "experience": "script",
+    "kind_of": [
+     1,
+     2,
+     0,
+     0,
+     1
+    ],
+    "patterns": 289,
+    "tally": {
+     "stored": 93,
+     "known": 168,
+     "too_big": 2,
+     "still": 196
+    },
+    "classes": {
+     "n": 6,
+     "sizes": [
+      160,
+      3,
+      4,
+      32,
+      26,
+      62
+     ],
+     "purity": 95.4,
+     "table": [
+      [
+       1.6,
+       51.8,
+       5.2,
+       30.5,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       3.0
+      ],
+      [
+       1.8,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       30.3,
+       0.7,
+       0.0
+      ],
+      [
+       25.8,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       52.5,
+       0.0,
+       0.0,
+       1.9,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 286,
+     "taken_without_a_move": 76,
+     "all_true_events": 548,
+     "sequences": 904,
+     "sequences_on_true_objects": 334
+    },
+    "events": {
+     "latent state": {
+      "f1": 76.7,
+      "precision": 66.2,
+      "recall": 91.1,
+      "events_true": 584,
+      "events_model": 804
+     },
+     "state read from what is seen": {
+      "f1": 50.4,
+      "precision": 47.4,
+      "recall": 53.8,
+      "events_true": 584,
+      "events_model": 662
+     },
+     "latent state, true behaviours given": {
+      "f1": 69.0,
+      "precision": 62.4,
+      "recall": 77.2,
+      "events_true": 584,
+      "events_model": 723
+     },
+     "latent state, one class": {
+      "f1": 50.9,
+      "precision": 50.5,
+      "recall": 51.2,
+      "events_true": 584,
+      "events_model": 592
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 85.5,
+      "precision": 92.6,
+      "recall": 79.4,
+      "events_true": 548,
+      "events_model": 470
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.8,
+      "precision": 99.6,
+      "recall": 100.0,
+      "events_true": 548,
+      "events_model": 550
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 63.2,
+      "precision": 72.6,
+      "recall": 56.0,
+      "events_true": 548,
+      "events_model": 423
+     }
+    },
+    "first_sight": {
+     "objects": 296,
+     "bound": 221,
+     "labels_on_the_ground_per_scene": 0.73,
+     "found_movable": 97.8,
+     "found_fixed": 28.6
+    },
+    "take": {
+     "latent state": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 290,
+      "all": 38.3,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 5,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 3,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -6.84,
+      "state before": 6.34,
+      "contact": 1.88,
+      "grip": -0.0,
+      "moved": -2.11
+     },
+     "by_class": [
+      [
+       -6.88,
+       6.34,
+       1.89,
+       -0.02,
+       -5.41
+      ],
+      [
+       -2.12,
+       3.67,
+       1.88,
+       -0.26,
+       1.47
+      ],
+      [
+       -6.84,
+       6.35,
+       1.89,
+       0.0,
+       -2.1
+      ],
+      [
+       -1.74,
+       7.18,
+       4.82,
+       -11.23,
+       -2.11
+      ],
+      [
+       -6.84,
+       7.44,
+       1.86,
+       6.72,
+       -2.78
+      ],
+      [
+       -13.19,
+       6.35,
+       5.97,
+       10.77,
+       -2.11
+      ]
+     ],
+     "log_likelihood": [
+      -12158.7,
+      -1045.7,
+      -1030.4,
+      -1029.2,
+      -1028.5,
+      -1027.8
+     ]
+    },
+    "seconds": 416
+   },
+   {
+    "world": 4,
+    "by": "shape",
+    "experience": "script",
+    "kind_of": [
+     1,
+     2,
+     0,
+     0,
+     1
+    ],
+    "patterns": 249,
+    "tally": {
+     "stored": 85,
+     "known": 160,
+     "too_big": 0,
+     "still": 164
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      135,
+      5,
+      41,
+      13,
+      51
+     ],
+     "purity": 83.0,
+     "table": [
+      [
+       18.0,
+       72.4,
+       6.9,
+       15.1,
+       0.8
+      ],
+      [
+       1.6,
+       0.0,
+       1.6,
+       0.0,
+       1.0
+      ],
+      [
+       2.0,
+       2.0,
+       36.4,
+       0.0,
+       0.0
+      ],
+      [
+       8.5,
+       0.0,
+       3.0,
+       0.0,
+       1.0
+      ],
+      [
+       48.5,
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 302,
+     "taken_without_a_move": 86,
+     "all_true_events": 580,
+     "sequences": 641,
+     "sequences_on_true_objects": 319
+    },
+    "events": {
+     "latent state": {
+      "f1": 70.6,
+      "precision": 75.0,
+      "recall": 66.7,
+      "events_true": 654,
+      "events_model": 581
+     },
+     "state read from what is seen": {
+      "f1": 56.1,
+      "precision": 61.5,
+      "recall": 51.5,
+      "events_true": 654,
+      "events_model": 548
+     },
+     "latent state, true behaviours given": {
+      "f1": 71.4,
+      "precision": 76.8,
+      "recall": 66.7,
+      "events_true": 654,
+      "events_model": 568
+     },
+     "latent state, one class": {
+      "f1": 57.7,
+      "precision": 65.4,
+      "recall": 51.7,
+      "events_true": 654,
+      "events_model": 517
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 78.3,
+      "precision": 89.2,
+      "recall": 69.8,
+      "events_true": 580,
+      "events_model": 454
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.8,
+      "precision": 99.7,
+      "recall": 100.0,
+      "events_true": 580,
+      "events_model": 582
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 62.5,
+      "precision": 73.9,
+      "recall": 54.1,
+      "events_true": 580,
+      "events_model": 425
+     }
+    },
+    "first_sight": {
+     "objects": 291,
+     "bound": 269,
+     "labels_on_the_ground_per_scene": 0.73,
+     "found_movable": 91.3,
+     "found_fixed": 93.3
+    },
+    "take": {
+     "latent state": {
+      "n": 285,
+      "all": 54.4,
+      "takeable": 32.5,
+      "fixed": 100.0,
+      "sticky": 1.9
+     },
+     "own tokens, true behaviours given": {
+      "n": 285,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 285,
+      "all": 41.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 285,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 285,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "contact": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.997
+      ]
+     ],
+     "shared": {
+      "bias": -3.1,
+      "state before": 5.34,
+      "contact": 2.03,
+      "grip": -0.0,
+      "moved": -1.22
+     },
+     "by_class": [
+      [
+       -4.7,
+       5.32,
+       2.04,
+       -0.0,
+       -5.63
+      ],
+      [
+       -0.38,
+       4.89,
+       2.01,
+       -1.41,
+       -1.22
+      ],
+      [
+       -2.65,
+       6.22,
+       4.24,
+       -7.64,
+       -1.23
+      ],
+      [
+       -3.1,
+       5.35,
+       1.85,
+       1.56,
+       -1.22
+      ],
+      [
+       -9.57,
+       6.96,
+       4.04,
+       7.77,
+       -2.45
+      ]
+     ],
+     "log_likelihood": [
+      -8096.2,
+      -1106.9,
+      -1084.5,
+      -1083.6,
+      -1083.6,
+      -1083.5
+     ]
+    },
+    "seconds": 309
+   },
+   {
+    "world": 5,
+    "by": "colour",
+    "experience": "script",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 261,
+    "tally": {
+     "stored": 123,
+     "known": 285,
+     "too_big": 5,
+     "still": 138
+    },
+    "classes": {
+     "n": 8,
+     "sizes": [
+      105,
+      16,
+      4,
+      3,
+      1,
+      8,
+      43,
+      78
+     ],
+     "purity": 91.2,
+     "table": [
+      [
+       4.8,
+       55.5,
+       7.0,
+       17.1,
+       0.0
+      ],
+      [
+       2.4,
+       0.0,
+       11.3,
+       0.9,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       3.8
+      ],
+      [
+       2.0,
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       6.9,
+       0.0,
+       0.0,
+       0.0,
+       1.0
+      ],
+      [
+       0.0,
+       0.0,
+       38.2,
+       0.0,
+       1.9
+      ],
+      [
+       71.9,
+       0.0,
+       0.0,
+       0.9,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 324,
+     "taken_without_a_move": 97,
+     "all_true_events": 622,
+     "sequences": 738,
+     "sequences_on_true_objects": 320
+    },
+    "events": {
+     "latent state": {
+      "f1": 73.8,
+      "precision": 65.3,
+      "recall": 84.8,
+      "events_true": 718,
+      "events_model": 932
+     },
+     "state read from what is seen": {
+      "f1": 51.9,
+      "precision": 49.4,
+      "recall": 54.7,
+      "events_true": 718,
+      "events_model": 796
+     },
+     "latent state, true behaviours given": {
+      "f1": 68.0,
+      "precision": 63.2,
+      "recall": 73.5,
+      "events_true": 718,
+      "events_model": 835
+     },
+     "latent state, one class": {
+      "f1": 56.8,
+      "precision": 55.9,
+      "recall": 57.7,
+      "events_true": 718,
+      "events_model": 740
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 86.9,
+      "precision": 93.0,
+      "recall": 81.5,
+      "events_true": 622,
+      "events_model": 545
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.7,
+      "precision": 99.5,
+      "recall": 99.8,
+      "events_true": 622,
+      "events_model": 624
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 62.9,
+      "precision": 72.1,
+      "recall": 55.8,
+      "events_true": 622,
+      "events_model": 481
+     }
+    },
+    "first_sight": {
+     "objects": 295,
+     "bound": 204,
+     "labels_on_the_ground_per_scene": 3.72,
+     "found_movable": 98.9,
+     "found_fixed": 7.5
+    },
+    "take": {
+     "latent state": {
+      "n": 293,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 293,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 293,
+      "all": 36.2,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 293,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 293,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 7,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 6,
+      "taken": {
+       "contact": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -1.41,
+      "state before": 5.46,
+      "contact": 1.61,
+      "grip": -0.2,
+      "moved": -2.65
+     },
+     "by_class": [
+      [
+       -5.38,
+       5.46,
+       1.61,
+       -0.2,
+       -5.39
+      ],
+      [
+       -1.13,
+       3.7,
+       3.06,
+       -2.25,
+       -3.53
+      ],
+      [
+       -1.4,
+       5.47,
+       1.61,
+       -0.2,
+       0.69
+      ],
+      [
+       -1.41,
+       5.46,
+       1.01,
+       0.43,
+       -2.96
+      ],
+      [
+       0.1,
+       5.47,
+       1.61,
+       -2.88,
+       -2.64
+      ],
+      [
+       -4.11,
+       7.27,
+       1.59,
+       3.51,
+       -2.76
+      ],
+      [
+       -0.78,
+       7.47,
+       3.02,
+       -7.77,
+       -2.65
+      ],
+      [
+       -14.36,
+       8.15,
+       5.55,
+       12.85,
+       -2.56
+      ]
+     ],
+     "log_likelihood": [
+      -10124.8,
+      -1344.0,
+      -1332.4,
+      -1330.8,
+      -1330.2,
+      -1329.8
+     ]
+    },
+    "seconds": 401
+   },
+   {
+    "world": 5,
+    "by": "shape",
+    "experience": "script",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 273,
+    "tally": {
+     "stored": 91,
+     "known": 267,
+     "too_big": 4,
+     "still": 182
+    },
+    "classes": {
+     "n": 7,
+     "sizes": [
+      139,
+      12,
+      2,
+      44,
+      3,
+      17,
+      54
+     ],
+     "purity": 81.7,
+     "table": [
+      [
+       5.6,
+       46.4,
+       10.5,
+       22.7,
+       1.4
+      ],
+      [
+       6.0,
+       0.0,
+       5.0,
+       0.0,
+       1.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.8,
+       0.0,
+       0.0
+      ],
+      [
+       1.0,
+       5.0,
+       35.4,
+       1.0,
+       0.0
+      ],
+      [
+       0.9,
+       0.0,
+       0.0,
+       0.0,
+       2.0
+      ],
+      [
+       14.8,
+       1.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       42.5,
+       2.9,
+       0.0,
+       3.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 315,
+     "taken_without_a_move": 81,
+     "all_true_events": 601,
+     "sequences": 849,
+     "sequences_on_true_objects": 338
+    },
+    "events": {
+     "latent state": {
+      "f1": 67.5,
+      "precision": 63.5,
+      "recall": 72.1,
+      "events_true": 645,
+      "events_model": 732
+     },
+     "state read from what is seen": {
+      "f1": 53.4,
+      "precision": 53.4,
+      "recall": 53.3,
+      "events_true": 645,
+      "events_model": 644
+     },
+     "latent state, true behaviours given": {
+      "f1": 64.8,
+      "precision": 64.0,
+      "recall": 65.6,
+      "events_true": 645,
+      "events_model": 661
+     },
+     "latent state, one class": {
+      "f1": 55.5,
+      "precision": 56.7,
+      "recall": 54.4,
+      "events_true": 645,
+      "events_model": 619
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 74.8,
+      "precision": 86.5,
+      "recall": 65.9,
+      "events_true": 601,
+      "events_model": 458
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.5,
+      "precision": 99.2,
+      "recall": 99.8,
+      "events_true": 601,
+      "events_model": 605
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 62.0,
+      "precision": 73.5,
+      "recall": 53.6,
+      "events_true": 601,
+      "events_model": 438
+     }
+    },
+    "first_sight": {
+     "objects": 307,
+     "bound": 307,
+     "labels_on_the_ground_per_scene": 1.21,
+     "found_movable": 99.5,
+     "found_fixed": 99.1
+    },
+    "take": {
+     "latent state": {
+      "n": 297,
+      "all": 49.5,
+      "takeable": 26.3,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 297,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 297,
+      "all": 37.7,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 297,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 297,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 6,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 3,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.998
+      ]
+     ],
+     "shared": {
+      "bias": -4.12,
+      "state before": 6.39,
+      "contact": 2.66,
+      "grip": -0.0,
+      "moved": -2.44
+     },
+     "by_class": [
+      [
+       -5.62,
+       4.77,
+       2.66,
+       -0.0,
+       -5.1
+      ],
+      [
+       -2.27,
+       5.91,
+       2.06,
+       -1.02,
+       -1.39
+      ],
+      [
+       -4.12,
+       6.31,
+       2.67,
+       -2.81,
+       -2.45
+      ],
+      [
+       -1.52,
+       7.63,
+       4.27,
+       -9.52,
+       -2.6
+      ],
+      [
+       -1.0,
+       6.43,
+       2.66,
+       1.53,
+       -2.44
+      ],
+      [
+       -6.96,
+       7.21,
+       2.64,
+       7.37,
+       -3.37
+      ],
+      [
+       -12.16,
+       6.93,
+       5.12,
+       9.86,
+       -2.44
+      ]
+     ],
+     "log_likelihood": [
+      -11569.3,
+      -1271.9,
+      -1261.3,
+      -1260.7,
+      -1260.7,
+      -1260.6
+     ]
+    },
+    "seconds": 393
+   }
+  ]
+ },
+ "test, agent": {
+  "summary": {
+   "worlds": 10,
+   "events_f1": {
+    "latent state": 70.1,
+    "state read from what is seen": 64.9,
+    "latent state, true behaviours given": 71.3,
+    "latent state, one class": 53.9,
+    "simulator's tokens, true behaviours": 76.1,
+    "simulator's tokens, true behaviours, penalty 5": 99.6,
+    "simulator's tokens, state read from what is seen": 76.9
+   },
+   "take": {
+    "latent state": 61.3,
+    "own tokens, true behaviours given": 74.0,
+    "own tokens, one class": 39.1,
+    "simulator's tokens, true behaviours": 84.4,
+    "simulator's tokens, true behaviours, penalty 5": 100.0
+   },
+   "events_f1_lowest": 56.6,
+   "events_precision": 65.5,
+   "events_recall": 75.6,
+   "gain_over_seen": 5.2,
+   "worlds_above_seen": 8,
+   "take_takeable": 37.1,
+   "take_fixed": 100.0,
+   "take_sticky": 35.4,
+   "by_shape": {
+    "f1": 68.5,
+    "take": 42.4,
+    "take_true_given": 51.6
+   },
+   "by_colour": {
+    "f1": 71.8,
+    "take": 80.1,
+    "take_true_given": 96.5
+   },
+   "statements": 40,
+   "statements_right": 27,
+   "statements_wrong": [
+    [
+     "shape",
+     2,
+     "sticky",
+     "taken",
+     null
+    ],
+    [
+     "shape",
+     2,
+     "sticky",
+     "released",
+     {
+      "contact": 0,
+      "grip": 1
+     }
+    ],
+    [
+     "colour",
+     3,
+     "takeable",
+     "released",
+     {
+      "grip": 0,
+      "moved": 1
+     }
+    ],
+    [
+     "shape",
+     3,
+     "sticky",
+     "taken",
+     {
+      "contact": 1,
+      "grip": 0,
+      "moved": 0
+     }
+    ],
+    [
+     "shape",
+     4,
+     "takeable",
+     "taken",
+     null
+    ],
+    [
+     "shape",
+     4,
+     "takeable",
+     "released",
+     {
+      "grip": 0,
+      "moved": 1
+     }
+    ],
+    [
+     "shape",
+     4,
+     "sticky",
+     "taken",
+     {
+      "grip": 0,
+      "moved": 0
+     }
+    ],
+    [
+     "colour",
+     5,
+     "takeable",
+     "released",
+     {
+      "grip": 0,
+      "moved": 1
+     }
+    ],
+    [
+     "colour",
+     5,
+     "sticky",
+     "released",
+     {
+      "grip": 1,
+      "moved": 1
+     }
+    ],
+    [
+     "shape",
+     5,
+     "takeable",
+     "taken",
+     null
+    ],
+    [
+     "shape",
+     5,
+     "takeable",
+     "released",
+     {
+      "grip": 0,
+      "moved": 1
+     }
+    ],
+    [
+     "shape",
+     5,
+     "sticky",
+     "taken",
+     null
+    ],
+    [
+     "shape",
+     5,
+     "sticky",
+     "released",
+     {
+      "grip": 1,
+      "moved": 1
+     }
+    ]
+   ],
+   "taken_without_a_move_in_experience": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "classes": [
+    6,
+    5,
+    5,
+    5,
+    4,
+    4,
+    6,
+    6,
+    5,
+    5
+   ],
+   "purity": 89.3
+  },
+  "per_run": [
+   {
+    "world": 1,
+    "by": "colour",
+    "experience": "agent",
+    "kind_of": [
+     2,
+     0,
+     0,
+     1,
+     1
+    ],
+    "patterns": 216,
+    "tally": {
+     "stored": 92,
+     "known": 175,
+     "too_big": 0,
+     "still": 124,
+     "groups_tried": 599,
+     "groups_that_came": 103,
+     "objects": 299,
+     "objects_moved": 124
+    },
+    "classes": {
+     "n": 6,
+     "sizes": [
+      85,
+      1,
+      26,
+      12,
+      70,
+      19
+     ],
+     "purity": 92.8,
+     "table": [
+      [
+       3.0,
+       24.6,
+       4.0,
+       19.2,
+       0.6
+      ],
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       25.7,
+       0.0,
+       0.0
+      ],
+      [
+       4.9,
+       0.6,
+       0.0,
+       1.9,
+       0.0
+      ],
+      [
+       61.4,
+       1.0,
+       0.0,
+       1.6,
+       0.0
+      ],
+      [
+       18.1,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 246,
+     "taken_without_a_move": 0,
+     "all_true_events": 463,
+     "sequences": 650,
+     "sequences_on_true_objects": 255
+    },
+    "events": {
+     "latent state": {
+      "f1": 80.3,
+      "precision": 72.0,
+      "recall": 90.7,
+      "events_true": 518,
+      "events_model": 653
+     },
+     "state read from what is seen": {
+      "f1": 65.8,
+      "precision": 64.8,
+      "recall": 66.8,
+      "events_true": 518,
+      "events_model": 534
+     },
+     "latent state, true behaviours given": {
+      "f1": 72.8,
+      "precision": 68.8,
+      "recall": 77.2,
+      "events_true": 518,
+      "events_model": 581
+     },
+     "latent state, one class": {
+      "f1": 72.0,
+      "precision": 70.8,
+      "recall": 73.4,
+      "events_true": 518,
+      "events_model": 537
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 75.5,
+      "precision": 82.9,
+      "recall": 69.3,
+      "events_true": 463,
+      "events_model": 387
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.2,
+      "precision": 98.7,
+      "recall": 99.8,
+      "events_true": 463,
+      "events_model": 468
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 76.5,
+      "precision": 85.6,
+      "recall": 69.1,
+      "events_true": 463,
+      "events_model": 374
+     }
+    },
+    "first_sight": {
+     "objects": 306,
+     "bound": 239,
+     "labels_on_the_ground_per_scene": 3.12,
+     "found_movable": 94.6,
+     "found_fixed": 37.5
+    },
+    "take": {
+     "latent state": {
+      "n": 301,
+      "all": 97.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 84.7
+     },
+     "own tokens, true behaviours given": {
+      "n": 301,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 301,
+      "all": 39.5,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 301,
+      "all": 60.5,
+      "takeable": 100.0,
+      "fixed": 0.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 301,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.998
+      ]
+     ],
+     "shared": {
+      "bias": -5.39,
+      "state before": 5.43,
+      "contact": 2.81,
+      "grip": 1.68,
+      "moved": -2.16
+     },
+     "by_class": [
+      [
+       -5.4,
+       5.43,
+       2.8,
+       1.68,
+       -6.99
+      ],
+      [
+       -4.99,
+       5.4,
+       1.89,
+       1.68,
+       0.01
+      ],
+      [
+       -1.8,
+       7.4,
+       4.68,
+       -10.81,
+       -2.16
+      ],
+      [
+       -5.42,
+       3.13,
+       2.81,
+       1.66,
+       -2.2
+      ],
+      [
+       -12.66,
+       7.05,
+       4.97,
+       10.73,
+       -2.16
+      ],
+      [
+       -5.39,
+       6.35,
+       2.85,
+       8.67,
+       -5.45
+      ]
+     ],
+     "log_likelihood": [
+      -8375.8,
+      -901.5,
+      -873.6,
+      -872.2,
+      -872.3,
+      -872.3
+     ]
+    },
+    "seconds": 256
+   },
+   {
+    "world": 1,
+    "by": "shape",
+    "experience": "agent",
+    "kind_of": [
+     2,
+     0,
+     0,
+     1,
+     1
+    ],
+    "patterns": 245,
+    "tally": {
+     "stored": 82,
+     "known": 169,
+     "too_big": 0,
+     "still": 163,
+     "groups_tried": 724,
+     "groups_that_came": 98,
+     "objects": 316,
+     "objects_moved": 126
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      117,
+      26,
+      38,
+      56,
+      6
+     ],
+     "purity": 87.3,
+     "table": [
+      [
+       12.2,
+       53.9,
+       3.4,
+       23.1,
+       1.0
+      ],
+      [
+       22.5,
+       2.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       2.4,
+       31.3,
+       1.0,
+       0.0
+      ],
+      [
+       47.9,
+       1.6,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       3.0,
+       2.9,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 259,
+     "taken_without_a_move": 0,
+     "all_true_events": 486,
+     "sequences": 698,
+     "sequences_on_true_objects": 308
+    },
+    "events": {
+     "latent state": {
+      "f1": 73.9,
+      "precision": 67.5,
+      "recall": 81.7,
+      "events_true": 535,
+      "events_model": 647
+     },
+     "state read from what is seen": {
+      "f1": 65.0,
+      "precision": 63.6,
+      "recall": 66.5,
+      "events_true": 535,
+      "events_model": 560
+     },
+     "latent state, true behaviours given": {
+      "f1": 64.8,
+      "precision": 62.1,
+      "recall": 67.9,
+      "events_true": 535,
+      "events_model": 585
+     },
+     "latent state, one class": {
+      "f1": 39.5,
+      "precision": 44.9,
+      "recall": 35.3,
+      "events_true": 535,
+      "events_model": 421
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 79.7,
+      "precision": 89.9,
+      "recall": 71.6,
+      "events_true": 486,
+      "events_model": 387
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 100.0,
+      "precision": 100.0,
+      "recall": 100.0,
+      "events_true": 486,
+      "events_model": 486
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 79.7,
+      "precision": 89.9,
+      "recall": 71.6,
+      "events_true": 486,
+      "events_model": 387
+     }
+    },
+    "first_sight": {
+     "objects": 316,
+     "bound": 314,
+     "labels_on_the_ground_per_scene": 0.28,
+     "found_movable": 96.5,
+     "found_fixed": 95.8
+    },
+    "take": {
+     "latent state": {
+      "n": 310,
+      "all": 41.3,
+      "takeable": 10.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 310,
+      "all": 58.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 310,
+      "all": 37.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 310,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 310,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [
+       "moved"
+      ],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [
+       "moved"
+      ],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -3.8,
+      "state before": 5.76,
+      "contact": 2.21,
+      "grip": -0.02,
+      "moved": -1.9
+     },
+     "by_class": [
+      [
+       -3.8,
+       4.47,
+       2.66,
+       -0.04,
+       -5.58
+      ],
+      [
+       -4.05,
+       5.78,
+       1.5,
+       3.03,
+       -1.86
+      ],
+      [
+       -0.13,
+       8.0,
+       4.26,
+       -9.73,
+       -3.34
+      ],
+      [
+       -12.37,
+       6.1,
+       5.8,
+       10.17,
+       -2.48
+      ],
+      [
+       -3.8,
+       5.74,
+       2.17,
+       -0.85,
+       -0.27
+      ]
+     ],
+     "log_likelihood": [
+      -9139.5,
+      -1185.0,
+      -1162.5,
+      -1161.4,
+      -1160.8,
+      -1160.5
+     ]
+    },
+    "seconds": 353
+   },
+   {
+    "world": 2,
+    "by": "colour",
+    "experience": "agent",
+    "kind_of": [
+     1,
+     2,
+     1,
+     0,
+     0
+    ],
+    "patterns": 234,
+    "tally": {
+     "stored": 86,
+     "known": 134,
+     "too_big": 0,
+     "still": 148,
+     "groups_tried": 666,
+     "groups_that_came": 80,
+     "objects": 300,
+     "objects_moved": 104
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      109,
+      6,
+      2,
+      37,
+      80
+     ],
+     "purity": 92.2,
+     "table": [
+      [
+       6.2,
+       44.4,
+       3.4,
+       14.3,
+       1.4
+      ],
+      [
+       3.0,
+       0.0,
+       1.0,
+       0.0,
+       2.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.9,
+       0.6,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       36.4,
+       0.0,
+       0.0
+      ],
+      [
+       78.0,
+       1.0,
+       0.0,
+       0.0,
+       1.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 205,
+     "taken_without_a_move": 0,
+     "all_true_events": 378,
+     "sequences": 685,
+     "sequences_on_true_objects": 262
+    },
+    "events": {
+     "latent state": {
+      "f1": 56.6,
+      "precision": 51.0,
+      "recall": 63.5,
+      "events_true": 455,
+      "events_model": 567
+     },
+     "state read from what is seen": {
+      "f1": 59.9,
+      "precision": 59.4,
+      "recall": 60.4,
+      "events_true": 455,
+      "events_model": 463
+     },
+     "latent state, true behaviours given": {
+      "f1": 56.7,
+      "precision": 51.2,
+      "recall": 63.5,
+      "events_true": 455,
+      "events_model": 564
+     },
+     "latent state, one class": {
+      "f1": 59.4,
+      "precision": 61.9,
+      "recall": 57.1,
+      "events_true": 455,
+      "events_model": 420
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 76.8,
+      "precision": 84.4,
+      "recall": 70.4,
+      "events_true": 378,
+      "events_model": 315
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.7,
+      "precision": 99.7,
+      "recall": 99.7,
+      "events_true": 378,
+      "events_model": 378
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 78.1,
+      "precision": 87.3,
+      "recall": 70.6,
+      "events_true": 378,
+      "events_model": 306
+     }
+    },
+    "first_sight": {
+     "objects": 302,
+     "bound": 193,
+     "labels_on_the_ground_per_scene": 0.68,
+     "found_movable": 97.7,
+     "found_fixed": 11.2
+    },
+    "take": {
+     "latent state": {
+      "n": 294,
+      "all": 41.5,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 294,
+      "all": 82.3,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, one class": {
+      "n": 294,
+      "all": 41.5,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 294,
+      "all": 58.5,
+      "takeable": 100.0,
+      "fixed": 0.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 294,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 3,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.998
+      ]
+     ],
+     "shared": {
+      "bias": -3.41,
+      "state before": 5.16,
+      "contact": 3.54,
+      "grip": -0.01,
+      "moved": -2.81
+     },
+     "by_class": [
+      [
+       -3.42,
+       5.16,
+       3.52,
+       -0.02,
+       -7.31
+      ],
+      [
+       1.0,
+       5.15,
+       3.54,
+       -0.01,
+       -2.76
+      ],
+      [
+       -3.41,
+       4.65,
+       3.57,
+       -0.0,
+       -2.81
+      ],
+      [
+       -0.36,
+       5.72,
+       3.54,
+       -7.7,
+       -2.81
+      ],
+      [
+       -8.34,
+       7.7,
+       4.05,
+       9.08,
+       -4.65
+      ]
+     ],
+     "log_likelihood": [
+      -7884.9,
+      -1076.9,
+      -1006.9,
+      -1003.5,
+      -1003.1,
+      -1003.0
+     ]
+    },
+    "seconds": 218
+   },
+   {
+    "world": 2,
+    "by": "shape",
+    "experience": "agent",
+    "kind_of": [
+     1,
+     2,
+     1,
+     0,
+     0
+    ],
+    "patterns": 287,
+    "tally": {
+     "stored": 81,
+     "known": 141,
+     "too_big": 1,
+     "still": 206,
+     "groups_tried": 623,
+     "groups_that_came": 87,
+     "objects": 303,
+     "objects_moved": 116
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      168,
+      52,
+      2,
+      4,
+      60
+     ],
+     "purity": 88.7,
+     "table": [
+      [
+       8.7,
+       79.5,
+       4.5,
+       46.2,
+       1.0
+      ],
+      [
+       2.5,
+       5.0,
+       39.4,
+       2.0,
+       1.0
+      ],
+      [
+       0.0,
+       0.0,
+       1.0,
+       0.0,
+       1.0
+      ],
+      [
+       4.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       55.1,
+       2.0,
+       2.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 202,
+     "taken_without_a_move": 0,
+     "all_true_events": 378,
+     "sequences": 954,
+     "sequences_on_true_objects": 326
+    },
+    "events": {
+     "latent state": {
+      "f1": 73.5,
+      "precision": 71.6,
+      "recall": 75.4,
+      "events_true": 415,
+      "events_model": 437
+     },
+     "state read from what is seen": {
+      "f1": 65.5,
+      "precision": 65.6,
+      "recall": 65.3,
+      "events_true": 415,
+      "events_model": 413
+     },
+     "latent state, true behaviours given": {
+      "f1": 81.1,
+      "precision": 78.6,
+      "recall": 83.9,
+      "events_true": 415,
+      "events_model": 443
+     },
+     "latent state, one class": {
+      "f1": 41.7,
+      "precision": 45.8,
+      "recall": 38.3,
+      "events_true": 415,
+      "events_model": 347
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 75.3,
+      "precision": 84.3,
+      "recall": 68.0,
+      "events_true": 378,
+      "events_model": 305
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.9,
+      "precision": 99.7,
+      "recall": 100.0,
+      "events_true": 378,
+      "events_model": 379
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 75.4,
+      "precision": 84.5,
+      "recall": 68.0,
+      "events_true": 378,
+      "events_model": 304
+     }
+    },
+    "first_sight": {
+     "objects": 304,
+     "bound": 298,
+     "labels_on_the_ground_per_scene": 0.94,
+     "found_movable": 96.0,
+     "found_fixed": 95.3
+    },
+    "take": {
+     "latent state": {
+      "n": 298,
+      "all": 41.9,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 298,
+      "all": 64.4,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 298,
+      "all": 41.9,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 298,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 298,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": null,
+      "released": {
+       "contact": 0,
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [
+       "moved"
+      ],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -4.53,
+      "state before": 6.2,
+      "contact": 2.89,
+      "grip": -0.17,
+      "moved": -0.0
+     },
+     "by_class": [
+      [
+       -4.53,
+       6.21,
+       2.9,
+       -0.16,
+       -7.76
+      ],
+      [
+       -4.53,
+       6.72,
+       3.71,
+       -6.45,
+       0.65
+      ],
+      [
+       -2.28,
+       6.19,
+       2.02,
+       -1.37,
+       0.0
+      ],
+      [
+       -4.53,
+       6.02,
+       2.89,
+       -0.17,
+       0.37
+      ],
+      [
+       -11.98,
+       7.0,
+       5.16,
+       9.98,
+       -2.36
+      ]
+     ],
+     "log_likelihood": [
+      -12383.2,
+      -930.0,
+      -898.6,
+      -897.8,
+      -897.4,
+      -897.1
+     ]
+    },
+    "seconds": 430
+   },
+   {
+    "world": 3,
+    "by": "colour",
+    "experience": "agent",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 192,
+    "tally": {
+     "stored": 76,
+     "known": 153,
+     "too_big": 0,
+     "still": 116,
+     "groups_tried": 677,
+     "groups_that_came": 84,
+     "objects": 296,
+     "objects_moved": 117
+    },
+    "classes": {
+     "n": 4,
+     "sizes": [
+      80,
+      20,
+      28,
+      62
+     ],
+     "purity": 93.7,
+     "table": [
+      [
+       7.4,
+       48.2,
+       0.7,
+       14.8,
+       0.0
+      ],
+      [
+       19.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       25.3,
+       1.0,
+       0.0
+      ],
+      [
+       57.7,
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 207,
+     "taken_without_a_move": 0,
+     "all_true_events": 389,
+     "sequences": 553,
+     "sequences_on_true_objects": 268
+    },
+    "events": {
+     "latent state": {
+      "f1": 66.4,
+      "precision": 60.8,
+      "recall": 73.2,
+      "events_true": 459,
+      "events_model": 553
+     },
+     "state read from what is seen": {
+      "f1": 64.0,
+      "precision": 62.3,
+      "recall": 65.8,
+      "events_true": 459,
+      "events_model": 485
+     },
+     "latent state, true behaviours given": {
+      "f1": 60.8,
+      "precision": 51.7,
+      "recall": 73.9,
+      "events_true": 459,
+      "events_model": 656
+     },
+     "latent state, one class": {
+      "f1": 71.1,
+      "precision": 67.6,
+      "recall": 74.9,
+      "events_true": 459,
+      "events_model": 509
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 75.2,
+      "precision": 82.5,
+      "recall": 69.2,
+      "events_true": 389,
+      "events_model": 326
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.7,
+      "precision": 99.7,
+      "recall": 99.7,
+      "events_true": 389,
+      "events_model": 389
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 76.5,
+      "precision": 85.2,
+      "recall": 69.4,
+      "events_true": 389,
+      "events_model": 317
+     }
+    },
+    "first_sight": {
+     "objects": 300,
+     "bound": 191,
+     "labels_on_the_ground_per_scene": 0.23,
+     "found_movable": 96.2,
+     "found_fixed": 5.1
+    },
+    "take": {
+     "latent state": {
+      "n": 299,
+      "all": 86.0,
+      "takeable": 65.9,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 299,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 299,
+      "all": 39.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 299,
+      "all": 60.9,
+      "takeable": 100.0,
+      "fixed": 0.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 299,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.998
+      ]
+     ],
+     "shared": {
+      "bias": -6.67,
+      "state before": 7.37,
+      "contact": 3.92,
+      "grip": 0.45,
+      "moved": -3.74
+     },
+     "by_class": [
+      [
+       -6.69,
+       5.71,
+       3.94,
+       0.44,
+       -3.75
+      ],
+      [
+       -6.66,
+       7.36,
+       2.81,
+       7.94,
+       -3.86
+      ],
+      [
+       -3.32,
+       7.36,
+       3.92,
+       -10.07,
+       -0.46
+      ],
+      [
+       -10.78,
+       7.4,
+       4.58,
+       10.64,
+       -3.75
+      ]
+     ],
+     "log_likelihood": [
+      -7030.2,
+      -842.2,
+      -816.4,
+      -814.0,
+      -813.2,
+      -812.8
+     ]
+    },
+    "seconds": 194
+   },
+   {
+    "world": 3,
+    "by": "shape",
+    "experience": "agent",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 237,
+    "tally": {
+     "stored": 92,
+     "known": 192,
+     "too_big": 0,
+     "still": 145,
+     "groups_tried": 688,
+     "groups_that_came": 107,
+     "objects": 290,
+     "objects_moved": 121
+    },
+    "classes": {
+     "n": 4,
+     "sizes": [
+      117,
+      59,
+      52,
+      8
+     ],
+     "purity": 81.2,
+     "table": [
+      [
+       15.9,
+       54.2,
+       5.5,
+       20.9,
+       0.5
+      ],
+      [
+       52.3,
+       2.0,
+       0.0,
+       0.9,
+       0.0
+      ],
+      [
+       4.9,
+       6.9,
+       36.5,
+       0.0,
+       0.0
+      ],
+      [
+       4.6,
+       1.0,
+       2.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 240,
+     "taken_without_a_move": 0,
+     "all_true_events": 450,
+     "sequences": 692,
+     "sequences_on_true_objects": 294
+    },
+    "events": {
+     "latent state": {
+      "f1": 63.6,
+      "precision": 61.1,
+      "recall": 66.3,
+      "events_true": 499,
+      "events_model": 542
+     },
+     "state read from what is seen": {
+      "f1": 61.9,
+      "precision": 60.7,
+      "recall": 63.1,
+      "events_true": 499,
+      "events_model": 519
+     },
+     "latent state, true behaviours given": {
+      "f1": 71.9,
+      "precision": 69.1,
+      "recall": 74.9,
+      "events_true": 499,
+      "events_model": 541
+     },
+     "latent state, one class": {
+      "f1": 49.1,
+      "precision": 53.7,
+      "recall": 45.3,
+      "events_true": 499,
+      "events_model": 421
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 74.6,
+      "precision": 83.7,
+      "recall": 67.3,
+      "events_true": 450,
+      "events_model": 362
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.6,
+      "precision": 99.3,
+      "recall": 99.8,
+      "events_true": 450,
+      "events_model": 452
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 75.3,
+      "precision": 85.4,
+      "recall": 67.3,
+      "events_true": 450,
+      "events_model": 355
+     }
+    },
+    "first_sight": {
+     "objects": 295,
+     "bound": 290,
+     "labels_on_the_ground_per_scene": 2.41,
+     "found_movable": 97.8,
+     "found_fixed": 98.3
+    },
+    "take": {
+     "latent state": {
+      "n": 289,
+      "all": 50.2,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 69.6
+     },
+     "own tokens, true behaviours given": {
+      "n": 289,
+      "all": 39.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, one class": {
+      "n": 289,
+      "all": 39.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 289,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 289,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 1,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "contact": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [
+       "moved"
+      ],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [
+       "moved"
+      ],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -4.53,
+      "state before": 5.99,
+      "contact": 1.64,
+      "grip": 0.32,
+      "moved": -1.55
+     },
+     "by_class": [
+      [
+       -4.05,
+       6.0,
+       1.65,
+       0.32,
+       -7.47
+      ],
+      [
+       -8.57,
+       6.6,
+       3.58,
+       8.16,
+       -2.91
+      ],
+      [
+       -2.04,
+       6.27,
+       3.08,
+       -6.01,
+       -1.55
+      ],
+      [
+       -5.6,
+       5.99,
+       1.43,
+       0.49,
+       1.54
+      ]
+     ],
+     "log_likelihood": [
+      -8556.8,
+      -1288.4,
+      -1262.5,
+      -1257.9,
+      -1256.2,
+      -1255.8
+     ]
+    },
+    "seconds": 328
+   },
+   {
+    "world": 4,
+    "by": "colour",
+    "experience": "agent",
+    "kind_of": [
+     1,
+     2,
+     0,
+     0,
+     1
+    ],
+    "patterns": 176,
+    "tally": {
+     "stored": 107,
+     "known": 200,
+     "too_big": 2,
+     "still": 69,
+     "groups_tried": 633,
+     "groups_that_came": 106,
+     "objects": 288,
+     "objects_moved": 126
+    },
+    "classes": {
+     "n": 6,
+     "sizes": [
+      43,
+      52,
+      5,
+      40,
+      5,
+      28
+     ],
+     "purity": 95.2,
+     "table": [
+      [
+       0.9,
+       20.3,
+       2.9,
+       9.8,
+       0.7
+      ],
+      [
+       46.4,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       1.7,
+       0.0,
+       0.0,
+       0.0,
+       3.0
+      ],
+      [
+       0.0,
+       0.0,
+       37.2,
+       0.0,
+       0.0
+      ],
+      [
+       3.0,
+       0.0,
+       0.0,
+       1.0,
+       1.0
+      ],
+      [
+       26.1,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 245,
+     "taken_without_a_move": 0,
+     "all_true_events": 456,
+     "sequences": 416,
+     "sequences_on_true_objects": 215
+    },
+    "events": {
+     "latent state": {
+      "f1": 85.4,
+      "precision": 80.4,
+      "recall": 91.2,
+      "events_true": 499,
+      "events_model": 566
+     },
+     "state read from what is seen": {
+      "f1": 66.9,
+      "precision": 69.8,
+      "recall": 64.3,
+      "events_true": 499,
+      "events_model": 460
+     },
+     "latent state, true behaviours given": {
+      "f1": 89.6,
+      "precision": 82.0,
+      "recall": 98.8,
+      "events_true": 499,
+      "events_model": 601
+     },
+     "latent state, one class": {
+      "f1": 74.1,
+      "precision": 75.1,
+      "recall": 73.1,
+      "events_true": 499,
+      "events_model": 486
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 74.2,
+      "precision": 82.5,
+      "recall": 67.3,
+      "events_true": 456,
+      "events_model": 372
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.8,
+      "precision": 99.6,
+      "recall": 100.0,
+      "events_true": 456,
+      "events_model": 458
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 75.1,
+      "precision": 84.8,
+      "recall": 67.3,
+      "events_true": 456,
+      "events_model": 362
+     }
+    },
+    "first_sight": {
+     "objects": 296,
+     "bound": 283,
+     "labels_on_the_ground_per_scene": 1.35,
+     "found_movable": 97.8,
+     "found_fixed": 83.9
+    },
+    "take": {
+     "latent state": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 290,
+      "all": 38.3,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 1,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 3,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": [
+       "contact"
+      ]
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.997
+      ]
+     ],
+     "shared": {
+      "bias": -5.23,
+      "state before": 6.53,
+      "contact": 1.94,
+      "grip": 2.92,
+      "moved": -0.01
+     },
+     "by_class": [
+      [
+       -5.3,
+       5.17,
+       1.93,
+       2.3,
+       -5.68
+      ],
+      [
+       -13.8,
+       6.48,
+       6.37,
+       10.75,
+       -1.91
+      ],
+      [
+       -2.48,
+       6.55,
+       1.91,
+       2.94,
+       0.05
+      ],
+      [
+       -3.78,
+       6.53,
+       5.17,
+       -11.46,
+       0.33
+      ],
+      [
+       -5.13,
+       6.54,
+       1.5,
+       2.93,
+       -0.0
+      ],
+      [
+       -7.83,
+       6.78,
+       2.81,
+       7.62,
+       -2.62
+      ]
+     ],
+     "log_likelihood": [
+      -5011.4,
+      -743.9,
+      -717.6,
+      -714.1,
+      -712.5,
+      -712.2
+     ]
+    },
+    "seconds": 146
+   },
+   {
+    "world": 4,
+    "by": "shape",
+    "experience": "agent",
+    "kind_of": [
+     1,
+     2,
+     0,
+     0,
+     1
+    ],
+    "patterns": 202,
+    "tally": {
+     "stored": 79,
+     "known": 232,
+     "too_big": 0,
+     "still": 123,
+     "groups_tried": 655,
+     "groups_that_came": 96,
+     "objects": 286,
+     "objects_moved": 117
+    },
+    "classes": {
+     "n": 6,
+     "sizes": [
+      91,
+      4,
+      2,
+      23,
+      28,
+      53
+     ],
+     "purity": 85.7,
+     "table": [
+      [
+       6.6,
+       47.9,
+       5.5,
+       19.7,
+       1.8
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       4.0
+      ],
+      [
+       1.0,
+       0.0,
+       0.9,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       3.0,
+       19.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.8,
+       3.7,
+       19.0,
+       0.0,
+       0.0
+      ],
+      [
+       45.9,
+       5.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 217,
+     "taken_without_a_move": 0,
+     "all_true_events": 399,
+     "sequences": 724,
+     "sequences_on_true_objects": 246
+    },
+    "events": {
+     "latent state": {
+      "f1": 66.3,
+      "precision": 64.5,
+      "recall": 68.1,
+      "events_true": 470,
+      "events_model": 496
+     },
+     "state read from what is seen": {
+      "f1": 65.1,
+      "precision": 66.2,
+      "recall": 64.0,
+      "events_true": 470,
+      "events_model": 455
+     },
+     "latent state, true behaviours given": {
+      "f1": 68.5,
+      "precision": 68.7,
+      "recall": 68.3,
+      "events_true": 470,
+      "events_model": 467
+     },
+     "latent state, one class": {
+      "f1": 45.9,
+      "precision": 53.4,
+      "recall": 40.2,
+      "events_true": 470,
+      "events_model": 354
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 74.0,
+      "precision": 85.3,
+      "recall": 65.4,
+      "events_true": 399,
+      "events_model": 306
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.0,
+      "precision": 98.3,
+      "recall": 99.7,
+      "events_true": 399,
+      "events_model": 405
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 75.0,
+      "precision": 87.3,
+      "recall": 65.7,
+      "events_true": 399,
+      "events_model": 300
+     }
+    },
+    "first_sight": {
+     "objects": 291,
+     "bound": 282,
+     "labels_on_the_ground_per_scene": 0.29,
+     "found_movable": 92.4,
+     "found_fixed": 94.1
+    },
+    "take": {
+     "latent state": {
+      "n": 285,
+      "all": 41.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 285,
+      "all": 41.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, one class": {
+      "n": 285,
+      "all": 41.1,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 285,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 285,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 5,
+      "taken": null,
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 3,
+      "taken": {
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -2.52,
+      "state before": 6.08,
+      "contact": 2.46,
+      "grip": -0.07,
+      "moved": -1.97
+     },
+     "by_class": [
+      [
+       -3.68,
+       6.08,
+       2.45,
+       -0.09,
+       -8.14
+      ],
+      [
+       -2.52,
+       9.68,
+       2.46,
+       -0.09,
+       -1.95
+      ],
+      [
+       -2.52,
+       5.83,
+       2.45,
+       -0.06,
+       -1.97
+      ],
+      [
+       0.2,
+       6.64,
+       2.46,
+       -7.06,
+       -2.84
+      ],
+      [
+       -2.5,
+       7.31,
+       3.37,
+       -7.92,
+       -1.56
+      ],
+      [
+       -7.53,
+       6.09,
+       3.62,
+       6.26,
+       -2.49
+      ]
+     ],
+     "log_likelihood": [
+      -9597.1,
+      -1068.9,
+      -1047.4,
+      -1046.5,
+      -1046.4,
+      -1046.4
+     ]
+    },
+    "seconds": 345
+   },
+   {
+    "world": 5,
+    "by": "colour",
+    "experience": "agent",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 137,
+    "tally": {
+     "stored": 73,
+     "known": 154,
+     "too_big": 1,
+     "still": 64,
+     "groups_tried": 695,
+     "groups_that_came": 82,
+     "objects": 297,
+     "objects_moved": 110
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      31,
+      3,
+      28,
+      8,
+      67
+     ],
+     "purity": 88.7,
+     "table": [
+      [
+       5.8,
+       1.4,
+       3.6,
+       6.3,
+       0.6
+      ],
+      [
+       0.0,
+       0.0,
+       2.0,
+       0.0,
+       1.0
+      ],
+      [
+       0.0,
+       0.0,
+       25.3,
+       1.0,
+       0.0
+      ],
+      [
+       2.8,
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       62.9,
+       0.4,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 228,
+     "taken_without_a_move": 0,
+     "all_true_events": 427,
+     "sequences": 407,
+     "sequences_on_true_objects": 177
+    },
+    "events": {
+     "latent state": {
+      "f1": 70.3,
+      "precision": 65.5,
+      "recall": 75.9,
+      "events_true": 465,
+      "events_model": 539
+     },
+     "state read from what is seen": {
+      "f1": 71.3,
+      "precision": 70.3,
+      "recall": 72.3,
+      "events_true": 465,
+      "events_model": 478
+     },
+     "latent state, true behaviours given": {
+      "f1": 67.8,
+      "precision": 62.2,
+      "recall": 74.6,
+      "events_true": 465,
+      "events_model": 558
+     },
+     "latent state, one class": {
+      "f1": 47.6,
+      "precision": 48.9,
+      "recall": 46.5,
+      "events_true": 465,
+      "events_model": 442
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 78.6,
+      "precision": 84.8,
+      "recall": 73.3,
+      "events_true": 427,
+      "events_model": 369
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.9,
+      "precision": 99.8,
+      "recall": 100.0,
+      "events_true": 427,
+      "events_model": 428
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 80.3,
+      "precision": 88.7,
+      "recall": 73.3,
+      "events_true": 427,
+      "events_model": 353
+     }
+    },
+    "first_sight": {
+     "objects": 295,
+     "bound": 188,
+     "labels_on_the_ground_per_scene": 2.82,
+     "found_movable": 98.9,
+     "found_fixed": 0.0
+    },
+    "take": {
+     "latent state": {
+      "n": 293,
+      "all": 76.1,
+      "takeable": 95.1,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 293,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 293,
+      "all": 36.2,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 293,
+      "all": 63.8,
+      "takeable": 100.0,
+      "fixed": 0.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 293,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [
+       "moved"
+      ],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [
+       "moved"
+      ],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "shared": {
+      "bias": -4.09,
+      "state before": 5.98,
+      "contact": 2.1,
+      "grip": -0.0,
+      "moved": -1.88
+     },
+     "by_class": [
+      [
+       -4.1,
+       5.97,
+       2.09,
+       0.01,
+       -6.25
+      ],
+      [
+       -2.9,
+       5.99,
+       1.44,
+       -1.87,
+       0.41
+      ],
+      [
+       -1.93,
+       6.48,
+       4.28,
+       -8.35,
+       -1.88
+      ],
+      [
+       -4.1,
+       4.42,
+       2.1,
+       0.88,
+       -1.89
+      ],
+      [
+       -7.68,
+       6.68,
+       4.27,
+       9.2,
+       -5.22
+      ]
+     ],
+     "log_likelihood": [
+      -5307.1,
+      -800.1,
+      -789.7,
+      -786.8,
+      -783.8,
+      -782.2
+     ]
+    },
+    "seconds": 130
+   },
+   {
+    "world": 5,
+    "by": "shape",
+    "experience": "agent",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 255,
+    "tally": {
+     "stored": 74,
+     "known": 150,
+     "too_big": 3,
+     "still": 181,
+     "groups_tried": 715,
+     "groups_that_came": 89,
+     "objects": 301,
+     "objects_moved": 113
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      151,
+      52,
+      47,
+      2,
+      2
+     ],
+     "purity": 87.3,
+     "table": [
+      [
+       5.3,
+       46.4,
+       2.6,
+       34.3,
+       0.0
+      ],
+      [
+       5.0,
+       3.0,
+       41.3,
+       0.0,
+       1.0
+      ],
+      [
+       39.1,
+       5.0,
+       1.2,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.9,
+       0.8,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "experience_events": {
+     "taken": 218,
+     "taken_without_a_move": 0,
+     "all_true_events": 410,
+     "sequences": 944,
+     "sequences_on_true_objects": 295
+    },
+    "events": {
+     "latent state": {
+      "f1": 65.1,
+      "precision": 61.1,
+      "recall": 69.7,
+      "events_true": 416,
+      "events_model": 475
+     },
+     "state read from what is seen": {
+      "f1": 63.9,
+      "precision": 60.7,
+      "recall": 67.3,
+      "events_true": 416,
+      "events_model": 461
+     },
+     "latent state, true behaviours given": {
+      "f1": 79.1,
+      "precision": 72.2,
+      "recall": 87.5,
+      "events_true": 416,
+      "events_model": 504
+     },
+     "latent state, one class": {
+      "f1": 38.9,
+      "precision": 41.8,
+      "recall": 36.3,
+      "events_true": 416,
+      "events_model": 361
+     },
+     "simulator's tokens, true behaviours": {
+      "f1": 76.9,
+      "precision": 86.1,
+      "recall": 69.5,
+      "events_true": 410,
+      "events_model": 331
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "f1": 99.5,
+      "precision": 99.3,
+      "recall": 99.8,
+      "events_true": 410,
+      "events_model": 412
+     },
+     "simulator's tokens, state read from what is seen": {
+      "f1": 77.4,
+      "precision": 86.9,
+      "recall": 69.8,
+      "events_true": 410,
+      "events_model": 329
+     }
+    },
+    "first_sight": {
+     "objects": 307,
+     "bound": 306,
+     "labels_on_the_ground_per_scene": 0.72,
+     "found_movable": 96.3,
+     "found_fixed": 90.6
+    },
+    "take": {
+     "latent state": {
+      "n": 297,
+      "all": 37.7,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "own tokens, true behaviours given": {
+      "n": 297,
+      "all": 55.2,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "own tokens, one class": {
+      "n": 297,
+      "all": 37.7,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "simulator's tokens, true behaviours": {
+      "n": 297,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "simulator's tokens, true behaviours, penalty 5": {
+      "n": 297,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 2,
+      "taken": null,
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": null,
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "taken": {
+       "contact": 1,
+       "grip": 1
+      },
+      "taken untested": [
+       "moved"
+      ],
+      "released": {
+       "grip": 0
+      },
+      "released untested": []
+     },
+     "sticky": {
+      "taken": {
+       "contact": 1,
+       "grip": 0
+      },
+      "taken untested": [],
+      "released": {
+       "grip": 1
+      },
+      "released untested": []
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.998
+      ]
+     ],
+     "shared": {
+      "bias": -3.46,
+      "state before": 5.5,
+      "contact": 2.52,
+      "grip": 0.0,
+      "moved": -2.4
+     },
+     "by_class": [
+      [
+       -3.47,
+       3.41,
+       2.53,
+       -0.0,
+       -5.49
+      ],
+      [
+       -1.04,
+       6.46,
+       3.07,
+       -6.22,
+       -2.4
+      ],
+      [
+       -6.31,
+       5.5,
+       3.05,
+       5.1,
+       -2.4
+      ],
+      [
+       -3.48,
+       5.52,
+       1.45,
+       0.42,
+       -2.41
+      ],
+      [
+       -3.38,
+       5.5,
+       2.49,
+       -0.44,
+       -2.31
+      ]
+     ],
+     "log_likelihood": [
+      -12673.4,
+      -1186.9,
+      -1162.2,
+      -1160.3,
+      -1159.5,
+      -1159.0
+     ]
+    },
+    "seconds": 341
+   }
+  ]
+ }
+}

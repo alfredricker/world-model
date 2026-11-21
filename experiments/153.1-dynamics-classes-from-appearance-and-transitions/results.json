@@ -1,0 +1,1499 @@
+{
+ "card": "153.1",
+ "sprites": {
+  "30 episodes": {
+   "summary": {
+    "runs": 10,
+    "effects": 92.1,
+    "bound": 92.7,
+    "one_class": 73.4,
+    "take": 99.1,
+    "lowest_take": 94.6,
+    "worst_gap_to_bound": 3.6,
+    "runs_with_three_classes": 10,
+    "runs_take_90": 10,
+    "runs_passing_c3": 9,
+    "mean_seconds": 63.3
+   },
+   "per_run": [
+    {
+     "world": 1,
+     "by": "colour",
+     "episodes": 30,
+     "classes": 3,
+     "class_sizes": [
+      32,
+      12,
+      29
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 83.6,
+     "effects": 91.2,
+     "bound": 91.0,
+     "one_class": 72.6,
+     "take": 100.0,
+     "take_one_class": 39.5,
+     "seconds": 59
+    },
+    {
+     "world": 2,
+     "by": "colour",
+     "episodes": 30,
+     "classes": 3,
+     "class_sizes": [
+      44,
+      11,
+      21
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 77.1,
+     "effects": 94.9,
+     "bound": 94.9,
+     "one_class": 78.2,
+     "take": 100.0,
+     "take_one_class": 41.5,
+     "seconds": 62
+    },
+    {
+     "world": 3,
+     "by": "colour",
+     "episodes": 30,
+     "classes": 3,
+     "class_sizes": [
+      23,
+      17,
+      24
+     ],
+     "purity": 98.9,
+     "weight_on_right_feature": 73.5,
+     "effects": 88.5,
+     "bound": 92.1,
+     "one_class": 69.2,
+     "take": 94.6,
+     "take_one_class": 39.1,
+     "seconds": 64
+    },
+    {
+     "world": 4,
+     "by": "colour",
+     "episodes": 30,
+     "classes": 3,
+     "class_sizes": [
+      28,
+      32,
+      14
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 79.9,
+     "effects": 92.6,
+     "bound": 92.5,
+     "one_class": 72.1,
+     "take": 100.0,
+     "take_one_class": 38.3,
+     "seconds": 54
+    },
+    {
+     "world": 5,
+     "by": "colour",
+     "episodes": 30,
+     "classes": 3,
+     "class_sizes": [
+      29,
+      22,
+      27
+     ],
+     "purity": 99.4,
+     "weight_on_right_feature": 91.6,
+     "effects": 90.5,
+     "bound": 90.5,
+     "one_class": 69.1,
+     "take": 100.0,
+     "take_one_class": 36.2,
+     "seconds": 70
+    },
+    {
+     "world": 1,
+     "by": "shape",
+     "episodes": 30,
+     "classes": 3,
+     "class_sizes": [
+      32,
+      11,
+      22
+     ],
+     "purity": 99.2,
+     "weight_on_right_feature": 87.1,
+     "effects": 92.8,
+     "bound": 93.3,
+     "one_class": 72.5,
+     "take": 99.4,
+     "take_one_class": 37.1,
+     "seconds": 85
+    },
+    {
+     "world": 2,
+     "by": "shape",
+     "episodes": 30,
+     "classes": 3,
+     "class_sizes": [
+      38,
+      20,
+      16
+     ],
+     "purity": 99.9,
+     "weight_on_right_feature": 90.4,
+     "effects": 91.5,
+     "bound": 93.3,
+     "one_class": 75.3,
+     "take": 98.7,
+     "take_one_class": 41.9,
+     "seconds": 59
+    },
+    {
+     "world": 3,
+     "by": "shape",
+     "episodes": 30,
+     "classes": 3,
+     "class_sizes": [
+      21,
+      17,
+      30
+     ],
+     "purity": 98.4,
+     "weight_on_right_feature": 94.3,
+     "effects": 91.8,
+     "bound": 91.8,
+     "one_class": 71.0,
+     "take": 100.0,
+     "take_one_class": 39.1,
+     "seconds": 56
+    },
+    {
+     "world": 4,
+     "by": "shape",
+     "episodes": 30,
+     "classes": 3,
+     "class_sizes": [
+      39,
+      6,
+      28
+     ],
+     "purity": 98.3,
+     "weight_on_right_feature": 87.1,
+     "effects": 94.6,
+     "bound": 94.6,
+     "one_class": 77.6,
+     "take": 100.0,
+     "take_one_class": 41.1,
+     "seconds": 73
+    },
+    {
+     "world": 5,
+     "by": "shape",
+     "episodes": 30,
+     "classes": 3,
+     "class_sizes": [
+      32,
+      29,
+      13
+     ],
+     "purity": 98.3,
+     "weight_on_right_feature": 92.7,
+     "effects": 92.8,
+     "bound": 93.0,
+     "one_class": 76.6,
+     "take": 98.0,
+     "take_one_class": 37.7,
+     "seconds": 51
+    }
+   ]
+  },
+  "100 episodes": {
+   "summary": {
+    "runs": 10,
+    "effects": 92.6,
+    "bound": 92.7,
+    "one_class": 73.4,
+    "take": 99.8,
+    "lowest_take": 97.9,
+    "worst_gap_to_bound": 1.0,
+    "runs_with_three_classes": 10,
+    "runs_take_90": 10,
+    "runs_passing_c3": 10,
+    "mean_seconds": 88.4
+   },
+   "per_run": [
+    {
+     "world": 1,
+     "by": "colour",
+     "episodes": 100,
+     "classes": 3,
+     "class_sizes": [
+      78,
+      40,
+      78
+     ],
+     "purity": 99.8,
+     "weight_on_right_feature": 98.2,
+     "effects": 91.5,
+     "bound": 91.5,
+     "one_class": 71.1,
+     "take": 100.0,
+     "take_one_class": 39.5,
+     "seconds": 72
+    },
+    {
+     "world": 2,
+     "by": "colour",
+     "episodes": 100,
+     "classes": 3,
+     "class_sizes": [
+      95,
+      33,
+      72
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 95.6,
+     "effects": 94.5,
+     "bound": 94.5,
+     "one_class": 76.3,
+     "take": 100.0,
+     "take_one_class": 41.5,
+     "seconds": 101
+    },
+    {
+     "world": 3,
+     "by": "colour",
+     "episodes": 100,
+     "classes": 3,
+     "class_sizes": [
+      63,
+      32,
+      77
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 90.8,
+     "effects": 92.4,
+     "bound": 92.4,
+     "one_class": 70.5,
+     "take": 100.0,
+     "take_one_class": 39.1,
+     "seconds": 69
+    },
+    {
+     "world": 4,
+     "by": "colour",
+     "episodes": 100,
+     "classes": 3,
+     "class_sizes": [
+      34,
+      77,
+      76
+     ],
+     "purity": 99.5,
+     "weight_on_right_feature": 96.4,
+     "effects": 92.4,
+     "bound": 92.5,
+     "one_class": 74.9,
+     "take": 100.0,
+     "take_one_class": 38.3,
+     "seconds": 98
+    },
+    {
+     "world": 5,
+     "by": "colour",
+     "episodes": 100,
+     "classes": 3,
+     "class_sizes": [
+      72,
+      45,
+      79
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 97.9,
+     "effects": 90.4,
+     "bound": 90.4,
+     "one_class": 70.8,
+     "take": 100.0,
+     "take_one_class": 36.2,
+     "seconds": 55
+    },
+    {
+     "world": 1,
+     "by": "shape",
+     "episodes": 100,
+     "classes": 3,
+     "class_sizes": [
+      84,
+      33,
+      68
+     ],
+     "purity": 99.8,
+     "weight_on_right_feature": 97.2,
+     "effects": 93.1,
+     "bound": 93.1,
+     "one_class": 72.5,
+     "take": 100.0,
+     "take_one_class": 37.1,
+     "seconds": 88
+    },
+    {
+     "world": 2,
+     "by": "shape",
+     "episodes": 100,
+     "classes": 3,
+     "class_sizes": [
+      80,
+      38,
+      72
+     ],
+     "purity": 99.8,
+     "weight_on_right_feature": 94.4,
+     "effects": 93.5,
+     "bound": 93.5,
+     "one_class": 74.8,
+     "take": 100.0,
+     "take_one_class": 41.9,
+     "seconds": 109
+    },
+    {
+     "world": 3,
+     "by": "shape",
+     "episodes": 100,
+     "classes": 3,
+     "class_sizes": [
+      60,
+      30,
+      77
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 98.8,
+     "effects": 91.7,
+     "bound": 91.8,
+     "one_class": 73.0,
+     "take": 100.0,
+     "take_one_class": 39.1,
+     "seconds": 158
+    },
+    {
+     "world": 4,
+     "by": "shape",
+     "episodes": 100,
+     "classes": 3,
+     "class_sizes": [
+      83,
+      75,
+      39
+     ],
+     "purity": 99.4,
+     "weight_on_right_feature": 98.2,
+     "effects": 93.5,
+     "bound": 94.5,
+     "one_class": 74.8,
+     "take": 97.9,
+     "take_one_class": 41.1,
+     "seconds": 86
+    },
+    {
+     "world": 5,
+     "by": "shape",
+     "episodes": 100,
+     "classes": 3,
+     "class_sizes": [
+      65,
+      48,
+      75
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 98.4,
+     "effects": 92.9,
+     "bound": 92.9,
+     "one_class": 75.1,
+     "take": 100.0,
+     "take_one_class": 37.7,
+     "seconds": 48
+    }
+   ]
+  },
+  "300 episodes": {
+   "summary": {
+    "runs": 20,
+    "effects": 92.7,
+    "bound": 92.7,
+    "one_class": 73.6,
+    "take": 100.0,
+    "lowest_take": 100.0,
+    "worst_gap_to_bound": 0.0,
+    "runs_with_three_classes": 18,
+    "runs_take_90": 20,
+    "runs_passing_c3": 20,
+    "mean_seconds": 204.8
+   },
+   "per_run": [
+    {
+     "world": 1,
+     "by": "colour",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      184,
+      208,
+      108
+     ],
+     "purity": 99.9,
+     "weight_on_right_feature": 98.9,
+     "effects": 91.5,
+     "bound": 91.5,
+     "one_class": 71.4,
+     "take": 100.0,
+     "take_one_class": 39.5,
+     "seconds": 339
+    },
+    {
+     "world": 2,
+     "by": "colour",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      216,
+      195,
+      89
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 99.1,
+     "effects": 94.6,
+     "bound": 94.6,
+     "one_class": 76.3,
+     "take": 100.0,
+     "take_one_class": 41.5,
+     "seconds": 200
+    },
+    {
+     "world": 3,
+     "by": "colour",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      190,
+      188,
+      101
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 99.2,
+     "effects": 92.6,
+     "bound": 92.6,
+     "one_class": 72.3,
+     "take": 100.0,
+     "take_one_class": 39.1,
+     "seconds": 219
+    },
+    {
+     "world": 4,
+     "by": "colour",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      192,
+      87,
+      209
+     ],
+     "purity": 99.5,
+     "weight_on_right_feature": 98.9,
+     "effects": 92.5,
+     "bound": 92.5,
+     "one_class": 75.5,
+     "take": 100.0,
+     "take_one_class": 38.3,
+     "seconds": 312
+    },
+    {
+     "world": 5,
+     "by": "colour",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      206,
+      196,
+      110
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 98.8,
+     "effects": 90.5,
+     "bound": 90.5,
+     "one_class": 69.6,
+     "take": 100.0,
+     "take_one_class": 36.2,
+     "seconds": 180
+    },
+    {
+     "world": 6,
+     "by": "colour",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      206,
+      197,
+      88
+     ],
+     "purity": 99.9,
+     "weight_on_right_feature": 99.0,
+     "effects": 91.8,
+     "bound": 91.8,
+     "one_class": 70.0,
+     "take": 100.0,
+     "take_one_class": 39.9,
+     "seconds": 148
+    },
+    {
+     "world": 7,
+     "by": "colour",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      192,
+      96,
+      227
+     ],
+     "purity": 99.4,
+     "weight_on_right_feature": 98.8,
+     "effects": 92.7,
+     "bound": 92.7,
+     "one_class": 73.1,
+     "take": 100.0,
+     "take_one_class": 46.6,
+     "seconds": 172
+    },
+    {
+     "world": 8,
+     "by": "colour",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      203,
+      180,
+      104
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 99.0,
+     "effects": 90.7,
+     "bound": 90.7,
+     "one_class": 70.4,
+     "take": 100.0,
+     "take_one_class": 40.0,
+     "seconds": 170
+    },
+    {
+     "world": 9,
+     "by": "colour",
+     "episodes": 300,
+     "classes": 4,
+     "class_sizes": [
+      194,
+      1,
+      99,
+      181
+     ],
+     "purity": 99.6,
+     "weight_on_right_feature": 98.8,
+     "effects": 91.9,
+     "bound": 91.8,
+     "one_class": 74.3,
+     "take": 100.0,
+     "take_one_class": 38.9,
+     "seconds": 211
+    },
+    {
+     "world": 10,
+     "by": "colour",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      194,
+      215,
+      105
+     ],
+     "purity": 99.5,
+     "weight_on_right_feature": 98.4,
+     "effects": 92.7,
+     "bound": 92.6,
+     "one_class": 73.9,
+     "take": 100.0,
+     "take_one_class": 37.2,
+     "seconds": 82
+    },
+    {
+     "world": 1,
+     "by": "shape",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      214,
+      104,
+      178
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 99.5,
+     "effects": 93.0,
+     "bound": 93.0,
+     "one_class": 74.2,
+     "take": 100.0,
+     "take_one_class": 37.1,
+     "seconds": 243
+    },
+    {
+     "world": 2,
+     "by": "shape",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      200,
+      97,
+      181
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 98.8,
+     "effects": 93.3,
+     "bound": 93.3,
+     "one_class": 75.2,
+     "take": 100.0,
+     "take_one_class": 41.9,
+     "seconds": 172
+    },
+    {
+     "world": 3,
+     "by": "shape",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      200,
+      194,
+      87
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 99.3,
+     "effects": 92.0,
+     "bound": 92.0,
+     "one_class": 74.5,
+     "take": 100.0,
+     "take_one_class": 39.1,
+     "seconds": 158
+    },
+    {
+     "world": 4,
+     "by": "shape",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      222,
+      187,
+      100
+     ],
+     "purity": 99.8,
+     "weight_on_right_feature": 98.7,
+     "effects": 94.2,
+     "bound": 94.2,
+     "one_class": 76.0,
+     "take": 100.0,
+     "take_one_class": 41.1,
+     "seconds": 269
+    },
+    {
+     "world": 5,
+     "by": "shape",
+     "episodes": 300,
+     "classes": 4,
+     "class_sizes": [
+      186,
+      117,
+      1,
+      208
+     ],
+     "purity": 99.9,
+     "weight_on_right_feature": 99.5,
+     "effects": 92.7,
+     "bound": 92.7,
+     "one_class": 74.6,
+     "take": 100.0,
+     "take_one_class": 37.7,
+     "seconds": 225
+    },
+    {
+     "world": 6,
+     "by": "shape",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      201,
+      102,
+      190
+     ],
+     "purity": 99.7,
+     "weight_on_right_feature": 98.9,
+     "effects": 92.3,
+     "bound": 92.3,
+     "one_class": 72.7,
+     "take": 100.0,
+     "take_one_class": 40.8,
+     "seconds": 222
+    },
+    {
+     "world": 7,
+     "by": "shape",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      177,
+      106,
+      193
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 99.3,
+     "effects": 93.9,
+     "bound": 93.9,
+     "one_class": 73.6,
+     "take": 100.0,
+     "take_one_class": 36.9,
+     "seconds": 182
+    },
+    {
+     "world": 8,
+     "by": "shape",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      179,
+      95,
+      209
+     ],
+     "purity": 99.5,
+     "weight_on_right_feature": 99.4,
+     "effects": 94.5,
+     "bound": 94.5,
+     "one_class": 75.2,
+     "take": 100.0,
+     "take_one_class": 39.8,
+     "seconds": 204
+    },
+    {
+     "world": 9,
+     "by": "shape",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      193,
+      100,
+      185
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 99.6,
+     "effects": 91.9,
+     "bound": 91.9,
+     "one_class": 75.0,
+     "take": 100.0,
+     "take_one_class": 39.2,
+     "seconds": 253
+    },
+    {
+     "world": 10,
+     "by": "shape",
+     "episodes": 300,
+     "classes": 3,
+     "class_sizes": [
+      189,
+      110,
+      200
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 98.7,
+     "effects": 93.9,
+     "bound": 93.9,
+     "one_class": 73.5,
+     "take": 100.0,
+     "take_one_class": 43.9,
+     "seconds": 135
+    }
+   ]
+  }
+ },
+ "stream": {
+  "100 sentences": {
+   "summary": {
+    "worlds": 10,
+    "module": 1.1043,
+    "best_reader": 1.0604,
+    "true_class": 0.981,
+    "one_class": 1.342,
+    "no_classes": 1.2598,
+    "gap_closed_mean": 84.3,
+    "gap_closed_min": 73.0,
+    "gap_closed_max": 100.7,
+    "worlds_with_four_classes": 6,
+    "most_classes": 8,
+    "purity_min": 78.8,
+    "purity_max": 92.3,
+    "lowest_weight_on_right_feature": 79.5,
+    "mean_seconds": 65.8
+   },
+   "per_world": [
+    {
+     "world": 6,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      38,
+      44,
+      31,
+      34
+     ],
+     "purity": 91.2,
+     "weight_on_right_feature": 91.1,
+     "module": 1.0995,
+     "best_reader": 1.0479,
+     "true_class": 0.9721,
+     "one_class": 1.3146,
+     "no_classes": 1.2608,
+     "gap_closed": 80.7,
+     "seconds": 56
+    },
+    {
+     "world": 7,
+     "by": "onset",
+     "classes": 8,
+     "class_sizes": [
+      32,
+      32,
+      27,
+      12,
+      7,
+      10,
+      9,
+      2
+     ],
+     "purity": 89.6,
+     "weight_on_right_feature": 81.0,
+     "module": 1.1224,
+     "best_reader": 1.0586,
+     "true_class": 0.9877,
+     "one_class": 1.3139,
+     "no_classes": 1.235,
+     "gap_closed": 75.0,
+     "seconds": 101
+    },
+    {
+     "world": 8,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      38,
+      39,
+      34,
+      36
+     ],
+     "purity": 92.3,
+     "weight_on_right_feature": 95.3,
+     "module": 1.1049,
+     "best_reader": 1.1003,
+     "true_class": 1.0206,
+     "one_class": 1.4069,
+     "no_classes": 1.2532,
+     "gap_closed": 98.5,
+     "seconds": 54
+    },
+    {
+     "world": 9,
+     "by": "onset",
+     "classes": 6,
+     "class_sizes": [
+      40,
+      32,
+      23,
+      3,
+      22,
+      6
+     ],
+     "purity": 80.0,
+     "weight_on_right_feature": 79.5,
+     "module": 1.1012,
+     "best_reader": 1.0226,
+     "true_class": 0.9298,
+     "one_class": 1.3134,
+     "no_classes": 1.2166,
+     "gap_closed": 73.0,
+     "seconds": 77
+    },
+    {
+     "world": 10,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      51,
+      38,
+      38,
+      6
+     ],
+     "purity": 78.8,
+     "weight_on_right_feature": 90.8,
+     "module": 1.0864,
+     "best_reader": 1.0697,
+     "true_class": 0.9853,
+     "one_class": 1.3413,
+     "no_classes": 1.3425,
+     "gap_closed": 93.9,
+     "seconds": 57
+    },
+    {
+     "world": 1,
+     "by": "suffix",
+     "classes": 4,
+     "class_sizes": [
+      44,
+      39,
+      28,
+      26
+     ],
+     "purity": 87.1,
+     "weight_on_right_feature": 86.8,
+     "module": 1.1264,
+     "best_reader": 1.1047,
+     "true_class": 1.0099,
+     "one_class": 1.3982,
+     "no_classes": 1.2895,
+     "gap_closed": 92.6,
+     "seconds": 72
+    },
+    {
+     "world": 2,
+     "by": "suffix",
+     "classes": 4,
+     "class_sizes": [
+      33,
+      45,
+      26,
+      36
+     ],
+     "purity": 91.3,
+     "weight_on_right_feature": 79.7,
+     "module": 1.0967,
+     "best_reader": 1.0296,
+     "true_class": 0.9489,
+     "one_class": 1.3365,
+     "no_classes": 1.251,
+     "gap_closed": 78.1,
+     "seconds": 51
+    },
+    {
+     "world": 3,
+     "by": "suffix",
+     "classes": 5,
+     "class_sizes": [
+      34,
+      41,
+      42,
+      17,
+      11
+     ],
+     "purity": 88.2,
+     "weight_on_right_feature": 91.1,
+     "module": 1.0739,
+     "best_reader": 1.0092,
+     "true_class": 0.9462,
+     "one_class": 1.279,
+     "no_classes": 1.1665,
+     "gap_closed": 76.0,
+     "seconds": 59
+    },
+    {
+     "world": 4,
+     "by": "suffix",
+     "classes": 6,
+     "class_sizes": [
+      28,
+      35,
+      35,
+      19,
+      17,
+      7
+     ],
+     "purity": 91.4,
+     "weight_on_right_feature": 87.8,
+     "module": 1.1518,
+     "best_reader": 1.079,
+     "true_class": 1.0056,
+     "one_class": 1.364,
+     "no_classes": 1.3157,
+     "gap_closed": 74.5,
+     "seconds": 78
+    },
+    {
+     "world": 5,
+     "by": "suffix",
+     "classes": 4,
+     "class_sizes": [
+      35,
+      49,
+      26,
+      25
+     ],
+     "purity": 92.1,
+     "weight_on_right_feature": 91.4,
+     "module": 1.0802,
+     "best_reader": 1.082,
+     "true_class": 1.0042,
+     "one_class": 1.3523,
+     "no_classes": 1.2674,
+     "gap_closed": 100.7,
+     "seconds": 53
+    }
+   ]
+  },
+  "200 sentences": {
+   "summary": {
+    "worlds": 10,
+    "module": 0.9724,
+    "best_reader": 0.9666,
+    "true_class": 0.9068,
+    "one_class": 1.2535,
+    "no_classes": 1.0638,
+    "gap_closed_mean": 98.0,
+    "gap_closed_min": 93.1,
+    "gap_closed_max": 102.8,
+    "worlds_with_four_classes": 7,
+    "most_classes": 8,
+    "purity_min": 89.8,
+    "purity_max": 99.5,
+    "lowest_weight_on_right_feature": 89.2,
+    "mean_seconds": 66.6
+   },
+   "per_world": [
+    {
+     "world": 6,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      68,
+      62,
+      58,
+      27
+     ],
+     "purity": 89.8,
+     "weight_on_right_feature": 97.0,
+     "module": 0.96,
+     "best_reader": 0.9532,
+     "true_class": 0.8928,
+     "one_class": 1.2385,
+     "no_classes": 1.036,
+     "gap_closed": 97.6,
+     "seconds": 56
+    },
+    {
+     "world": 7,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      59,
+      55,
+      46,
+      40
+     ],
+     "purity": 95.1,
+     "weight_on_right_feature": 97.5,
+     "module": 0.9505,
+     "best_reader": 0.943,
+     "true_class": 0.8869,
+     "one_class": 1.2205,
+     "no_classes": 1.0512,
+     "gap_closed": 97.3,
+     "seconds": 58
+    },
+    {
+     "world": 8,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      50,
+      62,
+      46,
+      58
+     ],
+     "purity": 97.8,
+     "weight_on_right_feature": 94.3,
+     "module": 0.977,
+     "best_reader": 0.9811,
+     "true_class": 0.924,
+     "one_class": 1.2493,
+     "no_classes": 1.0469,
+     "gap_closed": 101.5,
+     "seconds": 57
+    },
+    {
+     "world": 9,
+     "by": "onset",
+     "classes": 5,
+     "class_sizes": [
+      39,
+      52,
+      55,
+      38,
+      1
+     ],
+     "purity": 96.5,
+     "weight_on_right_feature": 89.2,
+     "module": 0.9771,
+     "best_reader": 0.9578,
+     "true_class": 0.8901,
+     "one_class": 1.2385,
+     "no_classes": 1.0388,
+     "gap_closed": 93.1,
+     "seconds": 68
+    },
+    {
+     "world": 10,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      53,
+      60,
+      53,
+      51
+     ],
+     "purity": 99.4,
+     "weight_on_right_feature": 92.4,
+     "module": 0.9871,
+     "best_reader": 0.98,
+     "true_class": 0.9189,
+     "one_class": 1.2671,
+     "no_classes": 1.1107,
+     "gap_closed": 97.5,
+     "seconds": 56
+    },
+    {
+     "world": 1,
+     "by": "suffix",
+     "classes": 4,
+     "class_sizes": [
+      47,
+      61,
+      52,
+      47
+     ],
+     "purity": 96.6,
+     "weight_on_right_feature": 91.2,
+     "module": 0.9888,
+     "best_reader": 0.9971,
+     "true_class": 0.9331,
+     "one_class": 1.2953,
+     "no_classes": 1.1145,
+     "gap_closed": 102.8,
+     "seconds": 59
+    },
+    {
+     "world": 2,
+     "by": "suffix",
+     "classes": 5,
+     "class_sizes": [
+      36,
+      65,
+      48,
+      54,
+      9
+     ],
+     "purity": 99.2,
+     "weight_on_right_feature": 95.7,
+     "module": 0.9585,
+     "best_reader": 0.9564,
+     "true_class": 0.8939,
+     "one_class": 1.2578,
+     "no_classes": 1.1115,
+     "gap_closed": 99.3,
+     "seconds": 83
+    },
+    {
+     "world": 3,
+     "by": "suffix",
+     "classes": 4,
+     "class_sizes": [
+      48,
+      60,
+      56,
+      47
+     ],
+     "purity": 99.5,
+     "weight_on_right_feature": 97.0,
+     "module": 0.9696,
+     "best_reader": 0.9673,
+     "true_class": 0.9146,
+     "one_class": 1.2455,
+     "no_classes": 1.042,
+     "gap_closed": 99.2,
+     "seconds": 54
+    },
+    {
+     "world": 4,
+     "by": "suffix",
+     "classes": 8,
+     "class_sizes": [
+      46,
+      61,
+      52,
+      31,
+      12,
+      3,
+      1,
+      9
+     ],
+     "purity": 94.1,
+     "weight_on_right_feature": 94.5,
+     "module": 0.9828,
+     "best_reader": 0.9689,
+     "true_class": 0.9117,
+     "one_class": 1.2592,
+     "no_classes": 1.0711,
+     "gap_closed": 95.2,
+     "seconds": 137
+    },
+    {
+     "world": 5,
+     "by": "suffix",
+     "classes": 4,
+     "class_sizes": [
+      47,
+      64,
+      56,
+      44
+     ],
+     "purity": 98.8,
+     "weight_on_right_feature": 95.4,
+     "module": 0.9722,
+     "best_reader": 0.9617,
+     "true_class": 0.9024,
+     "one_class": 1.263,
+     "no_classes": 1.015,
+     "gap_closed": 96.5,
+     "seconds": 38
+    }
+   ]
+  },
+  "1000 sentences": {
+   "summary": {
+    "worlds": 10,
+    "module": 0.9042,
+    "best_reader": 0.9011,
+    "true_class": 0.8659,
+    "one_class": 1.2025,
+    "no_classes": 0.9647,
+    "gap_closed_mean": 99.0,
+    "gap_closed_min": 95.3,
+    "gap_closed_max": 101.4,
+    "worlds_with_four_classes": 9,
+    "most_classes": 5,
+    "purity_min": 100.0,
+    "purity_max": 100.0,
+    "lowest_weight_on_right_feature": 96.7,
+    "mean_seconds": 58.0
+   },
+   "per_world": [
+    {
+     "world": 6,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      88,
+      99,
+      92,
+      88
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 99.2,
+     "module": 0.8959,
+     "best_reader": 0.8977,
+     "true_class": 0.8626,
+     "one_class": 1.2035,
+     "no_classes": 0.9792,
+     "gap_closed": 100.6,
+     "seconds": 60
+    },
+    {
+     "world": 7,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      89,
+      94,
+      91,
+      93
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 99.1,
+     "module": 0.8928,
+     "best_reader": 0.8881,
+     "true_class": 0.8535,
+     "one_class": 1.1867,
+     "no_classes": 0.9737,
+     "gap_closed": 98.4,
+     "seconds": 55
+    },
+    {
+     "world": 8,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      85,
+      96,
+      87,
+      94
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 98.4,
+     "module": 0.9035,
+     "best_reader": 0.9074,
+     "true_class": 0.8729,
+     "one_class": 1.1942,
+     "no_classes": 0.9606,
+     "gap_closed": 101.4,
+     "seconds": 56
+    },
+    {
+     "world": 9,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      88,
+      98,
+      90,
+      94
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 97.6,
+     "module": 0.8942,
+     "best_reader": 0.8905,
+     "true_class": 0.8562,
+     "one_class": 1.1941,
+     "no_classes": 0.9571,
+     "gap_closed": 98.8,
+     "seconds": 57
+    },
+    {
+     "world": 10,
+     "by": "onset",
+     "classes": 4,
+     "class_sizes": [
+      82,
+      94,
+      92,
+      90
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 96.7,
+     "module": 0.9154,
+     "best_reader": 0.9051,
+     "true_class": 0.8687,
+     "one_class": 1.208,
+     "no_classes": 0.9725,
+     "gap_closed": 96.6,
+     "seconds": 56
+    },
+    {
+     "world": 1,
+     "by": "suffix",
+     "classes": 4,
+     "class_sizes": [
+      84,
+      98,
+      93,
+      95
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 97.3,
+     "module": 0.907,
+     "best_reader": 0.9102,
+     "true_class": 0.8747,
+     "one_class": 1.2206,
+     "no_classes": 0.9689,
+     "gap_closed": 101.0,
+     "seconds": 60
+    },
+    {
+     "world": 2,
+     "by": "suffix",
+     "classes": 4,
+     "class_sizes": [
+      80,
+      94,
+      91,
+      91
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 98.6,
+     "module": 0.9048,
+     "best_reader": 0.9011,
+     "true_class": 0.8643,
+     "one_class": 1.2102,
+     "no_classes": 0.986,
+     "gap_closed": 98.8,
+     "seconds": 55
+    },
+    {
+     "world": 3,
+     "by": "suffix",
+     "classes": 4,
+     "class_sizes": [
+      92,
+      93,
+      93,
+      93
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 99.2,
+     "module": 0.9089,
+     "best_reader": 0.9048,
+     "true_class": 0.8697,
+     "one_class": 1.1936,
+     "no_classes": 0.96,
+     "gap_closed": 98.6,
+     "seconds": 57
+    },
+    {
+     "world": 4,
+     "by": "suffix",
+     "classes": 4,
+     "class_sizes": [
+      84,
+      96,
+      95,
+      93
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 97.4,
+     "module": 0.9037,
+     "best_reader": 0.9046,
+     "true_class": 0.8706,
+     "one_class": 1.203,
+     "no_classes": 0.9385,
+     "gap_closed": 100.3,
+     "seconds": 59
+    },
+    {
+     "world": 5,
+     "by": "suffix",
+     "classes": 5,
+     "class_sizes": [
+      85,
+      85,
+      90,
+      93,
+      10
+     ],
+     "purity": 100.0,
+     "weight_on_right_feature": 97.7,
+     "module": 0.9159,
+     "best_reader": 0.9014,
+     "true_class": 0.8657,
+     "one_class": 1.2115,
+     "no_classes": 0.9504,
+     "gap_closed": 95.3,
+     "seconds": 65
+    }
+   ]
+  }
+ }
+}
