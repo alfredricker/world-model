@@ -151,7 +151,7 @@ record" is `old:phwm/docs/05-experimental-record.md`.
 - **Latent self-prediction erases what actions change; test action
   sensitivity before training.** Distance to a goal state is not distance
   to a condition. *Evidence:* GRL-105–108; cards 001, 052, 053.
-- **Energy forms (cards 146–157):** a patch holds a belief over objects;
+- **Energy forms (cards 146–159):** a patch holds a belief over objects;
   binding from motion needs evidence kept over time (98% vs 40%); couplings
   learn an action token only for combinations seen (149). **Between layers
   pass every pattern's energy, not the winner** (151: 92.0 vs 35.3).
@@ -166,10 +166,21 @@ record" is `old:phwm/docs/05-experimental-record.md`.
   **Couplings predicted from appearance can be taught by motion alone**
   (never-met objects bound before moving, 0 → 97%, card 156). An exploring
   agent must make the records the test will ask about (take 75 vs 94).
-  Test for effects a frame can show: "held" is the simulator's state (card 157).
+  "Held" is a state no frame shows: infer it as a latent state (157, 158). Count a
+  sparsity penalty over the whole experience, not per step, or rare events lose their couplings.
+  Score "bound" by exact extent: at an overlap of 0.5 objects were 70% covered, and every
+  relation between places failed downstream (159; my two earlier explanations were wrong).
 
 ## Perception in moving-view worlds (Crafter, Craftium)
 
+- **Give a sparse model each fact once** (card 160, MiniGrid). A door's
+  opening entered the energy as its new code and as "the closed door went
+  out of view"; the two always co-occur, L1 split the credit, and the
+  planner, which imagined only the first, found no plan (9% against a
+  perceptron's 41%). **Imagine an effect whole, memory included. Run an
+  ordinary model in the same agent:** it showed the sparse form was not
+  what made DoorKey work (99%; PPO with reward 6%). A result just past a
+  cliff in experience (half: 7%) is not robust.
 - **Appearance cannot tell look-alikes apart; correspondence needs a
   prediction of where each will be.** Trackers swap to the next cow or
   lose it once out of view (13% kept); a belief in the world's frame with

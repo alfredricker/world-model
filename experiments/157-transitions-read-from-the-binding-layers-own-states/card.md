@@ -223,3 +223,5 @@ of three criteria pass. Carried forward as known limits: purity 88.9%,
 the contact token, and class inference where behaviour goes with shape.
 Next, with the user's go-ahead: the goal task against an ordinary
 learned baseline.
+
+**Correction (card [159](../159-contact-as-a-learned-relation-of-places/card.md)).** The missed contacts are not caused by the rule or by points of the hand: the box around an object's points is the object's true box in half of the steps, because objects bound by appearance are partial.

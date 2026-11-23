@@ -6880,5 +6880,37 @@
     "seconds": 341
    }
   ]
+ },
+ "verdicts": {
+  "1": "pass (F1 71.3 against 70.0; 17.8 points above the baseline against 15.0; lowest world 65.8)",
+  "2": "fail (78.8 against 80.0; by colour 99.9, by shape 57.6; 100.0 with the true behaviours given)",
+  "3": "fail (30 of 40 against 32)"
+ },
+ "checks": {
+  "own tokens at true takes (tools/card158/dev4.py script shape 0)": {
+   "taken with a move": {
+    "contact and came": 170,
+    "no contact and came": 60,
+    "no contact, did not come": 6
+   },
+   "taken without a move": {
+    "contact": 77,
+    "no contact": 24,
+    "pattern not seen": 1
+   },
+   "own contact, right grip, free before, hand moved": {
+    "taken": 170,
+    "not taken, no contact in the simulator": 31,
+    "not taken, another object held": 13,
+    "other": 1
+   },
+   "own contact, right grip, free before, hand still": {
+    "taken": 77,
+    "not taken, no contact in the simulator": 4,
+    "not taken, another object held": 3,
+    "other": 3
+   }
+  },
+  "reading": "false own contacts come mostly while the hand moves (31 of 215 against 4 of 87), which lowers the probability of 'taken' with a move and makes 'the hand did not move' a named condition; the raw rates (79% and 89%) are closer than the model's (about 0.5 and 0.93 in that world), so this is part of the cause, not all of it"
  }
 }

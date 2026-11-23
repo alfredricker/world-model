@@ -3,8 +3,8 @@ id: "158"
 title: events as changes of an object's latent state, and their conditions
 rung: 2
 serves: [P7, P12]
-status: running
-verdict:
+status: done
+verdict: fail
 arch_version: og4
 date: 2026-11-21
 ---
@@ -156,3 +156,91 @@ Prediction: 1 passes (about 75 against 45); 2 is near its bar; 3 fails
 carried, so "contact" will be a weak condition). On the agent's
 experience the take test fails: no take without a move was ever seen.
 Budget: about 90 minutes of runs, none over 10 minutes.
+
+## 7. Result
+
+Numbers in [results.json](results.json). Ten worlds (seeds 1 to 5, by
+shape and by colour), one run each. "F1": the model's events against the
+simulator's taken and released steps, same object, same step, same
+direction. "Take": card 152's test, the action that leaves a never-met
+object held, scored in the simulator.
+
+| The script's experience (the criteria), mean of 10 worlds | Events, F1 % | Take right, % |
+|---|---|---|
+| Simulator's tokens, true behaviours (bound; penalty 5 nats) | 99.7 | 100.0 |
+| Own tokens, true behaviours given | 70.0 | 100.0 |
+| **Own tokens, latent state, card 157's classes** | **71.3** (lowest world 65.8) | **78.8** (by colour 99.9, by shape 57.6) |
+| Own tokens, one class for all | 56.4 | 39.1 |
+| Own tokens, the state read from what is seen (baseline) | 53.5 | |
+
+Conditions named for "taken" and "released", takeable and sticky
+objects: 30 of 40 statements exactly the world's. Of the 10 wrong, 9 add
+"the hand did not move" to "taken" or "the hand moved" to "released";
+one adds "no contact".
+
+| Criterion | Verdict |
+|---|---|
+| 1. Events: F1 at least 70.0% and at least 15.0 points above the baseline | **pass**, 71.3 and +17.8 (above the baseline in 10 worlds of 10) |
+| 2. Take right for at least 80.0% of never-met objects | **fail**, 78.8 |
+| 3. Conditions exactly right in at least 32 of 40 statements | **fail**, 30 |
+
+| The agent's own experience (reported, not a criterion) | Events, F1 % | Take right, % | Conditions |
+|---|---|---|---|
+| Simulator's tokens, true behaviours (penalty 5 nats) | 99.6 | 100.0 | |
+| Own tokens, true behaviours given | 71.3 | 74.0 | |
+| Own tokens, latent state | 70.1 (baseline 64.9) | 61.3 | 27 of 40 |
+
+What the card shows.
+
+- **"Held" can be a learned latent state.** With the true behaviours
+  given, a state inferred from own tokens answers card 152's take test
+  for 100.0% of never-met objects in every one of the 10 worlds: the
+  question card 157 had to drop. Events that no frame shows at once are
+  found: in the development world 85 of 102 takes without a move.
+- **Events are placed better than by what is seen**, in every world
+  (71.3 against 53.5), but far from the bound (99.7). The gap is the
+  tokens, not the classes: giving the true behaviours changes nothing
+  (70.0).
+- **Conditions come out of the learned transition** in the form GOAL
+  P12 asks for (an effect and the facts it needs), right in 30 of 40
+  statements, with no list of conditions supplied.
+
+Where it is weak.
+
+- **Criterion 2 fails on the class read from appearance**, card 157's
+  weakness: where behaviour goes with shape, never-met movable objects
+  are believed fixed (three worlds under 50%). Not this component.
+- **Criterion 3 fails on the contact token** (checked in one
+  development world). Own contacts that are not contacts come mostly
+  while the hand moves (31 of 215, against 4 of 87 with the hand
+  still), and in 16 more another object was held; "taken" with a move
+  becomes less certain and "the hand did not move" is named a
+  condition. The raw rates (79 and 89%) differ less than the model's
+  (about 0.5 and 0.93), so this is part of the cause, not all of it.
+- **Releases without a move are mostly missed** (22 of 151 and 96 of
+  140 in the two development worlds). Where an event shows only later,
+  its place is decided by the sparsity prior, not by the likelihood,
+  and the best penalty differs between own tokens (1 nat) and the
+  simulator's (5 nats; at 1 nat the bound drops to 81.3).
+- **The agent's experience** holds no take without a move (0 in 10
+  worlds), its events are mostly visible (baseline 64.9), and takes are
+  right for 61.3%. With the simulator's tokens the same experience
+  gives 100.0%, so sparse couplings can carry "taken" over to a
+  situation never met; the own tokens do not.
+- **Three changes in development** (section 5), one of them a setting
+  chosen on two worlds. Criterion 1 passes by 1.3 points.
+- **Declared priors and givens:** two values of the state; conditions
+  among four tokens of the same step that I chose; own tokens as card
+  157; the hand's pose and action.
+
+## 8. Decision
+
+**Keep.** The latent state of an object module is kept as the model's
+event mechanism: it restores "held" as something inferred, places events
+17.8 points better than what is seen, and yields conditions in P12's
+form. The two failed criteria trace to what feeds it (the contact token,
+the class read from appearance). Next, with the user's go-ahead: contact
+as a learned relation between the hand's and the object's places, in
+place of the rule on boxes.
+
+**Correction (card [159](../159-contact-as-a-learned-relation-of-places/card.md)).** The contact rule is not the cause of the failed criteria; a learned relation in its place does no better. The cause is where the model takes an object to be: objects bound by appearance are partial.

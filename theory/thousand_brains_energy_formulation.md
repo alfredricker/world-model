@@ -718,3 +718,28 @@ of the agent, 86.4% right for never-met objects against 85.0 with the
 simulator's tokens (100.0 with the true classes given); class purity
 88.9 against 97.8. The ground joins the fixed class, and patterns on the
 hand form a class of what always comes along.
+
+**Events as changes of a latent state (card [158](../experiments/158-events-as-changes-of-an-objects-latent-state/card.md), 2026-11-21).**
+Each object module keeps $h_t \in \{0,1\}$ with
+$p(\text{came along}_t \mid h_t, \text{moved}_t)$ and
+$p(h_t = 1 \mid h_{t-1}, c_t; z) = \sigma(b_z + \sum_j w_{z,j} c_{t,j})$
+over the step's tokens (state before, contact, grip, moved), sparse, a
+shared set plus each class's difference; fitted by
+expectation-maximisation on own tokens. An event is a change in the
+Viterbi sequence. Results on the script's experience: events F1 71.3
+against 53.5 for the state read from what is seen (99.7 with the
+simulator's tokens); the take test, which asks for "held", 100.0 with
+the true behaviours given and 78.8 with classes read from appearance;
+conditions read off the transition right in 30 of 40 statements. Where
+an event shows only later, the sparsity prior places it, not the
+likelihood.
+
+**Contact as a learned relation of places (card [159](../experiments/159-contact-as-a-learned-relation-of-places/card.md), 2026-11-21).**
+The relative place $r_t$ of the object's box and the hand's box (36
+tokens) replaces the contact rule in the latent state's transition,
+$\sigma(b_z + w_z \cdot (h_{t-1}, g_t, m_t) + u[r_t])$. With true boxes the
+places in reach are exactly the simulator's rule (10 worlds of 10). On
+the model's own boxes it is worse than the rule (46.6% false contacts;
+events 66.8 against 68.2), because an object bound by appearance covers
+about 70% of the object and its pattern is not rewritten when it moves.
+Not adopted.

@@ -1,0 +1,5383 @@
+{
+ "card": "159",
+ "development": {
+  "summary": {
+   "worlds": 2,
+   "contact": {
+    "in reach, first fit (one class)": {
+     "caught": 73.7,
+     "false": 17.2
+    },
+    "in reach": {
+     "caught": 84.8,
+     "false": 51.7
+    },
+    "the rule on the same boxes": {
+     "caught": 71.7,
+     "false": 13.1
+    },
+    "true boxes, in reach": {
+     "caught": 99.3,
+     "false": 0.0
+    }
+   },
+   "events_f1": {
+    "learned relation": 70.5,
+    "the rule on the same boxes": 73.5,
+    "learned relation, true behaviours given": 72.0,
+    "state read from what is seen": 52.4,
+    "true boxes, true behaviours": 99.2
+   },
+   "take": {
+    "learned relation": 81.0,
+    "the rule on the same boxes": 80.8,
+    "learned relation, true behaviours given": 100.0,
+    "true boxes, true behaviours": 100.0
+   },
+   "conditions": {
+    "right": 3,
+    "of": 8,
+    "wrong": [
+     [
+      "colour",
+      0,
+      "takeable",
+      "taken",
+      {
+       "place": "(0, -2)",
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      0,
+      "takeable",
+      "taken",
+      {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      0,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      0,
+      "sticky",
+      "taken",
+      {
+       "place": "(0, -2)",
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      0,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ]
+    ]
+   },
+   "conditions_rule": {
+    "right": 3,
+    "of": 8,
+    "wrong": [
+     [
+      "colour",
+      0,
+      "takeable",
+      "taken",
+      {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      0,
+      "takeable",
+      "taken",
+      {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      0,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      0,
+      "sticky",
+      "taken",
+      {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      0,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ]
+    ]
+   },
+   "conditions_bound": {
+    "right": 8,
+    "of": 8,
+    "wrong": []
+   },
+   "in_reach_equals_the_simulators_rule": {
+    "first fit": 1,
+    "with classes": 0,
+    "true boxes": 2
+   },
+   "worlds_events_above_the_rule": 0,
+   "classes": [
+    4,
+    5
+   ],
+   "purity": 90.3
+  },
+  "per_run": [
+   {
+    "world": 0,
+    "by": "colour",
+    "kind_of": [
+     1,
+     2,
+     1,
+     0,
+     0
+    ],
+    "patterns": 209,
+    "tally": {
+     "stored": 89,
+     "known": 170,
+     "too_big": 1,
+     "still": 120
+    },
+    "classes": {
+     "n": 4,
+     "sizes": [
+      91,
+      27,
+      55,
+      35
+     ],
+     "purity": 91.3,
+     "table": [
+      [
+       4.0,
+       44.9,
+       10.4,
+       14.8,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       25.4,
+       1.0,
+       0.0
+      ],
+      [
+       41.4,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       34.6,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 294,
+     "bound": 217,
+     "labels_on_the_ground_per_scene": 1.68,
+     "found_movable": 98.4,
+     "found_fixed": 31.2
+    },
+    "sequences": {
+     "n": 617,
+     "on_true_objects": 286,
+     "all_true_events": 589
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 78.8,
+      "false": 20.2,
+      "contacts_simulator": 3021,
+      "contacts_model": 2983
+     },
+     "in reach": {
+      "caught": 88.8,
+      "false": 59.3,
+      "contacts_simulator": 3021,
+      "contacts_model": 6594
+     },
+     "the rule on the same boxes": {
+      "caught": 74.8,
+      "false": 11.9,
+      "contacts_simulator": 3021,
+      "contacts_model": 2565
+     },
+     "true boxes, in reach": {
+      "caught": 98.7,
+      "false": 0.0,
+      "contacts_simulator": 2764,
+      "contacts_model": 2728
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(-2, 1)",
+      "(0, -2)",
+      "(1, -2)",
+      "(2, -1)"
+     ],
+     "with classes": [
+      "(-2, -2)",
+      "(-2, 0)",
+      "(0, -2)",
+      "(0, -1)",
+      "(3, -2)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.45,
+      "(-2, -1)": -0.01,
+      "(-2, 0)": 3.78,
+      "(-2, 1)": 1.91,
+      "(-2, 2)": 0.07,
+      "(-2, 3)": -0.97,
+      "(-1, -2)": -0.01,
+      "(-1, -1)": 0.01,
+      "(-1, 0)": 1.52,
+      "(-1, 1)": 0.0,
+      "(-1, 2)": 2.35,
+      "(-1, 3)": -1.99,
+      "(0, -2)": 3.71,
+      "(0, -1)": 3.43,
+      "(0, 0)": -0.01,
+      "(0, 1)": 0.07,
+      "(0, 2)": 0.01,
+      "(0, 3)": -0.56,
+      "(1, -2)": 1.18,
+      "(1, -1)": -0.0,
+      "(1, 0)": -0.02,
+      "(1, 1)": -0.0,
+      "(1, 2)": 0.04,
+      "(1, 3)": -0.21,
+      "(2, -2)": 0.82,
+      "(2, -1)": 2.23,
+      "(2, 1)": 0.02,
+      "(2, 2)": -0.01,
+      "(2, 3)": -0.67,
+      "(3, -2)": -0.01,
+      "(3, -1)": -0.63,
+      "(3, 0)": -0.56,
+      "(3, 1)": -1.72,
+      "(3, 2)": -0.78,
+      "(3, 3)": -2.58
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 75.5,
+      "precision": 67.9,
+      "recall": 84.9,
+      "events_true": 670,
+      "events_model": 838
+     },
+     "the rule on the same boxes": {
+      "f1": 80.5,
+      "precision": 71.7,
+      "recall": 91.6,
+      "events_true": 670,
+      "events_model": 856
+     },
+     "learned relation, true behaviours given": {
+      "f1": 78.2,
+      "precision": 70.5,
+      "recall": 87.8,
+      "events_true": 670,
+      "events_model": 834
+     },
+     "state read from what is seen": {
+      "f1": 53.4,
+      "precision": 52.3,
+      "recall": 54.6,
+      "events_true": 670,
+      "events_model": 700
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.3,
+      "precision": 98.8,
+      "recall": 99.8,
+      "events_true": 589,
+      "events_model": 595
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 288,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "the rule on the same boxes": {
+      "n": 288,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "learned relation, true behaviours given": {
+      "n": 288,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 288,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 2,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": false,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 2,
+      "taken": {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": false,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "by_class": [
+      [
+       -9.87,
+       5.33,
+       -0.02,
+       -1.73
+      ],
+      [
+       -1.53,
+       5.39,
+       -8.62,
+       -1.73
+      ],
+      [
+       -9.87,
+       5.32,
+       8.11,
+       -2.06
+      ],
+      [
+       -10.44,
+       7.65,
+       10.42,
+       -2.75
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(-2, 0)",
+     "log_likelihood": [
+      -8439.2,
+      -910.9,
+      -896.6,
+      -895.7,
+      -895.2,
+      -895.0
+     ]
+    },
+    "seconds": 182
+   },
+   {
+    "world": 0,
+    "by": "shape",
+    "kind_of": [
+     1,
+     2,
+     1,
+     0,
+     0
+    ],
+    "patterns": 284,
+    "tally": {
+     "stored": 83,
+     "known": 154,
+     "too_big": 1,
+     "still": 201
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      169,
+      7,
+      2,
+      60,
+      43
+     ],
+     "purity": 89.3,
+     "table": [
+      [
+       7.0,
+       57.7,
+       2.8,
+       41.3,
+       0.0
+      ],
+      [
+       6.9,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.8,
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       50.7,
+       4.0,
+       1.7,
+       2.0,
+       0.0
+      ],
+      [
+       1.0,
+       4.0,
+       37.1,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 297,
+     "bound": 297,
+     "labels_on_the_ground_per_scene": 0.38,
+     "found_movable": 96.0,
+     "found_fixed": 99.2
+    },
+    "sequences": {
+     "n": 1013,
+     "on_true_objects": 335,
+     "all_true_events": 571
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 68.6,
+      "false": 14.2,
+      "contacts_simulator": 3387,
+      "contacts_model": 2711
+     },
+     "in reach": {
+      "caught": 80.8,
+      "false": 44.1,
+      "contacts_simulator": 3387,
+      "contacts_model": 4900
+     },
+     "the rule on the same boxes": {
+      "caught": 68.6,
+      "false": 14.2,
+      "contacts_simulator": 3387,
+      "contacts_model": 2711
+     },
+     "true boxes, in reach": {
+      "caught": 100.0,
+      "false": 0.0,
+      "contacts_simulator": 2740,
+      "contacts_model": 2740
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(-1, 0)",
+      "(0, -2)",
+      "(0, -1)"
+     ],
+     "with classes": [
+      "(-2, -2)",
+      "(-2, 0)",
+      "(-2, 1)",
+      "(0, -2)",
+      "(2, -2)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(-1, 0)",
+      "(0, -2)",
+      "(0, -1)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.82,
+      "(-2, -1)": -0.0,
+      "(-2, 0)": 3.46,
+      "(-2, 1)": 1.39,
+      "(-2, 2)": 0.06,
+      "(-2, 3)": -0.42,
+      "(-1, -2)": -0.67,
+      "(-1, -1)": 0.01,
+      "(-1, 0)": 3.63,
+      "(-1, 1)": -0.0,
+      "(-1, 2)": 0.0,
+      "(-1, 3)": -1.67,
+      "(0, -2)": 3.27,
+      "(0, -1)": 3.47,
+      "(0, 0)": -0.0,
+      "(0, 1)": -0.01,
+      "(0, 2)": -0.01,
+      "(0, 3)": -0.18,
+      "(1, -2)": 1.15,
+      "(1, -1)": 0.01,
+      "(1, 0)": 1.68,
+      "(1, 2)": 0.01,
+      "(1, 3)": -0.01,
+      "(2, -2)": 1.94,
+      "(2, 0)": -0.0,
+      "(2, 1)": -0.03,
+      "(2, 3)": -1.71,
+      "(3, -2)": -0.01,
+      "(3, -1)": 0.04,
+      "(3, 0)": -0.68,
+      "(3, 1)": -0.05,
+      "(3, 2)": 0.0,
+      "(3, 3)": -1.34
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 65.4,
+      "precision": 66.1,
+      "recall": 64.7,
+      "events_true": 678,
+      "events_model": 664
+     },
+     "the rule on the same boxes": {
+      "f1": 66.5,
+      "precision": 68.1,
+      "recall": 64.9,
+      "events_true": 678,
+      "events_model": 646
+     },
+     "learned relation, true behaviours given": {
+      "f1": 65.8,
+      "precision": 66.5,
+      "recall": 65.0,
+      "events_true": 678,
+      "events_model": 663
+     },
+     "state read from what is seen": {
+      "f1": 51.4,
+      "precision": 54.0,
+      "recall": 49.0,
+      "events_true": 678,
+      "events_model": 615
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.1,
+      "precision": 98.4,
+      "recall": 99.8,
+      "events_true": 571,
+      "events_model": 579
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 290,
+      "all": 62.1,
+      "takeable": 52.2,
+      "fixed": 100.0,
+      "sticky": 3.5
+     },
+     "the rule on the same boxes": {
+      "n": 290,
+      "all": 61.7,
+      "takeable": 51.3,
+      "fixed": 100.0,
+      "sticky": 3.5
+     },
+     "learned relation, true behaviours given": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 4,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 4,
+      "taken": {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.997
+      ]
+     ],
+     "by_class": [
+      [
+       -6.96,
+       6.02,
+       1.22,
+       -6.47
+      ],
+      [
+       -2.64,
+       6.05,
+       1.24,
+       -1.84
+      ],
+      [
+       -6.93,
+       5.4,
+       2.83,
+       -2.38
+      ],
+      [
+       -7.97,
+       6.57,
+       7.19,
+       -3.39
+      ],
+      [
+       -1.42,
+       6.13,
+       -7.61,
+       -2.39
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(-2, 0)",
+     "log_likelihood": [
+      -13732.5,
+      -1054.0,
+      -1048.1,
+      -1048.1,
+      -1048.1,
+      -1048.1
+     ]
+    },
+    "seconds": 239
+   }
+  ]
+ },
+ "test": {
+  "summary": {
+   "worlds": 10,
+   "contact": {
+    "in reach, first fit (one class)": {
+     "caught": 73.8,
+     "false": 14.8
+    },
+    "in reach": {
+     "caught": 83.4,
+     "false": 46.6
+    },
+    "the rule on the same boxes": {
+     "caught": 74.7,
+     "false": 13.3
+    },
+    "true boxes, in reach": {
+     "caught": 98.4,
+     "false": 0.0
+    }
+   },
+   "events_f1": {
+    "learned relation": 66.8,
+    "the rule on the same boxes": 68.2,
+    "learned relation, true behaviours given": 67.2,
+    "state read from what is seen": 54.2,
+    "true boxes, true behaviours": 99.7
+   },
+   "take": {
+    "learned relation": 79.1,
+    "the rule on the same boxes": 79.2,
+    "learned relation, true behaviours given": 100.0,
+    "true boxes, true behaviours": 100.0
+   },
+   "conditions": {
+    "right": 8,
+    "of": 40,
+    "wrong": [
+     [
+      "colour",
+      1,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      1,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      1,
+      "takeable",
+      "taken",
+      {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      1,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      1,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      2,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      2,
+      "sticky",
+      "taken",
+      {
+       "place": "(-2, 0)",
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      2,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      2,
+      "takeable",
+      "taken",
+      {
+       "place": "(0, -2)",
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      2,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      2,
+      "sticky",
+      "taken",
+      {
+       "place": "(-2, 0)",
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      2,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      3,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      3,
+      "sticky",
+      "taken",
+      {
+       "place": "(0, -2)",
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      3,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      3,
+      "takeable",
+      "taken",
+      {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      3,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      3,
+      "sticky",
+      "taken",
+      {
+       "place": "(-2, 0)",
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      3,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      4,
+      "takeable",
+      "taken",
+      {
+       "place": "(0, -2)",
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      4,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      4,
+      "sticky",
+      "taken",
+      {
+       "place": "(0, -2)",
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      4,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      4,
+      "takeable",
+      "taken",
+      {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      4,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      4,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      5,
+      "takeable",
+      "taken",
+      {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      5,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      5,
+      "takeable",
+      "taken",
+      {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      5,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      5,
+      "sticky",
+      "taken",
+      {
+       "place": "(-2, 0)",
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      5,
+      "sticky",
+      "released",
+      {}
+     ]
+    ]
+   },
+   "conditions_rule": {
+    "right": 16,
+    "of": 40,
+    "wrong": [
+     [
+      "colour",
+      1,
+      "takeable",
+      "taken",
+      {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      1,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      1,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      1,
+      "takeable",
+      "taken",
+      {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      1,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      2,
+      "sticky",
+      "taken",
+      {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      2,
+      "takeable",
+      "taken",
+      {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      2,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      2,
+      "sticky",
+      "taken",
+      {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      3,
+      "sticky",
+      "taken",
+      {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      3,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      3,
+      "takeable",
+      "taken",
+      {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      3,
+      "sticky",
+      "taken",
+      {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      4,
+      "takeable",
+      "taken",
+      {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      4,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      4,
+      "sticky",
+      "taken",
+      {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      4,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      4,
+      "takeable",
+      "taken",
+      {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      4,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ],
+     [
+      "colour",
+      5,
+      "takeable",
+      "taken",
+      {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "colour",
+      5,
+      "takeable",
+      "released",
+      {
+       "grip": 0,
+       "moved": 1
+      }
+     ],
+     [
+      "shape",
+      5,
+      "takeable",
+      "taken",
+      {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      5,
+      "sticky",
+      "taken",
+      {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      }
+     ],
+     [
+      "shape",
+      5,
+      "sticky",
+      "released",
+      {
+       "grip": 1,
+       "moved": 1
+      }
+     ]
+    ]
+   },
+   "conditions_bound": {
+    "right": 40,
+    "of": 40,
+    "wrong": []
+   },
+   "in_reach_equals_the_simulators_rule": {
+    "first fit": 5,
+    "with classes": 0,
+    "true boxes": 10
+   },
+   "worlds_events_above_the_rule": 2,
+   "classes": [
+    4,
+    5,
+    6,
+    3,
+    4,
+    4,
+    5,
+    7,
+    5,
+    3
+   ],
+   "purity": 90.5
+  },
+  "per_run": [
+   {
+    "world": 1,
+    "by": "colour",
+    "kind_of": [
+     2,
+     0,
+     0,
+     1,
+     1
+    ],
+    "patterns": 298,
+    "tally": {
+     "stored": 112,
+     "known": 167,
+     "too_big": 6,
+     "still": 186
+    },
+    "classes": {
+     "n": 4,
+     "sizes": [
+      141,
+      44,
+      11,
+      94
+     ],
+     "purity": 93.7,
+     "table": [
+      [
+       6.1,
+       81.6,
+       7.4,
+       27.4,
+       1.0
+      ],
+      [
+       0.0,
+       0.0,
+       43.0,
+       0.0,
+       0.0
+      ],
+      [
+       10.6,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       80.8,
+       2.0,
+       0.0,
+       1.0,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 306,
+     "bound": 201,
+     "labels_on_the_ground_per_scene": 3.97,
+     "found_movable": 98.9,
+     "found_fixed": 10.8
+    },
+    "sequences": {
+     "n": 855,
+     "on_true_objects": 356,
+     "all_true_events": 588
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 77.3,
+      "false": 14.5,
+      "contacts_simulator": 3223,
+      "contacts_model": 2913
+     },
+     "in reach": {
+      "caught": 83.7,
+      "false": 62.1,
+      "contacts_simulator": 3223,
+      "contacts_model": 7115
+     },
+     "the rule on the same boxes": {
+      "caught": 77.0,
+      "false": 14.0,
+      "contacts_simulator": 3223,
+      "contacts_model": 2884
+     },
+     "true boxes, in reach": {
+      "caught": 97.5,
+      "false": 0.0,
+      "contacts_simulator": 2709,
+      "contacts_model": 2642
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(-1, 0)",
+      "(0, -2)",
+      "(0, -1)",
+      "(1, -1)"
+     ],
+     "with classes": [
+      "(-2, -2)",
+      "(-2, 0)",
+      "(0, -2)",
+      "(3, -2)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.15,
+      "(-2, -1)": 0.0,
+      "(-2, 0)": 3.3,
+      "(-2, 1)": -0.0,
+      "(-2, 2)": 0.52,
+      "(-2, 3)": -0.42,
+      "(-1, -2)": -0.02,
+      "(-1, -1)": -0.01,
+      "(-1, 0)": 2.85,
+      "(-1, 1)": -0.01,
+      "(-1, 2)": 0.0,
+      "(-1, 3)": -0.47,
+      "(0, -2)": 3.47,
+      "(0, -1)": 2.12,
+      "(0, 1)": 0.01,
+      "(0, 2)": -0.01,
+      "(0, 3)": -0.78,
+      "(1, -2)": 0.61,
+      "(1, -1)": 1.89,
+      "(1, 0)": 0.0,
+      "(1, 2)": 0.0,
+      "(1, 3)": -2.31,
+      "(2, -2)": 1.07,
+      "(2, -1)": 0.09,
+      "(2, 0)": -0.03,
+      "(2, 1)": 0.01,
+      "(2, 2)": 0.01,
+      "(2, 3)": -2.24,
+      "(3, -2)": -0.34,
+      "(3, -1)": -3.25,
+      "(3, 0)": -1.59,
+      "(3, 1)": -0.56,
+      "(3, 2)": -0.9,
+      "(3, 3)": -4.94
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 70.5,
+      "precision": 68.5,
+      "recall": 72.7,
+      "events_true": 695,
+      "events_model": 737
+     },
+     "the rule on the same boxes": {
+      "f1": 71.8,
+      "precision": 67.2,
+      "recall": 77.0,
+      "events_true": 695,
+      "events_model": 796
+     },
+     "learned relation, true behaviours given": {
+      "f1": 69.1,
+      "precision": 68.8,
+      "recall": 69.5,
+      "events_true": 695,
+      "events_model": 702
+     },
+     "state read from what is seen": {
+      "f1": 54.0,
+      "precision": 55.8,
+      "recall": 52.4,
+      "events_true": 695,
+      "events_model": 652
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.8,
+      "precision": 99.7,
+      "recall": 100.0,
+      "events_true": 588,
+      "events_model": 590
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 301,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "the rule on the same boxes": {
+      "n": 301,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "learned relation, true behaviours given": {
+      "n": 301,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 301,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "by_class": [
+      [
+       -8.17,
+       5.33,
+       0.0,
+       -2.91
+      ],
+      [
+       -0.21,
+       6.66,
+       -8.94,
+       -2.87
+      ],
+      [
+       -8.06,
+       7.59,
+       9.19,
+       -4.08
+      ],
+      [
+       -8.65,
+       5.33,
+       7.31,
+       -2.06
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(-2, 0)",
+     "log_likelihood": [
+      -11408.5,
+      -936.6,
+      -894.0,
+      -892.4,
+      -892.1,
+      -892.2
+     ]
+    },
+    "seconds": 319
+   },
+   {
+    "world": 1,
+    "by": "shape",
+    "kind_of": [
+     2,
+     0,
+     0,
+     1,
+     1
+    ],
+    "patterns": 293,
+    "tally": {
+     "stored": 75,
+     "known": 160,
+     "too_big": 0,
+     "still": 218
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      178,
+      28,
+      5,
+      10,
+      69
+     ],
+     "purity": 84.9,
+     "table": [
+      [
+       12.8,
+       103.2,
+       15.2,
+       25.3,
+       0.0
+      ],
+      [
+       0.0,
+       4.0,
+       22.3,
+       0.0,
+       0.6
+      ],
+      [
+       1.9,
+       3.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       8.8,
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       62.8,
+       2.0,
+       0.0,
+       2.6,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 316,
+     "bound": 313,
+     "labels_on_the_ground_per_scene": 0.09,
+     "found_movable": 96.5,
+     "found_fixed": 89.0
+    },
+    "sequences": {
+     "n": 762,
+     "on_true_objects": 357,
+     "all_true_events": 520
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 71.3,
+      "false": 14.2,
+      "contacts_simulator": 3217,
+      "contacts_model": 2672
+     },
+     "in reach": {
+      "caught": 84.4,
+      "false": 39.4,
+      "contacts_simulator": 3217,
+      "contacts_model": 4482
+     },
+     "the rule on the same boxes": {
+      "caught": 73.8,
+      "false": 14.3,
+      "contacts_simulator": 3217,
+      "contacts_model": 2772
+     },
+     "true boxes, in reach": {
+      "caught": 97.2,
+      "false": 0.0,
+      "contacts_simulator": 2655,
+      "contacts_model": 2581
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "with classes": [
+      "(-2, -2)",
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.48,
+      "(-2, -1)": -0.63,
+      "(-2, 0)": 3.02,
+      "(-2, 1)": 1.11,
+      "(-2, 2)": -0.01,
+      "(-2, 3)": -2.07,
+      "(-1, -2)": -0.81,
+      "(-1, -1)": -0.01,
+      "(-1, 0)": 2.51,
+      "(-1, 1)": 1.09,
+      "(-1, 2)": -0.01,
+      "(-1, 3)": -1.12,
+      "(0, -2)": 3.05,
+      "(0, -1)": 2.84,
+      "(0, 0)": -0.0,
+      "(0, 1)": 2.31,
+      "(0, 2)": 0.53,
+      "(0, 3)": -0.34,
+      "(1, -2)": 0.43,
+      "(1, -1)": 0.01,
+      "(1, 0)": -0.01,
+      "(1, 1)": 0.02,
+      "(1, 2)": -0.01,
+      "(1, 3)": -3.08,
+      "(2, -2)": 0.14,
+      "(2, -1)": 0.0,
+      "(2, 0)": -0.02,
+      "(2, 1)": 0.02,
+      "(2, 2)": 1.39,
+      "(2, 3)": -0.84,
+      "(3, -2)": -1.2,
+      "(3, -1)": -0.36,
+      "(3, 0)": -0.0,
+      "(3, 1)": -0.05,
+      "(3, 2)": -0.04,
+      "(3, 3)": -2.27
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 69.1,
+      "precision": 69.6,
+      "recall": 68.5,
+      "events_true": 591,
+      "events_model": 582
+     },
+     "the rule on the same boxes": {
+      "f1": 68.9,
+      "precision": 69.4,
+      "recall": 68.4,
+      "events_true": 591,
+      "events_model": 582
+     },
+     "learned relation, true behaviours given": {
+      "f1": 69.0,
+      "precision": 70.2,
+      "recall": 67.9,
+      "events_true": 591,
+      "events_model": 571
+     },
+     "state read from what is seen": {
+      "f1": 55.5,
+      "precision": 57.4,
+      "recall": 53.6,
+      "events_true": 591,
+      "events_model": 552
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.6,
+      "precision": 99.4,
+      "recall": 99.8,
+      "events_true": 520,
+      "events_model": 522
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 310,
+      "all": 38.1,
+      "takeable": 2.3,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "the rule on the same boxes": {
+      "n": 310,
+      "all": 38.4,
+      "takeable": 3.1,
+      "fixed": 100.0,
+      "sticky": 0.0
+     },
+     "learned relation, true behaviours given": {
+      "n": 310,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 310,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.998
+      ]
+     ],
+     "by_class": [
+      [
+       -8.79,
+       4.95,
+       1.42,
+       -2.31
+      ],
+      [
+       -0.53,
+       7.49,
+       -9.64,
+       -2.29
+      ],
+      [
+       -8.72,
+       7.39,
+       5.68,
+       -0.96
+      ],
+      [
+       -8.62,
+       6.52,
+       8.82,
+       -2.29
+      ],
+      [
+       -8.72,
+       6.54,
+       8.16,
+       -2.94
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(0, -2)",
+     "log_likelihood": [
+      -10123.5,
+      -844.3,
+      -824.8,
+      -824.1,
+      -824.0,
+      -824.1
+     ]
+    },
+    "seconds": 301
+   },
+   {
+    "world": 2,
+    "by": "colour",
+    "kind_of": [
+     1,
+     2,
+     1,
+     0,
+     0
+    ],
+    "patterns": 288,
+    "tally": {
+     "stored": 102,
+     "known": 157,
+     "too_big": 3,
+     "still": 186
+    },
+    "classes": {
+     "n": 6,
+     "sizes": [
+      151,
+      13,
+      43,
+      1,
+      57,
+      19
+     ],
+     "purity": 96.1,
+     "table": [
+      [
+       0.3,
+       53.0,
+       2.7,
+       16.4,
+       1.5
+      ],
+      [
+       2.9,
+       0.9,
+       0.5,
+       0.6,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       38.6,
+       2.0,
+       0.0
+      ],
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       56.9,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       11.9,
+       0.0,
+       0.0,
+       0.5,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 302,
+     "bound": 207,
+     "labels_on_the_ground_per_scene": 5.19,
+     "found_movable": 98.3,
+     "found_fixed": 16.8
+    },
+    "sequences": {
+     "n": 859,
+     "on_true_objects": 328,
+     "all_true_events": 554
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 70.3,
+      "false": 18.0,
+      "contacts_simulator": 3180,
+      "contacts_model": 2728
+     },
+     "in reach": {
+      "caught": 80.7,
+      "false": 46.2,
+      "contacts_simulator": 3180,
+      "contacts_model": 4773
+     },
+     "the rule on the same boxes": {
+      "caught": 70.8,
+      "false": 14.2,
+      "contacts_simulator": 3180,
+      "contacts_model": 2623
+     },
+     "true boxes, in reach": {
+      "caught": 97.7,
+      "false": 0.0,
+      "contacts_simulator": 2709,
+      "contacts_model": 2647
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(0, -2)",
+      "(2, -2)"
+     ],
+     "with classes": [
+      "(-2, -2)",
+      "(-2, 0)",
+      "(-2, 1)",
+      "(-2, 2)",
+      "(0, -2)",
+      "(2, 3)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "couplings": {
+      "(-2, -2)": -0.0,
+      "(-2, -1)": -0.01,
+      "(-2, 0)": 3.19,
+      "(-2, 1)": 0.7,
+      "(-2, 2)": 0.86,
+      "(-2, 3)": -0.22,
+      "(-1, -2)": -0.03,
+      "(-1, -1)": -0.0,
+      "(-1, 0)": 1.68,
+      "(-1, 1)": -0.0,
+      "(-1, 2)": -0.01,
+      "(-1, 3)": -0.0,
+      "(0, -2)": 3.48,
+      "(0, -1)": 2.86,
+      "(0, 0)": -0.0,
+      "(0, 1)": 0.27,
+      "(0, 3)": -0.8,
+      "(1, -2)": 0.48,
+      "(1, -1)": 0.02,
+      "(1, 0)": -0.01,
+      "(1, 1)": -0.01,
+      "(1, 2)": -0.01,
+      "(1, 3)": -0.13,
+      "(2, -2)": 1.29,
+      "(2, 0)": -0.0,
+      "(2, 2)": 0.02,
+      "(2, 3)": 0.3,
+      "(3, -2)": -0.19,
+      "(3, -1)": -1.52,
+      "(3, 0)": -0.31,
+      "(3, 1)": -1.12,
+      "(3, 2)": -2.14,
+      "(3, 3)": -3.62
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 69.5,
+      "precision": 63.1,
+      "recall": 77.4,
+      "events_true": 636,
+      "events_model": 780
+     },
+     "the rule on the same boxes": {
+      "f1": 74.4,
+      "precision": 70.4,
+      "recall": 78.9,
+      "events_true": 636,
+      "events_model": 713
+     },
+     "learned relation, true behaviours given": {
+      "f1": 71.4,
+      "precision": 67.0,
+      "recall": 76.4,
+      "events_true": 636,
+      "events_model": 725
+     },
+     "state read from what is seen": {
+      "f1": 53.9,
+      "precision": 52.6,
+      "recall": 55.3,
+      "events_true": 636,
+      "events_model": 669
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.8,
+      "precision": 99.8,
+      "recall": 99.8,
+      "events_true": 554,
+      "events_model": 554
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 294,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "the rule on the same boxes": {
+      "n": 294,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "learned relation, true behaviours given": {
+      "n": 294,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 294,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "place": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.998
+      ]
+     ],
+     "by_class": [
+      [
+       -13.02,
+       6.72,
+       5.29,
+       -3.44
+      ],
+      [
+       -8.75,
+       6.75,
+       5.59,
+       -2.84
+      ],
+      [
+       0.04,
+       6.73,
+       -8.27,
+       -3.53
+      ],
+      [
+       -8.73,
+       6.74,
+       6.08,
+       -2.82
+      ],
+      [
+       -10.03,
+       6.9,
+       9.89,
+       -2.84
+      ],
+      [
+       -8.75,
+       5.25,
+       7.01,
+       -2.81
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(0, -2)",
+     "log_likelihood": [
+      -11048.7,
+      -894.1,
+      -858.2,
+      -855.3,
+      -854.9,
+      -854.9
+     ]
+    },
+    "seconds": 328
+   },
+   {
+    "world": 2,
+    "by": "shape",
+    "kind_of": [
+     1,
+     2,
+     1,
+     0,
+     0
+    ],
+    "patterns": 310,
+    "tally": {
+     "stored": 85,
+     "known": 141,
+     "too_big": 1,
+     "still": 225
+    },
+    "classes": {
+     "n": 3,
+     "sizes": [
+      186,
+      51,
+      72
+     ],
+     "purity": 86.4,
+     "table": [
+      [
+       8.9,
+       101.3,
+       14.8,
+       31.7,
+       1.0
+      ],
+      [
+       4.0,
+       3.0,
+       42.5,
+       1.0,
+       0.0
+      ],
+      [
+       63.9,
+       3.0,
+       0.0,
+       3.0,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 304,
+     "bound": 244,
+     "labels_on_the_ground_per_scene": 0.27,
+     "found_movable": 83.6,
+     "found_fixed": 74.0
+    },
+    "sequences": {
+     "n": 960,
+     "on_true_objects": 356,
+     "all_true_events": 531
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 70.9,
+      "false": 17.4,
+      "contacts_simulator": 2958,
+      "contacts_model": 2538
+     },
+     "in reach": {
+      "caught": 83.7,
+      "false": 48.8,
+      "contacts_simulator": 2958,
+      "contacts_model": 4839
+     },
+     "the rule on the same boxes": {
+      "caught": 72.2,
+      "false": 17.1,
+      "contacts_simulator": 2958,
+      "contacts_model": 2579
+     },
+     "true boxes, in reach": {
+      "caught": 99.0,
+      "false": 0.0,
+      "contacts_simulator": 2549,
+      "contacts_model": 2523
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(0, -2)",
+      "(0, -1)",
+      "(2, 0)"
+     ],
+     "with classes": [
+      "(-2, -2)",
+      "(-2, 0)",
+      "(-2, 1)",
+      "(0, -2)",
+      "(1, -2)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(-1, 0)",
+      "(0, -2)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.71,
+      "(-2, -1)": -0.04,
+      "(-2, 0)": 3.45,
+      "(-2, 1)": 0.83,
+      "(-2, 2)": 1.21,
+      "(-2, 3)": -0.66,
+      "(-1, -2)": -0.2,
+      "(-1, -1)": -0.0,
+      "(-1, 0)": 3.55,
+      "(-1, 1)": -0.02,
+      "(-1, 2)": 0.0,
+      "(-1, 3)": 0.02,
+      "(0, -2)": 3.39,
+      "(0, -1)": 2.4,
+      "(0, 0)": 1.59,
+      "(0, 1)": 0.02,
+      "(0, 2)": -0.0,
+      "(0, 3)": -1.73,
+      "(1, -2)": 1.41,
+      "(1, -1)": -0.01,
+      "(1, 0)": -0.0,
+      "(1, 1)": 0.35,
+      "(1, 2)": -0.0,
+      "(1, 3)": -1.28,
+      "(2, -2)": 1.3,
+      "(2, -1)": 0.0,
+      "(2, 0)": 3.36,
+      "(2, 1)": -0.0,
+      "(2, 2)": 0.01,
+      "(2, 3)": 0.0,
+      "(3, -2)": -0.03,
+      "(3, -1)": -0.72,
+      "(3, 0)": -1.38,
+      "(3, 1)": -1.56,
+      "(3, 2)": -1.83,
+      "(3, 3)": -2.13
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 69.2,
+      "precision": 70.2,
+      "recall": 68.1,
+      "events_true": 571,
+      "events_model": 554
+     },
+     "the rule on the same boxes": {
+      "f1": 71.3,
+      "precision": 74.0,
+      "recall": 68.8,
+      "events_true": 571,
+      "events_model": 531
+     },
+     "learned relation, true behaviours given": {
+      "f1": 70.3,
+      "precision": 71.8,
+      "recall": 68.8,
+      "events_true": 571,
+      "events_model": 547
+     },
+     "state read from what is seen": {
+      "f1": 59.2,
+      "precision": 64.6,
+      "recall": 54.6,
+      "events_true": 571,
+      "events_model": 483
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.8,
+      "precision": 99.6,
+      "recall": 100.0,
+      "events_true": 531,
+      "events_model": 533
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 298,
+      "all": 46.0,
+      "takeable": 0.9,
+      "fixed": 100.0,
+      "sticky": 16.4
+     },
+     "the rule on the same boxes": {
+      "n": 298,
+      "all": 45.0,
+      "takeable": 0.0,
+      "fixed": 100.0,
+      "sticky": 13.4
+     },
+     "learned relation, true behaviours given": {
+      "n": 298,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 298,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 2,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 2,
+      "taken": {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "by_class": [
+      [
+       -7.99,
+       5.16,
+       -0.03,
+       -2.92
+      ],
+      [
+       -0.7,
+       5.24,
+       -5.5,
+       -2.91
+      ],
+      [
+       -7.64,
+       5.52,
+       6.83,
+       -2.91
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(0, -2)",
+     "log_likelihood": [
+      -12311.1,
+      -879.9,
+      -836.8,
+      -836.3,
+      -836.1,
+      -836.2
+     ]
+    },
+    "seconds": 303
+   },
+   {
+    "world": 3,
+    "by": "colour",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 252,
+    "tally": {
+     "stored": 84,
+     "known": 180,
+     "too_big": 1,
+     "still": 168
+    },
+    "classes": {
+     "n": 4,
+     "sizes": [
+      128,
+      38,
+      77,
+      7
+     ],
+     "purity": 91.4,
+     "table": [
+      [
+       10.7,
+       42.1,
+       3.4,
+       42.1,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       34.9,
+       1.0,
+       0.0
+      ],
+      [
+       74.1,
+       2.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       4.6,
+       1.6,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 300,
+     "bound": 238,
+     "labels_on_the_ground_per_scene": 1.19,
+     "found_movable": 98.9,
+     "found_fixed": 44.9
+    },
+    "sequences": {
+     "n": 893,
+     "on_true_objects": 306,
+     "all_true_events": 615
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 74.1,
+      "false": 17.2,
+      "contacts_simulator": 2976,
+      "contacts_model": 2663
+     },
+     "in reach": {
+      "caught": 87.2,
+      "false": 49.0,
+      "contacts_simulator": 2976,
+      "contacts_model": 5094
+     },
+     "the rule on the same boxes": {
+      "caught": 69.3,
+      "false": 13.5,
+      "contacts_simulator": 2976,
+      "contacts_model": 2385
+     },
+     "true boxes, in reach": {
+      "caught": 99.5,
+      "false": 0.0,
+      "contacts_simulator": 2706,
+      "contacts_model": 2692
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(-2, 1)",
+      "(-1, 0)",
+      "(0, -2)"
+     ],
+     "with classes": [
+      "(-2, -2)",
+      "(-2, 0)",
+      "(-2, 1)",
+      "(-2, 2)",
+      "(-1, 3)",
+      "(0, -2)",
+      "(0, -1)",
+      "(1, -2)",
+      "(1, 3)",
+      "(2, -2)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(-1, 0)",
+      "(0, -2)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.05,
+      "(-2, -1)": -0.21,
+      "(-2, 0)": 2.67,
+      "(-2, 1)": 1.18,
+      "(-2, 2)": 0.01,
+      "(-2, 3)": -0.46,
+      "(-1, -2)": 0.08,
+      "(-1, -1)": 0.01,
+      "(-1, 0)": 2.27,
+      "(-1, 1)": -0.0,
+      "(-1, 3)": -0.0,
+      "(0, -2)": 2.93,
+      "(0, -1)": 2.63,
+      "(0, 0)": 1.49,
+      "(0, 1)": -0.0,
+      "(0, 2)": 0.01,
+      "(0, 3)": -0.56,
+      "(1, -2)": 1.03,
+      "(1, -1)": -0.01,
+      "(1, 0)": 0.01,
+      "(1, 1)": 0.41,
+      "(1, 2)": -0.01,
+      "(1, 3)": 0.02,
+      "(2, -2)": 0.89,
+      "(2, -1)": -0.01,
+      "(2, 0)": 0.0,
+      "(2, 1)": -0.01,
+      "(2, 2)": -0.03,
+      "(2, 3)": -1.25,
+      "(3, -2)": -0.94,
+      "(3, -1)": -0.87,
+      "(3, 0)": -1.14,
+      "(3, 1)": -0.99,
+      "(3, 2)": -1.05,
+      "(3, 3)": -2.34
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 64.6,
+      "precision": 56.7,
+      "recall": 75.0,
+      "events_true": 681,
+      "events_model": 901
+     },
+     "the rule on the same boxes": {
+      "f1": 64.4,
+      "precision": 56.5,
+      "recall": 75.0,
+      "events_true": 681,
+      "events_model": 905
+     },
+     "learned relation, true behaviours given": {
+      "f1": 65.4,
+      "precision": 57.4,
+      "recall": 75.9,
+      "events_true": 681,
+      "events_model": 900
+     },
+     "state read from what is seen": {
+      "f1": 51.3,
+      "precision": 46.6,
+      "recall": 57.1,
+      "events_true": 681,
+      "events_model": 835
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.7,
+      "precision": 99.5,
+      "recall": 99.8,
+      "events_true": 615,
+      "events_model": 617
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 299,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "the rule on the same boxes": {
+      "n": 299,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "learned relation, true behaviours given": {
+      "n": 299,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 299,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 2,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 2,
+      "taken": {
+       "place": 1,
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "by_class": [
+      [
+       -9.25,
+       6.76,
+       -0.0,
+       -2.7
+      ],
+      [
+       -0.17,
+       6.79,
+       -9.01,
+       -2.83
+      ],
+      [
+       -9.97,
+       7.84,
+       9.89,
+       -2.63
+      ],
+      [
+       -9.19,
+       6.78,
+       7.18,
+       -2.48
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(0, -2)",
+     "log_likelihood": [
+      -12104.8,
+      -1227.2,
+      -1212.4,
+      -1211.1,
+      -1210.8,
+      -1210.6
+     ]
+    },
+    "seconds": 350
+   },
+   {
+    "world": 3,
+    "by": "shape",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 238,
+    "tally": {
+     "stored": 102,
+     "known": 160,
+     "too_big": 2,
+     "still": 136
+    },
+    "classes": {
+     "n": 4,
+     "sizes": [
+      100,
+      43,
+      9,
+      83
+     ],
+     "purity": 89.8,
+     "table": [
+      [
+       3.6,
+       38.7,
+       1.5,
+       28.7,
+       0.9
+      ],
+      [
+       0.0,
+       6.0,
+       35.2,
+       0.0,
+       0.0
+      ],
+      [
+       5.9,
+       1.8,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       74.6,
+       6.0,
+       1.0,
+       1.0,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 295,
+     "bound": 295,
+     "labels_on_the_ground_per_scene": 1.69,
+     "found_movable": 100.0,
+     "found_fixed": 99.1
+    },
+    "sequences": {
+     "n": 883,
+     "on_true_objects": 308,
+     "all_true_events": 636
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 74.8,
+      "false": 12.2,
+      "contacts_simulator": 3182,
+      "contacts_model": 2711
+     },
+     "in reach": {
+      "caught": 79.2,
+      "false": 25.6,
+      "contacts_simulator": 3182,
+      "contacts_model": 3389
+     },
+     "the rule on the same boxes": {
+      "caught": 78.1,
+      "false": 12.0,
+      "contacts_simulator": 3182,
+      "contacts_model": 2822
+     },
+     "true boxes, in reach": {
+      "caught": 96.4,
+      "false": 0.0,
+      "contacts_simulator": 2949,
+      "contacts_model": 2843
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "with classes": [
+      "(-2, 0)",
+      "(-2, 2)",
+      "(0, -2)",
+      "(1, -2)",
+      "(2, -2)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.26,
+      "(-2, -1)": -0.12,
+      "(-2, 0)": 2.28,
+      "(-2, 1)": 0.01,
+      "(-2, 2)": 0.46,
+      "(-2, 3)": -1.22,
+      "(-1, -2)": -1.08,
+      "(-1, -1)": -0.01,
+      "(-1, 0)": 1.26,
+      "(-1, 1)": -0.05,
+      "(-1, 2)": -0.01,
+      "(-1, 3)": -1.72,
+      "(0, -2)": 2.62,
+      "(0, -1)": 2.44,
+      "(0, 0)": 1.33,
+      "(0, 1)": 0.42,
+      "(0, 2)": 0.62,
+      "(0, 3)": -0.0,
+      "(1, -2)": 1.3,
+      "(1, -1)": -0.03,
+      "(1, 0)": 0.0,
+      "(1, 1)": 1.29,
+      "(1, 2)": -0.02,
+      "(1, 3)": -0.27,
+      "(2, -2)": 0.37,
+      "(2, -1)": 0.0,
+      "(2, 0)": -0.01,
+      "(2, 1)": 0.01,
+      "(2, 2)": -0.01,
+      "(2, 3)": -1.33,
+      "(3, -2)": -0.47,
+      "(3, -1)": 0.16,
+      "(3, 0)": -0.5,
+      "(3, 1)": -1.29,
+      "(3, 2)": -1.65,
+      "(3, 3)": -3.92
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 64.4,
+      "precision": 62.2,
+      "recall": 66.9,
+      "events_true": 694,
+      "events_model": 746
+     },
+     "the rule on the same boxes": {
+      "f1": 65.0,
+      "precision": 63.1,
+      "recall": 67.0,
+      "events_true": 694,
+      "events_model": 737
+     },
+     "learned relation, true behaviours given": {
+      "f1": 64.4,
+      "precision": 62.0,
+      "recall": 66.9,
+      "events_true": 694,
+      "events_model": 748
+     },
+     "state read from what is seen": {
+      "f1": 52.8,
+      "precision": 52.0,
+      "recall": 53.6,
+      "events_true": 694,
+      "events_model": 716
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.7,
+      "precision": 99.5,
+      "recall": 99.8,
+      "events_true": 636,
+      "events_model": 638
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 289,
+      "all": 95.8,
+      "takeable": 100.0,
+      "fixed": 96.5,
+      "sticky": 82.6
+     },
+     "the rule on the same boxes": {
+      "n": 289,
+      "all": 96.2,
+      "takeable": 100.0,
+      "fixed": 96.5,
+      "sticky": 84.8
+     },
+     "learned relation, true behaviours given": {
+      "n": 289,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 289,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": false,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": false,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "by_class": [
+      [
+       -6.54,
+       5.06,
+       0.43,
+       -2.28
+      ],
+      [
+       -0.51,
+       6.57,
+       -7.17,
+       -2.28
+      ],
+      [
+       -6.55,
+       5.11,
+       4.79,
+       -2.29
+      ],
+      [
+       -6.91,
+       6.3,
+       6.26,
+       -2.36
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(-2, 0)",
+     "log_likelihood": [
+      -11478.0,
+      -1395.0,
+      -1361.9,
+      -1361.3,
+      -1361.3,
+      -1361.2
+     ]
+    },
+    "seconds": 295
+   },
+   {
+    "world": 4,
+    "by": "colour",
+    "kind_of": [
+     1,
+     2,
+     0,
+     0,
+     1
+    ],
+    "patterns": 275,
+    "tally": {
+     "stored": 92,
+     "known": 170,
+     "too_big": 6,
+     "still": 183
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      139,
+      9,
+      36,
+      20,
+      64
+     ],
+     "purity": 97.2,
+     "table": [
+      [
+       0.4,
+       45.6,
+       3.1,
+       21.9,
+       0.3
+      ],
+      [
+       3.8,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       30.8,
+       0.0,
+       0.0
+      ],
+      [
+       19.9,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       56.3,
+       0.0,
+       0.0,
+       0.6,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 296,
+     "bound": 243,
+     "labels_on_the_ground_per_scene": 2.13,
+     "found_movable": 89.1,
+     "found_fixed": 49.1
+    },
+    "sequences": {
+     "n": 841,
+     "on_true_objects": 335,
+     "all_true_events": 548
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 72.6,
+      "false": 13.9,
+      "contacts_simulator": 2800,
+      "contacts_model": 2363
+     },
+     "in reach": {
+      "caught": 88.8,
+      "false": 74.9,
+      "contacts_simulator": 2800,
+      "contacts_model": 9900
+     },
+     "the rule on the same boxes": {
+      "caught": 76.0,
+      "false": 13.7,
+      "contacts_simulator": 2800,
+      "contacts_model": 2466
+     },
+     "true boxes, in reach": {
+      "caught": 100.0,
+      "false": 0.0,
+      "contacts_simulator": 2636,
+      "contacts_model": 2636
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "with classes": [
+      "(-2, -2)",
+      "(-2, 0)",
+      "(-2, 3)",
+      "(0, -2)",
+      "(1, -2)",
+      "(3, -2)",
+      "(3, -1)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(-1, 0)",
+      "(0, -2)",
+      "(0, -1)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.66,
+      "(-2, -1)": 0.22,
+      "(-2, 0)": 2.86,
+      "(-2, 1)": 0.07,
+      "(-2, 2)": 0.51,
+      "(-2, 3)": -0.9,
+      "(-1, -2)": -0.59,
+      "(-1, 0)": 2.54,
+      "(-1, 1)": -0.02,
+      "(-1, 2)": -0.0,
+      "(-1, 3)": -0.37,
+      "(0, -2)": 2.84,
+      "(0, -1)": 1.77,
+      "(0, 0)": 0.03,
+      "(0, 1)": 0.98,
+      "(0, 2)": 0.01,
+      "(0, 3)": -0.68,
+      "(1, -2)": 1.08,
+      "(1, -1)": 0.02,
+      "(1, 0)": 1.46,
+      "(1, 1)": -0.0,
+      "(1, 3)": -0.93,
+      "(2, -2)": -1.1,
+      "(2, -1)": -0.01,
+      "(2, 0)": -0.01,
+      "(2, 1)": 0.01,
+      "(2, 2)": 0.01,
+      "(2, 3)": -0.67,
+      "(3, -2)": -0.93,
+      "(3, -1)": -0.54,
+      "(3, 0)": -2.6,
+      "(3, 1)": -1.18,
+      "(3, 2)": -0.84,
+      "(3, 3)": -3.23
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 61.3,
+      "precision": 56.7,
+      "recall": 66.8,
+      "events_true": 579,
+      "events_model": 683
+     },
+     "the rule on the same boxes": {
+      "f1": 61.4,
+      "precision": 55.1,
+      "recall": 69.4,
+      "events_true": 579,
+      "events_model": 730
+     },
+     "learned relation, true behaviours given": {
+      "f1": 61.1,
+      "precision": 56.8,
+      "recall": 66.0,
+      "events_true": 579,
+      "events_model": 672
+     },
+     "state read from what is seen": {
+      "f1": 51.8,
+      "precision": 50.7,
+      "recall": 52.8,
+      "events_true": 579,
+      "events_model": 603
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.8,
+      "precision": 99.6,
+      "recall": 100.0,
+      "events_true": 548,
+      "events_model": 550
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "the rule on the same boxes": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "learned relation, true behaviours given": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 290,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 4,
+      "taken": {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "by_class": [
+      [
+       -7.49,
+       5.55,
+       -0.03,
+       -3.58
+      ],
+      [
+       -7.33,
+       5.55,
+       0.01,
+       -2.83
+      ],
+      [
+       -0.24,
+       7.09,
+       -9.29,
+       -2.83
+      ],
+      [
+       -6.76,
+       8.15,
+       8.3,
+       -4.0
+      ],
+      [
+       -7.76,
+       5.56,
+       7.36,
+       -2.74
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(0, -2)",
+     "log_likelihood": [
+      -11362.3,
+      -907.6,
+      -890.3,
+      -890.0,
+      -890.1,
+      -890.1
+     ]
+    },
+    "seconds": 207
+   },
+   {
+    "world": 4,
+    "by": "shape",
+    "kind_of": [
+     1,
+     2,
+     0,
+     0,
+     1
+    ],
+    "patterns": 262,
+    "tally": {
+     "stored": 88,
+     "known": 159,
+     "too_big": 0,
+     "still": 174
+    },
+    "classes": {
+     "n": 7,
+     "sizes": [
+      138,
+      11,
+      42,
+      7,
+      26,
+      3,
+      28
+     ],
+     "purity": 89.0,
+     "table": [
+      [
+       8.3,
+       46.4,
+       3.2,
+       13.0,
+       0.8
+      ],
+      [
+       3.3,
+       1.9,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       1.0,
+       2.0,
+       36.4,
+       0.8,
+       0.0
+      ],
+      [
+       1.8,
+       0.0,
+       5.0,
+       0.0,
+       0.0
+      ],
+      [
+       19.1,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       3.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       26.8,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 291,
+     "bound": 275,
+     "labels_on_the_ground_per_scene": 0.19,
+     "found_movable": 94.2,
+     "found_fixed": 93.3
+    },
+    "sequences": {
+     "n": 652,
+     "on_true_objects": 325,
+     "all_true_events": 580
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 74.0,
+      "false": 10.0,
+      "contacts_simulator": 3002,
+      "contacts_model": 2466
+     },
+     "in reach": {
+      "caught": 81.5,
+      "false": 36.9,
+      "contacts_simulator": 3002,
+      "contacts_model": 3877
+     },
+     "the rule on the same boxes": {
+      "caught": 77.9,
+      "false": 9.7,
+      "contacts_simulator": 3002,
+      "contacts_model": 2591
+     },
+     "true boxes, in reach": {
+      "caught": 100.0,
+      "false": 0.0,
+      "contacts_simulator": 2714,
+      "contacts_model": 2714
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "with classes": [
+      "(-2, -2)",
+      "(-2, 0)",
+      "(0, -2)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(-1, 0)",
+      "(0, -2)",
+      "(0, -1)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.42,
+      "(-2, -1)": 0.01,
+      "(-2, 0)": 3.45,
+      "(-2, 1)": 1.49,
+      "(-2, 2)": -0.01,
+      "(-2, 3)": -0.32,
+      "(-1, -2)": -0.28,
+      "(-1, -1)": -0.01,
+      "(-1, 0)": 2.43,
+      "(-1, 1)": 0.0,
+      "(-1, 2)": 1.54,
+      "(-1, 3)": -0.01,
+      "(0, -2)": 3.22,
+      "(0, -1)": 2.79,
+      "(0, 0)": -0.01,
+      "(0, 1)": 1.59,
+      "(0, 3)": -0.07,
+      "(1, -2)": 0.75,
+      "(1, -1)": -0.0,
+      "(1, 0)": 2.29,
+      "(1, 1)": 0.0,
+      "(1, 2)": -0.01,
+      "(1, 3)": -1.51,
+      "(2, -2)": 0.84,
+      "(2, -1)": -0.01,
+      "(2, 0)": -0.02,
+      "(2, 1)": -0.0,
+      "(2, 2)": 0.78,
+      "(2, 3)": -1.07,
+      "(3, -2)": -0.58,
+      "(3, -1)": 0.13,
+      "(3, 0)": -1.66,
+      "(3, 1)": -2.43,
+      "(3, 2)": -1.14,
+      "(3, 3)": -2.82
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 67.8,
+      "precision": 70.6,
+      "recall": 65.3,
+      "events_true": 639,
+      "events_model": 591
+     },
+     "the rule on the same boxes": {
+      "f1": 71.0,
+      "precision": 75.2,
+      "recall": 67.3,
+      "events_true": 639,
+      "events_model": 572
+     },
+     "learned relation, true behaviours given": {
+      "f1": 70.3,
+      "precision": 74.8,
+      "recall": 66.4,
+      "events_true": 639,
+      "events_model": 567
+     },
+     "state read from what is seen": {
+      "f1": 57.6,
+      "precision": 63.2,
+      "recall": 52.9,
+      "events_true": 639,
+      "events_model": 535
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.8,
+      "precision": 99.7,
+      "recall": 100.0,
+      "events_true": 580,
+      "events_model": 582
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 285,
+      "all": 49.5,
+      "takeable": 15.8,
+      "fixed": 100.0,
+      "sticky": 11.1
+     },
+     "the rule on the same boxes": {
+      "n": 285,
+      "all": 53.0,
+      "takeable": 25.4,
+      "fixed": 100.0,
+      "sticky": 9.3
+     },
+     "learned relation, true behaviours given": {
+      "n": 285,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 285,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 6,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 6,
+      "taken": {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": false,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.998
+      ]
+     ],
+     "by_class": [
+      [
+       -6.36,
+       4.93,
+       0.33,
+       -4.05
+      ],
+      [
+       -5.24,
+       4.94,
+       0.74,
+       -2.03
+      ],
+      [
+       -1.33,
+       5.0,
+       -6.54,
+       -2.01
+      ],
+      [
+       -0.86,
+       4.5,
+       -0.48,
+       -2.02
+      ],
+      [
+       -7.72,
+       4.93,
+       6.95,
+       -3.15
+      ],
+      [
+       -3.48,
+       4.95,
+       0.33,
+       -0.77
+      ],
+      [
+       -7.83,
+       6.5,
+       7.87,
+       -3.53
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(-2, 0)",
+     "log_likelihood": [
+      -8128.0,
+      -902.2,
+      -838.8,
+      -837.8,
+      -837.7,
+      -837.6
+     ]
+    },
+    "seconds": 330
+   },
+   {
+    "world": 5,
+    "by": "colour",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 255,
+    "tally": {
+     "stored": 123,
+     "known": 280,
+     "too_big": 5,
+     "still": 132
+    },
+    "classes": {
+     "n": 5,
+     "sizes": [
+      99,
+      3,
+      54,
+      61,
+      32
+     ],
+     "purity": 95.2,
+     "table": [
+      [
+       0.9,
+       56.7,
+       7.6,
+       18.3,
+       2.4
+      ],
+      [
+       2.0,
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       49.5,
+       0.0,
+       0.0
+      ],
+      [
+       52.2,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       28.2,
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 295,
+     "bound": 207,
+     "labels_on_the_ground_per_scene": 3.99,
+     "found_movable": 98.9,
+     "found_fixed": 12.1
+    },
+    "sequences": {
+     "n": 741,
+     "on_true_objects": 313,
+     "all_true_events": 622
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 76.5,
+      "false": 18.4,
+      "contacts_simulator": 3005,
+      "contacts_model": 2819
+     },
+     "in reach": {
+      "caught": 90.0,
+      "false": 66.2,
+      "contacts_simulator": 3005,
+      "contacts_model": 8001
+     },
+     "the rule on the same boxes": {
+      "caught": 75.4,
+      "false": 13.3,
+      "contacts_simulator": 3005,
+      "contacts_model": 2613
+     },
+     "true boxes, in reach": {
+      "caught": 98.1,
+      "false": 0.0,
+      "contacts_simulator": 2718,
+      "contacts_model": 2667
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(0, -2)",
+      "(0, -1)",
+      "(1, -2)"
+     ],
+     "with classes": [
+      "(-2, -2)",
+      "(-2, 0)",
+      "(-2, 1)",
+      "(-2, 3)",
+      "(0, -2)",
+      "(0, -1)",
+      "(0, 3)",
+      "(1, -2)",
+      "(1, 3)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(0, -2)",
+      "(0, -1)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.31,
+      "(-2, -1)": 0.0,
+      "(-2, 0)": 3.43,
+      "(-2, 1)": 1.29,
+      "(-2, 2)": 0.89,
+      "(-2, 3)": -0.22,
+      "(-1, -2)": -2.78,
+      "(-1, -1)": 0.01,
+      "(-1, 0)": 3.0,
+      "(-1, 1)": 0.93,
+      "(-1, 2)": 0.01,
+      "(-1, 3)": -0.03,
+      "(0, -2)": 3.46,
+      "(0, -1)": 4.1,
+      "(0, 0)": 1.73,
+      "(0, 1)": -0.04,
+      "(0, 2)": 0.04,
+      "(0, 3)": -0.12,
+      "(1, -2)": 1.62,
+      "(1, -1)": -0.01,
+      "(1, 0)": 0.01,
+      "(1, 1)": -0.01,
+      "(1, 2)": -0.0,
+      "(2, -2)": 0.34,
+      "(2, -1)": -0.0,
+      "(2, 0)": -0.02,
+      "(2, 1)": 0.0,
+      "(2, 2)": -0.0,
+      "(2, 3)": -0.22,
+      "(3, -2)": -0.69,
+      "(3, -1)": -0.48,
+      "(3, 0)": -0.01,
+      "(3, 1)": -0.96,
+      "(3, 2)": -2.0,
+      "(3, 3)": -3.26
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 66.8,
+      "precision": 60.5,
+      "recall": 74.5,
+      "events_true": 710,
+      "events_model": 874
+     },
+     "the rule on the same boxes": {
+      "f1": 68.3,
+      "precision": 63.2,
+      "recall": 74.4,
+      "events_true": 710,
+      "events_model": 835
+     },
+     "learned relation, true behaviours given": {
+      "f1": 66.3,
+      "precision": 60.8,
+      "recall": 72.8,
+      "events_true": 710,
+      "events_model": 850
+     },
+     "state read from what is seen": {
+      "f1": 52.3,
+      "precision": 49.9,
+      "recall": 54.9,
+      "events_true": 710,
+      "events_model": 781
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.7,
+      "precision": 99.5,
+      "recall": 99.8,
+      "events_true": 622,
+      "events_model": 624
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 293,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "the rule on the same boxes": {
+      "n": 293,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "learned relation, true behaviours given": {
+      "n": 293,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 293,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": false,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": true,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 3,
+      "taken": {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": 1,
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "by_class": [
+      [
+       -9.1,
+       5.79,
+       0.7,
+       -2.81
+      ],
+      [
+       -2.48,
+       5.8,
+       0.71,
+       -2.8
+      ],
+      [
+       -0.56,
+       6.49,
+       -8.96,
+       -2.8
+      ],
+      [
+       -9.09,
+       5.66,
+       8.17,
+       -2.8
+      ],
+      [
+       -9.11,
+       8.1,
+       9.44,
+       -3.42
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(-2, 0)",
+     "log_likelihood": [
+      -10030.9,
+      -1138.6,
+      -1114.9,
+      -1113.2,
+      -1113.1,
+      -1113.0
+     ]
+    },
+    "seconds": 117
+   },
+   {
+    "world": 5,
+    "by": "shape",
+    "kind_of": [
+     2,
+     1,
+     0,
+     1,
+     0
+    ],
+    "patterns": 276,
+    "tally": {
+     "stored": 94,
+     "known": 267,
+     "too_big": 4,
+     "still": 182
+    },
+    "classes": {
+     "n": 3,
+     "sizes": [
+      150,
+      55,
+      67
+     ],
+     "purity": 81.8,
+     "table": [
+      [
+       11.4,
+       69.8,
+       17.3,
+       29.4,
+       2.6
+      ],
+      [
+       6.0,
+       5.0,
+       42.6,
+       1.0,
+       0.0
+      ],
+      [
+       60.8,
+       1.8,
+       0.0,
+       3.0,
+       0.0
+      ]
+     ]
+    },
+    "first_sight": {
+     "objects": 307,
+     "bound": 307,
+     "labels_on_the_ground_per_scene": 0.66,
+     "found_movable": 97.9,
+     "found_fixed": 96.6
+    },
+    "sequences": {
+     "n": 883,
+     "on_true_objects": 339,
+     "all_true_events": 601
+    },
+    "contact": {
+     "in reach, first fit (one class)": {
+      "caught": 76.5,
+      "false": 11.7,
+      "contacts_simulator": 3155,
+      "contacts_model": 2734
+     },
+     "in reach": {
+      "caught": 75.1,
+      "false": 17.1,
+      "contacts_simulator": 3155,
+      "contacts_model": 2857
+     },
+     "the rule on the same boxes": {
+      "caught": 76.5,
+      "false": 11.7,
+      "contacts_simulator": 3155,
+      "contacts_model": 2734
+     },
+     "true boxes, in reach": {
+      "caught": 98.6,
+      "false": 0.0,
+      "contacts_simulator": 2850,
+      "contacts_model": 2811
+     }
+    },
+    "in_reach": {
+     "first fit": [
+      "(-2, 0)",
+      "(-1, 0)",
+      "(0, -2)",
+      "(0, -1)"
+     ],
+     "with classes": [
+      "(-2, 0)",
+      "(0, -2)",
+      "(1, -2)"
+     ],
+     "true boxes": [
+      "(-2, 0)",
+      "(0, -2)",
+      "(0, -1)"
+     ],
+     "couplings": {
+      "(-2, -2)": 0.2,
+      "(-2, -1)": -0.29,
+      "(-2, 0)": 2.67,
+      "(-2, 1)": 1.15,
+      "(-2, 2)": 0.01,
+      "(-2, 3)": -0.21,
+      "(-1, -2)": -0.24,
+      "(-1, -1)": 1.8,
+      "(-1, 0)": 1.75,
+      "(-1, 2)": 0.0,
+      "(-1, 3)": -1.25,
+      "(0, -2)": 2.71,
+      "(0, -1)": 1.89,
+      "(0, 0)": 1.47,
+      "(0, 1)": 0.1,
+      "(0, 2)": -0.01,
+      "(0, 3)": -1.27,
+      "(1, -2)": 1.0,
+      "(1, -1)": 0.19,
+      "(1, 0)": -0.02,
+      "(1, 1)": -0.02,
+      "(1, 2)": -0.01,
+      "(1, 3)": -0.25,
+      "(2, -2)": 1.33,
+      "(2, -1)": 0.01,
+      "(2, 0)": -0.02,
+      "(2, 1)": 0.02,
+      "(2, 2)": -0.0,
+      "(2, 3)": -2.53,
+      "(3, -2)": -0.0,
+      "(3, -1)": -3.48,
+      "(3, 0)": -0.61,
+      "(3, 1)": -1.07,
+      "(3, 2)": -2.32,
+      "(3, 3)": -3.68
+     }
+    },
+    "events": {
+     "learned relation": {
+      "f1": 64.9,
+      "precision": 62.7,
+      "recall": 67.2,
+      "events_true": 647,
+      "events_model": 694
+     },
+     "the rule on the same boxes": {
+      "f1": 65.6,
+      "precision": 64.1,
+      "recall": 67.2,
+      "events_true": 647,
+      "events_model": 679
+     },
+     "learned relation, true behaviours given": {
+      "f1": 64.6,
+      "precision": 63.7,
+      "recall": 65.5,
+      "events_true": 647,
+      "events_model": 666
+     },
+     "state read from what is seen": {
+      "f1": 53.6,
+      "precision": 53.6,
+      "recall": 53.6,
+      "events_true": 647,
+      "events_model": 647
+     },
+     "true boxes, true behaviours": {
+      "f1": 99.3,
+      "precision": 99.2,
+      "recall": 99.5,
+      "events_true": 601,
+      "events_model": 603
+     }
+    },
+    "take": {
+     "learned relation": {
+      "n": 297,
+      "all": 61.6,
+      "takeable": 51.1,
+      "fixed": 100.0,
+      "sticky": 5.8
+     },
+     "the rule on the same boxes": {
+      "n": 297,
+      "all": 59.6,
+      "takeable": 48.1,
+      "fixed": 100.0,
+      "sticky": 1.9
+     },
+     "learned relation, true behaviours given": {
+      "n": 297,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     },
+     "true boxes, true behaviours": {
+      "n": 297,
+      "all": 100.0,
+      "takeable": 100.0,
+      "fixed": 100.0,
+      "sticky": 100.0
+     }
+    },
+    "conditions": {
+     "takeable": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {},
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_rule": {
+     "takeable": {
+      "model_class": 2,
+      "taken": {
+       "place": 1,
+       "grip": 1,
+       "moved": 0
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": false,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 1,
+      "taken": {
+       "place": 1,
+       "grip": 0,
+       "moved": 0
+      },
+      "released": {
+       "grip": 1,
+       "moved": 1
+      },
+      "taken_right": false,
+      "released_right": false
+     }
+    },
+    "conditions_bound": {
+     "takeable": {
+      "model_class": 0,
+      "taken": {
+       "place": "(0, -2)",
+       "grip": 1
+      },
+      "released": {
+       "grip": 0
+      },
+      "taken_right": true,
+      "released_right": true
+     },
+     "sticky": {
+      "model_class": 2,
+      "taken": {
+       "place": "(-2, 0)",
+       "grip": 0
+      },
+      "released": {
+       "grip": 1
+      },
+      "taken_right": true,
+      "released_right": true
+     }
+    },
+    "model": {
+     "up": 1,
+     "emit": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ]
+     ],
+     "by_class": [
+      [
+       -6.32,
+       5.66,
+       -0.78,
+       -2.58
+      ],
+      [
+       -0.55,
+       5.67,
+       -4.54,
+       -2.59
+      ],
+      [
+       -7.84,
+       6.38,
+       7.35,
+       -2.91
+      ]
+     ],
+     "far": "(3, 3)",
+     "best": "(-2, 0)",
+     "log_likelihood": [
+      -11912.1,
+      -1353.0,
+      -1330.0,
+      -1326.3,
+      -1326.1,
+      -1326.2
+     ]
+    },
+    "seconds": 122
+   }
+  ]
+ },
+ "verdicts": {
+  "1": "fail (83.4% caught against 85.0; 46.6% false against 10.0)",
+  "2": "fail (66.8 against 76.3; the rule on the same boxes 68.2)",
+  "3": "fail (8 of 40 against 32; the rule on the same boxes 16)"
+ },
+ "checks": {
+  "box exact by how the object is held (tools/card159/dev2.py, seed 0; by shape, by colour; percent of sequences at their first step / of all steps; median share of the object's pixels seen)": {
+   "recognised, stored earlier after it moved": [
+    [
+     85.2,
+     74.9,
+     1.0
+    ],
+    [
+     94.9,
+     73.3,
+     1.0
+    ]
+   ],
+   "recognised, stored earlier as a still group": [
+    [
+     42.9,
+     38.5,
+     0.71
+    ],
+    [
+     63.9,
+     58.9,
+     0.89
+    ]
+   ],
+   "stored this episode after it moved": [
+    [
+     55.8,
+     61.6,
+     0.97
+    ],
+    [
+     53.5,
+     63.9,
+     1.0
+    ]
+   ],
+   "stored this episode as a still group": [
+    [
+     47.1,
+     39.3,
+     0.72
+    ],
+    [
+     52.4,
+     41.7,
+     0.75
+    ]
+   ]
+  },
+  "frame carried by the object's own displacement (seed 0 by shape)": {
+   "box of points exact": 49.7,
+   "carried frame exact": 50.5
+  },
+  "card 158's model on this card's records (two worlds)": {
+   "shape 1": {
+    "F1": 68.8,
+    "card 158": 66.4,
+    "statements right": 3,
+    "card 158 statements": 4
+   },
+   "colour 1": {
+    "F1": 68.4,
+    "card 158": 81.2,
+    "statements right": 2,
+    "card 158 statements": 4
+   }
+  },
+  "one stage-1 run (colour 4) died of GPU memory with three runs at once and was rerun; one stage-2 run (shape 5) wrote nothing and was rerun": true
+ },
+ "checks_after_the_decision": {
+  "would rewriting a still pattern when its object moves help (tools/card159/dev3.py, seed 0)": {
+   "sequences on true objects held by a still pattern whose object had moved in an earlier episode": {
+    "by shape": "3 of 335",
+    "by colour": "2 of 286"
+   },
+   "still group, fixed object: box exact": {
+    "by shape": [
+     146,
+     43.2
+    ],
+    "by colour": [
+     77,
+     48.1
+    ]
+   },
+   "moved group, moves in this episode: box exact at first step": {
+    "by shape": [
+     116,
+     66.4
+    ],
+    "by colour": [
+     128,
+     67.2
+    ]
+   },
+   "still groups by object width (exact %, median share of pixels)": {
+    "by shape": {
+     "6": [
+      62.8,
+      0.92
+     ],
+     "8": [
+      68.8,
+      0.89
+     ],
+     "12": [
+      59.1,
+      0.68
+     ],
+     "16": [
+      22.4,
+      0.4
+     ]
+    },
+    "by colour": {
+     "6": [
+      58.6,
+      0.9
+     ],
+     "8": [
+      60.5,
+      0.86
+     ],
+     "12": [
+      53.6,
+      0.71
+     ],
+     "16": [
+      48.8,
+      0.5
+     ]
+    }
+   }
+  },
+  "first sight of fresh scenes with the network as trained at the end (dev4.py; share of the object in its largest label, widths 6, 8, 12, 16)": {
+   "by shape": [
+    0.96,
+    0.97,
+    0.96,
+    0.9
+   ],
+   "by colour": [
+    0.85,
+    0.74,
+    0.48,
+    0.69
+   ]
+  },
+  "stored patterns by the episodes they were stored in (dev5.py; overlap with the object, still patterns | moved patterns)": {
+   "by shape": {
+    "0-9": [
+     null,
+     0.95
+    ],
+    "10-19": [
+     0.41,
+     0.51
+    ],
+    "20-39": [
+     0.52,
+     0.75
+    ],
+    "40-69": [
+     0.58,
+     0.85
+    ],
+    "70-99": [
+     0.85,
+     0.85
+    ]
+   },
+   "by colour": {
+    "0-9": [
+     null,
+     0.99
+    ],
+    "10-19": [
+     0.49,
+     0.67
+    ],
+    "20-39": [
+     0.63,
+     0.83
+    ],
+    "40-69": [
+     0.66,
+     0.83
+    ],
+    "70-99": [
+     0.65,
+     0.88
+    ]
+   },
+   "sequences using still patterns stored in episodes 10-39": {
+    "by shape": 123,
+    "by colour": 72
+   }
+  },
+  "skill of the network on motion evidence it was not yet fitted to (dev6.py, by shape; 0 chance, 1 always right)": {
+   "10-19": 0.937,
+   "20-29": 0.955,
+   "30-39": 0.951,
+   "40-49": 0.841,
+   "50-59": 0.979,
+   "overlap of the patterns stored in those episodes": [
+    0.44,
+    0.53,
+    0.66,
+    0.72,
+    0.77
+   ]
+  }
+ }
+}

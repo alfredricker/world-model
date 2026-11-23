@@ -77,7 +77,7 @@ def finish(ep, e, mem, net, S, labels="own", stills=True):
         jin = float((Jg[:, tg].sum() - Jg[:, tg].diagonal().sum()) / (n * (n - 1))); jout = float(Jg[:, rest].mean())
         seen0 = any(np.isin(ids, a).mean() >= 0.5 for a in at_first)                       # it was already a group at first sight
         mem.store(m[y0:y1, x0:x1], img[ts][y0:y1, x0:x1], jin, jout, info(m, ts, moved=int(moved[k]), first=1 if seen0 else int(first[k]), still=False))
-        log["stored"] += 1; S.who.append(dict(p=len(mem) - 1, ids=ids, first=1 if seen0 else int(first[k])))
+        log["stored"] += 1; S.who.append(dict(p=len(mem) - 1, ids=ids, first=1 if seen0 else int(first[k]), ts=int(ts)))
     if stills:
         for a in at_first:
             if any(np.isin(a, r["ids"]).mean() >= 0.5 for r in rec) or any(np.isin(a, ids).mean() >= 0.5 for ids in taken):
@@ -87,7 +87,7 @@ def finish(ep, e, mem, net, S, labels="own", stills=True):
                 continue
             ys, xs = np.nonzero(m); y0, x0, y1, x1 = ys.min(), xs.min(), ys.max() + 1, xs.max() + 1
             mem.store(m[y0:y1, x0:x1], img[0][y0:y1, x0:x1], 0.0, 0.0, info(m, 0, moved=0, first=1, still=True))
-            log["still"] += 1; S.who.append(dict(p=len(mem) - 1, ids=toks[0][m], first=1))
+            log["still"] += 1; S.who.append(dict(p=len(mem) - 1, ids=toks[0][m], first=1, ts=0))
     if net is not None and labels:
         net.add(frames[T], Ap.evidence(model, toks[T]) if labels == "own" else Ap.truth(ep["masks"][T]))
     return log

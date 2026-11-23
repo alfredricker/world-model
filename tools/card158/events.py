@@ -206,7 +206,8 @@ def conditions(model, k):
 
 
 def run_world(exp, seed, by):
-    t0 = time.time(); X = torch.load(("runs/158/exp_script_%s_%d.pt" if exp == "script" else "runs/157/exp_%s_%d.pt") % (by, seed), weights_only=False); world = W.make_world(seed, by)
+    path = ("runs/158/exp_script_%s_%d.pt" if exp == "script" else "runs/159/exp_%s_%d.pt" if exp == "check159" else "runs/157/exp_%s_%d.pt") % (by, seed)      # check159: card 159's records (a check there)
+    t0 = time.time(); X = torch.load(path, weights_only=False); world = W.make_world(seed, by)
     log = dict(world=seed, by=by, experience=exp, kind_of=world["kind_of"].tolist(), patterns=len(X["mem"]), tally=X["tally"]); cl = {}
     cache = "runs/158/fit_%s_%s_%d.pt" % (exp, by, seed)
     try:

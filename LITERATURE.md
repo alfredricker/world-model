@@ -622,6 +622,13 @@ networks). The energy papers address the second.
 | Krotov 2021 (hierarchical associative memory); "Modern Methods in Associative Memory" (arXiv 2507.06211, the HAMUX framework); Energy Transformer (Hoover et al. 2023); arXiv 2604.25470 (hierarchical Hopfield models, 2026); arXiv 2608.12398 (Varma 2026, abstract only) | Layers of neurons joined by coupling blocks, every block a term of one total energy, so levels settle jointly with feedback. The alternative is stacked Hopfield layers that each retrieve in one step and pass the result up, with no total energy. None of these learns the variables between levels by a local rule from experience |
 | Rao and Ballard 1999; Scellier and Bengio 2017 (equilibrium propagation); Yamashita and Tani 2008 (multiple-timescale recurrent network); the JAX libraries PCX (arXiv 2407.01163) and JPC (arXiv 2412.03676) | Layers that all update at once and continuously, each from the states of its neighbours: predictive coding passes states up and predictions down with local learning; equilibrium propagation learns a layered energy from two settled phases; slower time constants in upper layers give them longer-lasting states. What passes between layers is always a state, never the scalar energy. CRAM reports that equilibrium propagation failed to train its energy |
 
+## Baselines
+
+| Paper | Used for |
+|---|---|
+| Schulman, Wolski, Dhariwal, Radford and Klimov 2017, "Proximal policy optimization algorithms" (arXiv 1707.06347; not in papi) | The ordinary model-free baseline of card [160](experiments/160-minigrid-goals-against-ordinary-baselines/card.md), with the settings of the reference MiniGrid implementation (Willems, `rl-starter-files`): 16 environments, 128 steps, 4 epochs, batches of 256, learning rate 0.001. My implementation, `tools/card160/ppo.py`, solves DoorKey-5x5 in 100,000 frames and DoorKey-6x6 in 200,000 |
+| Chevalier-Boisvert and others 2023, "Minigrid and Miniworld" (NeurIPS Datasets and Benchmarks; not in papi) | The benchmark GOAL.md names first. DoorKey, Unlock, UnlockPickup, BlockedUnlockPickup and KeyCorridor are its standard tasks; success and step limits are MiniGrid's own |
+
 ## High Level Papers
 
 These are papers to guide the architecture to adhere to the goal. It is useful to read these when thinking about candidate components or direction changes.
