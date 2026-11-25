@@ -1,0 +1,463 @@
+{
+ "card": "162",
+ "date": "2026-11-24",
+ "protocol": {
+  "experiences": 3,
+  "experience_steps": 700000,
+  "tasks": 5,
+  "layouts_per_task": 100,
+  "fresh_seeds": "6000-6099 (never run before)",
+  "gate_seeds": "2000-2039",
+  "frozen": "runs/162/frozen.txt (code and the three fitted networks)",
+  "arms": {
+   "base": "card 161's agent: card 160's perceptron for cells and for the agent's move",
+   "A": "the same agent; the agent's move by the what-and-where network"
+  },
+  "network": {
+   "embedding": 32,
+   "heads": 8,
+   "key": 8,
+   "value": 8,
+   "hidden": 128,
+   "steps": 5000,
+   "optimiser": "Adam, every row at every step",
+   "rows": "72,059 to 74,620 situations of the agent"
+  }
+ },
+ "gate": {
+  "1": {
+   "doors": {
+    "base": {
+     "arm": "base",
+     "experience": "1",
+     "approaches_by_heading": [
+      149,
+      84,
+      149,
+      84
+     ],
+     "passable_by_heading": [
+      149,
+      84,
+      106,
+      84
+     ],
+     "percent": 90.7725321888412
+    },
+    "A": {
+     "arm": "A",
+     "experience": "1",
+     "approaches_by_heading": [
+      149,
+      84,
+      149,
+      84
+     ],
+     "passable_by_heading": [
+      149,
+      84,
+      149,
+      84
+     ],
+     "percent": 100.0
+    }
+   },
+   "moves": {
+    "base": {
+     "arm": "base",
+     "experience": "1",
+     "right_of_tried": [
+      133,
+      133
+     ],
+     "right_of_never_tried": [
+      4,
+      23
+     ]
+    },
+    "A": {
+     "arm": "A",
+     "experience": "1",
+     "right_of_tried": [
+      133,
+      133
+     ],
+     "right_of_never_tried": [
+      23,
+      23
+     ]
+    }
+   },
+   "solved_of_40": {
+    "base": {
+     "KeyCorridorS3R3": 36
+    },
+    "A": {
+     "KeyCorridorS3R3": 40,
+     "UnlockPickup": 30,
+     "BlockedUnlockPickup": 33,
+     "DoorKey-8x8": 40
+    }
+   }
+  },
+  "2": {
+   "doors": {
+    "base": {
+     "arm": "base",
+     "experience": "2",
+     "approaches_by_heading": [
+      149,
+      84,
+      149,
+      84
+     ],
+     "passable_by_heading": [
+      149,
+      84,
+      69,
+      84
+     ],
+     "percent": 82.83261802575107
+    },
+    "A": {
+     "arm": "A",
+     "experience": "2",
+     "approaches_by_heading": [
+      149,
+      84,
+      149,
+      84
+     ],
+     "passable_by_heading": [
+      149,
+      84,
+      149,
+      84
+     ],
+     "percent": 100.0
+    }
+   },
+   "moves": {
+    "base": {
+     "arm": "base",
+     "experience": "2",
+     "right_of_tried": [
+      130,
+      130
+     ],
+     "right_of_never_tried": [
+      4,
+      26
+     ]
+    },
+    "A": {
+     "arm": "A",
+     "experience": "2",
+     "right_of_tried": [
+      130,
+      130
+     ],
+     "right_of_never_tried": [
+      26,
+      26
+     ]
+    }
+   },
+   "solved_of_40": {
+    "base": {
+     "KeyCorridorS3R3": 25
+    },
+    "A": {
+     "KeyCorridorS3R3": 34,
+     "UnlockPickup": 34,
+     "BlockedUnlockPickup": 35,
+     "DoorKey-8x8": 40
+    }
+   }
+  },
+  "3": {
+   "doors": {
+    "base": {
+     "arm": "base",
+     "experience": "3",
+     "approaches_by_heading": [
+      149,
+      84,
+      149,
+      84
+     ],
+     "passable_by_heading": [
+      149,
+      84,
+      53,
+      84
+     ],
+     "percent": 79.39914163090128
+    },
+    "A": {
+     "arm": "A",
+     "experience": "3",
+     "approaches_by_heading": [
+      149,
+      84,
+      149,
+      84
+     ],
+     "passable_by_heading": [
+      149,
+      84,
+      149,
+      84
+     ],
+     "percent": 100.0
+    }
+   },
+   "moves": {
+    "base": {
+     "arm": "base",
+     "experience": "3",
+     "right_of_tried": [
+      130,
+      130
+     ],
+     "right_of_never_tried": [
+      3,
+      26
+     ]
+    },
+    "A": {
+     "arm": "A",
+     "experience": "3",
+     "right_of_tried": [
+      130,
+      130
+     ],
+     "right_of_never_tried": [
+      26,
+      26
+     ]
+    }
+   },
+   "solved_of_40": {
+    "base": {
+     "KeyCorridorS3R3": 28
+    },
+    "A": {
+     "KeyCorridorS3R3": 38,
+     "UnlockPickup": 30,
+     "BlockedUnlockPickup": 32,
+     "DoorKey-8x8": 40
+    }
+   }
+  }
+ },
+ "gate_arm_B": {
+  "note": "one network for the agent and every cell; failed the gate, not tested",
+  "first_fit": {
+   "batches": "16,384 rows",
+   "objective_nats_end": "285 to 831",
+   "solved_of_40": {
+    "KeyCorridorS3R3": [
+     40,
+     27,
+     26
+    ],
+    "UnlockPickup": [
+     11,
+     21,
+     11
+    ],
+    "BlockedUnlockPickup": [
+     15,
+     21,
+     14
+    ]
+   }
+  },
+  "second_fit_experience_3": {
+   "objective_nats_end": 20.6,
+   "moves_never_tried_right": "22 of 26",
+   "UnlockPickup_of_40": 13
+  },
+  "third_fit_experience_3": {
+   "change": "a contribution for a token merely lying there",
+   "objective_nats_end": 33.6,
+   "pickup_answers_right_percent": 87.3,
+   "perceptron_percent": 97.2,
+   "moves_never_tried_right": "20 of 26",
+   "UnlockPickup_of_40": 28
+  }
+ },
+ "test": {
+  "base": {
+   "success_by_experience": {
+    "1": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 77.0,
+     "BlockedUnlockPickup": 81.0,
+     "KeyCorridorS3R3": 78.0
+    },
+    "2": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 86.0,
+     "BlockedUnlockPickup": 86.0,
+     "KeyCorridorS3R3": 58.0
+    },
+    "3": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 88.0,
+     "BlockedUnlockPickup": 88.0,
+     "KeyCorridorS3R3": 53.0
+    }
+   },
+   "mean_by_experience": [
+    87.2,
+    86.0,
+    85.8
+   ],
+   "mean_by_task": {
+    "DoorKey-8x8": 100.0,
+    "DoorKey-16x16": 100.0,
+    "UnlockPickup": 83.67,
+    "BlockedUnlockPickup": 85.0,
+    "KeyCorridorS3R3": 63.0
+   },
+   "mean": 86.33,
+   "no_plan_share": {
+    "DoorKey-8x8": 0.0,
+    "DoorKey-16x16": 0.0,
+    "UnlockPickup": 68.0,
+    "BlockedUnlockPickup": 74.0,
+    "KeyCorridorS3R3": 80.5
+   },
+   "steps_when_solved": {
+    "DoorKey-8x8": 16.5,
+    "DoorKey-16x16": 32.5,
+    "UnlockPickup": 22.0,
+    "BlockedUnlockPickup": 32.9,
+    "KeyCorridorS3R3": 56.8
+   },
+   "failed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 49,
+    "BlockedUnlockPickup": 45,
+    "KeyCorridorS3R3": 111
+   },
+   "failed_with_goal_token_destroyed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 48,
+    "BlockedUnlockPickup": 45,
+    "KeyCorridorS3R3": 0
+   },
+   "ms_per_step": {
+    "DoorKey-8x8": 24.9,
+    "DoorKey-16x16": 37.7,
+    "UnlockPickup": 8.7,
+    "BlockedUnlockPickup": 8.4,
+    "KeyCorridorS3R3": 3.7
+   }
+  },
+  "A": {
+   "success_by_experience": {
+    "1": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 77.0,
+     "BlockedUnlockPickup": 81.0,
+     "KeyCorridorS3R3": 96.0
+    },
+    "2": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 86.0,
+     "BlockedUnlockPickup": 86.0,
+     "KeyCorridorS3R3": 93.0
+    },
+    "3": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 88.0,
+     "BlockedUnlockPickup": 88.0,
+     "KeyCorridorS3R3": 93.0
+    }
+   },
+   "mean_by_experience": [
+    90.8,
+    93.0,
+    93.8
+   ],
+   "mean_by_task": {
+    "DoorKey-8x8": 100.0,
+    "DoorKey-16x16": 100.0,
+    "UnlockPickup": 83.67,
+    "BlockedUnlockPickup": 85.0,
+    "KeyCorridorS3R3": 94.0
+   },
+   "mean": 92.53,
+   "no_plan_share": {
+    "DoorKey-8x8": 0.0,
+    "DoorKey-16x16": 0.0,
+    "UnlockPickup": 68.0,
+    "BlockedUnlockPickup": 74.0,
+    "KeyCorridorS3R3": 47.5
+   },
+   "steps_when_solved": {
+    "DoorKey-8x8": 16.5,
+    "DoorKey-16x16": 32.5,
+    "UnlockPickup": 22.0,
+    "BlockedUnlockPickup": 32.9,
+    "KeyCorridorS3R3": 33.9
+   },
+   "failed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 49,
+    "BlockedUnlockPickup": 45,
+    "KeyCorridorS3R3": 18
+   },
+   "failed_with_goal_token_destroyed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 48,
+    "BlockedUnlockPickup": 45,
+    "KeyCorridorS3R3": 0
+   },
+   "ms_per_step": {
+    "DoorKey-8x8": 7.0,
+    "DoorKey-16x16": 9.1,
+    "UnlockPickup": 5.9,
+    "BlockedUnlockPickup": 4.5,
+    "KeyCorridorS3R3": 26.5
+   }
+  }
+ },
+ "keycorridor_paired": {
+  "1": {
+   "both": 2,
+   "only_base": 20,
+   "only_A": 2
+  },
+  "2": {
+   "both": 4,
+   "only_base": 38,
+   "only_A": 3
+  },
+  "3": {
+   "both": 6,
+   "only_base": 41,
+   "only_A": 1
+  }
+ },
+ "criteria": {
+  "1_success": "pass (90.8, 93.0, 93.8 against 90; card 161's agent 87.2, 86.0, 85.8; no task under card 161's agent)",
+  "2_keycorridor": "pass (94.0 on the mean; 96, 93, 93; card 161's agent 63.0; 78, 58, 53)",
+  "3_move_carries": "pass (23 of 23, 26 of 26, 26 of 26 pairs never tried; card 161's move effect 4 of 23, 4 of 26, 3 of 26)"
+ },
+ "verdict": "pass (3 of 3)",
+ "decision": "keep"
+}

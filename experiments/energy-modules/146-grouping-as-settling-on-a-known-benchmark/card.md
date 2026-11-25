@@ -13,7 +13,7 @@ date: 2026-11-19
 
 Roadmap step 2 (objects), rung 2. First card of the direction the user
 opened on 2026-11-19: energy modules whose settled states are objects
-([the write-up](../../theory/thousand_brains_energy_formulation.md),
+([the write-up](../../../theory/thousand_brains_energy_formulation.md),
 sections 6 and 7). The user agreed the test ladder ("that sounds like a
 good plan": a published small benchmark first, then our own sprite world,
 then OGBench's renderer with factors swept) and asked for experiments

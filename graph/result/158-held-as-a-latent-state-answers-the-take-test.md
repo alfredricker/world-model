@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/events-as-latent-state-changes
 ---
-From [card 158](../../experiments/158-events-as-changes-of-an-objects-latent-state/card.md): 100.0 with the true behaviours given (own tokens), 39.1 with one class; by colour 99.9, by shape 57.6 (never-met movable objects believed fixed from their appearance, card 157's weakness). On the agent's own experience 61.3.
+From [card 158](../../experiments/energy-modules/158-events-as-changes-of-an-objects-latent-state/card.md): 100.0 with the true behaviours given (own tokens), 39.1 with one class; by colour 99.9, by shape 57.6 (never-met movable objects believed fixed from their appearance, card 157's weakness). On the agent's own experience 61.3.

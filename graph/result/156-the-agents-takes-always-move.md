@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/appearance-couplings-from-own-action
 ---
-From [card 156](../../experiments/156-appearance-couplings-taught-by-the-agents-own-action/card.md): the script arm reaches 93.9. Checked: of 103 takes in 50 episodes of the agent none is without a move (script: 35 of 150), and the test asks for a take without a move; with the true classes given, couplings fitted to the agent's transitions also score 0% on takeable objects. The binding and the classes are as good as the script's. Card 149's lesson again: couplings have no answer for a combination their records lack.
+From [card 156](../../experiments/energy-modules/156-appearance-couplings-taught-by-the-agents-own-action/card.md): the script arm reaches 93.9. Checked: of 103 takes in 50 episodes of the agent none is without a move (script: 35 of 150), and the test asks for a take without a move; with the true classes given, couplings fitted to the agent's transitions also score 0% on takeable objects. The binding and the classes are as good as the script's. Card 149's lesson again: couplings have no answer for a combination their records lack.

@@ -17,4 +17,4 @@ links:
 - rel: tested
   to: principle/kinds-by-one-energy
 ---
-From [card 155](../../experiments/155-object-modules-fed-by-binding/card.md): checked by rerunning the world. 13 sticky objects with transitions; the shape attractor of the squares (the sticky shape) holds 7 sticky and 3 takeable objects (mean pattern overlap 0.81), 6 sticky objects fall on other attractors, and the prior gives a square 0.66 for the sticky class. The other nine worlds are at 100.0.
+From [card 155](../../experiments/energy-modules/155-object-modules-fed-by-binding/card.md): checked by rerunning the world. 13 sticky objects with transitions; the shape attractor of the squares (the sticky shape) holds 7 sticky and 3 takeable objects (mean pattern overlap 0.81), 6 sticky objects fall on other attractors, and the prior gives a square 0.66 for the sticky class. The other nine worlds are at 100.0.

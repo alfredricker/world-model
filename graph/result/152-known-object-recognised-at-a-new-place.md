@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/object-module-what-where-does
 ---
-Criterion 1 of [card 152](../../experiments/152-an-object-module-that-knows-what-an-object-is-and-does/card.md): 100.0% of 14,790 views and 100.0% of the 1,132 a quarter or more hidden; the frame is put back exactly for 100.0% of known objects. With the frame left at the seen box 81.9% of the hidden views; with the pattern left where it was stored, 0.0% of known objects. The easy case: every individual differs in every pixel and nothing rotates or scales.
+Criterion 1 of [card 152](../../experiments/energy-modules/152-an-object-module-that-knows-what-an-object-is-and-does/card.md): 100.0% of 14,790 views and 100.0% of the 1,132 a quarter or more hidden; the frame is put back exactly for 100.0% of known objects. With the frame left at the seen box 81.9% of the hidden views; with the pattern left where it was stored, 0.0% of known objects. The easy case: every individual differs in every pixel and nothing rotates or scales.

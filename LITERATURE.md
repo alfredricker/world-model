@@ -569,7 +569,9 @@ Earlier focus (cards 001–002, until card 002 has a decision):
 
 ## Energy modules and binding: review of 2026-11-19
 
-Not the current focus; the user decides whether it becomes one. Collected
+Not the current focus. The direction was tried in cards 146–160 and set
+aside by the user on 2026-11-23; what it showed is in
+[the series' note](experiments/energy-modules/README.md). Collected
 in a thinking session on the user's proposal
 ([theory/thousand_brains_energy_formulation.md](theory/thousand_brains_energy_formulation.md)):
 layers of energy modules whose attractor states hold features at the
@@ -626,8 +628,13 @@ networks). The energy papers address the second.
 
 | Paper | Used for |
 |---|---|
-| Schulman, Wolski, Dhariwal, Radford and Klimov 2017, "Proximal policy optimization algorithms" (arXiv 1707.06347; not in papi) | The ordinary model-free baseline of card [160](experiments/160-minigrid-goals-against-ordinary-baselines/card.md), with the settings of the reference MiniGrid implementation (Willems, `rl-starter-files`): 16 environments, 128 steps, 4 epochs, batches of 256, learning rate 0.001. My implementation, `tools/card160/ppo.py`, solves DoorKey-5x5 in 100,000 frames and DoorKey-6x6 in 200,000 |
+| Schulman, Wolski, Dhariwal, Radford and Klimov 2017, "Proximal policy optimization algorithms" (arXiv 1707.06347; not in papi) | The ordinary model-free baseline of card [160](experiments/energy-modules/160-minigrid-goals-against-ordinary-baselines/card.md), with the settings of the reference MiniGrid implementation (Willems, `rl-starter-files`): 16 environments, 128 steps, 4 epochs, batches of 256, learning rate 0.001. My implementation, `tools/card160/ppo.py`, solves DoorKey-5x5 in 100,000 frames and DoorKey-6x6 in 200,000 |
 | Chevalier-Boisvert and others 2023, "Minigrid and Miniworld" (NeurIPS Datasets and Benchmarks; not in papi) | The benchmark GOAL.md names first. DoorKey, Unlock, UnlockPickup, BlockedUnlockPickup and KeyCorridor are its standard tasks; success and step limits are MiniGrid's own |
+
+**What and where in the effect network (card 162).** Attention with keys and values (Vaswani et al. 2017), with keys
+from where a token lies and values from what it is; the role and filler view of binding (Smolensky 1990); the brain's
+separate pathways for what and where (Ungerleider and Mishkin 1982) and the Tolman-Eichenbaum Machine above. None in
+papi; established methods.
 
 ## High Level Papers
 

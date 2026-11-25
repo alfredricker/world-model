@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/contact-as-a-learned-relation
 ---
-From [card 159](../../experiments/159-contact-as-a-learned-relation-of-places/card.md): it catches 83.4% of contacts (rule on the same boxes 74.7, 13.3% false); events F1 66.8 against 68.2 for the rule and 76.3 asked; conditions right 8 of 40 (rule 16, card 158 30). With true boxes: 98.4% caught, 0.0% false, F1 99.7, 40 of 40.
+From [card 159](../../experiments/energy-modules/159-contact-as-a-learned-relation-of-places/card.md): it catches 83.4% of contacts (rule on the same boxes 74.7, 13.3% false); events F1 66.8 against 68.2 for the rule and 76.3 asked; conditions right 8 of 40 (rule 16, card 158 30). With true boxes: 98.4% caught, 0.0% false, F1 99.7, 40 of 40.

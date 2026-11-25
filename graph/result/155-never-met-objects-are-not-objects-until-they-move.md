@@ -17,4 +17,4 @@ links:
 - rel: tested
   to: principle/kinds-by-one-energy
 ---
-From [card 155](../../experiments/155-object-modules-fed-by-binding/card.md): by construction; the 39.1 is the fixed objects, for which the answer cannot is right. With the true mask given at test only, never-met takeable objects get 100.0 and sticky 92.0, so the appearance prior is learned; what is missing is binding before motion. No class is learned for fixed objects (none ever moves): given a mask they are called takeable or sticky (take 0.0).
+From [card 155](../../experiments/energy-modules/155-object-modules-fed-by-binding/card.md): by construction; the 39.1 is the fixed objects, for which the answer cannot is right. With the true mask given at test only, never-met takeable objects get 100.0 and sticky 92.0, so the appearance prior is learned; what is missing is binding before motion. No class is learned for fixed objects (none ever moves): given a mask they are called takeable or sticky (take 0.0).

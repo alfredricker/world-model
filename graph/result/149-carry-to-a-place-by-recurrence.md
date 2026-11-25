@@ -17,4 +17,4 @@ links:
 - rel: tested
   to: principle/action-as-output-token
 ---
-[Card 149](../../experiments/149-a-sequence-of-actions-by-recurrence/card.md), the second task of criterion 1 and criterion 2: 96.9% (a scripted solver 100.0%, the same energy without verification 2.5%, random actions 0.0%), in 1.00 times the solver's steps. Without the carried belief of what is held, 23.9%. With 1,000 steps of experience 83.4%, with 300 48.4%.
+[Card 149](../../experiments/energy-modules/149-a-sequence-of-actions-by-recurrence/card.md), the second task of criterion 1 and criterion 2: 96.9% (a scripted solver 100.0%, the same energy without verification 2.5%, random actions 0.0%), in 1.00 times the solver's steps. Without the carried belief of what is held, 23.9%. With 1,000 steps of experience 83.4%, with 300 48.4%.

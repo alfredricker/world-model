@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/transitions-from-own-states
 ---
-From [card 157](../../experiments/157-transitions-read-from-the-binding-layers-own-states/card.md): 97.8 with the simulator's tokens; 4 to 6 classes against 3 or 4. The own contact token catches 69.4% of the simulator's contacts (the box around a pattern's points often reaches outside the object). Leaving out the patterns on the ground does not cure it (one world 75.1 to 86.0, another 61.1 to 64.8).
+From [card 157](../../experiments/energy-modules/157-transitions-read-from-the-binding-layers-own-states/card.md): 97.8 with the simulator's tokens; 4 to 6 classes against 3 or 4. The own contact token catches 69.4% of the simulator's contacts (the box around a pattern's points often reaches outside the object). Leaving out the patterns on the ground does not cure it (one world 75.1 to 86.0, another 61.1 to 64.8).

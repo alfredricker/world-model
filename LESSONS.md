@@ -81,8 +81,8 @@ record" is `old:phwm/docs/05-experimental-record.md`.
 - **A frozen ViT loses where a change is with depth; change alone gives a
   seed, not an object.** Lasting change found condition changes at F1
   0.63 on DINOv2's block 2 and 0.30 on block 12. Slots trained only to
-  reconstruct patches keep the background and skip small objects.
-  *Evidence:* cards 116.1, 119.
+  reconstruct patches keep the background and skip small objects: the loss weights by
+  area, not consequence. No decoder as the training signal (the user). *Evidence:* cards 116.1, 119, 145.
 - **A cost on how many tokens change merges the agent with what it
   moves** (65% of the cube in the arm's token). Change one loss term per
   arm. *Evidence:* card 124.
@@ -173,14 +173,14 @@ record" is `old:phwm/docs/05-experimental-record.md`.
 
 ## Perception in moving-view worlds (Crafter, Craftium)
 
-- **Give a sparse model each fact once** (card 160, MiniGrid). A door's
-  opening entered the energy as its new code and as "the closed door went
-  out of view"; the two always co-occur, L1 split the credit, and the
-  planner, which imagined only the first, found no plan (9% against a
-  perceptron's 41%). **Imagine an effect whole, memory included. Run an
-  ordinary model in the same agent:** it showed the sparse form was not
-  what made DoorKey work (99%; PPO with reward 6%). A result just past a
-  cliff in experience (half: 7%) is not robust.
+- **Give a sparse model each fact once** (card 160, MiniGrid). A door's opening entered the energy as
+  its new code and as "the closed door went out of view"; L1 split the credit and the planner found no
+  plan (9% against a perceptron's 41%). **Imagine an effect whole, memory included. Run an ordinary
+  model in the same agent:** the sparse form did not make DoorKey work. Half the experience: 7%.
+- **Ask the model about the present situation, not a second structure with its own rule of evidence**
+  (card 161: pickup tasks 40 → 84%). Gate a model change on every experience.
+- **Keep what a token is apart from where it lies** (card 162): attention over the two carried a move
+  to every heading never tried (75 of 75; per (position, code) input: 11), no rotation built in.
 - **Appearance cannot tell look-alikes apart; correspondence needs a
   prediction of where each will be.** Trackers swap to the next cow or
   lose it once out of view (13% kept); a belief in the world's frame with

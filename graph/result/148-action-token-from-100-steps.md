@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/action-as-output-token
 ---
-Criteria 1 to 3 of [card 148](../../experiments/148-the-action-as-an-output-token/card.md): with couplings learned by pseudolikelihood the settled action gives the wanted effect in 95.6% of 6,000 test steps after 100 steps of experience and in 100.0% after 1,000 (the commonest action 5.2%, a random one 1.1%); the settled action is the lowest-energy of the 162 in 100.0% of queries from 100 steps on. State and effect tokens come from the simulator and every query is a single step.
+Criteria 1 to 3 of [card 148](../../experiments/energy-modules/148-the-action-as-an-output-token/card.md): with couplings learned by pseudolikelihood the settled action gives the wanted effect in 95.6% of 6,000 test steps after 100 steps of experience and in 100.0% after 1,000 (the commonest action 5.2%, a random one 1.1%); the settled action is the lowest-energy of the 162 in 100.0% of queries from 100 steps on. State and effect tokens come from the simulator and every query is a single step.

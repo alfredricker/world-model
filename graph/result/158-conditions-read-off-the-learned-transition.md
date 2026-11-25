@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/events-as-latent-state-changes
 ---
-From [card 158](../../experiments/158-events-as-changes-of-an-objects-latent-state/card.md): 9 of the 10 wrong add whether the hand moved. Checked in one world: own contacts that are not contacts come mostly while the hand moves (31 of 215 against 4 of 87), part of the cause.
+From [card 158](../../experiments/energy-modules/158-events-as-changes-of-an-objects-latent-state/card.md): 9 of the 10 wrong add whether the hand moved. Checked in one world: own contacts that are not contacts come mostly while the hand moves (31 of 215 against 4 of 87), part of the cause.

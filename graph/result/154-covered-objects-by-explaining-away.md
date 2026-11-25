@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/feedback-as-stored-couplings
 ---
-From [card 154](../../experiments/154-feedback-from-object-modules-to-binding/card.md): by colour 99.7% (n 298); settled on a pattern stored from the same thing in 96.9 and 99.7%. A pattern pixel explained by a better pattern costs nothing and an unexplained one costs log 2; the bound with true-mask patterns is 99.7 and 100.0.
+From [card 154](../../experiments/energy-modules/154-feedback-from-object-modules-to-binding/card.md): by colour 99.7% (n 298); settled on a pattern stored from the same thing in 96.9 and 99.7%. A pattern pixel explained by a better pattern costs nothing and an unexplained one costs log 2; the bound with true-mask patterns is 99.7 and 100.0.

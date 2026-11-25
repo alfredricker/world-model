@@ -3,8 +3,8 @@ id: "145"
 title: a state that changes only when the scene does — one learned vector that must explain every frame given the arm's pose, and may change only through gates that cost to open
 rung: 2
 serves: [P7, P4, P2, P1]
-status: running
-verdict:
+status: done
+verdict: fail
 arch_version: og4
 date: 2026-11-17
 ---
@@ -337,4 +337,29 @@ Validation episodes, every step. "60 min" is the first pass's third run.
   on the whole state misses the locks (recall 0.04 and 0.54), whose
   jumps are smaller. This is a diagnostic, not criterion 1's measure.
 
-Still to run: seed 1 (the verdict needs two seeds) and arm C.
+Seed 1 and arm C were not run (see the decision).
+
+**Verdict: fail, on one seed of the two planned.** Criterion 1 fails on
+precision (0.62 against 0.8), criterion 2 on the cube (0.50 against
+0.95, which is chance), criterion 3 on the precision of each variable's
+own dimensions (0.33 to 0.49 against 0.8). The second seed was planned to
+confirm a pass; it cannot turn these into one, since twice the training
+moved none of the three.
+
+## 8. Decision
+
+**Stop** (the user, 2026-11-24). The fault is in the training signal, not
+in the amount of training. The state was trained to let a decoder redraw
+every patch, and that error is summed over patches, so a variable is
+learned in the order of how much of the picture it fills: swapping the
+drawer changes 0.83 of the error the pose leaves, the window 0.45, the
+cube 0.12. The cube, which most tasks are about, was never learned.
+GOAL's C6 already says frames are evidence and not the thing predicted.
+The user's rule from this card: no decoder as a representation's training
+signal; a representation is trained by consequences, that is by what the
+agent's actions change ([LESSONS](../../LESSONS.md)).
+
+Kept as findings: a cost on change from the start stops learning, so
+learn first and raise the cost afterwards; the size of the state's change
+marks the drawer's and window's events better than the gates do (precision
+0.98 against 0.63).

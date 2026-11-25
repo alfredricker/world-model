@@ -447,7 +447,7 @@ energy with patches as cells and object identities as values, so the
 grouping level and the reasoning level would share one form. Couplings
 between near patches alone leave two objects that do not touch free to
 merge; a weak repulsion between far pairs repairs it. Details:
-[card 146](../experiments/146-grouping-as-settling-on-a-known-benchmark/card.md).
+[card 146](../experiments/energy-modules/146-grouping-as-settling-on-a-known-benchmark/card.md).
 
 ### Terms 1 and 2 on real features (2026-11-19, cards 146 and 146.1)
 
@@ -482,7 +482,7 @@ joins the object whose motion predicts its change, with no pairwise term.
 Tetrominoes has no agent and cannot test either; the sprite world, the
 ladder's second step, can.
 
-**Result ([card 147](../experiments/147-binding-from-interaction-in-a-sprite-world/card.md), 2026-11-19).**
+**Result ([card 147](../experiments/energy-modules/147-binding-from-interaction-in-a-sprite-world/card.md), 2026-11-19).**
 Both forms were built in a sprite world and both pass: pairwise couplings
 accumulated from co-motion and read by settling find 97.9% of moved things,
 object files that own the points whose motion they have predicted best find
@@ -497,7 +497,7 @@ form carried forward; they have no way to close a file opened by a misread
 motion, which the pairwise form tolerates. Not yet used: effects other than
 motion, event boundaries as such, the action.
 
-**Output tokens ([card 148](../experiments/148-the-action-as-an-output-token/card.md), 2026-11-19).** The
+**Output tokens ([card 148](../experiments/energy-modules/148-the-action-as-an-output-token/card.md), 2026-11-19).** The
 user asked whether a token of the energy can stand for an action or a word,
 and chose the couplings form over object files ("more true to the energy
 formulation and the CRAM paper"). One step is a set of categorical tokens:
@@ -533,7 +533,7 @@ can be settled as a token and become the next wanted effect, which is the
 project's backward chaining over conditions (no imagined rollouts). Open:
 reaching contact depends on relative position, a dependence on three tokens.
 
-**Modules, and sequences tried ([card 149](../experiments/149-a-sequence-of-actions-by-recurrence/card.md), 2026-11-19).**
+**Modules, and sequences tried ([card 149](../experiments/energy-modules/149-a-sequence-of-actions-by-recurrence/card.md), 2026-11-19).**
 The user asked whether what we have is a modular energy model, with each
 patch settling and deeper layers reading the settled states up to an
 output token. Partly: card 148's energy is a sum of one term per object
@@ -579,7 +579,7 @@ energy) or feedback as well (one total energy, joint settling); and how
 the variables between layers are learned, which nothing in the literature
 supplies.
 
-**Feed-forward layers, tested (cards [150](../experiments/150-three-feed-forward-layers-of-energy-modules/card.md) and [151](../experiments/151-layers-of-attractor-modules-in-a-world-of-parts/card.md), 2026-11-20).**
+**Feed-forward layers, tested (cards [150](../experiments/energy-modules/150-three-feed-forward-layers-of-energy-modules/card.md) and [151](../experiments/energy-modules/151-layers-of-attractor-modules-in-a-world-of-parts/card.md), 2026-11-20).**
 On sprite pixels three layers (motion per pixel, binding per point, one
 module per object) give each object's motion in 99.5% of moving steps and
 do not care how they are clocked; the action layer was not put on top
@@ -595,7 +595,7 @@ learns by storing its input when $\min_k E_k$ is over a threshold, so the
 scalar energy's job is "is this new", not content. On a stream one
 layer's low-pass memory is enough and several add their lags.
 
-**The object module: where, what, does (card [152](../experiments/152-an-object-module-that-knows-what-an-object-is-and-does/card.md), 2026-11-20).**
+**The object module: where, what, does (card [152](../experiments/energy-modules/152-an-object-module-that-knows-what-an-object-is-and-does/card.md), 2026-11-20).**
 A slot becomes a module with three parts. *Where* is the place $s$ of the
 object's own frame. *What* is a set of memories in that frame; for the
 individual's stored pattern $k$ (a mask $M_k$ and a texture $T_k$) the
@@ -618,7 +618,7 @@ behaviour were told in nine worlds of ten. Open: the rule that finds the
 kinds (mine is a pile of thresholds and failed in one world of five), and
 binding without true masks.
 
-**Kinds by one energy (card [153](../experiments/153-kinds-found-by-one-energy-in-two-domains/card.md), 2026-11-20).**
+**Kinds by one energy (card [153](../experiments/energy-modules/153-kinds-found-by-one-energy-in-two-domains/card.md), 2026-11-20).**
 The thresholds of card 152's kind learner are replaced by one energy over
 the grouping $z$ (item $i$ has kind $z_i$):
 $L(z, J) = \sum_i E_i(z_i) - \log P_{\text{CRP}}(z)$, with
@@ -643,7 +643,7 @@ records enough to propose a kind (30 episodes in one world; 100
 sentences): the proposal must come from items that share a looks code,
 and be judged after both kinds are refitted.
 
-**Classes from appearance and transitions together (card [153.1](../experiments/153.1-dynamics-classes-from-appearance-and-transitions/card.md), 2026-11-20).**
+**Classes from appearance and transitions together (card [153.1](../experiments/energy-modules/153.1-dynamics-classes-from-appearance-and-transitions/card.md), 2026-11-20).**
 Object $i$ has appearance features $a_i$ (attractor indices of its
 appearance memories), transitions $D_i$ and a dynamics class $z_i$. The
 posterior $p(z_i \mid a_i, D_i) \propto p(z_i \mid a_i)\,p(D_i \mid z_i)$
@@ -660,7 +660,7 @@ data. Costs: extra small classes are admitted (up to 8 for 4), a
 rule-breaking word with one or two transitions is outweighed by its
 appearance, and runs take 4 to 34 times longer.
 
-**Feedback as stored couplings (card [154](../experiments/154-feedback-from-object-modules-to-binding/card.md), 2026-11-20).**
+**Feedback as stored couplings (card [154](../experiments/energy-modules/154-feedback-from-object-modules-to-binding/card.md), 2026-11-20).**
 The first downward path. The binding layer's energy is
 $E(b) = -\tfrac12 \sum_{pq} J_{pq}\, b_p \cdot b_q$ with $J$ accumulated
 from co-motion. An object module stores, for a group that motion bound,
@@ -678,7 +678,7 @@ feedback; 100 with true-mask patterns); a quarter or more hidden, 96.3
 and 99.7%. Open: objects that never move (no pattern), patterns of
 kinds instead of individuals, a memory that grows without bound.
 
-**The masks removed (card [155](../experiments/155-object-modules-fed-by-binding/card.md), 2026-11-20).**
+**The masks removed (card [155](../experiments/energy-modules/155-object-modules-fed-by-binding/card.md), 2026-11-20).**
 Cards 152 to 153.1 rerun with an object defined as a stored pattern of
 card 154's memory, its appearance features read from the pattern and its
 transitions counted from its first move. An object the binding has found
@@ -691,7 +691,7 @@ objects 94.5 against 98.8), and no class is learned for fixed objects.
 The user: couplings as a function of appearance need a training
 incentive from the agent's interaction, not a designed loss or prior.
 
-**Appearance couplings taught by the agent's own action (card [156](../experiments/156-appearance-couplings-taught-by-the-agents-own-action/card.md), 2026-11-20).**
+**Appearance couplings taught by the agent's own action (card [156](../experiments/energy-modules/156-appearance-couplings-taught-by-the-agents-own-action/card.md), 2026-11-20).**
 A network reads the frame around two points and their offset and gives
 three states for the pair, together, apart, no evidence, taught by the
 binding layer's own $J$ at the end of each episode ($J \ge 3a$,
@@ -708,7 +708,7 @@ script's experience (39.1 without the couplings). An agent that goes to
 the groups its own binding sees teaches the couplings as well, but its
 takes always include a move and the test asks for one without (75.0).
 
-**Transitions from the binding layer's own states (card [157](../experiments/157-transitions-read-from-the-binding-layers-own-states/card.md), 2026-11-21).**
+**Transitions from the binding layer's own states (card [157](../experiments/energy-modules/157-transitions-read-from-the-binding-layers-own-states/card.md), 2026-11-21).**
 An object's transition at a step is read from its points: contact (the
 box around them beside the hand's box), the displacement most of them
 made, and whether that is the hand's own. No simulator token and no mask
@@ -719,7 +719,7 @@ simulator's tokens (100.0 with the true classes given); class purity
 88.9 against 97.8. The ground joins the fixed class, and patterns on the
 hand form a class of what always comes along.
 
-**Events as changes of a latent state (card [158](../experiments/158-events-as-changes-of-an-objects-latent-state/card.md), 2026-11-21).**
+**Events as changes of a latent state (card [158](../experiments/energy-modules/158-events-as-changes-of-an-objects-latent-state/card.md), 2026-11-21).**
 Each object module keeps $h_t \in \{0,1\}$ with
 $p(\text{came along}_t \mid h_t, \text{moved}_t)$ and
 $p(h_t = 1 \mid h_{t-1}, c_t; z) = \sigma(b_z + \sum_j w_{z,j} c_{t,j})$
@@ -734,7 +734,7 @@ conditions read off the transition right in 30 of 40 statements. Where
 an event shows only later, the sparsity prior places it, not the
 likelihood.
 
-**Contact as a learned relation of places (card [159](../experiments/159-contact-as-a-learned-relation-of-places/card.md), 2026-11-21).**
+**Contact as a learned relation of places (card [159](../experiments/energy-modules/159-contact-as-a-learned-relation-of-places/card.md), 2026-11-21).**
 The relative place $r_t$ of the object's box and the hand's box (36
 tokens) replaces the contact rule in the latent state's transition,
 $\sigma(b_z + w_z \cdot (h_{t-1}, g_t, m_t) + u[r_t])$. With true boxes the

@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/kinds-by-one-energy
 ---
-From [card 153](../../experiments/153-kinds-found-by-one-energy-in-two-domains/card.md): 19 of 20 runs at 30 and 100 episodes reach 90%. Checked by replaying the run: the stored seeds were two sticky and two takeable objects; no fixed object's own difference lowered the energy, because a proposed kind is credited with what it explains and not with what its removal lets the old kind explain. Card 152's learner fails a different world at 30 episodes (80.8).
+From [card 153](../../experiments/energy-modules/153-kinds-found-by-one-energy-in-two-domains/card.md): 19 of 20 runs at 30 and 100 episodes reach 90%. Checked by replaying the run: the stored seeds were two sticky and two takeable objects; no fixed object's own difference lowered the energy, because a proposed kind is credited with what it explains and not with what its removal lets the old kind explain. Card 152's learner fails a different world at 30 episodes (80.8).

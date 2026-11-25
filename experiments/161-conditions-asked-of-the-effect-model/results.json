@@ -1,0 +1,636 @@
+{
+ "card": "161",
+ "date": "2026-11-24",
+ "protocol": {
+  "experiences": 3,
+  "experience_steps": 700000,
+  "tasks": 5,
+  "layouts_per_task": 100,
+  "fresh_seeds": "5000-5099 (judged)",
+  "old_seeds": "1000-1099, card 160's test layouts (reported, not judged)",
+  "gate_seeds": "2000-2039",
+  "frozen": "runs/161/frozen.txt",
+  "arms": {
+   "base": "card 160's agent with its planner repair, card 160's perceptron",
+   "A": "this card's agent, card 160's perceptron",
+   "B": "this card's agent, the perceptron with one shared output for no change"
+  }
+ },
+ "data_check": {
+  "seeds": "2000-2039",
+  "experience": 1,
+  "solved_of_40": {
+   "UnlockPickup": 11,
+   "BlockedUnlockPickup": 13,
+   "KeyCorridorS3R3": 36
+  },
+  "pickup_task_failures": 56,
+  "of_these_first_no_plan_step_is_a_pickup_with_full_hands": 56,
+  "statements_right_of_60": {
+   "perceptron_guard_per_code": 52,
+   "perceptron_no_guard": 39,
+   "perceptron_guard_pooled": 37,
+   "shared_guard_per_code": 42,
+   "shared_no_guard": 31,
+   "shared_guard_pooled": 24
+  }
+ },
+ "gate": {
+  "seeds": "2000-2039",
+  "experience": 1,
+  "solved_of_40": {
+   "base": {
+    "UnlockPickup": 11,
+    "BlockedUnlockPickup": 13,
+    "KeyCorridorS3R3": 36
+   },
+   "A": {
+    "UnlockPickup": 30,
+    "BlockedUnlockPickup": 33,
+    "KeyCorridorS3R3": 36
+   },
+   "B": {
+    "UnlockPickup": 38,
+    "BlockedUnlockPickup": 37,
+    "KeyCorridorS3R3": 33
+   }
+  },
+  "upper_bound_rules_agent": "50 of 50 on every task (card 160)"
+ },
+ "test": {
+  "base_fresh": {
+   "success_by_experience": {
+    "1": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 41.0,
+     "BlockedUnlockPickup": 46.0,
+     "KeyCorridorS3R3": 87.0
+    },
+    "2": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 41.0,
+     "BlockedUnlockPickup": 36.0,
+     "KeyCorridorS3R3": 61.0
+    },
+    "3": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 41.0,
+     "BlockedUnlockPickup": 36.0,
+     "KeyCorridorS3R3": 66.0
+    }
+   },
+   "mean_by_experience": [
+    74.8,
+    67.6,
+    68.6
+   ],
+   "mean_by_task": {
+    "DoorKey-8x8": 100.0,
+    "DoorKey-16x16": 100.0,
+    "UnlockPickup": 41.0,
+    "BlockedUnlockPickup": 39.33,
+    "KeyCorridorS3R3": 71.33
+   },
+   "mean": 70.33,
+   "failed_with_goal_token_destroyed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 177,
+    "BlockedUnlockPickup": 182,
+    "KeyCorridorS3R3": 0
+   },
+   "failed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 177,
+    "BlockedUnlockPickup": 182,
+    "KeyCorridorS3R3": 86
+   },
+   "no_plan_share": {
+    "DoorKey-8x8": 0.0,
+    "DoorKey-16x16": 0.0,
+    "UnlockPickup": 90.1,
+    "BlockedUnlockPickup": 92.5,
+    "KeyCorridorS3R3": 78.8
+   },
+   "steps_when_solved": {
+    "DoorKey-8x8": 16.9,
+    "DoorKey-16x16": 33.8,
+    "UnlockPickup": 35.7,
+    "BlockedUnlockPickup": 45.9,
+    "KeyCorridorS3R3": 61.2
+   }
+  },
+  "A_fresh": {
+   "success_by_experience": {
+    "1": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 80.0,
+     "BlockedUnlockPickup": 75.0,
+     "KeyCorridorS3R3": 83.0
+    },
+    "2": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 87.0,
+     "BlockedUnlockPickup": 85.0,
+     "KeyCorridorS3R3": 61.0
+    },
+    "3": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 87.0,
+     "BlockedUnlockPickup": 88.0,
+     "KeyCorridorS3R3": 56.0
+    }
+   },
+   "mean_by_experience": [
+    87.6,
+    86.6,
+    86.2
+   ],
+   "mean_by_task": {
+    "DoorKey-8x8": 100.0,
+    "DoorKey-16x16": 100.0,
+    "UnlockPickup": 84.67,
+    "BlockedUnlockPickup": 82.67,
+    "KeyCorridorS3R3": 66.67
+   },
+   "mean": 86.8,
+   "failed_with_goal_token_destroyed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 46,
+    "BlockedUnlockPickup": 52,
+    "KeyCorridorS3R3": 0
+   },
+   "failed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 46,
+    "BlockedUnlockPickup": 52,
+    "KeyCorridorS3R3": 100
+   },
+   "no_plan_share": {
+    "DoorKey-8x8": 0.0,
+    "DoorKey-16x16": 0.0,
+    "UnlockPickup": 68.0,
+    "BlockedUnlockPickup": 75.7,
+    "KeyCorridorS3R3": 82.4
+   },
+   "steps_when_solved": {
+    "DoorKey-8x8": 16.9,
+    "DoorKey-16x16": 33.8,
+    "UnlockPickup": 22.9,
+    "BlockedUnlockPickup": 32.7,
+    "KeyCorridorS3R3": 55.8
+   }
+  },
+  "A_old": {
+   "success_by_experience": {
+    "1": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 75.0,
+     "BlockedUnlockPickup": 76.0,
+     "KeyCorridorS3R3": 85.0
+    },
+    "2": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 86.0,
+     "BlockedUnlockPickup": 88.0,
+     "KeyCorridorS3R3": 66.0
+    },
+    "3": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 89.0,
+     "BlockedUnlockPickup": 92.0,
+     "KeyCorridorS3R3": 66.0
+    }
+   },
+   "mean_by_experience": [
+    87.2,
+    88.0,
+    89.4
+   ],
+   "mean_by_task": {
+    "DoorKey-8x8": 100.0,
+    "DoorKey-16x16": 100.0,
+    "UnlockPickup": 83.33,
+    "BlockedUnlockPickup": 85.33,
+    "KeyCorridorS3R3": 72.33
+   },
+   "mean": 88.2,
+   "failed_with_goal_token_destroyed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 50,
+    "BlockedUnlockPickup": 44,
+    "KeyCorridorS3R3": 0
+   },
+   "failed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 50,
+    "BlockedUnlockPickup": 44,
+    "KeyCorridorS3R3": 83
+   },
+   "no_plan_share": {
+    "DoorKey-8x8": 0.0,
+    "DoorKey-16x16": 0.0,
+    "UnlockPickup": 69.1,
+    "BlockedUnlockPickup": 71.1,
+    "KeyCorridorS3R3": 81.4
+   },
+   "steps_when_solved": {
+    "DoorKey-8x8": 16.5,
+    "DoorKey-16x16": 33.0,
+    "UnlockPickup": 21.6,
+    "BlockedUnlockPickup": 31.9,
+    "KeyCorridorS3R3": 61.1
+   }
+  },
+  "B_fresh": {
+   "success_by_experience": {
+    "1": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 88.0,
+     "BlockedUnlockPickup": 89.0,
+     "KeyCorridorS3R3": 70.0
+    },
+    "2": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 58.0,
+     "BlockedUnlockPickup": 63.0,
+     "KeyCorridorS3R3": 51.0
+    },
+    "3": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 45.0,
+     "BlockedUnlockPickup": 45.0,
+     "KeyCorridorS3R3": 54.0
+    }
+   },
+   "mean_by_experience": [
+    89.4,
+    74.4,
+    68.8
+   ],
+   "mean_by_task": {
+    "DoorKey-8x8": 100.0,
+    "DoorKey-16x16": 100.0,
+    "UnlockPickup": 63.67,
+    "BlockedUnlockPickup": 65.67,
+    "KeyCorridorS3R3": 58.33
+   },
+   "mean": 77.53,
+   "failed_with_goal_token_destroyed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 108,
+    "BlockedUnlockPickup": 102,
+    "KeyCorridorS3R3": 0
+   },
+   "failed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 109,
+    "BlockedUnlockPickup": 103,
+    "KeyCorridorS3R3": 125
+   },
+   "no_plan_share": {
+    "DoorKey-8x8": 0.0,
+    "DoorKey-16x16": 0.0,
+    "UnlockPickup": 79.4,
+    "BlockedUnlockPickup": 81.7,
+    "KeyCorridorS3R3": 80.3
+   },
+   "steps_when_solved": {
+    "DoorKey-8x8": 16.9,
+    "DoorKey-16x16": 33.8,
+    "UnlockPickup": 27.9,
+    "BlockedUnlockPickup": 38.1,
+    "KeyCorridorS3R3": 64.7
+   }
+  },
+  "B_old": {
+   "success_by_experience": {
+    "1": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 87.0,
+     "BlockedUnlockPickup": 86.0,
+     "KeyCorridorS3R3": 80.0
+    },
+    "2": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 66.0,
+     "BlockedUnlockPickup": 70.0,
+     "KeyCorridorS3R3": 51.0
+    },
+    "3": {
+     "DoorKey-8x8": 100.0,
+     "DoorKey-16x16": 100.0,
+     "UnlockPickup": 41.0,
+     "BlockedUnlockPickup": 54.0,
+     "KeyCorridorS3R3": 64.0
+    }
+   },
+   "mean_by_experience": [
+    90.6,
+    77.4,
+    71.8
+   ],
+   "mean_by_task": {
+    "DoorKey-8x8": 100.0,
+    "DoorKey-16x16": 100.0,
+    "UnlockPickup": 64.67,
+    "BlockedUnlockPickup": 70.0,
+    "KeyCorridorS3R3": 65.0
+   },
+   "mean": 79.93,
+   "failed_with_goal_token_destroyed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 103,
+    "BlockedUnlockPickup": 87,
+    "KeyCorridorS3R3": 0
+   },
+   "failed": {
+    "DoorKey-8x8": 0,
+    "DoorKey-16x16": 0,
+    "UnlockPickup": 106,
+    "BlockedUnlockPickup": 90,
+    "KeyCorridorS3R3": 105
+   },
+   "no_plan_share": {
+    "DoorKey-8x8": 0.0,
+    "DoorKey-16x16": 0.0,
+    "UnlockPickup": 79.3,
+    "BlockedUnlockPickup": 80.3,
+    "KeyCorridorS3R3": 82.8
+   },
+   "steps_when_solved": {
+    "DoorKey-8x8": 16.5,
+    "DoorKey-16x16": 33.0,
+    "UnlockPickup": 26.5,
+    "BlockedUnlockPickup": 39.1,
+    "KeyCorridorS3R3": 58.0
+   }
+  }
+ },
+ "pickup_answer_against_rules": {
+  "mlp": [
+   {
+    "kind": "mlp",
+    "experience": "1",
+    "objects": 19,
+    "tokens_that_can_be_held": 18,
+    "percent_right": 97.22991689750693,
+    "by_case": {
+     "hands empty": {
+      "cases": 19,
+      "right": 19,
+      "never_tried": 0,
+      "never_tried_right": 0
+     },
+     "one token held": {
+      "cases": 342,
+      "right": 332,
+      "never_tried": 303,
+      "never_tried_right": 293
+     }
+    }
+   },
+   {
+    "kind": "mlp",
+    "experience": "2",
+    "objects": 19,
+    "tokens_that_can_be_held": 18,
+    "percent_right": 99.44598337950139,
+    "by_case": {
+     "hands empty": {
+      "cases": 19,
+      "right": 19,
+      "never_tried": 0,
+      "never_tried_right": 0
+     },
+     "one token held": {
+      "cases": 342,
+      "right": 340,
+      "never_tried": 309,
+      "never_tried_right": 307
+     }
+    }
+   },
+   {
+    "kind": "mlp",
+    "experience": "3",
+    "objects": 19,
+    "tokens_that_can_be_held": 18,
+    "percent_right": 97.22991689750693,
+    "by_case": {
+     "hands empty": {
+      "cases": 19,
+      "right": 19,
+      "never_tried": 0,
+      "never_tried_right": 0
+     },
+     "one token held": {
+      "cases": 342,
+      "right": 332,
+      "never_tried": 311,
+      "never_tried_right": 301
+     }
+    }
+   }
+  ],
+  "shared": [
+   {
+    "kind": "shared",
+    "experience": "1",
+    "objects": 19,
+    "tokens_that_can_be_held": 18,
+    "percent_right": 98.06094182825485,
+    "by_case": {
+     "hands empty": {
+      "cases": 19,
+      "right": 19,
+      "never_tried": 0,
+      "never_tried_right": 0
+     },
+     "one token held": {
+      "cases": 342,
+      "right": 335,
+      "never_tried": 303,
+      "never_tried_right": 296
+     }
+    }
+   },
+   {
+    "kind": "shared",
+    "experience": "2",
+    "objects": 19,
+    "tokens_that_can_be_held": 18,
+    "percent_right": 87.25761772853186,
+    "by_case": {
+     "hands empty": {
+      "cases": 19,
+      "right": 19,
+      "never_tried": 0,
+      "never_tried_right": 0
+     },
+     "one token held": {
+      "cases": 342,
+      "right": 296,
+      "never_tried": 309,
+      "never_tried_right": 263
+     }
+    }
+   },
+   {
+    "kind": "shared",
+    "experience": "3",
+    "objects": 19,
+    "tokens_that_can_be_held": 18,
+    "percent_right": 68.69806094182826,
+    "by_case": {
+     "hands empty": {
+      "cases": 19,
+      "right": 19,
+      "never_tried": 0,
+      "never_tried_right": 0
+     },
+     "one token held": {
+      "cases": 342,
+      "right": 229,
+      "never_tried": 311,
+      "never_tried_right": 198
+     }
+    }
+   }
+  ]
+ },
+ "fit_shared": {
+  "1": {
+   "seconds": 206,
+   "statements": 60,
+   "right": 42,
+   "wrong_hands": 18
+  },
+  "2": {
+   "seconds": 406,
+   "statements": 60,
+   "right": 42,
+   "wrong_hands": 18
+  },
+  "3": {
+   "seconds": 419,
+   "statements": 60,
+   "right": 42,
+   "wrong_hands": 18
+  }
+ },
+ "keycorridor_paired_fresh": {
+  "note": "layouts failed by one agent only, per experience",
+  "only_base": [
+   2,
+   14,
+   8
+  ],
+  "only_A": [
+   6,
+   14,
+   18
+  ],
+  "both": [
+   11,
+   25,
+   26
+  ]
+ },
+ "criteria": {
+  "A": {
+   "1_success": "85% clause passes in every experience (87.6, 86.6, 86.2; base 74.8, 67.6, 68.6); per-task clause holds on the mean (KeyCorridor 66.7 against 71.3) and fails in experience 3 (56 against 66): fail as worded",
+   "2_failed_tasks": "pass (84.7 and 82.7 against 80; base 41.0 and 39.3)",
+   "3_condition_carries": "pass (97.2, 99.4, 97.2 against 95)"
+  },
+  "B": {
+   "1_success": "fail (89.4, 74.4, 68.8)",
+   "2_failed_tasks": "fail (63.7 and 65.7)",
+   "3_condition_carries": "fail (98.1, 87.3, 68.7)"
+  }
+ },
+ "verdict": "fail (arm A 2 of 3; arm B 0 of 3)",
+ "decision": "keep arm A's change; drop arm B",
+ "after_the_test_keycorridor": {
+  "date": "2026-11-24",
+  "note": "diagnostics on layouts outside every test (seeds 2000-2039), arm A's agent, card 160's perceptron; not results of the card",
+  "first_step_without_a_plan_experience_3": {
+   "always_a_plan_and_solved": 16,
+   "failed": 12,
+   "failed_reason_no_way_to_the_place": 9,
+   "failed_reason_effect_already_in_the_chain": 3
+  },
+  "doors_imagined_open_passable_of_233_approaches_per_heading": {
+   "experience_1": {
+    "east": 233,
+    "south": 233,
+    "west": 190,
+    "north": 233,
+    "colours_not_passable_heading_west": [
+     "grey",
+     "purple"
+    ]
+   },
+   "experience_3": {
+    "east": 233,
+    "south": 233,
+    "west": 130,
+    "north": 233,
+    "colours_not_passable_heading_west": [
+     "green",
+     "red",
+     "grey",
+     "purple"
+    ]
+   }
+  },
+  "forward_moves_west_into_an_open_door_of_those_colours_in_the_experience": 0,
+  "solved_of_40": {
+   "experience_1": {
+    "learned_move": 36,
+    "rule_for_the_agents_move_only": 40
+   },
+   "experience_3": {
+    "learned_move": 28,
+    "rule_for_the_agents_move_only": 38
+   }
+  },
+  "steps_without_a_plan_percent": {
+   "experience_1": {
+    "learned_move": 70,
+    "rule_for_the_agents_move_only": 42
+   },
+   "experience_3": {
+    "learned_move": 79,
+    "rule_for_the_agents_move_only": 41
+   }
+  },
+  "scripts": [
+   "tools/card161/trace.py",
+   "tools/card161/dev2.py",
+   "tools/card161/dev3.py"
+  ]
+ }
+}

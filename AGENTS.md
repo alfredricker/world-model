@@ -29,7 +29,7 @@ There are no other documents. Do not create notes, reviews or summaries.
 | Information | Place |
 |---|---|
 | What the finished system must do | `GOAL.md`; only the user changes it |
-| A planned or finished experiment | `experiments/NNN-name/card.md` from [the template](experiments/_template/card.md), numbers in `results.json`; cards 001–112 (the MiniGrid agent up to version 27, and the hand-built general rebuild, series 098–112) are in `experiments/archive/` |
+| A planned or finished experiment | `experiments/NNN-name/card.md` from [the template](experiments/_template/card.md), numbers in `results.json`; cards 001–112 (the MiniGrid agent up to version 27, and the hand-built general rebuild, series 098–112) are in `experiments/archive/`; cards 146–160 (energy modules, set aside by the user 2026-11-23) are in `experiments/energy-modules/` with a note, `README.md`, written at the user's request |
 | Where we are now | `STATUS.md`, **overwritten**, at most 40 lines |
 | The current model | `ARCHITECTURE.md`; bump `arch_version` and add a change-log line when it changes |
 | A durable lesson with evidence | `LESSONS.md`; prune or merge, never let it exceed three pages (the user, 2026-10-01) |

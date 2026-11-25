@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/feedback-as-stored-couplings
 ---
-From [card 154](../../experiments/154-feedback-from-object-modules-to-binding/card.md): 10 to 24 of the 40 pool objects per world, the fixed ones among them; in the worlds by shape the fixed shapes are never seen moving at all. Feedback from stored patterns cannot reach them; they need binding couplings learned as a function of appearance, or another signal from the agent's action.
+From [card 154](../../experiments/energy-modules/154-feedback-from-object-modules-to-binding/card.md): 10 to 24 of the 40 pool objects per world, the fixed ones among them; in the worlds by shape the fixed shapes are never seen moving at all. Feedback from stored patterns cannot reach them; they need binding couplings learned as a function of appearance, or another signal from the agent's action.

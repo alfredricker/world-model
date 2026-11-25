@@ -15,4 +15,4 @@ links:
 - rel: tested
   to: principle/object-module-what-where-does
 ---
-From [card 152](../../experiments/152-an-object-module-that-knows-what-an-object-is-and-does/card.md): in world 5 by shape a fourth kind of four objects was kept; it predicts the fixed objects as well as the fixed kind does (172 of 174 tie), so the couplings from looks to kind were learned without fixed examples and the kind read from looks was wrong on 17% of the scored steps (take 62.3%). One world of five also failed at 30 and at 100 episodes. The learner took six versions and carries five hand-set numbers.
+From [card 152](../../experiments/energy-modules/152-an-object-module-that-knows-what-an-object-is-and-does/card.md): in world 5 by shape a fourth kind of four objects was kept; it predicts the fixed objects as well as the fixed kind does (172 of 174 tie), so the couplings from looks to kind were learned without fixed examples and the kind read from looks was wrong on 17% of the scored steps (take 62.3%). One world of five also failed at 30 and at 100 episodes. The learner took six versions and carries five hand-set numbers.
