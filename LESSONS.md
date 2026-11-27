@@ -181,6 +181,27 @@ record" is `old:phwm/docs/05-experimental-record.md`.
   (card 161: pickup tasks 40 → 84%). Gate a model change on every experience.
 - **Keep what a token is apart from where it lies** (card 162): attention over the two carried a move
   to every heading never tried (75 of 75; per (position, code) input: 11), no rotation built in.
+- **Split System 2 event selection from within-segment System 1 execution, and hold the expected event so a failed try can revise**
+  (cards 163–164): flat TD $q$ cannot separate multi-event chains (0/40 UnlockPickup even with demos), and cross-event bootstrapping
+  drifts; within-segment $q$ on pure random play with `(cell, next_code, action)` events + System 2 condition selection + held-event
+  P14 surprise recovery solves **98.3%** of fresh MiniGrid layouts (vs 93.2% Dijkstra; stateless recovery loops at 72.5%). Discounted
+  $V$ alone still conflates distance with binary reachability on unseen multi-room maps (Arm B: 40/40 DoorKey-8x8, 10–25% elsewhere).
+- **Factor traversability from continuous relative offsets and iterate max-product propagation to learn exact zero-Dijkstra reachability**
+  (card 165): a ~150-parameter `RNet` ($\alpha(\text{code})$ × $\beta(\Delta p)$ iterated to fixed point with inference binarization at 0.5,
+  detaching $\beta$ in multi-step segment loss) trained in 15.5s on pure random play achieves **100.00%** reachability across 224,448 fresh
+  queries (including unseen DoorKey-16x16 and 6-room KeyCorridor) and pairs with batched event-level BFS + P14 superset refutation at all
+  BFS depths to reach **97.1%** (vs 98.1% Dijkstra) while running **2.71× faster** overall (**4.53×** on KeyCorridor).
+- **Unify reachability and cell-effect prediction with an additive DeepSet-L1 item encoder and contrast-balanced sampling**
+  (card 166): softmax attention over out-of-view items lets distractor opened doors corrupt key/locked-door predictions on unseen 6-room
+  layouts (KeyCorridor 77–80%), while multiplicative sigmoid gates die at initialization (`ct_mean = 7.6e-6`). An additive DeepSet with
+  warmed L1 sparsity (`0.002`) plus contrast-balanced sampling of failed attempts sharing `(c, a)` with observed effects (using `log1p(count)`
+  unbiased conditional targets) gives one shared-embedding `WNet` with **100.00%** reachability, **99.98%** cell-effect accuracy, and
+  **97.1%** live success vs Card 165's **95.7%** (KeyCorridor **98.3%** vs 92.0%).
+- **Align System 1 and System 2 on unseen (`UNK`) space, and run epistemic frontier search in the same event-level BFS**
+  (card 167): omitting `UNK` in System 1 caused `q_reach` to walk into occluded walls while System 2 (`alpha[UNK]=0`) planned through open
+  doors; mapping only **boundary `UNK` cells** (adjacent to seen space) to `WNet`'s learned inert blocker aligns both levels without bloating
+  `q_reach`'s token list (`DoorKey-16x16` 177 → 104 steps, `KeyCorridor` 85% → 95%). Using `r_act[UNK] >= 0.5` as an epistemic goal inside
+  the exact same BFS solves **93.1%** under true `7×7` occluded view zero-shot (vs **25.5%** without epistemic search, **−4.1 pts** vs full view).
 - **Appearance cannot tell look-alikes apart; correspondence needs a
   prediction of where each will be.** Trackers swap to the next cow or
   lose it once out of view (13% kept); a belief in the world's frame with

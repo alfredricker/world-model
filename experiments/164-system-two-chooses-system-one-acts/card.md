@@ -3,8 +3,8 @@ id: "164"
 title: system 2 chooses the event, system 1 brings it about — fixed single-event prediction with condition-based event selection and surprise recovery
 rung: 5
 serves: [P12, P21, P14, P9, P6]
-status: draft
-verdict:
+status: done
+verdict: pass
 arch_version: og4
 date: 2026-11-25
 ---
@@ -110,4 +110,30 @@ Budget (after user approval): generate `seq_2.pkl` and `seq_3.pkl` (~1 min), fit
 
 ## 7. Result
 
+Run 2026-11-26, approved by the user. Experiences 2 and 3 replayed in order (`seq_2.pkl`, `seq_3.pkl`; exact match to card 160's counts); `q_reach_{2,3}.pt` converged to 0.2372 and 0.2346 (matching experience 1's 0.2358, all three at `q = 1.000` on event steps). Code and fitted networks frozen before the test (`runs/164/frozen.txt`, all 13 sha256 hashes verified `OK` after the run); numbers in [results.json](results.json); `tools/card164/` (`q.py`, `act.py`, `ev.py`).
+
+Percent of 100 fresh layouts solved (`seeds 8000–8099`), mean of three experiences (each experience in brackets):
+
+| Agent | DoorKey-8x8 | DoorKey-16x16 | KeyCorridorS3R3 | UnlockPickup | BlockedUnlockPickup | Mean |
+|---|---:|---:|---:|---:|---:|---:|
+| Card 162 (Dijkstra walk + random fallback) | 100.0 | 100.0 | 95.0 (97, 93, 95) | 85.3 (82, 88, 86) | 85.7 (78, 88, 91) | 93.2 (91.4, 93.8, 94.4) |
+| Arm A0 (pure System 1 $q$ swap, no surprise recovery) | 100.0 | 100.0 | 94.0 (96, 91, 95) | 73.7 (64, 76, 81) | 75.0 (67, 77, 81) | 88.5 (85.4, 88.8, 91.4) |
+| **Arm A (System 2 + held event + surprise recovery + System 1 $q$)** | **100.0** | **100.0** | **94.3** (96, 92, 95) | **98.7** (100, 100, 96) | **98.7** (100, 100, 96) | **98.3** (99.2, 98.4, 97.4) |
+
+| Criterion | Result | Verdict |
+|---|---|---|
+| 1. Arm A mean ≥ 95.0% (each exp ≥ 92.0%), UnlockPickup & BlockedUnlockPickup ≥ 92.0%, no task > 5 pts under card 162 | **98.3%** (`99.2, 98.4, 97.4`); UnlockPickup **98.7%**, BlockedUnlockPickup **98.7%**; worst task vs card 162 is KeyCorridor (−0.7 pts) | **pass** |
+| 2. Arm A0 mean at most 5 pts under card 162; DoorKey-8x8 & 16x16 ≥ 95.0% | **88.5%** (−4.7 pts under 93.2%); DoorKey-8x8 **100.0%**, DoorKey-16x16 **100.0%** | **pass** |
+| 3. Arm A closest-action agreement ≥ 95% on DoorKey-8x8, ≥ 80% on UnlockPickup & BlockedUnlockPickup | DoorKey-8x8 **99.6%** (`98.8, 99.9, 100.0`), UnlockPickup **91.2%** (`90.8, 93.6, 89.1`), BlockedUnlockPickup **82.2%** (`83.4, 84.2, 79.1`) | **pass** |
+
+**Verdict: pass, 3 of 3.** Every prediction held.
+
+- **System 2 + System 1 + P14 surprise recovery solves 1,475 of 1,500 fresh layouts (98.3%) from pure reward-free random play** (zero checkpoints, zero demonstrations), up from 93.2% for card 162 (and 70.3% in card 160). Layout by layout, Arm A solves **91** layouts that card 162 fails and fails **14** that card 162 solves; destroyed boxes drop from **87** to **8** (0 in experiences 1 and 2).
+- **Walking generalizes across unseen room sizes without Dijkstra execution:** DoorKey-8x8 takes 16.4 steps (card 162: 16.2) at 99.6% closest-action agreement (`100.0%` in exp 3), and DoorKey-16x16 solves 300 of 300 layouts in 49.0 steps (36.1 steps and 96.0% closest-action agreement in exp 2) on rooms nearly 3× wider than any played.
+- **Arm A0 isolates the pure System 1 swap:** replacing Dijkstra walking, the `HERE` mode and random fallback with $q$ alone costs 4.7 points on the mean because without surprise recovery, cycling through untried actions when card 162's MLP mispredicts a full-hands pickup hits `toggle` on the box more reliably than random actions do. Adding the held expected event + surprise recovery turns that into a +5.1-point gain over card 162.
+
+Open: System 2 still uses Dijkstra over card 162's move model internally to detect spatial blockers and check `forward_ok` (Arm B failed the gate because one discounted $V$ conflated distance with binary reachability); tokens, the full view and the `(token, next_code, action)` event vocabulary are supplied; one unified effect network for moves and cells (card 162 arm B) remains open.
+
 ## 8. Decision
+
+**Keep Arm A; drop Arm B.** Splitting System 2 (condition-based event selection with a held expected event and P14 surprise recovery) from System 1 (fixed single-event $q$ trained by wall-debiased within-segment bootstrapping on pure reward-free random play) removes Dijkstra walking, the stand-at-object mode and random-action fallback while raising 5-task fresh-layout success from 93.2% to **98.3%** (`99.2, 98.4, 97.4`) and cutting destroyed boxes from 87 to 8. Next: remove Dijkstra from System 2 itself by learning a dedicated binary reachability / spatial-blocker predictor separate from discounted closeness (solving what blocked Arm B), or move the System 2 / System 1 split toward learned events and partial observability.

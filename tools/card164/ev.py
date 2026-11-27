@@ -144,6 +144,12 @@ def reach(mode, exp, n, names):
         print("   unmet cond    :", fmt(neg_cond), flush=True)
 
 
+class Base162(agent161.Agent):
+    """Exact card 162 Arm A agent (comparison baseline on the same fresh layouts)."""
+    def reset(s, g, p):
+        super().reset(g, p); s.held = None; s.first = None; s.plans = 0; s.expansions = 0
+
+
 class BaseSurprise(agent161.Agent):
     """Ablation: card 162's Dijkstra agent with the exact same P14 surprise-recovery rule as Card 164 Arm A."""
     def reset(s, g, p):
@@ -185,7 +191,7 @@ def run(arm, mode, exp, split, names):
     os.makedirs("runs/164", exist_ok=True)
     for t in names:
         w = grid.World(tasks.ALL[t], T.codes); ex, _ = evaluate.examples(t, T.codes); goals = agent.goal_events(ex)
-        A = BaseSurprise(EM, goals) if arm == "162s" else act.ArmA(QM, EM, goals) if arm == "A" else act.ArmB(QM, EM, goals)
+        A = Base162(EM, goals) if arm == "162" else BaseSurprise(EM, goals) if arm == "162s" else act.ArmA(QM, EM, goals) if arm == "A" else act.ArmB(QM, EM, goals)
         TA = told(t, T.codes); out = []; walk = [0, 0]; first = [0, 0]; t0 = time.time(); lost = 0; gc = {g[1] for g in goals}
         for s in evaluate.SEEDS[split]:
             ep, _ = told_episode(w, TA, s)

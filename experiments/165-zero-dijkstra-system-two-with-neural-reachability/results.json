@@ -1,0 +1,985 @@
+{
+  "card": "165",
+  "seeds": "9000-9099",
+  "rnet_check_seeds": "9000-9019",
+  "experiences": [
+    1,
+    2,
+    3
+  ],
+  "tasks": [
+    "DoorKey-8x8",
+    "DoorKey-16x16",
+    "KeyCorridorS3R3",
+    "UnlockPickup",
+    "BlockedUnlockPickup"
+  ],
+  "summary": {
+    "zero_dijkstra_165": {
+      "mean_success": 97.07,
+      "solved_total": 1456,
+      "total_layouts": 1500,
+      "per_exp_mean": {
+        "1": 98.4,
+        "2": 96.4,
+        "3": 96.4
+      },
+      "per_task_mean": {
+        "DoorKey-8x8": 100.0,
+        "DoorKey-16x16": 100.0,
+        "KeyCorridorS3R3": 92.0,
+        "UnlockPickup": 96.33,
+        "BlockedUnlockPickup": 97.0
+      },
+      "mean_ms_per_step": 6.48,
+      "per_exp_ms": {
+        "1": 6.44,
+        "2": 6.86,
+        "3": 6.14
+      },
+      "per_task_ms": {
+        "DoorKey-8x8": 7.14,
+        "DoorKey-16x16": 8.41,
+        "KeyCorridorS3R3": 6.13,
+        "UnlockPickup": 5.24,
+        "BlockedUnlockPickup": 5.48
+      },
+      "per_task_steps": {
+        "DoorKey-8x8": 17.3,
+        "DoorKey-16x16": 48.5,
+        "KeyCorridorS3R3": 39.0,
+        "UnlockPickup": 43.1,
+        "BlockedUnlockPickup": 62.3
+      },
+      "per_task_walk": {
+        "DoorKey-8x8": 99.5,
+        "DoorKey-16x16": 82.1,
+        "KeyCorridorS3R3": 67.6,
+        "UnlockPickup": 60.8,
+        "BlockedUnlockPickup": 62.7
+      },
+      "per_task_expansions": {
+        "DoorKey-8x8": 6.1,
+        "DoorKey-16x16": 17.7,
+        "KeyCorridorS3R3": 1965.6,
+        "UnlockPickup": 58.3,
+        "BlockedUnlockPickup": 333.2
+      },
+      "per_task_plans": {
+        "DoorKey-8x8": 3.1,
+        "DoorKey-16x16": 9.8,
+        "KeyCorridorS3R3": 36.8,
+        "UnlockPickup": 26.9,
+        "BlockedUnlockPickup": 44.2
+      },
+      "destroyed_total": 6,
+      "destroyed_per_task": {
+        "DoorKey-8x8": 0,
+        "DoorKey-16x16": 0,
+        "KeyCorridorS3R3": 0,
+        "UnlockPickup": 3,
+        "BlockedUnlockPickup": 3
+      }
+    },
+    "card_164_arm_a": {
+      "mean_success": 98.13,
+      "solved_total": 1472,
+      "total_layouts": 1500,
+      "per_exp_mean": {
+        "1": 98.4,
+        "2": 97.0,
+        "3": 99.0
+      },
+      "per_task_mean": {
+        "DoorKey-8x8": 100.0,
+        "DoorKey-16x16": 100.0,
+        "KeyCorridorS3R3": 93.33,
+        "UnlockPickup": 98.67,
+        "BlockedUnlockPickup": 98.67
+      },
+      "mean_ms_per_step": 17.55,
+      "per_exp_ms": {
+        "1": 16.83,
+        "2": 17.28,
+        "3": 18.53
+      },
+      "per_task_ms": {
+        "DoorKey-8x8": 12.86,
+        "DoorKey-16x16": 13.03,
+        "KeyCorridorS3R3": 27.75,
+        "UnlockPickup": 17.87,
+        "BlockedUnlockPickup": 16.22
+      },
+      "per_task_steps": {
+        "DoorKey-8x8": 17.3,
+        "DoorKey-16x16": 48.5,
+        "KeyCorridorS3R3": 36.8,
+        "UnlockPickup": 25.3,
+        "BlockedUnlockPickup": 40.5
+      },
+      "per_task_walk": {
+        "DoorKey-8x8": 99.5,
+        "DoorKey-16x16": 82.1,
+        "KeyCorridorS3R3": 69.6,
+        "UnlockPickup": 95.1,
+        "BlockedUnlockPickup": 84.3
+      },
+      "per_task_expansions": {
+        "DoorKey-8x8": 0.0,
+        "DoorKey-16x16": 0.0,
+        "KeyCorridorS3R3": 0.0,
+        "UnlockPickup": 0.0,
+        "BlockedUnlockPickup": 0.0
+      },
+      "per_task_plans": {
+        "DoorKey-8x8": 3.1,
+        "DoorKey-16x16": 9.8,
+        "KeyCorridorS3R3": 31.1,
+        "UnlockPickup": 10.4,
+        "BlockedUnlockPickup": 20.6
+      },
+      "destroyed_total": 8,
+      "destroyed_per_task": {
+        "DoorKey-8x8": 0,
+        "DoorKey-16x16": 0,
+        "KeyCorridorS3R3": 0,
+        "UnlockPickup": 4,
+        "BlockedUnlockPickup": 4
+      }
+    },
+    "success_diff_pts": -1.06,
+    "speedup_x": 2.71,
+    "per_task_speedup_x": {
+      "DoorKey-8x8": 1.8,
+      "DoorKey-16x16": 1.55,
+      "KeyCorridorS3R3": 4.53,
+      "UnlockPickup": 3.41,
+      "BlockedUnlockPickup": 2.96
+    },
+    "rnet_fresh": {
+      "1": {
+        "DoorKey-8x8": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            1118,
+            0,
+            0,
+            2662
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            2303,
+            0,
+            0,
+            1477
+          ]
+        },
+        "DoorKey-16x16": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            7192,
+            0,
+            0,
+            8108
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            10177,
+            0,
+            0,
+            5123
+          ]
+        },
+        "KeyCorridorS3R3": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            574,
+            0,
+            0,
+            4754
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            1968,
+            0,
+            0,
+            3360
+          ]
+        },
+        "UnlockPickup": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            1440,
+            0,
+            0,
+            3760
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            2916,
+            0,
+            0,
+            2284
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            1881,
+            0,
+            0,
+            5919
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            3971,
+            0,
+            0,
+            3829
+          ]
+        }
+      },
+      "2": {
+        "DoorKey-8x8": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            1118,
+            0,
+            0,
+            2662
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            2303,
+            0,
+            0,
+            1477
+          ]
+        },
+        "DoorKey-16x16": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            7192,
+            0,
+            0,
+            8108
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            10177,
+            0,
+            0,
+            5123
+          ]
+        },
+        "KeyCorridorS3R3": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            574,
+            0,
+            0,
+            4754
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            1968,
+            0,
+            0,
+            3360
+          ]
+        },
+        "UnlockPickup": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            1440,
+            0,
+            0,
+            3760
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            2916,
+            0,
+            0,
+            2284
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            1881,
+            0,
+            0,
+            5919
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            3971,
+            0,
+            0,
+            3829
+          ]
+        }
+      },
+      "3": {
+        "DoorKey-8x8": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            1118,
+            0,
+            0,
+            2662
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            2303,
+            0,
+            0,
+            1477
+          ]
+        },
+        "DoorKey-16x16": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            7192,
+            0,
+            0,
+            8108
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            10177,
+            0,
+            0,
+            5123
+          ]
+        },
+        "KeyCorridorS3R3": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            574,
+            0,
+            0,
+            4754
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            1968,
+            0,
+            0,
+            3360
+          ]
+        },
+        "UnlockPickup": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            1440,
+            0,
+            0,
+            3760
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            2916,
+            0,
+            0,
+            2284
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "r_arr_acc": 100.0,
+          "r_arr_cm": [
+            1881,
+            0,
+            0,
+            5919
+          ],
+          "r_act_acc": 100.0,
+          "r_act_cm": [
+            3971,
+            0,
+            0,
+            3829
+          ]
+        }
+      }
+    },
+    "rnet_totals": {
+      "min_r_arr_acc": 100.0,
+      "min_r_act_acc": 100.0,
+      "total_r_arr_queries": 112224,
+      "total_r_act_queries": 112224,
+      "total_queries": 224448,
+      "total_r_arr_fp": 0,
+      "total_r_arr_fn": 0,
+      "total_r_act_fp": 0,
+      "total_r_act_fn": 0
+    },
+    "layout_comparison": {
+      "both_pass": 1446,
+      "both_fail": 18,
+      "only_165": 10,
+      "only_164": 26
+    },
+    "layout_comparison_by_task": {
+      "DoorKey-8x8": {
+        "both_pass": 300,
+        "both_fail": 0,
+        "only_165": 0,
+        "only_164": 0
+      },
+      "DoorKey-16x16": {
+        "both_pass": 300,
+        "both_fail": 0,
+        "only_165": 0,
+        "only_164": 0
+      },
+      "KeyCorridorS3R3": {
+        "both_pass": 268,
+        "both_fail": 12,
+        "only_165": 8,
+        "only_164": 12
+      },
+      "UnlockPickup": {
+        "both_pass": 288,
+        "both_fail": 3,
+        "only_165": 1,
+        "only_164": 8
+      },
+      "BlockedUnlockPickup": {
+        "both_pass": 290,
+        "both_fail": 3,
+        "only_165": 1,
+        "only_164": 6
+      }
+    }
+  },
+  "raw": {
+    "165": {
+      "1": {
+        "DoorKey-8x8": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 17.47,
+          "walk_closest": 98.79793932455638,
+          "walk_steps": 1747,
+          "first_event_right": 100.0,
+          "next_best_share": 1.2020606754436176,
+          "mean_plans": 3.21,
+          "mean_expansions": 6.21,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 6.65933006343394,
+          "failed": []
+        },
+        "DoorKey-16x16": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 57.21,
+          "walk_closest": 73.39625939521063,
+          "walk_steps": 5721,
+          "first_event_right": 100.0,
+          "next_best_share": 20.95787449746548,
+          "mean_plans": 15.0,
+          "mean_expansions": 23.77,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 7.098272617328752,
+          "failed": []
+        },
+        "KeyCorridorS3R3": {
+          "success": 96.0,
+          "layouts": 100,
+          "steps_when_solved": 43.697916666666664,
+          "walk_closest": 59.36659076795694,
+          "walk_steps": 4831,
+          "first_event_right": 95.0,
+          "next_best_share": 42.161137440758296,
+          "mean_plans": 29.19,
+          "mean_expansions": 1018.9,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 6.178118312528348,
+          "failed": [
+            9007,
+            9012,
+            9044,
+            9067
+          ]
+        },
+        "UnlockPickup": {
+          "success": 98.0,
+          "layouts": 100,
+          "steps_when_solved": 34.09183673469388,
+          "walk_closest": 74.56854444806253,
+          "walk_steps": 3071,
+          "first_event_right": 100.0,
+          "next_best_share": 32.346183303548635,
+          "mean_plans": 17.08,
+          "mean_expansions": 53.69,
+          "failed_with_goal_token_destroyed": 2,
+          "ms_per_step": 5.744254190397713,
+          "failed": [
+            9077,
+            9079
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "success": 98.0,
+          "layouts": 100,
+          "steps_when_solved": 43.66326530612245,
+          "walk_closest": 79.23280423280423,
+          "walk_steps": 3780,
+          "first_event_right": 100.0,
+          "next_best_share": 36.84404345424415,
+          "mean_plans": 26.72,
+          "mean_expansions": 389.22,
+          "failed_with_goal_token_destroyed": 2,
+          "ms_per_step": 6.52140013488084,
+          "failed": [
+            9077,
+            9079
+          ]
+        }
+      },
+      "2": {
+        "DoorKey-8x8": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 17.13,
+          "walk_closest": 99.94162288382954,
+          "walk_steps": 1713,
+          "first_event_right": 100.0,
+          "next_best_share": 0.0,
+          "mean_plans": 3.0,
+          "mean_expansions": 6.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 7.172354326843868,
+          "failed": []
+        },
+        "DoorKey-16x16": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 38.08,
+          "walk_closest": 93.96008403361344,
+          "walk_steps": 3808,
+          "first_event_right": 100.0,
+          "next_best_share": 4.30672268907563,
+          "mean_plans": 4.64,
+          "mean_expansions": 9.86,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 9.800004921540493,
+          "failed": []
+        },
+        "KeyCorridorS3R3": {
+          "success": 86.0,
+          "layouts": 100,
+          "steps_when_solved": 43.69767441860465,
+          "walk_closest": 65.4572940287226,
+          "walk_steps": 3969,
+          "first_event_right": 82.0,
+          "next_best_share": 63.81002918546034,
+          "mean_plans": 54.18,
+          "mean_expansions": 3569.78,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 5.542567504372702,
+          "failed": [
+            9012,
+            9014,
+            9022,
+            9024,
+            9026,
+            9028,
+            9037,
+            9044,
+            9045,
+            9046,
+            9056,
+            9067,
+            9076,
+            9083
+          ]
+        },
+        "UnlockPickup": {
+          "success": 97.0,
+          "layouts": 100,
+          "steps_when_solved": 37.2680412371134,
+          "walk_closest": 59.2977592977593,
+          "walk_steps": 4329,
+          "first_event_right": 100.0,
+          "next_best_share": 38.04420629604822,
+          "mean_plans": 21.56,
+          "mean_expansions": 35.65,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 5.6364985016952485,
+          "failed": [
+            9023,
+            9059,
+            9079
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "success": 99.0,
+          "layouts": 100,
+          "steps_when_solved": 53.85858585858586,
+          "walk_closest": 63.197164708076855,
+          "walk_steps": 5361,
+          "first_event_right": 100.0,
+          "next_best_share": 39.26878808395396,
+          "mean_plans": 30.08,
+          "mean_expansions": 189.49,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 6.141043064476432,
+          "failed": [
+            9059
+          ]
+        }
+      },
+      "3": {
+        "DoorKey-8x8": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 17.17,
+          "walk_closest": 99.82527664531159,
+          "walk_steps": 1717,
+          "first_event_right": 100.0,
+          "next_best_share": 0.0,
+          "mean_plans": 3.0,
+          "mean_expansions": 6.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 7.577801278391479,
+          "failed": []
+        },
+        "DoorKey-16x16": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 50.35,
+          "walk_closest": 78.86792452830188,
+          "walk_steps": 5035,
+          "first_event_right": 100.0,
+          "next_best_share": 13.604766633565045,
+          "mean_plans": 9.9,
+          "mean_expansions": 19.61,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 8.34359459749163,
+          "failed": []
+        },
+        "KeyCorridorS3R3": {
+          "success": 94.0,
+          "layouts": 100,
+          "steps_when_solved": 29.56382978723404,
+          "walk_closest": 77.93696275071633,
+          "walk_steps": 2792,
+          "first_event_right": 93.0,
+          "next_best_share": 49.21573084791998,
+          "mean_plans": 27.13,
+          "mean_expansions": 1308.23,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 6.661407837517616,
+          "failed": [
+            9005,
+            9011,
+            9026,
+            9049,
+            9067,
+            9073
+          ]
+        },
+        "UnlockPickup": {
+          "success": 94.0,
+          "layouts": 100,
+          "steps_when_solved": 57.88297872340426,
+          "walk_closest": 48.6687306501548,
+          "walk_steps": 6460,
+          "first_event_right": 100.0,
+          "next_best_share": 51.66689914911424,
+          "mean_plans": 42.03,
+          "mean_expansions": 85.63,
+          "failed_with_goal_token_destroyed": 1,
+          "ms_per_step": 4.345778890826044,
+          "failed": [
+            9004,
+            9042,
+            9057,
+            9058,
+            9079,
+            9089
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "success": 94.0,
+          "layouts": 100,
+          "steps_when_solved": 89.51063829787235,
+          "walk_closest": 45.65707839819515,
+          "walk_steps": 10638,
+          "first_event_right": 100.0,
+          "next_best_share": 56.933445661331085,
+          "mean_plans": 75.93,
+          "mean_expansions": 420.9,
+          "failed_with_goal_token_destroyed": 1,
+          "ms_per_step": 3.7859137357536645,
+          "failed": [
+            9021,
+            9024,
+            9056,
+            9058,
+            9070,
+            9089
+          ]
+        }
+      }
+    },
+    "164": {
+      "1": {
+        "DoorKey-8x8": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 17.47,
+          "walk_closest": 98.79793932455638,
+          "walk_steps": 1747,
+          "first_event_right": 100.0,
+          "next_best_share": 1.2020606754436176,
+          "mean_plans": 3.21,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 11.818162495569972,
+          "failed": []
+        },
+        "DoorKey-16x16": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 57.21,
+          "walk_closest": 73.39625939521063,
+          "walk_steps": 5721,
+          "first_event_right": 100.0,
+          "next_best_share": 20.95787449746548,
+          "mean_plans": 15.0,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 11.1745160227367,
+          "failed": []
+        },
+        "KeyCorridorS3R3": {
+          "success": 96.0,
+          "layouts": 100,
+          "steps_when_solved": 43.041666666666664,
+          "walk_closest": 60.46603475513428,
+          "walk_steps": 5064,
+          "first_event_right": 100.0,
+          "next_best_share": 39.524174980813505,
+          "mean_plans": 27.72,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 28.173358186061623,
+          "failed": [
+            9007,
+            9012,
+            9044,
+            9067
+          ]
+        },
+        "UnlockPickup": {
+          "success": 98.0,
+          "layouts": 100,
+          "steps_when_solved": 23.887755102040817,
+          "walk_closest": 96.81313375181072,
+          "walk_steps": 2071,
+          "first_event_right": 100.0,
+          "next_best_share": 23.071648954405212,
+          "mean_plans": 11.36,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 2,
+          "ms_per_step": 17.203379135079526,
+          "failed": [
+            9077,
+            9079
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "success": 98.0,
+          "layouts": 100,
+          "steps_when_solved": 38.255102040816325,
+          "walk_closest": 89.14912540764898,
+          "walk_steps": 3373,
+          "first_event_right": 100.0,
+          "next_best_share": 31.40175474392981,
+          "mean_plans": 22.13,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 2,
+          "ms_per_step": 15.803323038206663,
+          "failed": [
+            9077,
+            9079
+          ]
+        }
+      },
+      "2": {
+        "DoorKey-8x8": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 17.13,
+          "walk_closest": 99.94162288382954,
+          "walk_steps": 1713,
+          "first_event_right": 100.0,
+          "next_best_share": 0.0,
+          "mean_plans": 3.0,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 13.129588949422843,
+          "failed": []
+        },
+        "DoorKey-16x16": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 38.08,
+          "walk_closest": 93.96008403361344,
+          "walk_steps": 3808,
+          "first_event_right": 100.0,
+          "next_best_share": 4.30672268907563,
+          "mean_plans": 4.64,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 15.499958909359298,
+          "failed": []
+        },
+        "KeyCorridorS3R3": {
+          "success": 87.0,
+          "layouts": 100,
+          "steps_when_solved": 34.94252873563219,
+          "walk_closest": 77.26805888394385,
+          "walk_steps": 2921,
+          "first_event_right": 78.0,
+          "next_best_share": 64.51908396946565,
+          "mean_plans": 47.54,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 20.56997939830518,
+          "failed": [
+            9000,
+            9016,
+            9024,
+            9026,
+            9037,
+            9045,
+            9051,
+            9059,
+            9067,
+            9077,
+            9083,
+            9085,
+            9093
+          ]
+        },
+        "UnlockPickup": {
+          "success": 99.0,
+          "layouts": 100,
+          "steps_when_solved": 22.01010101010101,
+          "walk_closest": 96.54481722583876,
+          "walk_steps": 1997,
+          "first_event_right": 100.0,
+          "next_best_share": 13.700851236319416,
+          "mean_plans": 7.75,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 1,
+          "ms_per_step": 19.90673026914871,
+          "failed": [
+            9042
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "success": 99.0,
+          "layouts": 100,
+          "steps_when_solved": 38.474747474747474,
+          "walk_closest": 83.50316717157808,
+          "walk_steps": 3631,
+          "first_event_right": 100.0,
+          "next_best_share": 25.72405929304447,
+          "mean_plans": 17.87,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 1,
+          "ms_per_step": 17.291071151246232,
+          "failed": [
+            9042
+          ]
+        }
+      },
+      "3": {
+        "DoorKey-8x8": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 17.17,
+          "walk_closest": 99.82527664531159,
+          "walk_steps": 1717,
+          "first_event_right": 100.0,
+          "next_best_share": 0.0,
+          "mean_plans": 3.0,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 13.626797086774573,
+          "failed": []
+        },
+        "DoorKey-16x16": {
+          "success": 100.0,
+          "layouts": 100,
+          "steps_when_solved": 50.35,
+          "walk_closest": 78.86792452830188,
+          "walk_steps": 5035,
+          "first_event_right": 100.0,
+          "next_best_share": 13.604766633565045,
+          "mean_plans": 9.9,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 12.416491844684861,
+          "failed": []
+        },
+        "KeyCorridorS3R3": {
+          "success": 97.0,
+          "layouts": 100,
+          "steps_when_solved": 32.45360824742268,
+          "walk_closest": 71.09651339060132,
+          "walk_steps": 3958,
+          "first_event_right": 100.0,
+          "next_best_share": 28.196058615462356,
+          "mean_plans": 18.12,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 0,
+          "ms_per_step": 34.51511171985721,
+          "failed": [
+            9026,
+            9053,
+            9067
+          ]
+        },
+        "UnlockPickup": {
+          "success": 99.0,
+          "layouts": 100,
+          "steps_when_solved": 29.87878787878788,
+          "walk_closest": 91.93418940609952,
+          "walk_steps": 2492,
+          "first_event_right": 100.0,
+          "next_best_share": 20.97966728280961,
+          "mean_plans": 12.15,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 1,
+          "ms_per_step": 16.51318258366611,
+          "failed": [
+            9058
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "success": 99.0,
+          "layouts": 100,
+          "steps_when_solved": 44.78787878787879,
+          "walk_closest": 80.37898776685056,
+          "walk_steps": 4169,
+          "first_event_right": 100.0,
+          "next_best_share": 28.602794411177644,
+          "mean_plans": 21.87,
+          "mean_expansions": 0.0,
+          "failed_with_goal_token_destroyed": 1,
+          "ms_per_step": 15.568790987818065,
+          "failed": [
+            9058
+          ]
+        }
+      }
+    }
+  }
+}

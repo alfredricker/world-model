@@ -1,0 +1,361 @@
+{
+  "split": "fresh",
+  "seeds": "8000-8099",
+  "layouts_per_task": 100,
+  "experiences": [
+    1,
+    2,
+    3
+  ],
+  "arms": {
+    "card162": {
+      "mean": 93.2,
+      "by_exp_mean": [
+        91.4,
+        93.8,
+        94.4
+      ],
+      "by_task": {
+        "DoorKey-8x8": {
+          "mean": 100.0,
+          "by_exp": [
+            100.0,
+            100.0,
+            100.0
+          ],
+          "steps_mean": 16.2,
+          "walk_closest_mean": 0.0,
+          "walk_by_exp": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "destroyed_total": 0,
+          "destroyed_by_exp": [
+            0,
+            0,
+            0
+          ]
+        },
+        "DoorKey-16x16": {
+          "mean": 100.0,
+          "by_exp": [
+            100.0,
+            100.0,
+            100.0
+          ],
+          "steps_mean": 33.8,
+          "walk_closest_mean": 0.0,
+          "walk_by_exp": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "destroyed_total": 0,
+          "destroyed_by_exp": [
+            0,
+            0,
+            0
+          ]
+        },
+        "KeyCorridorS3R3": {
+          "mean": 95.0,
+          "by_exp": [
+            97.0,
+            93.0,
+            95.0
+          ],
+          "steps_mean": 31.3,
+          "walk_closest_mean": 0.0,
+          "walk_by_exp": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "destroyed_total": 0,
+          "destroyed_by_exp": [
+            0,
+            0,
+            0
+          ]
+        },
+        "UnlockPickup": {
+          "mean": 85.33,
+          "by_exp": [
+            82.0,
+            88.0,
+            86.0
+          ],
+          "steps_mean": 22.5,
+          "walk_closest_mean": 0.0,
+          "walk_by_exp": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "destroyed_total": 44,
+          "destroyed_by_exp": [
+            18,
+            12,
+            14
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "mean": 85.67,
+          "by_exp": [
+            78.0,
+            88.0,
+            91.0
+          ],
+          "steps_mean": 32.4,
+          "walk_closest_mean": 0.0,
+          "walk_by_exp": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "destroyed_total": 43,
+          "destroyed_by_exp": [
+            22,
+            12,
+            9
+          ]
+        }
+      }
+    },
+    "arm_A0": {
+      "mean": 88.53,
+      "by_exp_mean": [
+        85.4,
+        88.8,
+        91.4
+      ],
+      "by_task": {
+        "DoorKey-8x8": {
+          "mean": 100.0,
+          "by_exp": [
+            100.0,
+            100.0,
+            100.0
+          ],
+          "steps_mean": 16.4,
+          "walk_closest_mean": 99.56,
+          "walk_by_exp": [
+            98.8,
+            99.9,
+            100.0
+          ],
+          "destroyed_total": 0,
+          "destroyed_by_exp": [
+            0,
+            0,
+            0
+          ]
+        },
+        "DoorKey-16x16": {
+          "mean": 100.0,
+          "by_exp": [
+            100.0,
+            100.0,
+            100.0
+          ],
+          "steps_mean": 49.0,
+          "walk_closest_mean": 80.73,
+          "walk_by_exp": [
+            70.9,
+            96.0,
+            75.3
+          ],
+          "destroyed_total": 0,
+          "destroyed_by_exp": [
+            0,
+            0,
+            0
+          ]
+        },
+        "KeyCorridorS3R3": {
+          "mean": 94.0,
+          "by_exp": [
+            96.0,
+            91.0,
+            95.0
+          ],
+          "steps_mean": 57.9,
+          "walk_closest_mean": 64.4,
+          "walk_by_exp": [
+            60.8,
+            69.2,
+            63.3
+          ],
+          "destroyed_total": 0,
+          "destroyed_by_exp": [
+            0,
+            0,
+            0
+          ]
+        },
+        "UnlockPickup": {
+          "mean": 73.67,
+          "by_exp": [
+            64.0,
+            76.0,
+            81.0
+          ],
+          "steps_mean": 25.7,
+          "walk_closest_mean": 92.61,
+          "walk_by_exp": [
+            90.5,
+            97.7,
+            89.7
+          ],
+          "destroyed_total": 77,
+          "destroyed_by_exp": [
+            35,
+            23,
+            19
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "mean": 75.0,
+          "by_exp": [
+            67.0,
+            77.0,
+            81.0
+          ],
+          "steps_mean": 48.2,
+          "walk_closest_mean": 81.87,
+          "walk_by_exp": [
+            81.7,
+            84.9,
+            79.0
+          ],
+          "destroyed_total": 75,
+          "destroyed_by_exp": [
+            33,
+            23,
+            19
+          ]
+        }
+      }
+    },
+    "arm_A": {
+      "mean": 98.33,
+      "by_exp_mean": [
+        99.2,
+        98.4,
+        97.4
+      ],
+      "by_task": {
+        "DoorKey-8x8": {
+          "mean": 100.0,
+          "by_exp": [
+            100.0,
+            100.0,
+            100.0
+          ],
+          "steps_mean": 16.4,
+          "walk_closest_mean": 99.56,
+          "walk_by_exp": [
+            98.8,
+            99.9,
+            100.0
+          ],
+          "destroyed_total": 0,
+          "destroyed_by_exp": [
+            0,
+            0,
+            0
+          ]
+        },
+        "DoorKey-16x16": {
+          "mean": 100.0,
+          "by_exp": [
+            100.0,
+            100.0,
+            100.0
+          ],
+          "steps_mean": 49.0,
+          "walk_closest_mean": 80.73,
+          "walk_by_exp": [
+            70.9,
+            96.0,
+            75.3
+          ],
+          "destroyed_total": 0,
+          "destroyed_by_exp": [
+            0,
+            0,
+            0
+          ]
+        },
+        "KeyCorridorS3R3": {
+          "mean": 94.33,
+          "by_exp": [
+            96.0,
+            92.0,
+            95.0
+          ],
+          "steps_mean": 40.5,
+          "walk_closest_mean": 64.0,
+          "walk_by_exp": [
+            60.1,
+            68.6,
+            63.3
+          ],
+          "destroyed_total": 0,
+          "destroyed_by_exp": [
+            0,
+            0,
+            0
+          ]
+        },
+        "UnlockPickup": {
+          "mean": 98.67,
+          "by_exp": [
+            100.0,
+            100.0,
+            96.0
+          ],
+          "steps_mean": 27.2,
+          "walk_closest_mean": 91.16,
+          "walk_by_exp": [
+            90.8,
+            93.6,
+            89.1
+          ],
+          "destroyed_total": 4,
+          "destroyed_by_exp": [
+            0,
+            0,
+            4
+          ]
+        },
+        "BlockedUnlockPickup": {
+          "mean": 98.67,
+          "by_exp": [
+            100.0,
+            100.0,
+            96.0
+          ],
+          "steps_mean": 42.8,
+          "walk_closest_mean": 82.21,
+          "walk_by_exp": [
+            83.4,
+            84.2,
+            79.1
+          ],
+          "destroyed_total": 4,
+          "destroyed_by_exp": [
+            0,
+            0,
+            4
+          ]
+        }
+      }
+    }
+  },
+  "layout_diff_arm_A_vs_card162": {
+    "arm_A_solves_card162_fails": 91,
+    "card162_solves_arm_A_fails": 14
+  }
+}
