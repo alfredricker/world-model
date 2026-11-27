@@ -3,8 +3,8 @@ id: "163"
 title: one prediction to act by — will the expected event come, learned from play, in place of the planner's procedures
 rung: 5
 serves: [P12, P21, P6, P16]
-status: approved
-verdict:
+status: done
+verdict: fail
 arch_version: og4
 date: 2026-11-24
 ---
@@ -265,4 +265,14 @@ about 90 seconds per experience.
 
 ## 7. Result
 
+The main run was not made: the feasibility gate failed at every stage (section 5), including the stage D upper bound (0 of 40 on UnlockPickup with 2,500 whole solutions in training).
+
+| Check (experience 1, 40 gate layouts per task) | Result | Verdict |
+|---|---|---|
+| Flat prediction $q$ asked about the goal (stages R, S, D, S+dq) | DoorKey-5x5 to 8x8 and Unlock 38–40 of 40; UnlockPickup and BlockedUnlockPickup 0 of 40 at every stage | **fail** |
+| Chaining three links (`expect()`, stage S) | UnlockPickup 0 of 40 | **fail** |
+| Handed the next event (`dev4.py`, stage S / stage R) | DoorKey-8x8 40 / 40, DoorKey-16x16 40 / 40, KeyCorridor 39 / 40, UnlockPickup 24 / 17, BlockedUnlockPickup 23 / 17 | **partial** (event definition ambiguous on boxes) |
+
 ## 8. Decision
+
+**Revise.** A single learned prediction $q(\text{situation}, \text{action}; \text{event})$ learns to walk to, orient toward and bring about a single near event without shortest-path search, even in rooms larger than any played (DoorKey-16x16 40 of 40 from pure random play alone). Two separate faults stopped the gate: first, over multi-event chains the action gap collapses below approximation error (0.011 at 16–19 steps out), so flat $q$ cannot select which event comes next; second, defining an event as `(cell, next_code)` alone conflates picking up a box with destroying it by toggle (all 12 inspected UnlockPickup failures under the handed-event bound reached all four events and toggled the box). Next (card 164): fix the event definition to distinguish the achieving action, keep $q$ as System 1 for reaching and executing a single event, and pair it with System 2 condition-based event selection from the learned effect model.
