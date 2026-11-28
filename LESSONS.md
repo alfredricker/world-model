@@ -90,7 +90,9 @@ record" is `old:phwm/docs/05-experimental-record.md`.
   moments (pick the near one, pose given) read the cube at 0.95 in 5 minutes where
   redrawing gave 0.49 in 60. A learned temperature let it shrink and not factor (8-19% of
   a variable's change on its coordinate); fixed, with 8 coordinates, one fit gave a factor
-  per variable (73-96%). *Evidence:* cards 116.1, 119, 145, 172, 173.
+  per variable (73-96%), in two seeds of three; the third lost the cube. Measure stray
+  movement per factor: summed over five factors it reads five times worse. A refit with
+  the same seed is a second draw. *Evidence:* cards 116.1, 119, 145, 172, 173, 174.
 - **A cost on how many tokens change merges the agent with what it
   moves** (65% of the cube in the arm's token). Change one loss term per
   arm. *Evidence:* card 124.

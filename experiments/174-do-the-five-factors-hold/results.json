@@ -1,0 +1,3436 @@
+{
+ "card": "174",
+ "verdict": "fail: criteria 1, 2(c) and 3 not met on the mean of three seeds; 2(a) and 2(b) met; two seeds of three meet every bar taken alone",
+ "settings": {
+  "tau": 0.5,
+  "lam_slow": 1.0,
+  "steps": 4000,
+  "gap": 5,
+  "half_precision": true,
+  "K_star": 6,
+  "margin_nats": 0.02
+ },
+ "held_out_loss_by_size": {
+  "4": 1.0754,
+  "6": 0.9311,
+  "8": 0.9584,
+  "12": 0.9343,
+  "16": 0.9258
+ },
+ "held_out_loss_by_seed_at_6": {
+  "0": 0.9311,
+  "1": 0.9544,
+  "2": 0.9893
+ },
+ "fresh": {
+  "k6_s0h": {
+   "set": "fresh",
+   "K": 6,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9774,
+    "drawer": 0.9729,
+    "window": 0.9909,
+    "lock0": 0.9908,
+    "lock1": 0.9822
+   },
+   "reading_whole": {
+    "cube": 0.9373,
+    "drawer": 0.8787,
+    "window": 0.8443,
+    "lock0": 0.9711,
+    "lock1": 0.9635
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   },
+   "criterion2": {
+    "n_used": 6,
+    "n_factors": 5,
+    "factors": [
+     [
+      0,
+      4
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ]
+    ],
+    "best_factor": {
+     "cube": 1,
+     "drawer": 0,
+     "window": 3,
+     "lock0": 2,
+     "lock1": 4
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 78.6,
+     "drawer": 95.9,
+     "window": 92.6,
+     "lock0": 86.5,
+     "lock1": 83.1
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5785,
+     "drawer": 1375,
+     "window": 2123,
+     "lock0": 1990,
+     "lock1": 1655
+    },
+    "windows_none": 6076,
+    "nothing_differs_over_one_variable_pct": 35.1,
+    "per_variable_change_over_nothing": {
+     "cube": 2.0,
+     "drawer": 3.3,
+     "window": 3.1,
+     "lock0": 3.9,
+     "lock1": 3.8
+    },
+    "share_matrix": [
+     [
+      2.1,
+      78.6,
+      1.8,
+      1.5,
+      16.0
+     ],
+     [
+      95.9,
+      1.0,
+      1.2,
+      0.9,
+      1.1
+     ],
+     [
+      1.4,
+      1.5,
+      1.1,
+      92.6,
+      3.3
+     ],
+     [
+      8.4,
+      1.0,
+      86.5,
+      1.2,
+      2.8
+     ],
+     [
+      1.7,
+      2.2,
+      2.4,
+      10.7,
+      83.1
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 5.5,
+     "drawer": 2.4,
+     "window": 1.8,
+     "lock0": 0.7,
+     "lock1": 5.9
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 5.0,
+     "drawer": 3.6,
+     "window": 3.2,
+     "lock0": 3.9,
+     "lock1": 7.8
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 4.5,
+     "drawer": 5.4,
+     "window": 5.3,
+     "lock0": 11.6,
+     "lock1": 12.1
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 35.1,
+     "hand_off_buttons": 17.0
+    },
+    "windows_hand_on_button_pct": 36.7,
+    "worst_pct": 5.9
+   },
+   "std_per_coordinate": [
+    0.381,
+    0.669,
+    0.586,
+    0.548,
+    0.308,
+    0.603
+   ]
+  },
+  "k6_s1h": {
+   "set": "fresh",
+   "K": 6,
+   "seed": 1,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9833,
+    "drawer": 0.9781,
+    "window": 0.9805,
+    "lock0": 0.9884,
+    "lock1": 0.988
+   },
+   "reading_whole": {
+    "cube": 0.9124,
+    "drawer": 0.8777,
+    "window": 0.8436,
+    "lock0": 0.9694,
+    "lock1": 0.9677
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   },
+   "criterion2": {
+    "n_used": 6,
+    "n_factors": 5,
+    "factors": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ]
+    ],
+    "best_factor": {
+     "cube": 4,
+     "drawer": 3,
+     "window": 0,
+     "lock0": 2,
+     "lock1": 1
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 88.9,
+     "drawer": 94.8,
+     "window": 94.1,
+     "lock0": 91.7,
+     "lock1": 79.7
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5785,
+     "drawer": 1375,
+     "window": 2123,
+     "lock0": 1990,
+     "lock1": 1655
+    },
+    "windows_none": 6076,
+    "nothing_differs_over_one_variable_pct": 35.8,
+    "per_variable_change_over_nothing": {
+     "cube": 1.8,
+     "drawer": 3.3,
+     "window": 3.3,
+     "lock0": 3.8,
+     "lock1": 3.8
+    },
+    "share_matrix": [
+     [
+      1.7,
+      7.0,
+      0.7,
+      1.8,
+      88.9
+     ],
+     [
+      0.8,
+      0.7,
+      2.4,
+      94.8,
+      1.2
+     ],
+     [
+      94.1,
+      2.1,
+      1.5,
+      1.0,
+      1.3
+     ],
+     [
+      1.3,
+      2.4,
+      91.7,
+      2.7,
+      1.9
+     ],
+     [
+      13.0,
+      79.7,
+      3.1,
+      1.3,
+      2.8
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 5.8,
+     "drawer": 2.0,
+     "window": 1.7,
+     "lock0": 0.4,
+     "lock1": 2.6
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 5.7,
+     "drawer": 2.3,
+     "window": 3.2,
+     "lock0": 4.5,
+     "lock1": 5.2
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 5.5,
+     "drawer": 2.9,
+     "window": 5.7,
+     "lock0": 14.1,
+     "lock1": 11.2
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 35.8,
+     "hand_off_buttons": 15.4
+    },
+    "windows_hand_on_button_pct": 36.7,
+    "worst_pct": 5.8
+   },
+   "std_per_coordinate": [
+    0.536,
+    0.502,
+    0.443,
+    0.509,
+    0.189,
+    0.668
+   ]
+  },
+  "k6_s2h": {
+   "set": "fresh",
+   "K": 6,
+   "seed": 2,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.8723,
+    "drawer": 0.9766,
+    "window": 0.9785,
+    "lock0": 0.9947,
+    "lock1": 0.9851
+   },
+   "reading_whole": {
+    "cube": 0.7467,
+    "drawer": 0.9071,
+    "window": 0.8024,
+    "lock0": 0.978,
+    "lock1": 0.9694
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   },
+   "criterion2": {
+    "n_used": 6,
+    "n_factors": 4,
+    "factors": [
+     [
+      0,
+      2,
+      4
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ]
+    ],
+    "best_factor": {
+     "cube": 1,
+     "drawer": 0,
+     "window": 1,
+     "lock0": 3,
+     "lock1": 2
+    },
+    "distinct": false,
+    "share_in_best": {
+     "cube": 52.4,
+     "drawer": 97.0,
+     "window": 92.2,
+     "lock0": 80.1,
+     "lock1": 86.0
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5785,
+     "drawer": 1375,
+     "window": 2123,
+     "lock0": 1990,
+     "lock1": 1655
+    },
+    "windows_none": 6076,
+    "nothing_differs_over_one_variable_pct": 42.2,
+    "per_variable_change_over_nothing": {
+     "cube": 0.9,
+     "drawer": 3.7,
+     "window": 2.5,
+     "lock0": 3.9,
+     "lock1": 4.4
+    },
+    "share_matrix": [
+     [
+      14.8,
+      52.4,
+      32.0,
+      0.8
+     ],
+     [
+      97.0,
+      1.3,
+      1.2,
+      0.5
+     ],
+     [
+      2.9,
+      92.2,
+      4.0,
+      1.0
+     ],
+     [
+      14.9,
+      1.7,
+      3.2,
+      80.1
+     ],
+     [
+      2.9,
+      9.8,
+      86.0,
+      1.3
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 160.0,
+     "drawer": 3.9,
+     "window": 13.7,
+     "lock0": 0.2,
+     "lock1": 4.5
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 110.3,
+     "drawer": 5.8,
+     "window": 11.4,
+     "lock0": 3.0,
+     "lock1": 6.7
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 66.6,
+     "drawer": 8.7,
+     "window": 7.8,
+     "lock0": 9.7,
+     "lock1": 11.7
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 42.2,
+     "hand_off_buttons": 19.5
+    },
+    "windows_hand_on_button_pct": 36.7,
+    "worst_pct": 160.0
+   },
+   "std_per_coordinate": [
+    0.24,
+    0.483,
+    0.241,
+    0.646,
+    0.266,
+    0.479
+   ]
+  },
+  "k4_s0h": {
+   "set": "fresh",
+   "K": 4,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.7573,
+    "drawer": 0.9735,
+    "window": 0.8457,
+    "lock0": 0.9846,
+    "lock1": 0.9752
+   },
+   "reading_whole": {
+    "cube": 0.6559,
+    "drawer": 0.8797,
+    "window": 0.6989,
+    "lock0": 0.9576,
+    "lock1": 0.952
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   },
+   "criterion2": {
+    "n_used": 3,
+    "n_factors": 3,
+    "factors": [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "best_factor": {
+     "cube": 2,
+     "drawer": 0,
+     "window": 2,
+     "lock0": 1,
+     "lock1": 2
+    },
+    "distinct": false,
+    "share_in_best": {
+     "cube": 92.3,
+     "drawer": 97.7,
+     "window": 93.1,
+     "lock0": 79.8,
+     "lock1": 96.2
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5785,
+     "drawer": 1375,
+     "window": 2123,
+     "lock0": 1990,
+     "lock1": 1655
+    },
+    "windows_none": 6076,
+    "nothing_differs_over_one_variable_pct": 46.6,
+    "per_variable_change_over_nothing": {
+     "cube": 0.6,
+     "drawer": 3.7,
+     "window": 1.3,
+     "lock0": 4.0,
+     "lock1": 4.9
+    },
+    "share_matrix": [
+     [
+      4.8,
+      2.9,
+      92.3
+     ],
+     [
+      97.7,
+      0.7,
+      1.6
+     ],
+     [
+      4.0,
+      2.9,
+      93.1
+     ],
+     [
+      15.7,
+      79.8,
+      4.5
+     ],
+     [
+      2.1,
+      1.7,
+      96.2
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 72.3,
+     "drawer": 2.0,
+     "window": 29.5,
+     "lock0": 0.4,
+     "lock1": 10.3
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 180.3,
+     "drawer": 4.7,
+     "window": 67.2,
+     "lock0": 3.9,
+     "lock1": 11.2
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 275.3,
+     "drawer": 9.0,
+     "window": 127.9,
+     "lock0": 12.1,
+     "lock1": 13.1
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 46.6,
+     "hand_off_buttons": 15.2
+    },
+    "windows_hand_on_button_pct": 36.7,
+    "worst_pct": 72.3
+   },
+   "std_per_coordinate": [
+    0.0,
+    0.597,
+    0.467,
+    0.751
+   ]
+  },
+  "k8_s0h": {
+   "set": "fresh",
+   "K": 8,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9849,
+    "drawer": 0.9849,
+    "window": 0.9859,
+    "lock0": 0.9876,
+    "lock1": 0.987
+   },
+   "reading_whole": {
+    "cube": 0.9363,
+    "drawer": 0.8975,
+    "window": 0.8631,
+    "lock0": 0.978,
+    "lock1": 0.985
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   },
+   "criterion2": {
+    "n_used": 7,
+    "n_factors": 5,
+    "factors": [
+     [
+      1
+     ],
+     [
+      2,
+      5,
+      6
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      7
+     ]
+    ],
+    "best_factor": {
+     "cube": 0,
+     "drawer": 1,
+     "window": 4,
+     "lock0": 3,
+     "lock1": 2
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 81.3,
+     "drawer": 95.3,
+     "window": 92.8,
+     "lock0": 89.6,
+     "lock1": 55.2
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5785,
+     "drawer": 1375,
+     "window": 2123,
+     "lock0": 1990,
+     "lock1": 1655
+    },
+    "windows_none": 6076,
+    "nothing_differs_over_one_variable_pct": 32.9,
+    "per_variable_change_over_nothing": {
+     "cube": 2.0,
+     "drawer": 3.5,
+     "window": 3.3,
+     "lock0": 4.4,
+     "lock1": 4.5
+    },
+    "share_matrix": [
+     [
+      81.3,
+      2.0,
+      0.9,
+      13.2,
+      2.6
+     ],
+     [
+      1.1,
+      95.3,
+      0.6,
+      2.0,
+      1.1
+     ],
+     [
+      1.7,
+      1.1,
+      2.3,
+      2.1,
+      92.8
+     ],
+     [
+      1.8,
+      5.5,
+      1.4,
+      89.6,
+      1.6
+     ],
+     [
+      6.1,
+      1.2,
+      55.2,
+      13.4,
+      24.1
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 7.1,
+     "drawer": 2.0,
+     "window": 2.4,
+     "lock0": 3.7,
+     "lock1": 0.9
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 8.5,
+     "drawer": 2.8,
+     "window": 5.8,
+     "lock0": 7.9,
+     "lock1": 2.8
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 9.8,
+     "drawer": 4.0,
+     "window": 11.3,
+     "lock0": 17.8,
+     "lock1": 7.1
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 32.9,
+     "hand_off_buttons": 16.9
+    },
+    "windows_hand_on_button_pct": 36.7,
+    "worst_pct": 7.1
+   },
+   "std_per_coordinate": [
+    0.0,
+    0.622,
+    0.065,
+    0.465,
+    0.632,
+    0.221,
+    0.225,
+    0.573
+   ]
+  },
+  "k12_s0h": {
+   "set": "fresh",
+   "K": 12,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9597,
+    "drawer": 0.9879,
+    "window": 0.9901,
+    "lock0": 0.9918,
+    "lock1": 0.991
+   },
+   "reading_whole": {
+    "cube": 0.9572,
+    "drawer": 0.8824,
+    "window": 0.859,
+    "lock0": 0.9764,
+    "lock1": 0.9816
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   },
+   "criterion2": {
+    "n_used": 12,
+    "n_factors": 6,
+    "factors": [
+     [
+      0,
+      1,
+      5,
+      6,
+      9,
+      11
+     ],
+     [
+      2,
+      8
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      7
+     ],
+     [
+      10
+     ]
+    ],
+    "best_factor": {
+     "cube": 4,
+     "drawer": 0,
+     "window": 2,
+     "lock0": 1,
+     "lock1": 3
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 47.5,
+     "drawer": 95.5,
+     "window": 90.0,
+     "lock0": 89.4,
+     "lock1": 81.6
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5785,
+     "drawer": 1375,
+     "window": 2123,
+     "lock0": 1990,
+     "lock1": 1655
+    },
+    "windows_none": 6076,
+    "nothing_differs_over_one_variable_pct": 35.2,
+    "per_variable_change_over_nothing": {
+     "cube": 2.0,
+     "drawer": 3.2,
+     "window": 3.2,
+     "lock0": 3.9,
+     "lock1": 4.0
+    },
+    "share_matrix": [
+     [
+      1.3,
+      0.4,
+      1.5,
+      3.5,
+      47.5,
+      45.9
+     ],
+     [
+      95.5,
+      1.0,
+      1.0,
+      0.8,
+      0.9,
+      0.8
+     ],
+     [
+      1.1,
+      1.1,
+      90.0,
+      1.6,
+      5.3,
+      0.9
+     ],
+     [
+      4.4,
+      89.4,
+      1.3,
+      2.0,
+      1.4,
+      1.5
+     ],
+     [
+      1.3,
+      1.9,
+      9.7,
+      81.6,
+      4.0,
+      1.4
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 13.8,
+     "drawer": 1.8,
+     "window": 1.8,
+     "lock0": 0.2,
+     "lock1": 1.3
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 12.8,
+     "drawer": 2.5,
+     "window": 3.1,
+     "lock0": 3.5,
+     "lock1": 4.2
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 11.9,
+     "drawer": 3.5,
+     "window": 5.3,
+     "lock0": 11.3,
+     "lock1": 10.7
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 35.2,
+     "hand_off_buttons": 16.5
+    },
+    "windows_hand_on_button_pct": 36.7,
+    "worst_pct": 13.8
+   },
+   "std_per_coordinate": [
+    0.045,
+    0.052,
+    0.117,
+    0.511,
+    0.554,
+    0.082,
+    0.101,
+    0.364,
+    0.441,
+    0.109,
+    0.433,
+    0.133
+   ]
+  },
+  "k16_s0h": {
+   "set": "fresh",
+   "K": 16,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9483,
+    "drawer": 0.9787,
+    "window": 0.9931,
+    "lock0": 0.9898,
+    "lock1": 0.9918
+   },
+   "reading_whole": {
+    "cube": 0.9413,
+    "drawer": 0.854,
+    "window": 0.8473,
+    "lock0": 0.9738,
+    "lock1": 0.9745
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   },
+   "criterion2": {
+    "n_used": 14,
+    "n_factors": 7,
+    "factors": [
+     [
+      0,
+      3,
+      14
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      6,
+      9,
+      11,
+      13,
+      15
+     ],
+     [
+      7
+     ],
+     [
+      8
+     ],
+     [
+      10
+     ],
+     [
+      12
+     ]
+    ],
+    "best_factor": {
+     "cube": 4,
+     "drawer": 2,
+     "window": 0,
+     "lock0": 6,
+     "lock1": 5
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 50.8,
+     "drawer": 95.2,
+     "window": 92.2,
+     "lock0": 88.2,
+     "lock1": 79.0
+    },
+    "n_at_80": 3,
+    "windows_only": {
+     "cube": 5785,
+     "drawer": 1375,
+     "window": 2123,
+     "lock0": 1990,
+     "lock1": 1655
+    },
+    "windows_none": 6076,
+    "nothing_differs_over_one_variable_pct": 37.1,
+    "per_variable_change_over_nothing": {
+     "cube": 1.8,
+     "drawer": 2.8,
+     "window": 3.1,
+     "lock0": 3.8,
+     "lock1": 3.9
+    },
+    "share_matrix": [
+     [
+      1.9,
+      39.4,
+      1.4,
+      5.2,
+      50.8,
+      1.2,
+      0.2
+     ],
+     [
+      0.9,
+      0.8,
+      95.2,
+      0.2,
+      1.1,
+      0.6,
+      1.1
+     ],
+     [
+      92.2,
+      0.6,
+      1.2,
+      0.5,
+      2.9,
+      1.5,
+      1.1
+     ],
+     [
+      1.1,
+      1.6,
+      5.7,
+      0.2,
+      1.7,
+      1.5,
+      88.2
+     ],
+     [
+      4.4,
+      1.1,
+      1.2,
+      1.1,
+      11.1,
+      79.0,
+      2.0
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 12.9,
+     "drawer": 1.9,
+     "window": 1.9,
+     "lock0": 0.1,
+     "lock1": 0.5
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 17.3,
+     "drawer": 2.9,
+     "window": 2.4,
+     "lock0": 3.6,
+     "lock1": 3.4
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 21.2,
+     "drawer": 4.4,
+     "window": 3.2,
+     "lock0": 11.8,
+     "lock1": 9.7
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 37.1,
+     "hand_off_buttons": 17.9
+    },
+    "windows_hand_on_button_pct": 36.7,
+    "worst_pct": 12.9
+   },
+   "std_per_coordinate": [
+    0.236,
+    0.633,
+    0.058,
+    0.05,
+    0.015,
+    0.001,
+    0.112,
+    0.066,
+    0.41,
+    0.095,
+    0.563,
+    0.132,
+    0.599,
+    0.046,
+    0.251,
+    0.082
+   ]
+  },
+  "k8_s0": {
+   "set": "fresh",
+   "K": 8,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.989,
+    "drawer": 0.9831,
+    "window": 0.9846,
+    "lock0": 0.9903,
+    "lock1": 0.9817
+   },
+   "reading_whole": {
+    "cube": 0.9345,
+    "drawer": 0.8701,
+    "window": 0.8584,
+    "lock0": 0.9736,
+    "lock1": 0.9678
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   },
+   "criterion2": {
+    "n_used": 7,
+    "n_factors": 5,
+    "factors": [
+     [
+      1
+     ],
+     [
+      2,
+      5,
+      6
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      7
+     ]
+    ],
+    "best_factor": {
+     "cube": 4,
+     "drawer": 1,
+     "window": 2,
+     "lock0": 3,
+     "lock1": 0
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 73.5,
+     "drawer": 95.6,
+     "window": 94.2,
+     "lock0": 91.8,
+     "lock1": 82.4
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5785,
+     "drawer": 1375,
+     "window": 2123,
+     "lock0": 1990,
+     "lock1": 1655
+    },
+    "windows_none": 6076,
+    "nothing_differs_over_one_variable_pct": 35.4,
+    "per_variable_change_over_nothing": {
+     "cube": 1.8,
+     "drawer": 3.2,
+     "window": 3.3,
+     "lock0": 4.0,
+     "lock1": 4.0
+    },
+    "share_matrix": [
+     [
+      20.4,
+      1.8,
+      1.6,
+      2.7,
+      73.5
+     ],
+     [
+      1.2,
+      95.6,
+      1.1,
+      1.1,
+      1.0
+     ],
+     [
+      2.0,
+      1.3,
+      94.2,
+      1.2,
+      1.3
+     ],
+     [
+      2.6,
+      2.5,
+      1.4,
+      91.8,
+      1.7
+     ],
+     [
+      82.4,
+      1.2,
+      11.9,
+      2.3,
+      2.1
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 6.5,
+     "drawer": 1.9,
+     "window": 1.9,
+     "lock0": 0.8,
+     "lock1": 6.4
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 6.2,
+     "drawer": 2.2,
+     "window": 3.4,
+     "lock0": 4.0,
+     "lock1": 7.9
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 6.0,
+     "drawer": 2.6,
+     "window": 5.8,
+     "lock0": 11.7,
+     "lock1": 11.4
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 35.4,
+     "hand_off_buttons": 16.4
+    },
+    "windows_hand_on_button_pct": 36.7,
+    "worst_pct": 6.5
+   },
+   "std_per_coordinate": [
+    0.0,
+    0.579,
+    0.12,
+    0.583,
+    0.598,
+    0.199,
+    0.207,
+    0.627
+   ]
+  },
+  "bound8": {
+   "set": "fresh",
+   "K": 8,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.985,
+    "drawer": 0.9862,
+    "window": 0.9948,
+    "lock0": 1.0,
+    "lock1": 1.0
+   },
+   "reading_whole": {
+    "cube": 0.9979,
+    "drawer": 0.9889,
+    "window": 0.9887,
+    "lock0": 1.0,
+    "lock1": 1.0
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   },
+   "criterion2": {
+    "n_used": 8,
+    "n_factors": 7,
+    "factors": [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    "best_factor": {
+     "cube": 0,
+     "drawer": 6,
+     "window": 3,
+     "lock0": 4,
+     "lock1": 2
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 50.6,
+     "drawer": 63.0,
+     "window": 52.0,
+     "lock0": 88.4,
+     "lock1": 82.5
+    },
+    "n_at_80": 2,
+    "windows_only": {
+     "cube": 5785,
+     "drawer": 1375,
+     "window": 2123,
+     "lock0": 1990,
+     "lock1": 1655
+    },
+    "windows_none": 6076,
+    "nothing_differs_over_one_variable_pct": 8.3,
+    "per_variable_change_over_nothing": {
+     "cube": 11.7,
+     "drawer": 11.0,
+     "window": 11.8,
+     "lock0": 13.0,
+     "lock1": 13.6
+    },
+    "share_matrix": [
+     [
+      50.6,
+      7.7,
+      0.3,
+      6.6,
+      0.0,
+      30.2,
+      4.6
+     ],
+     [
+      1.1,
+      34.8,
+      0.0,
+      0.4,
+      0.0,
+      0.6,
+      63.0
+     ],
+     [
+      1.8,
+      36.4,
+      4.1,
+      52.0,
+      0.0,
+      1.1,
+      4.5
+     ],
+     [
+      1.7,
+      5.2,
+      0.0,
+      0.7,
+      88.4,
+      1.1,
+      2.7
+     ],
+     [
+      2.8,
+      5.7,
+      82.5,
+      6.3,
+      0.0,
+      1.3,
+      1.3
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 4.1,
+     "drawer": 6.0,
+     "window": 7.5,
+     "lock0": 0.0,
+     "lock1": 0.8
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 4.4,
+     "drawer": 5.0,
+     "window": 6.4,
+     "lock0": 0.0,
+     "lock1": 0.6
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 4.7,
+     "drawer": 3.3,
+     "window": 4.7,
+     "lock0": 0.0,
+     "lock1": 0.3
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 8.3,
+     "hand_off_buttons": 8.9
+    },
+    "windows_hand_on_button_pct": 36.7,
+    "worst_pct": 7.5
+   },
+   "std_per_coordinate": [
+    0.826,
+    0.726,
+    0.654,
+    0.974,
+    0.735,
+    0.992,
+    0.688,
+    0.765
+   ]
+  },
+  "random8": {
+   "set": "fresh",
+   "K": 8,
+   "seed": null,
+   "steps": 0,
+   "reading_own": {
+    "cube": 0.5595,
+    "drawer": 0.5314,
+    "window": 0.6842,
+    "lock0": 0.5801,
+    "lock1": 0.6338
+   },
+   "reading_whole": {
+    "cube": 0.5866,
+    "drawer": 0.5111,
+    "window": 0.6488,
+    "lock0": 0.5772,
+    "lock1": 0.6272
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   },
+   "criterion2": {
+    "n_used": 8,
+    "n_factors": 8,
+    "factors": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    "best_factor": {
+     "cube": 6,
+     "drawer": 7,
+     "window": 5,
+     "lock0": 7,
+     "lock1": 5
+    },
+    "distinct": false,
+    "share_in_best": {
+     "cube": 17.9,
+     "drawer": 16.7,
+     "window": 16.9,
+     "lock0": 18.7,
+     "lock1": 19.2
+    },
+    "n_at_80": 0,
+    "windows_only": {
+     "cube": 5785,
+     "drawer": 1375,
+     "window": 2123,
+     "lock0": 1990,
+     "lock1": 1655
+    },
+    "windows_none": 6076,
+    "nothing_differs_over_one_variable_pct": 104.3,
+    "per_variable_change_over_nothing": {
+     "cube": 0.8,
+     "drawer": 0.9,
+     "window": 1.1,
+     "lock0": 1.1,
+     "lock1": 1.2
+    },
+    "share_matrix": [
+     [
+      15.6,
+      11.6,
+      9.1,
+      12.3,
+      8.7,
+      10.4,
+      17.9,
+      14.5
+     ],
+     [
+      10.4,
+      11.3,
+      14.9,
+      9.2,
+      9.3,
+      15.0,
+      13.2,
+      16.7
+     ],
+     [
+      10.3,
+      14.3,
+      9.0,
+      6.1,
+      13.2,
+      16.9,
+      15.3,
+      15.0
+     ],
+     [
+      14.9,
+      10.6,
+      12.7,
+      6.9,
+      8.2,
+      13.7,
+      14.2,
+      18.7
+     ],
+     [
+      12.1,
+      8.2,
+      11.2,
+      9.5,
+      10.8,
+      19.2,
+      13.7,
+      15.3
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 89.8,
+     "drawer": 82.8,
+     "window": 51.8,
+     "lock0": 57.9,
+     "lock1": 47.7
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 103.6,
+     "drawer": 105.3,
+     "window": 72.6,
+     "lock0": 67.9,
+     "lock1": 60.8
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 115.8,
+     "drawer": 141.4,
+     "window": 105.9,
+     "lock0": 91.7,
+     "lock1": 90.0
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 104.3,
+     "hand_off_buttons": 88.1
+    },
+    "windows_hand_on_button_pct": 36.7,
+    "worst_pct": 89.8
+   },
+   "std_per_coordinate": [
+    0.061,
+    0.068,
+    0.062,
+    0.048,
+    0.061,
+    0.078,
+    0.077,
+    0.094
+   ]
+  },
+  "slots168": {
+   "set": "fresh",
+   "reading_own": {
+    "cube": 0.9835,
+    "drawer": 0.9999,
+    "window": 0.9991,
+    "lock0": 0.9999,
+    "lock1": 0.9998
+   },
+   "pairs": {
+    "cube": 45685,
+    "drawer": 6067,
+    "window": 4899,
+    "lock0": 29109,
+    "lock1": 24886
+   }
+  }
+ },
+ "validation": {
+  "k6_s0h": {
+   "set": "val",
+   "K": 6,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9702,
+    "drawer": 0.9684,
+    "window": 0.9838,
+    "lock0": 0.99,
+    "lock1": 0.9814
+   },
+   "reading_whole": {
+    "cube": 0.9095,
+    "drawer": 0.8677,
+    "window": 0.8051,
+    "lock0": 0.9641,
+    "lock1": 0.9588
+   },
+   "pairs": {
+    "cube": 37323,
+    "drawer": 5602,
+    "window": 6127,
+    "lock0": 26594,
+    "lock1": 25103
+   },
+   "criterion2": {
+    "n_used": 6,
+    "n_factors": 5,
+    "factors": [
+     [
+      0,
+      4
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ]
+    ],
+    "best_factor": {
+     "cube": 1,
+     "drawer": 0,
+     "window": 3,
+     "lock0": 2,
+     "lock1": 4
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 78.1,
+     "drawer": 96.3,
+     "window": 92.6,
+     "lock0": 87.1,
+     "lock1": 84.1
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5561,
+     "drawer": 1461,
+     "window": 2429,
+     "lock0": 1826,
+     "lock1": 1779
+    },
+    "windows_none": 5741,
+    "nothing_differs_over_one_variable_pct": 37.5,
+    "per_variable_change_over_nothing": {
+     "cube": 1.8,
+     "drawer": 3.2,
+     "window": 2.9,
+     "lock0": 3.6,
+     "lock1": 3.6
+    },
+    "share_matrix": [
+     [
+      2.5,
+      78.1,
+      1.9,
+      2.0,
+      15.4
+     ],
+     [
+      96.3,
+      0.9,
+      0.9,
+      0.8,
+      1.2
+     ],
+     [
+      1.9,
+      1.2,
+      1.0,
+      92.6,
+      3.2
+     ],
+     [
+      8.3,
+      1.0,
+      87.1,
+      1.1,
+      2.5
+     ],
+     [
+      1.7,
+      1.8,
+      2.1,
+      10.3,
+      84.1
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 5.0,
+     "drawer": 2.9,
+     "window": 2.1,
+     "lock0": 0.7,
+     "lock1": 5.1
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 4.7,
+     "drawer": 3.8,
+     "window": 3.4,
+     "lock0": 3.7,
+     "lock1": 7.5
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 4.3,
+     "drawer": 5.1,
+     "window": 5.4,
+     "lock0": 10.7,
+     "lock1": 13.0
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 37.5,
+     "hand_off_buttons": 19.2
+    },
+    "windows_hand_on_button_pct": 36.3,
+    "worst_pct": 5.1
+   },
+   "std_per_coordinate": [
+    0.381,
+    0.669,
+    0.586,
+    0.548,
+    0.308,
+    0.603
+   ],
+   "held_out": {
+    "loss": 0.9311,
+    "picks_true_pct": 70.7,
+    "pose_term_alone_loss": 1.4402,
+    "chance_loss": 2.8332
+   }
+  },
+  "k6_s1h": {
+   "set": "val",
+   "K": 6,
+   "seed": 1,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9822,
+    "drawer": 0.978,
+    "window": 0.9751,
+    "lock0": 0.9892,
+    "lock1": 0.9884
+   },
+   "reading_whole": {
+    "cube": 0.8817,
+    "drawer": 0.8667,
+    "window": 0.8125,
+    "lock0": 0.9689,
+    "lock1": 0.9697
+   },
+   "pairs": {
+    "cube": 37323,
+    "drawer": 5602,
+    "window": 6127,
+    "lock0": 26594,
+    "lock1": 25103
+   },
+   "criterion2": {
+    "n_used": 6,
+    "n_factors": 5,
+    "factors": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ]
+    ],
+    "best_factor": {
+     "cube": 4,
+     "drawer": 3,
+     "window": 0,
+     "lock0": 2,
+     "lock1": 1
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 88.6,
+     "drawer": 95.2,
+     "window": 93.9,
+     "lock0": 92.3,
+     "lock1": 80.7
+    },
+    "n_at_80": 5,
+    "windows_only": {
+     "cube": 5561,
+     "drawer": 1461,
+     "window": 2429,
+     "lock0": 1826,
+     "lock1": 1779
+    },
+    "windows_none": 5741,
+    "nothing_differs_over_one_variable_pct": 37.1,
+    "per_variable_change_over_nothing": {
+     "cube": 1.7,
+     "drawer": 3.3,
+     "window": 3.2,
+     "lock0": 3.6,
+     "lock1": 3.7
+    },
+    "share_matrix": [
+     [
+      2.2,
+      6.1,
+      0.8,
+      2.2,
+      88.6
+     ],
+     [
+      0.9,
+      0.7,
+      1.8,
+      95.2,
+      1.4
+     ],
+     [
+      93.9,
+      2.0,
+      1.4,
+      1.5,
+      1.2
+     ],
+     [
+      1.2,
+      2.0,
+      92.3,
+      2.6,
+      1.9
+     ],
+     [
+      11.9,
+      80.7,
+      3.2,
+      1.3,
+      2.9
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 5.0,
+     "drawer": 2.4,
+     "window": 2.0,
+     "lock0": 0.5,
+     "lock1": 2.0
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 5.6,
+     "drawer": 2.6,
+     "window": 3.4,
+     "lock0": 4.2,
+     "lock1": 5.0
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 6.2,
+     "drawer": 2.8,
+     "window": 5.6,
+     "lock0": 13.0,
+     "lock1": 11.8
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 37.1,
+     "hand_off_buttons": 16.5
+    },
+    "windows_hand_on_button_pct": 36.3,
+    "worst_pct": 5.0
+   },
+   "std_per_coordinate": [
+    0.536,
+    0.502,
+    0.443,
+    0.509,
+    0.189,
+    0.668
+   ],
+   "held_out": {
+    "loss": 0.9544,
+    "picks_true_pct": 69.9,
+    "pose_term_alone_loss": 1.4402,
+    "chance_loss": 2.8332
+   }
+  },
+  "k6_s2h": {
+   "set": "val",
+   "K": 6,
+   "seed": 2,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.843,
+    "drawer": 0.9721,
+    "window": 0.9768,
+    "lock0": 0.9939,
+    "lock1": 0.985
+   },
+   "reading_whole": {
+    "cube": 0.7104,
+    "drawer": 0.8973,
+    "window": 0.7618,
+    "lock0": 0.9731,
+    "lock1": 0.9701
+   },
+   "pairs": {
+    "cube": 37323,
+    "drawer": 5602,
+    "window": 6127,
+    "lock0": 26594,
+    "lock1": 25103
+   },
+   "criterion2": {
+    "n_used": 6,
+    "n_factors": 4,
+    "factors": [
+     [
+      0,
+      2,
+      4
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ]
+    ],
+    "best_factor": {
+     "cube": 1,
+     "drawer": 0,
+     "window": 1,
+     "lock0": 3,
+     "lock1": 2
+    },
+    "distinct": false,
+    "share_in_best": {
+     "cube": 48.6,
+     "drawer": 97.6,
+     "window": 92.3,
+     "lock0": 79.3,
+     "lock1": 87.6
+    },
+    "n_at_80": 3,
+    "windows_only": {
+     "cube": 5561,
+     "drawer": 1461,
+     "window": 2429,
+     "lock0": 1826,
+     "lock1": 1779
+    },
+    "windows_none": 5741,
+    "nothing_differs_over_one_variable_pct": 43.7,
+    "per_variable_change_over_nothing": {
+     "cube": 0.9,
+     "drawer": 3.6,
+     "window": 2.4,
+     "lock0": 3.7,
+     "lock1": 4.2
+    },
+    "share_matrix": [
+     [
+      18.5,
+      48.6,
+      32.0,
+      0.9
+     ],
+     [
+      97.6,
+      1.0,
+      1.0,
+      0.3
+     ],
+     [
+      3.2,
+      92.3,
+      3.5,
+      1.0
+     ],
+     [
+      16.1,
+      1.6,
+      2.9,
+      79.3
+     ],
+     [
+      3.3,
+      8.0,
+      87.6,
+      1.0
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 183.8,
+     "drawer": 4.7,
+     "window": 13.0,
+     "lock0": 0.2,
+     "lock1": 4.2
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 122.8,
+     "drawer": 6.3,
+     "window": 10.8,
+     "lock0": 2.8,
+     "lock1": 6.6
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 67.0,
+     "drawer": 8.8,
+     "window": 7.3,
+     "lock0": 8.9,
+     "lock1": 12.2
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 43.7,
+     "hand_off_buttons": 21.1
+    },
+    "windows_hand_on_button_pct": 36.3,
+    "worst_pct": 183.8
+   },
+   "std_per_coordinate": [
+    0.24,
+    0.483,
+    0.241,
+    0.646,
+    0.266,
+    0.479
+   ],
+   "held_out": {
+    "loss": 0.9893,
+    "picks_true_pct": 68.9,
+    "pose_term_alone_loss": 1.4402,
+    "chance_loss": 2.8332
+   }
+  },
+  "k4_s0h": {
+   "set": "val",
+   "K": 4,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.7348,
+    "drawer": 0.9785,
+    "window": 0.8458,
+    "lock0": 0.9833,
+    "lock1": 0.9783
+   },
+   "reading_whole": {
+    "cube": 0.6323,
+    "drawer": 0.8794,
+    "window": 0.6842,
+    "lock0": 0.9523,
+    "lock1": 0.9604
+   },
+   "pairs": {
+    "cube": 37323,
+    "drawer": 5602,
+    "window": 6127,
+    "lock0": 26594,
+    "lock1": 25103
+   },
+   "criterion2": {
+    "n_used": 3,
+    "n_factors": 3,
+    "factors": [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "best_factor": {
+     "cube": 2,
+     "drawer": 0,
+     "window": 2,
+     "lock0": 1,
+     "lock1": 2
+    },
+    "distinct": false,
+    "share_in_best": {
+     "cube": 91.1,
+     "drawer": 97.9,
+     "window": 92.1,
+     "lock0": 79.8,
+     "lock1": 96.6
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5561,
+     "drawer": 1461,
+     "window": 2429,
+     "lock0": 1826,
+     "lock1": 1779
+    },
+    "windows_none": 5741,
+    "nothing_differs_over_one_variable_pct": 48.9,
+    "per_variable_change_over_nothing": {
+     "cube": 0.6,
+     "drawer": 3.5,
+     "window": 1.3,
+     "lock0": 3.6,
+     "lock1": 4.8
+    },
+    "share_matrix": [
+     [
+      5.5,
+      3.4,
+      91.1
+     ],
+     [
+      97.9,
+      0.4,
+      1.6
+     ],
+     [
+      5.1,
+      2.8,
+      92.1
+     ],
+     [
+      16.7,
+      79.8,
+      3.5
+     ],
+     [
+      2.0,
+      1.5,
+      96.6
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 82.0,
+     "drawer": 2.4,
+     "window": 27.9,
+     "lock0": 0.5,
+     "lock1": 10.0
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 203.7,
+     "drawer": 4.8,
+     "window": 72.0,
+     "lock0": 3.6,
+     "lock1": 11.1
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 315.1,
+     "drawer": 8.7,
+     "window": 142.2,
+     "lock0": 11.1,
+     "lock1": 13.7
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 48.9,
+     "hand_off_buttons": 16.7
+    },
+    "windows_hand_on_button_pct": 36.3,
+    "worst_pct": 82.0
+   },
+   "std_per_coordinate": [
+    0.0,
+    0.597,
+    0.467,
+    0.751
+   ],
+   "held_out": {
+    "loss": 1.0754,
+    "picks_true_pct": 65.7,
+    "pose_term_alone_loss": 1.4402,
+    "chance_loss": 2.8332
+   }
+  },
+  "k8_s0h": {
+   "set": "val",
+   "K": 8,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9676,
+    "drawer": 0.9828,
+    "window": 0.9737,
+    "lock0": 0.9886,
+    "lock1": 0.9843
+   },
+   "reading_whole": {
+    "cube": 0.9121,
+    "drawer": 0.8816,
+    "window": 0.8238,
+    "lock0": 0.9781,
+    "lock1": 0.9851
+   },
+   "pairs": {
+    "cube": 37323,
+    "drawer": 5602,
+    "window": 6127,
+    "lock0": 26594,
+    "lock1": 25103
+   },
+   "criterion2": {
+    "n_used": 7,
+    "n_factors": 5,
+    "factors": [
+     [
+      1
+     ],
+     [
+      2,
+      5,
+      6
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      7
+     ]
+    ],
+    "best_factor": {
+     "cube": 0,
+     "drawer": 1,
+     "window": 4,
+     "lock0": 3,
+     "lock1": 2
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 79.1,
+     "drawer": 95.2,
+     "window": 92.9,
+     "lock0": 90.4,
+     "lock1": 57.0
+    },
+    "n_at_80": 3,
+    "windows_only": {
+     "cube": 5561,
+     "drawer": 1461,
+     "window": 2429,
+     "lock0": 1826,
+     "lock1": 1779
+    },
+    "windows_none": 5741,
+    "nothing_differs_over_one_variable_pct": 34.7,
+    "per_variable_change_over_nothing": {
+     "cube": 1.8,
+     "drawer": 3.3,
+     "window": 3.0,
+     "lock0": 4.2,
+     "lock1": 4.3
+    },
+    "share_matrix": [
+     [
+      79.1,
+      2.5,
+      0.7,
+      13.7,
+      4.0
+     ],
+     [
+      1.2,
+      95.2,
+      0.6,
+      1.9,
+      1.2
+     ],
+     [
+      1.7,
+      1.5,
+      2.0,
+      1.9,
+      92.9
+     ],
+     [
+      1.8,
+      5.4,
+      1.1,
+      90.4,
+      1.4
+     ],
+     [
+      7.1,
+      1.3,
+      57.0,
+      12.1,
+      22.4
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 6.6,
+     "drawer": 2.4,
+     "window": 3.2,
+     "lock0": 3.5,
+     "lock1": 0.7
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 9.3,
+     "drawer": 2.9,
+     "window": 6.5,
+     "lock0": 7.4,
+     "lock1": 2.7
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 11.8,
+     "drawer": 3.8,
+     "window": 11.7,
+     "lock0": 16.6,
+     "lock1": 7.5
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 34.7,
+     "hand_off_buttons": 18.1
+    },
+    "windows_hand_on_button_pct": 36.3,
+    "worst_pct": 6.6
+   },
+   "std_per_coordinate": [
+    0.0,
+    0.622,
+    0.065,
+    0.465,
+    0.632,
+    0.221,
+    0.225,
+    0.573
+   ],
+   "held_out": {
+    "loss": 0.9584,
+    "picks_true_pct": 69.7,
+    "pose_term_alone_loss": 1.4402,
+    "chance_loss": 2.8332
+   }
+  },
+  "k12_s0h": {
+   "set": "val",
+   "K": 12,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9736,
+    "drawer": 0.9856,
+    "window": 0.9829,
+    "lock0": 0.991,
+    "lock1": 0.9895
+   },
+   "reading_whole": {
+    "cube": 0.9365,
+    "drawer": 0.8679,
+    "window": 0.8254,
+    "lock0": 0.9743,
+    "lock1": 0.9801
+   },
+   "pairs": {
+    "cube": 37323,
+    "drawer": 5602,
+    "window": 6127,
+    "lock0": 26594,
+    "lock1": 25103
+   },
+   "criterion2": {
+    "n_used": 12,
+    "n_factors": 6,
+    "factors": [
+     [
+      0,
+      1,
+      5,
+      6,
+      9,
+      11
+     ],
+     [
+      2,
+      8
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      7
+     ],
+     [
+      10
+     ]
+    ],
+    "best_factor": {
+     "cube": 5,
+     "drawer": 0,
+     "window": 2,
+     "lock0": 1,
+     "lock1": 3
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 47.1,
+     "drawer": 95.3,
+     "window": 89.3,
+     "lock0": 89.7,
+     "lock1": 81.3
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5561,
+     "drawer": 1461,
+     "window": 2429,
+     "lock0": 1826,
+     "lock1": 1779
+    },
+    "windows_none": 5741,
+    "nothing_differs_over_one_variable_pct": 36.9,
+    "per_variable_change_over_nothing": {
+     "cube": 1.8,
+     "drawer": 3.1,
+     "window": 3.0,
+     "lock0": 3.6,
+     "lock1": 3.9
+    },
+    "share_matrix": [
+     [
+      1.5,
+      0.4,
+      2.0,
+      3.0,
+      46.0,
+      47.1
+     ],
+     [
+      95.3,
+      0.7,
+      0.9,
+      0.6,
+      1.0,
+      1.4
+     ],
+     [
+      1.4,
+      1.0,
+      89.3,
+      1.3,
+      6.2,
+      0.8
+     ],
+     [
+      4.7,
+      89.7,
+      1.2,
+      1.7,
+      1.2,
+      1.5
+     ],
+     [
+      1.4,
+      1.6,
+      10.8,
+      81.3,
+      3.4,
+      1.5
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 6.0,
+     "drawer": 2.1,
+     "window": 2.1,
+     "lock0": 0.2,
+     "lock1": 1.0
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 6.5,
+     "drawer": 2.7,
+     "window": 3.6,
+     "lock0": 3.2,
+     "lock1": 4.1
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 7.0,
+     "drawer": 3.5,
+     "window": 5.9,
+     "lock0": 10.3,
+     "lock1": 11.3
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 36.9,
+     "hand_off_buttons": 18.0
+    },
+    "windows_hand_on_button_pct": 36.3,
+    "worst_pct": 6.0
+   },
+   "std_per_coordinate": [
+    0.045,
+    0.052,
+    0.117,
+    0.511,
+    0.554,
+    0.082,
+    0.101,
+    0.364,
+    0.441,
+    0.109,
+    0.433,
+    0.133
+   ],
+   "held_out": {
+    "loss": 0.9343,
+    "picks_true_pct": 70.7,
+    "pose_term_alone_loss": 1.4402,
+    "chance_loss": 2.8332
+   }
+  },
+  "k16_s0h": {
+   "set": "val",
+   "K": 16,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9285,
+    "drawer": 0.9793,
+    "window": 0.9897,
+    "lock0": 0.9889,
+    "lock1": 0.9914
+   },
+   "reading_whole": {
+    "cube": 0.9215,
+    "drawer": 0.841,
+    "window": 0.8204,
+    "lock0": 0.9694,
+    "lock1": 0.975
+   },
+   "pairs": {
+    "cube": 37323,
+    "drawer": 5602,
+    "window": 6127,
+    "lock0": 26594,
+    "lock1": 25103
+   },
+   "criterion2": {
+    "n_used": 14,
+    "n_factors": 7,
+    "factors": [
+     [
+      0,
+      3,
+      14
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      6,
+      9,
+      11,
+      13,
+      15
+     ],
+     [
+      7
+     ],
+     [
+      8
+     ],
+     [
+      10
+     ],
+     [
+      12
+     ]
+    ],
+    "best_factor": {
+     "cube": 4,
+     "drawer": 2,
+     "window": 0,
+     "lock0": 6,
+     "lock1": 5
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 48.2,
+     "drawer": 95.6,
+     "window": 92.1,
+     "lock0": 88.8,
+     "lock1": 78.3
+    },
+    "n_at_80": 3,
+    "windows_only": {
+     "cube": 5561,
+     "drawer": 1461,
+     "window": 2429,
+     "lock0": 1826,
+     "lock1": 1779
+    },
+    "windows_none": 5741,
+    "nothing_differs_over_one_variable_pct": 38.7,
+    "per_variable_change_over_nothing": {
+     "cube": 1.7,
+     "drawer": 2.8,
+     "window": 3.0,
+     "lock0": 3.5,
+     "lock1": 3.8
+    },
+    "share_matrix": [
+     [
+      2.1,
+      41.7,
+      1.7,
+      5.0,
+      48.2,
+      1.1,
+      0.2
+     ],
+     [
+      0.8,
+      1.0,
+      95.6,
+      0.1,
+      1.1,
+      0.5,
+      0.7
+     ],
+     [
+      92.1,
+      0.7,
+      1.6,
+      0.5,
+      3.0,
+      1.2,
+      0.9
+     ],
+     [
+      1.1,
+      1.9,
+      5.3,
+      0.2,
+      1.5,
+      1.2,
+      88.8
+     ],
+     [
+      4.1,
+      1.3,
+      1.3,
+      1.0,
+      12.1,
+      78.3,
+      1.9
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 13.2,
+     "drawer": 2.3,
+     "window": 2.1,
+     "lock0": 0.1,
+     "lock1": 0.5
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 19.6,
+     "drawer": 2.9,
+     "window": 2.5,
+     "lock0": 3.3,
+     "lock1": 3.4
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 25.5,
+     "drawer": 3.9,
+     "window": 3.2,
+     "lock0": 11.0,
+     "lock1": 10.5
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 38.7,
+     "hand_off_buttons": 19.0
+    },
+    "windows_hand_on_button_pct": 36.3,
+    "worst_pct": 13.2
+   },
+   "std_per_coordinate": [
+    0.236,
+    0.633,
+    0.058,
+    0.05,
+    0.015,
+    0.001,
+    0.112,
+    0.066,
+    0.41,
+    0.095,
+    0.563,
+    0.132,
+    0.599,
+    0.046,
+    0.251,
+    0.082
+   ],
+   "held_out": {
+    "loss": 0.9258,
+    "picks_true_pct": 70.7,
+    "pose_term_alone_loss": 1.4402,
+    "chance_loss": 2.8332
+   }
+  },
+  "k8_s0": {
+   "set": "val",
+   "K": 8,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9825,
+    "drawer": 0.9805,
+    "window": 0.9695,
+    "lock0": 0.9898,
+    "lock1": 0.9826
+   },
+   "reading_whole": {
+    "cube": 0.9102,
+    "drawer": 0.8655,
+    "window": 0.8266,
+    "lock0": 0.9708,
+    "lock1": 0.9682
+   },
+   "pairs": {
+    "cube": 37323,
+    "drawer": 5602,
+    "window": 6127,
+    "lock0": 26594,
+    "lock1": 25103
+   },
+   "criterion2": {
+    "n_used": 7,
+    "n_factors": 5,
+    "factors": [
+     [
+      1
+     ],
+     [
+      2,
+      5,
+      6
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      7
+     ]
+    ],
+    "best_factor": {
+     "cube": 4,
+     "drawer": 1,
+     "window": 2,
+     "lock0": 3,
+     "lock1": 0
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 73.4,
+     "drawer": 95.9,
+     "window": 94.4,
+     "lock0": 92.1,
+     "lock1": 83.4
+    },
+    "n_at_80": 4,
+    "windows_only": {
+     "cube": 5561,
+     "drawer": 1461,
+     "window": 2429,
+     "lock0": 1826,
+     "lock1": 1779
+    },
+    "windows_none": 5741,
+    "nothing_differs_over_one_variable_pct": 36.6,
+    "per_variable_change_over_nothing": {
+     "cube": 1.7,
+     "drawer": 3.2,
+     "window": 3.2,
+     "lock0": 3.8,
+     "lock1": 3.9
+    },
+    "share_matrix": [
+     [
+      19.9,
+      2.1,
+      2.1,
+      2.6,
+      73.4
+     ],
+     [
+      1.0,
+      95.9,
+      1.1,
+      0.8,
+      1.2
+     ],
+     [
+      1.8,
+      1.6,
+      94.4,
+      1.1,
+      1.1
+     ],
+     [
+      2.4,
+      2.5,
+      1.4,
+      92.1,
+      1.6
+     ],
+     [
+      83.4,
+      1.3,
+      11.4,
+      1.9,
+      1.9
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 5.8,
+     "drawer": 2.3,
+     "window": 2.1,
+     "lock0": 0.7,
+     "lock1": 5.5
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 5.9,
+     "drawer": 2.4,
+     "window": 3.6,
+     "lock0": 3.7,
+     "lock1": 7.5
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 6.0,
+     "drawer": 2.5,
+     "window": 5.9,
+     "lock0": 10.7,
+     "lock1": 12.1
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 36.6,
+     "hand_off_buttons": 17.5
+    },
+    "windows_hand_on_button_pct": 36.3,
+    "worst_pct": 5.8
+   },
+   "std_per_coordinate": [
+    0.0,
+    0.579,
+    0.12,
+    0.583,
+    0.598,
+    0.199,
+    0.207,
+    0.627
+   ],
+   "held_out": {
+    "loss": 0.9439,
+    "picks_true_pct": 70.2,
+    "pose_term_alone_loss": 1.4402,
+    "chance_loss": 2.8332
+   }
+  },
+  "bound8": {
+   "set": "val",
+   "K": 8,
+   "seed": 0,
+   "steps": 4000,
+   "reading_own": {
+    "cube": 0.9824,
+    "drawer": 0.9862,
+    "window": 0.9935,
+    "lock0": 1.0,
+    "lock1": 1.0
+   },
+   "reading_whole": {
+    "cube": 0.9983,
+    "drawer": 0.9958,
+    "window": 0.9866,
+    "lock0": 1.0,
+    "lock1": 1.0
+   },
+   "pairs": {
+    "cube": 37323,
+    "drawer": 5602,
+    "window": 6127,
+    "lock0": 26594,
+    "lock1": 25103
+   },
+   "criterion2": {
+    "n_used": 8,
+    "n_factors": 7,
+    "factors": [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    "best_factor": {
+     "cube": 0,
+     "drawer": 6,
+     "window": 3,
+     "lock0": 4,
+     "lock1": 2
+    },
+    "distinct": true,
+    "share_in_best": {
+     "cube": 50.9,
+     "drawer": 60.7,
+     "window": 51.1,
+     "lock0": 88.3,
+     "lock1": 83.6
+    },
+    "n_at_80": 2,
+    "windows_only": {
+     "cube": 5561,
+     "drawer": 1461,
+     "window": 2429,
+     "lock0": 1826,
+     "lock1": 1779
+    },
+    "windows_none": 5741,
+    "nothing_differs_over_one_variable_pct": 8.5,
+    "per_variable_change_over_nothing": {
+     "cube": 11.2,
+     "drawer": 11.7,
+     "window": 11.7,
+     "lock0": 12.8,
+     "lock1": 13.2
+    },
+    "share_matrix": [
+     [
+      50.9,
+      6.9,
+      0.4,
+      7.0,
+      0.0,
+      29.6,
+      5.2
+     ],
+     [
+      1.2,
+      37.0,
+      0.0,
+      0.5,
+      0.0,
+      0.7,
+      60.7
+     ],
+     [
+      1.9,
+      37.3,
+      3.9,
+      51.1,
+      0.0,
+      1.0,
+      4.8
+     ],
+     [
+      1.7,
+      5.6,
+      0.0,
+      0.6,
+      88.3,
+      0.7,
+      3.0
+     ],
+     [
+      2.9,
+      4.9,
+      83.6,
+      6.4,
+      0.0,
+      1.0,
+      1.1
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 4.2,
+     "drawer": 6.5,
+     "window": 7.9,
+     "lock0": 0.0,
+     "lock1": 0.9
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 4.6,
+     "drawer": 5.3,
+     "window": 6.8,
+     "lock0": 0.0,
+     "lock1": 0.7
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 4.9,
+     "drawer": 3.4,
+     "window": 5.0,
+     "lock0": 0.0,
+     "lock1": 0.4
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 8.5,
+     "hand_off_buttons": 9.4
+    },
+    "windows_hand_on_button_pct": 36.3,
+    "worst_pct": 7.9
+   },
+   "std_per_coordinate": [
+    0.826,
+    0.726,
+    0.654,
+    0.974,
+    0.735,
+    0.992,
+    0.688,
+    0.765
+   ]
+  },
+  "random8": {
+   "set": "val",
+   "K": 8,
+   "seed": null,
+   "steps": 0,
+   "reading_own": {
+    "cube": 0.5493,
+    "drawer": 0.5224,
+    "window": 0.6327,
+    "lock0": 0.5734,
+    "lock1": 0.6051
+   },
+   "reading_whole": {
+    "cube": 0.5591,
+    "drawer": 0.4991,
+    "window": 0.624,
+    "lock0": 0.5698,
+    "lock1": 0.5896
+   },
+   "pairs": {
+    "cube": 37323,
+    "drawer": 5602,
+    "window": 6127,
+    "lock0": 26594,
+    "lock1": 25103
+   },
+   "criterion2": {
+    "n_used": 8,
+    "n_factors": 8,
+    "factors": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    "best_factor": {
+     "cube": 6,
+     "drawer": 7,
+     "window": 5,
+     "lock0": 7,
+     "lock1": 5
+    },
+    "distinct": false,
+    "share_in_best": {
+     "cube": 17.6,
+     "drawer": 17.1,
+     "window": 16.2,
+     "lock0": 18.9,
+     "lock1": 19.3
+    },
+    "n_at_80": 0,
+    "windows_only": {
+     "cube": 5561,
+     "drawer": 1461,
+     "window": 2429,
+     "lock0": 1826,
+     "lock1": 1779
+    },
+    "windows_none": 5741,
+    "nothing_differs_over_one_variable_pct": 105.5,
+    "per_variable_change_over_nothing": {
+     "cube": 0.8,
+     "drawer": 0.9,
+     "window": 1.1,
+     "lock0": 1.1,
+     "lock1": 1.1
+    },
+    "share_matrix": [
+     [
+      16.0,
+      11.5,
+      9.4,
+      11.8,
+      8.7,
+      10.6,
+      17.6,
+      14.3
+     ],
+     [
+      9.9,
+      11.1,
+      15.1,
+      9.4,
+      9.3,
+      14.9,
+      13.2,
+      17.1
+     ],
+     [
+      10.2,
+      14.9,
+      8.8,
+      6.5,
+      13.5,
+      16.2,
+      15.0,
+      15.0
+     ],
+     [
+      14.7,
+      10.8,
+      12.8,
+      6.8,
+      8.2,
+      13.8,
+      13.9,
+      18.9
+     ],
+     [
+      12.4,
+      8.1,
+      11.0,
+      9.8,
+      10.6,
+      19.3,
+      13.7,
+      15.2
+     ]
+    ]
+   },
+   "criterion2c": {
+    "per_variable_pct": {
+     "cube": 93.7,
+     "drawer": 81.2,
+     "window": 56.3,
+     "lock0": 58.3,
+     "lock1": 49.5
+    },
+    "per_variable_all_windows_pct": {
+     "cube": 105.4,
+     "drawer": 101.7,
+     "window": 77.4,
+     "lock0": 67.1,
+     "lock1": 61.8
+    },
+    "per_variable_hand_on_button_pct": {
+     "cube": 116.1,
+     "drawer": 134.4,
+     "window": 111.1,
+     "lock0": 87.8,
+     "lock1": 90.7
+    },
+    "whole_state_nothing_differs_pct": {
+     "all_windows": 105.5,
+     "hand_off_buttons": 92.1
+    },
+    "windows_hand_on_button_pct": 36.3,
+    "worst_pct": 93.7
+   },
+   "std_per_coordinate": [
+    0.061,
+    0.068,
+    0.062,
+    0.048,
+    0.061,
+    0.078,
+    0.077,
+    0.094
+   ]
+  }
+ },
+ "locks": {
+  "lock0": {
+   "coordinate": 4,
+   "mean_by_state": [
+    0.228,
+    -0.948
+   ],
+   "std_within_state": [
+    0.152,
+    0.096
+   ],
+   "hand_to_button_at_flip_median": 0.059,
+   "hand_to_button_overall_median": 2.518,
+   "abs_residual_by_hand_distance": {
+    "0.01-0.63": 0.478,
+    "0.63-1.02": 0.078,
+    "1.02-1.83": 0.046,
+    "1.83-2.52": 0.04,
+    "2.52-4.39": 0.041
+   },
+   "share_of_residual_in_nearest_10pct_of_frames": 42.6,
+   "mean_abs_change_state_constant_by_gap": {
+    "1": 0.0227,
+    "2": 0.0326,
+    "5": 0.0339,
+    "10": 0.0384,
+    "20": 0.0412,
+    "40": 0.0426
+   },
+   "change_5_steps_state_same": {
+    "within_3_steps_of_a_flip": 0.2325,
+    "share_of_windows_pct": 11.9,
+    "elsewhere": 0.0071
+   },
+   "residual_r2_from": {
+    "pose": -0.019,
+    "rest of the scene": -0.022,
+    "pose and rest of the scene": 0.021,
+    "episode step": -0.007
+   },
+   "std_of_episode_means_by_state": [
+    0.074,
+    0.036
+   ]
+  },
+  "lock1": {
+   "coordinate": 1,
+   "mean_by_state": [
+    -0.388,
+    0.734
+   ],
+   "std_within_state": [
+    0.206,
+    0.183
+   ],
+   "hand_to_button_at_flip_median": 0.046,
+   "hand_to_button_overall_median": 2.391,
+   "abs_residual_by_hand_distance": {
+    "0.01-0.65": 0.458,
+    "0.65-1.04": 0.148,
+    "1.04-1.79": 0.145,
+    "1.79-2.39": 0.125,
+    "2.39-4.51": 0.107
+   },
+   "share_of_residual_in_nearest_10pct_of_frames": 22.1,
+   "mean_abs_change_state_constant_by_gap": {
+    "1": 0.0296,
+    "2": 0.0447,
+    "5": 0.0638,
+    "10": 0.094,
+    "20": 0.1239,
+    "40": 0.1507
+   },
+   "change_5_steps_state_same": {
+    "within_3_steps_of_a_flip": 0.228,
+    "share_of_windows_pct": 12.1,
+    "elsewhere": 0.0413
+   },
+   "residual_r2_from": {
+    "pose": 0.036,
+    "rest of the scene": 0.016,
+    "pose and rest of the scene": 0.166,
+    "episode step": -0.005
+   },
+   "std_of_episode_means_by_state": [
+    0.095,
+    0.079
+   ]
+  }
+ },
+ "memory": {
+  "fit_peak_gpu_gb": 6.73,
+  "scoring_peak_gpu_gb": 0.85
+ }
+}

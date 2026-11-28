@@ -1,8 +1,8 @@
 # Status
 
 Overwritten each session. At most 40 lines.
-- **Date:** 2026-11-28, `master`. Uncommitted: cards 168–173 done, og5 in ARCHITECTURE.md, `tools/card168/`–`tools/card173/`,
-  twenty-one graph nodes, three LITERATURE rows. `runs/172/` holds 14.5 GB of per-step features, kept for the next card (card 173 reused them).
+- **Date:** 2026-11-28, `master`. Uncommitted: cards 168–174 done, og5 in ARCHITECTURE.md, `tools/card168/`–`tools/card174/`,
+  twenty-three graph nodes, three LITERATURE rows. `runs/172/` holds 14.5 GB of per-step features, kept for the next card (card 173 reused them).
   **Rung:** 6 tested on OGBench by card 169 (pass). **Architecture:** og5 (`90.5%` five-task mean; og4 `53.6%`), adopted by the user 2026-11-27.
   **World:** OGBench `visual-scene`. Portability tests paused. MiniGrid series (cards 161–167) complete.
 - **Direction:** learned methods below, our conditions on top ([card 113](experiments/113-post-mortem-learned-stack/card.md));
@@ -21,19 +21,20 @@ Overwritten each session. At most 40 lines.
   numbers, trained only to pick the near moment of an episode, the arm's pose given by a frozen term. No decoder, touch or label.
   It read every variable (AUROC `0.83–0.95`; baselines `0.56–0.67`) but a variable's change was `8–19%` on its best coordinate.
 - **Card [173](experiments/173-tight-box-sparse-change-factors/card.md): fail at the gate, revise.** The user's design: temperature
-  fixed, a cost on change between consecutive steps, a small state, factors read from 5-step changes. Three 5-minute fits.
-  - **Gate failed twice.** The state's change where nothing in the scene differs is `36.6%` of its change where one variable
-    does (bar `20%`). The bound by truth-chosen pairs put `1–2` of 5 variables at 80% on their own factor (bar 4).
-  - **But the one label-free fit (8 coordinates, one seed) found five factors, one per variable:** `73, 96, 94, 92, 83%` of
-    each variable's change on its own factor. Read through its own factor: AUROC `0.970–0.990` on validation (card 168's
-    slots `0.976–1.0`), `0.937–0.987` on frames before a touch (slots `0.862–0.994`). The bound was not a bound for factoring.
-  - Open: two thirds of the stray movement is in the two lock factors, cause not found; the cube has one number (one table
-    axis read, not the other); no second seed; the ladder that chooses the state's size was not run.
+  fixed, a cost on change between consecutive steps, a small state, factors read from 5-step changes. One label-free fit gave
+  five factors, one per variable (`73–96%` of each variable's change in its factor). Its stray-movement measure was badly formed.
+- **Card [174](experiments/174-do-the-five-factors-hold/card.md): fail, revise.** Card 173's fit over five sizes and three seeds, each
+  variable read through its own factor, judged on 100 fresh episodes. Fits in half precision, `6.7 GB` of GPU at peak.
+  - The held-out loss picked **6 coordinates** (within run-to-run noise). Seeds 0 and 1 meet every bar: five factors, read at
+    AUROC `0.973–0.991` (card 168's slots `0.984–1.0`), `79–96%` of change in own factor, stray movement `2–8%`.
+  - **Seed 2 lost the cube** (four factors; cube read at `0.872`). The cube is the weak variable in every fit. Mean of three
+    seeds: cube `0.944` (bar `0.95`); the other four pass. Criteria 2(a), 2(b) pass; 1, 2(c), 3 fail.
+  - Hint, three seeds only: the held-out loss ranks the seeds in the order of their factoring (`0.931, 0.954, 0.989`).
+  - The lock factors move `10–14%` of a flip while the hand is on a button. og5 and its rules stay.
 - **Next decision (the user's):**
-  1. Factoring: a card that runs card 173's ladder and three seeds, with each variable read through its own factor, the bound
-     dropped or rebuilt, and the lock factors' movement located first. Say if you want it drafted.
+  1. Factoring: a card on the cube and on telling a bad fit from a good one (held-out loss over more seeds; longer fits).
   2. Planner: a card to locate card 171's needless touches.
   3. The CHARTER ladder still lists rungs 3–6 as "sketch"; say which to mark as passed, and on which cards.
 - **Setup.** Project `.venv` runs MiniGrid; `graph.py`, `index.py` and OGBench use
-  `~/.cache/pypoetry/virtualenvs/worldmodel-iVGTe5yi-py3.13/bin/python`. OGBench runs go through `bash tools/card173/run.sh <seconds> python ...`
-  (capped; the script is not executable). EGL via `runs/143/glvnd.txt`.
+  `~/.cache/pypoetry/virtualenvs/worldmodel-iVGTe5yi-py3.13/bin/python`. OGBench runs go through `bash tools/card174/run.sh <seconds> python ...`
+  (capped: 8 GB of RAM, half the GPU; not executable). EGL via `runs/143/glvnd.txt`.
