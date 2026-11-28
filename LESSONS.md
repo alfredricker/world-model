@@ -21,7 +21,11 @@ record" is `old:phwm/docs/05-experimental-record.md`.
   Random answers scored F1 0.33 on dense events matched in time alone
   (0.05 in time and place, card 115), and "found" 56% of changes with one
   patch of slack (card 120). A bar on one top answer fails an event with
-  two changed places (card 122).
+  two changed places (card 122). A chain's bound is every step from the
+  truth, not one step (card 171: 65.6%, not 83.8%). Two agents share
+  problems only if the generator has its own random stream (170, 171).
+  Pairs chosen by truth bound reading, not factoring: they hide the
+  one-variable changes that sort variables onto coordinates (172, 173).
 - **Run a baseline given every input except the cue under test, and test
   the cue counterfactually.** Actions alone were right on 95–98.5% of
   locked pulls; only changing the lock with the actions kept showed the
@@ -82,7 +86,11 @@ record" is `old:phwm/docs/05-experimental-record.md`.
   seed, not an object.** Lasting change found condition changes at F1
   0.63 on DINOv2's block 2 and 0.30 on block 12. Slots trained only to
   reconstruct patches keep the background and skip small objects: the loss weights by
-  area, not consequence. No decoder as the training signal (the user). *Evidence:* cards 116.1, 119, 145.
+  area, not consequence. No decoder as the training signal (the user). A loss over
+  moments (pick the near one, pose given) read the cube at 0.95 in 5 minutes where
+  redrawing gave 0.49 in 60. A learned temperature let it shrink and not factor (8-19% of
+  a variable's change on its coordinate); fixed, with 8 coordinates, one fit gave a factor
+  per variable (73-96%). *Evidence:* cards 116.1, 119, 145, 172, 173.
 - **A cost on how many tokens change merges the agent with what it
   moves** (65% of the cube in the arm's token). Change one loss term per
   arm. *Evidence:* card 124.
@@ -144,8 +152,10 @@ record" is `old:phwm/docs/05-experimental-record.md`.
 - **Train each place's source where the content changed** (32% → 92%,
   card 102.4).
 - **Query a network only in the form it was trained on, and check that
-  copies agree;** copies still share blind spots. *Evidence:* cards
-  096.1, 096.2, 106.
+  copies agree;** copies still share blind spots. A transition model fed
+  its own predicted vectors gave chains that held in imagination and not
+  in the scene (43%); recalling remembered vectors for its predicted
+  values, 67%. *Evidence:* cards 096.1, 096.2, 106, 170.
 - **Bound a learned bias.** An unbounded position network failed to fit
   in one seed of two; bounded, 3 of 3. *Evidence:* cards 105.1, 105.6.
 - **Latent self-prediction erases what actions change; test action

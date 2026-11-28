@@ -1,0 +1,471 @@
+{
+  "card": "168",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "mean_pairs": {
+    "cube table": 99.63,
+    "cube open drawer": 91.9,
+    "cube hidden": 92.37,
+    "drawer 1-4": 85.3,
+    "drawer 4-10": 95.93,
+    "drawer over10": 97.23,
+    "window 1-4": 81.47,
+    "window 4-10": 94.5,
+    "window over10": 97.5,
+    "lock0": 91.9,
+    "lock1": 93.13
+  },
+  "mean_non14_bal": 94.9,
+  "mean_cube_median_cm": {
+    "table": 0.36,
+    "open": 1.04,
+    "hidden": 11.82
+  },
+  "mean_in_view_bal": 95.93,
+  "mean_consequences": {
+    "pull_bal": 91.53,
+    "drawer_pull_bal": 88.0,
+    "window_pull_bal": 96.5,
+    "counterfactual_lock_flip_pct": 97.05,
+    "counterfactual_imagined_press_flip_pct": 80.24,
+    "drawer_hides_cube_bal": 87.57,
+    "drawer_touch_hides_cube_bal": 82.2
+  },
+  "og4_baseline": {
+    "pairs": {
+      "cube table": 99.4,
+      "cube open drawer": 70.6,
+      "cube hidden": 61.0,
+      "drawer 1-4": 69.8,
+      "drawer 4-10": 81.8,
+      "drawer over10": 93.1,
+      "window 1-4": 59.6,
+      "window 4-10": 76.6,
+      "window over10": 96.3,
+      "lock0": 89.0,
+      "lock1": 92.0
+    },
+    "mean_non14_bal": 84.42,
+    "cube_median_cm": {
+      "table": 0.6,
+      "open": 27.69,
+      "hidden": 45.56
+    }
+  },
+  "probe_upper_bound": {
+    "pairs": {
+      "cube table": 99.0,
+      "cube open drawer": 99.0,
+      "cube hidden": 82.4,
+      "drawer 1-4": 87.4,
+      "drawer 4-10": 98.7,
+      "drawer over10": 98.9,
+      "window 1-4": 82.3,
+      "window 4-10": 99.2,
+      "window over10": 99.3,
+      "lock0": 96.7,
+      "lock1": 92.3
+    },
+    "cube_median_cm": {
+      "table": 0.18,
+      "open": 0.39
+    }
+  },
+  "action_only_baseline": {
+    "real_pull_bal": 82.7,
+    "counterfactual_pull_bal": 17.3,
+    "counterfactual_flip_pct": 0.0
+  },
+  "per_seed": {
+    "0": {
+      "fit_sec": 88.3,
+      "var_map": {
+        "drawer": 3,
+        "window": 2,
+        "lock0": 0,
+        "lock1": 4
+      },
+      "representation": {
+        "pairs": {
+          "cube table": {
+            "bal": 99.3,
+            "n": [
+              1153,
+              6494
+            ]
+          },
+          "cube open drawer": {
+            "bal": 93.2,
+            "n": [
+              350,
+              2417
+            ]
+          },
+          "cube hidden": {
+            "bal": 93.5,
+            "n": [
+              152,
+              1242
+            ]
+          },
+          "drawer 1-4": {
+            "bal": 85.4,
+            "n": [
+              4267,
+              1801
+            ]
+          },
+          "drawer 4-10": {
+            "bal": 96.2,
+            "n": [
+              4267,
+              2227
+            ]
+          },
+          "drawer over10": {
+            "bal": 97.3,
+            "n": [
+              4267,
+              4045
+            ]
+          },
+          "window 1-4": {
+            "bal": 81.6,
+            "n": [
+              3962,
+              1712
+            ]
+          },
+          "window 4-10": {
+            "bal": 94.6,
+            "n": [
+              3962,
+              2120
+            ]
+          },
+          "window over10": {
+            "bal": 97.6,
+            "n": [
+              3962,
+              4546
+            ]
+          },
+          "lock0": {
+            "bal": 91.9,
+            "n": [
+              6737,
+              5603
+            ]
+          },
+          "lock1": {
+            "bal": 93.1,
+            "n": [
+              6752,
+              5588
+            ]
+          }
+        },
+        "mean_non14_bal": 95.19,
+        "cube_value": {
+          "table": {
+            "n": 4793,
+            "median_cm": 0.36,
+            "within_2cm": 0.993,
+            "read_in_view": 0.999
+          },
+          "open": {
+            "n": 985,
+            "median_cm": 0.97,
+            "within_2cm": 0.738,
+            "read_in_view": 0.874
+          },
+          "hidden": {
+            "n": 392,
+            "median_cm": 11.2,
+            "within_2cm": 0.003,
+            "read_in_view": 0.038
+          }
+        },
+        "in_view_bal": 97.0
+      },
+      "consequences": {
+        "pull_bal": 91.5,
+        "drawer_pull_bal": 87.9,
+        "window_pull_bal": 96.5,
+        "n_pulls": [
+          916,
+          762
+        ],
+        "counterfactual_lock_flip_pct": 94.68,
+        "counterfactual_imagined_press_flip_pct": 80.94,
+        "drawer_hides_cube_bal": 88.0,
+        "drawer_touch_hides_cube_bal": 83.5,
+        "n_open_transitions": [
+          101,
+          814
+        ]
+      }
+    },
+    "1": {
+      "fit_sec": 88.3,
+      "var_map": {
+        "drawer": 3,
+        "window": 2,
+        "lock0": 0,
+        "lock1": 4
+      },
+      "representation": {
+        "pairs": {
+          "cube table": {
+            "bal": 99.7,
+            "n": [
+              1153,
+              6494
+            ]
+          },
+          "cube open drawer": {
+            "bal": 92.5,
+            "n": [
+              350,
+              2417
+            ]
+          },
+          "cube hidden": {
+            "bal": 89.4,
+            "n": [
+              152,
+              1242
+            ]
+          },
+          "drawer 1-4": {
+            "bal": 85.0,
+            "n": [
+              4267,
+              1801
+            ]
+          },
+          "drawer 4-10": {
+            "bal": 95.7,
+            "n": [
+              4267,
+              2227
+            ]
+          },
+          "drawer over10": {
+            "bal": 97.1,
+            "n": [
+              4267,
+              4045
+            ]
+          },
+          "window 1-4": {
+            "bal": 81.5,
+            "n": [
+              3962,
+              1712
+            ]
+          },
+          "window 4-10": {
+            "bal": 94.6,
+            "n": [
+              3962,
+              2120
+            ]
+          },
+          "window over10": {
+            "bal": 97.5,
+            "n": [
+              3962,
+              4546
+            ]
+          },
+          "lock0": {
+            "bal": 91.9,
+            "n": [
+              6737,
+              5603
+            ]
+          },
+          "lock1": {
+            "bal": 93.2,
+            "n": [
+              6752,
+              5588
+            ]
+          }
+        },
+        "mean_non14_bal": 94.62,
+        "cube_value": {
+          "table": {
+            "n": 4793,
+            "median_cm": 0.36,
+            "within_2cm": 0.994,
+            "read_in_view": 0.998
+          },
+          "open": {
+            "n": 985,
+            "median_cm": 1.06,
+            "within_2cm": 0.671,
+            "read_in_view": 0.943
+          },
+          "hidden": {
+            "n": 392,
+            "median_cm": 11.8,
+            "within_2cm": 0.0,
+            "read_in_view": 0.125
+          }
+        },
+        "in_view_bal": 93.2
+      },
+      "consequences": {
+        "pull_bal": 91.5,
+        "drawer_pull_bal": 88.0,
+        "window_pull_bal": 96.4,
+        "n_pulls": [
+          916,
+          762
+        ],
+        "counterfactual_lock_flip_pct": 97.29,
+        "counterfactual_imagined_press_flip_pct": 82.65,
+        "drawer_hides_cube_bal": 86.4,
+        "drawer_touch_hides_cube_bal": 81.0,
+        "n_open_transitions": [
+          101,
+          814
+        ]
+      }
+    },
+    "2": {
+      "fit_sec": 88.5,
+      "var_map": {
+        "drawer": 3,
+        "window": 2,
+        "lock0": 0,
+        "lock1": 4
+      },
+      "representation": {
+        "pairs": {
+          "cube table": {
+            "bal": 99.9,
+            "n": [
+              1153,
+              6494
+            ]
+          },
+          "cube open drawer": {
+            "bal": 90.0,
+            "n": [
+              350,
+              2417
+            ]
+          },
+          "cube hidden": {
+            "bal": 94.2,
+            "n": [
+              152,
+              1242
+            ]
+          },
+          "drawer 1-4": {
+            "bal": 85.5,
+            "n": [
+              4267,
+              1801
+            ]
+          },
+          "drawer 4-10": {
+            "bal": 95.9,
+            "n": [
+              4267,
+              2227
+            ]
+          },
+          "drawer over10": {
+            "bal": 97.3,
+            "n": [
+              4267,
+              4045
+            ]
+          },
+          "window 1-4": {
+            "bal": 81.3,
+            "n": [
+              3962,
+              1712
+            ]
+          },
+          "window 4-10": {
+            "bal": 94.3,
+            "n": [
+              3962,
+              2120
+            ]
+          },
+          "window over10": {
+            "bal": 97.4,
+            "n": [
+              3962,
+              4546
+            ]
+          },
+          "lock0": {
+            "bal": 91.9,
+            "n": [
+              6737,
+              5603
+            ]
+          },
+          "lock1": {
+            "bal": 93.1,
+            "n": [
+              6752,
+              5588
+            ]
+          }
+        },
+        "mean_non14_bal": 94.89,
+        "cube_value": {
+          "table": {
+            "n": 4793,
+            "median_cm": 0.36,
+            "within_2cm": 0.997,
+            "read_in_view": 1.0
+          },
+          "open": {
+            "n": 985,
+            "median_cm": 1.09,
+            "within_2cm": 0.64,
+            "read_in_view": 0.929
+          },
+          "hidden": {
+            "n": 392,
+            "median_cm": 12.46,
+            "within_2cm": 0.0,
+            "read_in_view": 0.036
+          }
+        },
+        "in_view_bal": 97.6
+      },
+      "consequences": {
+        "pull_bal": 91.6,
+        "drawer_pull_bal": 88.1,
+        "window_pull_bal": 96.6,
+        "n_pulls": [
+          916,
+          762
+        ],
+        "counterfactual_lock_flip_pct": 99.17,
+        "counterfactual_imagined_press_flip_pct": 77.13,
+        "drawer_hides_cube_bal": 88.3,
+        "drawer_touch_hides_cube_bal": 82.1,
+        "n_open_transitions": [
+          101,
+          814
+        ]
+      }
+    }
+  }
+}

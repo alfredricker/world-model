@@ -1,0 +1,548 @@
+{
+ "card": "171",
+ "verdict": "fail at gate (both parts); criteria, test episodes and benchmark not run",
+ "gate_a": {
+  "m1_one_touch": {
+   "press_flip": {
+    "model": 98.2,
+    "card170": 98.6,
+    "ok": true
+   },
+   "table_move": {
+    "model": 92.4,
+    "card170": 94.2,
+    "ok": true
+   },
+   "unchanged_kept": {
+    "model": 99.2,
+    "card170": 99.3,
+    "ok": true
+   }
+  },
+  "m2_pull_end": {
+   "model": 83.5,
+   "remembered": 95.6,
+   "width_ratio": 0.87,
+   "ok": false
+  },
+  "m3_three_touches": {
+   "model": 69.9,
+   "baseline": 62.6,
+   "upper_bound": 83.8,
+   "gap": 21.2,
+   "bar": 73.2,
+   "judged": true,
+   "ok": false
+  },
+  "m4_hidden": {
+   "model": 84.0,
+   "baseline": 68.1,
+   "n": 19,
+   "hidden": 6,
+   "judged": false,
+   "ok": true
+  }
+ },
+ "gate_a_arms": {
+  "base": {
+   "fit_sec": 92.7,
+   "one_touch": {
+    "press_flip": 98.6,
+    "pull_moves": 69.0,
+    "pull_moves_per_slide": {
+     "1": 71.1,
+     "3": 66.5
+    },
+    "pull_across_middle": 70.3,
+    "pull_across_middle_per_slide": {
+     "1": 71.0,
+     "3": 69.4
+    },
+    "table_move": 94.2,
+    "put_in": 66.7,
+    "hidden_after_drawer_touch_bal": 80.9,
+    "unchanged_kept": 99.3,
+    "whole_state": 80.6,
+    "whole_state_when_something_changed": 80.3
+   },
+   "pull_end_in_range": {
+    "n": 467,
+    "model": 69.0,
+    "remembered_range": 95.9,
+    "per_slide": {
+     "1": 71.1,
+     "3": 66.5
+    },
+    "mean_width_model": 0.0,
+    "mean_width_remembered": 0.339,
+    "width_ratio": 0.0
+   },
+   "three_touches": {
+    "n": 1384,
+    "whole_state": 62.6,
+    "last_touch_from_real_reading": 80.2,
+    "nothing_changes": 4.0,
+    "per_slot": {
+     "0:lock": 98.3,
+     "1:slide": 87.7,
+     "2:mov": 87.3,
+     "3:slide": 82.3,
+     "4:lock": 99.3
+    },
+    "per_slot_last_touch_from_real": {
+     "0:lock": 98.8,
+     "1:slide": 93.9,
+     "2:mov": 93.4,
+     "3:slide": 92.1,
+     "4:lock": 99.6
+    }
+   },
+   "hidden_after_imagined_put_in": {
+    "n": 22,
+    "hidden_after": 7,
+    "bal": 68.1,
+    "acc": 77.3,
+    "bal_last_touch_from_real": 82.4,
+    "acc_last_touch_from_real": 86.4
+   }
+  },
+  "chains": {
+   "fit_sec": 314.0,
+   "one_touch": {
+    "press_flip": 98.4,
+    "pull_moves": 65.6,
+    "pull_moves_per_slide": {
+     "1": 71.5,
+     "3": 59.0
+    },
+    "pull_across_middle": 66.9,
+    "pull_across_middle_per_slide": {
+     "1": 72.0,
+     "3": 61.0
+    },
+    "table_move": 92.5,
+    "put_in": 58.6,
+    "hidden_after_drawer_touch_bal": 75.1,
+    "unchanged_kept": 99.2,
+    "whole_state": 78.3,
+    "whole_state_when_something_changed": 77.5
+   },
+   "pull_end_in_range": {
+    "n": 468,
+    "model": 65.6,
+    "remembered_range": 96.2,
+    "per_slide": {
+     "1": 71.5,
+     "3": 59.0
+    },
+    "mean_width_model": 0.0,
+    "mean_width_remembered": 0.349,
+    "width_ratio": 0.0
+   },
+   "three_touches": {
+    "n": 1384,
+    "whole_state": 60.5,
+    "last_touch_from_real_reading": 78.0,
+    "nothing_changes": 3.8,
+    "per_slot": {
+     "0:lock": 98.1,
+     "1:slide": 86.9,
+     "2:mov": 86.1,
+     "3:slide": 80.6,
+     "4:lock": 99.2
+    },
+    "per_slot_last_touch_from_real": {
+     "0:lock": 98.8,
+     "1:slide": 93.9,
+     "2:mov": 91.8,
+     "3:slide": 90.5,
+     "4:lock": 99.6
+    }
+   },
+   "hidden_after_imagined_put_in": {
+    "n": 20,
+    "hidden_after": 7,
+    "bal": 78.0,
+    "acc": 80.0,
+    "bal_last_touch_from_real": 78.0,
+    "acc_last_touch_from_real": 80.0
+   }
+  },
+  "rng": {
+   "fit_sec": 255.6,
+   "one_touch": {
+    "press_flip": 97.9,
+    "pull_moves": 70.5,
+    "pull_moves_per_slide": {
+     "1": 72.0,
+     "3": 68.9
+    },
+    "pull_across_middle": 71.9,
+    "pull_across_middle_per_slide": {
+     "1": 72.0,
+     "3": 71.8
+    },
+    "table_move": 91.4,
+    "put_in": 42.9,
+    "hidden_after_drawer_touch_bal": 86.2,
+    "unchanged_kept": 99.3,
+    "whole_state": 79.3,
+    "whole_state_when_something_changed": 78.6
+   },
+   "pull_end_in_range": {
+    "n": 468,
+    "model": 89.1,
+    "remembered_range": 96.2,
+    "per_slide": {
+     "1": 93.9,
+     "3": 83.8
+    },
+    "mean_width_model": 0.319,
+    "mean_width_remembered": 0.356,
+    "width_ratio": 0.9
+   },
+   "three_touches": {
+    "n": 1384,
+    "whole_state": 69.0,
+    "last_touch_from_real_reading": 84.1,
+    "nothing_changes": 3.7,
+    "per_slot": {
+     "0:lock": 98.0,
+     "1:slide": 94.6,
+     "2:mov": 83.2,
+     "3:slide": 88.2,
+     "4:lock": 99.3
+    },
+    "per_slot_last_touch_from_real": {
+     "0:lock": 98.4,
+     "1:slide": 97.9,
+     "2:mov": 91.5,
+     "3:slide": 94.8,
+     "4:lock": 99.6
+    }
+   },
+   "hidden_after_imagined_put_in": {
+    "n": 19,
+    "hidden_after": 6,
+    "bal": 63.5,
+    "acc": 68.4,
+    "bal_last_touch_from_real": 79.5,
+    "acc_last_touch_from_real": 84.2
+   }
+  },
+  "both": {
+   "fit_sec": 335.5,
+   "one_touch": {
+    "press_flip": 98.2,
+    "pull_moves": 64.0,
+    "pull_moves_per_slide": {
+     "1": 66.7,
+     "3": 61.1
+    },
+    "pull_across_middle": 66.0,
+    "pull_across_middle_per_slide": {
+     "1": 66.8,
+     "3": 65.0
+    },
+    "table_move": 92.4,
+    "put_in": 62.1,
+    "hidden_after_drawer_touch_bal": 75.9,
+    "unchanged_kept": 99.2,
+    "whole_state": 78.4,
+    "whole_state_when_something_changed": 78.1
+   },
+   "pull_end_in_range": {
+    "n": 472,
+    "model": 83.5,
+    "remembered_range": 95.6,
+    "per_slide": {
+     "1": 91.1,
+     "3": 75.2
+    },
+    "mean_width_model": 0.307,
+    "mean_width_remembered": 0.353,
+    "width_ratio": 0.87
+   },
+   "three_touches": {
+    "n": 1384,
+    "whole_state": 69.9,
+    "last_touch_from_real_reading": 83.8,
+    "nothing_changes": 3.8,
+    "per_slot": {
+     "0:lock": 97.8,
+     "1:slide": 94.1,
+     "2:mov": 86.6,
+     "3:slide": 86.8,
+     "4:lock": 99.3
+    },
+    "per_slot_last_touch_from_real": {
+     "0:lock": 98.3,
+     "1:slide": 97.5,
+     "2:mov": 92.8,
+     "3:slide": 93.4,
+     "4:lock": 99.7
+    }
+   },
+   "hidden_after_imagined_put_in": {
+    "n": 19,
+    "hidden_after": 6,
+    "bal": 84.0,
+    "acc": 84.2,
+    "bal_last_touch_from_real": 75.6,
+    "acc_last_touch_from_real": 78.9
+   }
+  }
+ },
+ "three_touches_each_from_real_reading": {
+  "base": 65.6,
+  "rng": 73.3,
+  "both": 71.5
+ },
+ "dev_30": {
+  "both": {
+   "mix": {
+    "success_pct": 83.33,
+    "mean_touches": 5.33,
+    "mean_bfs_ms": 10.904
+   },
+   "locked_put": {
+    "success_pct": 66.67,
+    "mean_touches": 8.23,
+    "mean_bfs_ms": 13.798
+   }
+  },
+  "rng": {
+   "mix": {
+    "success_pct": 83.33,
+    "mean_touches": 5.13,
+    "mean_bfs_ms": 13.761
+   },
+   "locked_put": {
+    "success_pct": 70.0,
+    "mean_touches": 8.8,
+    "mean_bfs_ms": 17.215
+   }
+  }
+ },
+ "gate_b_fresh_100": {
+  "og5": {
+   "mix": {
+    "success_pct": 89.0,
+    "mean_touches": 5.45,
+    "mean_bfs_ms": 3.492,
+    "p95_bfs_ms": 8.352,
+    "mean_expansions": 7.39,
+    "accepted_slides": null
+   },
+   "locked_put": {
+    "success_pct": 75.0,
+    "mean_touches": 5.3,
+    "mean_bfs_ms": 3.742,
+    "p95_bfs_ms": 8.057,
+    "mean_expansions": 7.88,
+    "accepted_slides": null
+   }
+  },
+  "card170": {
+   "mix": {
+    "success_pct": 86.0,
+    "mean_touches": 5.37,
+    "mean_bfs_ms": 11.041,
+    "p95_bfs_ms": 36.901,
+    "mean_expansions": 46.1,
+    "accepted_slides": null
+   },
+   "locked_put": {
+    "success_pct": 57.0,
+    "mean_touches": 8.61,
+    "mean_bfs_ms": 16.84,
+    "p95_bfs_ms": 43.715,
+    "mean_expansions": 85.02,
+    "accepted_slides": null
+   }
+  },
+  "rng": {
+   "mix": {
+    "success_pct": 88.0,
+    "mean_touches": 5.4,
+    "mean_bfs_ms": 11.995,
+    "p95_bfs_ms": 41.453,
+    "mean_expansions": 47.78,
+    "accepted_slides": {
+     "accepted": 194,
+     "within_4cm": 193,
+     "pct": 99.5
+    }
+   },
+   "locked_put": {
+    "success_pct": 55.0,
+    "mean_touches": 8.78,
+    "mean_bfs_ms": 21.937,
+    "p95_bfs_ms": 46.811,
+    "mean_expansions": 109.97,
+    "accepted_slides": {
+     "accepted": 140,
+     "within_4cm": 140,
+     "pct": 100.0
+    }
+   }
+  },
+  "both": {
+   "mix": {
+    "success_pct": 87.0,
+    "mean_touches": 5.48,
+    "mean_bfs_ms": 12.071,
+    "p95_bfs_ms": 52.23,
+    "mean_expansions": 49.18,
+    "accepted_slides": {
+     "accepted": 182,
+     "within_4cm": 182,
+     "pct": 100.0
+    }
+   },
+   "locked_put": {
+    "success_pct": 64.0,
+    "mean_touches": 8.87,
+    "mean_bfs_ms": 14.615,
+    "p95_bfs_ms": 38.999,
+    "mean_expansions": 74.06,
+    "accepted_slides": {
+     "accepted": 128,
+     "within_4cm": 127,
+     "pct": 99.2
+    }
+   }
+  }
+ },
+ "needless_window_side_touches_pct_put_away": {
+  "og5": 1.8,
+  "card170": 11.8,
+  "rng": 11.2,
+  "both": 15.4
+ },
+ "probe_put_away_route_imagined_from_start": {
+  "card170": {
+   "arm": "card170",
+   "n": 60,
+   "first_break": {
+    "shut: cube predicted still in view": 21,
+    "chain reaches the goal (drawer, its lock and the cube)": 19,
+    "shut: imagined drawer reading not the goal's": 6,
+    "open: predicted to do nothing": 5,
+    "open: imagined drawer reading outside the put-in range": 4,
+    "put in: cube not predicted in the drawer": 3,
+    "shut: predicted to do nothing": 1,
+    "put in: not offered": 1
+   }
+  },
+  "rng": {
+   "arm": "rng",
+   "n": 60,
+   "first_break": {
+    "open: predicted to do nothing": 19,
+    "shut: cube predicted still in view": 19,
+    "chain reaches the goal (drawer, its lock and the cube)": 11,
+    "put in: cube not predicted in the drawer": 5,
+    "open: imagined drawer reading outside the put-in range": 2,
+    "shut: imagined drawer reading not the goal's": 2,
+    "put in: not offered": 1,
+    "shut: predicted to do nothing": 1
+   }
+  },
+  "both": {
+   "arm": "both",
+   "n": 60,
+   "first_break": {
+    "chain reaches the goal (drawer, its lock and the cube)": 38,
+    "shut: imagined drawer reading not the goal's": 9,
+    "shut: cube predicted still in view": 7,
+    "shut: predicted to do nothing": 2,
+    "put in: not offered": 1,
+    "open: predicted to do nothing": 1,
+    "open: imagined drawer reading outside the put-in range": 1,
+    "put in: cube not predicted in the drawer": 1
+   }
+  }
+ },
+ "recalled_twin_flips": {
+  "card168": {
+   "touches": 7731,
+   "own_slot_prediction_flips_pct": 0.3,
+   "slot 0 (lock) touches": {
+    "n": 1530,
+    "flips_pct": 0.1
+   },
+   "slot 1 (mov) touches": {
+    "n": 1882,
+    "flips_pct": 0.3
+   },
+   "slot 2 (slide) touches": {
+    "n": 1454,
+    "flips_pct": 0.5
+   },
+   "slot 3 (slide) touches": {
+    "n": 1430,
+    "flips_pct": 0.6
+   },
+   "slot 4 (lock) touches": {
+    "n": 1435,
+    "flips_pct": 0.1
+   },
+   "cube in view after a drawer touch: flips_pct": 0.3
+  },
+  "card171 both": {
+   "touches": 7731,
+   "own_slot_prediction_flips_pct": 0.4,
+   "slot 0 (lock) touches": {
+    "n": 1530,
+    "flips_pct": 0.1
+   },
+   "slot 1 (mov) touches": {
+    "n": 1882,
+    "flips_pct": 0.6
+   },
+   "slot 2 (slide) touches": {
+    "n": 1454,
+    "flips_pct": 0.5
+   },
+   "slot 3 (slide) touches": {
+    "n": 1430,
+    "flips_pct": 0.2
+   },
+   "slot 4 (lock) touches": {
+    "n": 1435,
+    "flips_pct": 0.6
+   },
+   "cube in view after a drawer touch: flips_pct": 0.1
+  },
+  "card171 range only": {
+   "touches": 7731,
+   "own_slot_prediction_flips_pct": 0.4,
+   "slot 0 (lock) touches": {
+    "n": 1530,
+    "flips_pct": 0.2
+   },
+   "slot 1 (mov) touches": {
+    "n": 1882,
+    "flips_pct": 0.6
+   },
+   "slot 2 (slide) touches": {
+    "n": 1454,
+    "flips_pct": 0.6
+   },
+   "slot 3 (slide) touches": {
+    "n": 1430,
+    "flips_pct": 0.4
+   },
+   "slot 4 (lock) touches": {
+    "n": 1435,
+    "flips_pct": 0.0
+   },
+   "cube in view after a drawer touch: flips_pct": 0.0
+  }
+ },
+ "notes": [
+  "agents did not draw the same problems (shared random stream); each figure is one sample of 100",
+  "measure 3's declared upper bound (one touch from a real reading) is not a bound for three touches; the each-from-real figure is the ceiling"
+ ]
+}

@@ -1,0 +1,405 @@
+{
+ "card": "170",
+ "verdict": "fail at gate; benchmark and test episodes not run",
+ "effects_gate": {
+  "n": {
+   "transitions": 1544,
+   "press_flips": 488,
+   "pulls_that_move": 467,
+   "pulls_across_middle": 444,
+   "table_moves": 325,
+   "put_ins": 30,
+   "drawer_touches_cube_inside": 91,
+   "of_which_hidden_after": 34
+  },
+  "model": {
+   "press_flip": 98.6,
+   "pull_moves": 69.0,
+   "pull_moves_per_slide": {
+    "1": 71.1,
+    "3": 66.5
+   },
+   "pull_across_middle": 70.3,
+   "pull_across_middle_per_slide": {
+    "1": 71.0,
+    "3": 69.4
+   },
+   "table_move": 94.2,
+   "put_in": 66.7,
+   "hidden_after_drawer_touch_bal": 80.9,
+   "unchanged_kept": 99.3,
+   "whole_state": 80.6,
+   "whole_state_when_something_changed": 80.3
+  },
+  "no change": {
+   "press_flip": 0.0,
+   "pull_moves": 0.0,
+   "pull_moves_per_slide": {
+    "1": 0.0,
+    "3": 0.0
+   },
+   "pull_across_middle": 0.0,
+   "pull_across_middle_per_slide": {
+    "1": 0.0,
+    "3": 0.0
+   },
+   "table_move": 0.0,
+   "put_in": 0.0,
+   "hidden_after_drawer_touch_bal": 51.2,
+   "unchanged_kept": 100.0,
+   "whole_state": 13.9,
+   "whole_state_when_something_changed": 0.0
+  },
+  "written (og5)": {
+   "press_flip": 100.0,
+   "pull_moves": 79.9,
+   "pull_moves_per_slide": {
+    "1": 77.2,
+    "3": 82.8
+   },
+   "pull_across_middle": 79.7,
+   "pull_across_middle_per_slide": {
+    "1": 76.9,
+    "3": 83.0
+   },
+   "table_move": 97.8,
+   "put_in": 60.0,
+   "hidden_after_drawer_touch_bal": 51.2,
+   "unchanged_kept": 97.3,
+   "whole_state": 75.8,
+   "whole_state_when_something_changed": 83.9
+  },
+  "model_error": {
+   "slide_abs_err_on_moved_pulls": {
+    "1": [
+     0.064,
+     0.268,
+     0.589
+    ],
+    "3": [
+     0.11,
+     0.289,
+     1.695
+    ]
+   },
+   "slide_cut": {
+    "1": 0.18,
+    "3": 0.18
+   },
+   "table_move_cm": [
+    0.84,
+    1.32,
+    2.02
+   ],
+   "mov_cut_cm": 1.83,
+   "p_chg_own_slot_on_table_moves": 98.8,
+   "pulls_across_middle_predicted_to_move": {
+    "1": 99.2,
+    "3": 96.1
+   },
+   "match_given_predicted_to_move": {
+    "1": 71.6,
+    "3": 72.2
+   },
+   "end_reading_spread_on_pulls_across_middle": {
+    "1": {
+     "lo": [
+      -1.361,
+      -1.272,
+      -0.853
+     ],
+     "hi": [
+      1.149,
+      1.187,
+      1.191
+     ]
+    },
+    "3": {
+     "lo": [
+      -1.284,
+      -1.251,
+      -1.039
+     ],
+     "hi": [
+      0.754,
+      1.169,
+      1.253
+     ]
+    }
+   },
+   "predicted_end_spread": {
+    "1": {
+     "lo": [
+      -1.338,
+      -1.225,
+      -0.961
+     ],
+     "hi": [
+      1.1,
+      1.175,
+      1.212
+     ]
+    },
+    "3": {
+     "lo": [
+      -1.328,
+      -1.22,
+      -1.008
+     ],
+     "hi": [
+      0.765,
+      1.16,
+      1.267
+     ]
+    }
+   }
+  }
+ },
+ "effects_gate_first_scoring": {
+  "n": {
+   "transitions": 1544,
+   "press_flips": 488,
+   "pulls_that_move": 467,
+   "table_moves": 325,
+   "put_ins": 30,
+   "drawer_touches_cube_inside": 91,
+   "of_which_hidden_after": 34
+  },
+  "model": {
+   "press_flip": 98.6,
+   "pull_moves": 69.0,
+   "pull_moves_per_slide": {
+    "1": 71.1,
+    "3": 66.5
+   },
+   "table_move": 94.2,
+   "put_in": 66.7,
+   "hidden_after_drawer_touch_bal": 80.9,
+   "unchanged_kept": 99.3,
+   "whole_state": 80.6,
+   "whole_state_when_something_changed": 80.3
+  },
+  "no change": {
+   "press_flip": 0.0,
+   "pull_moves": 0.0,
+   "pull_moves_per_slide": {
+    "1": 0.0,
+    "3": 0.0
+   },
+   "table_move": 0.0,
+   "put_in": 0.0,
+   "hidden_after_drawer_touch_bal": 51.2,
+   "unchanged_kept": 100.0,
+   "whole_state": 13.9,
+   "whole_state_when_something_changed": 0.0
+  },
+  "written (og5)": {
+   "press_flip": 100.0,
+   "pull_moves": 79.9,
+   "pull_moves_per_slide": {
+    "1": 77.2,
+    "3": 82.8
+   },
+   "table_move": 97.8,
+   "put_in": 60.0,
+   "hidden_after_drawer_touch_bal": 51.2,
+   "unchanged_kept": 97.3,
+   "whole_state": 75.8,
+   "whole_state_when_something_changed": 83.9
+  },
+  "model_error": {
+   "slide_abs_err_on_moved_pulls": {
+    "1": [
+     0.064,
+     0.268,
+     0.589
+    ],
+    "3": [
+     0.11,
+     0.289,
+     1.695
+    ]
+   },
+   "slide_cut": {
+    "1": 0.18,
+    "3": 0.18
+   },
+   "table_move_cm": [
+    0.84,
+    1.32,
+    2.02
+   ],
+   "mov_cut_cm": 1.83,
+   "p_chg_own_slot_on_table_moves": 98.8
+  }
+ },
+ "gate_fresh_30": {
+  "mix30": {
+   "mode": "mix",
+   "seed": 202,
+   "episodes": 30,
+   "nocond": false,
+   "success_pct": 80.0,
+   "cube_hidden_pct": 0.0,
+   "cube_within_4cm_pct": 83.33,
+   "mean_steps_when_success": 240.4,
+   "mean_touches": 5.7,
+   "mean_bfs_ms": 13.776,
+   "p95_bfs_ms": 41.565,
+   "mean_expansions": 81.78,
+   "p14_recoveries": 0
+  },
+  "locked_put30": {
+   "mode": "put",
+   "seed": 201,
+   "episodes": 30,
+   "nocond": false,
+   "success_pct": 53.33,
+   "cube_hidden_pct": 56.67,
+   "cube_within_4cm_pct": 53.33,
+   "mean_steps_when_success": 374.1,
+   "mean_touches": 8.8,
+   "mean_bfs_ms": 14.947,
+   "p95_bfs_ms": 39.242,
+   "mean_expansions": 89.0,
+   "p14_recoveries": 0
+  },
+  "og5_mix30": {
+   "mode": "mix",
+   "seed": 202,
+   "episodes": 30,
+   "nocond": false,
+   "success_pct": 76.67,
+   "cube_hidden_pct": 0.0,
+   "cube_within_4cm_pct": 83.33,
+   "mean_steps_when_success": 277.0,
+   "mean_touches": 5.7,
+   "mean_bfs_ms": 1.787,
+   "p95_bfs_ms": 3.469,
+   "mean_expansions": 9.04,
+   "p14_recoveries": 4
+  },
+  "og5_locked_put30": {
+   "mode": "put",
+   "seed": 201,
+   "episodes": 30,
+   "nocond": false,
+   "success_pct": 83.33,
+   "cube_hidden_pct": 83.33,
+   "cube_within_4cm_pct": 83.33,
+   "mean_steps_when_success": 280.2,
+   "mean_touches": 5.57,
+   "mean_bfs_ms": 2.051,
+   "p95_bfs_ms": 3.928,
+   "mean_expansions": 9.23,
+   "p14_recoveries": 1
+  }
+ },
+ "compare_fresh_100": {
+  "card170_mix": {
+   "mode": "mix",
+   "seed": 302,
+   "episodes": 100,
+   "nocond": false,
+   "success_pct": 87.0,
+   "cube_hidden_pct": 0.0,
+   "cube_within_4cm_pct": 87.0,
+   "mean_steps_when_success": 254.9,
+   "mean_touches": 5.21,
+   "mean_bfs_ms": 9.027,
+   "p95_bfs_ms": 41.113,
+   "mean_expansions": 49.37,
+   "p14_recoveries": 5
+  },
+  "card170_locked_put": {
+   "mode": "put",
+   "seed": 301,
+   "episodes": 100,
+   "nocond": false,
+   "success_pct": 58.0,
+   "cube_hidden_pct": 67.0,
+   "cube_within_4cm_pct": 62.0,
+   "mean_steps_when_success": 402.3,
+   "mean_touches": 8.94,
+   "mean_bfs_ms": 15.071,
+   "p95_bfs_ms": 39.335,
+   "mean_expansions": 91.82,
+   "p14_recoveries": 6
+  },
+  "og5_mix": {
+   "mode": "mix",
+   "seed": 302,
+   "episodes": 100,
+   "nocond": false,
+   "success_pct": 83.0,
+   "cube_hidden_pct": 0.0,
+   "cube_within_4cm_pct": 91.0,
+   "mean_steps_when_success": 294.4,
+   "mean_touches": 5.54,
+   "mean_bfs_ms": 1.688,
+   "p95_bfs_ms": 3.622,
+   "mean_expansions": 7.61,
+   "p14_recoveries": 18
+  },
+  "og5_locked_put": {
+   "mode": "put",
+   "seed": 301,
+   "episodes": 100,
+   "nocond": false,
+   "success_pct": 81.0,
+   "cube_hidden_pct": 81.0,
+   "cube_within_4cm_pct": 81.0,
+   "mean_steps_when_success": 282.7,
+   "mean_touches": 5.16,
+   "mean_bfs_ms": 2.041,
+   "p95_bfs_ms": 3.867,
+   "mean_expansions": 8.7,
+   "p14_recoveries": 3
+  }
+ },
+ "development_30": {
+  "mix30": {
+   "mode": "mix",
+   "seed": 102,
+   "episodes": 30,
+   "nocond": false,
+   "success_pct": 86.67,
+   "cube_hidden_pct": 0.0,
+   "cube_within_4cm_pct": 90.0,
+   "mean_steps_when_success": 246.1,
+   "mean_touches": 4.6,
+   "mean_bfs_ms": 7.386,
+   "p95_bfs_ms": 38.441,
+   "mean_expansions": 39.68,
+   "p14_recoveries": 0
+  },
+  "locked_put30": {
+   "mode": "put",
+   "seed": 101,
+   "episodes": 30,
+   "nocond": false,
+   "success_pct": 66.67,
+   "cube_hidden_pct": 76.67,
+   "cube_within_4cm_pct": 70.0,
+   "mean_steps_when_success": 373.9,
+   "mean_touches": 8.57,
+   "mean_bfs_ms": 11.911,
+   "p95_bfs_ms": 33.446,
+   "mean_expansions": 69.54,
+   "p14_recoveries": 1
+  }
+ },
+ "put_away_failures_100": {
+  "card170": {
+   "gave_up": 12,
+   "same_touch_repeated": 12,
+   "two_touches_alternating": 9,
+   "other_out_of_steps": 9
+  },
+  "og5": {
+   "gave_up": 14,
+   "same_touch_repeated": 4,
+   "two_touches_alternating": 1
+  }
+ }
+}

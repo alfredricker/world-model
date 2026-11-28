@@ -54,4 +54,4 @@ links:
   n: 50
   source: card 130; tasks 4 and 5 carried from og3's run
 ---
-og3 plus the rule from the MiniGrid agent that a touch which failed is not recalled again and the agent's own success counts pick among matches ([card 130](../../experiments/130-own-tries-first/card.md)). The current version.
+og3 plus the rule from the MiniGrid agent that a touch which failed is not recalled again and the agent's own success counts pick among matches ([card 130](../../experiments/130-own-tries-first/card.md)). Replaced by [og5](og5.md) on 2026-11-27.

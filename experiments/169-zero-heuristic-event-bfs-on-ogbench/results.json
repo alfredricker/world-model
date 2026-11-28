@@ -1,0 +1,132 @@
+{
+  "card": "169",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "episodes_per_task_per_seed": 50,
+  "total_benchmark_episodes": 750,
+  "per_task": {
+    "task1": {
+      "mean_pct": 98.67,
+      "std_pct": 1.89,
+      "per_seed_pct": [
+        100.0,
+        100.0,
+        96.0
+      ],
+      "seed0_pct": 100.0,
+      "mean_steps_when_success": 116.5,
+      "mean_bfs_ms": 1.806,
+      "mean_expansions": 3.39,
+      "total_p14_recoveries": 1
+    },
+    "task2": {
+      "mean_pct": 91.33,
+      "std_pct": 0.94,
+      "per_seed_pct": [
+        90.0,
+        92.0,
+        92.0
+      ],
+      "seed0_pct": 90.0,
+      "mean_steps_when_success": 356.3,
+      "mean_bfs_ms": 3.178,
+      "mean_expansions": 8.38,
+      "total_p14_recoveries": 83
+    },
+    "task3": {
+      "mean_pct": 97.33,
+      "std_pct": 0.94,
+      "per_seed_pct": [
+        98.0,
+        98.0,
+        96.0
+      ],
+      "seed0_pct": 98.0,
+      "mean_steps_when_success": 287.9,
+      "mean_bfs_ms": 2.391,
+      "mean_expansions": 8.48,
+      "total_p14_recoveries": 36
+    },
+    "task4": {
+      "mean_pct": 87.33,
+      "std_pct": 0.94,
+      "per_seed_pct": [
+        88.0,
+        88.0,
+        86.0
+      ],
+      "seed0_pct": 88.0,
+      "mean_steps_when_success": 283.0,
+      "mean_bfs_ms": 3.485,
+      "mean_expansions": 11.28,
+      "total_p14_recoveries": 22
+    },
+    "task5": {
+      "mean_pct": 78.0,
+      "std_pct": 4.32,
+      "per_seed_pct": [
+        76.0,
+        74.0,
+        84.0
+      ],
+      "seed0_pct": 76.0,
+      "mean_steps_when_success": 488.9,
+      "mean_bfs_ms": 3.694,
+      "mean_expansions": 12.24,
+      "total_p14_recoveries": 53
+    }
+  },
+  "tasks_1_to_3_mean_pct": 95.78,
+  "five_task_mean_pct": 90.53,
+  "five_task_mean_per_seed_pct": [
+    90.4,
+    90.4,
+    90.8
+  ],
+  "seed0_five_task_mean_pct": 90.4,
+  "overall_mean_bfs_ms": 2.911,
+  "overall_mean_expansions": 8.76,
+  "nocond_ablation_seed0": {
+    "task2_pct": 0.0,
+    "task4_pct": 0.0
+  },
+  "comparisons": {
+    "og4_seed0": {
+      "tasks": [
+        100.0,
+        86.0,
+        82.0,
+        0.0,
+        0.0
+      ],
+      "tasks_1_to_3_mean": 89.33,
+      "five_task_mean": 53.6
+    },
+    "gas_published": {
+      "five_task_mean": 54.4
+    },
+    "hiql_published": {
+      "tasks": [
+        80.0,
+        81.0,
+        61.0,
+        20.0,
+        3.0
+      ],
+      "five_task_mean": 49.0
+    },
+    "gcivl_published": {
+      "tasks": [
+        84.0,
+        24.0,
+        16.0,
+        0.0,
+        0.0
+      ],
+      "five_task_mean": 24.8
+    }
+  }
+}

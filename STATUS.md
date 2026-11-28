@@ -1,30 +1,39 @@
 # Status
 
 Overwritten each session. At most 40 lines.
-- **Date:** 2026-11-27, `master`. Uncommitted: cards 163–167 done (`164`, `165`, `166`, `167` kept).
-  **Rung:** 2 (event segmentation) reopened; 3–6 passed in MiniGrid (zero-Dijkstra, unified `WNet`, partial observability). **Architecture:** og4.
-  **World:** MiniGrid (cards 161–167 complete); OGBench `visual-scene` (og4 53.6% vs GAS 54.4%). Portability tests paused.
+- **Date:** 2026-11-28, `master`. Uncommitted: cards 168–173 done, og5 in ARCHITECTURE.md, `tools/card168/`–`tools/card173/`,
+  twenty-one graph nodes, three LITERATURE rows. `runs/172/` holds 14.5 GB of per-step features, kept for the next card (card 173 reused them).
+  **Rung:** 6 tested on OGBench by card 169 (pass). **Architecture:** og5 (`90.5%` five-task mean; og4 `53.6%`), adopted by the user 2026-11-27.
+  **World:** OGBench `visual-scene`. Portability tests paused. MiniGrid series (cards 161–167) complete.
 - **Direction:** learned methods below, our conditions on top ([card 113](experiments/113-post-mortem-learned-stack/card.md));
-  one ingredient per week. Memory week (132–140) closed; representation week (141–144) revise; card 145 stop (no decoder signal).
-- **Energy modules (cards 146–160):** set aside 2026-11-23 ([experiments/energy-modules/README.md](experiments/energy-modules/README.md)).
-  Card 160's rules evaluator & 3 reward-free random-play experiences (`seq_{1,2,3}.pkl`, 700k steps each) kept for reuse.
-- **Cards [161](experiments/161-conditions-asked-of-the-effect-model/card.md)–[165](experiments/165-zero-dijkstra-system-two-with-neural-reachability/card.md):**
-  161 `fail (2/3), keep` (86.8%); 162 `pass (3/3), keep` (92.5%); 163 `fail, revise`; 164 `pass (3/3), keep` (98.3% System 2 + System 1 $q$);
-  165 `pass (3/3), keep` (`RNet` zero-Dijkstra System 2: 97.1% vs 98.1%, 100.00% reachability, 2.71× faster).
-- **Card [166](experiments/166-unified-factored-relational-world-model/card.md): fail (2 of 3), keep.**
-  Unified `RNet` + cell effects into **one shared-embedding `WNet`** (`runs/166/world_{1,2,3}.pt`, additive DeepSet-L1, contrast-balanced
-  sampling directly on `seq_{1,2,3}.pkl`), retiring card 160's `model_mlp.pkl`, `Table`, `gid`, `FI`/`FY`, `statement()`:
-  **97.1%** vs Card 165's **95.7%** (`seeds 10000–10099`, +1.34 pts; KeyCorridor **98.3%** vs 92.0%; 100.00% reachability; 99.98% cell effects;
-  7.33 ms/step; missed only fixed 94% UnlockPickup sub-bar at 91.7% vs 165's 91.3%).
-- **Card [167](experiments/167-partial-observability-belief-and-frontier-exploration/card.md): pass (3 of 3), keep.**
-  Dropped the last MiniGrid full-view assumption: true `7×7` occluded egocentric view + proprioception-placed persistent `PartialBelief` +
-  epistemic frontier BFS (`r_act[UNK] >= 0.5`) + boundary-only pessimistic `UNK` masking for frozen System 1 (`q_reach`), **zero extra training**.
-  - **Fresh frozen test (`seeds 11000–11099`, 3 exp × 5 tasks × 100 layouts):** **93.1%** (`95.2, 94.4, 89.6`; 1,396/1,500) vs. no-frontier
-    baseline **25.5%** (**+67.6 pts**) and full-view Card 166 **97.2%** (**−4.13 pts** retention gap) — DoorKey-8x8 **100%**, DoorKey-16x16
-    **100%** (95.7 steps), KeyCorridor **86.0%** (vs 8.0%), UnlockPickup **86.0%** (vs 20.0%), BlockedUnlockPickup **93.3%** (vs 0.0%).
-  - **Epistemic chaining, belief & speed:** **88.4%** across the 3 100%-occluded-goal tasks (0 leaks in 50 verified episodes), **581** episodes
-    solved after the goal left the `7×7` view, **5.64 ms/step** (**3.11× faster** than full-view Card 164).
-- **Next decision (Card 168):** port this unified zero-Dijkstra System 2 (`WNet` + goal/epistemic BFS + P14 recovery) + System 1 stack to
-  **OGBench `visual-scene`** (continuous pixel manipulation, `og4` currently 53.6% vs GAS 54.4%) or **Crafter / Craftium** (moving-view worlds).
-- **Setup.** Project `.venv` runs cards 160–167 (`tools/card167/run.sh`); `graph.py` / `index.py` / OGBench use
-  `~/.cache/pypoetry/virtualenvs/worldmodel-iVGTe5yi-py3.13/bin/python`.
+  no reconstruction decoder ([card 145](experiments/145-a-state-that-changes-only-when-the-scene-does/card.md)); remove the scene
+  model's hand-set rules, with the factoring learned from how the senses change, not only from touch (the user, 2026-11-27).
+- **Card [168](experiments/168-consequence-trained-scene-world-model/card.md): fail (2 of 3), keep.** `SceneWNet`: five slots over
+  frozen DINOv2 patches, trained on touch consequences. Mean pair accuracy `94.9%` (og4 `84.4%`). Slots and targets come from rules.
+- **Card [169](experiments/169-zero-heuristic-event-bfs-on-ogbench/card.md): pass, keep (og5).** Event-level search over `SceneWNet`.
+  Tasks 1–5: `98.7, 91.3, 97.3, 87.3, 78.0%`. Effects of a touch and two ordering guards are written code.
+- **Card [170](experiments/170-effects-imagined-by-the-scene-model/card.md): fail at the gate, revise.** Effects taken from the model,
+  no guards: short chains level with og5, locked put-away `58%` against `81%` (separate samples of 100).
+- **Card [171](experiments/171-transition-head-trained-on-its-own-chains/card.md): fail at the gate, revise.** Chain training and a
+  pull's end as a range: locked put-away `64%` (card 170 `57%`, og5 `75%`; under 7 points is noise). Open fault: 11–15% of
+  the model-driven search's touches go to parts already at the goal (og5 `1.8%`); cause not known.
+- **Card [172](experiments/172-factors-from-sparse-change-over-time/card.md): fail at the gate, revise.** A frame mapped to 32 bounded
+  numbers, trained only to pick the near moment of an episode, the arm's pose given by a frozen term. No decoder, touch or label.
+  It read every variable (AUROC `0.83–0.95`; baselines `0.56–0.67`) but a variable's change was `8–19%` on its best coordinate.
+- **Card [173](experiments/173-tight-box-sparse-change-factors/card.md): fail at the gate, revise.** The user's design: temperature
+  fixed, a cost on change between consecutive steps, a small state, factors read from 5-step changes. Three 5-minute fits.
+  - **Gate failed twice.** The state's change where nothing in the scene differs is `36.6%` of its change where one variable
+    does (bar `20%`). The bound by truth-chosen pairs put `1–2` of 5 variables at 80% on their own factor (bar 4).
+  - **But the one label-free fit (8 coordinates, one seed) found five factors, one per variable:** `73, 96, 94, 92, 83%` of
+    each variable's change on its own factor. Read through its own factor: AUROC `0.970–0.990` on validation (card 168's
+    slots `0.976–1.0`), `0.937–0.987` on frames before a touch (slots `0.862–0.994`). The bound was not a bound for factoring.
+  - Open: two thirds of the stray movement is in the two lock factors, cause not found; the cube has one number (one table
+    axis read, not the other); no second seed; the ladder that chooses the state's size was not run.
+- **Next decision (the user's):**
+  1. Factoring: a card that runs card 173's ladder and three seeds, with each variable read through its own factor, the bound
+     dropped or rebuilt, and the lock factors' movement located first. Say if you want it drafted.
+  2. Planner: a card to locate card 171's needless touches.
+  3. The CHARTER ladder still lists rungs 3–6 as "sketch"; say which to mark as passed, and on which cards.
+- **Setup.** Project `.venv` runs MiniGrid; `graph.py`, `index.py` and OGBench use
+  `~/.cache/pypoetry/virtualenvs/worldmodel-iVGTe5yi-py3.13/bin/python`. OGBench runs go through `bash tools/card173/run.sh <seconds> python ...`
+  (capped; the script is not executable). EGL via `runs/143/glvnd.txt`.

@@ -1,0 +1,1223 @@
+{
+ "card": "172",
+ "verdict": "fail at the gate; the main run (six fits) was not run and no criterion was judged",
+ "pose_term_alone": {
+  "g": {
+   "train": {
+    "g_picks_true_pct": 54.3,
+    "nearest_pose_picks_true_pct": 9.8,
+    "g_loss": 1.414
+   },
+   "val": {
+    "g_picks_true_pct": 53.9,
+    "nearest_pose_picks_true_pct": 9.9,
+    "g_loss": 1.433
+   },
+   "chance_pct": 5.9,
+   "chance_loss": 2.833
+  },
+  "g_try_5_10_40": {
+   "train": {
+    "g_picks_true_pct": 62.8,
+    "nearest_pose_picks_true_pct": 9.2,
+    "g_loss": 1.191
+   },
+   "val": {
+    "g_picks_true_pct": 61.9,
+    "nearest_pose_picks_true_pct": 8.9,
+    "g_loss": 1.217
+   },
+   "chance_pct": 5.9,
+   "chance_loss": 2.833,
+   "win": 5,
+   "ring": [
+    10,
+    40
+   ]
+  },
+  "g_try_10_11_40": {
+   "train": {
+    "g_picks_true_pct": 60.5,
+    "nearest_pose_picks_true_pct": 6.4,
+    "g_loss": 1.409
+   },
+   "val": {
+    "g_picks_true_pct": 59.5,
+    "nearest_pose_picks_true_pct": 6.2,
+    "g_loss": 1.443
+   },
+   "chance_pct": 5.9,
+   "chance_loss": 2.833,
+   "win": 10,
+   "ring": [
+    11,
+    40
+   ]
+  },
+  "g_try_20_21_60": {
+   "train": {
+    "g_picks_true_pct": 71.0,
+    "nearest_pose_picks_true_pct": 4.8,
+    "g_loss": 1.103
+   },
+   "val": {
+    "g_picks_true_pct": 69.9,
+    "nearest_pose_picks_true_pct": 4.8,
+    "g_loss": 1.143
+   },
+   "chance_pct": 5.9,
+   "chance_loss": 2.833,
+   "win": 20,
+   "ring": [
+    21,
+    60
+   ]
+  },
+  "g_try_10_11_30": {
+   "train": {
+    "g_picks_true_pct": 51.1,
+    "nearest_pose_picks_true_pct": 7.2,
+    "g_loss": 1.688
+   },
+   "val": {
+    "g_picks_true_pct": 51.2,
+    "nearest_pose_picks_true_pct": 7.2,
+    "g_loss": 1.696
+   },
+   "chance_pct": 5.9,
+   "chance_loss": 2.833,
+   "win": 10,
+   "ring": [
+    11,
+    30
+   ]
+  }
+ },
+ "baselines": {
+  "pose alone": {
+   "criterion1": {
+    "validation": {
+     "cube": {
+      "n": 37323,
+      "whole": 0.5597,
+      "own": 0.574
+     },
+     "drawer": {
+      "n": 5602,
+      "whole": 0.6219,
+      "own": 0.5971
+     },
+     "window": {
+      "n": 6127,
+      "whole": 0.5626,
+      "own": 0.6467
+     },
+     "lock0": {
+      "n": 26594,
+      "whole": 0.5717,
+      "own": 0.4689
+     },
+     "lock1": {
+      "n": 25103,
+      "whole": 0.5747,
+      "own": 0.4729
+     },
+     "n_same": 73876
+    }
+   },
+   "criterion2": {
+    "n_factors": 12,
+    "share_in_best": {
+     "cube": 24.2,
+     "drawer": 27.4,
+     "window": 27.9,
+     "lock0": 24.5,
+     "lock1": 23.6
+    },
+    "arm_only_over_one_variable_pct": 123.3
+   }
+  },
+  "32 principal components of the mean patch vector": {
+   "criterion1": {
+    "validation": {
+     "cube": {
+      "n": 37323,
+      "whole": 0.5549,
+      "own": 0.5005
+     },
+     "drawer": {
+      "n": 5602,
+      "whole": 0.5585,
+      "own": 0.5283
+     },
+     "window": {
+      "n": 6127,
+      "whole": 0.5581,
+      "own": 0.5367
+     },
+     "lock0": {
+      "n": 26594,
+      "whole": 0.6418,
+      "own": 0.5245
+     },
+     "lock1": {
+      "n": 25103,
+      "whole": 0.665,
+      "own": 0.5641
+     },
+     "n_same": 73876
+    },
+    "test frames (card 141)": {
+     "cube": {
+      "n": 2903,
+      "whole": 0.6156,
+      "own": 0.5169
+     },
+     "drawer": {
+      "n": 259,
+      "whole": 0.6073,
+      "own": 0.5311
+     },
+     "window": {
+      "n": 414,
+      "whole": 0.6765,
+      "own": 0.6282
+     },
+     "lock0": {
+      "n": 1634,
+      "whole": 0.551,
+      "own": 0.5182
+     },
+     "lock1": {
+      "n": 1659,
+      "whole": 0.5884,
+      "own": 0.5636
+     },
+     "n_same": 2393
+    }
+   },
+   "criterion2": {
+    "n_factors": 32,
+    "share_in_best": {
+     "cube": 3.9,
+     "drawer": 4.3,
+     "window": 4.6,
+     "lock0": 6.5,
+     "lock1": 5.8
+    },
+    "arm_only_over_one_variable_pct": 111.7
+   }
+  },
+  "random encoder": {
+   "criterion1": {
+    "validation": {
+     "cube": {
+      "n": 37323,
+      "whole": 0.5512,
+      "own": 0.5398
+     },
+     "drawer": {
+      "n": 5602,
+      "whole": 0.5445,
+      "own": 0.5903
+     },
+     "window": {
+      "n": 6127,
+      "whole": 0.6005,
+      "own": 0.5347
+     },
+     "lock0": {
+      "n": 26594,
+      "whole": 0.5905,
+      "own": 0.5565
+     },
+     "lock1": {
+      "n": 25103,
+      "whole": 0.6348,
+      "own": 0.5518
+     },
+     "n_same": 73876
+    },
+    "test frames (card 141)": {
+     "cube": {
+      "n": 2903,
+      "whole": 0.5619,
+      "own": 0.5379
+     },
+     "drawer": {
+      "n": 259,
+      "whole": 0.585,
+      "own": 0.7027
+     },
+     "window": {
+      "n": 414,
+      "whole": 0.6149,
+      "own": 0.5479
+     },
+     "lock0": {
+      "n": 1634,
+      "whole": 0.4957,
+      "own": 0.5417
+     },
+     "lock1": {
+      "n": 1659,
+      "whole": 0.5402,
+      "own": 0.5128
+     },
+     "n_same": 2393
+    }
+   },
+   "criterion2": {
+    "n_factors": 32,
+    "share_in_best": {
+     "cube": 5.2,
+     "drawer": 6.3,
+     "window": 4.6,
+     "lock0": 7.2,
+     "lock1": 6.6
+    },
+    "arm_only_over_one_variable_pct": 125.9
+   }
+  },
+  "card 168's slots (own slot)": {
+   "criterion1": {
+    "validation": {
+     "cube": {
+      "n": 37323,
+      "whole": null,
+      "own": 0.9757
+     },
+     "drawer": {
+      "n": 5602,
+      "whole": null,
+      "own": 0.9998
+     },
+     "window": {
+      "n": 6127,
+      "whole": null,
+      "own": 0.9981
+     },
+     "lock0": {
+      "n": 26594,
+      "whole": null,
+      "own": 1.0
+     },
+     "lock1": {
+      "n": 25103,
+      "whole": null,
+      "own": 0.9998
+     },
+     "n_same": 73876
+    },
+    "test frames (card 141)": {
+     "cube": {
+      "n": 2903,
+      "whole": null,
+      "own": 0.9944
+     },
+     "drawer": {
+      "n": 259,
+      "whole": null,
+      "own": 0.9794
+     },
+     "window": {
+      "n": 414,
+      "whole": null,
+      "own": 0.9585
+     },
+     "lock0": {
+      "n": 1634,
+      "whole": null,
+      "own": 0.862
+     },
+     "lock1": {
+      "n": 1659,
+      "whole": null,
+      "own": 0.8881
+     },
+     "n_same": 2393
+    }
+   },
+   "criterion2": null
+  }
+ },
+ "short_fit_5_min": {
+  "criterion1": {
+   "validation": {
+    "cube": {
+     "n": 37323,
+     "whole": 0.9541,
+     "own": 0.8651
+    },
+    "drawer": {
+     "n": 5602,
+     "whole": 0.9024,
+     "own": 0.9603
+    },
+    "window": {
+     "n": 6127,
+     "whole": 0.826,
+     "own": 0.8973
+    },
+    "lock0": {
+     "n": 26594,
+     "whole": 0.8994,
+     "own": 0.9545
+    },
+    "lock1": {
+     "n": 25103,
+     "whole": 0.9183,
+     "own": 0.8129
+    },
+    "n_same": 73876
+   },
+   "test frames (card 141)": {
+    "cube": {
+     "n": 2903,
+     "whole": 0.9437,
+     "own": 0.8825
+    },
+    "drawer": {
+     "n": 259,
+     "whole": 0.8535,
+     "own": 0.9471
+    },
+    "window": {
+     "n": 414,
+     "whole": 0.7896,
+     "own": 0.8853
+    },
+    "lock0": {
+     "n": 1634,
+     "whole": 0.7457,
+     "own": 0.8406
+    },
+    "lock1": {
+     "n": 1659,
+     "whole": 0.8016,
+     "own": 0.7266
+    },
+    "n_same": 2393
+   }
+  },
+  "criterion2": {
+   "n_used": 32,
+   "n_factors": 32,
+   "factors": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ],
+    [
+     6
+    ],
+    [
+     7
+    ],
+    [
+     8
+    ],
+    [
+     9
+    ],
+    [
+     10
+    ],
+    [
+     11
+    ],
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ],
+    [
+     25
+    ],
+    [
+     26
+    ],
+    [
+     27
+    ],
+    [
+     28
+    ],
+    [
+     29
+    ],
+    [
+     30
+    ],
+    [
+     31
+    ]
+   ],
+   "best_factor": {
+    "cube": 3,
+    "drawer": 4,
+    "window": 0,
+    "lock0": 31,
+    "lock1": 0
+   },
+   "distinct": false,
+   "share_in_best": {
+    "cube": 13.2,
+    "drawer": 16.7,
+    "window": 15.0,
+    "lock0": 19.4,
+    "lock1": 7.8
+   },
+   "steps_only": {
+    "cube": 4197,
+    "drawer": 635,
+    "window": 1120,
+    "lock0": 371,
+    "lock1": 361
+   },
+   "arm_only_over_one_variable_pct": 74.9,
+   "per_variable_change_over_arm_only": {
+    "cube": 1.1,
+    "drawer": 2.0,
+    "window": 1.7,
+    "lock0": 1.4,
+    "lock1": 1.6
+   }
+  },
+  "K": 32,
+  "seed": 0,
+  "steps": 4038,
+  "sec": 300.1,
+  "picks_true_pct": 77.6,
+  "tau": 0.204,
+  "std_per_coordinate": [
+   0.108,
+   0.11,
+   0.064,
+   0.148,
+   0.113,
+   0.065,
+   0.091,
+   0.052,
+   0.064,
+   0.077,
+   0.127,
+   0.075,
+   0.058,
+   0.028,
+   0.032,
+   0.069,
+   0.027,
+   0.06,
+   0.058,
+   0.039,
+   0.09,
+   0.12,
+   0.074,
+   0.072,
+   0.044,
+   0.063,
+   0.09,
+   0.081,
+   0.065,
+   0.062,
+   0.113,
+   0.1
+  ]
+ },
+ "upper_bound_truth_pairs_5_min": {
+  "criterion1": {
+   "validation": {
+    "cube": {
+     "n": 37323,
+     "whole": 0.9824,
+     "own": 0.9254
+    },
+    "drawer": {
+     "n": 5602,
+     "whole": 0.9796,
+     "own": 0.9775
+    },
+    "window": {
+     "n": 6127,
+     "whole": 0.9625,
+     "own": 0.994
+    },
+    "lock0": {
+     "n": 26594,
+     "whole": 0.9986,
+     "own": 0.9999
+    },
+    "lock1": {
+     "n": 25103,
+     "whole": 0.999,
+     "own": 0.9987
+    },
+    "n_same": 73876
+   },
+   "test frames (card 141)": {
+    "cube": {
+     "n": 2903,
+     "whole": 0.8398,
+     "own": 0.923
+    },
+    "drawer": {
+     "n": 259,
+     "whole": 0.6877,
+     "own": 0.8118
+    },
+    "window": {
+     "n": 414,
+     "whole": 0.7161,
+     "own": 0.893
+    },
+    "lock0": {
+     "n": 1634,
+     "whole": 0.7969,
+     "own": 0.8628
+    },
+    "lock1": {
+     "n": 1659,
+     "whole": 0.825,
+     "own": 0.8845
+    },
+    "n_same": 2393
+   }
+  },
+  "criterion2": {
+   "n_used": 32,
+   "n_factors": 30,
+   "factors": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ],
+    [
+     6,
+     8,
+     15
+    ],
+    [
+     7
+    ],
+    [
+     9
+    ],
+    [
+     10
+    ],
+    [
+     11
+    ],
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ],
+    [
+     25
+    ],
+    [
+     26
+    ],
+    [
+     27
+    ],
+    [
+     28
+    ],
+    [
+     29
+    ],
+    [
+     30
+    ],
+    [
+     31
+    ]
+   ],
+   "best_factor": {
+    "cube": 10,
+    "drawer": 26,
+    "window": 6,
+    "lock0": 26,
+    "lock1": 6
+   },
+   "distinct": false,
+   "share_in_best": {
+    "cube": 8.5,
+    "drawer": 14.5,
+    "window": 27.3,
+    "lock0": 26.6,
+    "lock1": 21.7
+   },
+   "steps_only": {
+    "cube": 4197,
+    "drawer": 635,
+    "window": 1120,
+    "lock0": 371,
+    "lock1": 361
+   },
+   "arm_only_over_one_variable_pct": 44.7,
+   "per_variable_change_over_arm_only": {
+    "cube": 1.7,
+    "drawer": 2.7,
+    "window": 2.5,
+    "lock0": 4.3,
+    "lock1": 4.3
+   }
+  },
+  "K": 32,
+  "seed": 0,
+  "steps": 4021,
+  "sec": 300.0,
+  "picks_true_pct": 90.2,
+  "tau": 0.148
+ },
+ "diagnostics": {
+  "linear_read_outs": {
+   "short": {
+    "truth_from_state": {
+     "drawer": 0.898,
+     "window": 0.945,
+     "lock0": 0.915,
+     "lock1": 0.899,
+     "cube_x_on_table": 0.489,
+     "cube_y_on_table": 0.833
+    },
+    "truth_from_pose": {
+     "drawer": 0.012,
+     "lock0": 0.0,
+     "cube_x_on_table": 0.057
+    },
+    "pose_from_state": {
+     "pose 0": 0.188,
+     "pose 1": 0.25,
+     "pose 2": 0.229,
+     "pose 3": 0.051,
+     "pose 4": 0.001,
+     "pose 5": -0.203,
+     "pose 6": 0.306,
+     "pose 7": 0.163,
+     "pose 8": 0.053,
+     "pose 9": -0.022,
+     "pose 10": -0.068,
+     "pose 11": 0.123
+    },
+    "state_from_pose_mean_r2": 0.007,
+    "effective_dimensions": 11.8
+   },
+   "bound": {
+    "truth_from_state": {
+     "drawer": 0.831,
+     "window": 0.858,
+     "lock0": 0.96,
+     "lock1": 0.908,
+     "cube_x_on_table": 0.915,
+     "cube_y_on_table": 0.955
+    },
+    "truth_from_pose": {
+     "drawer": 0.012,
+     "lock0": 0.0,
+     "cube_x_on_table": 0.057
+    },
+    "pose_from_state": {
+     "pose 0": 0.613,
+     "pose 1": 0.832,
+     "pose 2": 0.622,
+     "pose 3": 0.592,
+     "pose 4": 0.036,
+     "pose 5": -0.116,
+     "pose 6": 0.802,
+     "pose 7": 0.557,
+     "pose 8": 0.627,
+     "pose 9": 0.065,
+     "pose 10": -0.039,
+     "pose 11": 0.516
+    },
+    "state_from_pose_mean_r2": 0.134,
+    "effective_dimensions": 7.1
+   }
+  },
+  "independent_directions_of_change": {
+   "short": {
+    "8": {
+     "share_in_best": {
+      "cube": 21.2,
+      "drawer": 45.5,
+      "window": 36.0,
+      "lock0": 24.7,
+      "lock1": 19.2
+     },
+     "distinct": false,
+     "arm_only_over_one_variable_pct": 60.4
+    },
+    "12": {
+     "share_in_best": {
+      "cube": 16.6,
+      "drawer": 33.2,
+      "window": 27.0,
+      "lock0": 38.0,
+      "lock1": 15.8
+     },
+     "distinct": true,
+     "arm_only_over_one_variable_pct": 66.2
+    },
+    "16": {
+     "share_in_best": {
+      "cube": 13.6,
+      "drawer": 22.5,
+      "window": 20.4,
+      "lock0": 25.9,
+      "lock1": 12.9
+     },
+     "distinct": false,
+     "arm_only_over_one_variable_pct": 71.2
+    }
+   },
+   "bound": {
+    "8": {
+     "share_in_best": {
+      "cube": 27.5,
+      "drawer": 34.4,
+      "window": 30.0,
+      "lock0": 55.3,
+      "lock1": 35.0
+     },
+     "distinct": true,
+     "arm_only_over_one_variable_pct": 43.3
+    },
+    "12": {
+     "share_in_best": {
+      "cube": 15.9,
+      "drawer": 23.6,
+      "window": 22.5,
+      "lock0": 45.3,
+      "lock1": 30.6
+     },
+     "distinct": true,
+     "arm_only_over_one_variable_pct": 42.3
+    }
+   }
+  }
+ },
+ "data_check": {
+  "gap": {
+   "1": {
+    "none": 68.4,
+    "one": 30.4,
+    "more": 1.2,
+    "cube": 20.7,
+    "drawer": 3.9,
+    "window": 4.6,
+    "lock0": 1.8,
+    "lock1": 1.7
+   },
+   "2": {
+    "none": 58.6,
+    "one": 39.7,
+    "more": 1.7,
+    "cube": 23.9,
+    "drawer": 5.4,
+    "window": 6.7,
+    "lock0": 3.5,
+    "lock1": 3.6
+   },
+   "5": {
+    "none": 30.8,
+    "one": 65.8,
+    "more": 3.5,
+    "cube": 32.5,
+    "drawer": 10.7,
+    "window": 11.9,
+    "lock0": 8.9,
+    "lock1": 8.7
+   },
+   "10": {
+    "none": 9.9,
+    "one": 70.5,
+    "more": 19.6,
+    "cube": 46.1,
+    "drawer": 17.0,
+    "window": 17.7,
+    "lock0": 15.6,
+    "lock1": 15.1
+   },
+   "20": {
+    "none": 4.9,
+    "one": 41.9,
+    "more": 53.2,
+    "cube": 63.5,
+    "drawer": 24.4,
+    "window": 26.7,
+    "lock0": 24.7,
+    "lock1": 24.7
+   },
+   "40": {
+    "none": 1.6,
+    "one": 19.9,
+    "more": 78.5,
+    "cube": 82.8,
+    "drawer": 36.6,
+    "window": 39.0,
+    "lock0": 36.2,
+    "lock1": 35.4
+   }
+  },
+  "schemes": {
+   "d=2 | any moment of the episode": {
+    "pose_alone_picks_true_pct": 46.4,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 63.6,
+    "false_moments_told_by_one_variable_only_pct": 23.6,
+    "of_which": {
+     "cube": 42.4,
+     "drawer": 12.4,
+     "window": 16.6,
+     "lock0": 14.9,
+     "lock1": 13.7
+    }
+   },
+   "d=2 | just outside the window": {
+    "pose_alone_picks_true_pct": 42.2,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 64.7,
+    "false_moments_told_by_one_variable_only_pct": 40.3,
+    "of_which": {
+     "cube": 29.2,
+     "drawer": 13.2,
+     "window": 17.6,
+     "lock0": 20.6,
+     "lock1": 19.3
+    }
+   },
+   "d=2 | just outside, pose distance matched to the true pair's": {
+    "pose_alone_picks_true_pct": 37.6,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 63.1,
+    "false_moments_told_by_one_variable_only_pct": 39.9,
+    "of_which": {
+     "cube": 28.7,
+     "drawer": 13.6,
+     "window": 19.3,
+     "lock0": 20.1,
+     "lock1": 18.5
+    }
+   },
+   "d=2 | true one at random, false ones the nearest in pose": {
+    "pose_alone_picks_true_pct": 37.4,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 63.2,
+    "false_moments_told_by_one_variable_only_pct": 39.6,
+    "of_which": {
+     "cube": 29.1,
+     "drawer": 14.5,
+     "window": 18.6,
+     "lock0": 18.7,
+     "lock1": 19.1
+    }
+   },
+   "d=2 | just outside, matched in pose": {
+    "pose_alone_picks_true_pct": 7.7,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 64.5,
+    "false_moments_told_by_one_variable_only_pct": 39.7,
+    "of_which": {
+     "cube": 29.2,
+     "drawer": 12.8,
+     "window": 16.1,
+     "lock0": 21.2,
+     "lock1": 20.8
+    }
+   },
+   "d=5 | any moment of the episode": {
+    "pose_alone_picks_true_pct": 28.5,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 49.4,
+    "false_moments_told_by_one_variable_only_pct": 25.1,
+    "of_which": {
+     "cube": 40.7,
+     "drawer": 12.1,
+     "window": 16.7,
+     "lock0": 16.1,
+     "lock1": 14.4
+    }
+   },
+   "d=5 | just outside the window": {
+    "pose_alone_picks_true_pct": 23.5,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 49.4,
+    "false_moments_told_by_one_variable_only_pct": 48.6,
+    "of_which": {
+     "cube": 39.1,
+     "drawer": 12.1,
+     "window": 15.4,
+     "lock0": 16.5,
+     "lock1": 16.9
+    }
+   },
+   "d=5 | just outside, pose distance matched to the true pair's": {
+    "pose_alone_picks_true_pct": 18.0,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 49.7,
+    "false_moments_told_by_one_variable_only_pct": 48.2,
+    "of_which": {
+     "cube": 42.9,
+     "drawer": 11.2,
+     "window": 14.4,
+     "lock0": 16.0,
+     "lock1": 15.4
+    }
+   },
+   "d=5 | true one at random, false ones the nearest in pose": {
+    "pose_alone_picks_true_pct": 18.6,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 48.8,
+    "false_moments_told_by_one_variable_only_pct": 47.6,
+    "of_which": {
+     "cube": 44.7,
+     "drawer": 11.1,
+     "window": 14.4,
+     "lock0": 14.9,
+     "lock1": 14.9
+    }
+   },
+   "d=5 | just outside, matched in pose": {
+    "pose_alone_picks_true_pct": 0.1,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 46.5,
+    "false_moments_told_by_one_variable_only_pct": 48.1,
+    "of_which": {
+     "cube": 46.4,
+     "drawer": 9.6,
+     "window": 15.2,
+     "lock0": 14.5,
+     "lock1": 14.3
+    }
+   },
+   "d=10 | any moment of the episode": {
+    "pose_alone_picks_true_pct": 22.4,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 32.3,
+    "false_moments_told_by_one_variable_only_pct": 27.3,
+    "of_which": {
+     "cube": 39.0,
+     "drawer": 13.0,
+     "window": 16.8,
+     "lock0": 17.3,
+     "lock1": 13.8
+    }
+   },
+   "d=10 | just outside the window": {
+    "pose_alone_picks_true_pct": 19.5,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 32.4,
+    "false_moments_told_by_one_variable_only_pct": 42.0,
+    "of_which": {
+     "cube": 39.3,
+     "drawer": 11.8,
+     "window": 16.5,
+     "lock0": 16.4,
+     "lock1": 16.1
+    }
+   },
+   "d=10 | just outside, pose distance matched to the true pair's": {
+    "pose_alone_picks_true_pct": 11.1,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 31.8,
+    "false_moments_told_by_one_variable_only_pct": 41.4,
+    "of_which": {
+     "cube": 41.1,
+     "drawer": 11.6,
+     "window": 15.7,
+     "lock0": 16.1,
+     "lock1": 15.5
+    }
+   },
+   "d=10 | true one at random, false ones the nearest in pose": {
+    "pose_alone_picks_true_pct": 10.7,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 32.1,
+    "false_moments_told_by_one_variable_only_pct": 41.7,
+    "of_which": {
+     "cube": 43.4,
+     "drawer": 11.6,
+     "window": 14.9,
+     "lock0": 15.2,
+     "lock1": 15.0
+    }
+   },
+   "d=10 | just outside, matched in pose": {
+    "pose_alone_picks_true_pct": 0.0,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 26.6,
+    "false_moments_told_by_one_variable_only_pct": 43.5,
+    "of_which": {
+     "cube": 49.7,
+     "drawer": 9.7,
+     "window": 13.5,
+     "lock0": 13.8,
+     "lock1": 13.3
+    }
+   },
+   "d=20 | any moment of the episode": {
+    "pose_alone_picks_true_pct": 17.0,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 20.5,
+    "false_moments_told_by_one_variable_only_pct": 30.3,
+    "of_which": {
+     "cube": 33.8,
+     "drawer": 12.9,
+     "window": 18.8,
+     "lock0": 18.2,
+     "lock1": 16.3
+    }
+   },
+   "d=20 | just outside the window": {
+    "pose_alone_picks_true_pct": 16.4,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 20.6,
+    "false_moments_told_by_one_variable_only_pct": 33.3,
+    "of_which": {
+     "cube": 33.7,
+     "drawer": 13.9,
+     "window": 17.3,
+     "lock0": 18.6,
+     "lock1": 16.4
+    }
+   },
+   "d=20 | just outside, pose distance matched to the true pair's": {
+    "pose_alone_picks_true_pct": 5.9,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 20.2,
+    "false_moments_told_by_one_variable_only_pct": 33.7,
+    "of_which": {
+     "cube": 35.0,
+     "drawer": 12.7,
+     "window": 17.8,
+     "lock0": 18.9,
+     "lock1": 15.6
+    }
+   },
+   "d=20 | true one at random, false ones the nearest in pose": {
+    "pose_alone_picks_true_pct": 6.0,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 19.7,
+    "false_moments_told_by_one_variable_only_pct": 34.4,
+    "of_which": {
+     "cube": 33.8,
+     "drawer": 14.4,
+     "window": 16.9,
+     "lock0": 18.6,
+     "lock1": 16.3
+    }
+   },
+   "d=20 | just outside, matched in pose": {
+    "pose_alone_picks_true_pct": 0.0,
+    "chance_pct": 5.9,
+    "true_pair_same_scene_pct": 14.3,
+    "false_moments_told_by_one_variable_only_pct": 37.6,
+    "of_which": {
+     "cube": 40.3,
+     "drawer": 11.3,
+     "window": 16.4,
+     "lock0": 17.3,
+     "lock1": 14.6
+    }
+   }
+  }
+ }
+}

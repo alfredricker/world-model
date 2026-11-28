@@ -1,5 +1,5 @@
 ---
-arch_version: og4
+arch_version: og5
 ---
 
 # Architecture
@@ -7,6 +7,48 @@ arch_version: og4
 Two lines of versions exist (the user, 2026-11-11): numbers 1–27 are
 the MiniGrid agent; **og1, og2, …** are the OGBench agent, which shares
 no code with it.
+
+Version og5 ([card 168](experiments/168-consequence-trained-scene-world-model/card.md)
+and [card 169](experiments/169-zero-heuristic-event-bfs-on-ogbench/card.md),
+2026-11-27, adopted by the user; portability tests paused) replaces
+og4's readings and its planner. The skills, the touch memory and the
+own-tries rule are og4's.
+- **Scene model (`SceneWNet`, card 168):** one network over frozen
+  DINOv2 patch features (64-D PCA) gives each of five unlabelled slots
+  a state vector: two slides, two locks, one movable group, with a
+  position and an "in view" probability for the movable one. A
+  transition head, given the slots and the touch about to be made,
+  predicts whether each slot changes and whether the movable slot is
+  in view afterwards. It is trained on recorded touches only: no truth
+  labels, no reconstruction decoder.
+- **Planner (card 169):** a breadth-first search over touches (press,
+  pull, table move, put-in), up to 8 deep, in slot space. The scene
+  model decides whether a touch's own slot will change (so a pull on a
+  locked slide is not a step) and whether closing the drawer hides the
+  cube. A goal frame without the cube in view asks for the cube put
+  away.
+- **Failed tries:** own-tries as og4. In addition, a pull that fails
+  twice is ruled out under the lock readings it failed in until a lock
+  changes, and the lock it depends on is taken as locked.
+- **Skills:** og4's replayed touches, plus put-ins: remembered moves
+  after which the scene model reads the cube at the drawer's interior
+  height (29 in the 100 play episodes used).
+- **Results** (50 episodes per task, three evaluation seeds, one
+  checkpoint): tasks 1–5: 98.7, 91.3, 97.3, 87.3, 78.0%, mean 90.5%
+  (og4: 100, 86, 82, 0, 0; 53.6%). Search takes 2.9 ms per decision.
+  Without the condition search, tasks 2 and 4 score 0%.
+- **Known limits:** what a touch does to the imagined state (a press
+  sets the lock to the other prototype, a pull sets the slide to its
+  target, a put-in marks the cube inside) and two ordering guards are
+  written in the planner, not asked of the scene model; "the drawer
+  must be open for a put-in" is a range over remembered put-ins; the
+  scene model's training targets come from hand-set rules over touches;
+  it predicts drawer-hides-cube at 82.2% (bar 85%) and an imagined
+  press flips a pull's prediction in 80.2% of cases; 40 of 71 failed
+  episodes are the agent giving up near the end of a chain, 26 of them
+  in task 5; a replay still does not react to the scene while it runs.
+  Code: `tools/card168/model.py`, `tools/card169/plan.py`; weights
+  `runs/168/scene_wnet_0.pt`, counts `runs/169/own.json`.
 
 Version og4 ([card 130](experiments/130-own-tries-first/card.md),
 2026-11-11, adopted by the user) is og3 plus version 27's own-tries
@@ -984,3 +1026,4 @@ At every step:
 | og2 | 2026-11-11 | 128 | og1 plus a read-out of the cube's position trained on the agent's own touches (0.49 cm) and a remembered cube move shifted to it. Task 3 86%; five-task mean 53.2%. Versions named og1, og2 from here (the user); og1 was first written as 28 |
 | og3 | 2026-11-11 | 129.2 | og2 with one skill and one comparison with the goal: groups of places from two-way moves, appearance per place and aim per group switched on by tests on memory; nothing names the cube. Tasks 1–3: 84, 90, 72% (og2: 84, 96, 86); adopted by the user with the task 3 loss stated |
 | og4 | 2026-11-11 | 130 | og3 plus version 27's own-tries rule: a failed touch is not recalled again in the episode; the agent's own success counts choose among the 10 best matches. Tasks 1–3: 100, 86, 82%; five-task mean 53.6%. |
+| og5 | 2026-11-27 | 168, 169 | og4's four scene readings replaced by one consequence-trained network (`SceneWNet`), and `know.npz` with the one-step rule replaced by a search over chains of touches through it; five-task mean 90.5% against 53.6%. Two components at once, adopted by the user; portability tests paused |
